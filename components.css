@@ -8,7 +8,9 @@
     z-index: 900;
     width: 90%;
     max-width: 500px;
+    transition: var(--transition-premium);
 }
+
 
 .search-box {
     background: var(--bg-light);
@@ -529,6 +531,7 @@
 #panel-content {
     flex: 1;
     overflow-y: auto;
+    overscroll-behavior: contain; /* Empêche le scroll du body quand on scrolle dans la vignette */
     padding: 2.5rem;
     border-radius: inherit;
     /* Scrollbar premium */
@@ -668,7 +671,8 @@
 .logo-menu-icon { margin-right: 12px; }
 
 .full-height-body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .empty-state-panel {

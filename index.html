@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EauPotable.net | L'Observatoire Indépendant de la Qualité de l'Eau</title>
-    <meta name="description" content="Vérifiez la qualité de l'eau potable de votre commune en temps réel. Accédez aux rapports officiels sur les pesticides, nitrates et calcaire.">
+    <title>EauPotable.net | La vérité sur l'eau de votre robinet.</title>
+    <meta name="description" content="Analysez la qualité de l'eau potable de votre ville instantanément. Accédez aux relevés officiels sur les pesticides, nitrates et calcaire pour une transparence totale.">
+    <link rel="canonical" href="https://www.eaupotable.net/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.eaupotable.net/">
+    <meta property="og:title" content="EauPotable.net | La vérité sur l'eau de votre robinet.">
+    <meta property="og:description" content="Découvrez ce que contient réellement votre eau du robinet. Analyses officielles en temps réel.">
+    <meta property="og:image" content="https://www.eaupotable.net/crystal_droplet.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.eaupotable.net/">
+    <meta property="twitter:title" content="EauPotable.net | La vérité sur l'eau de votre robinet.">
+    <meta property="twitter:description" content="Découvrez ce que contient réellement votre eau du robinet. Analyses officielles en temps réel.">
+    <meta property="twitter:image" content="https://www.eaupotable.net/crystal_droplet.png">
+
+    <!-- Données Structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "EauPotable.net",
+      "url": "https://www.eaupotable.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.eaupotable.net/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "description": "Observatoire indépendant de la qualité de l'eau potable en France."
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,11 +111,12 @@
         </ul>
 
         <div class="menu-footer">
-            <p>&copy; 2026 EauPotable.net - Observatoire Indépendant</p>
+            <p>&copy; 2026 EauPotable.net - La transparence sur votre eau</p>
         </div>
     </div>
 
     <main>
+        <h1 class="sr-only">Qualité de l'eau potable : Analysez votre ville en temps réel</h1>
         <section id="map-section">
             <div id="map"></div>
             
@@ -111,7 +143,39 @@
             </div>
         </section>
     </main>
+    
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <button class="seo-toggle" id="seo-toggle">
+                <span>En savoir plus sur l'observatoire & nos données</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="seo-expandable" id="seo-content">
+                <div class="seo-block">
+                    <h2>Comprendre la qualité de votre eau potable</h2>
+                    <div class="seo-grid">
+                        <p><strong>EauPotable.net</strong> est un observatoire indépendant qui facilite l'accès aux données sanitaires publiques. Grâce à l'exploitation des analyses de l'<strong>ARS (Agence Régionale de Santé)</strong> et des relevés du <strong>Ministère de la Santé</strong> via l'API <strong>Hub'Eau</strong>, nous permettons à chaque citoyen de consulter gratuitement la <strong>qualité de l'eau du robinet</strong> dans sa commune.</p>
+                        <p>Découvrez si votre eau contient des traces de <strong>pesticides</strong>, de <strong>nitrates</strong>, ou un excès de <strong>calcaire</strong>. Notre interface analyse en temps réel les derniers prélèvements officiels pour vous fournir un score de transparence et de sécurité sanitaire clair et immédiat.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 EauPotable.net - La transparence sur les données de l'eau | <a href="mentions-legales.html">Mentions Légales</a> | <a href="contact.html">Contact</a></p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Toggle SEO content
+        const seoToggle = document.getElementById('seo-toggle');
+        const seoContent = document.getElementById('seo-content');
+        if (seoToggle && seoContent) {
+            seoToggle.onclick = () => {
+                seoContent.classList.toggle('active');
+                seoToggle.classList.toggle('active');
+            };
+        }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>

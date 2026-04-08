@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 2000;
     background: rgba(255, 255, 255, 0.6); /* Fond blanc translucide */
     backdrop-filter: blur(12px); /* Effet verre dépoli */
     -webkit-backdrop-filter: blur(12px);
@@ -24,7 +24,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 2000;
     background: transparent;
     border-bottom: none;
 }
@@ -64,15 +64,113 @@ main {
 
 
 
-/* Main Content Area */
 main {
     padding-top: 0;
     min-height: 100vh;
 }
 
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border-glass);
-    margin-top: 100px;
-    background: rgba(0, 0, 0, 0.2);
+#map-section {
+    height: 100vh; /* On garde la carte en plein écran par défaut */
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer SEO Premium */
+.site-footer {
+    background: var(--bg-surface);
+    color: var(--text-main);
+    padding: 40px 0;
+    border-top: 1px solid var(--glass-border-light);
+    position: relative;
+    z-index: 10;
+}
+
+.seo-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border: 1px dashed var(--glass-border-light);
+    border-radius: 12px;
+    transition: var(--transition-premium);
+}
+
+.seo-toggle:hover {
+    background: var(--surface-sunken);
+    color: var(--primary-solid);
+}
+
+.seo-toggle svg {
+    transition: transform 0.3s;
+}
+
+.seo-toggle.active svg {
+    transform: rotate(180deg);
+}
+
+.seo-expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seo-expandable.active {
+    max-height: 1000px; /* Large enough to hold the content */
+}
+
+.seo-block h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    background: var(--surface-gradient);
+    -webkit-background-clip: text;
+    background-clip: text; /* Compatibilité linter */
+    -webkit-text-fill-color: transparent;
+}
+
+.seo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.seo-grid p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border-light);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.footer-bottom a {
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary-solid);
+}
+
+@media (max-width: 768px) {
+    .seo-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }

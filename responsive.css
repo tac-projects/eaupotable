@@ -1,6 +1,7 @@
-/* Mobile First & Responsive Adjustments */
+/* Adaptive Binary Strategy: Mobile/Tablet (< 1024px) vs Desktop (>= 1024px) */
 
-@media (max-width: 768px) {
+/* MODE IMMERSIF: MOBILE & TABLETTES */
+@media (max-width: 1023px) {
     header {
         height: 60px;
         padding: 0 15px;
@@ -10,15 +11,25 @@
         font-size: 1.2rem;
     }
 
-    /* Map occupies full smartphone height */
+    /* Map occupies full smartphone/tablet height */
     #map-section, #map {
         height: 100vh;
-        height: 100svh; /* Stable height on mobile browsers */
+        height: 100svh;
     }
 
     .search-floating {
-        top: 80px;
+        bottom: 30px; /* Thumb zone */
+        top: auto;
         width: 94%;
+        z-index: 800;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Masquer la barre de recherche quand l'analyse est ouverte */
+    body:has(.side-panel.active) .search-floating {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, 20px);
     }
 
     .search-input {
@@ -26,17 +37,18 @@
         padding: 0.8rem 1.5rem;
     }
 
-    /* Bottom Sheet Style for Mobile Analysis */
+    /* Bottom Sheet Style - Commun Mobile/Tablette */
     .side-panel {
         top: auto;
         bottom: -100%;
         right: 0;
         left: 0;
         width: 100%;
-        height: 75vh;
+        height: 80vh;
         border-radius: 30px 30px 0 0;
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
-        padding: 0; /* Padding moves to #panel-content */
+        box-shadow: 0 -15px 50px rgba(0,0,0,0.15);
+        padding: 0;
+        z-index: 2500;
     }
 
     .side-panel.active {
@@ -44,33 +56,52 @@
     }
 
     #panel-content {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem;
     }
 
     .close-panel {
-        top: -20px;
+        top: 15px;
         right: 20px;
-        width: 42px;
-        height: 42px;
-        font-size: 1.6rem;
-        background: var(--bg-light); /* Better contrast on mobile */
-    }
-
-    /* Minimalist Footer for Mobile */
-    .map-footer {
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        flex-direction: row; /* FORCE SAME LINE */
-        justify-content: center;
-        gap: 2rem; /* Large gap for touch */
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        width: 36px;
+        height: 36px;
+        font-size: 1.4rem;
+        background: var(--surface-sunken);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .desktop-only {
         display: none;
+    }
+}
+
+/* MODE DASHBOARD: DESKTOP */
+@media (min-width: 1024px) {
+    .side-panel {
+        top: 100px;
+        width: 400px;
+        height: calc(100% - 140px);
+        right: -450px;
+    }
+
+    .side-panel.active {
+        right: 40px;
+    }
+
+    #panel-content {
+        padding: 1.5rem;
+    }
+
+    /* Centrage dynamique de la recherche par rapport à l'espace libre */
+    body:has(.side-panel.active) .search-floating {
+        left: calc((100% - 440px) / 2);
+        transform: translateX(-50%);
+        transition: var(--transition-premium);
+    }
+}
+
+/* Fix pour Safari Mobile (vh units) */
+@supports (-webkit-touch-callout: none) {
+    #map-section, #map {
+        height: -webkit-fill-available;
     }
 }
