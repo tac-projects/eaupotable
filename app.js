@@ -225,8 +225,12 @@ async function fetchWaterData(cityName) {
                 const label = r.libelle_parametre.toLowerCase()
                                 .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 
-                // 1. Exclusion radicale de la température pour tous les paramètres chimiques/physiques
-                if (unit.includes("°c") || label.includes("temperature")) return false;
+                // 1. Exclusion radicale de la température (très robuste contre les erreurs de labo)
+                const containsC = unit.includes("c") || unit.includes("deg");
+                const containsDegreeSign = unit.includes("°") || unit.includes("º") || label.includes("°");
+                const isTempLabel = label.includes("temperature") || label.includes("t°") || label.startsWith("t ");
+                
+                if (isTempLabel || (containsC && containsDegreeSign)) return false;
 
                 // 2. Priorité au Code Sandre (infaillible)
                 const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
