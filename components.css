@@ -273,25 +273,29 @@
 .score-dot.status-warning { background: var(--status-warning); box-shadow: 0 0 10px rgba(251, 191, 36, 0.4); }
 .score-dot.status-critical { background: var(--status-critical); box-shadow: 0 0 10px rgba(248, 113, 113, 0.4); }
 
-.yuka-section {
-    margin-bottom: 2.5rem;
+.report-section {
+    margin-bottom: 3.5rem;
 }
 
-.yuka-section-title {
-    font-size: 1.1rem;
-    font-weight: 800;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-bottom: 1rem;
+.section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text-main);
 }
 
-.yuka-section-title small {
-    font-weight: 500;
+.section-header .count {
     font-size: 0.75rem;
+    font-weight: 600;
     color: var(--text-light);
+    background: var(--surface-sunken);
+    padding: 2px 8px;
+    border-radius: 10px;
 }
 
 .yuka-row {

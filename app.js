@@ -145,32 +145,53 @@ async function fetchWaterData(cityName) {
         const reports = data.data;
         reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
+        // Helper interne pour extraire un paramètre spécifique dans la masse des données
         const getParam = (keywords) => {
-            const match = reports.find(r => 
-                keywords.some(kw => r.libelle_parametre.toLowerCase().includes(kw.toLowerCase())) &&
-                (r.resultat_numerique !== undefined || r.resultat_alphanumerique !== undefined)
-            );
-            return match ? {
-                val: `${match.resultat_numerique || match.resultat_alphanumerique}`,
+            const match = reports.find(r => {
+                const label = r.libelle_parametre.toLowerCase()
+                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Supprime les accents
+                
+                const isMatch = keywords.some(kw => {
+                    const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    if (lowKw === 'ph') return label === 'ph' || label === 'ph *' || label.includes('potentiel hydrogene');
+                    return label.includes(lowKw);
+                });
+
+                return isMatch && 
+                       !label.includes("temperature") && 
+                       (r.resultat_numerique !== null && r.resultat_numerique !== undefined || 
+                        r.resultat_alphanumerique !== null && r.resultat_alphanumerique !== undefined);
+            });
+
+            if (!match) return null;
+
+            // Priorité absolue à l'alphanumérique (contient souvent <, > ou les virgules françaises)
+            // On ne prend le numérique que si l'alpha est vraiment vide
+            const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") 
+                           ? match.resultat_alphanumerique 
+                           : match.resultat_numerique;
+
+            return {
+                val: (rawVal !== null && rawVal !== undefined) ? `${rawVal}` : '--',
                 unit: match.libelle_unite || '',
                 date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
                 label: match.libelle_parametre
-            } : null;
+            };
         };
 
         const stats = {
             nitrates: getParam(["nitrate"]),
             ph: getParam(["ph"]),
-            hardness: getParam(["hydrotimétrique", "dureté"]),
+            hardness: getParam(["hydrotimétrique", "dureté", "hydrotimetrique", "durete"]),
             chlorine: getParam(["chlore libre"]),
-            conductivity: getParam(["conductivité"]),
-            turbidity: getParam(["turbidité"]),
-            iron: getParam(["fer total"]),
+            conductivity: getParam(["conductivité", "conductivite"]),
+            turbidity: getParam(["turbidité", "turbidite"]),
+            iron: getParam(["fer total", "fer dissous", " fer "]),
+            manganese: getParam(["manganèse", "manganèse total", "manganese", "manganese total"]),
+            pesticides: getParam(["pesticides totaux", "total des pesticides", "pesticides total", "pesticide"]),
             ammonium: getParam(["ammonium"]),
-            cot: getParam(["organique total"]),
-            manganese: getParam(["manganèse"]),
             copper: getParam(["cuivre"]),
-            pesticides: getParam(["pesticides totaux"])
+            cot: getParam(["organique total"])
         };
 
         const conclusion = reports[0].conclusion_conformite_prelevement || "";
@@ -333,14 +354,16 @@ function getParameterStatus(key, val) {
 }
 
 const PARAM_ICONS = {
-    bacteria: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
-    nitrates: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5.3 5.3l13.4 13.4M18.7 5.3L5.3 18.7"/></svg>',
-    hardness: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>',
-    pesticides: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7.5 1-5.5 5.5 1.3 7.5-6.3-3.3-6.3 3.3 1.3-7.5-5.5-5.5 7.5-1z"/></svg>',
-    ph: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
-    chlorine: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
-    cond: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
-    turb: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+    bacteria: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="8" r="1.5"/><circle cx="16" cy="12" r="1.5"/><circle cx="12" cy="16" r="1.5"/></svg>', 
+    nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-10 10Z"/><path d="M12 21.5V13"/></svg>', // Leaf/Sprout
+    hardness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 10-9 10-9-10 9-10z"/></svg>', // Minimal Diamond
+    ph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 10l-4 4 4 4M18 10l4 4-4 4"/></svg>', // Balance style
+    cond: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+    chlorine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v10.75M14 2v10.75M3 13.25h18l-2 7.5H5l-2-7.5z"/></svg>',
+    turb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+    pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.29 3.86-8.47 14.14a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0ZM12 9v4M12 17h.01"/></svg>',
+    iron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 9v6M9 12h6"/></svg>',
+    manganese: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="5"/></svg>'
 };
 
 // Échelles de visualisation pour le spectre Yuka
@@ -425,12 +448,17 @@ function renderReport(cityName, meta, s, isConform) {
                                 <div class="yuka-marker"></div>
                             </div>
                             <div class="yuka-range-labels">
-                                ${range ? `
+                                ${p.key === 'bacteria' ? `
+                                    <span>Absence</span>
+                                    <span></span>
+                                    <span></span>
+                                    <span>Risque</span>
+                                ` : (range ? `
                                     <span>${range[0]}</span>
                                     <span>${range[1]}</span>
                                     <span>${range[2]}</span>
                                     <span>${range[3]}+</span>
-                                ` : '<span>Échelle de conformité sanitaire standard</span>'}
+                                ` : '<span>Échelle de mesure standard</span>')}
                             </div>
                         ` : `
                             <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
