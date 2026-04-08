@@ -11,16 +11,18 @@
     --text-main: #1A202C;
     --text-muted: #4A5568;
     --text-light: #718096;
+    --text-logo: #2D3748; /* Anthracite adouci */
     
     /* Status Levels - Shared (Exact Yuka Palette) */
     --status-excellent: #26b23b;
-    --status-good: #BED630;
+    --status-good: #85D94D;
     --status-warning: #FF9100;
     --status-critical: #E6382F;
     
     /* Effects */
     --glass-bg: rgba(255, 255, 255, 0.8);
     --glass-blur: blur(15px);
+    --glass-border-light: 1px solid rgba(255, 255, 255, 0.4);
     --ghost-border: 1px solid rgba(0, 0, 0, 0.05);
     --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.08);
     

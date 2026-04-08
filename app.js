@@ -31,11 +31,13 @@ const searchInput = document.getElementById('searchVille');
 const searchResults = document.getElementById('search-results');
 const hamburger = document.getElementById('hamburger');
 const mainMenu = document.getElementById('main-menu');
-const closeMenu = document.querySelector('.close-menu');
 const geolocateBtn = document.getElementById('geolocate-btn');
 
-hamburger.onclick = () => mainMenu.classList.add('active');
-closeMenu.onclick = () => mainMenu.classList.remove('active');
+hamburger.onclick = () => {
+    hamburger.classList.toggle('is-active');
+    mainMenu.classList.toggle('active');
+};
+
 closeBtn.onclick = () => sidePanel.classList.remove('active');
 
 // Logique de Géolocalisation
@@ -519,11 +521,11 @@ function renderReport(cityName, meta, s, isConform) {
     let scoreClass = "status-excellent";
     if (crystal.final < 5) scoreClass = "status-critical";
     else if (crystal.final < 8) scoreClass = "status-warning";
-    else if (crystal.final < 9) scoreClass = "status-good";
+    else if (crystal.final < 8.5) scoreClass = "status-good";
 
     panelContent.innerHTML = `
         <div class="yuka-header">
-            <img src="./crystal_droplet.png" class="product-image" alt="Eau de ${cityName}">
+            <img src="./crystal_water_glass.png" class="product-image" alt="Eau de ${cityName}">
             <div class="product-info">
                 <h2 class="product-title">${cityName}</h2>
                 <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:0.5rem;">${nomReseau}</p>
@@ -636,8 +638,17 @@ async function checkUrlParams() {
 }
 
 document.onclick = (e) => {
+    // Fermeture de la recherche
     if (e.target !== searchInput) {
         searchResults.classList.remove('active');
+    }
+
+    // Fermeture du menu si clic à l'extérieur
+    if (mainMenu.classList.contains('active') && 
+        !mainMenu.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+        mainMenu.classList.remove('active');
+        hamburger.classList.remove('is-active');
     }
 };
 

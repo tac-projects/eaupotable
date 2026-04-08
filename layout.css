@@ -13,7 +13,7 @@
     background: rgba(255, 255, 255, 0.6); /* Fond blanc translucide */
     backdrop-filter: blur(12px); /* Effet verre dépoli */
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: var(--glass-border-light);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Ombre douce de profondeur */
 }
 
@@ -62,15 +62,7 @@ main {
     max-width: 100%; /* Suppression de la contrainte pour libérer l'espace */
 }
 
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+
 
 /* Main Content Area */
 main {
