@@ -204,8 +204,9 @@ async function fetchWaterData(cityName) {
     `;
 
     try {
-        // On passe à 5000 résultats pour couvrir les analyses mensuelles des très grandes villes (Marseille, Paris...)
-        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=5000`;
+        // Pour les très grandes villes comme Paris, on monte à 10000 résultats pour remonter assez loin dans le temps
+        // car les tests de routine (chlore) noient les analyses complètes (pesticides, etc.)
+        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=10000`;
         const response = await fetch(url);
         const data = await response.json();
 
@@ -254,18 +255,18 @@ async function fetchWaterData(cityName) {
         };
 
         const stats = {
-            nitrates: getParam([1340], ["nitrate"]),
+            nitrates: getParam([1340, 1342], ["nitrate"]),
             ph: getParam([1301], ["ph"]),
             hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", "th"]),
-            chlorine: getParam([1399], ["chlore libre"]),
+            chlorine: getParam([1399], ["chlore libre", "chlore total"]),
             conductivity: getParam([1302], ["conductivite", "cond"]),
             turbidity: getParam([1305], ["turbidite", "turb"]),
-            iron: getParam([1393], ["fer total", "fer dissous"]),
-            manganese: getParam([1394], ["manganese"]),
-            pesticides: getParam([1107], ["pesticides totaux", "pesticides total"]),
+            iron: getParam([1393, 1374], ["fer total", "fer dissous", " fer "]),
+            manganese: getParam([1394, 1373], ["manganese"]),
+            pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277], ["pesticide"]),
             ammonium: getParam([1331], ["ammonium"]),
             copper: getParam([1392], ["cuivre"]),
-            cot: getParam([1341], ["organique total"])
+            cot: getParam([1341], ["organique total", "cot"])
         };
 
         const conclusion = reports[0].conclusion_conformite_prelevement || "";
