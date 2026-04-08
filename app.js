@@ -443,17 +443,17 @@ function getParameterStatus(key, val) {
 
 const PARAM_ICONS = {
     bacteria: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="8" r="1.5"/><circle cx="16" cy="12" r="1.5"/><circle cx="12" cy="16" r="1.5"/></svg>', 
-    nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8a7 7 0 0 1-10 10Z"/><path d="M12 21.5V13"/></svg>', // Leaf/Sprout
+    nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8L4.5 20.5h15L14 10V2h-4z"/><path d="M8.5 2h7M7 16h10"/></svg>', // Flask/Chemical
     hardness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 10-9 10-9-10 9-10z"/></svg>', // Minimal Diamond
     ph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 10l-4 4 4 4M18 10l4 4-4 4"/></svg>', // Balance style
     cond: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
     conductivity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
     chlorine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v10.75M14 2v10.75M3 13.25h18l-2 7.5H5l-2-7.5z"/></svg>',
-    turb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg>',
-    turbidity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+    turb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="4"/></svg>',
+    turbidity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="4"/></svg>',
     pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.29 3.86-8.47 14.14a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0ZM12 9v4M12 17h.01"/></svg>',
-    iron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 9v6M9 12h6"/></svg>',
-    manganese: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="5"/></svg>'
+    iron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>',
+    manganese: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8.2"/></svg>'
 };
 
 // Échelles de visualisation et bornes de mapping visuel
@@ -474,7 +474,7 @@ const RANGES = {
 const CENTERED_PARAMS = ["ph", "hardness"];
 
 function renderReport(cityName, meta, s, isConform) {
-    const nomReseau = meta.nom_reseau || meta.nom_installation || "Réseau Municipal";
+    const nomReseau = meta.nom_distributeur || meta.nom_reseau || meta.nom_uge || meta.nom_installation || "Réseau Municipal";
     const crystal = calculateCrystalScore(s, isConform);
 
     const params = [
@@ -568,7 +568,7 @@ function renderReport(cityName, meta, s, isConform) {
         return `
             <div class="yuka-row-wrapper">
                 <div class="yuka-row" onclick="toggleYukaRow('${rowId}')">
-                    <div class="yuka-icon">${PARAM_ICONS[p.key] || '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>'}</div>
+                    <div class="yuka-icon">${PARAM_ICONS[p.key] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'}</div>
                     <div class="yuka-content">
                         <span class="yuka-name">${p.name}</span>
                         <span class="yuka-subtitle">${p.statusLabel} • ${p.subtitle}</span>
@@ -610,10 +610,12 @@ function renderReport(cityName, meta, s, isConform) {
             <img src="./crystal_water_glass.png" class="product-image" alt="Eau de ${cityName}">
             <div class="product-info">
                 <h2 class="product-title">${cityName}</h2>
-                <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:0.5rem;">${nomReseau}</p>
-                <div class="product-score-line">
-                    <div class="score-dot ${scoreClass}"></div>
-                    <span>${crystal.final}/10 • ${crystal.label}</span>
+                <div class="badge-group">
+                    <span class="badge badge-network">${nomReseau}</span>
+                    <div style="display:flex; gap:0.6rem; align-items:center;">
+                        <span class="badge badge-crystal ${scoreClass}">${crystal.final}/10</span>
+                        <span class="badge badge-status ${scoreClass}">${crystal.label}</span>
+                    </div>
                 </div>
             </div>
         </div>

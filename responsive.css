@@ -60,13 +60,13 @@
     }
 
     .close-panel {
-        top: 15px;
+        top: -20px; /* Sur la bordure supérieure */
         right: 20px;
-        width: 36px;
-        height: 36px;
-        font-size: 1.4rem;
-        background: var(--surface-sunken);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        width: 40px;
+        height: 40px;
+        background: #FFFFFF;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        border: 1px solid rgba(0,0,0,0.05);
     }
 
     .desktop-only {
