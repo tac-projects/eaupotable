@@ -607,7 +607,7 @@ function renderReport(cityName, meta, s, isConform) {
 
     panelContent.innerHTML = `
         <div class="yuka-header">
-            <img src="./crystal_water_glass.png" class="product-image" alt="Eau de ${cityName}">
+            <img src="assets/img/crystal_water_glass.png" class="product-image" alt="Eau de ${cityName}">
             <div class="product-info">
                 <h2 class="product-title">${cityName}</h2>
                 <div class="badge-group">
