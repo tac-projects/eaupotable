@@ -24,6 +24,36 @@ map.on('load', () => {
     checkUrlParams();
 });
 
+// Interaction directe avec la carte : Clic pour sélectionner une ville
+map.on('click', async (e) => {
+    const { lng, lat } = e.lngLat;
+    
+    // Feedback visuel de chargement
+    map.getCanvas().style.cursor = 'wait';
+
+    try {
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxgl.accessToken}&types=place&language=fr&limit=1`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.features && data.features.length > 0) {
+            selectLocation(data.features[0]);
+        }
+    } catch (error) {
+        console.error("Erreur Reverse Geocoding:", error);
+    } finally {
+        map.getCanvas().style.cursor = 'pointer';
+    }
+});
+
+// Curseur interactif
+map.on('mouseenter', () => {
+    map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', () => {
+    map.getCanvas().style.cursor = '';
+});
+
 const sidePanel = document.getElementById('side-panel');
 const panelContent = document.getElementById('panel-content');
 const closeBtn = document.querySelector('.close-panel');
