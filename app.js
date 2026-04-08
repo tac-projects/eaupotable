@@ -32,12 +32,18 @@ map.on('click', async (e) => {
     map.getCanvas().style.cursor = 'wait';
 
     try {
-        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxgl.accessToken}&types=place&language=fr&limit=1`;
+        // Restriction à la France uniquement (country=FR)
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxgl.accessToken}&types=place&country=FR&language=fr&limit=1`;
         const response = await fetch(url);
         const data = await response.json();
 
         if (data.features && data.features.length > 0) {
-            selectLocation(data.features[0]);
+            const feature = data.features[0];
+            // Sécurité supplémentaire : on vérifie que le résultat est bien en France via son contexte
+            const isFrance = feature.context?.some(c => c.id.includes('country') && c.short_code === 'fr');
+            if (isFrance || feature.place_name.toLowerCase().includes('france')) {
+                selectLocation(feature);
+            }
         }
     } catch (error) {
         console.error("Erreur Reverse Geocoding:", error);
