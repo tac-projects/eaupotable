@@ -398,20 +398,22 @@
 
 .yuka-range-bar.linear {
     background: linear-gradient(to right, 
-        #059669 0%, #059669 25%, 
-        #10b981 25%, #10b981 50%, 
-        #fbbf24 50%, #fbbf24 75%, 
-        #f87171 75%, #f87171 100%
+        var(--status-excellent) 0%, var(--status-excellent) 25%, 
+        var(--status-good) 25%, var(--status-good) 50%, 
+        var(--status-warning) 50%, var(--status-warning) 75%, 
+        var(--status-critical) 75%, var(--status-critical) 100%
     );
 }
 
 .yuka-range-bar.centered {
     background: linear-gradient(to right, 
-        #f87171 0%, #f87171 20%, 
-        #fbbf24 20%, #fbbf24 40%, 
-        #059669 40%, #059669 60%, 
-        #fbbf24 60%, #fbbf24 80%, 
-        #f87171 80%, #f87171 100%
+        var(--status-critical) 0%, var(--status-critical) 11%,
+        var(--status-warning) 11%, var(--status-warning) 22%, 
+        var(--status-good) 22%, var(--status-good) 33%, 
+        var(--status-excellent) 33%, var(--status-excellent) 67%, 
+        var(--status-good) 67%, var(--status-good) 78%, 
+        var(--status-warning) 78%, var(--status-warning) 89%,
+        var(--status-critical) 89%, var(--status-critical) 100%
     );
 }
 
@@ -424,17 +426,23 @@
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 8px solid var(--text-main);
+    border-top: 8px solid var(--marker-color, var(--text-main));
     transition: left 0.6s ease-out;
 }
 
 .yuka-range-labels {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    height: 1.2rem;
     margin-top: 0.8rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-light);
     font-weight: 600;
+}
+
+.yuka-range-labels span {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
 }
 
 .yuka-toggle-arrow {

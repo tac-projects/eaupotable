@@ -133,7 +133,8 @@ async function fetchWaterData(cityName) {
     panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Extraction des bilans sanitaires...</div>`;
 
     try {
-        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=500`;
+        // On passe à 3000 résultats pour couvrir les analyses mensuelles des très grandes villes (Marseille, Paris...)
+        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=3000`;
         const response = await fetch(url);
         const data = await response.json();
 
@@ -309,44 +310,47 @@ function getParameterStatus(key, val) {
     
     switch(key) {
         case "nitrates":
-            if (n < 5) return { class: "status-excellent", statusLabel: "Exceptionnel", subtitle: "Pureté maximale", status: "perfect" };
-            if (n < 20) return { class: "status-good", statusLabel: "Sain", subtitle: "Taux très faible", status: "perfect" };
-            if (n < 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
+            if (n <= 5) return { class: "status-excellent", statusLabel: "Exceptionnel", subtitle: "Pureté maximale", status: "perfect" };
+            if (n <= 20) return { class: "status-good", statusLabel: "Sain", subtitle: "Taux très faible", status: "perfect" };
+            if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
             return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil dépassé", status: "critical" };
         case "hardness":
-            if (n >= 15 && n <= 25) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre minéral parfait", status: "perfect" };
-            if (n >= 10 && n < 15) return { class: "status-good", statusLabel: "Eau Douce", subtitle: "Peu calcaire, sain", status: "perfect" };
-            if (n > 25 && n < 35) return { class: "status-warning", statusLabel: "Calcaire", subtitle: "Entartrage probable", status: "warning" };
-            if (n < 5) return { class: "status-critical", statusLabel: "Corrosif", subtitle: "Trop peu de minéraux", status: "critical" };
-            return { class: "status-critical", statusLabel: "Très Calcaire", subtitle: "Nuisance technique forte", status: "critical" };
+            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre minéral parfait", status: "perfect" };
+            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: n < 15 ? "Peu calcaire, sain" : "Entartrage léger", status: "perfect" };
+            if ((n >= 5 && n < 10) || (n > 35 && n <= 40)) return { class: "status-warning", statusLabel: n < 10 ? "Corrosive" : "Très Calcaire", subtitle: n < 10 ? "Sous-minéralisée" : "Entartrage fort", status: "warning" };
+            return { class: "status-critical", statusLabel: "Extrême", subtitle: "Hors normes idéales", status: "critical" };
         case "pesticides":
-            if (n === 0 || isNaN(n) || n < 0.01) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu détecté", status: "perfect" };
-            if (n < 0.1) return { class: "status-warning", statusLabel: "Traces", subtitle: "Présence infime de résidus", status: "warning" };
+            const p = parseValue(val);
+            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu détecté", status: "perfect" };
+            if (p <= 0.05) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
+            if (p <= 0.1) return { class: "status-good", statusLabel: "Bon", subtitle: "Présence de résidus", status: "perfect" };
+            if (p <= 0.15) return { class: "status-warning", statusLabel: "Médiocre", subtitle: "Limite de conformité", status: "warning" };
             return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement de seuil", status: "critical" };
         case "ph":
-            if (n >= 7.0 && n <= 7.8) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH idéal", status: "perfect" };
-            if (n >= 6.5 && n <= 8.5) return { class: "status-good", statusLabel: "Correct", subtitle: "Équilibre sain", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité ou Alcalinité", status: "warning" };
+            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH idéal", status: "perfect" };
+            if ((n >= 6.4 && n < 6.8) || (n > 8.2 && n <= 8.6)) return { class: "status-good", statusLabel: "Correct", subtitle: "Équilibre sain", status: "perfect" };
+            if ((n >= 5.9 && n < 6.4) || (n > 8.6 && n <= 9.1)) return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité/Alcalinité", status: "warning" };
+            return { class: "status-critical", statusLabel: "Instable", subtitle: "Très corrosif ou entartrant", status: "critical" };
         case "chlorine":
-            if (n < 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun goût détecté", status: "perfect" };
-            if (n < 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Goût imperceptible", status: "perfect" };
-            if (n < 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
+            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun goût détecté", status: "perfect" };
+            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Goût imperceptible", status: "perfect" };
+            if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
             return { class: "status-critical", statusLabel: "Fort", subtitle: "Goût très présent", status: "critical" };
         case "iron":
-            if (n < 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
-            if (n < 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            if (n <= 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
             return { class: "status-warning", statusLabel: "Traces", subtitle: "Eau ferreuse", status: "warning" };
         case "manganese":
-            if (n < 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
-            if (n < 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            if (n <= 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
             return { class: "status-warning", statusLabel: "Traces", subtitle: "Légère présence", status: "warning" };
         case "cond":
-            if (n < 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement minéralisée", status: "perfect" };
-            if (n < 800) return { class: "status-good", statusLabel: "Équilibré", subtitle: "Minéralisation moyenne", status: "perfect" };
+            if (n <= 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement minéralisée", status: "perfect" };
+            if (n <= 800) return { class: "status-good", statusLabel: "Équilibré", subtitle: "Minéralisation moyenne", status: "perfect" };
             return { class: "status-warning", statusLabel: "Chargée", subtitle: "Eau riche en minéraux", status: "warning" };
         case "turb":
-            if (n < 0.1) return { class: "status-excellent", statusLabel: "Cristalline", subtitle: "Eau ultra-pure", status: "perfect" };
-            if (n < 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilité", status: "perfect" };
+            if (n <= 0.1) return { class: "status-excellent", statusLabel: "Cristalline", subtitle: "Eau ultra-pure", status: "perfect" };
+            if (n <= 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilité", status: "perfect" };
             return { class: "status-warning", statusLabel: "Trouble", subtitle: "Légère opacité", status: "warning" };
         default:
             return { class: "status-good", statusLabel: "Satisfaisant", subtitle: "Dans les normes", status: "perfect" };
@@ -359,26 +363,28 @@ const PARAM_ICONS = {
     hardness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 10-9 10-9-10 9-10z"/></svg>', // Minimal Diamond
     ph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 10l-4 4 4 4M18 10l4 4-4 4"/></svg>', // Balance style
     cond: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+    conductivity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
     chlorine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v10.75M14 2v10.75M3 13.25h18l-2 7.5H5l-2-7.5z"/></svg>',
     turb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+    turbidity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/><circle cx="12" cy="12" r="3"/></svg>',
     pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.29 3.86-8.47 14.14a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0ZM12 9v4M12 17h.01"/></svg>',
     iron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 9v6M9 12h6"/></svg>',
     manganese: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="5"/></svg>'
 };
 
-// Échelles de visualisation pour le spectre Yuka
+// Échelles de visualisation et bornes de mapping visuel
 const RANGES = {
-    nitrates: [0, 5, 20, 50],
-    hardness: [0, 15, 25, 45],
-    pesticides: [0, 0.05, 0.1, 0.2],
-    ph: [5.5, 7.0, 7.8, 9.5],
-    chlorine: [0, 0.05, 0.1, 0.5],
-    iron: [0, 20, 100, 200],
-    manganese: [0, 5, 20, 50],
-    turb: [0, 0.1, 0.5, 1.0],
-    cond: [0, 200, 1100, 2500],
-    copper: [0, 0.1, 0.5, 1.0],
-    ammonium: [0, 0.05, 0.1, 0.5]
+    nitrates: [5, 20, 50],
+    pesticides: [0.05, 0.1, 0.15],
+    ph: [5.9, 6.4, 6.8, 8.2, 8.6, 9.1], // centered
+    chlorine: [0.05, 0.1, 0.5],
+    iron: [20, 100, 200],
+    manganese: [5, 20, 50],
+    turb: [0.1, 0.5, 2.0],
+    cond: [400, 800, 1500],
+    copper: [1.0, 2.0, 3.0],
+    ammonium: [0.1, 0.5, 1.0],
+    hardness: [5, 10, 15, 30, 35, 40] // centered
 };
 
 const CENTERED_PARAMS = ["ph", "hardness"];
@@ -409,23 +415,71 @@ function renderReport(cityName, meta, s, isConform) {
     const vulnerabilities = processed.filter(p => p.status !== "perfect" && p.status !== "none");
 
     const renderYukaRow = (p, index) => {
-        // Calcul position curseur (0 à 100%)
         let pos = 50;
+        let htmlLabels = '';
         const range = RANGES[p.key];
         const rawVal = p.data?.val;
         const val = parseValue(rawVal);
         const hasData = rawVal !== undefined && rawVal !== null && rawVal !== "null";
+        const isCentered = CENTERED_PARAMS.includes(p.key);
         
         if (p.key === "bacteria") {
-            pos = (p.status === "perfect") ? 5 : 95; // Légèrement décalé pour le style
+            pos = (p.status === "perfect") ? 10 : 90;
+            htmlLabels = `
+                <span style="left: 0%; transform: translateX(0%); color: var(--text-muted); font-weight:700;">Absence</span>
+                <span style="left: 100%; transform: translateX(-100%);">Risque</span>
+            `;
         } else if (range && hasData && !isNaN(val)) {
-            const min = range[0];
-            const max = range[3];
-            pos = Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
+            if (isCentered) {
+                const [c1, w1, g1, g2, w2, c2] = range;
+                if (val < c1) {
+                    pos = ((val - (c1 - (w1 - c1))) / (w1 - c1)) * 11; 
+                } else if (val <= w1) {
+                    pos = 11 + ((val - c1) / (w1 - c1)) * 11;
+                } else if (val <= g1) {
+                    pos = 22 + ((val - w1) / (g1 - w1)) * 11;
+                } else if (val <= g2) {
+                    pos = 33 + ((val - g1) / (g2 - g1)) * 34; // Middle ideal zone is 34% width
+                } else if (val <= w2) {
+                    pos = 67 + ((val - g2) / (w2 - g2)) * 11;
+                } else if (val <= c2) {
+                    pos = 78 + ((val - w2) / (c2 - w2)) * 11;
+                } else {
+                    pos = 89 + Math.min(11, ((val - c2) / (c2 - w2)) * 11);
+                }
+                pos = Math.max(0, Math.min(100, pos));
+
+                htmlLabels = `
+                    <span style="left: 11%; transform: translateX(-50%);">${c1}</span>
+                    <span style="left: 33%; transform: translateX(-50%);">${g1}</span>
+                    <span style="left: 67%; transform: translateX(-50%);">${g2}</span>
+                    <span style="left: 89%; transform: translateX(-50%);">${c2}</span>
+                `;
+            } else {
+                const [b1, b2, b3] = range;
+                if (val <= b1) {
+                    pos = (val / b1) * 25;
+                } else if (val <= b2) {
+                    pos = 25 + ((val - b1) / (b2 - b1)) * 25;
+                } else if (val <= b3) {
+                    pos = 50 + ((val - b2) / (b3 - b2)) * 25;
+                } else {
+                    pos = 75 + Math.min(25, ((val - b3) / (b3 * 0.5)) * 25);
+                }
+                pos = Math.max(0, Math.min(100, pos));
+
+                htmlLabels = `
+                    <span style="left: 0%; transform: translateX(0%); color: var(--text-muted); font-weight:700;">0</span>
+                    <span style="left: 25%; transform: translateX(-50%);">${b1}</span>
+                    <span style="left: 50%; transform: translateX(-50%);">${b2}</span>
+                    <span style="left: 75%; transform: translateX(-50%);">${b3}</span>
+                `;
+            }
+        } else {
+            htmlLabels = `<span style="position:static;">Échelle de mesure standard</span>`;
         }
 
         const rowId = `row-${p.key}-${index}`;
-        const isCentered = CENTERED_PARAMS.includes(p.key);
 
         return `
             <div class="yuka-row-wrapper">
@@ -444,21 +498,11 @@ function renderReport(cityName, meta, s, isConform) {
                 <div id="${rowId}" class="yuka-details">
                     <div class="yuka-range-container">
                         ${hasData ? `
-                            <div class="yuka-range-bar ${isCentered ? 'centered' : 'linear'}" style="--marker-pos: ${pos}%">
+                            <div class="yuka-range-bar ${isCentered ? 'centered' : 'linear'}" style="--marker-pos: ${pos}%; --marker-color: var(--${p.class})">
                                 <div class="yuka-marker"></div>
                             </div>
                             <div class="yuka-range-labels">
-                                ${p.key === 'bacteria' ? `
-                                    <span>Absence</span>
-                                    <span></span>
-                                    <span></span>
-                                    <span>Risque</span>
-                                ` : (range ? `
-                                    <span>${range[0]}</span>
-                                    <span>${range[1]}</span>
-                                    <span>${range[2]}</span>
-                                    <span>${range[3]}+</span>
-                                ` : '<span>Échelle de mesure standard</span>')}
+                                ${htmlLabels}
                             </div>
                         ` : `
                             <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
