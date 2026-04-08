@@ -221,29 +221,29 @@ async function fetchWaterData(cityName) {
         // Helper interne robuste utilisant les codes Sandre (officiels) et les mots-clés
         const getParam = (codes, keywords) => {
             const match = reports.find(r => {
-                // 1. Priorité au Code Sandre (infaillible)
+                const unit = (r.libelle_unite || "").toLowerCase();
+                const label = r.libelle_parametre.toLowerCase()
+                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+
+                // 1. Exclusion radicale de la température pour tous les paramètres chimiques/physiques
+                if (unit.includes("°c") || label.includes("temperature")) return false;
+
+                // 2. Priorité au Code Sandre (infaillible)
                 const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
                 if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
 
-                // 2. Fallback sur le libellé textuel (plus strict pour éviter les faux positifs)
-                const label = r.libelle_parametre.toLowerCase()
-                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
-                
+                // 3. Fallback sur le libellé textuel (plus strict pour éviter les faux positifs)
                 const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     // Si le mot clé est très court (ex: ph, th, cond), on exige qu'il soit un mot isolé
                     if (lowKw.length <= 3) {
                         const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
-                        return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
+                        return regex.test(label) || (lowKw === 'ph' && (label.includes('potentiel hydrogene') || label.includes('hydrogene')));
                     }
                     return label.includes(lowKw);
                 });
 
-                // On exclut systématiquement la température des autres paramètres
-                const isTemp = label.includes("temperature");
-
-                return isWordMatch && !isTemp && 
-                       (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
+                return isWordMatch && (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
             });
 
             if (!match) return null;
