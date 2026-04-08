@@ -32,10 +32,48 @@ const searchResults = document.getElementById('search-results');
 const hamburger = document.getElementById('hamburger');
 const mainMenu = document.getElementById('main-menu');
 const closeMenu = document.querySelector('.close-menu');
+const geolocateBtn = document.getElementById('geolocate-btn');
 
 hamburger.onclick = () => mainMenu.classList.add('active');
 closeMenu.onclick = () => mainMenu.classList.remove('active');
 closeBtn.onclick = () => sidePanel.classList.remove('active');
+
+// Logique de Géolocalisation
+geolocateBtn.onclick = () => {
+    if (!navigator.geolocation) {
+        alert("La géolocalisation n'est pas supportée par votre navigateur.");
+        return;
+    }
+
+    geolocateBtn.classList.add('loading');
+
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        
+        try {
+            // Reverse Geocoding pour trouver le nom de la ville
+            const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${mapboxgl.accessToken}&types=place&language=fr&limit=1`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.features && data.features.length > 0) {
+                const feature = data.features[0];
+                // On utilise la fonction existante pour unifier le comportement
+                selectLocation(feature);
+            } else {
+                map.flyTo({ center: [longitude, latitude], zoom: 13, essential: true });
+            }
+        } catch (error) {
+            console.error("Erreur Géolocalisation:", error);
+        } finally {
+            geolocateBtn.classList.remove('loading');
+        }
+    }, (error) => {
+        geolocateBtn.classList.remove('loading');
+        console.warn("Erreur géo:", error);
+        alert("Localisation impossible. Vérifiez vos paramètres de confidentialité.");
+    });
+};
 
 let searchTimeout;
 searchInput.oninput = (e) => {
@@ -239,3 +277,63 @@ document.onclick = (e) => {
         searchResults.classList.remove('active');
     }
 };
+
+// Animation du Placeholder pour guider l'utilisateur
+const phrases = [
+    "Paris, 75000",
+    "Lyon, 69000",
+    "Marseille, 13000",
+    "Toulouse, 31000",
+    "Bordeaux, 33000",
+    "Lille, 59000",
+    "Nantes, 44000",
+    "Nice, 06000",
+    "Strasbourg, 67000",
+    "Montpellier, 34000"
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let isStarted = false;
+
+function typePlaceholder() {
+    // Si l'utilisateur tape quelque chose, on arrête l'animation pour ne pas le gêner
+    if (searchInput.value.length > 0) {
+        searchInput.setAttribute('placeholder', 'Entrez votre ville...');
+        isStarted = false;
+        return;
+    }
+
+    isStarted = true;
+    const fullPhrase = phrases[phraseIndex];
+    
+    let currentText = isDeleting 
+        ? fullPhrase.substring(0, charIndex - 1) 
+        : fullPhrase.substring(0, charIndex + 1);
+
+    charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+    searchInput.setAttribute('placeholder', currentText);
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === fullPhrase.length) {
+        typeSpeed = 2000; // Pause à la fin d'une phrase
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typePlaceholder, typeSpeed);
+}
+
+// Relancer l'animation si l'utilisateur efface tout
+searchInput.onblur = () => {
+    if (searchInput.value.length === 0 && !isStarted) {
+        typePlaceholder();
+    }
+};
+
+typePlaceholder();

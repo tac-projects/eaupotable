@@ -12,13 +12,22 @@
 
 .search-box {
     background: var(--bg-light);
-    padding: 8px 15px;
+    padding: 0; /* On gère les paddings sur les enfants pour le bouton "full-height" */
     border-radius: 100px;
     border: 1px solid rgba(0,0,0,0.06);
     display: flex;
     align-items: center;
     transition: var(--transition-premium);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    width: 100%;
+}
+
+.search-icon {
+    color: var(--text-light);
+    margin-left: 20px;
+    opacity: 0.6;
+    flex-shrink: 0;
 }
 
 .search-box:focus-within {
@@ -31,10 +40,41 @@
     background: transparent;
     border: none;
     color: var(--text-main);
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1rem;
     font-size: 1.1rem;
     outline: none;
     font-family: var(--font-body);
+    min-width: 0;
+}
+
+.geolocate-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-solid);
+    cursor: pointer;
+    padding: 0 20px;
+    align-self: stretch; /* Prend toute la hauteur disponible du .search-box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-premium);
+    flex-shrink: 0;
+    border-left: 1px solid rgba(0,0,0,0.05); /* Séparateur visuel */
+}
+
+.geolocate-btn:hover {
+    background: rgba(0, 102, 255, 0.05);
+}
+
+.geolocate-btn.loading {
+    animation: pulse 1.5s infinite;
+    opacity: 0.6;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .search-results {
