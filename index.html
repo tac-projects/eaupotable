@@ -23,12 +23,12 @@
     <link rel="stylesheet" href="responsive.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
-<body style="overflow: hidden;">
+<body class="full-height-body">
 
     <header class="transparent-header">
         <div class="container nav-wrapper">
             <a href="/" class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
                     <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#dropGradient)" />
                     <path d="M12 21.5C10.5 21.5 8.5 20.5 7.5 18.5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
                     <defs>
@@ -53,7 +53,7 @@
         <button class="close-menu" aria-label="Fermer le menu">&times;</button>
         
         <div class="logo-menu">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 12px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-menu-icon">
                 <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
             </svg>
             EauPotable.net
@@ -92,7 +92,7 @@
             <div id="side-panel" class="side-panel">
                 <button class="close-panel" aria-label="Fermer le panneau">&times;</button>
                 <div id="panel-content">
-                    <p style="text-align: center; margin-top: 50%; color: var(--text-light);">Recherchez votre ville pour l'analyse officielle</p>
+                    <p class="empty-state-panel">Recherchez votre ville pour l'analyse officielle</p>
                 </div>
             </div>
         </section>

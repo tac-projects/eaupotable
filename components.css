@@ -519,3 +519,112 @@
     opacity: 0.6;
     cursor: pointer;
 }
+/* --- PAGE CONTENT COMPONENTS (Legal, Contact, etc.) --- */
+.content-wrapper {
+    padding: 120px 20px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-main);
+}
+
+.content-wrapper h1 { 
+    font-size: 2.5rem; 
+    margin-bottom: 2rem; 
+    color: var(--primary-solid); 
+}
+
+.content-wrapper h2 { 
+    font-size: 1.5rem; 
+    margin-top: 3rem; 
+    margin-bottom: 1rem; 
+}
+
+.content-wrapper section { 
+    margin-bottom: 3rem; 
+    background: white; 
+    padding: 2rem; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02); 
+    border: 1px solid rgba(0,0,0,0.03); 
+}
+
+.content-wrapper p {
+    line-height: 1.8;
+}
+
+/* Contact Form */
+.form-card { 
+    background: white; 
+    padding: 3rem; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02); 
+    border: 1px solid rgba(0,0,0,0.03); 
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    color: var(--text-light); 
+    font-size: 0.9rem; 
+}
+
+.form-group input, 
+.form-group textarea { 
+    width: 100%; 
+    padding: 12px 20px; 
+    border-radius: 12px; 
+    border: 1px solid #e2e8f0; 
+    background: #f8fafc; 
+    font-family: inherit; 
+    font-size: 1rem; 
+    outline: none; 
+    transition: border-color 0.2s; 
+}
+
+.form-group input:focus, 
+.form-group textarea:focus { 
+    border-color: var(--primary-solid); 
+}
+
+.submit-btn { 
+    width: 100%; 
+    background: var(--primary-gradient); 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    border-radius: 12px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: transform 0.2s; 
+    font-size: 1.1rem; 
+}
+
+.submit-btn:hover { 
+    transform: translateY(-2px); 
+}
+
+/* Utility Classes */
+.logo-icon { margin-right: 8px; }
+.logo-menu-icon { margin-right: 12px; }
+
+.full-height-body {
+    overflow: hidden;
+}
+
+.empty-state-panel {
+    text-align: center; 
+    margin-top: 50%; 
+    color: var(--text-light);
+}
+
+.text-subtle {
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.bg-surface {
+    background-color: var(--surface);
+}

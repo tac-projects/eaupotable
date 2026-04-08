@@ -18,30 +18,14 @@
     <link rel="stylesheet" href="responsive.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
-    <style>
-        .contact-content {
-            padding: 120px 20px 60px;
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--text-main);
-        }
-        .contact-content h1 { font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary-solid); }
-        .form-card { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.03); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-light); font-size: 0.9rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px 20px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.2s; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary-solid); }
-        .submit-btn { width: 100%; background: var(--primary-gradient); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: transform 0.2s; font-size: 1.1rem; }
-        .submit-btn:hover { transform: translateY(-2px); }
-        body { background: #f8fafc; }
-    </style>
+
 </head>
-<body>
+<body class="bg-surface">
 
     <header class="transparent-header">
         <div class="container nav-wrapper">
             <a href="/" class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
                     <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#dropGradientMenu)" />
                     <defs>
                         <linearGradient id="dropGradientMenu" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
@@ -63,7 +47,7 @@
     <div id="main-menu" class="main-menu">
         <button class="close-menu" aria-label="Fermer le menu">&times;</button>
         <div class="logo-menu">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 12px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-menu-icon">
                 <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
             </svg>
             EauPotable.net
@@ -78,9 +62,9 @@
         </div>
     </div>
 
-    <main class="contact-content">
+    <main class="content-wrapper">
         <h1>Contactez-nous</h1>
-        <p style="margin-bottom: 3rem; color: var(--text-light);">Une question sur vos relevés ? Un retour sur l'observatoire ? Notre équipe citoyenne vous répond sous 48h.</p>
+        <p class="text-subtle">Une question sur vos relevés ? Un retour sur l'observatoire ? Notre équipe citoyenne vous répond sous 48h.</p>
         
         <form class="form-card">
             <div class="form-group">
