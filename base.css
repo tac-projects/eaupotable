@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-main);
+}
+
+p {
+    color: var(--text-muted);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-premium);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: var(--font-heading);
+}
+
+/* Custom Scrollbar - Light */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--surface-sunken);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-solid);
+}

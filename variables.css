@@ -1,0 +1,31 @@
+:root {
+    /* Color Palette - Pure Crystal (Light Mode) */
+    --bg-light: #FFFFFF;
+    --surface: #F8FAFC;
+    --surface-sunken: #EDF2F7;
+    
+    --primary-solid: #0066FF;
+    --primary-gradient: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
+    --primary-glow: rgba(0, 102, 255, 0.15);
+    
+    --text-main: #1A202C;
+    --text-muted: #4A5568;
+    --text-light: #718096;
+    
+    /* Semantic Metrics */
+    --purity-high: #38A169;   /* Green */
+    --purity-mid: #D69E2E;    /* Gold */
+    --purity-low: #E53E3E;    /* Red */
+    
+    /* Effects */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(15px);
+    --ghost-border: 1px solid rgba(0, 0, 0, 0.05);
+    --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.08);
+    
+    /* Typography */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --transition-premium: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}

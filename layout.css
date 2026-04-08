@@ -1,0 +1,86 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.transparent-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.6); /* Fond blanc translucide */
+    backdrop-filter: blur(12px); /* Effet verre dépoli */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Ombre douce de profondeur */
+}
+
+header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: none;
+}
+
+main {
+    padding-top: 0; /* No padding needed for full screen map */
+    min-height: 100vh;
+}
+
+#map-section {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+#map {
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Masquage des crédits Mapbox (Note : obligatoire selon leurs ToS) */
+.mapboxgl-ctrl-attrib, .mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 100%; /* Suppression de la contrainte pour libérer l'espace */
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Main Content Area */
+main {
+    padding-top: 0;
+    min-height: 100vh;
+}
+
+footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border-glass);
+    margin-top: 100px;
+    background: rgba(0, 0, 0, 0.2);
+}
