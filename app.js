@@ -242,7 +242,7 @@ async function fetchWaterData(cityName) {
                     // Si le mot clé est très court (ex: ph, th, cond), on exige qu'il soit un mot isolé
                     if (lowKw.length <= 3) {
                         const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
-                        return regex.test(label) || (lowKw === 'ph' && (label.includes('potentiel hydrogene') || label.includes('hydrogene')));
+                        return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
                     }
                     return label.includes(lowKw);
                 });
@@ -266,10 +266,10 @@ async function fetchWaterData(cityName) {
 
         const stats = {
             nitrates: getParam([1340, 1342], ["nitrate"]),
-            ph: getParam([1301], ["ph"]),
+            ph: getParam([1301], ["ph", "potentiel hydrogene"]),
             hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", " th "]),
             chlorine: getParam([1399], ["chlore libre", "chlore total"]),
-            conductivity: getParam([1302], ["conductivite", "conductimetre"]),
+            conductivity: getParam([1302], ["conductivite"]),
             turbidity: getParam([1305], ["turbidite", "turb"]),
             iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
             manganese: getParam([1394, 1373], ["manganese"]),
