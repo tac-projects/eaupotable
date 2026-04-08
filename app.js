@@ -168,7 +168,40 @@ function selectLocation(feature) {
 
 async function fetchWaterData(cityName) {
     sidePanel.classList.add('active');
-    panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Extraction des bilans sanitaires...</div>`;
+    panelContent.innerHTML = `
+        <div class="skeleton-row" style="padding:1rem 0 2rem; border-bottom:1px solid rgba(0,0,0,0.05);">
+            <div class="skeleton-circle skeleton"></div>
+            <div style="flex:1;">
+                <div class="skeleton-title skeleton"></div>
+                <div class="skeleton-line-sm skeleton"></div>
+            </div>
+        </div>
+        <div style="margin-top:2rem;">
+            <div class="skeleton-line skeleton" style="width:100%; height:45px; border-radius:100px; margin-bottom:2.5rem;"></div>
+            <div class="skeleton-line skeleton" style="width:40%; margin-bottom:1.5rem;"></div>
+            <div class="skeleton-row">
+                <div class="skeleton" style="width:32px; height:32px; border-radius:50%;"></div>
+                <div style="flex:1;">
+                    <div class="skeleton-line skeleton" style="width:70%;"></div>
+                    <div class="skeleton-line-sm skeleton"></div>
+                </div>
+            </div>
+            <div class="skeleton-row">
+                <div class="skeleton" style="width:32px; height:32px; border-radius:50%;"></div>
+                <div style="flex:1;">
+                    <div class="skeleton-line skeleton" style="width:70%;"></div>
+                    <div class="skeleton-line-sm skeleton"></div>
+                </div>
+            </div>
+            <div class="skeleton-row">
+                <div class="skeleton" style="width:32px; height:32px; border-radius:50%;"></div>
+                <div style="flex:1;">
+                    <div class="skeleton-line skeleton" style="width:70%;"></div>
+                    <div class="skeleton-line-sm skeleton"></div>
+                </div>
+            </div>
+        </div>
+    `;
 
     try {
         // On passe à 3000 résultats pour couvrir les analyses mensuelles des très grandes villes (Marseille, Paris...)
