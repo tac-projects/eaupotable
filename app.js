@@ -225,18 +225,24 @@ async function fetchWaterData(cityName) {
                 const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
                 if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
 
-                // 2. Fallback sur le libellé textuel
+                // 2. Fallback sur le libellé textuel (plus strict pour éviter les faux positifs)
                 const label = r.libelle_parametre.toLowerCase()
                                 .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
                 
                 const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                    if (lowKw === 'ph') return label === 'ph' || label === 'ph *' || label.includes('potentiel hydrogene');
+                    // Si le mot clé est très court (ex: ph, th, cond), on exige qu'il soit un mot isolé
+                    if (lowKw.length <= 3) {
+                        const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
+                        return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
+                    }
                     return label.includes(lowKw);
                 });
 
-                return isWordMatch && 
-                       !label.includes("temperature") && 
+                // On exclut systématiquement la température des autres paramètres
+                const isTemp = label.includes("temperature");
+
+                return isWordMatch && !isTemp && 
                        (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
             });
 
@@ -257,11 +263,11 @@ async function fetchWaterData(cityName) {
         const stats = {
             nitrates: getParam([1340, 1342], ["nitrate"]),
             ph: getParam([1301], ["ph"]),
-            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", "th"]),
+            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", " th "]),
             chlorine: getParam([1399], ["chlore libre", "chlore total"]),
-            conductivity: getParam([1302], ["conductivite", "cond"]),
+            conductivity: getParam([1302], ["conductivite", "conductimetre"]),
             turbidity: getParam([1305], ["turbidite", "turb"]),
-            iron: getParam([1393, 1374], ["fer total", "fer dissous", " fer "]),
+            iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
             manganese: getParam([1394, 1373], ["manganese"]),
             pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277], ["pesticide"]),
             ammonium: getParam([1331], ["ammonium"]),
