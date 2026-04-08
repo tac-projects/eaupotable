@@ -184,53 +184,344 @@ async function fetchWaterData(cityName) {
     }
 }
 
-function renderReport(cityName, meta, s, isConform) {
-    const date = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
-    const nomReseau = meta.nom_reseau || meta.nom_installation || "Réseau Municipal";
+
+
+/**
+ * Aide à parser les valeurs numériques avec des symboles comme < ou >
+ */
+function parseValue(val) {
+    if (val === undefined || val === null) return NaN;
+    if (typeof val === 'number') return val;
+    const clean = val.toString().replace('<', '').replace('>', '').replace(',', '.').trim();
+    return parseFloat(clean);
+}
+
+function calculateCrystalScore(s, isConform) {
+    let score = 10.0;
+    let breakdown = [];
     
-    const row = (label, data) => {
-        if (!data) return `<div class="data-row disabled"><span>${label}</span><span>Non analysé</span></div>`;
+    // 1. Sanction Radicale : Non-Conformité
+    if (!isConform) {
+        return { 
+            final: 2.1, 
+            label: "NON CONFORME", 
+            explanation: "L'eau présente des dépassements de seuils réglementaires sur des paramètres critiques.",
+            items: [{ label: "Conformité Légale", score: "Échec", impact: "Critique" }]
+        };
+    }
+
+    // 2. Nitrates (Poids fort)
+    if (s.nitrates) {
+        const n = parseValue(s.nitrates.val);
+        if (n > 50) score -= 8;
+        else if (n > 40) { score -= 4; }
+        else if (n > 25) { score -= 2; }
+        else if (n > 10) { score -= 0.5; }
+    }
+
+    // 3. Pesticides
+    if (s.pesticides) {
+        const p = parseValue(s.pesticides.val);
+        if (p > 0.1) score -= 6;
+        else if (p > 0.05) { score -= 3; }
+        else if (p > 0) { score -= 1; }
+    }
+
+    // 4. Calcaire (Poids confort)
+    if (s.hardness) {
+        const h = parseValue(s.hardness.val);
+        if (h > 35) { score -= 2; }
+        else if (h > 25) { score -= 1; }
+        else if (h < 10) { score -= 0.5; }
+    }
+
+    // 5. Chlore (Goût)
+    if (s.chlorine) {
+        const c = parseValue(s.chlorine.val);
+        if (c > 0.5) score -= 1.5;
+        else if (c > 0.1) score -= 0.5;
+    }
+
+    // 6. Pénalités pour tous les autres métaux et résidus (Warning/Critical)
+    const others = [s.iron, s.manganese, s.copper, s.ammonium, s.turbidity, s.conductivity];
+    others.forEach(stat => {
+        if (!stat) return;
+        const n = parseValue(stat.val);
+        if (isNaN(n)) return;
+        // Si valeur trop élevée, petite pénalité de "confort"
+        if (n > 50) score -= 0.5; 
+    });
+
+    // Garantir les limites
+    score = Math.max(0, Math.min(10, score));
+    score = Math.round(score * 10) / 10;
+
+    let label = "BIEN";
+    let explanation = "Votre eau est conforme et de qualité standard.";
+    
+    if (score >= 9.8) {
+        label = "EXCEPTIONNELLE";
+        explanation = "Une eau d'une pureté rare, surpassant largement les standards nationaux.";
+    } else if (score >= 8.5) {
+        label = "EXCELLENTE";
+        explanation = "Très bonne qualité globale, supérieure à la moyenne française.";
+    } else if (score < 5) {
+        label = "DÉGRADÉE";
+        explanation = "La qualité de l'eau est impactée par certains paramètres. Vigilance recommandée.";
+    } else if (score < 8) {
+        label = "MÉDIOCRE";
+        explanation = "La qualité de l'eau présente plusieurs points de vigilance.";
+    }
+
+    return { final: score, label, explanation };
+}
+
+function getParameterStatus(key, val) {
+    if (val === undefined || val === null || val === "null") return { class: "", statusLabel: "Inconnu", subtitle: "Non analysé", status: "none" };
+    
+    if (key === "bacteria") {
+        if (val.toLowerCase().includes("absence")) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Aucun germe détecté", status: "perfect" };
+        return { class: "status-critical", statusLabel: "Danger", subtitle: "Présence bactérienne", status: "critical" };
+    }
+
+    const n = parseValue(val);
+    
+    switch(key) {
+        case "nitrates":
+            if (n < 5) return { class: "status-excellent", statusLabel: "Exceptionnel", subtitle: "Pureté maximale", status: "perfect" };
+            if (n < 20) return { class: "status-good", statusLabel: "Sain", subtitle: "Taux très faible", status: "perfect" };
+            if (n < 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
+            return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil dépassé", status: "critical" };
+        case "hardness":
+            if (n >= 15 && n <= 25) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre minéral parfait", status: "perfect" };
+            if (n >= 10 && n < 15) return { class: "status-good", statusLabel: "Eau Douce", subtitle: "Peu calcaire, sain", status: "perfect" };
+            if (n > 25 && n < 35) return { class: "status-warning", statusLabel: "Calcaire", subtitle: "Entartrage probable", status: "warning" };
+            if (n < 5) return { class: "status-critical", statusLabel: "Corrosif", subtitle: "Trop peu de minéraux", status: "critical" };
+            return { class: "status-critical", statusLabel: "Très Calcaire", subtitle: "Nuisance technique forte", status: "critical" };
+        case "pesticides":
+            if (n === 0 || isNaN(n) || n < 0.01) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu détecté", status: "perfect" };
+            if (n < 0.1) return { class: "status-warning", statusLabel: "Traces", subtitle: "Présence infime de résidus", status: "warning" };
+            return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement de seuil", status: "critical" };
+        case "ph":
+            if (n >= 7.0 && n <= 7.8) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH idéal", status: "perfect" };
+            if (n >= 6.5 && n <= 8.5) return { class: "status-good", statusLabel: "Correct", subtitle: "Équilibre sain", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité ou Alcalinité", status: "warning" };
+        case "chlorine":
+            if (n < 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun goût détecté", status: "perfect" };
+            if (n < 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Goût imperceptible", status: "perfect" };
+            if (n < 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
+            return { class: "status-critical", statusLabel: "Fort", subtitle: "Goût très présent", status: "critical" };
+        case "iron":
+            if (n < 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n < 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Traces", subtitle: "Eau ferreuse", status: "warning" };
+        case "manganese":
+            if (n < 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n < 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Traces", subtitle: "Légère présence", status: "warning" };
+        case "cond":
+            if (n < 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement minéralisée", status: "perfect" };
+            if (n < 800) return { class: "status-good", statusLabel: "Équilibré", subtitle: "Minéralisation moyenne", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Chargée", subtitle: "Eau riche en minéraux", status: "warning" };
+        case "turb":
+            if (n < 0.1) return { class: "status-excellent", statusLabel: "Cristalline", subtitle: "Eau ultra-pure", status: "perfect" };
+            if (n < 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilité", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Trouble", subtitle: "Légère opacité", status: "warning" };
+        default:
+            return { class: "status-good", statusLabel: "Satisfaisant", subtitle: "Dans les normes", status: "perfect" };
+    }
+}
+
+const PARAM_ICONS = {
+    bacteria: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+    nitrates: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5.3 5.3l13.4 13.4M18.7 5.3L5.3 18.7"/></svg>',
+    hardness: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>',
+    pesticides: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7.5 1-5.5 5.5 1.3 7.5-6.3-3.3-6.3 3.3 1.3-7.5-5.5-5.5 7.5-1z"/></svg>',
+    ph: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    chlorine: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    cond: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+    turb: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+};
+
+// Échelles de visualisation pour le spectre Yuka
+const RANGES = {
+    nitrates: [0, 5, 20, 50],
+    hardness: [0, 15, 25, 45],
+    pesticides: [0, 0.05, 0.1, 0.2],
+    ph: [5.5, 7.0, 7.8, 9.5],
+    chlorine: [0, 0.05, 0.1, 0.5],
+    iron: [0, 20, 100, 200],
+    manganese: [0, 5, 20, 50],
+    turb: [0, 0.1, 0.5, 1.0],
+    cond: [0, 200, 1100, 2500],
+    copper: [0, 0.1, 0.5, 1.0],
+    ammonium: [0, 0.05, 0.1, 0.5]
+};
+
+const CENTERED_PARAMS = ["ph", "hardness"];
+
+function renderReport(cityName, meta, s, isConform) {
+    const nomReseau = meta.nom_reseau || meta.nom_installation || "Réseau Municipal";
+    const crystal = calculateCrystalScore(s, isConform);
+
+    const params = [
+        { name: "Microbiologie", data: { val: "Absence", unit: "/100ml" }, key: "bacteria" },
+        { name: "Nitrates (en NO3)", data: s.nitrates, key: "nitrates" },
+        { name: "Calcaire (TH)", data: s.hardness, key: "hardness" },
+        { name: "pH (Hydrogène)", data: s.ph, key: "ph" },
+        { name: "Conductivité", data: s.conductivity, key: "cond" },
+        { name: "Chlore Libre", data: s.chlorine, key: "chlorine" },
+        { name: "Turbidité", data: s.turbidity, key: "turb" },
+        { name: "Total Pesticides", data: s.pesticides, key: "pesticides" },
+        { name: "Fer Total", data: s.iron, key: "iron" },
+        { name: "Manganèse", data: s.manganese, key: "manganese" }
+    ];
+
+    const processed = params.map(p => {
+        const info = getParameterStatus(p.key, p.data?.val);
+        return { ...p, ...info };
+    });
+
+    const qualities = processed.filter(p => p.status === "perfect" || p.status === "none");
+    const vulnerabilities = processed.filter(p => p.status !== "perfect" && p.status !== "none");
+
+    const renderYukaRow = (p, index) => {
+        // Calcul position curseur (0 à 100%)
+        let pos = 50;
+        const range = RANGES[p.key];
+        const rawVal = p.data?.val;
+        const val = parseValue(rawVal);
+        const hasData = rawVal !== undefined && rawVal !== null && rawVal !== "null";
+        
+        if (p.key === "bacteria") {
+            pos = (p.status === "perfect") ? 5 : 95; // Légèrement décalé pour le style
+        } else if (range && hasData && !isNaN(val)) {
+            const min = range[0];
+            const max = range[3];
+            pos = Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
+        }
+
+        const rowId = `row-${p.key}-${index}`;
+        const isCentered = CENTERED_PARAMS.includes(p.key);
+
         return `
-            <div class="data-row">
-                <div class="data-label"><span>${label}</span><span class="data-date">Le ${data.date}</span></div>
-                <div class="data-value">${data.val} <small>${data.unit}</small></div>
+            <div class="yuka-row-wrapper">
+                <div class="yuka-row" onclick="toggleYukaRow('${rowId}')">
+                    <div class="yuka-icon">${PARAM_ICONS[p.key] || '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>'}</div>
+                    <div class="yuka-content">
+                        <span class="yuka-name">${p.name}</span>
+                        <span class="yuka-subtitle">${p.statusLabel} • ${p.subtitle}</span>
+                    </div>
+                    <div class="yuka-value-group">
+                        <span class="yuka-val">${hasData ? p.data.val : '--'} <small>${(hasData && p.data.unit) ? p.data.unit : ''}</small></span>
+                        <div class="yuka-dot-small ${p.class}"></div>
+                        <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                </div>
+                <div id="${rowId}" class="yuka-details">
+                    <div class="yuka-range-container">
+                        ${hasData ? `
+                            <div class="yuka-range-bar ${isCentered ? 'centered' : 'linear'}" style="--marker-pos: ${pos}%">
+                                <div class="yuka-marker"></div>
+                            </div>
+                            <div class="yuka-range-labels">
+                                ${range ? `
+                                    <span>${range[0]}</span>
+                                    <span>${range[1]}</span>
+                                    <span>${range[2]}</span>
+                                    <span>${range[3]}+</span>
+                                ` : '<span>Échelle de conformité sanitaire standard</span>'}
+                            </div>
+                        ` : `
+                            <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
+                                Aucune analyse récente disponible pour ce paramètre.
+                            </div>
+                        `}
+                    </div>
+                </div>
             </div>
         `;
     };
 
-    panelContent.innerHTML = `
-        <div class="report-header">
-            <div class="badge">Observatoire Indépendant</div>
-            <h2 style="margin-top:0.5rem; font-size: 2.2rem; line-height:1.1;">Analyses : ${cityName}</h2>
-            <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--text-light); text-transform:uppercase; letter-spacing:1px; font-weight:600;">Structure : ${nomReseau}</p>
-        </div>
+    // Déterminer la classe du dot global (Uniformisé)
+    let scoreClass = "status-excellent";
+    if (crystal.final < 5) scoreClass = "status-critical";
+    else if (crystal.final < 8) scoreClass = "status-warning";
+    else if (crystal.final < 9) scoreClass = "status-good";
 
-        <div class="conformity-banner ${isConform ? 'ok' : 'ko'}">
-            <div class="status-icon">${isConform ? '🛡️' : '⚠️'}</div>
-            <div class="status-text">
-                <strong>EAU POTABLE ${isConform ? 'CONFORME' : 'NON CONFORME'}</strong>
-                <p style="font-size:0.75rem; margin-top:3px;">${meta.conclusion_conformite_prelevement || "Respecte les limites de qualité."}</p>
+    panelContent.innerHTML = `
+        <div class="yuka-header">
+            <img src="./crystal_droplet.png" class="product-image" alt="Eau de ${cityName}">
+            <div class="product-info">
+                <h2 class="product-title">${cityName}</h2>
+                <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:0.5rem;">${nomReseau}</p>
+                <div class="product-score-line">
+                    <div class="score-dot ${scoreClass}"></div>
+                    <span>${crystal.final}/10 • ${crystal.label}</span>
+                </div>
             </div>
         </div>
 
-        <!-- BOUTON DE PARTAGE VIRAL -->
-        <button class="share-btn" onclick="shareReport('${cityName}')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:10px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-            Partager ce bilan avec mes proches
+        <button class="share-btn" onclick="shareReport('${cityName}')" style="margin-bottom:2rem;">
+            Partager l'analyse de ${cityName}
         </button>
 
-        <div class="report-grid">
-            <div class="report-section"><h3>Vigilance Bactériologique</h3>${row("Escherichia coli", { val: "Absence", unit: "/100ml", date: date })}${row("Entérocoques", { val: "Absence", unit: "/100ml", date: date })}</div>
-            <div class="report-section"><h3>Minéralité & Équilibre</h3>${row("Nitrates (en NO3)", s.nitrates)}${row("Dureté TH (Calcaire)", s.hardness)}${row("pH (Hydrogène)", s.ph)}${row("Conductivité", s.conductivity)}</div>
-            <div class="report-section"><h3>Métaux & Résidus</h3>${row("Fer Total", s.iron)}${row("Manganèse", s.manganese)}${row("Cuivre", s.copper)}${row("Ammonium", s.ammonium)}</div>
-            <div class="report-section"><h3>Impuretés & Polluants</h3>${row("Chlore Libre", s.chlorine)}${row("Turbidité", s.turbidity)}${row("Carbone Organique", s.cot)}${row("Total Pesticides", s.pesticides)}</div>
+        ${vulnerabilities.length > 0 ? `
+            <div class="report-section">
+                <div class="section-header">
+                    <span>À surveiller</span>
+                    <span class="count">${vulnerabilities.length} points</span>
+                </div>
+                ${vulnerabilities.map((p, idx) => renderYukaRow(p, idx)).join('')}
+            </div>
+        ` : ''}
+
+        <div class="report-section">
+            <div class="section-header">
+                <span>Qualité de l'eau</span>
+                <span class="count">${qualities.length} points</span>
+            </div>
+            ${qualities.map((p, idx) => renderYukaRow(p, idx + 100)).join('')}
         </div>
 
         <div class="report-footer">
-            <p>Source : Flux officiel Hub'Eau (Ministères de la Santé et du Développement Durable).</p>
-            <div style="text-align:center; font-size:0.75rem; padding:1.5rem 0; opacity:0.5; font-weight:500;">DOCUMENT D'INFORMATION PUBLIQUE 2026</div>
+            <p>Conformité légale : <strong>${isConform ? 'CONFORME' : 'NON CONFORME'}</strong></p>
+            <p style="margin-top:5px;">Source : Hub'Eau / Ministère de la Santé.</p>
         </div>
     `;
+}
+
+/**
+ * Toggle le détail d'un test spécifique (Yuka Range)
+ */
+function toggleYukaRow(rowId) {
+    const details = document.getElementById(rowId);
+    if (!details) return;
+    details.classList.toggle('active');
+    
+    // On peut aussi gérer la rotation de la flèche ici si besoin de compatibilité
+    const arrow = details.previousElementSibling.querySelector('.yuka-toggle-arrow');
+    if (arrow) {
+        if (details.classList.contains('active')) {
+            arrow.style.transform = "rotate(180deg)";
+        } else {
+            arrow.style.transform = "rotate(0deg)";
+        }
+    }
+}
+
+/**
+ * Toggle l'affichage du détail du score
+ */
+function toggleBreakdown() {
+    const content = document.getElementById('breakdown-content');
+    content.classList.toggle('active');
+    const svg = document.querySelector('.breakdown-toggle svg');
+    if (content.classList.contains('active')) {
+        svg.style.transform = "rotate(180deg)";
+    } else {
+        svg.style.transform = "rotate(0deg)";
+    }
 }
 
 // Fonction de partage viral utilisant l'API Native du smartphone
