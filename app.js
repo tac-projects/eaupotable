@@ -204,8 +204,8 @@ async function fetchWaterData(cityName) {
     `;
 
     try {
-        // On passe à 3000 résultats pour couvrir les analyses mensuelles des très grandes villes (Marseille, Paris...)
-        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=3000`;
+        // On passe à 5000 résultats pour couvrir les analyses mensuelles des très grandes villes (Marseille, Paris...)
+        const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=5000`;
         const response = await fetch(url);
         const data = await response.json();
 
@@ -217,28 +217,30 @@ async function fetchWaterData(cityName) {
         const reports = data.data;
         reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
-        // Helper interne pour extraire un paramètre spécifique dans la masse des données
-        const getParam = (keywords) => {
+        // Helper interne robuste utilisant les codes Sandre (officiels) et les mots-clés
+        const getParam = (codes, keywords) => {
             const match = reports.find(r => {
+                // 1. Priorité au Code Sandre (infaillible)
+                const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
+                if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
+
+                // 2. Fallback sur le libellé textuel
                 const label = r.libelle_parametre.toLowerCase()
-                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Supprime les accents
+                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
                 
-                const isMatch = keywords.some(kw => {
+                const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     if (lowKw === 'ph') return label === 'ph' || label === 'ph *' || label.includes('potentiel hydrogene');
                     return label.includes(lowKw);
                 });
 
-                return isMatch && 
+                return isWordMatch && 
                        !label.includes("temperature") && 
-                       (r.resultat_numerique !== null && r.resultat_numerique !== undefined || 
-                        r.resultat_alphanumerique !== null && r.resultat_alphanumerique !== undefined);
+                       (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
             });
 
             if (!match) return null;
 
-            // Priorité absolue à l'alphanumérique (contient souvent <, > ou les virgules françaises)
-            // On ne prend le numérique que si l'alpha est vraiment vide
             const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") 
                            ? match.resultat_alphanumerique 
                            : match.resultat_numerique;
@@ -252,18 +254,18 @@ async function fetchWaterData(cityName) {
         };
 
         const stats = {
-            nitrates: getParam(["nitrate"]),
-            ph: getParam(["ph"]),
-            hardness: getParam(["hydrotimétrique", "dureté", "hydrotimetrique", "durete"]),
-            chlorine: getParam(["chlore libre"]),
-            conductivity: getParam(["conductivité", "conductivite"]),
-            turbidity: getParam(["turbidité", "turbidite"]),
-            iron: getParam(["fer total", "fer dissous", " fer "]),
-            manganese: getParam(["manganèse", "manganèse total", "manganese", "manganese total"]),
-            pesticides: getParam(["pesticides totaux", "total des pesticides", "pesticides total", "pesticide"]),
-            ammonium: getParam(["ammonium"]),
-            copper: getParam(["cuivre"]),
-            cot: getParam(["organique total"])
+            nitrates: getParam([1340], ["nitrate"]),
+            ph: getParam([1301], ["ph"]),
+            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", "th"]),
+            chlorine: getParam([1399], ["chlore libre"]),
+            conductivity: getParam([1302], ["conductivite", "cond"]),
+            turbidity: getParam([1305], ["turbidite", "turb"]),
+            iron: getParam([1393], ["fer total", "fer dissous"]),
+            manganese: getParam([1394], ["manganese"]),
+            pesticides: getParam([1107], ["pesticides totaux", "pesticides total"]),
+            ammonium: getParam([1331], ["ammonium"]),
+            copper: getParam([1392], ["cuivre"]),
+            cot: getParam([1341], ["organique total"])
         };
 
         const conclusion = reports[0].conclusion_conformite_prelevement || "";
