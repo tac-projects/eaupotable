@@ -434,7 +434,7 @@ function getParameterStatus(key, val) {
             return { class: "status-critical", statusLabel: "Extrême", subtitle: "Hors normes idéales", status: "critical" };
         case "pesticides":
             const p = parseValue(val);
-            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu détecté", status: "perfect" };
+            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Indétectable", subtitle: "Aucun résidu détecté", status: "perfect" };
             if (p <= 0.05) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
             if (p <= 0.1) return { class: "status-good", statusLabel: "Bon", subtitle: "Présence de résidus", status: "perfect" };
             if (p <= 0.15) return { class: "status-warning", statusLabel: "Médiocre", subtitle: "Limite de conformité", status: "warning" };
@@ -445,7 +445,7 @@ function getParameterStatus(key, val) {
             if ((n >= 5.9 && n < 6.4) || (n > 8.6 && n <= 9.1)) return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité/Alcalinité", status: "warning" };
             return { class: "status-critical", statusLabel: "Instable", subtitle: "Très corrosif ou entartrant", status: "critical" };
         case "chlorine":
-            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun goût détecté", status: "perfect" };
+            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Indétectable", subtitle: "Aucun goût détecté", status: "perfect" };
             if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Goût imperceptible", status: "perfect" };
             if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
             return { class: "status-critical", statusLabel: "Fort", subtitle: "Goût très présent", status: "critical" };
