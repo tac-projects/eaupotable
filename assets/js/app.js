@@ -68,6 +68,7 @@ const searchResults = document.getElementById('search-results');
 const hamburger = document.getElementById('hamburger');
 const mainMenu = document.getElementById('main-menu');
 const geolocateBtn = document.getElementById('geolocate-btn');
+const clearSearchBtn = document.getElementById('clear-search');
 
 hamburger.onclick = () => {
     hamburger.classList.toggle('is-active');
@@ -113,9 +114,25 @@ geolocateBtn.onclick = () => {
     });
 };
 
+// Suppression de la recherche
+clearSearchBtn.onclick = () => {
+    searchInput.value = '';
+    searchResults.classList.remove('active');
+    clearSearchBtn.classList.remove('visible');
+    searchInput.focus();
+};
+
 let searchTimeout;
 searchInput.oninput = (e) => {
     const query = e.target.value.trim();
+    
+    // Visibilité de la croix
+    if (query.length > 0) {
+        clearSearchBtn.classList.add('visible');
+    } else {
+        clearSearchBtn.classList.remove('visible');
+    }
+
     clearTimeout(searchTimeout);
     if (query.length < 3) {
         searchResults.classList.remove('active');
@@ -153,6 +170,7 @@ function selectLocation(feature) {
     const coords = feature.center;
     searchInput.value = feature.place_name;
     searchResults.classList.remove('active');
+    clearSearchBtn.classList.add('visible');
     
     // Mise à jour de la carte
     map.flyTo({ center: coords, zoom: 13, essential: true });

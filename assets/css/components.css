@@ -51,6 +51,28 @@
     min-width: 0;
 }
 
+.clear-search {
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 10px;
+    color: var(--text-light);
+    transition: var(--transition-premium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-search.visible {
+    opacity: 0.6;
+    visibility: visible;
+}
+
+.clear-search:hover {
+    opacity: 1 !important;
+    color: var(--primary-solid);
+    transform: scale(1.1);
+}
+
 .geolocate-btn {
     background: transparent;
     border: none;

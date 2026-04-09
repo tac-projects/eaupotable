@@ -10,11 +10,11 @@
     left: 0;
     width: 100%;
     z-index: 2000;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.6); /* Fond blanc translucide */
+    backdrop-filter: blur(12px); /* Effet verre dépoli */
     -webkit-backdrop-filter: blur(12px);
     border-bottom: var(--glass-border-light);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Ombre douce de profondeur */
 }
 
 header {
@@ -57,9 +57,9 @@ main {
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    padding: 0 20px; /* Distance unique de 20px sur desktop */
+    padding: 0 20px;
     width: 100%;
-    max-width: 100%;
+    max-width: 100%; /* Suppression de la contrainte pour libérer l'espace */
 }
 
 
