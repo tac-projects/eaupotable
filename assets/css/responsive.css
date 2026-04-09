@@ -41,31 +41,63 @@
     .side-panel {
         top: auto;
         bottom: -100%;
-        right: 0;
-        left: 0;
-        width: 100%;
+        right: 10px; /* Marges latérales pour évite le débordement */
+        left: 10px;
+        width: auto; /* Laisser left/right gérer la largeur */
         height: 80vh;
-        border-radius: 30px 30px 0 0;
+        border-radius: var(--radius-lg);
         box-shadow: 0 -15px 50px rgba(0,0,0,0.15);
         padding: 0;
         z-index: 2500;
+        overflow: hidden; /* Empêche les enfants de baver hors des coins arrondis */
+    }
+
+    .yuka-name {
+        grid-row: 1;
+        grid-column: 2;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text-main);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Empêche le nom de casser la grille en revenant à la ligne */
     }
 
     .side-panel.active {
-        bottom: 0;
+        bottom: 10px; /* Petit décollage du bas pour le look Premium Floating */
+        right: 10px;
+        left: 10px;
     }
 
     #panel-content {
-        padding: 2.5rem 1.5rem;
+        padding: 2.5rem 1rem; /* Aligné sur le desktop pour une cohérence parfaite */
+    }
+
+    .yuka-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .badge-group {
+        justify-content: center;
     }
 
     .close-panel {
-        top: -20px; /* Sur la bordure supérieure */
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        background: #FFFFFF;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        top: 15px; /* Déplacé à l'intérieur sur mobile */
+        right: 15px; /* Déplacé à l'intérieur sur mobile */
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         border: 1px solid rgba(0,0,0,0.05);
     }
 
@@ -88,7 +120,7 @@
     }
 
     #panel-content {
-        padding: 1.5rem 1.2rem;
+        padding: 1.5rem 1.25rem; /* Marges gauche et droite identiques pour une symétrie parfaite */
     }
 
     /* Centrage dynamique de la recherche par rapport à l'espace libre */

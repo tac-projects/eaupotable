@@ -256,9 +256,15 @@ async function fetchWaterData(cityName) {
                            ? match.resultat_alphanumerique 
                            : match.resultat_numerique;
 
+            const cleanUnit = (u) => {
+                if (!u) return '';
+                // Simplification des unités techniques (ex: mg(Cl2)/L -> mg/L)
+                return u.replace(/\(.*\)/g, '').replace('unité ', '').trim();
+            };
+            
             return {
                 val: (rawVal !== null && rawVal !== undefined) ? `${rawVal}` : '--',
-                unit: match.libelle_unite || '',
+                unit: cleanUnit(match.libelle_unite),
                 date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
                 label: match.libelle_parametre
             };
@@ -477,15 +483,15 @@ function renderReport(cityName, meta, s, isConform) {
     const crystal = calculateCrystalScore(s, isConform);
 
     const params = [
-        { name: "Microbiologie", data: { val: "Absence", unit: "/100ml" }, key: "bacteria" },
-        { name: "Nitrates (en NO3)", data: s.nitrates, key: "nitrates" },
-        { name: "Calcaire (TH)", data: s.hardness, key: "hardness" },
-        { name: "pH (Hydrogène)", data: s.ph, key: "ph" },
+        { name: "Microbiologie", data: { val: "Absence", unit: "" }, key: "bacteria" },
+        { name: "Nitrates", data: s.nitrates, key: "nitrates" },
+        { name: "Calcaire", data: s.hardness, key: "hardness" },
+        { name: "Acidité (pH)", data: s.ph, key: "ph" },
         { name: "Conductivité", data: s.conductivity, key: "cond" },
         { name: "Chlore Libre", data: s.chlorine, key: "chlorine" },
-        { name: "Turbidité", data: s.turbidity, key: "turb" },
-        { name: "Total Pesticides", data: s.pesticides, key: "pesticides" },
-        { name: "Fer Total", data: s.iron, key: "iron" },
+        { name: "Turbidité", data: s.turb, key: "turb" },
+        { name: "Pesticides", data: s.pesticides, key: "pesticides" },
+        { name: "Fer", data: s.iron, key: "iron" },
         { name: "Manganèse", data: s.manganese, key: "manganese" }
     ];
 
@@ -567,16 +573,12 @@ function renderReport(cityName, meta, s, isConform) {
         return `
             <div class="yuka-row-wrapper">
                 <div class="yuka-row" onclick="toggleYukaRow('${rowId}')">
-                    <div class="yuka-icon ${p.class}">${PARAM_ICONS[p.key] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'}</div>
-                    <div class="yuka-content">
-                        <span class="yuka-name">${p.name}</span>
-                        <span class="yuka-subtitle">${p.subtitle}</span>
-                    </div>
-                    <div class="yuka-value-group">
-                        <span class="yuka-val">${hasData ? p.data.val : '--'} <small>${(hasData && p.data.unit) ? p.data.unit : ''}</small></span>
-                        <div class="yuka-dot-small ${p.class}"></div>
-                        <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </div>
+                    <div class="yuka-icon">${PARAM_ICONS[p.key] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'}</div>
+                    <span class="yuka-name">${p.name}</span>
+                    <div class="yuka-val">${hasData ? p.data.val : '--'} <small>${(hasData && p.data.unit) ? p.data.unit : ''}</small></div>
+                    <div class="yuka-dot-small ${p.class}"></div>
+                    <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <span class="yuka-subtitle">${p.subtitle}</span>
                 </div>
                 <div id="${rowId}" class="yuka-details">
                     <div class="yuka-range-container">
