@@ -722,9 +722,48 @@
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
-    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.legal-badge.legal-ok {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--status-good);
+}
+
+.legal-badge.legal-ko {
+    background: rgba(248, 113, 113, 0.1);
+    color: var(--status-critical);
+}
+
+.disclaimer-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.65rem;
     color: var(--text-light);
-    line-height: 1.5;
+    line-height: 1.4;
+    padding: 10px 12px;
+    background: var(--surface-sunken, rgba(0,0,0,0.02));
+    border-radius: 8px;
+}
+
+.disclaimer-text svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    opacity: 0.6;
 }
 
 /* Side Panel (Vignette) */

@@ -668,8 +668,19 @@ function renderReport(cityName, meta, s, isConform) {
         </div>
 
         <div class="report-footer">
-            <p>Conformité légale : <strong>${isConform ? 'CONFORME' : 'NON CONFORME'}</strong></p>
-            <p class="text-mini" style="margin-top:10px;">Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</p>
+            <div class="legal-badge ${isConform ? 'legal-ok' : 'legal-ko'}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    ${isConform 
+                        ? '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>'
+                        : '<polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>'
+                    }
+                </svg>
+                <span>Conformité légale : <strong>${isConform ? 'CONFORME' : 'NON CONFORME'}</strong></span>
+            </div>
+            <div class="disclaimer-text">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                <span>Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</span>
+            </div>
         </div>
     `;
 }
