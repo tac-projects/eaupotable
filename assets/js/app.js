@@ -67,7 +67,6 @@ const searchInput = document.getElementById('searchVille');
 const searchResults = document.getElementById('search-results');
 const hamburger = document.getElementById('hamburger');
 const mainMenu = document.getElementById('main-menu');
-const closeMenuBtn = document.getElementById('close-menu');
 const geolocateBtn = document.getElementById('geolocate-btn');
 const clearSearchBtn = document.getElementById('clear-search');
 
@@ -76,19 +75,12 @@ hamburger.onclick = () => {
     mainMenu.classList.toggle('active');
 };
 
-if (closeMenuBtn) {
-    closeMenuBtn.onclick = () => {
-        mainMenu.classList.remove('active');
-        hamburger.classList.remove('is-active');
-    };
-}
-
 closeBtn.onclick = () => sidePanel.classList.remove('active');
 
-// Logique de Géolocalisation
+// Logique de G├®olocalisation
 geolocateBtn.onclick = () => {
     if (!navigator.geolocation) {
-        alert("La géolocalisation n'est pas supportée par votre navigateur.");
+        alert("La g├®olocalisation n'est pas support├®e par votre navigateur.");
         return;
     }
 
@@ -111,14 +103,14 @@ geolocateBtn.onclick = () => {
                 map.flyTo({ center: [longitude, latitude], zoom: 13, essential: true });
             }
         } catch (error) {
-            console.error("Erreur Géolocalisation:", error);
+            console.error("Erreur G├®olocalisation:", error);
         } finally {
             geolocateBtn.classList.remove('loading');
         }
     }, (error) => {
         geolocateBtn.classList.remove('loading');
-        console.warn("Erreur géo:", error);
-        alert("Localisation impossible. Vérifiez vos paramètres de confidentialité.");
+        console.warn("Erreur g├®o:", error);
+        alert("Localisation impossible. V├®rifiez vos param├¿tres de confidentialit├®.");
     });
 };
 
@@ -134,7 +126,7 @@ let searchTimeout;
 searchInput.oninput = (e) => {
     const query = e.target.value.trim();
     
-    // Visibilité de la croix
+    // Visibilit├® de la croix
     if (query.length > 0) {
         clearSearchBtn.classList.add('visible');
     } else {
@@ -153,7 +145,7 @@ searchInput.oninput = (e) => {
             const data = await response.json();
             showSuggestions(data.features);
         } catch (error) {
-            console.error("Erreur Autocomplétion:", error);
+            console.error("Erreur Autocompl├®tion:", error);
         }
     }, 300);
 };
@@ -180,16 +172,16 @@ function selectLocation(feature) {
     searchResults.classList.remove('active');
     clearSearchBtn.classList.add('visible');
     
-    // Mise à jour de la carte
+    // Mise ├á jour de la carte
     map.flyTo({ center: coords, zoom: 13, essential: true });
     
-    // Partage : Mise à jour de l'URL sans recharger
+    // Partage : Mise ├á jour de l'URL sans recharger
     const cityName = feature.text;
     const url = new URL(window.location);
     url.searchParams.set('v', cityName);
     window.history.pushState({}, '', url);
 
-    // On lance le chargement en arrière-plan immédiatement
+    // On lance le chargement en arri├¿re-plan imm├®diatement
     fetchWaterData(cityName);
 }
 
@@ -197,7 +189,7 @@ let openPanelTimeout;
 async function fetchWaterData(cityName) {
     clearTimeout(openPanelTimeout);
     
-    // On prépare le skeleton mais on attend avant de montrer la vignette
+    // On pr├®pare le skeleton mais on attend avant de montrer la vignette
     panelContent.innerHTML = `
         <div class="vignette-hero">
             <div class="skeleton" style="position:absolute; inset:0; border-radius:inherit;"></div>
@@ -229,50 +221,73 @@ async function fetchWaterData(cityName) {
         </div>
     `;
 
-    // Ouverture différée de la vignette (4s) pour laisser la carte voler
+    // Ouverture diff├®r├®e de la vignette (4s) pour laisser la carte voler
     openPanelTimeout = setTimeout(() => {
         sidePanel.classList.add('active');
     }, 4000);
 
     try {
+        // Pour les tr├¿s grandes villes comme Paris, on monte ├á 10000 r├®sultats pour remonter assez loin dans le temps
+        // car les tests de routine (chlore) noient les analyses compl├¿tes (pesticides, etc.)
         const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=10000`;
         const response = await fetch(url);
         const data = await response.json();
 
         if (!data.data || data.data.length === 0) {
-            panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Aucune donnée officielle pour ${cityName}.</div>`;
+            panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Aucune donn├®e Hub'Eau pour ${cityName}.</div>`;
             return;
         }
 
         const reports = data.data;
         reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
+        // Helper interne robuste utilisant les codes Sandre (officiels) et les mots-cl├®s
         const getParam = (codes, keywords) => {
             const match = reports.find(r => {
                 const unit = (r.libelle_unite || "").toLowerCase();
-                const label = r.libelle_parametre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
-                const isTemp = label.includes("temperature") || label.includes("t°") || (unit.includes("c") && unit.includes("°"));
-                if (isTemp) return false;
+                const label = r.libelle_parametre.toLowerCase()
+                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 
+                // 1. Exclusion radicale de la temp├®rature (tr├¿s robuste contre les erreurs de labo)
+                const containsC = unit.includes("c") || unit.includes("deg");
+                const containsDegreeSign = unit.includes("┬░") || unit.includes("┬║") || label.includes("┬░");
+                const isTempLabel = label.includes("temperature") || label.includes("t┬░") || label.startsWith("t ");
+                
+                if (isTempLabel || (containsC && containsDegreeSign)) return false;
+
+                // 2. Priorit├® au Code Sandre (infaillible)
                 const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
                 if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
 
+                // 3. Fallback sur le libell├® textuel (plus strict pour ├®viter les faux positifs)
                 const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    // Si le mot cl├® est tr├¿s court (ex: ph, th, cond), on exige qu'il soit un mot isol├®
                     if (lowKw.length <= 3) {
                         const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
-                        return regex.test(label);
+                        return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
                     }
                     return label.includes(lowKw);
                 });
+
                 return isWordMatch && (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
             });
 
             if (!match) return null;
-            const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
+
+            const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") 
+                           ? match.resultat_alphanumerique 
+                           : match.resultat_numerique;
+
+            const cleanUnit = (u) => {
+                if (!u) return '';
+                // Simplification des unit├®s techniques (ex: mg(Cl2)/L -> mg/L)
+                return u.replace(/\(.*\)/g, '').replace('unit├® ', '').trim();
+            };
+            
             return {
-                val: (rawVal !== null) ? `${rawVal}` : '--',
-                unit: (match.libelle_unite || "").replace(/\(.*\)/g, '').trim(),
+                val: (rawVal !== null && rawVal !== undefined) ? `${rawVal}` : '--',
+                unit: cleanUnit(match.libelle_unite),
                 date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
                 label: match.libelle_parametre
             };
@@ -281,13 +296,16 @@ async function fetchWaterData(cityName) {
         const stats = {
             nitrates: getParam([1340, 1342], ["nitrate"]),
             ph: getParam([1301], ["ph", "potentiel hydrogene"]),
-            hardness: getParam([1345], ["hydrotimetrique", "durete", " th "]),
+            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", " th "]),
             chlorine: getParam([1399], ["chlore libre", "chlore total"]),
             conductivity: getParam([1302], ["conductivite"]),
-            turbidity: getParam([1305], ["turbidite"]),
-            iron: getParam([1393, 1374], ["fer total"]),
+            turbidity: getParam([1305], ["turbidite", "turb"]),
+            iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
             manganese: getParam([1394, 1373], ["manganese"]),
-            pesticides: getParam([1107, 1667], ["pesticide"])
+            pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277], ["pesticide"]),
+            ammonium: getParam([1331], ["ammonium"]),
+            copper: getParam([1392], ["cuivre"]),
+            cot: getParam([1341], ["organique total", "cot"])
         };
 
         const conclusion = reports[0].conclusion_conformite_prelevement || "";
@@ -301,73 +319,154 @@ async function fetchWaterData(cityName) {
     }
 }
 
-const RANGES = {
-    nitrates: [10, 25, 50],
-    ph: [6.5, 6.8, 8.2, 8.5, 9, 9.5],
-    hardness: [5, 15, 30, 40, 50, 60],
-    chlorine: [0.1, 0.5, 1.0],
-    conductivity: [200, 400, 1100],
-    turbidity: [0.5, 1.0, 2.0],
-    iron: [50, 100, 200],
-    manganese: [10, 20, 50],
-    pesticides: [0.05, 0.1, 0.5]
-};
 
-const CENTERED_PARAMS = ["ph", "hardness"];
 
+/**
+ * Aide ├á parser les valeurs num├®riques avec des symboles comme < ou >
+ */
 function parseValue(val) {
     if (val === undefined || val === null) return NaN;
     if (typeof val === 'number') return val;
-    return parseFloat(val.toString().replace('<', '').replace('>', '').replace(',', '.').trim());
+    const clean = val.toString().replace('<', '').replace('>', '').replace(',', '.').trim();
+    return parseFloat(clean);
 }
 
 function calculateCrystalScore(s, isConform) {
-    if (!isConform) return { final: 2.1, label: "NON CONFORME" };
     let score = 10.0;
+    let breakdown = [];
+    
+    // 1. Sanction Radicale : Non-Conformit├®
+    if (!isConform) {
+        return { 
+            final: 2.1, 
+            label: "NON CONFORME", 
+            explanation: "L'eau pr├®sente des d├®passements de seuils r├®glementaires sur des param├¿tres critiques.",
+            items: [{ label: "Conformit├® L├®gale", score: "├ëchec", impact: "Critique" }]
+        };
+    }
+
+    // 2. Nitrates (Poids fort)
     if (s.nitrates) {
         const n = parseValue(s.nitrates.val);
-        if (n > 50) score -= 8; else if (n > 25) score -= 2;
+        if (n > 50) score -= 8;
+        else if (n > 40) { score -= 4; }
+        else if (n > 25) { score -= 2; }
+        else if (n > 10) { score -= 0.5; }
     }
+
+    // 3. Pesticides
     if (s.pesticides) {
         const p = parseValue(s.pesticides.val);
-        if (p > 0) score -= 1;
+        if (p > 0.1) score -= 6;
+        else if (p > 0.05) { score -= 3; }
+        else if (p > 0) { score -= 1; }
     }
+
+    // 4. Calcaire (Poids confort)
+    if (s.hardness) {
+        const h = parseValue(s.hardness.val);
+        if (h > 35) { score -= 2; }
+        else if (h > 25) { score -= 1; }
+        else if (h < 10) { score -= 0.5; }
+    }
+
+    // 5. Chlore (Go├╗t)
+    if (s.chlorine) {
+        const c = parseValue(s.chlorine.val);
+        if (c > 0.5) score -= 1.5;
+        else if (c > 0.1) score -= 0.5;
+    }
+
+    // 6. P├®nalit├®s pour tous les autres m├®taux et r├®sidus (Warning/Critical)
+    const others = [s.iron, s.manganese, s.copper, s.ammonium, s.turbidity, s.conductivity];
+    others.forEach(stat => {
+        if (!stat) return;
+        const n = parseValue(stat.val);
+        if (isNaN(n)) return;
+        // Si valeur trop ├®lev├®e, petite p├®nalit├® de "confort"
+        if (n > 50) score -= 0.5; 
+    });
+
+    // Garantir les limites
     score = Math.max(0, Math.min(10, score));
-    return { final: Math.round(score * 10) / 10, label: score >= 8.5 ? "EXCELLENTE" : "BIEN" };
+    score = Math.round(score * 10) / 10;
+
+    let label = "BIEN";
+    let explanation = "Votre eau est conforme et de qualit├® standard.";
+    
+    if (score >= 9.8) {
+        label = "EXCEPTIONNELLE";
+        explanation = "Une eau d'une puret├® rare, surpassant largement les standards nationaux.";
+    } else if (score >= 8.5) {
+        label = "EXCELLENTE";
+        explanation = "Tr├¿s bonne qualit├® globale, sup├®rieure ├á la moyenne fran├ºaise.";
+    } else if (score < 5) {
+        label = "D├ëGRAD├ëE";
+        explanation = "La qualit├® de l'eau est impact├®e par certains param├¿tres. Vigilance recommand├®e.";
+    } else if (score < 8) {
+        label = "M├ëDIOCRE";
+        explanation = "La qualit├® de l'eau pr├®sente plusieurs points de vigilance.";
+    }
+
+    return { final: score, label, explanation };
 }
 
 function getParameterStatus(key, val) {
-    if (!val || val === "null" || val === "--") return { class: "", statusLabel: "Inconnu", subtitle: "Non analysé", status: "none" };
+    if (val === undefined || val === null || val === "null") return { class: "", statusLabel: "Inconnu", subtitle: "Non analys├®", status: "none" };
     
     if (key === "bacteria") {
-        if (val.toLowerCase().includes("absence")) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Aucun germe détecté", status: "perfect" };
-        return { class: "status-critical", statusLabel: "Danger", subtitle: "Présence bactérienne", status: "critical" };
+        if (val.toLowerCase().includes("absence")) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Aucun germe d├®tect├®", status: "perfect" };
+        return { class: "status-critical", statusLabel: "Danger", subtitle: "Pr├®sence bact├®rienne", status: "critical" };
     }
 
     const n = parseValue(val);
     
     switch(key) {
         case "nitrates":
-            if (n <= 5) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Pureté maximale", status: "perfect" };
-            if (n <= 25) return { class: "status-good", statusLabel: "Correct", subtitle: "Taux faible", status: "perfect" };
-            if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
-            return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil dépassé", status: "critical" };
+            if (n <= 5) return { class: "status-excellent", statusLabel: "Exceptionnel", subtitle: "Puret├® maximale", status: "perfect" };
+            if (n <= 20) return { class: "status-good", statusLabel: "Sain", subtitle: "Taux tr├¿s faible", status: "perfect" };
+            if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux mod├®r├®", status: "warning" };
+            return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil d├®pass├®", status: "critical" };
         case "hardness":
-            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre parfait", status: "perfect" };
-            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: "Écart léger", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Déséquilibre", subtitle: "Entartrant ou Corrosif", status: "warning" };
+            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Id├®al", subtitle: "├ëquilibre min├®ral parfait", status: "perfect" };
+            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: n < 15 ? "Peu calcaire, sain" : "Entartrage l├®ger", status: "perfect" };
+            if ((n >= 5 && n < 10) || (n > 35 && n <= 40)) return { class: "status-warning", statusLabel: n < 10 ? "Corrosive" : "Tr├¿s Calcaire", subtitle: n < 10 ? "Sous-min├®ralis├®e" : "Entartrage fort", status: "warning" };
+            return { class: "status-critical", statusLabel: "Extr├¬me", subtitle: "Hors normes id├®ales", status: "critical" };
         case "pesticides":
-            if (isNaN(n) || n === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu", status: "perfect" };
-            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Traces infimes", status: "perfect" };
-            return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement", status: "critical" };
+            const p = parseValue(val);
+            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun r├®sidu d├®tect├®", status: "perfect" };
+            if (p <= 0.05) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
+            if (p <= 0.1) return { class: "status-good", statusLabel: "Bon", subtitle: "Pr├®sence de r├®sidus", status: "perfect" };
+            if (p <= 0.15) return { class: "status-warning", statusLabel: "M├®diocre", subtitle: "Limite de conformit├®", status: "warning" };
+            return { class: "status-critical", statusLabel: "Alerte", subtitle: "D├®passement de seuil", status: "critical" };
         case "ph":
-            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "pH idéal", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité / Alcalinité", status: "warning" };
+            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH id├®al", status: "perfect" };
+            if ((n >= 6.4 && n < 6.8) || (n > 8.2 && n <= 8.6)) return { class: "status-good", statusLabel: "Correct", subtitle: "├ëquilibre sain", status: "perfect" };
+            if ((n >= 5.9 && n < 6.4) || (n > 8.6 && n <= 9.1)) return { class: "status-warning", statusLabel: "D├®s├®quilibr├®", subtitle: "Acidit├®/Alcalinit├®", status: "warning" };
+            return { class: "status-critical", statusLabel: "Instable", subtitle: "Tr├¿s corrosif ou entartrant", status: "critical" };
+        case "chlorine":
+            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun go├╗t d├®tect├®", status: "perfect" };
+            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Go├╗t imperceptible", status: "perfect" };
+            if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqu├®", subtitle: "L├®ger go├╗t de chlore", status: "warning" };
+            return { class: "status-critical", statusLabel: "Fort", subtitle: "Go├╗t tr├¿s pr├®sent", status: "critical" };
+        case "iron":
+            if (n <= 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Traces", subtitle: "Eau ferreuse", status: "warning" };
+        case "manganese":
+            if (n <= 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Traces", subtitle: "L├®g├¿re pr├®sence", status: "warning" };
+        case "cond":
+            if (n <= 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement min├®ralis├®e", status: "perfect" };
+            if (n <= 800) return { class: "status-good", statusLabel: "├ëquilibr├®", subtitle: "Min├®ralisation moyenne", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Charg├®e", subtitle: "Eau riche en min├®raux", status: "warning" };
+        case "turb":
+            if (n <= 0.1) return { class: "status-excellent", statusLabel: "Cristalline", subtitle: "Eau ultra-pure", status: "perfect" };
+            if (n <= 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilit├®", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Trouble", subtitle: "L├®g├¿re opacit├®", status: "warning" };
         default:
-            const range = RANGES[key];
-            if (range && n <= range[0]) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Paramètre sain", status: "perfect" };
-            if (range && n <= range[1]) return { class: "status-good", statusLabel: "Correct", subtitle: "Dans les normes", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux élevé", status: "warning" };
+            return { class: "status-good", statusLabel: "Satisfaisant", subtitle: "Dans les normes", status: "perfect" };
     }
 }
 
@@ -376,26 +475,47 @@ const PARAM_ICONS = {
     nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>',
     hardness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',
     ph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 9-8.414 8.414A2 2 0 0 0 3 18.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 3.828 21h1.344a2 2 0 0 0 1.414-.586L15 12"/><path d="m18 9 .4.4a1 1 0 1 1-3 3l-3.8-3.8a1 1 0 1 1 3-3l.4.4 3.4-3.4a1 1 0 1 1 3 3z"/><path d="m2 22 .414-.414"/></svg>',
+    cond: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>',
+    conductivity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>',
     chlorine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>',
-    pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>',
-    turbidity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4 4 4Z"/></svg>'
+    turb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>',
+    pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
+    iron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.536 11.293a1 1 0 0 0 0 1.414l2.376 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/><path d="M2.297 11.293a1 1 0 0 0 0 1.414l2.377 2.377a1 1 0 0 0 1.414 0l2.377-2.377a1 1 0 0 0 0-1.414L6.088 8.916a1 1 0 0 0-1.414 0z"/><path d="M8.916 17.912a1 1 0 0 0 0 1.415l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.415l-2.377-2.376a1 1 0 0 0-1.414 0z"/><path d="M8.916 4.674a1 1 0 0 0 0 1.414l2.377 2.376a1 1 0 0 0 1.414 0l2.377-2.376a1 1 0 0 0 0-1.414l-2.377-2.377a1 1 0 0 0-1.414 0z"/></svg>',
+    manganese: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>'
 };
 
+// ├ëchelles de visualisation et bornes de mapping visuel
+const RANGES = {
+    nitrates: [5, 20, 50],
+    pesticides: [0.05, 0.1, 0.15],
+    ph: [5.9, 6.4, 6.8, 8.2, 8.6, 9.1], // centered
+    chlorine: [0.05, 0.1, 0.5],
+    iron: [20, 100, 200],
+    manganese: [5, 20, 50],
+    turb: [0.1, 0.5, 2.0],
+    cond: [400, 800, 1500],
+    copper: [1.0, 2.0, 3.0],
+    ammonium: [0.1, 0.5, 1.0],
+    hardness: [5, 10, 15, 30, 35, 40] // centered
+};
+
+const CENTERED_PARAMS = ["ph", "hardness"];
+
 function renderReport(cityName, meta, s, isConform) {
-    const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
+    const nomReseau = meta.nom_distributeur || meta.nom_reseau || meta.nom_uge || meta.nom_installation || "R├®seau Municipal";
     const crystal = calculateCrystalScore(s, isConform);
 
     const params = [
         { name: "Microbiologie", data: { val: "Absence", unit: "" }, key: "bacteria" },
         { name: "Nitrates", data: s.nitrates, key: "nitrates" },
         { name: "Calcaire", data: s.hardness, key: "hardness" },
-        { name: "Acidité (pH)", data: s.ph, key: "ph" },
-        { name: "Conductivité", data: s.conductivity, key: "cond" },
+        { name: "Acidit├® (pH)", data: s.ph, key: "ph" },
+        { name: "Conductivit├®", data: s.conductivity, key: "cond" },
         { name: "Chlore Libre", data: s.chlorine, key: "chlorine" },
-        { name: "Turbidité", data: s.turbidity, key: "turb" },
+        { name: "Turbidit├®", data: s.turbidity, key: "turb" },
         { name: "Pesticides", data: s.pesticides, key: "pesticides" },
         { name: "Fer", data: s.iron, key: "iron" },
-        { name: "Manganèse", data: s.manganese, key: "manganese" }
+        { name: "Mangan├¿se", data: s.manganese, key: "manganese" }
     ];
 
     const processed = params.map(p => {
@@ -412,33 +532,75 @@ function renderReport(cityName, meta, s, isConform) {
         const range = RANGES[p.key];
         const rawVal = p.data?.val;
         const val = parseValue(rawVal);
-        const hasData = rawVal !== undefined && rawVal !== null && rawVal !== "null" && rawVal !== "--";
+        const hasData = rawVal !== undefined && rawVal !== null && rawVal !== "null";
         const isCentered = CENTERED_PARAMS.includes(p.key);
         
         if (p.key === "bacteria") {
             pos = (p.status === "perfect") ? 10 : 90;
-            htmlLabels = `<span style="left: 0%;">ABSENCE</span><span style="left: 100%; transform: translateX(-100%);">PRÉSENCE</span>`;
+            htmlLabels = `
+                <span style="left: 0%; transform: translateX(0%); color: var(--text-muted); font-weight:700;">Absence</span>
+                <span style="left: 100%; transform: translateX(-100%);">Risque</span>
+            `;
         } else if (range && hasData && !isNaN(val)) {
             if (isCentered) {
                 const [c1, w1, g1, g2, w2, c2] = range;
-                if (val <= g1) pos = 15; else if (val >= g2) pos = 85; else pos = 50;
-                htmlLabels = `<span style="left: 10%;">${c1}</span><span style="left: 50%;">${g1}</span><span style="left: 90%;">${c2}</span>`;
+                if (val < c1) {
+                    pos = ((val - (c1 - (w1 - c1))) / (w1 - c1)) * 11; 
+                } else if (val <= w1) {
+                    pos = 11 + ((val - c1) / (w1 - c1)) * 11;
+                } else if (val <= g1) {
+                    pos = 22 + ((val - w1) / (g1 - w1)) * 11;
+                } else if (val <= g2) {
+                    pos = 33 + ((val - g1) / (g2 - g1)) * 34; // Middle ideal zone is 34% width
+                } else if (val <= w2) {
+                    pos = 67 + ((val - g2) / (w2 - g2)) * 11;
+                } else if (val <= c2) {
+                    pos = 78 + ((val - w2) / (c2 - w2)) * 11;
+                } else {
+                    pos = 89 + Math.min(11, ((val - c2) / (c2 - w2)) * 11);
+                }
+                pos = Math.max(0, Math.min(100, pos));
+
+                htmlLabels = `
+                    <span style="left: 11%; transform: translateX(-50%);">${c1}</span>
+                    <span style="left: 33%; transform: translateX(-50%);">${g1}</span>
+                    <span style="left: 67%; transform: translateX(-50%);">${g2}</span>
+                    <span style="left: 89%; transform: translateX(-50%);">${c2}</span>
+                `;
             } else {
                 const [b1, b2, b3] = range;
-                pos = Math.min(100, (val / b3) * 100);
-                htmlLabels = `<span style="left: 33%;">${b1}</span><span style="left: 66%;">${b2}</span><span style="left: 100%; transform: translateX(-100%);">${b3}</span>`;
+                if (val <= b1) {
+                    pos = (val / b1) * 25;
+                } else if (val <= b2) {
+                    pos = 25 + ((val - b1) / (b2 - b1)) * 25;
+                } else if (val <= b3) {
+                    pos = 50 + ((val - b2) / (b3 - b2)) * 25;
+                } else {
+                    pos = 75 + Math.min(25, ((val - b3) / (b3 * 0.5)) * 25);
+                }
+                pos = Math.max(0, Math.min(100, pos));
+
+                htmlLabels = `
+                    <span style="left: 0%; transform: translateX(0%); color: var(--text-muted); font-weight:700;">0</span>
+                    <span style="left: 25%; transform: translateX(-50%);">${b1}</span>
+                    <span style="left: 50%; transform: translateX(-50%);">${b2}</span>
+                    <span style="left: 75%; transform: translateX(-50%);">${b3}</span>
+                `;
             }
+        } else {
+            htmlLabels = `<span style="position:static;">├ëchelle de mesure standard</span>`;
         }
 
         const rowId = `row-${p.key}-${index}`;
+
         return `
             <div class="yuka-row-wrapper">
                 <div class="yuka-row" onclick="toggleYukaRow('${rowId}')">
-                    <div class="yuka-icon">${PARAM_ICONS[p.key] || ''}</div>
+                    <div class="yuka-icon">${PARAM_ICONS[p.key] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>'}</div>
                     <span class="yuka-name">${p.name}</span>
                     <div class="yuka-val">${hasData ? p.data.val : '--'} <small>${(hasData && p.data.unit) ? p.data.unit : ''}</small></div>
                     <div class="yuka-dot-small ${p.class}"></div>
-                    <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     <span class="yuka-subtitle">${p.subtitle}</span>
                 </div>
                 <div id="${rowId}" class="yuka-details">
@@ -447,17 +609,25 @@ function renderReport(cityName, meta, s, isConform) {
                             <div class="yuka-range-bar ${isCentered ? 'centered' : 'linear'}" style="--marker-pos: ${pos}%; --marker-color: var(--${p.class})">
                                 <div class="yuka-marker"></div>
                             </div>
-                            <div class="yuka-range-labels">${htmlLabels}</div>
-                        ` : '<div class="text-mini" style="text-align:center; padding:1rem;">Données non disponibles</div>'}
+                            <div class="yuka-range-labels">
+                                ${htmlLabels}
+                            </div>
+                        ` : `
+                            <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
+                                Aucune analyse r├®cente disponible pour ce param├¿tre.
+                            </div>
+                        `}
                     </div>
                 </div>
             </div>
         `;
     };
 
+    // D├®terminer la classe du dot global (Uniformis├®)
     let scoreClass = "status-excellent";
     if (crystal.final < 5) scoreClass = "status-critical";
-    else if (crystal.final < 8.5) scoreClass = "status-warning";
+    else if (crystal.final < 8) scoreClass = "status-warning";
+    else if (crystal.final < 8.5) scoreClass = "status-good";
 
     panelContent.innerHTML = `
         <div class="vignette-hero">
@@ -476,114 +646,180 @@ function renderReport(cityName, meta, s, isConform) {
             </div>
         </div>
 
-        <button class="share-btn" onclick="shareReport('${cityName}')" style="margin: 1.5rem auto;">
-            Partager l'analyse
+        <button class="share-btn" onclick="shareReport('${cityName}')" style="margin-bottom:2rem;">
+            Partager l'analyse de ${cityName}
         </button>
 
         ${vulnerabilities.length > 0 ? `
             <div class="report-section">
-                <div class="section-header"><span>À surveiller</span><span class="count">${vulnerabilities.length}</span></div>
+                <div class="section-header">
+                    <span>À surveiller</span>
+                    <span class="count">${vulnerabilities.length} points</span>
+                </div>
                 ${vulnerabilities.map((p, idx) => renderYukaRow(p, idx)).join('')}
             </div>
         ` : ''}
 
         <div class="report-section">
-            <div class="section-header"><span>Qualité de l'eau</span><span class="count">${qualities.length}</span></div>
+            <div class="section-header">
+                <span>Qualité de l'eau</span>
+                <span class="count">${qualities.length} points</span>
+            </div>
             ${qualities.map((p, idx) => renderYukaRow(p, idx + 100)).join('')}
         </div>
 
-        <div style="padding:1.5rem;">
-            <p class="text-mini">Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</p>
+        <div class="report-footer">
+            <p>Conformité légale : <strong>${isConform ? 'CONFORME' : 'NON CONFORME'}</strong></p>
+            <p class="text-mini" style="margin-top:10px;">Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</p>
         </div>
     `;
 }
 
+/**
+ * Toggle le d├®tail d'un test sp├®cifique (Yuka Range)
+ */
 function toggleYukaRow(rowId) {
     const details = document.getElementById(rowId);
     if (!details) return;
     details.classList.toggle('active');
+    
+    // On peut aussi g├®rer la rotation de la fl├¿che ici si besoin de compatibilit├®
     const arrow = details.previousElementSibling.querySelector('.yuka-toggle-arrow');
-    if (arrow) arrow.style.transform = details.classList.contains('active') ? "rotate(180deg)" : "rotate(0deg)";
+    if (arrow) {
+        if (details.classList.contains('active')) {
+            arrow.style.transform = "rotate(180deg)";
+        } else {
+            arrow.style.transform = "rotate(0deg)";
+        }
+    }
 }
 
-// Share Logic
+/**
+ * Toggle l'affichage du d├®tail du score
+ */
+function toggleBreakdown() {
+    const content = document.getElementById('breakdown-content');
+    content.classList.toggle('active');
+    const svg = document.querySelector('.breakdown-toggle svg');
+    if (content.classList.contains('active')) {
+        svg.style.transform = "rotate(180deg)";
+    } else {
+        svg.style.transform = "rotate(0deg)";
+    }
+}
+
+// Fonction de partage viral utilisant l'API Native du smartphone
 async function shareReport(cityName) {
-    const shareData = { title: "Qualité de l'eau", url: window.location.href };
-    if (navigator.share) await navigator.share(shareData);
+    const shareData = {
+        title: `Qualit├® de l'eau ├á ${cityName}`,
+        text: `D├®couvrez le bilan sanitaire complet de l'eau potable ├á ${cityName} sur EauPotable.net`,
+        url: window.location.href
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else {
+            // Fallback : copie dans le presse-papier
+            await navigator.clipboard.writeText(window.location.href);
+            alert("Lien d'analyse copi├® ! Partagez-le avec vos proches.");
+        }
+    } catch (err) {
+        console.error("Erreur partage:", err);
+    }
 }
 
+// Chargement initial bas├® sur l'URL
 async function checkUrlParams() {
-    const city = new URLSearchParams(window.location.search).get('v');
-    if (city) fetchWaterData(city);
+    const urlParams = new URLSearchParams(window.location.search);
+    const city = urlParams.get('v');
+    if (city) {
+        // G├®ocodage pour placer la carte
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city)}.json?access_token=${mapboxgl.accessToken}&country=FR&limit=1`;
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.features && data.features.length > 0) {
+            const f = data.features[0];
+            map.flyTo({ center: f.center, zoom: 13 });
+            searchInput.value = f.place_name;
+            clearSearchBtn.classList.add('visible');
+            
+            fetchWaterData(city);
+        }
+    }
 }
 
 document.onclick = (e) => {
-    if (e.target !== searchInput) searchResults.classList.remove('active');
+    // Fermeture de la recherche
+    if (e.target !== searchInput) {
+        searchResults.classList.remove('active');
+    }
+
+    // Fermeture du menu si clic ├á l'ext├®rieur
+    if (mainMenu.classList.contains('active') && 
+        !mainMenu.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+        mainMenu.classList.remove('active');
+        hamburger.classList.remove('is-active');
+    }
 };
 
-// Placeholder Animation
-const phrases = ["Paris, 75000", "Lyon, 69000", "Marseille, 13000"];
+// Animation du Placeholder pour guider l'utilisateur
+const phrases = [
+    "Paris, 75000",
+    "Lyon, 69000",
+    "Marseille, 13000",
+    "Toulouse, 31000",
+    "Bordeaux, 33000",
+    "Lille, 59000",
+    "Nantes, 44000",
+    "Nice, 06000",
+    "Strasbourg, 67000",
+    "Montpellier, 34000"
+];
+
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let isStarted = false;
 
 function typePlaceholder() {
-    if (searchInput.value.length > 0) return;
-    const fullPhrase = phrases[phraseIndex];
-    searchInput.setAttribute('placeholder', isDeleting ? fullPhrase.substring(0, charIndex - 1) : fullPhrase.substring(0, charIndex + 1));
-    charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
-    let speed = isDeleting ? 50 : 100;
-    if (!isDeleting && charIndex === fullPhrase.length) { speed = 2000; isDeleting = true; }
-    else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; speed = 500; }
-    setTimeout(typePlaceholder, speed);
-}
-
-window.onload = () => setTimeout(typePlaceholder, 1000);
-
-/* --- PWA LOGIC --- */
-let deferredPrompt;
-const pwaBanner = document.getElementById('pwa-install-banner');
-const installBtn = document.getElementById('pwa-install-btn');
-const closePwaBtn = document.getElementById('pwa-close-btn');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const isDismissed = localStorage.getItem('pwa-banner-dismissed');
-    const now = new Date().getTime();
-    if (!isDismissed || (isDismissed && now > parseInt(isDismissed))) {
-        setTimeout(() => {
-            if (pwaBanner) {
-                pwaBanner.classList.add('active');
-                document.body.classList.add('pwa-active');
-            }
-        }, 5000);
+    // Si l'utilisateur tape quelque chose, on arr├¬te l'animation pour ne pas le g├¬ner
+    if (searchInput.value.length > 0) {
+        searchInput.setAttribute('placeholder', 'Entrez votre ville...');
+        isStarted = false;
+        return;
     }
-});
 
-if (installBtn) {
-    installBtn.onclick = async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                pwaBanner.classList.remove('active');
-                document.body.classList.remove('pwa-active');
-            }
-            deferredPrompt = null;
-        }
-    };
+    isStarted = true;
+    const fullPhrase = phrases[phraseIndex];
+    
+    let currentText = isDeleting 
+        ? fullPhrase.substring(0, charIndex - 1) 
+        : fullPhrase.substring(0, charIndex + 1);
+
+    charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+    searchInput.setAttribute('placeholder', currentText);
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === fullPhrase.length) {
+        typeSpeed = 2000; // Pause ├á la fin d'une phrase
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typePlaceholder, typeSpeed);
 }
 
-if (closePwaBtn) {
-    closePwaBtn.onclick = () => {
-        if (pwaBanner) pwaBanner.classList.remove('active');
-        document.body.classList.remove('pwa-active');
-        localStorage.setItem('pwa-banner-dismissed', new Date().getTime() + (7 * 24 * 60 * 60 * 1000));
-    };
-}
+// Relancer l'animation si l'utilisateur efface tout
+searchInput.onblur = () => {
+    if (searchInput.value.length === 0 && !isStarted) {
+        typePlaceholder();
+    }
+};
 
-window.addEventListener('appinstalled', () => {
-    if (pwaBanner) pwaBanner.classList.remove('active');
-    document.body.classList.remove('pwa-active');
-});
+typePlaceholder();
