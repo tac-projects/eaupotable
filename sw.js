@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eaupotable-v2';
+const CACHE_NAME = 'eaupotable-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -10,7 +10,7 @@ const ASSETS_TO_CACHE = [
   '/assets/js/app.js',
   '/assets/img/favicon.svg',
   '/assets/img/logo.svg',
-  '/assets/img/icons/icon-512-premium.png',
+  '/assets/img/icons/icon-512-v3.png',
   '/assets/img/vignette-bg.png',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Grand+Hotel&display=swap'
 ];
