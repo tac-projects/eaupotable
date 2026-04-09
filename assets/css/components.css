@@ -1,7 +1,6 @@
-/* Search Section - Bottom Floating Style */
 .search-floating.bottom-search {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     /* Thumb zone - Ergonomie mobile */
     top: auto;
     left: 50%;
@@ -12,9 +11,9 @@
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* État quand la PWA est proposée */
-body.pwa-active .search-floating.bottom-search {
-    bottom: 120px;
+/* État quand la PWA est proposée : La barre monte au dessus */
+.search-floating.pwa-active {
+    bottom: 115px;
 }
 
 
@@ -1101,7 +1100,7 @@ main.content-wrapper {
 /* --- PWA INSTALL BANNER --- */
 .install-banner {
     position: fixed;
-    bottom: calc(var(--spacing-lg) + 60px + var(--spacing-md)); /* Au dessus de la barre de recherche */
+    bottom: 20px; /* Tout en bas */
     left: var(--spacing-md);
     right: var(--spacing-md);
     background: rgba(255, 255, 255, 0.95);
@@ -1114,7 +1113,7 @@ main.content-wrapper {
     align-items: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     z-index: 1000;
-    transform: translateY(200%); /* Plus bas pour l'animation */
+    transform: translateY(200%);
     transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     border: 1px solid rgba(255,255,255,0.4);
     pointer-events: none;
@@ -1169,15 +1168,6 @@ main.content-wrapper {
     font-size: 1.2rem;
     padding: 4px 8px;
     cursor: pointer;
-}
-
-/* Ajustement de la barre de recherche quand le bandeau est là */
-.search-floating {
-    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.search-floating.pwa-active {
-    transform: translate(-50%, -10px);
 }
 
 /* --- LOADING SKELETONS --- */
