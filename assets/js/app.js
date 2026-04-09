@@ -450,11 +450,11 @@ function getParameterStatus(key, val) {
             if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
             return { class: "status-critical", statusLabel: "Fort", subtitle: "Goût très présent", status: "critical" };
         case "iron":
-            if (n <= 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
             if (n <= 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
             return { class: "status-warning", statusLabel: "Traces", subtitle: "Eau ferreuse", status: "warning" };
         case "manganese":
-            if (n <= 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
+            if (n <= 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
             if (n <= 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
             return { class: "status-warning", statusLabel: "Traces", subtitle: "Légère présence", status: "warning" };
         case "cond":
