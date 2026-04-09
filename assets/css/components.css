@@ -376,6 +376,18 @@ body.pwa-active .search-floating.bottom-search {
 .hero-status-badge.status-warning { background: var(--status-warning); }
 .hero-status-badge.status-critical { background: var(--status-critical); }
 
+.score-disclaimer {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    opacity: 0.8;
+    margin-top: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.2;
+}
+
 /* Footer info in Hero */
 .hero-footer {
     animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);

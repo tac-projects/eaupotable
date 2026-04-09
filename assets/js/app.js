@@ -240,7 +240,7 @@ async function fetchWaterData(cityName) {
         const data = await response.json();
 
         if (!data.data || data.data.length === 0) {
-            panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Aucune donnée Hub'Eau pour ${cityName}.</div>`;
+            panelContent.innerHTML = `<div style="padding:2rem; text-align:center;">Aucune donnée officielle pour ${cityName}.</div>`;
             return;
         }
 
@@ -349,6 +349,7 @@ function renderReport(cityName, meta, s, isConform) {
                 <div class="hero-score-card">
                     <div class="hero-score-val">${crystal.final}/10</div>
                     <div class="hero-status-badge status-excellent">${crystal.label}</div>
+                    <div class="score-disclaimer">Indice indépendant</div>
                 </div>
                 <div class="hero-footer">
                     <h2 class="hero-city">${cityName}</h2>
@@ -357,7 +358,7 @@ function renderReport(cityName, meta, s, isConform) {
             </div>
         </div>
         <div style="padding:1.5rem;">
-            <p>Analyse du Ministère de la Santé.</p>
+            <p class="text-mini">Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</p>
         </div>
     `;
 }

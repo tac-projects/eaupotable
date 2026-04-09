@@ -25,25 +25,26 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="EauPotable">
-    <link rel="apple-touch-icon" href="assets/img/icons/icon-512.png">
+    <link rel="apple-touch-icon" href="assets/img/icons/icon-512-premium.png">
 </head>
 <body class="bg-white">
 
     <header class="transparent-header solid-header">
         <div class="container nav-wrapper">
             <a href="/" class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
-                    <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradientLegal)" />
-                    <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
-                    <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
-                    <defs>
-                        <linearGradient id="crystalGradientLegal" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#3FA9FE" />
-                            <stop offset="0.5" stop-color="#0066FF" />
-                            <stop offset="1" stop-color="#0047AB" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-menu-icon">
+                <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradientMenu)" />
+                <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+                <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
+                <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" stroke-width="0.8" stroke-linecap="round" opacity="0.3" />
+                <defs>
+                    <linearGradient id="crystalGradientMenu" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#3FA9FE" />
+                        <stop offset="0.5" stop-color="#0066FF" />
+                        <stop offset="1" stop-color="#0047AB" />
+                    </linearGradient>
+                </defs>
+            </svg>
                 EauPotable.net
             </a>
             <button id="hamburger" class="hamburger-btn" aria-label="Menu">
@@ -107,9 +108,10 @@
                 <div class="card-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                 </div>
-                <h2>Origine et Limitation Responsabilité</h2>
+                <h2>Origine et Limitation de Responsabilité</h2>
             </div>
-            <p>Les données relatives à la qualité de l'eau proviennent exclusivement de l'API publique Hub'Eau (Agence Régionale de Santé / Ministère de la Santé). EauPotable.net agit comme simple diffuseur et ne peut être tenu responsable d'éventuelles erreurs ou retards de saisie dans la base de données officielle.</p>
+            <p>Les informations relatives à la qualité de l'eau présentes sur EauPotable.net sont consolidées à partir des relevés sanitaires officiels produits par les <strong>services de l'État (Ministère de la Santé / Agences Régionales de Santé)</strong> et mis à disposition en Open Data. EauPotable.net assure la mise en forme et la facilité d'accès à ces données publiques mais ne peut être tenu responsable de l'exactitude, de l'exhaustivité ou de la fréquence de mise à jour des relevés sources.</p>
+            <p><strong>Le "Score EauPotable" (note sur 10) est une interprétation algorithmique propre à ce site.</strong> Ce score est fourni à titre indicatif et n'a aucune valeur réglementaire ou légale. Il ne constitue pas un avis sanitaire officiel et ne remplace en aucun cas les communications de votre fournisseur d'eau ou les arrêtés préfectoraux. En utilisant ce service, l'utilisateur reconnaît que seul l'affichage officiel de sa commune fait foi en matière de santé publique.</p>
         </section>
 
         <section class="glass-card">
