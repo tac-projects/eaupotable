@@ -1098,117 +1098,86 @@ main.content-wrapper {
     margin-bottom: 3rem;
 }
 
-/* --- PWA INSTALLATION BANNER --- */
-.pwa-banner {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    width: 90%;
-    max-width: 500px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: var(--radius-lg);
-    z-index: 1600;
+/* --- PWA INSTALL BANNER --- */
+.install-banner {
+    position: fixed;
+    bottom: calc(var(--spacing-lg) + 60px + var(--spacing-md)); /* Au dessus de la barre de recherche */
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 12px 16px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.pwa-banner.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.pwa-banner-content {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transform: translateY(200%); /* Plus bas pour l'animation */
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid rgba(255,255,255,0.4);
+    pointer-events: none;
+    opacity: 0;
 }
 
-.pwa-banner-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    overflow: hidden;
-    flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.install-banner.visible {
+    transform: translateY(0);
+    pointer-events: auto;
+    opacity: 1;
 }
 
-.pwa-banner-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.pwa-banner-text {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-.pwa-banner-text strong {
+.install-content p {
+    margin: 0;
     font-size: 0.9rem;
-    color: var(--text-main);
+    color: var(--primary-color);
     font-weight: 700;
 }
 
-.pwa-banner-text span {
+.install-content span {
     font-size: 0.75rem;
     color: var(--text-muted);
-    line-height: 1.2;
 }
 
-.pwa-banner-actions {
+.install-actions {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
 }
 
-.pwa-install-btn {
+.btn-install-primary {
     background: var(--primary-gradient);
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 10px;
+    border-radius: 100px;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
-    transition: var(--transition-premium);
+    transition: transform 0.2s;
     box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
 }
 
-.pwa-install-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 102, 255, 0.3);
+.btn-install-primary:active {
+    transform: scale(0.95);
 }
 
-.pwa-close-btn {
-    background: transparent;
+.btn-install-close {
+    background: none;
     border: none;
     color: var(--text-muted);
+    font-size: 1.2rem;
+    padding: 4px 8px;
     cursor: pointer;
-    padding: 4px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-premium);
 }
 
-.pwa-close-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-main);
+/* Ajustement de la barre de recherche quand le bandeau est là */
+.search-floating {
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.search-floating.pwa-active {
+    transform: translate(-50%, -10px);
 }
 
 /* --- LOADING SKELETONS --- */
