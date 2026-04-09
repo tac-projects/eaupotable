@@ -1,20 +1,17 @@
 .search-floating.bottom-search {
     position: absolute;
     bottom: 40px;
-    /* Centrage horizontal absolu et robuste */
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    /* Fin centrage */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 900;
-    width: 90%;
+    width: 94%; /* Géré par responsive.css sur mobile, mais on l'assure ici aussi */
     max-width: 500px;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* État quand la PWA est proposée : La barre monte au dessus */
 .search-floating.pwa-active {
-    bottom: 130px;
+    transform: translateX(-50%) translateY(-90px);
 }
 
 
@@ -1102,11 +1099,9 @@ main.content-wrapper {
 .install-banner {
     position: fixed;
     bottom: 40px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    transform: translateY(200%); /* Uniquement du translateY pour l'animation */
-    width: 90%; /* Aligné exactement sur la barre de recherche */
+    left: 50%;
+    transform: translateX(-50%) translateY(200%);
+    width: 94%; /* Aligné exactement sur la barre de recherche */
     max-width: 500px;
     background: rgba(255, 255, 255, 0.98); /* Plus opaque pour la lisibilité */
     backdrop-filter: blur(10px);
@@ -1125,7 +1120,7 @@ main.content-wrapper {
 }
 
 .install-banner.visible {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
     opacity: 1;
 }

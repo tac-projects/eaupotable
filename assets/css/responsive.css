@@ -19,15 +19,11 @@
     }
 
     .search-floating {
-        bottom: 30px; /* Position basse par défaut */
+        bottom: 40px; /* Position basse par défaut alignée sur le desktop */
         top: auto;
         width: 94%;
         z-index: 800;
         transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    body.pwa-active .search-floating {
-        bottom: 110px;
     }
 
     /* Masquer la barre de recherche et la bannière quand l'analyse est ouverte */

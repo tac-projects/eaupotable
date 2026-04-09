@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eaupotable-v19';
+const CACHE_NAME = 'eaupotable-v20';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
