@@ -1100,9 +1100,11 @@ main.content-wrapper {
 /* --- PWA INSTALL BANNER --- */
 .install-banner {
     position: fixed;
-    bottom: 20px; /* Tout en bas */
-    left: var(--spacing-md);
-    right: var(--spacing-md);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(200%);
+    width: 90%;
+    max-width: 500px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1113,7 +1115,6 @@ main.content-wrapper {
     align-items: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     z-index: 1000;
-    transform: translateY(200%);
     transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     border: 1px solid rgba(255,255,255,0.4);
     pointer-events: none;
@@ -1121,9 +1122,28 @@ main.content-wrapper {
 }
 
 .install-banner.visible {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
     opacity: 1;
+}
+
+.install-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.install-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.install-text {
+    display: flex;
+    flex-direction: column;
 }
 
 .install-content p {
