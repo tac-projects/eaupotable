@@ -2,7 +2,7 @@
 
 /* MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
-    header {
+    header.transparent-header {
         height: 60px;
         padding: 0 15px;
     }
@@ -19,15 +19,20 @@
     }
 
     .search-floating {
-        bottom: 30px; /* Thumb zone */
+        bottom: 30px; /* Position basse par défaut */
         top: auto;
         width: 94%;
         z-index: 800;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    /* Masquer la barre de recherche quand l'analyse est ouverte */
-    body:has(.side-panel.active) .search-floating {
+    body.pwa-active .search-floating {
+        bottom: 110px;
+    }
+
+    /* Masquer la barre de recherche et la bannière quand l'analyse est ouverte */
+    body:has(.side-panel.active) .search-floating,
+    body:has(.side-panel.active) .pwa-banner {
         opacity: 0;
         pointer-events: none;
         transform: translate(-50%, 20px);

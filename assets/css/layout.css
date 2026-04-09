@@ -10,14 +10,24 @@
     left: 0;
     width: 100%;
     z-index: 2000;
-    background: rgba(255, 255, 255, 0.6); /* Fond blanc translucide */
-    backdrop-filter: blur(12px); /* Effet verre dépoli */
+    background: rgba(255, 255, 255, 0.8); /* Fond blanc translucide par défaut */
+    backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
     border-bottom: var(--glass-border-light);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Ombre douce de profondeur */
+    transition: background 0.3s;
 }
 
-header {
+/* Version opaque pour les pages de contenu */
+.transparent-header.solid-header {
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+header.transparent-header {
     height: 80px;
     display: flex;
     align-items: center;
