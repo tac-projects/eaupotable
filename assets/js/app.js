@@ -241,28 +241,27 @@ async function fetchWaterData(cityName) {
         const reports = data.data;
         reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
-        // Helper interne robuste utilisant les codes Sandre (officiels) et les mots-cl├®s
         const getParam = (codes, keywords) => {
             const match = reports.find(r => {
                 const unit = (r.libelle_unite || "").toLowerCase();
                 const label = r.libelle_parametre.toLowerCase()
                                 .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 
-                // 1. Exclusion radicale de la temp├®rature (tr├¿s robuste contre les erreurs de labo)
+                // 1. Exclusion radicale de la température (très robuste contre les erreurs de labo)
                 const containsC = unit.includes("c") || unit.includes("deg");
-                const containsDegreeSign = unit.includes("┬░") || unit.includes("┬║") || label.includes("┬░");
-                const isTempLabel = label.includes("temperature") || label.includes("t┬░") || label.startsWith("t ");
+                const containsDegreeSign = unit.includes("°") || unit.includes("º") || label.includes("°");
+                const isTempLabel = label.includes("temperature") || label.includes("t°") || label.startsWith("t ");
                 
                 if (isTempLabel || (containsC && containsDegreeSign)) return false;
 
-                // 2. Priorit├® au Code Sandre (infaillible)
+                // 2. Priorité au Code Sandre (infaillible)
                 const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
                 if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
 
-                // 3. Fallback sur le libell├® textuel (plus strict pour ├®viter les faux positifs)
+                // 3. Fallback sur le libellé textuel (plus strict pour éviter les faux positifs)
                 const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                    // Si le mot cl├® est tr├¿s court (ex: ph, th, cond), on exige qu'il soit un mot isol├®
+                    // Si le mot clé est très court (ex: ph, th, cond), on exige qu'il soit un mot isolé
                     if (lowKw.length <= 3) {
                         const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
                         return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
@@ -281,8 +280,8 @@ async function fetchWaterData(cityName) {
 
             const cleanUnit = (u) => {
                 if (!u) return '';
-                // Simplification des unit├®s techniques (ex: mg(Cl2)/L -> mg/L)
-                return u.replace(/\(.*\)/g, '').replace('unit├® ', '').trim();
+                // Simplification des unités techniques (ex: mg(Cl2)/L -> mg/L)
+                return u.replace(/\(.*\)/g, '').replace('unité ', '').trim();
             };
             
             return {
@@ -428,27 +427,27 @@ function getParameterStatus(key, val) {
             if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux mod├®r├®", status: "warning" };
             return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil d├®pass├®", status: "critical" };
         case "hardness":
-            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Id├®al", subtitle: "├ëquilibre min├®ral parfait", status: "perfect" };
-            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: n < 15 ? "Peu calcaire, sain" : "Entartrage l├®ger", status: "perfect" };
-            if ((n >= 5 && n < 10) || (n > 35 && n <= 40)) return { class: "status-warning", statusLabel: n < 10 ? "Corrosive" : "Tr├¿s Calcaire", subtitle: n < 10 ? "Sous-min├®ralis├®e" : "Entartrage fort", status: "warning" };
-            return { class: "status-critical", statusLabel: "Extr├¬me", subtitle: "Hors normes id├®ales", status: "critical" };
+            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre minéral parfait", status: "perfect" };
+            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: n < 15 ? "Peu calcaire, sain" : "Entartrage léger", status: "perfect" };
+            if ((n >= 5 && n < 10) || (n > 35 && n <= 40)) return { class: "status-warning", statusLabel: n < 10 ? "Corrosive" : "Très Calcaire", subtitle: n < 10 ? "Sous-minéralisée" : "Entartrage fort", status: "warning" };
+            return { class: "status-critical", statusLabel: "Extrême", subtitle: "Hors normes idéales", status: "critical" };
         case "pesticides":
             const p = parseValue(val);
-            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun r├®sidu d├®tect├®", status: "perfect" };
+            if (isNaN(p) || p === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu détecté", status: "perfect" };
             if (p <= 0.05) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Traces infimes", status: "perfect" };
-            if (p <= 0.1) return { class: "status-good", statusLabel: "Bon", subtitle: "Pr├®sence de r├®sidus", status: "perfect" };
-            if (p <= 0.15) return { class: "status-warning", statusLabel: "M├®diocre", subtitle: "Limite de conformit├®", status: "warning" };
-            return { class: "status-critical", statusLabel: "Alerte", subtitle: "D├®passement de seuil", status: "critical" };
+            if (p <= 0.1) return { class: "status-good", statusLabel: "Bon", subtitle: "Présence de résidus", status: "perfect" };
+            if (p <= 0.15) return { class: "status-warning", statusLabel: "Médiocre", subtitle: "Limite de conformité", status: "warning" };
+            return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement de seuil", status: "critical" };
         case "ph":
-            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH id├®al", status: "perfect" };
-            if ((n >= 6.4 && n < 6.8) || (n > 8.2 && n <= 8.6)) return { class: "status-good", statusLabel: "Correct", subtitle: "├ëquilibre sain", status: "perfect" };
-            if ((n >= 5.9 && n < 6.4) || (n > 8.6 && n <= 9.1)) return { class: "status-warning", statusLabel: "D├®s├®quilibr├®", subtitle: "Acidit├®/Alcalinit├®", status: "warning" };
-            return { class: "status-critical", statusLabel: "Instable", subtitle: "Tr├¿s corrosif ou entartrant", status: "critical" };
+            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "PH idéal", status: "perfect" };
+            if ((n >= 6.4 && n < 6.8) || (n > 8.2 && n <= 8.6)) return { class: "status-good", statusLabel: "Correct", subtitle: "Équilibre sain", status: "perfect" };
+            if ((n >= 5.9 && n < 6.4) || (n > 8.6 && n <= 9.1)) return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité/Alcalinité", status: "warning" };
+            return { class: "status-critical", statusLabel: "Instable", subtitle: "Très corrosif ou entartrant", status: "critical" };
         case "chlorine":
-            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun go├╗t d├®tect├®", status: "perfect" };
-            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Go├╗t imperceptible", status: "perfect" };
-            if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqu├®", subtitle: "L├®ger go├╗t de chlore", status: "warning" };
-            return { class: "status-critical", statusLabel: "Fort", subtitle: "Go├╗t tr├¿s pr├®sent", status: "critical" };
+            if (n <= 0.05) return { class: "status-excellent", statusLabel: "Pur", subtitle: "Aucun goût détecté", status: "perfect" };
+            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Goût imperceptible", status: "perfect" };
+            if (n <= 0.5) return { class: "status-warning", statusLabel: "Marqué", subtitle: "Léger goût de chlore", status: "warning" };
+            return { class: "status-critical", statusLabel: "Fort", subtitle: "Goût très présent", status: "critical" };
         case "iron":
             if (n <= 20 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
             if (n <= 100) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
@@ -456,15 +455,15 @@ function getParameterStatus(key, val) {
         case "manganese":
             if (n <= 5 || isNaN(n)) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Pur", status: "perfect" };
             if (n <= 20) return { class: "status-good", statusLabel: "Correct", subtitle: "Traces minimes", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Traces", subtitle: "L├®g├¿re pr├®sence", status: "warning" };
+            return { class: "status-warning", statusLabel: "Traces", subtitle: "Légère présence", status: "warning" };
         case "cond":
-            if (n <= 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement min├®ralis├®e", status: "perfect" };
-            if (n <= 800) return { class: "status-good", statusLabel: "├ëquilibr├®", subtitle: "Min├®ralisation moyenne", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Charg├®e", subtitle: "Eau riche en min├®raux", status: "warning" };
+            if (n <= 400) return { class: "status-excellent", statusLabel: "Stable", subtitle: "Faiblement minéralisée", status: "perfect" };
+            if (n <= 800) return { class: "status-good", statusLabel: "Équilibré", subtitle: "Minéralisation moyenne", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Chargée", subtitle: "Eau riche en minéraux", status: "warning" };
         case "turb":
             if (n <= 0.1) return { class: "status-excellent", statusLabel: "Cristalline", subtitle: "Eau ultra-pure", status: "perfect" };
-            if (n <= 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilit├®", status: "perfect" };
-            return { class: "status-warning", statusLabel: "Trouble", subtitle: "L├®g├¿re opacit├®", status: "warning" };
+            if (n <= 0.5) return { class: "status-good", statusLabel: "Limpide", subtitle: "Excellente visibilité", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Trouble", subtitle: "Légère opacité", status: "warning" };
         default:
             return { class: "status-good", statusLabel: "Satisfaisant", subtitle: "Dans les normes", status: "perfect" };
     }
@@ -676,14 +675,14 @@ function renderReport(cityName, meta, s, isConform) {
 }
 
 /**
- * Toggle le d├®tail d'un test sp├®cifique (Yuka Range)
+ * Toggle le détail d'un test spécifique (Yuka Range)
  */
 function toggleYukaRow(rowId) {
     const details = document.getElementById(rowId);
     if (!details) return;
     details.classList.toggle('active');
     
-    // On peut aussi g├®rer la rotation de la fl├¿che ici si besoin de compatibilit├®
+    // On peut aussi gérer la rotation de la flèche ici si besoin de compatibilité
     const arrow = details.previousElementSibling.querySelector('.yuka-toggle-arrow');
     if (arrow) {
         if (details.classList.contains('active')) {
@@ -695,7 +694,7 @@ function toggleYukaRow(rowId) {
 }
 
 /**
- * Toggle l'affichage du d├®tail du score
+ * Toggle l'affichage du détail du score
  */
 function toggleBreakdown() {
     const content = document.getElementById('breakdown-content');
@@ -711,8 +710,8 @@ function toggleBreakdown() {
 // Fonction de partage viral utilisant l'API Native du smartphone
 async function shareReport(cityName) {
     const shareData = {
-        title: `Qualit├® de l'eau ├á ${cityName}`,
-        text: `D├®couvrez le bilan sanitaire complet de l'eau potable ├á ${cityName} sur EauPotable.net`,
+        title: `Qualité de l'eau à ${cityName}`,
+        text: `Découvrez le bilan sanitaire complet de l'eau potable à ${cityName} sur EauPotable.net`,
         url: window.location.href
     };
 
@@ -722,19 +721,19 @@ async function shareReport(cityName) {
         } else {
             // Fallback : copie dans le presse-papier
             await navigator.clipboard.writeText(window.location.href);
-            alert("Lien d'analyse copi├® ! Partagez-le avec vos proches.");
+            alert("Lien d'analyse copié ! Partagez-le avec vos proches.");
         }
     } catch (err) {
         console.error("Erreur partage:", err);
     }
 }
 
-// Chargement initial bas├® sur l'URL
+// Chargement initial basé sur l'URL
 async function checkUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const city = urlParams.get('v');
     if (city) {
-        // G├®ocodage pour placer la carte
+        // Géocodage pour placer la carte
         const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city)}.json?access_token=${mapboxgl.accessToken}&country=FR&limit=1`;
         const res = await fetch(url);
         const data = await res.json();
@@ -755,7 +754,7 @@ document.onclick = (e) => {
         searchResults.classList.remove('active');
     }
 
-    // Fermeture du menu si clic ├á l'ext├®rieur
+    // Fermeture du menu si clic à l'extérieur
     if (mainMenu.classList.contains('active') && 
         !mainMenu.contains(e.target) && 
         !hamburger.contains(e.target)) {
@@ -784,7 +783,7 @@ let isDeleting = false;
 let isStarted = false;
 
 function typePlaceholder() {
-    // Si l'utilisateur tape quelque chose, on arr├¬te l'animation pour ne pas le g├¬ner
+    // Si l'utilisateur tape quelque chose, on arrête l'animation pour ne pas le gêner
     if (searchInput.value.length > 0) {
         searchInput.setAttribute('placeholder', 'Entrez votre ville...');
         isStarted = false;
@@ -804,7 +803,7 @@ function typePlaceholder() {
     let typeSpeed = isDeleting ? 50 : 100;
 
     if (!isDeleting && charIndex === fullPhrase.length) {
-        typeSpeed = 2000; // Pause ├á la fin d'une phrase
+        typeSpeed = 2000; // Pause à la fin d'une phrase
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
