@@ -110,7 +110,7 @@
 @media (min-width: 1024px) {
     .side-panel {
         top: 100px;
-        width: 480px;
+        width: 380px;
         height: calc(100% - 140px);
         right: -550px;
     }
@@ -125,7 +125,7 @@
 
     /* Centrage dynamique de la recherche par rapport à l'espace libre */
     body:has(.side-panel.active) .search-floating {
-        left: calc((100% - 520px) / 2);
+        left: calc((100% - 420px) / 2);
         transform: translateX(-50%);
         transition: var(--transition-premium);
     }

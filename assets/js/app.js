@@ -489,7 +489,7 @@ function renderReport(cityName, meta, s, isConform) {
         { name: "Acidité (pH)", data: s.ph, key: "ph" },
         { name: "Conductivité", data: s.conductivity, key: "cond" },
         { name: "Chlore Libre", data: s.chlorine, key: "chlorine" },
-        { name: "Turbidité", data: s.turb, key: "turb" },
+        { name: "Turbidité", data: s.turbidity, key: "turb" },
         { name: "Pesticides", data: s.pesticides, key: "pesticides" },
         { name: "Fer", data: s.iron, key: "iron" },
         { name: "Manganèse", data: s.manganese, key: "manganese" }
@@ -645,7 +645,7 @@ function renderReport(cityName, meta, s, isConform) {
 
         <div class="report-footer">
             <p>Conformité légale : <strong>${isConform ? 'CONFORME' : 'NON CONFORME'}</strong></p>
-            <p style="margin-top:5px;">Source : Hub'Eau / Ministère de la Santé.</p>
+            <p style="margin-top:5px;">Source : ARS / Ministère de la Santé.</p>
         </div>
     `;
 }
