@@ -49,7 +49,7 @@
         box-shadow: 0 -15px 50px rgba(0,0,0,0.15);
         padding: 0;
         z-index: 2500;
-        overflow: hidden; /* Empêche les enfants de baver hors des coins arrondis */
+        overflow: visible; /* Autorise le bouton fermer sur la bordure */
     }
 
     .yuka-name {
@@ -70,29 +70,18 @@
     }
 
     #panel-content {
-        padding: 2.5rem 1rem; /* Aligné sur le desktop pour une cohérence parfaite */
+        padding: 1rem; 
     }
 
-    .yuka-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        padding-bottom: 2rem;
+    .vignette-hero {
+        height: 240px;
+        margin: -1rem -1rem 1.5rem -1rem; /* Perfectly flush on mobile */
     }
 
-    .product-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .badge-group {
-        justify-content: center;
-    }
 
     .close-panel {
-        top: 15px; /* Déplacé à l'intérieur sur mobile */
-        right: 15px; /* Déplacé à l'intérieur sur mobile */
+        top: -18px; 
+        right: 5px; 
         width: 36px;
         height: 36px;
         background: rgba(255, 255, 255, 0.9);
@@ -128,6 +117,10 @@
         left: calc((100% - 420px) / 2);
         transform: translateX(-50%);
         transition: var(--transition-premium);
+    }
+
+    .vignette-hero {
+        margin: -1.5rem -1.25rem 2rem -1.25rem; /* Perfectly flush on desktop */
     }
 }
 

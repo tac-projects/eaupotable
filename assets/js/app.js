@@ -169,12 +169,8 @@ function selectLocation(feature) {
 async function fetchWaterData(cityName) {
     sidePanel.classList.add('active');
     panelContent.innerHTML = `
-        <div class="skeleton-row" style="padding:1rem 0 2rem; border-bottom:1px solid rgba(0,0,0,0.05);">
-            <div class="skeleton-circle skeleton"></div>
-            <div style="flex:1;">
-                <div class="skeleton-title skeleton"></div>
-                <div class="skeleton-line-sm skeleton"></div>
-            </div>
+        <div class="vignette-hero">
+            <div class="skeleton" style="position:absolute; inset:0; border-radius:inherit;"></div>
         </div>
         <div style="margin-top:2rem;">
             <div class="skeleton-line skeleton" style="width:100%; height:45px; border-radius:100px; margin-bottom:2.5rem;"></div>
@@ -607,16 +603,17 @@ function renderReport(cityName, meta, s, isConform) {
     else if (crystal.final < 8.5) scoreClass = "status-good";
 
     panelContent.innerHTML = `
-        <div class="yuka-header">
-            <img src="assets/img/crystal_water_glass.png" class="product-image" alt="Eau de ${cityName}">
-            <div class="product-info">
-                <h2 class="product-title">${cityName}</h2>
-                <div class="badge-group">
-                    <span class="badge badge-network">${nomReseau}</span>
-                    <div style="display:flex; gap:0.6rem; align-items:center;">
-                        <span class="badge badge-crystal ${scoreClass}">${crystal.final}/10</span>
-                        <span class="badge badge-status ${scoreClass}">${crystal.label}</span>
-                    </div>
+        <div class="vignette-hero">
+            <div class="hero-bg" style="background-image: url('assets/img/vignette-bg.png')"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-score-card">
+                    <div class="hero-score-val">${crystal.final}/10</div>
+                    <div class="hero-status-badge ${scoreClass}">${crystal.label}</div>
+                </div>
+                <div class="hero-footer">
+                    <div class="hero-network">${nomReseau}</div>
+                    <h2 class="hero-city">${cityName}</h2>
                 </div>
             </div>
         </div>

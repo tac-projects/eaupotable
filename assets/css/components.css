@@ -263,113 +263,114 @@
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* --- YUKA-STYLE UI --- */
-.yuka-header {
+/* --- VIGNETTE HERO CARD --- */
+.vignette-hero {
+    position: relative;
+    height: var(--hero-height);
+    margin: -2.5rem -1rem 2rem -1rem; /* Flush to edges of panel-content */
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; /* Match parent top corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 8s ease-out;
+}
+
+.vignette-hero:hover .hero-bg {
+    transform: scale(1.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    padding: 1.5rem 1.5rem 1.8rem;
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 0 2.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    margin-bottom: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
 }
 
-.product-image {
-    width: 85px;
-    height: 85px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-    background: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-}
-
-.product-info {
-    flex: 1;
-}
-
-.product-title {
-    font-size: 1.7rem;
-    font-weight: 800;
-    margin-bottom: 0.6rem;
-    color: var(--text-main);
-}
-
-/* Badge System */
-.badge-group {
+/* Score Floating Card */
+.hero-score-card {
+    align-self: flex-end;
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+    flex-direction: column;
     align-items: center;
+    min-width: 100px;
+    animation: slideInDown 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.badge {
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+@keyframes slideInDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-.badge-crystal {
-    background: #fff;
-    font-size: 1.4rem;
-    padding: 8px 16px;
-    border-radius: var(--radius-md);
-    border: 2.5px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+.hero-score-val {
+    font-size: 2rem;
     font-weight: 900;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
 }
 
-/* Coloration dynamique unifiée (Score + Status) */
-.badge-crystal.status-excellent,
-.badge-status.status-excellent {
-    color: var(--status-excellent);
-    border-color: rgba(5, 150, 105, 0.2);
-    background: rgba(5, 150, 105, 0.04);
+.hero-status-badge {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
 }
 
-.badge-crystal.status-good,
-.badge-status.status-good {
-    color: var(--status-good);
-    border-color: rgba(16, 185, 129, 0.2);
-    background: rgba(16, 185, 129, 0.04);
+/* Coloration Status Hero */
+.hero-status-badge.status-excellent { background: var(--status-excellent); }
+.hero-status-badge.status-good { background: var(--status-good); }
+.hero-status-badge.status-warning { background: var(--status-warning); }
+.hero-status-badge.status-critical { background: var(--status-critical); }
+
+/* Footer info in Hero */
+.hero-footer {
+    animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.badge-crystal.status-warning,
-.badge-status.status-warning {
-    color: var(--status-warning);
-    border-color: rgba(251, 191, 36, 0.2);
-    background: rgba(251, 191, 36, 0.04);
+@keyframes slideInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-.badge-crystal.status-critical,
-.badge-status.status-critical {
-    color: var(--status-critical);
-    border-color: rgba(248, 113, 113, 0.2);
-    background: rgba(248, 113, 113, 0.04);
+.hero-network {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
 }
 
-/* Note spécifique pour le score blanc pour plus de relief */
-.badge-crystal {
-    background: #fff !important;
-}
-
-.badge-status {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-}
-
-.badge-network {
-    background: transparent;
-    color: var(--text-light);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    text-transform: none;
-    font-weight: 600;
+.hero-city {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .product-score-line {
@@ -407,7 +408,7 @@
 }
 
 .report-section {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.2rem;
 }
 
 .section-header {
@@ -440,7 +441,7 @@
     align-items: center;
     gap: 0.2rem 0.6rem;
     /* Gap horizontal réduit pour gagner de la place */
-    padding: 1.1rem 0;
+    padding: 0.85rem 0;
     /* Retour à 0 de padding horizontal, géré par le conteneur parent */
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
     transition: var(--transition-premium);
