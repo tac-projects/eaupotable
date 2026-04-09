@@ -181,11 +181,15 @@ function selectLocation(feature) {
     url.searchParams.set('v', cityName);
     window.history.pushState({}, '', url);
 
+    // On lance le chargement en arrière-plan immédiatement
     fetchWaterData(cityName);
 }
 
+let openPanelTimeout;
 async function fetchWaterData(cityName) {
-    sidePanel.classList.add('active');
+    clearTimeout(openPanelTimeout);
+    
+    // On prépare le skeleton mais on attend avant de montrer la vignette
     panelContent.innerHTML = `
         <div class="vignette-hero">
             <div class="skeleton" style="position:absolute; inset:0; border-radius:inherit;"></div>
@@ -216,6 +220,11 @@ async function fetchWaterData(cityName) {
             </div>
         </div>
     `;
+
+    // Ouverture différée de la vignette (3s) pour laisser la carte voler
+    openPanelTimeout = setTimeout(() => {
+        sidePanel.classList.add('active');
+    }, 3000);
 
     try {
         // Pour les très grandes villes comme Paris, on monte à 10000 résultats pour remonter assez loin dans le temps
@@ -733,6 +742,7 @@ async function checkUrlParams() {
             map.flyTo({ center: f.center, zoom: 13 });
             searchInput.value = f.place_name;
             clearSearchBtn.classList.add('visible');
+            
             fetchWaterData(city);
         }
     }
