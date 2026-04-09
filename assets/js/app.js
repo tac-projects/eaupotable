@@ -823,6 +823,7 @@ searchInput.onblur = () => {
 };
 
 // --- Logique d'installation PWA (Bandeau) ---
+localStorage.removeItem('pwa-banner-excluded'); // FORCE RESET POUR TEST
 let deferredPrompt;
 const installBanner = document.getElementById('install-banner');
 const btnInstall = document.getElementById('btn-install');
