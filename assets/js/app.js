@@ -846,8 +846,13 @@ function initPWA() {
         deferredPrompt = e;
 
         if (!isBannerExcluded()) {
-            installBanner.classList.add('visible');
-            searchFloating.classList.add('pwa-active');
+            setTimeout(() => {
+                // On revérifie au cas où l'utilisateur a fermé ou ouvert une analyse entre-temps
+                if (deferredPrompt && !isBannerExcluded() && !installBanner.classList.contains('hidden-by-action')) {
+                    installBanner.classList.add('visible');
+                    searchFloating.classList.add('pwa-active');
+                }
+            }, 5000);
         }
     });
 
@@ -884,7 +889,10 @@ const originalFetchWaterData = fetchWaterData;
 fetchWaterData = async (cityName) => {
     const banner = document.getElementById('install-banner');
     const search = document.querySelector('.search-floating');
-    if (banner) banner.classList.remove('visible');
+    if (banner) {
+        banner.classList.remove('visible');
+        banner.classList.add('hidden-by-action');
+    }
     if (search) search.classList.remove('pwa-active');
     return originalFetchWaterData(cityName);
 };

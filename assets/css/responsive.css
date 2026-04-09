@@ -28,10 +28,10 @@
 
     /* Masquer la barre de recherche et la bannière quand l'analyse est ouverte */
     body:has(.side-panel.active) .search-floating,
-    body:has(.side-panel.active) .pwa-banner {
+    body:has(.side-panel.active) .install-banner {
         opacity: 0;
         pointer-events: none;
-        transform: translate(-50%, 20px);
+        transform: translateY(20px);
     }
 
     .search-input {
@@ -116,6 +116,8 @@
 
     /* Centrage dynamique de la recherche par rapport à l'espace libre */
     body:has(.side-panel.active) .search-floating {
+        right: auto;
+        margin: 0;
         left: calc((100% - 420px) / 2);
         transform: translateX(-50%);
         transition: var(--transition-premium);
