@@ -732,6 +732,7 @@ async function checkUrlParams() {
             const f = data.features[0];
             map.flyTo({ center: f.center, zoom: 13 });
             searchInput.value = f.place_name;
+            clearSearchBtn.classList.add('visible');
             fetchWaterData(city);
         }
     }
