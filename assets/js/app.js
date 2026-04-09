@@ -301,6 +301,20 @@ async function fetchWaterData(cityName) {
     }
 }
 
+const RANGES = {
+    nitrates: [10, 25, 50],
+    ph: [6.5, 6.8, 8.2, 8.5, 9, 9.5],
+    hardness: [5, 15, 30, 40, 50, 60],
+    chlorine: [0.1, 0.5, 1.0],
+    conductivity: [200, 400, 1100],
+    turbidity: [0.5, 1.0, 2.0],
+    iron: [50, 100, 200],
+    manganese: [10, 20, 50],
+    pesticides: [0.05, 0.1, 0.5]
+};
+
+const CENTERED_PARAMS = ["ph", "hardness"];
+
 function parseValue(val) {
     if (val === undefined || val === null) return NaN;
     if (typeof val === 'number') return val;
@@ -323,24 +337,128 @@ function calculateCrystalScore(s, isConform) {
 }
 
 function getParameterStatus(key, val) {
-    if (!val || val === "null") return { class: "", statusLabel: "Inconnu", subtitle: "Non analysé", status: "none" };
-    const n = parseValue(val);
-    if (key === "nitrates") {
-        if (n <= 20) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Taux faible", status: "perfect" };
-        if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
-        return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement", status: "critical" };
+    if (!val || val === "null" || val === "--") return { class: "", statusLabel: "Inconnu", subtitle: "Non analysé", status: "none" };
+    
+    if (key === "bacteria") {
+        if (val.toLowerCase().includes("absence")) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Aucun germe détecté", status: "perfect" };
+        return { class: "status-critical", statusLabel: "Danger", subtitle: "Présence bactérienne", status: "critical" };
     }
-    return { class: "status-good", statusLabel: "Correct", subtitle: "Dans les normes", status: "perfect" };
+
+    const n = parseValue(val);
+    
+    switch(key) {
+        case "nitrates":
+            if (n <= 5) return { class: "status-excellent", statusLabel: "Sain", subtitle: "Pureté maximale", status: "perfect" };
+            if (n <= 25) return { class: "status-good", statusLabel: "Correct", subtitle: "Taux faible", status: "perfect" };
+            if (n <= 50) return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux modéré", status: "warning" };
+            return { class: "status-critical", statusLabel: "Hors Norme", subtitle: "Seuil dépassé", status: "critical" };
+        case "hardness":
+            if (n >= 15 && n <= 30) return { class: "status-excellent", statusLabel: "Idéal", subtitle: "Équilibre parfait", status: "perfect" };
+            if ((n >= 10 && n < 15) || (n > 30 && n <= 35)) return { class: "status-good", statusLabel: n < 15 ? "Eau Douce" : "Calcaire", subtitle: "Écart léger", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Déséquilibre", subtitle: "Entartrant ou Corrosif", status: "warning" };
+        case "pesticides":
+            if (isNaN(n) || n === 0) return { class: "status-excellent", statusLabel: "Nul", subtitle: "Aucun résidu", status: "perfect" };
+            if (n <= 0.1) return { class: "status-good", statusLabel: "Sain", subtitle: "Traces infimes", status: "perfect" };
+            return { class: "status-critical", statusLabel: "Alerte", subtitle: "Dépassement", status: "critical" };
+        case "ph":
+            if (n >= 6.8 && n <= 8.2) return { class: "status-excellent", statusLabel: "Neutre", subtitle: "pH idéal", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Déséquilibré", subtitle: "Acidité / Alcalinité", status: "warning" };
+        default:
+            const range = RANGES[key];
+            if (range && n <= range[0]) return { class: "status-excellent", statusLabel: "Excellent", subtitle: "Paramètre sain", status: "perfect" };
+            if (range && n <= range[1]) return { class: "status-good", statusLabel: "Correct", subtitle: "Dans les normes", status: "perfect" };
+            return { class: "status-warning", statusLabel: "Vigilance", subtitle: "Taux élevé", status: "warning" };
+    }
 }
 
 const PARAM_ICONS = {
-    nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>'
+    bacteria: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M6 18h8"/></svg>',
+    nitrates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>',
+    hardness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',
+    ph: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 9-8.414 8.414A2 2 0 0 0 3 18.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 3.828 21h1.344a2 2 0 0 0 1.414-.586L15 12"/><path d="m18 9 .4.4a1 1 0 1 1-3 3l-3.8-3.8a1 1 0 1 1 3-3l.4.4 3.4-3.4a1 1 0 1 1 3 3z"/><path d="m2 22 .414-.414"/></svg>',
+    chlorine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>',
+    pesticides: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>',
+    turbidity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4 4 4Z"/></svg>'
 };
 
 function renderReport(cityName, meta, s, isConform) {
     const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
     const crystal = calculateCrystalScore(s, isConform);
-    
+
+    const params = [
+        { name: "Microbiologie", data: { val: "Absence", unit: "" }, key: "bacteria" },
+        { name: "Nitrates", data: s.nitrates, key: "nitrates" },
+        { name: "Calcaire", data: s.hardness, key: "hardness" },
+        { name: "Acidité (pH)", data: s.ph, key: "ph" },
+        { name: "Conductivité", data: s.conductivity, key: "cond" },
+        { name: "Chlore Libre", data: s.chlorine, key: "chlorine" },
+        { name: "Turbidité", data: s.turbidity, key: "turb" },
+        { name: "Pesticides", data: s.pesticides, key: "pesticides" },
+        { name: "Fer", data: s.iron, key: "iron" },
+        { name: "Manganèse", data: s.manganese, key: "manganese" }
+    ];
+
+    const processed = params.map(p => {
+        const info = getParameterStatus(p.key, p.data?.val);
+        return { ...p, ...info };
+    });
+
+    const qualities = processed.filter(p => p.status === "perfect" || p.status === "none");
+    const vulnerabilities = processed.filter(p => p.status !== "perfect" && p.status !== "none");
+
+    const renderYukaRow = (p, index) => {
+        let pos = 50;
+        let htmlLabels = '';
+        const range = RANGES[p.key];
+        const rawVal = p.data?.val;
+        const val = parseValue(rawVal);
+        const hasData = rawVal !== undefined && rawVal !== null && rawVal !== "null" && rawVal !== "--";
+        const isCentered = CENTERED_PARAMS.includes(p.key);
+        
+        if (p.key === "bacteria") {
+            pos = (p.status === "perfect") ? 10 : 90;
+            htmlLabels = `<span style="left: 0%;">ABSENCE</span><span style="left: 100%; transform: translateX(-100%);">PRÉSENCE</span>`;
+        } else if (range && hasData && !isNaN(val)) {
+            if (isCentered) {
+                const [c1, w1, g1, g2, w2, c2] = range;
+                if (val <= g1) pos = 15; else if (val >= g2) pos = 85; else pos = 50;
+                htmlLabels = `<span style="left: 10%;">${c1}</span><span style="left: 50%;">${g1}</span><span style="left: 90%;">${c2}</span>`;
+            } else {
+                const [b1, b2, b3] = range;
+                pos = Math.min(100, (val / b3) * 100);
+                htmlLabels = `<span style="left: 33%;">${b1}</span><span style="left: 66%;">${b2}</span><span style="left: 100%; transform: translateX(-100%);">${b3}</span>`;
+            }
+        }
+
+        const rowId = `row-${p.key}-${index}`;
+        return `
+            <div class="yuka-row-wrapper">
+                <div class="yuka-row" onclick="toggleYukaRow('${rowId}')">
+                    <div class="yuka-icon">${PARAM_ICONS[p.key] || ''}</div>
+                    <span class="yuka-name">${p.name}</span>
+                    <div class="yuka-val">${hasData ? p.data.val : '--'} <small>${(hasData && p.data.unit) ? p.data.unit : ''}</small></div>
+                    <div class="yuka-dot-small ${p.class}"></div>
+                    <svg class="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <span class="yuka-subtitle">${p.subtitle}</span>
+                </div>
+                <div id="${rowId}" class="yuka-details">
+                    <div class="yuka-range-container">
+                        ${hasData ? `
+                            <div class="yuka-range-bar ${isCentered ? 'centered' : 'linear'}" style="--marker-pos: ${pos}%; --marker-color: var(--${p.class})">
+                                <div class="yuka-marker"></div>
+                            </div>
+                            <div class="yuka-range-labels">${htmlLabels}</div>
+                        ` : '<div class="text-mini" style="text-align:center; padding:1rem;">Données non disponibles</div>'}
+                    </div>
+                </div>
+            </div>
+        `;
+    };
+
+    let scoreClass = "status-excellent";
+    if (crystal.final < 5) scoreClass = "status-critical";
+    else if (crystal.final < 8.5) scoreClass = "status-warning";
+
     panelContent.innerHTML = `
         <div class="vignette-hero">
             <div class="hero-bg" style="background-image: url('assets/img/vignette-bg.png')"></div>
@@ -348,7 +466,7 @@ function renderReport(cityName, meta, s, isConform) {
             <div class="hero-content">
                 <div class="hero-score-card">
                     <div class="hero-score-val">${crystal.final}/10</div>
-                    <div class="hero-status-badge status-excellent">${crystal.label}</div>
+                    <div class="hero-status-badge ${scoreClass}">${crystal.label}</div>
                     <div class="score-disclaimer">Indice indépendant</div>
                 </div>
                 <div class="hero-footer">
@@ -357,10 +475,35 @@ function renderReport(cityName, meta, s, isConform) {
                 </div>
             </div>
         </div>
+
+        <button class="share-btn" onclick="shareReport('${cityName}')" style="margin: 1.5rem auto;">
+            Partager l'analyse
+        </button>
+
+        ${vulnerabilities.length > 0 ? `
+            <div class="report-section">
+                <div class="section-header"><span>À surveiller</span><span class="count">${vulnerabilities.length}</span></div>
+                ${vulnerabilities.map((p, idx) => renderYukaRow(p, idx)).join('')}
+            </div>
+        ` : ''}
+
+        <div class="report-section">
+            <div class="section-header"><span>Qualité de l'eau</span><span class="count">${qualities.length}</span></div>
+            ${qualities.map((p, idx) => renderYukaRow(p, idx + 100)).join('')}
+        </div>
+
         <div style="padding:1.5rem;">
             <p class="text-mini">Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</p>
         </div>
     `;
+}
+
+function toggleYukaRow(rowId) {
+    const details = document.getElementById(rowId);
+    if (!details) return;
+    details.classList.toggle('active');
+    const arrow = details.previousElementSibling.querySelector('.yuka-toggle-arrow');
+    if (arrow) arrow.style.transform = details.classList.contains('active') ? "rotate(180deg)" : "rotate(0deg)";
 }
 
 // Share Logic
