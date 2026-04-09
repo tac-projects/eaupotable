@@ -679,7 +679,7 @@ function renderReport(cityName, meta, s, isConform) {
             </div>
             <div class="disclaimer-text">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-                <span>Source : Ministère de la Santé (ARS). Cet indice est une interprétation indépendante sans valeur réglementaire.</span>
+                <span>Source des données : Ministère de la Santé (ARS)</span>
             </div>
         </div>
     `;
