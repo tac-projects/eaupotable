@@ -1,19 +1,21 @@
 .search-floating.bottom-search {
     position: absolute;
     bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 900;
-    width: 94%; /* Géré par responsive.css sur mobile, mais on l'assure ici aussi */
+    /* Centrage Foolproof : Aucun translateX requis */
+    left: 3vw;
+    right: 3vw;
+    margin: 0 auto;
+    width: auto;
     max-width: 500px;
+    z-index: 900;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(0);
 }
 
 /* État quand la PWA est proposée : La barre monte au dessus */
 .search-floating.pwa-active {
-    transform: translateX(-50%) translateY(-90px);
+    transform: translateY(-90px);
 }
-
 
 .search-box {
     background: var(--bg-light);
@@ -1098,10 +1100,11 @@ main.content-wrapper {
 /* --- PWA INSTALL BANNER --- */
 .install-banner {
     position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%) translateY(200%);
-    width: 94%; /* Aligné exactement sur la barre de recherche */
+    bottom: 60px; /* Remonté pour éviter toute coupure liée à l'interface du téléphone */
+    left: 3vw;
+    right: 3vw;
+    margin: 0 auto;
+    width: auto;
     max-width: 500px;
     background: rgba(255, 255, 255, 0.98); /* Plus opaque pour la lisibilité */
     backdrop-filter: blur(10px);
@@ -1117,10 +1120,11 @@ main.content-wrapper {
     border: 1px solid rgba(255,255,255,0.5);
     pointer-events: none;
     opacity: 0;
+    transform: translateY(200%); /* Baseline pour l'animation */
 }
 
 .install-banner.visible {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
     pointer-events: auto;
     opacity: 1;
 }
