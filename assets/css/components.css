@@ -48,7 +48,7 @@
     background: transparent;
     border: none;
     color: var(--text-main);
-    padding: 1.2rem 0.5rem 1.2rem 1rem;
+    padding: 1.2rem 2px 1.2rem 1rem;
     font-size: 1.1rem;
     outline: none;
     font-family: var(--font-body);
@@ -58,7 +58,7 @@
 .clear-search {
     opacity: 0;
     visibility: hidden;
-    padding: 0 8px 0 2px;
+    padding: 0 10px 0 0;
     color: var(--text-light);
     transition: var(--transition-premium);
     display: flex;
