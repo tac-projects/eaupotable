@@ -637,7 +637,6 @@ function renderReport(cityName, meta, s, isConform) {
                 <div class="hero-score-card">
                     <div class="hero-score-val">${crystal.final}/10</div>
                     <div class="hero-status-badge ${scoreClass}">${crystal.label}</div>
-                    <div class="score-disclaimer">Indice indépendant</div>
                 </div>
                 <div class="hero-footer">
                     <h2 class="hero-city">${cityName}</h2>
