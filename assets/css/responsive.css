@@ -78,22 +78,22 @@
 @media (min-width: 1024px) {
     .side-panel {
         top: 100px;
-        width: 400px;
+        width: 480px;
         height: calc(100% - 140px);
-        right: -450px;
+        right: -550px;
     }
 
     .side-panel.active {
-        right: 40px;
+        right: 20px;
     }
 
     #panel-content {
-        padding: 1.5rem;
+        padding: 1.5rem 1.2rem;
     }
 
     /* Centrage dynamique de la recherche par rapport à l'espace libre */
     body:has(.side-panel.active) .search-floating {
-        left: calc((100% - 440px) / 2);
+        left: calc((100% - 520px) / 2);
         transform: translateX(-50%);
         transition: var(--transition-premium);
     }

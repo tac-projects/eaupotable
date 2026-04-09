@@ -15,7 +15,7 @@
 .search-box {
     background: var(--bg-light);
     padding: 0; /* On gère les paddings sur les enfants pour le bouton "full-height" */
-    border-radius: 100px;
+    border-radius: var(--radius-full);
     border: 1px solid rgba(0,0,0,0.06);
     display: flex;
     align-items: center;
@@ -256,7 +256,7 @@
     width: 85px;
     height: 85px;
     object-fit: cover;
-    border-radius: 18px;
+    border-radius: var(--radius-md);
     background: #fff;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 25px rgba(0,0,0,0.06);
@@ -298,7 +298,7 @@
     background: #fff;
     font-size: 1.4rem;
     padding: 8px 16px;
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     border: 2.5px solid rgba(0,0,0,0.05);
     box-shadow: 0 5px 20px rgba(0,0,0,0.06);
     font-weight: 900;
@@ -370,35 +370,53 @@
 }
 
 .yuka-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 42px 1fr 140px; /* Icon, Nom/Sous-titre (espace max), Bloc valeur réduit */
     align-items: center;
     gap: 1.2rem;
-    padding: 1rem 0;
+    padding: 1.1rem 0; /* Légère augmentation du padding pour l'aération */
     border-bottom: 1px solid rgba(0,0,0,0.03);
     transition: var(--transition-premium);
+    cursor: pointer;
 }
 
 .yuka-row:hover {
-    background: rgba(0,0,0,0.01);
+    background: rgba(0,0,0,0.02);
 }
 
 .yuka-icon {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-muted);
+    background: rgba(0, 102, 255, 0.04); /* Défaut bleu très léger */
+    border-radius: var(--radius-md);
+    color: var(--primary-solid);
+    flex-shrink: 0;
+    transition: var(--transition-premium);
 }
+
+/* Couleurs sémantiques dynamiques pour les icônes */
+.yuka-icon.status-excellent { background: rgba(38, 178, 59, 0.08); color: var(--status-excellent); }
+.yuka-icon.status-good { background: rgba(133, 217, 77, 0.08); color: var(--status-good); }
+.yuka-icon.status-warning { background: rgba(255, 145, 0, 0.08); color: var(--status-warning); }
+.yuka-icon.status-critical { background: rgba(230, 56, 47, 0.08); color: var(--status-critical); }
 
 .yuka-icon svg {
     width: 22px;
     height: 22px;
-    stroke-width: 1.25px; /* Légère accentuation pour la lisibilité */
+}
+
+.yuka-icon svg, 
+.search-icon, 
+.geolocate-btn svg, 
+.close-panel svg {
+    stroke-width: 1.5px !important;
 }
 
 .yuka-content {
-    flex: 1;
+    min-width: 0; /* Empêche le débordement du texte */
 }
 
 .yuka-name {
@@ -416,7 +434,8 @@
 }
 
 .yuka-value-group {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 14px 18px; /* Valeur (prend le reste), Dot (fixe), Flèche (fixe) */
     align-items: center;
     gap: 0.8rem;
     text-align: right;
@@ -426,6 +445,9 @@
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .yuka-dot-small {
@@ -539,7 +561,7 @@
     background: #FFFFFF;
     color: var(--text-main);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
+    border-radius: var(--radius-full);
     font-weight: 700;
     font-size: 0.9rem;
     cursor: pointer;
@@ -570,8 +592,8 @@
 .side-panel {
     position: absolute;
     top: 20px;
-    right: -450px;
-    width: 400px;
+    right: -550px;
+    width: 480px;
     height: calc(100% - 40px);
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -717,7 +739,7 @@
     color: white; 
     border: none; 
     padding: 15px; 
-    border-radius: 12px; 
+    border-radius: var(--radius-md); 
     font-weight: 700; 
     cursor: pointer; 
     transition: transform 0.2s; 
