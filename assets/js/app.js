@@ -823,59 +823,69 @@ searchInput.onblur = () => {
 };
 
 // --- Logique d'installation PWA (Bandeau) ---
-localStorage.removeItem('pwa-banner-excluded'); // FORCE RESET POUR TEST
 let deferredPrompt;
-const installBanner = document.getElementById('install-banner');
-const btnInstall = document.getElementById('btn-install');
-const btnCloseBanner = document.getElementById('btn-close-banner');
-const searchFloating = document.querySelector('.search-floating');
 
-// Vérification de l'exclusion de 7 jours (localStorage)
-function isBannerExcluded() {
-    const exclusionDate = localStorage.getItem('pwa-banner-excluded');
-    if (!exclusionDate) return false;
-    const now = new Date().getTime();
-    return now < parseInt(exclusionDate);
-}
+function initPWA() {
+    const installBanner = document.getElementById('install-banner');
+    const btnInstall = document.getElementById('btn-install');
+    const btnCloseBanner = document.getElementById('btn-close-banner');
+    const searchFloating = document.querySelector('.search-floating');
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Empêcher l'affichage automatique par défaut
-    e.preventDefault();
-    deferredPrompt = e;
+    if (!installBanner || !btnInstall || !btnCloseBanner) return;
 
-    // Afficher le bandeau seulement si pas d'exclusion en cours
-    if (!isBannerExcluded()) {
-        installBanner.classList.add('visible');
-        searchFloating.classList.add('pwa-active');
+    // Vérification de l'exclusion de 7 jours (localStorage)
+    function isBannerExcluded() {
+        const exclusionDate = localStorage.getItem('pwa-banner-excluded');
+        if (!exclusionDate) return false;
+        const now = new Date().getTime();
+        return now < parseInt(exclusionDate);
     }
-});
 
-btnInstall.onclick = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        if (!isBannerExcluded()) {
+            installBanner.classList.add('visible');
+            searchFloating.classList.add('pwa-active');
+        }
+    });
+
+    btnInstall.onclick = async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+            installBanner.classList.remove('visible');
+            searchFloating.classList.remove('pwa-active');
+        }
+        deferredPrompt = null;
+    };
+
+    btnCloseBanner.onclick = () => {
         installBanner.classList.remove('visible');
         searchFloating.classList.remove('pwa-active');
-    }
-    deferredPrompt = null;
-};
+        
+        const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
+        const expiryDate = new Date().getTime() + sevenDaysInMs;
+        localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
+    };
+}
 
-btnCloseBanner.onclick = () => {
-    installBanner.classList.remove('visible');
-    searchFloating.classList.remove('pwa-active');
-    
-    // Mémoriser le refus pour 7 jours
-    const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
-    const expiryDate = new Date().getTime() + sevenDaysInMs;
-    localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
-};
+// Lancer l'initialisation
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPWA);
+} else {
+    initPWA();
+}
 
-// Cacher le bandeau si on ouvre une analyse (priorité à la lecture des données)
+// Cacher le bandeau si on ouvre une analyse
 const originalFetchWaterData = fetchWaterData;
 fetchWaterData = async (cityName) => {
-    installBanner.classList.remove('visible');
-    searchFloating.classList.remove('pwa-active');
+    const banner = document.getElementById('install-banner');
+    const search = document.querySelector('.search-floating');
+    if (banner) banner.classList.remove('visible');
+    if (search) search.classList.remove('pwa-active');
     return originalFetchWaterData(cityName);
 };
 
