@@ -221,10 +221,10 @@ async function fetchWaterData(cityName) {
         </div>
     `;
 
-    // Ouverture différée de la vignette (3s) pour laisser la carte voler
+    // Ouverture différée de la vignette (4s) pour laisser la carte voler
     openPanelTimeout = setTimeout(() => {
         sidePanel.classList.add('active');
-    }, 3000);
+    }, 4000);
 
     try {
         // Pour les très grandes villes comme Paris, on monte à 10000 résultats pour remonter assez loin dans le temps
