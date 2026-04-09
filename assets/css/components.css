@@ -405,7 +405,7 @@
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-top: 4px; /* Espace avec la ville au-dessus */
+    margin-top: 0; /* Compensation du padding de la ville */
 }
 
 .hero-city {
@@ -413,7 +413,8 @@
     font-weight: 800;
     color: white;
     margin: 0;
-    line-height: 1;
+    line-height: 1.1; /* Au lieu de 1 pour libérer les lettres descendantes */
+    padding-bottom: 4px; /* Évite la coupure avec overflow hidden */
     letter-spacing: -0.02em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     white-space: nowrap;
