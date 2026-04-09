@@ -630,8 +630,8 @@ function renderReport(cityName, meta, s, isConform) {
                     <div class="hero-status-badge ${scoreClass}">${crystal.label}</div>
                 </div>
                 <div class="hero-footer">
-                    <div class="hero-network">${nomReseau}</div>
                     <h2 class="hero-city">${cityName}</h2>
+                    <div class="hero-network">${nomReseau}</div>
                 </div>
             </div>
         </div>
