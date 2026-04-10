@@ -3,13 +3,19 @@
 /* MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
     header.transparent-header {
-        height: 60px;
-        padding: 0 15px;
+        padding: 0;
+    }
+
+    .nav-wrapper {
+        padding: 0 12px; /* Le logo reste proche du bord gauche */
+    }
+
+    .hamburger-btn {
+        margin-right: 12px; /* Seul le hamburger est écarté du bord droit */
     }
 
     .logo {
-        font-size: 1.8rem;
-        transform: translateY(3px); /* Ajustement optique mobile */
+        /* Styles maintenant gérés par les tokens dans variables.css */
     }
 
     /* Map occupies full smartphone/tablet height */
@@ -100,9 +106,9 @@
 /* MODE DASHBOARD: DESKTOP */
 @media (min-width: 1024px) {
     .side-panel {
-        top: 100px;
+        top: 80px;
         width: 380px;
-        height: calc(100% - 140px);
+        height: calc(100% - 100px);
         right: -550px;
     }
 

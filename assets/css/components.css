@@ -246,13 +246,13 @@
 /* Global Logo */
 .logo {
     font-family: var(--font-logo);
-    font-size: 2.4rem;
+    font-size: var(--font-size-logo);
     font-weight: 400;
     color: var(--text-logo);
     text-decoration: none;
     display: flex;
     align-items: center;
-    transform: translateY(4px); /* Ajustement optique pour le style cursif */
+    transform: translateY(var(--logo-y-offset)); /* Ajustement optique pour le style cursif */
 }
 
 /* Hamburger Button */
@@ -849,7 +849,7 @@
 
 /* --- PAGE CONTENT COMPONENTS (Legal, Contact, etc.) --- */
 main.content-wrapper {
-    padding: 140px 20px 80px;
+    padding: 110px 20px 80px; /* Réduit de 140px suite à la réduction du header */
     max-width: 1000px;
     margin: 0 auto;
     color: var(--text-main);
@@ -1109,7 +1109,7 @@ main.content-wrapper {
     }
     
     main.content-wrapper {
-        padding-top: 130px !important;
+        padding-top: 100px !important; /* Harmonisé avec la réduction du header */
     }
 }
 
