@@ -242,27 +242,28 @@ async function fetchWaterData(cityName) {
         reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
         // Helper interne robuste utilisant les codes Sandre (officiels) et les mots-clés
-        const getParam = (codes, keywords) => {
+        const getParam = (codes, keywords, requiredUnits = []) => {
             const match = reports.find(r => {
-                const unit = (r.libelle_unite || "").toLowerCase();
-                const label = r.libelle_parametre.toLowerCase()
-                                .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+                const unit = (r.libelle_unite || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const label = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+                const code = `${r.code_parametre}`;
 
-                // 1. Exclusion radicale de la température (très robuste contre les erreurs de labo)
-                const containsC = unit.includes("c") || unit.includes("deg");
-                const containsDegreeSign = unit.includes("°") || unit.includes("º") || label.includes("°");
-                const isTempLabel = label.includes("temperature") || label.includes("t°") || label.startsWith("t ");
-                
-                if (isTempLabel || (containsC && containsDegreeSign)) return false;
+                // 1. Absolute exclusion: Temperature and wrong units for critical params
+                if ((unit.includes("°") && !unit.includes("°f")) || unit.includes("deg") || label.includes("temp") || label.includes("t°")) return false;
 
-                // 2. Priorité au Code Sandre (infaillible)
-                const isCodeMatch = codes.some(c => `${r.code_parametre}` === `${c}`);
-                if (isCodeMatch) return (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
+                // 2. Unit validation for critical params (pH, Conductivity)
+                if (requiredUnits.length > 0) {
+                    const hasRequiredUnit = requiredUnits.some(ru => {
+                        const target = ru.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        return unit.includes(target);
+                    });
+                    if (!hasRequiredUnit) return false;
+                }
 
-                // 3. Fallback sur le libellé textuel (plus strict pour éviter les faux positifs)
+                // 3. Match by Code OR Keywords
+                const isCodeMatch = codes.some(c => code === `${c}`);
                 const isWordMatch = keywords.some(kw => {
                     const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                    // Si le mot clé est très court (ex: ph, th, cond), on exige qu'il soit un mot isolé
                     if (lowKw.length <= 3) {
                         const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
                         return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
@@ -270,7 +271,7 @@ async function fetchWaterData(cityName) {
                     return label.includes(lowKw);
                 });
 
-                return isWordMatch && (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
+                return (isCodeMatch || isWordMatch) && (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
             });
 
             if (!match) return null;
@@ -278,13 +279,9 @@ async function fetchWaterData(cityName) {
             const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") 
                            ? match.resultat_alphanumerique 
                            : match.resultat_numerique;
-
-            const cleanUnit = (u) => {
-                if (!u) return '';
-                // Simplification des unités techniques (ex: mg(Cl2)/L -> mg/L)
-                return u.replace(/\(.*\)/g, '').replace('unité ', '').trim();
-            };
             
+            const cleanUnit = (u) => !u ? '' : u.replace(/\(.*\)/g, '').replace('unité ', '').trim();
+
             return {
                 val: (rawVal !== null && rawVal !== undefined) ? `${rawVal}` : '--',
                 unit: cleanUnit(match.libelle_unite),
@@ -295,10 +292,10 @@ async function fetchWaterData(cityName) {
 
         const stats = {
             nitrates: getParam([1340, 1342], ["nitrate"]),
-            ph: getParam([1301], ["ph", "potentiel hydrogene"]),
-            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", " th "]),
+            ph: getParam([1301, 1302], ["ph", "potentiel hydrogene"], ["ph"]),
+            hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", "th", "titre"]),
             chlorine: getParam([1399], ["chlore libre", "chlore total"]),
-            conductivity: getParam([1302], ["conductivite"]),
+            conductivity: getParam([1302, 1303], ["conductivite"], ["µS", "siemens", "us/cm"]),
             turbidity: getParam([1305], ["turbidite", "turb"]),
             iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
             manganese: getParam([1394, 1373], ["manganese"]),
