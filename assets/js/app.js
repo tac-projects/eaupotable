@@ -511,7 +511,7 @@ function renderReport(cityName, meta, s, isConform) {
     const crystal = calculateCrystalScore(s, isConform);
 
     const params = [
-        { name: "Microbiologie", data: { val: "Absence", unit: "" }, key: "bacteria" },
+        { name: "Microbiologie", data: { val: "Absence", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') }, key: "bacteria" },
         { name: "Nitrates", data: s.nitrates, key: "nitrates" },
         { name: "Calcaire", data: s.hardness, key: "hardness" },
         { name: "Acidité (pH)", data: s.ph, key: "ph" },
@@ -617,9 +617,11 @@ function renderReport(cityName, meta, s, isConform) {
                             <div class="yuka-range-labels">
                                 ${htmlLabels}
                             </div>
-                            <div class="yuka-date-info">
-                                Analyse du ${p.data.date}
-                            </div>
+                            ${p.data.date ? `
+                                <div class="yuka-date-info">
+                                    Analyse du ${p.data.date}
+                                </div>
+                            ` : ''}
                         ` : `
                             <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
                                 Aucune analyse récente disponible pour ce paramètre.
