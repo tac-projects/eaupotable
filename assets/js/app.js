@@ -618,7 +618,7 @@ function renderReport(cityName, meta, s, isConform) {
                                 ${htmlLabels}
                             </div>
                             <div class="yuka-date-info">
-                                Analyse officielle du ${p.data.date}
+                                Analyse du ${p.data.date}
                             </div>
                         ` : `
                             <div style="text-align:center; font-size:0.8rem; color:var(--text-light); padding:1rem;">
