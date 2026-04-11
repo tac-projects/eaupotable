@@ -67,6 +67,7 @@ const searchInput = document.getElementById('searchVille');
 const searchResults = document.getElementById('search-results');
 const hamburger = document.getElementById('hamburger');
 const mainMenu = document.getElementById('main-menu');
+const closeMenu = document.getElementById('close-menu');
 const geolocateBtn = document.getElementById('geolocate-btn');
 const clearSearchBtn = document.getElementById('clear-search');
 
@@ -74,6 +75,13 @@ hamburger.onclick = () => {
     hamburger.classList.toggle('is-active');
     mainMenu.classList.toggle('active');
 };
+
+if (closeMenu) {
+    closeMenu.onclick = () => {
+        mainMenu.classList.remove('active');
+        hamburger.classList.remove('is-active');
+    };
+}
 
 closeBtn.onclick = () => sidePanel.classList.remove('active');
 
