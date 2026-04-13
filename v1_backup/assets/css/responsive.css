@@ -1,0 +1,142 @@
+/* Adaptive Binary Strategy: Mobile/Tablet (< 1024px) vs Desktop (>= 1024px) */
+
+/* MODE IMMERSIF: MOBILE & TABLETTES */
+@media (max-width: 1023px) {
+    header.transparent-header {
+        padding: 0;
+    }
+
+    .nav-wrapper {
+        padding: 0 12px; /* Le logo reste proche du bord gauche */
+    }
+
+    .hamburger-btn {
+        margin-right: 12px; /* Seul le hamburger est écarté du bord droit */
+    }
+
+    .logo {
+        /* Styles maintenant gérés par les tokens dans variables.css */
+    }
+
+    /* Map occupies full smartphone/tablet height */
+    #map-section, #map {
+        height: 100vh;
+        height: 100svh;
+    }
+
+    .search-floating {
+        bottom: 40px; /* Position basse par défaut alignée sur le desktop */
+        top: auto;
+        width: 94%;
+        z-index: 800;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Masquer la barre de recherche et la bannière quand l'analyse est ouverte */
+    body:has(.side-panel.active) .search-floating,
+    body:has(.side-panel.active) .install-banner {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+    }
+
+    .search-input {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    /* Bottom Sheet Style - Commun Mobile/Tablette */
+    .side-panel {
+        top: auto;
+        bottom: -100%;
+        right: 10px; /* Marges latérales pour évite le débordement */
+        left: 10px;
+        width: auto; /* Laisser left/right gérer la largeur */
+        height: 80vh;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 -15px 50px rgba(0,0,0,0.15);
+        padding: 0;
+        z-index: 2500;
+        overflow: visible; /* Autorise le bouton fermer sur la bordure */
+    }
+
+    .yuka-name {
+        grid-row: 1;
+        grid-column: 2;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text-main);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Empêche le nom de casser la grille en revenant à la ligne */
+    }
+
+    .side-panel.active {
+        bottom: 10px; /* Petit décollage du bas pour le look Premium Floating */
+        right: 10px;
+        left: 10px;
+    }
+
+    #panel-content {
+        padding: 1rem; 
+    }
+
+    .vignette-hero {
+        height: 240px;
+        margin: -1rem -1rem 1.5rem -1rem; /* Perfectly flush on mobile */
+    }
+
+
+    .close-panel {
+        top: -18px; 
+        right: 5px; 
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+/* MODE DASHBOARD: DESKTOP */
+@media (min-width: 1024px) {
+    .side-panel {
+        top: 80px;
+        width: 380px;
+        height: calc(100% - 100px);
+        right: -550px;
+    }
+
+    .side-panel.active {
+        right: 20px;
+    }
+
+    #panel-content {
+        padding: 1.5rem 1.25rem; /* Marges gauche et droite identiques pour une symétrie parfaite */
+    }
+
+    /* Centrage dynamique de la recherche par rapport à l'espace libre */
+    body:has(.side-panel.active) .search-floating {
+        right: auto;
+        margin: 0;
+        left: calc((100% - 420px) / 2);
+        transform: translateX(-50%);
+        transition: var(--transition-premium);
+    }
+
+    .vignette-hero {
+        margin: -1.5rem -1.25rem 2rem -1.25rem; /* Perfectly flush on desktop */
+    }
+}
+
+/* Fix pour Safari Mobile (vh units) */
+@supports (-webkit-touch-callout: none) {
+    #map-section, #map {
+        height: -webkit-fill-available;
+    }
+}

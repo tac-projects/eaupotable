@@ -1,0 +1,58 @@
+:root {
+    /* Color Palette - Pure Crystal (Light Mode) */
+    --bg-light: #FFFFFF;
+    --surface: #F8FAFC;
+    --surface-sunken: #EDF2F7;
+    
+    --primary-solid: #0066FF;
+    --primary-gradient: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
+    --primary-glow: rgba(0, 102, 255, 0.15);
+    
+    --text-main: #1A202C;
+    --text-muted: #4A5568;
+    --text-light: #718096;
+    --text-logo: #2D3748; /* Anthracite adouci */
+    
+    /* Status Levels - Shared (Exact Yuka Palette) */
+    --status-excellent: #26b23b;
+    --status-good: #85D94D;
+    --status-warning: #FF9100;
+    --status-critical: #E6382F;
+    
+    /* Effects */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-blur: blur(15px);
+    --glass-border-light: 1px solid rgba(255, 255, 255, 0.4);
+    --ghost-border: 1px solid rgba(0, 0, 0, 0.05);
+    --shadow-premium: none;
+    
+    /* Typography */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-logo: 'Grand Hotel', cursive;
+
+    --transition-premium: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-slow: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-full: 100px;
+    
+    /* Spacing Tokens */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Hero Card Specifics */
+    --hero-height: 280px;
+    --hero-radius: 28px;
+
+    /* Header & Logo Tokens */
+    --header-height: 60px;
+    --font-size-logo: 1.8rem;
+    --logo-y-offset: 3px;
+}
