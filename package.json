@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "indexnow": "node scripts/notify-indexnow.js"
   },
   "dependencies": {
     "mapbox-gl": "^3.21.0",
