@@ -441,13 +441,20 @@ function CitySEOContent({ cityName, data }) {
   const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
   const dpt = meta.code_departement || "";
 
-  // Helper func
-  const getVal = (stat) => stat?.val && stat.val !== '--' ? parseFloat(stat.val.replace(',', '.')) : null;
+  // Helper func pour le parsing sécurisé
+  const getVal = (stat) => {
+    if (!stat || !stat.val) return null;
+    const n = parseValue(stat.val);
+    return isNaN(n) ? null : n;
+  };
   
   const nitrates = getVal(stats.nitrates);
   const durete = getVal(stats.hardness);
   const chlore = getVal(stats.chlorine);
   const ph = getVal(stats.ph);
+
+  // Helper pour l'affichage (évite les NaN dans le HTML)
+  const fVal = (val, unit = "") => (val === null || isNaN(val)) ? '--' : `${val}${unit}`;
 
   // Helper func pour le Spintax déterministe (garde la page stable pour Google mais différente par ville)
   const spin = (variants) => {
@@ -654,37 +661,37 @@ function CitySEOContent({ cityName, data }) {
                         <td>{deptAvg.conformRate}%</td>
                         <td className="hide-mobile">
                           <span className={`seo-badge ${isConform ? 'badge-success' : 'badge-warn'}`}>
-                            {isConform ? 'Standard' : 'Alerte'}
+                            {isConform ? 'Conforme' : 'Alerte'}
                           </span>
                         </td>
                       </tr>
                       <tr>
                         <td><strong>Nitrates</strong></td>
-                        <td className="col-highlight">{nitrates || '--'} mg/L</td>
-                        <td>{deptAvg.nitrates || '--'} mg/L</td>
+                        <td className="col-highlight">{fVal(nitrates, " mg/L")}</td>
+                        <td>{fVal(deptAvg.nitrates, " mg/L")}</td>
                         <td className="hide-mobile">
-                          <span className={`seo-badge ${nitrates < parseFloat(deptAvg.nitrates) ? 'badge-success' : 'badge-warn'}`}>
-                            {nitrates < parseFloat(deptAvg.nitrates) ? 'Excellente' : 'Vigilance'}
+                          <span className={`seo-badge ${nitrates !== null && deptAvg.nitrates !== null && nitrates < parseFloat(deptAvg.nitrates) ? 'badge-success' : 'badge-warn'}`}>
+                            {nitrates !== null && deptAvg.nitrates !== null && nitrates < parseFloat(deptAvg.nitrates) ? 'Excellente' : 'Vigilance'}
                           </span>
                         </td>
                       </tr>
                       <tr>
                         <td><strong>Calcaire</strong></td>
-                        <td className="col-highlight">{durete || '--'} °f</td>
-                        <td>{deptAvg.hardness || '--'} °f</td>
+                        <td className="col-highlight">{fVal(durete, " °f")}</td>
+                        <td>{fVal(deptAvg.hardness, " °f")}</td>
                         <td className="hide-mobile">
-                          <span className={`seo-badge ${durete < parseFloat(deptAvg.hardness) ? 'badge-success' : 'badge-warn'}`}>
-                            {durete < parseFloat(deptAvg.hardness) ? 'Plus douce' : 'Plus dure'}
+                          <span className={`seo-badge ${durete !== null && deptAvg.hardness !== null && durete < parseFloat(deptAvg.hardness) ? 'badge-success' : 'badge-warn'}`}>
+                            {durete !== null && deptAvg.hardness !== null && durete < parseFloat(deptAvg.hardness) ? 'Plus douce' : 'Plus dure'}
                           </span>
                         </td>
                       </tr>
                       <tr>
                         <td><strong>Chlore</strong></td>
-                        <td className="col-highlight">{chlore || '--'} mg/L</td>
-                        <td>{deptAvg.chlorine || '--'} mg/L</td>
+                        <td className="col-highlight">{fVal(chlore, " mg/L")}</td>
+                        <td>{fVal(deptAvg.chlorine, " mg/L")}</td>
                         <td className="hide-mobile">
-                          <span className={`seo-badge ${chlore <= parseFloat(deptAvg.chlorine) ? 'badge-success' : 'badge-warn'}`}>
-                            {chlore <= parseFloat(deptAvg.chlorine) ? 'Plus neutre' : 'Plus marqué'}
+                          <span className={`seo-badge ${chlore !== null && deptAvg.chlorine !== null && chlore <= parseFloat(deptAvg.chlorine) ? 'badge-success' : 'badge-warn'}`}>
+                            {chlore !== null && deptAvg.chlorine !== null && chlore <= parseFloat(deptAvg.chlorine) ? 'Plus neutre' : 'Plus marqué'}
                           </span>
                         </td>
                       </tr>
