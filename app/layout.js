@@ -7,6 +7,7 @@ import './styles/seo.css';
 import Script from 'next/script';
 
 export const metadata = {
+  metadataBase: new URL('https://www.eaupotable.net'),
   title: 'EauPotable.net | La vérité sur l\'eau de votre robinet.',
   description: 'Analysez la qualité de l\'eau potable de votre ville instantanément. Accédez aux relevés officiels sur les pesticides, nitrates et calcaire pour une transparence totale.',
   manifest: '/manifest.json',
@@ -17,6 +18,17 @@ export const metadata = {
     statusBarStyle: 'black-translucent',
     title: 'EauPotable',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EauPotable.net',
+    description: 'La vérité sur l\'eau de votre robinet.',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://www.eaupotable.net',
+    siteName: 'EauPotable.net',
+  }
 };
 
 export default function RootLayout({ children }) {
