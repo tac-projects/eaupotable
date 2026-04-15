@@ -1,8 +1,30 @@
+const fs = require('fs');
+const path = require('path');
+
 const host = "www.eaupotable.net";
 const key = "7be75716d932ac5e09522369aa85b026";
 
 async function notifyIndexNow() {
-  console.log(`🚀 Notification IndexNow pour ${host}...`);
+  console.log(`🚀 Préparation de la notification IndexNow pour ${host}...`);
+
+  // 1. Extraction de 50 URLs de villes aléatoires depuis le sitemap pour rotation
+  let randomUrls = [];
+  try {
+    const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
+    if (fs.existsSync(sitemapPath)) {
+      const xml = fs.readFileSync(sitemapPath, 'utf8');
+      // Regex pour capturer les URLs des villes uniquement
+      const allUrls = xml.match(/https:\/\/www\.eaupotable\.net\/ville\/[a-z0-9-]+/g) || [];
+      
+      if (allUrls.length > 0) {
+        // Mélange et sélection de 50 URLs
+        randomUrls = allUrls.sort(() => 0.5 - Math.random()).slice(0, 50);
+        console.log(`🎲 Rotation : ${randomUrls.length} villes sélectionnées aléatoirement.`);
+      }
+    }
+  } catch (err) {
+    console.error("⚠️ Erreur lors de la lecture du sitemap pour la rotation :", err.message);
+  }
   
   const url = "https://www.bing.com/indexnow";
   const data = {
@@ -12,7 +34,8 @@ async function notifyIndexNow() {
     urlList: [
       `https://${host}/`,
       `https://${host}/villes`,
-      `https://${host}/sitemap.xml`
+      `https://${host}/sitemap.xml`,
+      ...randomUrls
     ]
   };
 
@@ -24,7 +47,7 @@ async function notifyIndexNow() {
     });
 
     if (response.status === 200 || response.status === 202) {
-      console.log("✅ Succès ! Les moteurs de recherche (Bing, Seznam...) ont été notifiés.");
+      console.log(`✅ Succès ! ${data.urlList.length} URLs ont été poussées vers Bing/Seznam.`);
       console.log("Status:", response.status);
     } else {
       console.error("❌ Erreur lors de la notification IndexNow.");
