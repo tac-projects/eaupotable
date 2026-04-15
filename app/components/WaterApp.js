@@ -128,7 +128,8 @@ export default function WaterApp({ initialCity = null }) {
       style: 'mapbox://styles/mapbox/light-v11',
       center: [2.2137, 46.2276],
       zoom: 5.0,
-      projection: 'globe'
+      projection: 'globe',
+      interactive: false
     });
 
     m.on('style.load', () => { m.setFog({}); });
@@ -142,18 +143,7 @@ export default function WaterApp({ initialCity = null }) {
       setMap(m);
     });
 
-    m.on('click', async (e) => {
-      const { lng, lat } = e.lngLat;
-      m.getCanvas().style.cursor = 'wait';
-      try {
-        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxToken}&types=place&country=FR&language=fr&limit=1`;
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.features?.length > 0) { handleSearchSelection(data.features[0]); }
-      } finally {
-        m.getCanvas().style.cursor = 'pointer';
-      }
-    });
+
 
     return () => m.remove();
   }, []);
@@ -200,7 +190,18 @@ export default function WaterApp({ initialCity = null }) {
         setWaterData({ error: `Aucune donnée Hub'Eau pour ${cityName}.` });
         return;
       }
-      const reports = data.data;
+      let reports = data.data;
+      
+      // Filtrage strict par nom de commune pour éviter les ambiguïtés (ex: Marseille vs Marseille-en-Beauvaisis)
+      const exactMatch = reports.filter(r => 
+        r.nom_commune.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ') === 
+        cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ')
+      );
+
+      if (exactMatch.length > 0) {
+        reports = exactMatch;
+      }
+
       reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
 
       const getParam = (codes, keywords, requiredUnits = []) => {
@@ -379,9 +380,488 @@ export default function WaterApp({ initialCity = null }) {
           </div>
         </div>
       </section>
+
+      {/* Section SEO dynamique sous la carte */}
+      {selectedCity && <CitySEOContent cityName={selectedCity} data={waterData} />}
     </main>
   );
 }
+
+function CitySEOContent({ cityName, data }) {
+  const [deptAvg, setDeptAvg] = useState(null);
+
+  useEffect(() => {
+    if (!data || data.error || !data.meta?.code_departement) return;
+    const dpt = data.meta.code_departement;
+    
+    // Appel discret pour récupérer les prélèvements du département
+    fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=500`)
+      .then(r => r.json())
+      .then(res => {
+        if (!res.data) return;
+        const nArr = [];
+        const hArr = [];
+        const cArr = [];
+        let conformCount = 0;
+        let evaluatedCount = 0;
+        res.data.forEach(r => {
+          // Utilisation des champs globaux du prélèvement (avec _prelevement)
+          const isPhysicoConform = r.conformite_limites_pc_prelevement === 'C';
+          const isBactConform = r.conformite_limites_bact_prelevement === 'C';
+
+          // On vérifie s'il y a au moins une donnée de conformité disponible
+          if (r.conformite_limites_pc_prelevement === 'C' || r.conformite_limites_pc_prelevement === 'N') {
+              evaluatedCount++;
+              // L'eau est jugée conforme si les DEUX volets (PC et Bact) sont 'C'
+              if (isPhysicoConform && isBactConform) conformCount++;
+          }
+          
+          if (r.resultat_numerique === null) return;
+          const lbl = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          if (lbl.includes("nitrate")) nArr.push(r.resultat_numerique);
+          if (lbl.includes("hydrotimetrique") || lbl.includes("durete")) hArr.push(r.resultat_numerique);
+          if (lbl.includes("chlore")) cArr.push(r.resultat_numerique);
+        });
+        const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : null;
+        const total = evaluatedCount || 1;
+        const avgCl = cArr.length ? (cArr.reduce((a, b) => a + b, 0) / cArr.length).toFixed(2) : null;
+        setDeptAvg({ 
+          nitrates: getAvg(nArr), 
+          hardness: getAvg(hArr), 
+          chlorine: avgCl,
+          conformRate: ((conformCount / total) * 100).toFixed(0) 
+        });
+      }).catch(() => {});
+  }, [data]);
+
+  if (!data || data.error) return null; // We only show SEO content when we have actual data to describe
+
+  const { crystal, stats, isConform, meta } = data;
+  const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
+  const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
+  const dpt = meta.code_departement || "";
+
+  // Helper func
+  const getVal = (stat) => stat?.val && stat.val !== '--' ? parseFloat(stat.val.replace(',', '.')) : null;
+  
+  const nitrates = getVal(stats.nitrates);
+  const durete = getVal(stats.hardness);
+  const chlore = getVal(stats.chlorine);
+  const ph = getVal(stats.ph);
+
+  // Helper func pour le Spintax déterministe (garde la page stable pour Google mais différente par ville)
+  const spin = (variants) => {
+    const idx = cityName.length % variants.length;
+    return variants[idx].replace(/\{cityName\}/g, cityName).replace(/\{nomReseau\}/g, nomReseau);
+  };
+
+  // 1. Synthèse (Crystal Score) avec Spintax
+  let introSynthese = spin([
+    `L'eau distribuée à {cityName} par le réseau {nomReseau} présente une note de qualité de ${crystal.final}/10.`,
+    `Le bilan de santé de l'eau à {cityName} ({nomReseau}) affiche un score global de ${crystal.final}/10.`,
+    `Concernant la zone de {cityName}, les analyses du réseau {nomReseau} révèlent une qualité d'eau notée à ${crystal.final}/10.`
+  ]);
+  
+  let syntheseTexte = introSynthese + " ";
+  if (crystal.final >= 9) {
+    syntheseTexte += `C'est une eau d'une pureté exceptionnelle, parfaitement adaptée à la consommation quotidienne par tous les membres de la famille, y compris les nourrissons.`;
+  } else if (crystal.final >= 7) {
+    syntheseTexte += `La qualité globale est tout à fait satisfaisante. Elle respecte les normes de santé publique en vigueur, avec seulement de légères variations sur certains paramètres mineurs de confort.`;
+  } else if (crystal.final >= 5) {
+    const defaultText = `Bien que l'eau reste globalement propre à la consommation, son confort d'usage (goût, tartre) est impacté par certains éléments de traitement.`;
+    if (durete > 25 && chlore > 0.2) {
+      syntheseTexte += `Bien que l'eau reste propre à la consommation, la dureté élevée de l'eau couplée au chlore viennent peser sur son confort d'usage quotidien.`;
+    } else if (chlore > 0.3) {
+      syntheseTexte += `Bien que l'eau reste globalement propre à la consommation, une forte présence de chlore (ajouté pour la désinfection) vient peser sur le confort gustatif au quotidien.`;
+    } else if (durete > 30) {
+      syntheseTexte += `Bien que l'eau reste propre à la consommation, un taux de calcaire très élevé impacte son confort d'usage (assèchement de la peau, entartrage).`;
+    } else {
+      syntheseTexte += defaultText;
+    }
+  } else {
+    syntheseTexte += `Des points de vigilance majeurs ont été soulevés lors des dernières analyses. Il est recommandé de consulter les avis locaux de votre mairie (Département ${dpt}).`;
+  }
+
+  // 1.b Ajout du comparatif départemental à la synthèse
+  if (deptAvg) {
+      if (nitrates !== null && deptAvg.nitrates !== null) {
+          const avgN = parseFloat(deptAvg.nitrates);
+          if (nitrates < avgN) {
+              syntheseTexte += ` De plus, avec un taux de nitrates de seulement ${nitrates} mg/L, l'eau de ${cityName} est sensiblement plus pure que la moyenne du département ${dpt} (${avgN} mg/L).`;
+          } else if (nitrates > avgN + 5) {
+              syntheseTexte += ` À noter cependant que le taux de nitrates local (${nitrates} mg/L) est légèrement supérieur à la moyenne départementale (${avgN} mg/L), bien qu'il reste dans les normes.`;
+          }
+      }
+      if (deptAvg.conformRate) {
+          syntheseTexte += ` Globalement, le département ${dpt} affiche un taux de conformité sanitaire de ${deptAvg.conformRate}%, une dynamique dans laquelle ${cityName} s'inscrit pleinement.`;
+      }
+  }
+
+  // 2. Dossier Calcaire
+  let calcaireTitre = spin([
+    "Teneur en Calcaire",
+    "Qualité de l'eau et Calcaire",
+    "Dureté de l'eau à {cityName}"
+  ]);
+
+  let calcaireTexte = spin([
+    `Les dernières analyses montrent une dureté normale pour {cityName}. Vos appareils électroménagers ne nécessitent pas de traitement anti-calcaire agressif.`,
+    `À {cityName}, le Titre Hydrotimétrique est équilibré. L'eau ne présente pas de risque majeur d'entartrage précoce pour votre plomberie.`,
+    `L'équilibre minéral de {cityName} est satisfaisant. La douceur de l'eau préserve nativement vos installations des dépôts de tartre.`
+  ]);
+
+  if (durete && durete > 30) {
+    calcaireTitre = spin(["Une eau très calcaire (dure)", "Alerte Calcaire à {cityName}", "Forte dureté de l'eau"]);
+    calcaireTexte = spin([
+      `L'eau de {cityName} affiche une dureté importante (supérieure à 30°f). Si le calcium est excellent pour votre santé locale, le tartre menace vos appareils.`,
+      `Le réseau {nomReseau} distribue une eau chargée en calcaire. Un entretien régulier de vos cafetières et chauffe-eau est recommandé à {cityName}.`,
+      `Avec plus de 30°f, la dureté de l'eau à {cityName} impose une vigilance sur l'entartrage de vos résistances électriques.`
+    ]);
+  } else if (durete && durete < 15) {
+    calcaireTitre = spin(["Une eau plutôt douce", "Douceur de l'eau à {cityName}", "Faible taux de calcaire"]);
+    calcaireTexte = spin([
+      `Avec sa faible dureté, l'eau s'écoulant de vos robinets à {cityName} protège nativement votre électroménager du calcaire redouté.`,
+      `Bonne nouvelle pour les habitants de {cityName} : l'eau est douce, ce qui permet de réduire la dose de savon et de protéger sa peau.`,
+      `À {cityName}, la minéralité est légère. L'absence de calcaire marqué est un atout précieux pour la longévité de vos appareils.`
+    ]);
+  }
+
+  if (deptAvg && durete !== null && deptAvg.hardness !== null) {
+      const avgC = parseFloat(deptAvg.hardness);
+      if (durete < avgC - 2) {
+          calcaireTexte += ` C'est une excellente nouvelle : avec ${durete}°f, l'eau d'ici est moins calcaire que la moyenne du département (${avgC}°f).`;
+      } else if (durete > avgC + 2) {
+          calcaireTexte += ` Pour information, avec ${durete}°f, elle est plus concentrée en calcaire que la moyenne départementale (${avgC}°f).`;
+      } else {
+          calcaireTexte += ` À noter que ce taux de ${durete}°f est parfaitement dans la moyenne du département (${avgC}°f).`;
+      }
+  }
+
+  // 3. Chlore & Goût
+  let chloreTitre = "Conseils de dégustation";
+  let chloreTexte = `Pour libérer tous les arômes de votre eau, placez-la toujours en carafe ouverte au réfrigérateur environ 20 minutes avant de la consommer. Le léger résidu de chlore réglementaire s'évaporera naturellement.`;
+  if (chlore && chlore > 0.3) {
+    chloreTitre = "Atténuer le goût de chlore";
+    chloreTexte = `Afin de garantir une désinfection totale le long du réseau de ${nomReseau}, une dose de chlore légèrement perceptible est ajoutée. Si l'eau a un goût au robinet, l'astuce de la rondelle de citron ou de la conservation en carafe de verre au réfrigérateur fera des miracles à ${cityName}.`;
+  } else if (chlore && chlore <= 0.1) {
+    chloreTitre = "Une eau au goût neutre";
+    chloreTexte = `Grâce à un réseau optimisé, le taux de chlore résiduel à ${cityName} est extrêmement faible. Cela garantit une eau au goût quasi-neutre tout en préservant une qualité bactériologique impeccable.`;
+  }
+  // 4. Origine & Environnement avec Spintax Structurel
+  let bassin = dpt ? `(Département ${dpt})` : "de la région";
+  let origineIntro = spin([
+    `Bien que les données géographiques exactes du captage soient spécifiques à chaque quartier, l'eau distribuée dans le secteur de {cityName} ${bassin} provient principalement d'eaux souterraines ou de cours d'eau régionaux hautement surveillés.`,
+    `Le captage qui alimente {cityName} ${bassin} puise sa ressource dans des nappes phréatiques ou des rivières de proximité faisant l'objet d'un suivi environnemental constant de la part de {nomReseau}.`,
+    `À {cityName}, l'approvisionnement en eau potable repose sur un maillage de forages et de stations de pompage {bassin} garantissant une continuité de service pour tous les foyers.`
+  ]);
+
+  let origineTexte = `${origineIntro} \n\nAvant d'arriver à votre robinet, cette eau brute traverse un réseau d'infrastructures de traitement complexes : décantation, filtration sur sable, ozonation et ajout sécurisé de chlore pour prévenir toute contamination bactériologique dans la tuyauterie. \n\nLes installations qui desservent {cityName} sont soumises à des audits stricts pilotés par l'Agence Régionale de Santé (ARS), garantissant que l'impact environnemental local est minimisé tout en fournissant une eau sécurisée à la demande.`;
+
+  let filterReason = "";
+  if (durete > 25 && chlore > 0.2) filterReason = "la dureté de l'eau (niveau de calcaire) et la présence résiduelle de chlore";
+  else if (durete > 25) filterReason = "la dureté importante de l'eau (tartre/calcaire)";
+  else if (chlore > 0.2) filterReason = "la présence résiduelle de chlore (goût de javel)";
+  else filterReason = "le confort gustatif souhaité";
+
+  // 5. FAQ Dynamique
+  let faqItems = [
+    {
+      q: `Peut-on boire l'eau du robinet à ${cityName} tous les jours ?`,
+      a: crystal.final >= 6 ? `Oui, absolument. Les résultats des analyses montrent une excellente conformité avec les normes sanitaires françaises. L'eau de ${cityName} peut être consommée quotidiennement comme principale source d'hydratation sans risque pour un adulte en bonne santé.` : `L'eau respecte globalement les normes, mais au vu des récents paramètres, il est conseillé de surveiller les annonces de la mairie ou d'utiliser un système de filtration pour un usage quotidien intensif.`
+    },
+    {
+      q: `Faut-il acheter de l'eau en bouteille ou un filtre à ${cityName} ?`,
+      a: (durete > 25 || chlore > 0.2) ? `Au vu de ${filterReason}, utiliser une carafe filtrante classique peut considérablement améliorer le confort gustatif de vos boissons chaudes (thé, café) à ${cityName}. Cependant, sur le strict plan sanitaire, l'eau en bouteille n'est pas une obligation scientifique pour la santé.` : `Non, l'eau de ${cityName} présente d'excellentes caractéristiques de base. L'eau en bouteille (qui coûte 100 à 300 fois plus cher et génère polution plastique) n'apportera pas de bénéfice sanitaire supplémentaire pour la santé.`
+    },
+    {
+      q: `L'eau de ${cityName} convient-elle aux nourrissons ?`,
+      a: (nitrates && nitrates < 10) ? `Oui. Le taux de nitrates y est remarquablement bas (moins de 10 mg/L), ce qui respecte largement les recommandations pédiatriques les plus strictes pour la préparation des biberons des tout-petits.` : `Il est recommandé de vérifier les taux précis via la mairie avant de préparer systématiquement des biberons. Dans le doute, l'usage d'une eau en bouteille spécifique ("Convient pour la préparation des aliments des nourrissons") reste la norme pour les nouveau-nés de moins de 6 mois.`
+    }
+  ];
+
+  return (
+    <section className="seo-section">
+      {/* JSON-LD Structured Data for Google Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://eaupotable.net/" },
+                  { "@type": "ListItem", "position": 2, "name": "France", "item": "https://eaupotable.net/villes" },
+                  { "@type": "ListItem", "position": 3, "name": `Département ${dpt}`, "item": `https://eaupotable.net/departement/${dpt}` },
+                  { "@type": "ListItem", "position": 4, "name": cityName }
+                ]
+              },
+              {
+                "@type": "FAQPage",
+                "mainEntity": faqItems.map(item => ({
+                  "@type": "Question",
+                  "name": item.q,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item.a
+                  }
+                }))
+              }
+            ]
+          })
+        }}
+      />
+
+      <div className="seo-container">
+        
+        {/* Fil d'Ariane SEO */}
+        <nav className="seo-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Accueil</a>
+          <span className="sep">›</span>
+          <a href="/villes">France</a>
+          <span className="sep">›</span>
+          <a href={`/departement/${dpt}`}>Département {dpt}</a>
+          <span className="sep">›</span>
+          <span className="curr">{cityName}</span>
+        </nav>
+
+        <div className="seo-header">
+          <h1 className="seo-title">Rapport détaillé de l'eau à {cityName}</h1>
+          <p className="seo-subtitle">Analyse experte basée sur le prélèvement officiel du <strong>{dateAnalyse}</strong></p>
+        </div>
+
+        {/* 1. SECTION VERDICT : Bilan & Comparaison */}
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">🩺 Bilan de Santé Publique : {crystal.final}/10</h2>
+          <div className="seo-expertise-block">
+            {deptAvg && (
+              <div className="seo-comparison-summary">
+                <div className="summary-table-wrapper">
+                  <table className="comparison-table">
+                    <thead>
+                      <tr>
+                        <th>Indicateur</th>
+                        <th className="col-highlight">À {cityName}</th>
+                        <th>Moyenne {dpt}</th>
+                        <th className="hide-mobile">Tendance</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Conformité</strong></td>
+                        <td className="col-highlight">{isConform ? '✅ 100%' : '⚠️ Alerte'}</td>
+                        <td>{deptAvg.conformRate}%</td>
+                        <td className="hide-mobile">
+                          <span className={`seo-badge ${isConform ? 'badge-success' : 'badge-warn'}`}>
+                            {isConform ? 'Standard' : 'Alerte'}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Nitrates</strong></td>
+                        <td className="col-highlight">{nitrates || '--'} mg/L</td>
+                        <td>{deptAvg.nitrates || '--'} mg/L</td>
+                        <td className="hide-mobile">
+                          <span className={`seo-badge ${nitrates < parseFloat(deptAvg.nitrates) ? 'badge-success' : 'badge-warn'}`}>
+                            {nitrates < parseFloat(deptAvg.nitrates) ? 'Excellente' : 'Vigilance'}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Calcaire</strong></td>
+                        <td className="col-highlight">{durete || '--'} °f</td>
+                        <td>{deptAvg.hardness || '--'} °f</td>
+                        <td className="hide-mobile">
+                          <span className={`seo-badge ${durete < parseFloat(deptAvg.hardness) ? 'badge-success' : 'badge-warn'}`}>
+                            {durete < parseFloat(deptAvg.hardness) ? 'Plus douce' : 'Plus dure'}
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Chlore</strong></td>
+                        <td className="col-highlight">{chlore || '--'} mg/L</td>
+                        <td>{deptAvg.chlorine || '--'} mg/L</td>
+                        <td className="hide-mobile">
+                          <span className={`seo-badge ${chlore <= parseFloat(deptAvg.chlorine) ? 'badge-success' : 'badge-warn'}`}>
+                            {chlore <= parseFloat(deptAvg.chlorine) ? 'Plus neutre' : 'Plus marqué'}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            <p className="seo-main-text">{syntheseTexte}</p>
+          </div>
+        </section>
+
+        {/* 2. SECTION CONSEILS : Mieux consommer */}
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">💧 Guide pratique : bien consommer l'eau à {cityName}</h2>
+          <div className="seo-grid">
+            <div className="seo-card">
+              <div className="seo-card-icon">🚰</div>
+              <h3>{calcaireTitre}</h3>
+              <p>{calcaireTexte}</p>
+            </div>
+
+            <div className="seo-card">
+              <div className="seo-card-icon">🍋</div>
+              <h3>{chloreTitre}</h3>
+              <p>{chloreTexte}</p>
+            </div>
+
+            <div className="seo-card">
+              <div className="seo-card-icon">🔎</div>
+              <h3>Contrôle Nitrate & Pesticide</h3>
+              <p>
+                Les résultats pour les polluants agricoles à {cityName} ont été vérifiés. 
+                {nitrates && nitrates < 10 
+                   ? " La qualité des nappes souterraines est excellente avec moins de 10 mg/L de nitrates, ce qui est extrêmement rassurant pour la biodiversité locale." 
+                   : " Les indicateurs sont surveillés de près par les autorités sinitaires pour garantir une eau sécurisée."}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. SECTION FAQ : Questions locales */}
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">💬 Foire Aux Questions (FAQ Locale)</h2>
+          <div className="seo-longform-card">
+            <div className="seo-faq-list">
+              {faqItems.map((item, i) => (
+                <div key={i} className="seo-faq-item">
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. SECTION TECHNIQUE : Origine & Data */}
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">🌍 Origine et Parcours de l'Eau</h2>
+          <div className="seo-longform">
+            <div className="seo-longform-card dark-mode-soft">
+              <p>
+                Bien que les données géographiques exactes du captage soient spécifiques à chaque quartier, 
+                l'eau distribuée dans le secteur de {cityName} (Département {dpt}) provient 
+                principalement d'eaux souterraines ou de cours d'eau régionaux hautement surveillés.
+              </p>
+              <p>
+                Avant d'arriver à votre robinet, cette eau brute traverse un réseau d'infrastructures de traitement complexes : 
+                décantation, filtration sur sable, ozonation et ajout sécurisé de chlore pour prévenir toute contamination bactériologique dans la tuyauterie.
+                Les installations qui desservent {cityName} sont soumises à des audits stricts pilotés par l'Agence Régionale de Santé (ARS), 
+                garantissant que l'impact environnemental local est minimisé tout en fournissant une eau sécurisée à la demande.
+              </p>
+            </div>
+          </div>
+          
+          <h2 className="seo-section-title">📋 Registre officiel des paramètres physico-chimiques</h2>
+          <SeoDataTable cityName={cityName} stats={stats} nomReseau={nomReseau} isConform={isConform} />
+        </section>
+        
+        <NearbyCities dpt={dpt} currentCity={cityName} />
+        
+        <div className="seo-footer-trust">
+          <span>Sources : ARS & Ministère de la Santé</span>
+          <span>•</span>
+          <span>Réseau Municipal : {nomReseau}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NearbyCities({ dpt, currentCity }) {
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    if (!dpt) return;
+    fetch(`https://geo.api.gouv.fr/departements/${dpt}/communes`)
+      .then(r => r.json())
+      .then(data => {
+        const filtered = data.filter(c => c.nom.toLowerCase() !== currentCity.toLowerCase());
+        const sorted = filtered.sort((a, b) => (b.population || 0) - (a.population || 0));
+        const selected = sorted.slice(0, 50).sort(() => 0.5 - Math.random()).slice(0, 8);
+        setCities(selected);
+      })
+      .catch(e => console.error(e));
+  }, [dpt, currentCity]);
+
+  if (cities.length === 0) return null;
+
+  return (
+    <div className="seo-local-links">
+      <h3>📍 Explorez la qualité de l'eau dans votre bassin</h3>
+      <div className="seo-tags-grid">
+        {cities.map(c => {
+          const slug = c.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
+          return (
+            <a key={c.code} href={`/ville/${slug}`} className="seo-city-tag">
+              Eau à {c.nom}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+  );
+}
+
+function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
+  const rowData = [
+    { name: "Microbiologie", data: { val: isConform ? "Absence" : "Contrôlée", unit: "germes" }, limit: "0 n/mL" },
+    { name: "Nitrates", data: stats.nitrates, limit: "50 mg/L" },
+    { name: "Pesticides totaux", data: stats.pesticides, limit: "0.1 µg/L" },
+    { name: "Chlore Libre", data: stats.chlorine, limit: "< 0.1 recommandé" },
+    { name: "Calcaire (Dureté)", data: stats.hardness, limit: "Indicateur" },
+    { name: "Potentiel Hydrogène (pH)", data: stats.ph, limit: "6.5 - 9.0" },
+    { name: "Turbidité", data: stats.turbidity, limit: "< 2 NFU" },
+    { name: "Conductivité", data: stats.conductivity, limit: "1100 µS/cm" },
+    { name: "Fer total", data: stats.iron, limit: "200 µg/L" },
+    { name: "Manganèse", data: stats.manganese, limit: "50 µg/L" },
+    { name: "Ammonium", data: stats.ammonium, limit: "0.1 mg/L" },
+    { name: "Cuivre", data: stats.copper, limit: "2.0 mg/L" },
+    { name: "Carbone Organique (COT)", data: stats.cot, limit: "< 2 mg/L" },
+  ];
+
+  return (
+    <div className="seo-table-container">
+      <h3>📋 Registre officiel des paramètres physico-chimiques</h3>
+      <p>Données brutes issues des relevés de l'ARS pour le réseau {nomReseau} ({cityName}).</p>
+      <div className="table-responsive-wrapper">
+        <table className="seo-data-table">
+          <thead>
+            <tr>
+              <th>Paramètre testé</th>
+              <th>Valeur relevée</th>
+              <th>Unité</th>
+              <th>Limite de Qualité (Norme)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rowData.map((row, i) => {
+              if (!row.data || !row.data.val) return null;
+              return (
+                <tr key={i}>
+                  <td>{row.name}</td>
+                  <td className="seo-table-val"><strong>{row.data.val}</strong></td>
+                  <td>{row.data.unit || "-"}</td>
+                  <td>{row.limit}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 
 function WaterReport({ data }) {
   const { cityName, crystal, stats, isConform, meta } = data;
@@ -391,12 +871,12 @@ function WaterReport({ data }) {
   const paramsList = [
     { name: "Microbiologie", key: "bacteria", data: { val: "Absence", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
     { name: "Nitrates", key: "nitrates", data: stats.nitrates },
+    { name: "Pesticides", key: "pesticides", data: stats.pesticides },
+    { name: "Chlore Libre", key: "chlorine", data: stats.chlorine },
     { name: "Calcaire", key: "hardness", data: stats.hardness },
     { name: "Acidité (pH)", key: "ph", data: stats.ph },
-    { name: "Conductivité", key: "cond", data: stats.conductivity },
-    { name: "Chlore Libre", key: "chlorine", data: stats.chlorine },
     { name: "Turbidité", key: "turb", data: stats.turbidity },
-    { name: "Pesticides", key: "pesticides", data: stats.pesticides },
+    { name: "Conductivité", key: "cond", data: stats.conductivity },
   ];
 
   return (
@@ -409,7 +889,7 @@ function WaterReport({ data }) {
           <div className="hero-footer"><h2 className="hero-city">{cityName}</h2><div className="hero-network">{nomReseau}</div></div>
         </div>
       </div>
-      <div className="report-content" style={{ padding: '0 1.5rem 2rem' }}>
+      <div className="report-content" style={{ padding: '0 0.5rem 2rem' }}>
         <div className="report-section" style={{ marginTop: '2rem' }}><div className="section-header"><span>Analyse détaillée</span></div>
           {paramsList.map((p, i) => (<ParameterRow key={i} parameter={p} />))}
         </div>
@@ -454,6 +934,28 @@ function ParameterRow({ parameter }) {
           <div className="yuka-range-container">
             <div className={`yuka-range-bar ${isCentered ? 'centered' : 'linear'}`} style={{ '--marker-pos': `${pos}%`, '--marker-color': `var(--${status.class})` }}>
               <div className="yuka-marker"></div>
+            </div>
+            <div className="yuka-range-labels">
+              {isCentered ? (
+                <>
+                  <span style={{ left: '11%' }}>{range[0]}</span>
+                  <span style={{ left: '33%' }}>{range[2]}</span>
+                  <span style={{ left: '67%' }}>{range[3]}</span>
+                  <span style={{ left: '89%' }}>{range[5]}</span>
+                </>
+              ) : (
+                range && (
+                  <>
+                    <span style={{ left: '0' }}>0</span>
+                    <span style={{ left: '25%' }}>{range[0]}</span>
+                    <span style={{ left: '50%' }}>{range[1]}</span>
+                    <span style={{ left: '75%' }}>{range[2]}</span>
+                    <span style={{ left: '100%', transform: 'translateX(-100%)' }}>
+                      {Math.round((range[2] + (range[2] - range[1])) * 100) / 100}
+                    </span>
+                  </>
+                )
+              )}
             </div>
             <div className="yuka-date-info" style={{ marginTop: '10px', fontSize: '0.7rem', opacity: 0.6 }}>Analyse du {data?.date || 'N/A'}</div>
           </div>

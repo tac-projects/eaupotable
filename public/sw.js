@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eaupotable-v40';
+const CACHE_NAME = 'eaupotable-v43';
 const ASSETS_TO_CACHE = [
   '/',
   '/img/favicon.svg',

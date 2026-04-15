@@ -120,14 +120,7 @@
         padding: 1.5rem 1.25rem; /* Marges gauche et droite identiques pour une symétrie parfaite */
     }
 
-    /* Centrage dynamique de la recherche par rapport à l'espace libre */
-    body:has(.side-panel.active) .search-floating {
-        right: auto;
-        margin: 0;
-        left: calc((100% - 420px) / 2);
-        transform: translateX(-50%);
-        transition: var(--transition-premium);
-    }
+
 
     .vignette-hero {
         margin: -1.5rem -1.25rem 2rem -1.25rem; /* Perfectly flush on desktop */
