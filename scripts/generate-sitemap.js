@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://eaupotable.net';
+const DOMAIN = 'https://www.eaupotable.net';
 
 async function generateSitemap() {
   console.log('🚀 Démarrage de la génération du sitemap géant...');
