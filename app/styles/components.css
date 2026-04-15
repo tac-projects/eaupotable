@@ -1337,3 +1337,85 @@ main.content-wrapper {
     width: 40%;
     border-radius: 10px;
 }
+
+/* --- SHARING UI --- */
+.hero-share-btn {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition-premium);
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-share-btn:hover {
+    background: white;
+    color: var(--primary-solid);
+    transform: scale(1.1);
+}
+
+.floating-share-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-solid);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+    cursor: pointer;
+    z-index: 2500;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.floating-share-fab.visible {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.floating-share-fab:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 102, 255, 0.5);
+}
+
+.floating-share-fab svg {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .floating-share-fab {
+        bottom: 150px; /* Au dessus de la barre de recherche et de la PWA */
+        right: 20px;
+        width: 54px;
+        height: 54px;
+    }
+    
+    .hero-share-btn {
+        top: 1rem;
+        left: 1rem;
+        width: 38px;
+        height: 38px;
+    }
+}

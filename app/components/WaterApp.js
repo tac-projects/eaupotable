@@ -30,6 +30,9 @@ export default function WaterApp({ initialCity = null }) {
   const [showPWABanner, setShowPWABanner] = useState(false);
   const [isPWAExcluded, setIsPWAExcluded] = useState(false);
 
+  // Sharing States
+  const [showShareFab, setShowShareFab] = useState(false);
+
   const mapContainerRef = useRef(null);
   const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
@@ -100,6 +103,34 @@ export default function WaterApp({ initialCity = null }) {
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
   }, []);
+
+  // 3. Logique de Partage & FAB
+  const handleShare = async () => {
+    if (!waterData) return;
+    const shareData = {
+      title: `Qualité de l'eau à ${selectedCity}`,
+      text: `L'eau de ${selectedCity} est notée ${waterData.crystal.final}/10 sur EauPotable.net. Découvrez l'analyse complète !`,
+      url: window.location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Lien copié dans le presse-papier !");
+      }
+    } catch (err) { console.log("Partage annulé ou erreur:", err); }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isPanelActive && window.scrollY > 300) setShowShareFab(true);
+      else setShowShareFab(false);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isPanelActive]);
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
@@ -362,7 +393,7 @@ export default function WaterApp({ initialCity = null }) {
           </button>
           <div id="panel-content">
             {waterData ? (
-              waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} />)
+              waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
             ) : (
               <div className="skeleton-container">
                 <div className="vignette-hero"><div className="skeleton" style={{ position: 'absolute', inset: 0 }}></div></div>
@@ -383,6 +414,15 @@ export default function WaterApp({ initialCity = null }) {
 
       {/* Section SEO dynamique sous la carte */}
       {selectedCity && <CitySEOContent cityName={selectedCity} data={waterData} />}
+
+      {/* Bouton de Partage Flottant (FAB) */}
+      <button 
+        className={`floating-share-fab ${showShareFab ? 'visible' : ''}`}
+        onClick={handleShare}
+        aria-label="Partager ce rapport"
+      >
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+      </button>
     </main>
   );
 }
@@ -882,7 +922,7 @@ function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
 }
 
 
-function WaterReport({ data }) {
+function WaterReport({ data, onShare }) {
   const { cityName, crystal, stats, isConform, meta } = data;
   const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
   let scoreClass = (crystal.final < 5) ? "status-critical" : (crystal.final < 8) ? "status-warning" : (crystal.final < 8.5) ? "status-good" : "status-excellent";
@@ -903,6 +943,9 @@ function WaterReport({ data }) {
       <div className="vignette-hero">
         <div className="hero-bg" style={{ backgroundImage: "url('/img/vignette-bg.png')" }}></div>
         <div className="hero-overlay"></div>
+        <button className="hero-share-btn" onClick={onShare} aria-label="Partager la ville">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+        </button>
         <div className="hero-content">
           <div className="hero-score-card"><div className="hero-score-val">{crystal.final}/10</div><div className={`hero-status-badge ${scoreClass}`}>{crystal.label}</div></div>
           <div className="hero-footer"><h2 className="hero-city">{cityName}</h2><div className="hero-network">{nomReseau}</div></div>
