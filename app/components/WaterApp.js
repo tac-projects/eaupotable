@@ -583,6 +583,18 @@ function CitySEOContent({ cityName, data }) {
     {
       q: `L'eau de ${cityName} convient-elle aux nourrissons ?`,
       a: (nitrates && nitrates < 10) ? `Oui. Le taux de nitrates y est remarquablement bas (moins de 10 mg/L), ce qui respecte largement les recommandations pédiatriques les plus strictes pour la préparation des biberons des tout-petits.` : `Il est recommandé de vérifier les taux précis via la mairie avant de préparer systématiquement des biberons. Dans le doute, l'usage d'une eau en bouteille spécifique ("Convient pour la préparation des aliments des nourrissons") reste la norme pour les nouveau-nés de moins de 6 mois.`
+    },
+    {
+      q: `Comment enlever le goût de chlore de l'eau à ${cityName} ?`,
+      a: `C'est très simple : le chlore est un gaz qui s'évapore. Il suffit de laisser reposer votre eau dans une carafe ouverte (idéalement en verre) au réfrigérateur pendant 15 à 30 minutes. Le goût disparaîtra naturellement sans aucun produit chimique à ${cityName}.`
+    },
+    {
+      q: `Le calcaire à ${cityName} est-il dangereux pour la santé ?`,
+      a: `C'est une idée reçue ! Le calcaire est composé de calcium et de magnésium, deux minéraux essentiels. Boire une eau calcaire à ${cityName} est même bénéfique pour la santé cardiovasculaire. Le seul inconvénient est "technique" : l'entartrage de vos appareils électroménagers et le possible assèchement de la peau.`
+    },
+    {
+      q: `D'où proviennent les données de qualité de l'eau pour ${cityName} ?`,
+      a: `Nos informations sont issues directement des prélèvements officiels réalisés par l'Agence Régionale de Santé (ARS) et centralisés par le Ministère de la Santé. Nous analysons ces données brutes en temps réel pour vous offrir cette lecture simplifiée à ${cityName}.`
     }
   ];
 
