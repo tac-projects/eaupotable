@@ -870,6 +870,45 @@ function CitySEOContent({ cityName, data }) {
         </section>
         
         <NearbyCities dpt={dpt} currentCity={cityName} />
+
+        {/* SEO POWER: JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "FAQPage",
+                  "mainEntity": faqItems.map(item => ({
+                    "@type": "Question",
+                    "name": item.q,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": item.a
+                    }
+                  }))
+                },
+                {
+                  "@type": "Dataset",
+                  "name": `Analyse de la qualité et pureté de l'eau à ${cityName} (2026)`,
+                  "description": `Base de données des prélèvements ARS 2026 sur la qualité de l'eau potable à ${cityName}. Inclut les scores de pureté, la dureté et la surveillance des PFAS.`,
+                  "isAccessibleForFree": true,
+                  "identifier": `eaupotable-${cityName}-${dpt}`,
+                  "creator": {
+                    "@type": "Organization",
+                    "name": "EauPotable.net",
+                    "url": "https://www.eaupotable.net"
+                  },
+                  "sourceOrganization": {
+                    "@type": "Organization",
+                    "name": "Ministère de la Santé / Agences Régionales de Santé (ARS)"
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </div>
     </section>
   );
@@ -1215,6 +1254,42 @@ function HomeLanding({ onCitySelect }) {
         </div>
 
 
+        {/* SEO POWER: JSON-LD Structured Data for Home */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Pourquoi vérifier la qualité de son eau au-delà de la potabilité ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En France, l'eau est traitée pour être potable (normes de sécurité immédiate). Cependant, le Crystal Score évalue la pureté à long terme : présence de nitrates, résidus de pesticides ou de polluants éternels (PFAS). Savoir ce que l'on boit permet d'adapter sa consommation."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Comment est calculé le Crystal Score 2026 ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Notre algorithme analyse 15 paramètres physico-chimiques issus de l'ARS. Il pondère la sécurité (bactériologie), la pureté (pesticides, PFAS) et le confort (dureté, chlore) pour offrir une note de 0 à 10 immédiatement compréhensible."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "L'eau du robinet contient-elle des PFAS (polluants éternels) ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Depuis le 1er janvier 2026, toutes les communes ont l'obligation de tester les PFAS. EauPotable.net intègre ces nouvelles données dès leur publication officielle par les ARS pour chaque commune de France."
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </div>
     </section>
   );
