@@ -222,30 +222,133 @@
     color: var(--text-muted);
 }
 
+/* SEO FAQ Accordion */
+.seo-faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .seo-faq-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
-.seo-faq-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+.seo-faq-item[open] {
+    border-color: var(--primary-solid);
+    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.06);
 }
 
-.seo-faq-item h4 {
-    font-size: 1.1rem;
+.seo-faq-question {
+    list-style: none; /* Cache la flèche par défaut */
+    padding: 24px 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.seo-faq-question::-webkit-details-marker {
+    display: none; /* Safari */
+}
+
+.seo-faq-question:hover {
+    background: rgba(0, 102, 255, 0.01);
+}
+
+.seo-faq-question h3 {
+    font-size: 1.15rem;
     color: var(--text-main);
-    margin-bottom: 10px;
+    margin: 0;
     font-weight: 700;
+    line-height: 1.4;
+    text-align: left;
 }
 
-.seo-faq-item p {
+.faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    background: var(--text-light);
+    border-radius: 2px;
+    transition: background 0.3s;
+}
+
+/* On crée un signe plus (+) qui devient un moins (-) */
+.faq-icon::before {
+    top: 50%;
+    left: 4px;
+    width: 16px;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.faq-icon::after {
+    left: 50%;
+    top: 4px;
+    width: 2px;
+    height: 16px;
+    transform: translateX(-50%);
+}
+
+.seo-faq-item[open] .faq-icon {
+    transform: rotate(135deg); /* Le + devient un X (design moderne) */
+}
+
+.seo-faq-item[open] .faq-icon::before,
+.seo-faq-item[open] .faq-icon::after {
+    background: var(--primary-solid);
+}
+
+.seo-faq-answer {
+    padding: 0 30px 24px 30px;
+    animation: fadeInSlide 0.4s ease-out;
+}
+
+.seo-faq-answer p {
     font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
+    line-height: 1.7;
     color: var(--text-muted);
+    margin: 0;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .seo-faq-question {
+        padding: 18px 20px;
+    }
+    .seo-faq-question h3 {
+        font-size: 1.05rem;
+    }
+    .seo-faq-answer {
+        padding: 0 20px 20px 20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -585,36 +688,43 @@
 
 .top-city-item {
     background: white;
-    padding: 15px 20px;
-    border-radius: 16px;
+    padding: 20px;
+    border-radius: 20px;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    border: 1px solid rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
+    gap: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 
 .top-city-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
     border-color: var(--primary-solid);
-    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.05);
+    box-shadow: 0 15px 30px rgba(0, 102, 255, 0.08);
 }
 
 .top-city-item .city-name {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--text-main);
 }
 
 .top-city-item .city-score {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .top-city-item .city-score strong {
-    color: var(--status-excellent);
-    font-size: 1rem;
+    color: var(--primary-solid);
+    font-size: 1.1rem;
 }
 
 .cta-alert-card {

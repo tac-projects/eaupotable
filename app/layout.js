@@ -5,6 +5,7 @@ import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
 import Script from 'next/script';
+import Footer from './components/Footer';
 
 export const metadata = {
   metadataBase: new URL('https://www.eaupotable.net'),
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="full-height-body">
         {children}
+        <Footer />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
           strategy="afterInteractive"

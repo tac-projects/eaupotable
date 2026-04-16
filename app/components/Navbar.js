@@ -68,8 +68,6 @@ export default function Navbar() {
 
         <ul className="menu-items">
           <li><Link href="/" onClick={() => setIsOpen(false)}>Carte Interactive</Link></li>
-          <li><Link href="/mentions-legales" onClick={() => setIsOpen(false)}>Mentions Légales</Link></li>
-          <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
         </ul>
 
         <div className="menu-footer">

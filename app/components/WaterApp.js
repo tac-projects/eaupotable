@@ -214,7 +214,7 @@ export default function WaterApp({ initialCity = null }) {
 
 
     try {
-      const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=3000`;
+      const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=5000`;
       const response = await fetch(url);
       const data = await response.json();
       if (!data.data || data.data.length === 0) {
@@ -223,11 +223,18 @@ export default function WaterApp({ initialCity = null }) {
       }
       let reports = data.data;
       
-      // Filtrage strict par nom de commune pour éviter les ambiguïtés (ex: Marseille vs Marseille-en-Beauvaisis)
-      const exactMatch = reports.filter(r => 
-        r.nom_commune.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ') === 
-        cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ')
-      );
+      // Filtrage intelligent : pour les grandes villes, on accepte les arrondissements
+      const cleanTarget = cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ');
+      const exactMatch = reports.filter(r => {
+        const c = r.nom_commune.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ');
+        // Pour les grandes métropoles, on accepte tout ce qui commence par le nom (Lyon 01, Paris 75...)
+        // On évite ainsi "Le Touquet Paris Plage" pour "Paris"
+        const metropoles = ['lyon', 'paris', 'marseille', 'bordeaux', 'toulouse', 'nantes', 'lille', 'montpellier'];
+        if (metropoles.includes(cleanTarget)) {
+          return c === cleanTarget || c.startsWith(cleanTarget + " ") || c.startsWith(cleanTarget + "-");
+        }
+        return c === cleanTarget || c.startsWith(cleanTarget + " ");
+      });
 
       if (exactMatch.length > 0) {
         reports = exactMatch;
@@ -240,7 +247,9 @@ export default function WaterApp({ initialCity = null }) {
           const unit = (r.libelle_unite || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
           const label = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
           const code = `${r.code_parametre}`;
-          if ((unit.includes("°") && !unit.includes("°f")) || unit.includes("deg") || label.includes("temp") || label.includes("t°")) return false;
+          // Filtrage spécifique : On veut tout sauf la température
+          const isTemp = label.includes("temp") || label.includes("t°") || unit.includes("°c") || unit.includes("celsius");
+          if (isTemp) return false;
           if (requiredUnits.length > 0) {
             const hasRequiredUnit = requiredUnits.some(ru => unit.includes(ru.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
             if (!hasRequiredUnit) return false;
@@ -267,22 +276,59 @@ export default function WaterApp({ initialCity = null }) {
       };
 
       const stats = {
-        nitrates: getParam([1340, 1342], ["nitrate"]),
+        nitrates: getParam([1340, 1342], []), 
         ph: getParam([1301, 1302], ["ph", "potentiel hydrogene"], ["ph"]),
-        hardness: getParam([1345], ["hydrotimetrique", "durete", "calcaire", "th", "titre"]),
-        chlorine: getParam([1399], ["chlore libre", "chlore total"]),
+        hardness: getParam([1345, 2708], ["hydrotimetrique", "durete", "th"]),
+        chlorine: getParam([1399, 1398], ["chlore libre", "chlore total"]),
         conductivity: getParam([1302, 1303], ["conductivite"], ["µS", "siemens", "us/cm"]),
         turbidity: getParam([1305], ["turbidite", "turb"]),
         iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
         manganese: getParam([1394, 1373], ["manganese"]),
-        pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277], ["pesticide"]),
-        ammonium: getParam([1331], ["ammonium"]),
+        pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277, 6278, 6279, 6280, 7149, 7150], ["pesticide"]),
+        ammonium: getParam([1331, 1335], ["ammonium"]),
         copper: getParam([1392], ["cuivre"]),
         cot: getParam([1341], ["organique total", "cot"])
       };
 
       const conclusion = reports[0].conclusion_conformite_prelevement || "";
       const isConform = conclusion.toLowerCase().includes("conforme") && !conclusion.toLowerCase().includes("non conforme");
+      
+      // Fallback Réseau Généralisé : Repêchage ciblé pour toute donnée manquante (Sniper)
+      const reseau = reports[0].reseaux?.[0]?.code;
+      if (reseau) {
+          const fallbackConfig = {
+              hardness: "1345,2708",
+              pesticides: "1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7149,7150",
+              nitrates: "1340,1342",
+              chlorine: "1399,1398",
+              ph: "1301,1302"
+          };
+          
+          for (let key of Object.keys(fallbackConfig)) {
+              if (!stats[key] || stats[key].val === '--') {
+                  try {
+                      // Requête ciblée avec tri desc sur le réseau exact
+                      const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseau}&code_parametre=${fallbackConfig[key]}&size=1&sort=desc`;
+                      const rRes = await fetch(rUrl);
+                      const rData = await rRes.json();
+                      if (rData.data && rData.data.length > 0) {
+                          const rMatch = rData.data[0];
+                          if (rMatch && rMatch.resultat_numerique !== null) {
+                              stats[key] = {
+                                val: `${rMatch.resultat_numerique}`,
+                                unit: rMatch.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
+                                date: new Date(rMatch.date_prelevement).toLocaleDateString('fr-FR'),
+                                label: rMatch.libelle_parametre
+                              };
+                          }
+                      }
+                  } catch (e) {
+                      console.error(`Reseau Fallback error for ${key}:`, e);
+                  }
+              }
+          }
+      }
+
       const crystal = calculateCrystalScore(stats, isConform);
       setWaterData({ stats, isConform, crystal, meta: reports[0], cityName });
     } catch (error) { console.error("Erreur API:", error); setWaterData({ error: "Erreur technique." }); } finally { setIsLoading(false); }
@@ -790,22 +836,7 @@ function CitySEOContent({ cityName, data }) {
           </div>
         </section>
 
-        {/* 3. SECTION FAQ : Questions locales */}
-        <section className="seo-section-block">
-          <h2 className="seo-section-title">💬 Foire Aux Questions (FAQ Locale)</h2>
-          <div className="seo-longform-card">
-            <div className="seo-faq-list">
-              {faqItems.map((item, i) => (
-                <div key={i} className="seo-faq-item">
-                  <h3>{item.q}</h3>
-                  <p>{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. SECTION TECHNIQUE : Origine & Data */}
+        {/* 3. SECTION TECHNIQUE : Origine & Data */}
         <section className="seo-section-block">
           <h2 className="seo-section-title">🌍 Origine et Parcours de l'Eau</h2>
           <div className="seo-longform">
@@ -826,6 +857,24 @@ function CitySEOContent({ cityName, data }) {
           
           <h2 className="seo-section-title">📋 Registre officiel des paramètres physico-chimiques</h2>
           <SeoDataTable cityName={cityName} stats={stats} nomReseau={nomReseau} isConform={isConform} />
+        </section>
+
+        {/* 4. SECTION FAQ : Questions locales (Déplacé en bas pour l'UX) */}
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">💬 Foire Aux Questions (FAQ Locale)</h2>
+          <div className="seo-faq-accordion">
+            {faqItems.map((item, i) => (
+              <details key={i} className="seo-faq-item">
+                <summary className="seo-faq-question">
+                  <h3>{item.q}</h3>
+                  <span className="faq-icon"></span>
+                </summary>
+                <div className="seo-faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
         </section>
         
         <NearbyCities dpt={dpt} currentCity={cityName} />
@@ -1103,32 +1152,23 @@ function HomeLanding({ onCitySelect }) {
           </div>
         </div>
 
-        {/* 3. MAILLAGE TOP VILLES & REGIONS */}
+        {/* 3. SECTION METROPOLES : Analyses réelles */}
         <div className="seo-section-block">
-          <h2 className="seo-section-title">🏆 Top des villes les mieux notées</h2>
+          <h2 className="seo-section-title">📍 Qualité de l'eau dans les métropoles</h2>
           <div className="top-cities-grid">
             {[
-              { name: "Cannes", score: "9.8", dpt: "06" },
-              { name: "Annecy", score: "9.7", dpt: "74" },
-              { name: "Aix-les-Bains", score: "9.6", dpt: "73" },
-              { name: "Rennes", score: "9.5", dpt: "35" },
-              { name: "Angers", score: "9.2", dpt: "49" }
-            ].map(c => (
-              <a key={c.name} href={`/ville/${c.name.toLowerCase()}`} className="top-city-item">
-                <span className="city-name">{c.name} ({c.dpt})</span>
-                <span className="city-score"><strong>{c.score}</strong>/10</span>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* 3b. MAILLAGE VILLES POPULAIRES */}
-        <div className="seo-local-links home-popular">
-          <h3>📍 Qualité de l'eau dans les grandes métropoles</h3>
-          <div className="seo-tags-grid">
-            {POPULAR_CITIES.map(city => (
-              <button key={city.slug} onClick={() => onCitySelect(city)} className="seo-city-tag home-tag">
-                Eau à {city.name}
+              { name: "Paris", score: "7.5", dpt: "75", slug: "paris" },
+              { name: "Lyon", score: "10", dpt: "69", slug: "lyon" },
+              { name: "Marseille", score: "4.0", dpt: "13", slug: "marseille" },
+              { name: "Nantes", score: "7.5", dpt: "44", slug: "nantes" },
+              { name: "Lille", score: "8.0", dpt: "59", slug: "lille" },
+              { name: "Montpellier", score: "8.5", dpt: "34", slug: "montpellier" },
+              { name: "Bordeaux", score: "9.5", dpt: "33", slug: "bordeaux" },
+              { name: "Toulouse", score: "9.5", dpt: "31", slug: "toulouse" }
+            ].map(city => (
+              <button key={city.slug} onClick={() => onCitySelect({ name: city.name })} className="top-city-item premium-city-card">
+                <span className="city-name">{city.name} ({city.dpt})</span>
+                <span className="city-score">Score Crystal : <strong>{city.score}</strong>/10</span>
               </button>
             ))}
           </div>
@@ -1137,29 +1177,39 @@ function HomeLanding({ onCitySelect }) {
         {/* 4. FAQ GENERALE */}
         <div className="seo-section-block">
           <h2 className="seo-section-title">💬 Questions fréquentes sur l'eau potable</h2>
-          <div className="seo-longform-card">
-            <div className="seo-faq-list">
-              <div className="seo-faq-item">
-                <h3>L'eau du robinet est-elle sûre partout en France ?</h3>
-                <p>En France, l'eau du robinet est l'un des produits alimentaires les plus contrôlés. Cependant, des variations locales importantes existent sur les taux de nitrates ou de pesticides. EauPotable.net vous permet de vérifier ces seuils précisément chez vous.</p>
-              </div>
-              <div className="seo-faq-item">
-                <h3>C'est quoi un "bon" Crystal Score ?</h3>
-                <p>Un score au-dessus de 8/10 indique une eau d'excellente qualité physico-chimique. En dessous de 5/10, la vigilance est de mise, souvent à cause d'une forte dureté ou de traces de polluants persistants.</p>
-              </div>
-              <div className="seo-faq-item">
-                <h3>Carafe filtrante ou adoucisseur : est-ce vraiment utile ?</h3>
-                <p>C'est une question de confort et non de sécurité. Si votre Crystal Score indique un taux de calcaire élevé (&gt; 25°f), un adoucisseur protégera votre plomberie. Si vous n'aimez pas le goût, une carafe filtrante éliminera le chlore. Cependant, pour une eau déjà notée "Excellente", la filtration n'apporte aucun bénéfice sanitaire supplémentaire compte tenu des contrôles ARS déjà très stricts.</p>
-              </div>
-              <div className="seo-faq-item">
-                <h3>D'où proviennent vos chiffres ?</h3>
-                <p>Nos algorithmes exploitent l'API Hub'Eau du gouvernement français, qui centralise tous les prélèvements effectués par les Agences Régionales de Santé (ARS) sur les points de puisage et les réseaux de distribution. Nous rafraîchissons les données quotidiennement pour coller au plus proche des derniers bulletins locaux.</p>
-              </div>
-              <div className="seo-faq-item">
-                <h3>Peut-on cuisiner avec l'eau du robinet si le score est moyen ?</h3>
-                <p>Oui, la cuisson élimine la plupart des germes microbiologiques et n'est pas impactée par le calcaire. Néanmoins, pour des bouillons ou le thé, une eau peu minéralisée (score de calcaire bas) permettra de mieux révéler les arômes de vos aliments.</p>
-              </div>
-            </div>
+          <div className="seo-faq-accordion">
+            {[
+              {
+                q: "L'eau du robinet est-elle sûre partout en France ?",
+                a: "En France, l'eau du robinet est l'un des produits alimentaires les plus contrôlés. Cependant, des variations locales importantes existent sur les taux de nitrates ou de pesticides. EauPotable.net vous permet de vérifier ces seuils précisément chez vous."
+              },
+              {
+                q: "C'est quoi un \"bon\" Crystal Score ?",
+                a: "Un score au-dessus de 8/10 indique une eau d'excellente qualité physico-chimique. En dessous de 5/10, la vigilance est de mise, souvent à cause d'une forte dureté ou de traces de polluants persistants."
+              },
+              {
+                q: "Carafe filtrante ou adoucisseur : est-ce vraiment utile ?",
+                a: "C'est une question de confort et non de sécurité. Si votre Crystal Score indique un taux de calcaire élevé (> 25°f), un adoucisseur protégera votre plomberie. Si vous n'aimez pas le goût, une carafe filtrante éliminera le chlore. Cependant, pour une eau déjà notée \"Excellente\", la filtration n'apporte aucun bénéfice sanitaire supplémentaire compte tenu des contrôles ARS déjà très stricts."
+              },
+              {
+                q: "D'où proviennent vos chiffres ?",
+                a: "Nos algorithmes exploitent l'API Hub'Eau du gouvernement français, qui centralise tous les prélèvements effectués par les Agences Régionales de Santé (ARS) sur les points de puisage et les réseaux de distribution. Nous rafraîchissons les données quotidiennement pour coller au plus proche des derniers bulletins locaux."
+              },
+              {
+                q: "Peut-on cuisiner avec l'eau du robinet si le score est moyen ?",
+                a: "Oui, la cuisson élimine la plupart des germes microbiologiques et n'est pas impactée par le calcaire. Néanmoins, pour des bouillons ou le thé, une eau peu minéralisée (score de calcaire bas) permettra de mieux révéler les arômes de vos aliments."
+              }
+            ].map((item, i) => (
+              <details key={i} className="seo-faq-item">
+                <summary className="seo-faq-question">
+                  <h3>{item.q}</h3>
+                  <span className="faq-icon"></span>
+                </summary>
+                <div className="seo-faq-answer">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
 
@@ -1178,11 +1228,7 @@ function HomeLanding({ onCitySelect }) {
           </div>
         </div>
 
-        <div className="seo-footer-trust">
-          <span>Plateforme de Transparence Sanitaire</span>
-          <span>•</span>
-          <span>Données ARS 2026</span>
-        </div>
+
       </div>
     </section>
   );
