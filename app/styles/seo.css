@@ -241,6 +241,72 @@
   letter-spacing: 0.5px;
 }
 
+.seo-benchmark-section {
+  margin-top: 25px;
+  padding: 20px 25px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 102, 255, 0.08);
+}
+
+.benchmark-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.benchmark-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 50px;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.benchmark-item:hover {
+  transform: translateX(5px);
+}
+
+.benchmark-city {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.benchmark-bar-bg {
+  height: 8px;
+  background: rgba(0, 102, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.benchmark-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.benchmark-score {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-solid);
+  text-align: right;
+}
+
+.benchmark-footer {
+  margin-top: 15px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+}
+
 .seo-expertise-block p {
     font-size: 1.1rem;
     line-height: 1.8;
