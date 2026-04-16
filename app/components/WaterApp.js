@@ -19,13 +19,13 @@ import WaterReport from './WaterReport';
 
 const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
-export default function WaterApp({ initialCity = null }) {
+export default function WaterApp({ initialCity = null, initialData = null }) {
   const router = useRouter();
   const [map, setMap] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCity, setSelectedCity] = useState(initialCity);
-  const [waterData, setWaterData] = useState(null);
+  const [waterData, setWaterData] = useState(initialData);
   const [isPanelActive, setIsPanelActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -166,6 +166,11 @@ export default function WaterApp({ initialCity = null }) {
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
+    if (!mapboxToken) {
+      console.warn("Mapbox token missing");
+      return;
+    }
+
     mapboxgl.accessToken = mapboxToken;
     const m = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -194,7 +199,7 @@ export default function WaterApp({ initialCity = null }) {
 
   // 4. City Zoom Effect
   useEffect(() => {
-    if (!map || !initialCity) return;
+    if (!map || !initialCity || initialData) return;
     const fetchAndZoom = async () => {
       try {
         const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(initialCity)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`;
