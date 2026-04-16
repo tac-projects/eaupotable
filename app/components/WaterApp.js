@@ -485,7 +485,7 @@ function CitySEOContent({ cityName, data }) {
     const dpt = data.meta.code_departement;
     
     // Appel discret pour récupérer les prélèvements du département
-    fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=500`)
+    fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=1000`)
       .then(r => r.json())
       .then(res => {
         if (!res.data) return;
