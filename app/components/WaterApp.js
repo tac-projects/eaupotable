@@ -493,10 +493,15 @@ function CitySEOContent({ cityName, data }) {
         const hArr = [];
         const cArr = [];
         const pArr = [];
+        const feArr = [];
+        const mnArr = [];
+        const tuArr = [];
+        const amArr = [];
+        const cuArr = [];
+
         let conformCount = 0;
         let evaluatedCount = 0;
         res.data.forEach(r => {
-          // Utilisation des champs globaux du prélèvement (avec _prelevement)
           const isPhysicoConform = r.conformite_limites_pc_prelevement === 'C';
           const isBactConform = r.conformite_limites_bact_prelevement === 'C';
 
@@ -511,20 +516,35 @@ function CitySEOContent({ cityName, data }) {
           if (lbl.includes("hydrotimetrique") || lbl.includes("durete")) hArr.push(r.resultat_numerique);
           if (lbl.includes("chlore")) cArr.push(r.resultat_numerique);
           if (lbl.includes("pesticide")) pArr.push(r.resultat_numerique);
+          if (lbl.includes("fer total")) feArr.push(r.resultat_numerique);
+          if (lbl.includes("manganese")) mnArr.push(r.resultat_numerique);
+          if (lbl.includes("turbidite")) tuArr.push(r.resultat_numerique);
+          if (lbl.includes("ammonium")) amArr.push(r.resultat_numerique);
+          if (lbl.includes("cuivre")) cuArr.push(r.resultat_numerique);
         });
+
         const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
         const total = evaluatedCount || 1;
         const avgNi = getAvg(nArr);
         const avgHa = getAvg(hArr);
         const avgCl = getAvg(cArr);
         const avgPe = getAvg(pArr);
+        const avgFe = getAvg(feArr);
+        const avgMn = getAvg(mnArr);
+        const avgTu = getAvg(tuArr);
+        const avgAm = getAvg(amArr);
+        const avgCu = getAvg(cuArr);
         
-        // On calcule un Crystal Score basé sur les moyennes pour avoir un point de comparaison réel
         const simulatedScore = calculateCrystalScore({
           nitrates: { val: avgNi },
           hardness: { val: avgHa },
           chlorine: { val: avgCl },
           pesticides: { val: avgPe },
+          iron: { val: avgFe },
+          manganese: { val: avgMn },
+          turbidity: { val: avgTu },
+          ammonium: { val: avgAm },
+          copper: { val: avgCu },
           bacteria: { val: 0 }, 
           ph: { val: 7.5 }
         }, true).final;
