@@ -525,7 +525,7 @@ function CitySEOContent({ cityName, data }) {
           chlorine: { val: avgCl },
           bacteria: { val: 0 }, // On assume une bactério correcte en moyenne
           ph: { val: 7.5 }      // Valeur neutre moyenne
-        }).final;
+        }, true).final;
 
         setDeptAvg({ 
           nitrates: avgNi?.toFixed(1), 
