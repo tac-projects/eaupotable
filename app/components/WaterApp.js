@@ -512,13 +512,26 @@ function CitySEOContent({ cityName, data }) {
           if (lbl.includes("hydrotimetrique") || lbl.includes("durete")) hArr.push(r.resultat_numerique);
           if (lbl.includes("chlore")) cArr.push(r.resultat_numerique);
         });
-        const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : null;
+        const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
         const total = evaluatedCount || 1;
-        const avgCl = cArr.length ? (cArr.reduce((a, b) => a + b, 0) / cArr.length).toFixed(2) : null;
+        const avgNi = getAvg(nArr);
+        const avgHa = getAvg(hArr);
+        const avgCl = cArr.length ? (cArr.reduce((a, b) => a + b, 0) / cArr.length) : null;
+        
+        // On calcule un Crystal Score basé sur les moyennes pour avoir un point de comparaison réel
+        const simulatedScore = calculateCrystalScore({
+          nitrates: { val: avgNi },
+          hardness: { val: avgHa },
+          chlorine: { val: avgCl },
+          bacteria: { val: 0 }, // On assume une bactério correcte en moyenne
+          ph: { val: 7.5 }      // Valeur neutre moyenne
+        }).final;
+
         setDeptAvg({ 
-          nitrates: getAvg(nArr), 
-          hardness: getAvg(hArr), 
-          chlorine: avgCl,
+          nitrates: avgNi?.toFixed(1), 
+          hardness: avgHa?.toFixed(1), 
+          chlorine: avgCl?.toFixed(2),
+          avgScore: simulatedScore,
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
       }).catch(() => {});
@@ -756,9 +769,11 @@ function CitySEOContent({ cityName, data }) {
             <div className="seo-comparison-summary">
                 <p className="seo-comparison-intro">
                   <strong>Duel de Pureté :</strong> Le Crystal Score de {cityName} ({crystal.final}/10) 
-                  {parseFloat(crystal.final) >= (deptAvg.avgScore || 7.0) 
-                    ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.avgScore || '7.0'}/10).` 
-                    : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.avgScore || '7.0'}/10).`} 
+                  {deptAvg.avgScore ? (
+                    parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
+                      ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.avgScore}/10).` 
+                      : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.avgScore}/10).`
+                  ) : " est en cours d'analyse comparative avec la moyenne départementale..."} 
                 </p>
                 <div className="summary-table-wrapper">
                   <table className="comparison-table">
