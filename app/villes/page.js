@@ -55,12 +55,6 @@ export default function VillesIndexPage() {
         </div>
       </main>
 
-      <footer className="dept-footer">
-        <div className="seo-container">
-          <p>© 2026 EauPotable.net - Source : Ministère de la Santé & Geo API Gouv.</p>
-        </div>
-      </footer>
-
       <style jsx>{`
         .villes-main {
           padding-top: 100px;

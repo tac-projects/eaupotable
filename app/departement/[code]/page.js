@@ -74,12 +74,6 @@ export default function DepartementPage({ params }) {
         </div>
       </main>
 
-      <footer className="dept-footer">
-        <div className="seo-container">
-          <p>© 2026 EauPotable.net - Source des données : Ministère de la Santé (Hub'Eau) & Geo API Gouv.</p>
-        </div>
-      </footer>
-
       <style jsx>{`
         .dept-main {
           padding-top: 100px;
