@@ -12,8 +12,6 @@ export const metadata = {
   title: 'EauPotable.net | Qualité & Pureté de l\'eau du robinet (2026)',
   description: 'Analysez la qualité réelle et la pureté de votre eau potable en 2026. Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans plus de 35 000 communes.',
   manifest: '/manifest.json',
-  themeColor: '#0066FF',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
@@ -30,6 +28,14 @@ export const metadata = {
     url: 'https://www.eaupotable.net',
     siteName: 'EauPotable.net',
   }
+};
+
+export const viewport = {
+  themeColor: '#0066FF',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({ children }) {
