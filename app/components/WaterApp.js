@@ -511,16 +511,17 @@ function CitySEOContent({ cityName, data }) {
           }
           
           if (r.resultat_numerique === null) return;
+          const code = parseInt(r.code_parametre);
           const lbl = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          if (lbl.includes("nitrate")) nArr.push(r.resultat_numerique);
-          if (lbl.includes("hydrotimetrique") || lbl.includes("durete")) hArr.push(r.resultat_numerique);
-          if (lbl.includes("chlore")) cArr.push(r.resultat_numerique);
-          if (lbl.includes("pesticide")) pArr.push(r.resultat_numerique);
-          if (lbl.includes("fer total")) feArr.push(r.resultat_numerique);
-          if (lbl.includes("manganese")) mnArr.push(r.resultat_numerique);
-          if (lbl.includes("turbidite")) tuArr.push(r.resultat_numerique);
-          if (lbl.includes("ammonium")) amArr.push(r.resultat_numerique);
-          if (lbl.includes("cuivre")) cuArr.push(r.resultat_numerique);
+          if (lbl.includes("nitrate") || [1340, 1342].includes(code)) nArr.push(r.resultat_numerique);
+          if (lbl.includes("hydrotimetrique") || lbl.includes("durete") || [1345, 2708].includes(code)) hArr.push(r.resultat_numerique);
+          if (lbl.includes("chlore") || [1399, 1398].includes(code)) cArr.push(r.resultat_numerique);
+          if (lbl.includes("pesticide") || [1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277, 6278, 6279, 6280, 7149, 7150].includes(code)) pArr.push(r.resultat_numerique);
+          if (lbl.includes("fer total") || [1393, 1374].includes(code)) feArr.push(r.resultat_numerique);
+          if (lbl.includes("manganese") || [1394, 1373].includes(code)) mnArr.push(r.resultat_numerique);
+          if (lbl.includes("turbidite") || [1305].includes(code)) tuArr.push(r.resultat_numerique);
+          if (lbl.includes("ammonium") || [1331, 1335].includes(code)) amArr.push(r.resultat_numerique);
+          if (lbl.includes("cuivre") || [1392].includes(code)) cuArr.push(r.resultat_numerique);
         });
 
         const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
