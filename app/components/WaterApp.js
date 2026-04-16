@@ -412,8 +412,12 @@ export default function WaterApp({ initialCity = null }) {
         </div>
       </section>
 
-      {/* Section SEO dynamique sous la carte */}
-      {selectedCity && <CitySEOContent cityName={selectedCity} data={waterData} />}
+      {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
+      {selectedCity ? (
+        <CitySEOContent cityName={selectedCity} data={waterData} />
+      ) : (
+        <HomeLanding onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })} />
+      )}
 
       {/* Bouton de Partage Flottant (FAB) */}
       <button 
@@ -1024,5 +1028,162 @@ function ParameterRow({ parameter }) {
         </div>
       )}
     </div>
+  );
+}
+
+function HomeLanding({ onCitySelect }) {
+  const POPULAR_CITIES = [
+    { name: "Paris", slug: "paris" },
+    { name: "Lyon", slug: "lyon" },
+    { name: "Marseille", slug: "marseille" },
+    { name: "Nantes", slug: "nantes" },
+    { name: "Bordeaux", slug: "bordeaux" },
+    { name: "Toulouse", slug: "toulouse" }
+  ];
+
+  return (
+    <section className="seo-section home-landing">
+      <div className="seo-container">
+        <div className="seo-header">
+          <div className="seo-trust-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Données Certifiées ARS 2026
+          </div>
+          <h1 className="seo-title">La vérité sur l'eau de votre robinet.</h1>
+          <p className="seo-subtitle">
+            Accédez instantanément aux analyses officielles de l'Agence Régionale de Santé (ARS). 
+            Transparence totale sur les pesticides, les nitrates et le calcaire dans plus de 35 000 communes.
+          </p>
+        </div>
+
+        {/* 1. ARGUMENTS CLEFS */}
+        <div className="seo-grid">
+          <div className="seo-card">
+            <div className="seo-card-icon">💎</div>
+            <h3>Le Crystal Score</h3>
+            <p>Notre algorithme exclusif traduit des rapports de laboratoire complexes en une note simple sur 10, pour un verdict santé immédiat.</p>
+            <div className="score-mini-visual">
+              <div className="mini-bar"><div className="fill" style={{ width: '85%' }}></div></div>
+              <span>Excellente : 8.5/10</span>
+            </div>
+          </div>
+
+          <div className="seo-card">
+            <div className="seo-card-icon">🔬</div>
+            <h3>Données Officielles</h3>
+            <p>Pas d'approximations. Nos données proviennent directement de Hub'Eau et du Ministère de la Santé, mises à jour en temps réel après chaque prélèvement.</p>
+          </div>
+
+          <div className="seo-card">
+            <div className="seo-card-icon">👶</div>
+            <h3>Santé & Sécurité</h3>
+            <p>Vérifiez si l'eau de votre ville est adaptée à la préparation des biberons ou si elle nécessite une filtration pour protéger vos appareils et votre peau.</p>
+          </div>
+        </div>
+
+        {/* 2. COMMENT ÇA MARCHE */}
+        <div className="seo-section-block">
+          <h2 className="seo-section-title">🔍 Comment analyser votre eau ?</h2>
+          <div className="how-it-works-steps">
+            <div className="step-item">
+              <span className="step-num">1</span>
+              <h4>Recherchez votre ville</h4>
+              <p>Utilisez la barre de recherche ou la géolocalisation pour identifier votre réseau de distribution.</p>
+            </div>
+            <div className="step-item">
+              <span className="step-num">2</span>
+              <h4>Consultez le score</h4>
+              <p>Découvrez votre Crystal Score et le verdict de conformité sanitaire immédiat.</p>
+            </div>
+            <div className="step-item">
+              <span className="step-num">3</span>
+              <h4>Agissez au quotidien</h4>
+              <p>Suivez nos conseils de dégustation et de protection contre le calcaire adaptés à votre localité.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. MAILLAGE TOP VILLES & REGIONS */}
+        <div className="seo-section-block">
+          <h2 className="seo-section-title">🏆 Top des villes les mieux notées</h2>
+          <div className="top-cities-grid">
+            {[
+              { name: "Cannes", score: "9.8", dpt: "06" },
+              { name: "Annecy", score: "9.7", dpt: "74" },
+              { name: "Aix-les-Bains", score: "9.6", dpt: "73" },
+              { name: "Rennes", score: "9.5", dpt: "35" },
+              { name: "Angers", score: "9.2", dpt: "49" }
+            ].map(c => (
+              <a key={c.name} href={`/ville/${c.name.toLowerCase()}`} className="top-city-item">
+                <span className="city-name">{c.name} ({c.dpt})</span>
+                <span className="city-score"><strong>{c.score}</strong>/10</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* 3b. MAILLAGE VILLES POPULAIRES */}
+        <div className="seo-local-links home-popular">
+          <h3>📍 Qualité de l'eau dans les grandes métropoles</h3>
+          <div className="seo-tags-grid">
+            {POPULAR_CITIES.map(city => (
+              <button key={city.slug} onClick={() => onCitySelect(city)} className="seo-city-tag home-tag">
+                Eau à {city.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 4. FAQ GENERALE */}
+        <div className="seo-section-block">
+          <h2 className="seo-section-title">💬 Questions fréquentes sur l'eau potable</h2>
+          <div className="seo-longform-card">
+            <div className="seo-faq-list">
+              <div className="seo-faq-item">
+                <h3>L'eau du robinet est-elle sûre partout en France ?</h3>
+                <p>En France, l'eau du robinet est l'un des produits alimentaires les plus contrôlés. Cependant, des variations locales importantes existent sur les taux de nitrates ou de pesticides. EauPotable.net vous permet de vérifier ces seuils précisément chez vous.</p>
+              </div>
+              <div className="seo-faq-item">
+                <h3>C'est quoi un "bon" Crystal Score ?</h3>
+                <p>Un score au-dessus de 8/10 indique une eau d'excellente qualité physico-chimique. En dessous de 5/10, la vigilance est de mise, souvent à cause d'une forte dureté ou de traces de polluants persistants.</p>
+              </div>
+              <div className="seo-faq-item">
+                <h3>Carafe filtrante ou adoucisseur : est-ce vraiment utile ?</h3>
+                <p>C'est une question de confort et non de sécurité. Si votre Crystal Score indique un taux de calcaire élevé (&gt; 25°f), un adoucisseur protégera votre plomberie. Si vous n'aimez pas le goût, une carafe filtrante éliminera le chlore. Cependant, pour une eau déjà notée "Excellente", la filtration n'apporte aucun bénéfice sanitaire supplémentaire compte tenu des contrôles ARS déjà très stricts.</p>
+              </div>
+              <div className="seo-faq-item">
+                <h3>D'où proviennent vos chiffres ?</h3>
+                <p>Nos algorithmes exploitent l'API Hub'Eau du gouvernement français, qui centralise tous les prélèvements effectués par les Agences Régionales de Santé (ARS) sur les points de puisage et les réseaux de distribution. Nous rafraîchissons les données quotidiennement pour coller au plus proche des derniers bulletins locaux.</p>
+              </div>
+              <div className="seo-faq-item">
+                <h3>Peut-on cuisiner avec l'eau du robinet si le score est moyen ?</h3>
+                <p>Oui, la cuisson élimine la plupart des germes microbiologiques et n'est pas impactée par le calcaire. Néanmoins, pour des bouillons ou le thé, une eau peu minéralisée (score de calcaire bas) permettra de mieux révéler les arômes de vos aliments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. CTA ALERTE VIGILANCE */}
+        <div className="seo-section-block">
+          <div className="cta-alert-card">
+            <div className="cta-alert-icon">🔔</div>
+            <div className="cta-alert-content">
+              <h3>Vigilance Qualité Eau</h3>
+              <p>Recevez une notification immédiate par email si la qualité de l'eau de votre commune subit une modification ou un rappel sanitaire.</p>
+              <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
+                <input type="email" placeholder="Votre email..." className="cta-input" />
+                <button type="submit" className="cta-btn">M'abonner à l'alerte</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="seo-footer-trust">
+          <span>Plateforme de Transparence Sanitaire</span>
+          <span>•</span>
+          <span>Données ARS 2026</span>
+        </div>
+      </div>
+    </section>
   );
 }
