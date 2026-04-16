@@ -870,12 +870,6 @@ function CitySEOContent({ cityName, data }) {
         </section>
         
         <NearbyCities dpt={dpt} currentCity={cityName} />
-        
-        <div className="seo-footer-trust">
-          <span>Sources : ARS & Ministère de la Santé</span>
-          <span>•</span>
-          <span>Réseau Municipal : {nomReseau}</span>
-        </div>
       </div>
     </section>
   );
@@ -1092,7 +1086,7 @@ function HomeLanding({ onCitySelect }) {
           </div>
           <h1 className="seo-title">Quelle est la qualité réelle de votre eau ?</h1>
           <p className="seo-subtitle">
-            Au-delà de la simple potabilité, accédez au verdict de **pureté globale** de votre réseau. 
+            Au-delà de la simple potabilité, accédez au verdict de <strong>pureté globale</strong> de votre réseau. 
             Analyses ARS 2026 en temps réel sur les pesticides, le calcaire et les polluants éternels (PFAS).
           </p>
         </div>
