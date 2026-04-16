@@ -17,7 +17,7 @@ import CitySEOContent from './CitySEOContent';
 import HomeLanding from './HomeLanding';
 import WaterReport from './WaterReport';
 
-const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
 export default function WaterApp({ initialCity = null, initialData = null }) {
   const router = useRouter();
@@ -167,21 +167,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     console.log("Map Mount - Container:", !!mapContainerRef.current, "Token:", !!mapboxToken);
     if (!mapContainerRef.current) return;
 
-    if (!mapboxToken) {
-      console.error("CRITICAL: NEXT_PUBLIC_MAPBOX_TOKEN is not defined.");
-      if (mapContainerRef.current) {
-        mapContainerRef.current.innerHTML = `
-          <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f1f5f9; color:#64748b; text-align:center; padding:20px; font-family:sans-serif;">
-            <div>
-              <p style="font-size:30px">📍</p>
-              <p><b>Configuration de la carte incomplète</b></p>
-              <p style="font-size:12px; opacity:0.7">Veuillez vérifier la variable d'environnement MAPBOX_TOKEN.</p>
-            </div>
-          </div>
-        `;
-      }
-      return;
-    }
+    if (!mapboxToken) return;
 
     mapboxgl.accessToken = mapboxToken;
     const m = new mapboxgl.Map({
@@ -488,6 +474,9 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
               }}
               placeholder={placeholder}
               className="search-input"
+              spellCheck="false"
+              autoComplete="off"
+              autoCorrect="off"
             />
             {searchQuery && (
               <button 
@@ -555,13 +544,11 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       </section>
 
       {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
-        {/* 3. Panel Ville / Contenu SEO */}
-        <div className={`city-panel-wrapper ${isPanelActive ? 'active' : ''}`}>
-          {selectedCity && (
-            <CitySEOContent cityName={selectedCity} data={waterData} />
-          )}
-          {!selectedCity && <HomeLanding onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })} />}
-        </div>
+      {selectedCity ? (
+        <CitySEOContent cityName={selectedCity} data={waterData} />
+      ) : (
+        <HomeLanding onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })} />
+      )}
 
       {/* Bouton de Partage Flottant (FAB) */}
       <button 
