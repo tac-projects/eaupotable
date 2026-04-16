@@ -11,22 +11,18 @@ import {
 
 export default function WaterReport({ data, onShare }) {
   const { cityName, crystal, stats, isConform, meta } = data;
-  
-  if (!stats || !meta || !crystal) return <div style={{ padding: '2rem', textAlign: 'center' }}>Chargement des données détaillées...</div>;
-
-  const nomReseau = meta?.nom_distributeur || meta?.nom_reseau || "Réseau Municipal";
-  const dateStr = meta?.date_prelevement ? new Date(meta.date_prelevement).toLocaleDateString('fr-FR') : 'N/A';
+  const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
   let scoreClass = (crystal.final < 5) ? "status-critical" : (crystal.final < 8) ? "status-warning" : (crystal.final < 8.5) ? "status-good" : "status-excellent";
 
   const paramsList = [
-    { name: "Microbiologie", key: "bacteria", data: { val: "Absence", unit: "", date: dateStr } },
-    { name: "Nitrates", key: "nitrates", data: stats?.nitrates },
-    { name: "Pesticides", key: "pesticides", data: stats?.pesticides },
-    { name: "Chlore Libre", key: "chlorine", data: stats?.chlorine },
-    { name: "Calcaire", key: "hardness", data: stats?.hardness },
-    { name: "Acidité (pH)", key: "ph", data: stats?.ph },
-    { name: "Turbidité", key: "turb", data: stats?.turbidity },
-    { name: "Conductivité", key: "cond", data: stats?.conductivity },
+    { name: "Microbiologie", key: "bacteria", data: { val: "Absence", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
+    { name: "Nitrates", key: "nitrates", data: stats.nitrates },
+    { name: "Pesticides", key: "pesticides", data: stats.pesticides },
+    { name: "Chlore Libre", key: "chlorine", data: stats.chlorine },
+    { name: "Calcaire", key: "hardness", data: stats.hardness },
+    { name: "Acidité (pH)", key: "ph", data: stats.ph },
+    { name: "Turbidité", key: "turb", data: stats.turbidity },
+    { name: "Conductivité", key: "cond", data: stats.conductivity },
   ];
 
   return (

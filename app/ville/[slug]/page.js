@@ -8,9 +8,9 @@ export async function generateMetadata({ params }) {
   
   // On récupère le score réel pour l'image sociale
   const summary = await fetchCitySummary(cityName);
-  const score = summary?.crystal?.final || 'N/A';
-  const label = summary?.crystal?.label || 'ANALYSE';
-  const statusClass = summary?.crystal?.statusClass || 'status-good';
+  const score = summary?.score || 'N/A';
+  const label = summary?.label || 'ANALYSE';
+  const statusClass = summary?.statusClass || 'status-good';
 
   const ogImageUrl = `/api/og?city=${encodeURIComponent(cityName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 

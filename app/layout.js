@@ -4,7 +4,6 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import Script from 'next/script';
 import Footer from './components/Footer';
 

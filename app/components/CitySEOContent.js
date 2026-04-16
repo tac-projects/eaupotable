@@ -83,7 +83,6 @@ export default function CitySEOContent({ cityName, data }) {
           chlorine: (avgCl)?.toFixed(2),
           pesticides: (avgPe || 0)?.toFixed(3),
           avgScore: simulatedScore,
-          count: res.data.length,
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
       }).catch(() => {});
@@ -102,31 +101,15 @@ export default function CitySEOContent({ cityName, data }) {
   if (!data || data.error) return null;
 
   const { crystal, stats, isConform, meta } = data;
+  const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
+  const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
+  const dpt = meta.code_departement || "";
 
-  if (!stats || !meta) {
-      return (
-          <div className="seo-section">
-              <div className="seo-container">
-                  <div className="loading-state" style={{ padding: '100px 20px', textAlign: 'center', color: '#64748b' }}>
-                      <div className="spinner" style={{ marginBottom: '20px' }}>⌛</div>
-                      Données en cours de synchronisation pour {cityName}...
-                  </div>
-              </div>
-          </div>
-      );
-  }
-
-  const nomReseau = meta?.nom_distributeur || meta?.nom_reseau || "Réseau Municipal";
-  const dateAnalyse = meta?.date_prelevement ? new Date(meta.date_prelevement).toLocaleDateString('fr-FR') : "2026";
-  const dpt = meta?.code_departement || "";
   const getVal = (stat) => {
     if (!stat || !stat.val) return null;
     const n = parseValue(stat.val);
     return isNaN(n) ? null : n;
   };
-
-  // On stabilise l'année pour éviter les mismatches SSR/Client
-  const [currentYear] = useState(() => new Date().getFullYear());
   
   const nitrates = getVal(stats.nitrates);
   const durete = getVal(stats.hardness);
@@ -163,6 +146,7 @@ export default function CitySEOContent({ cityName, data }) {
     return variants[idx].replace(/\{cityName\}/g, cityName).replace(/\{nomReseau\}/g, nomReseau);
   };
 
+  const currentYear = new Date().getFullYear();
   let syntheseTexte = `La **qualité de l'eau à ${cityName}** est jugée **${crystal.label.toLowerCase()}** en ${currentYear} selon le Crystal Score. `;
   
   if (isConform) {
@@ -323,9 +307,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>Absence</td>
                     <td>
                       {(() => {
-                        const lowerMicro = String(microVal || "").toLowerCase();
-                        const isAbsence = microVal ? lowerMicro.includes('absence') : isConform;
-                        const s = getDuelStatus(isAbsence || parseValue(microVal) === 0 ? 0 : 1, 0);
+                        const s = getDuelStatus(microVal.toLowerCase().includes('absence') ? 0 : 1, 0);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -390,7 +372,7 @@ export default function CitySEOContent({ cityName, data }) {
             </div>
 
             <div className="seo-comparison-verdict">
-              <strong>Verdict :</strong> {parseFloat(crystal.final) >= parseFloat(deptAvg?.avgScore || 7) 
+              <strong>Verdict :</strong> {crystal.final >= (deptAvg?.score || 7) 
                 ? `${cityName} surclasse la moyenne du département ${dpt}. Un réseau d'excellente facture.`
                 : `La qualité à ${cityName} est légèrement en retrait par rapport à la dynamique du département ${dpt}.`}
             </div>
@@ -415,12 +397,12 @@ export default function CitySEOContent({ cityName, data }) {
               
               {/* Voisines */}
               {neighborCities.length > 0 ? neighborCities.slice(0, 9).map((city, idx) => {
-                const simScore = (parseFloat(deptAvg?.avgScore || crystal.final) + (Math.sin(idx + cityName.length) * 0.5)).toFixed(1);
+                const simScore = (parseFloat(deptAvg?.avgScore || crystal.final) + (Math.sin(idx) * 0.5)).toFixed(1);
                 const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
                 return (
-                  <a key={city.nom + idx} href={`/ville/${slug}`} className="benchmark-item">
+                  <a key={city.nom} href={`/ville/${slug}`} className="benchmark-item">
                     <span className="benchmark-city">{city.nom}</span>
-                    <div className="benchmark-bar-bg"><div className="benchmark-bar-fill" style={{width: `${parseFloat(simScore) * 10}%`, opacity: 0.5}}></div></div>
+                    <div className="benchmark-bar-bg"><div className="benchmark-bar-fill" style={{width: `${simScore * 10}%`, opacity: 0.5}}></div></div>
                     <span className="benchmark-score">{simScore}</span>
                   </a>
                 );

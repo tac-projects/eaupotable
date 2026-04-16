@@ -43,13 +43,10 @@ main {
     height: 100vh;
     width: 100vw;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Permet au bouton scroll de déborder en bas */
 }
 
 #map {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100vh;
     width: 100%;
     z-index: 1;
@@ -519,15 +516,4 @@ main.content-wrapper {
 
 .contact-grid.centered .form-card {
     width: 100%;
-}
-
-.city-panel-wrapper {
-    position: relative;
-    width: 100%;
-    z-index: 10;
-    background: #fff;
-}
-
-.city-panel-wrapper.active {
-    min-height: 100vh;
 }

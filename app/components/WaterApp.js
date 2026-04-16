@@ -19,14 +19,14 @@ import WaterReport from './WaterReport';
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
-export default function WaterApp({ initialCity = null, initialData = null }) {
+export default function WaterApp({ initialCity = null }) {
   const router = useRouter();
   const [map, setMap] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCity, setSelectedCity] = useState(initialCity);
-  const [waterData, setWaterData] = useState(initialData);
-  const [isPanelActive, setIsPanelActive] = useState(!!initialCity);
+  const [waterData, setWaterData] = useState(null);
+  const [isPanelActive, setIsPanelActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
@@ -164,10 +164,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
 
   // 3. Mapbox Init
   useEffect(() => {
-    console.log("Map Mount - Container:", !!mapContainerRef.current, "Token:", !!mapboxToken);
     if (!mapContainerRef.current) return;
-
-    if (!mapboxToken) return;
 
     mapboxgl.accessToken = mapboxToken;
     const m = new mapboxgl.Map({
@@ -202,20 +199,14 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       try {
         const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(initialCity)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`;
         const res = await fetch(url);
-        const geoData = await res.json();
-        if (geoData.features?.length > 0) {
-          const feature = geoData.features[0];
-          map.flyTo({ center: feature.center, zoom: 12, essential: true });
-          if (!initialData) {
-            fetchWaterData(feature.text);
-          }
-        } else if (!initialData) {
-            fetchWaterData(initialCity);
+        const data = await res.json();
+        if (data.features?.length > 0) {
+          const feature = data.features[0];
+          map.flyTo({ center: feature.center, zoom: 13, essential: true });
+          // On ne remplit pas searchQuery pour laisser le placeholder animé tourner
+          fetchWaterData(feature.text);
         }
-      } catch (err) { 
-          console.error("Zoom error", err); 
-          if (!initialData) fetchWaterData(initialCity); 
-      }
+      } catch (err) { console.error("Zoom error", err); fetchWaterData(initialCity); }
     };
     fetchAndZoom();
   }, [map, initialCity]);
@@ -474,9 +465,6 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
               }}
               placeholder={placeholder}
               className="search-input"
-              spellCheck="false"
-              autoComplete="off"
-              autoCorrect="off"
             />
             {searchQuery && (
               <button 
