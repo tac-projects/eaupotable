@@ -49,10 +49,10 @@ export default function DepartementPage({ params }) {
           </nav>
 
           <header className="dept-header">
-            <h1>Qualité de l'eau : Répertoire des communes du {deptName} ({code})</h1>
+            <h1>Qualité de l'eau : Répertoire des communes {deptName && /^[aeiouyh]/i.test(deptName) ? "de l'" : "du "}{deptName} ({code})</h1>
             <p className="dept-subtitle">
               Sélectionnez votre ville ci-dessous pour accéder au verdict de <strong>pureté et de conformité 2026</strong>. 
-              Données certifiées ARS pour le département {deptName}.
+              Données certifiées ARS pour le département {deptName && /^[aeiouyh]/i.test(deptName) ? "de l'" : "du "}{deptName}.
             </p>
           </header>
 
