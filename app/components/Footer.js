@@ -4,15 +4,18 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="main-footer">
+    <footer className="global-footer">
       <div className="footer-container">
-        <div className="footer-top">
+        <div className="footer-main">
           <div className="footer-brand">
-            <Link href="/" className="footer-logo">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-icon">
-                <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#footerGradient)" />
+            <Link href="/" className="logo" style={{ marginBottom: '1.5rem', display: 'inline-flex' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-icon">
+                <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradientFooter)" />
+                <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+                <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
+                <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
                 <defs>
-                  <linearGradient id="footerGradient" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="crystalGradientFooter" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#3FA9FE" />
                     <stop offset="0.5" stopColor="#0066FF" />
                     <stop offset="1" stopColor="#0047AB" />
@@ -23,33 +26,40 @@ export default function Footer() {
             </Link>
             <p className="footer-tagline">La transparence totale sur l'eau de votre robinet.</p>
           </div>
-
-          <div className="footer-links-group">
-            <div className="footer-column">
+          
+          <div className="footer-nav-grid">
+            <div className="footer-nav-col">
               <h4>Navigation</h4>
-              <Link href="/">Carte Interactive</Link>
-              <Link href="/villes">Toutes les villes</Link>
+              <ul>
+                <li><a href="/">Carte Interactive</a></li>
+                <li><a href="/villes">Toutes les villes</a></li>
+              </ul>
             </div>
-            <div className="footer-column">
+            <div className="footer-nav-col">
               <h4>Assistance</h4>
-              <Link href="/mentions-legales">Mentions Légales</Link>
-              <Link href="/contact">Inscriptions / Contact</Link>
+              <ul>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Inscriptions / Contact</a></li>
+              </ul>
             </div>
-          </div>
-
-          <div className="footer-badge-area">
-             <div className="footer-trust-badge">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-               </svg>
-               <span>Analyses ARS 2026</span>
-             </div>
+            <div className="footer-nav-col">
+              <h4>Légal</h4>
+              <ul>
+                <li><a href="/mentions-legales">Mentions Légales</a></li>
+                <li><a href="/rgpd">RGPD</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-
+        
         <div className="footer-bottom">
-          <div className="footer-legal-row">
-            <p>&copy; 2026 EauPotable.net. Données publiques Hub'Eau. Une initiative pour la santé publique.</p>
+          <div className="footer-info">
+            <span className="footer-year">© 2026 EauPotable.net.</span>
+            <span className="footer-data-source">Données publiques Hub'Eau. Une initiative pour la santé publique.</span>
+          </div>
+          <div className="footer-status-badge">
+            <span className="status-dot"></span>
+            Analyses ARS 2026 en temps réel
           </div>
         </div>
       </div>

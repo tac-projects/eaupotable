@@ -32,7 +32,7 @@
 
 /* Section SEO sous la carte */
 .seo-section {
-    background: #fdfdfd;
+    background: #f0f4f8;
     padding: 80px 20px;
     position: relative;
     z-index: 10;
@@ -114,58 +114,27 @@
 }
 
 .seo-card {
-    background: white;
-    padding: 30px;
+    background: #ffffff !important;
+    padding: 35px 40px;
     border-radius: 24px;
-    border: 1px solid rgba(0,0,0,0.04);
+    border: 1px solid rgba(0, 102, 255, 0.12);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
     transition: var(--transition-premium);
+    position: relative;
+    overflow: hidden;
 }
 
 .seo-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-
-.seo-card-icon {
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 102, 255, 0.05);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-solid);
-    margin-bottom: 20px;
-}
-
-.seo-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: var(--text-main);
-}
-
-.seo-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-}
-
-@media (max-width: 768px) {
-    .seo-section {
-        padding: 50px 20px;
-    }
-    .seo-title {
-        font-size: 1.8rem;
-    }
+    box-shadow: 0 20px 50px rgba(0, 102, 255, 0.06);
 }
 
 .seo-section-title {
     font-family: var(--font-heading);
     font-size: 1.7rem;
     color: var(--text-main);
-    margin-bottom: 35px; /* On augmente à 35px pour plus d'air */
-    margin-top: 90px;    /* On augmente à 90px pour séparer les sections */
+    margin-bottom: 35px;
+    margin-top: 90px;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -174,33 +143,11 @@
     text-align: center;
 }
 
-/* On réduit la marge du tout premier titre pour éviter un trou en haut du rapport */
 .seo-section-block:first-of-type .seo-section-title {
     margin-top: 0;
 }
 
-.seo-expertise-block {
-    background: white;
-    border: 1px solid rgba(0, 102, 255, 0.08);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
-    border-radius: 24px;
-    padding: 35px;
-    text-align: left;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-.seo-expertise-block h2, 
-.seo-expertise-block h3 {
-    margin-top: 0;
-}
-
 .seo-comparison-summary {
-  background: transparent;
-  padding: 0;
-  border: none;
-  box-shadow: none;
   margin-bottom: 40px;
 }
 
@@ -304,6 +251,7 @@
 .benchmark-bar-fill {
   height: 100%;
   border-radius: 4px;
+  background: linear-gradient(to right, var(--primary-solid), #3b82f6);
   transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -572,12 +520,12 @@
 }
 
 .seo-table-container {
-    margin-top: 0; /* Suppression de la marge doublon */
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    border: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    margin-top: 0;
+    background: #ffffff !important;
+    padding: 35px 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 102, 255, 0.12);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
 }
 
 .table-responsive-wrapper {
@@ -648,8 +596,6 @@
 /* SEO Summary Comparison Table - Cleaned */
 .seo-comparison-summary {
     margin-bottom: 40px;
-    background: transparent;
-    border: none;
 }
 
 .summary-table-wrapper {
@@ -1040,4 +986,119 @@
     border-radius: 6px;
     font-weight: 700;
     border: 1px solid rgba(0,0,0,0.03);
+}
+/* SOURCE VERIFICATION BADGE */
+.source-verification-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 102, 255, 0.04);
+    border: 1px solid rgba(0, 102, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin: 10px 0 40px 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.badge-icon {
+    font-size: 1.2rem;
+}
+
+.badge-text strong {
+    color: var(--primary-solid);
+}
+
+/* Fix gap at bottom of city page */
+.seo-section.seo-content-wrapper {
+    padding-bottom: 100px !important;
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+}
+
+/* On s'assure que le main, le body et le footer sont raccords en bleu-gris SEO */
+main:has(.seo-section.seo-content-wrapper),
+body:has(.seo-section.seo-content-wrapper),
+body:has(.seo-section.seo-content-wrapper) .global-footer {
+    background: #f0f4f8 !important;
+}
+
+.main-footer, .global-footer {
+    margin-top: 0 !important;
+    position: relative;
+    z-index: 100;
+}
+
+/* SEO UNIFIED DATA TABLE */
+.seo-data-table-unified {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.seo-data-table-unified th {
+    background: #f8fbff;
+    padding: 18px 20px;
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(0, 102, 255, 0.08);
+}
+
+.seo-data-table-unified td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(0, 102, 255, 0.04);
+    vertical-align: middle;
+}
+
+.dossier-divider-row td {
+    background: rgba(0, 102, 255, 0.03);
+    color: var(--primary-solid);
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 22px 20px !important;
+    border-bottom: 1px solid rgba(0, 102, 255, 0.1) !important;
+    border-top: 20px solid #ffffff; /* Space between sections */
+}
+
+.dossier-divider-row:first-of-type td {
+    border-top: none;
+}
+
+.dossier-divider-row .dossier-icon {
+    margin-right: 12px;
+}
+
+.param-label-unified strong {
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.param-val-unified {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.param-val-unified .val-num {
+    font-weight: 800;
+    color: var(--primary-solid);
+    font-size: 1.1rem;
+}
+
+.param-limit-col {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .seo-data-table-unified th:nth-child(4),
+    .seo-data-table-unified td:nth-child(4) {
+        display: none;
+    }
 }
