@@ -102,9 +102,23 @@ export default function CitySEOContent({ cityName, data }) {
   if (!data || data.error) return null;
 
   const { crystal, stats, isConform, meta } = data;
-  const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
-  const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
-  const dpt = meta.code_departement || "";
+
+  if (!stats || !meta) {
+      return (
+          <div className="seo-section">
+              <div className="seo-container">
+                  <div className="loading-state" style={{ padding: '100px 20px', textAlign: 'center', color: '#64748b' }}>
+                      <div className="spinner" style={{ marginBottom: '20px' }}>⌛</div>
+                      Données en cours de synchronisation pour {cityName}...
+                  </div>
+              </div>
+          </div>
+      );
+  }
+
+  const nomReseau = meta?.nom_distributeur || meta?.nom_reseau || "Réseau Municipal";
+  const dateAnalyse = meta?.date_prelevement ? new Date(meta.date_prelevement).toLocaleDateString('fr-FR') : "2026";
+  const dpt = meta?.code_departement || "";
   const getVal = (stat) => {
     if (!stat || !stat.val) return null;
     const n = parseValue(stat.val);
