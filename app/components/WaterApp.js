@@ -728,16 +728,41 @@ function CitySEOContent({ cityName, data }) {
         </nav>
 
         <div className="seo-header">
-          <h1 className="seo-title">Rapport détaillé de l'eau à {cityName}</h1>
-          <p className="seo-subtitle">Analyse experte basée sur le prélèvement officiel du <strong>{dateAnalyse}</strong></p>
+           {(() => {
+             const score = parseFloat(crystal.final);
+             const getBadge = (s) => {
+               if (s >= 8.5) return { label: "EXCELLENCE PURETÉ 2026", class: "gold", icon: "🏆" };
+               if (s >= 7) return { label: "RÉSEAU HAUTE QUALITÉ", class: "silver", icon: "🥈" };
+               if (s >= 5) return { label: "CONFORMITÉ VALIDÉE", class: "bronze", icon: "🥉" };
+               return { label: "VIGILANCE SANITAIRE", class: "alert", icon: "⚠️" };
+             };
+             const b = getBadge(score);
+             return (
+               <div className={`seo-distinction-badge ${b.class}`}>
+                 <span className="badge-icon">{b.icon}</span>
+                 <span className="badge-text">{b.label}</span>
+               </div>
+             );
+           })()}
+           <h1 className="seo-title">Avis d'expert : Qualité de l'eau à {cityName} ({dpt})</h1>
+           <p className="seo-subtitle">Analyse de pureté basée sur le prélèvement officiel du <strong>{dateAnalyse}</strong></p>
         </div>
 
         {/* 1. SECTION VERDICT : Bilan & Comparaison */}
         <section className="seo-section-block">
-          <h2 className="seo-section-title">🩺 Bilan de Santé Publique : {crystal.final}/10</h2>
+          <h2 className="seo-section-title">🩺 Bilan de Santé & Verdict Crystal Score</h2>
           <div className="seo-expertise-block">
             {deptAvg && (
-              <div className="seo-comparison-summary">
+            <div className="seo-comparison-summary">
+                <div className="seo-comparison-text">
+                  <p>
+                    <strong>Duel de Pureté :</strong> Le Crystal Score de {cityName} ({crystal.final}/10) 
+                    {parseFloat(crystal.final) >= parseFloat(deptAvg.score) 
+                      ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.score}/10).` 
+                      : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.score}/10).`} 
+                    Une donnée clef à prendre en compte pour la surveillance de vos équipements et de votre santé.
+                  </p>
+                </div>
                 <div className="summary-table-wrapper">
                   <table className="comparison-table">
                     <thead>

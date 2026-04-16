@@ -45,8 +45,51 @@
 }
 
 .seo-header {
-    text-align: center;
-    margin-bottom: 60px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* DISTINCTION BADGES */
+.seo-distinction-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1.2px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  animation: badgeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes badgeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.seo-distinction-badge.gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #5C430D;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.seo-distinction-badge.silver {
+  background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.seo-distinction-badge.bronze {
+  background: linear-gradient(135deg, #CD7F32 0%, #A0522D 100%);
+  color: white;
+}
+
+.seo-distinction-badge.alert {
+  background: #FFF5F5;
+  color: #E53E3E;
+  border: 1px solid #FED7D7;
 }
 
 .seo-title {
@@ -150,6 +193,21 @@
 .seo-expertise-block h2, 
 .seo-expertise-block h3 {
     margin-top: 0;
+}
+
+.seo-comparison-text {
+  background: rgba(0, 102, 255, 0.03);
+  padding: 20px 25px;
+  border-radius: 16px;
+  border-left: 4px solid var(--primary-solid);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.seo-comparison-text p {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 1.05rem;
 }
 
 .seo-expertise-block p {
