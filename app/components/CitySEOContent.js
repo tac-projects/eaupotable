@@ -105,7 +105,8 @@ export default function CitySEOContent({ cityName, data }) {
   const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
   const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
   const dpt = meta.code_departement || "";
-
+  const getVal = (stat) => {
+    if (!stat || !stat.val) return null;
     const n = parseValue(stat.val);
     return isNaN(n) ? null : n;
   };
