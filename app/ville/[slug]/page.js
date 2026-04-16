@@ -15,10 +15,10 @@ export async function generateMetadata({ params }) {
   const ogImageUrl = `/api/og?city=${encodeURIComponent(cityName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
   return {
-    title: `Qualité de l'eau à ${cityName} | EauPotable.net`,
+    title: `Qualité de l'eau potable à ${cityName} (2026) | EauPotable.net`,
     description: `Découvrez si l'eau du robinet est potable à ${cityName}. Analyse complète : nitrates, calcaire, pesticides et pH. Données officielles ARS.`,
     openGraph: {
-      title: `Qualité de l'eau à ${cityName}`,
+      title: `Qualité de l'eau potable à ${cityName}`,
       description: `L'eau de ${cityName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète.`,
       images: [ogImageUrl],
     },

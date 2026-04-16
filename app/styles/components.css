@@ -12,11 +12,40 @@
     transform: translateY(0);
 }
 
+.search-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 18px;
+    border-radius: 16px 16px 0 0 !important; /* Arrondis uniquement en HAUT */
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+    color: #1e293b;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: none;
+    margin-left: 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.03);
+    z-index: 2;
+}
 
+/* On enlève les raccords courbes inverses (::before et ::after) */
+.search-label::before,
+.search-label::after {
+    display: none !important;
+}
 
-/* État quand la PWA est proposée : La barre monte au dessus */
+/* Barre de recherche entièrement ronde */
+.search-label + .search-box {
+    border-radius: 50px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
 .search-floating.pwa-active {
-    bottom: 110px !important;
+    bottom: 40px !important;
 }
 
 
@@ -124,7 +153,7 @@
 
     
     #install-banner.with-panel {
-        transform: translateY(100px) !important;
+        transform: translateY(-150px) !important;
     }
     
     #install-banner.visible.with-panel {
@@ -133,7 +162,7 @@
     
 
     .search-floating.with-panel.pwa-active {
-        bottom: 110px !important;
+        bottom: 40px !important;
     }
 }
 
@@ -1185,7 +1214,7 @@ main.content-wrapper {
 /* --- PWA INSTALL BANNER --- */
 .install-banner {
     position: fixed;
-    bottom: 20px;
+    top: 90px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -1196,24 +1225,42 @@ main.content-wrapper {
     padding: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     z-index: 3000;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
+    transition: top 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(100px);
+    transform: translateY(-250px);
 }
 
 .install-banner.visible {
-    transform: translateY(0);
+    animation: pwa-bounce-down 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     pointer-events: auto;
-    opacity: 1;
+}
+
+/* Mode bas de page lors du scroll (Transition fluide top->top) */
+.install-banner.scrolled {
+    top: calc(100vh - 85px); /* Se cale en bas de l'écran */
+    transition: top 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s, opacity 0.5s;
+}
+
+@supports (height: 100svh) {
+    .install-banner.scrolled {
+        top: calc(100svh - 85px);
+    }
+}
+
+@keyframes pwa-bounce-down {
+    0% { transform: translateY(-250px); opacity: 0; }
+    60% { transform: translateY(15px); opacity: 1; }
+    85% { transform: translateY(-8px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 .install-content {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     width: 100%;
-    padding-right: 10px;
+
     min-width: 0; /* Important pour le flex-shrink */
 }
 
@@ -1418,4 +1465,38 @@ main.content-wrapper {
         width: 38px;
         height: 38px;
     }
+}
+/* Scroll Indicator Button */
+.scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    width: 52px;
+    height: 52px;
+    background: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 102, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-solid);
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: bounce-overlap 3s infinite;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.scroll-indicator:hover {
+    transform: translateX(-50%) translateY(50%) scale(1.15);
+    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2);
+}
+
+@keyframes bounce-overlap {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(50%);}
+    40% {transform: translateX(-50%) translateY(40%);}
+    60% {transform: translateX(-50%) translateY(45%);}
 }

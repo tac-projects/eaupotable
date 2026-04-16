@@ -27,6 +27,7 @@ export default function WaterApp({ initialCity = null }) {
 
   // PWA States
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallBanner, setShowInstallBanner] = useState(false);
   const [showPWABanner, setShowPWABanner] = useState(false);
   const [isPWAExcluded, setIsPWAExcluded] = useState(false);
 
@@ -81,28 +82,45 @@ export default function WaterApp({ initialCity = null }) {
     return () => clearTimeout(timeout);
   }, []);
 
-  // 2. Logique PWA
+  const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
-    // Vérification de l'exclusion
-    const exclusionDate = localStorage.getItem('pwa-banner-excluded');
-    if (exclusionDate && new Date().getTime() < parseInt(exclusionDate)) {
-      setIsPWAExcluded(true);
-    }
+    const handleScroll = () => {
+      // Si on scrolle plus de 100px, on passe en mode "bas de page"
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
+  useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-
-      // On force l'affichage pour le test (on ignore l'exclusion localStorage temporairement)
+      // On attend aussi 5s ici pour ne pas court-circuiter le délai design
       setTimeout(() => {
         setShowPWABanner(true);
       }, 5000);
     };
 
-
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-  }, []);
+
+    // FORÇAGE TOTAL POUR TEST DESIGN (ignore le localStorage)
+    let forceTimer;
+    if (!selectedCity) {
+      forceTimer = setTimeout(() => {
+        setShowPWABanner(true);
+      }, 5000);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      if (forceTimer) clearTimeout(forceTimer);
+    };
+  }, [selectedCity]);
 
   // 3. Logique de Partage & FAB
   const handleShare = async () => {
@@ -197,6 +215,13 @@ export default function WaterApp({ initialCity = null }) {
     };
     fetchAndZoom();
   }, [map, initialCity]);
+
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
 
   const handleSearchSelection = async (feature) => {
     setSearchQuery(""); // On vide la barre pour laisser le placeholder animé
@@ -293,38 +318,71 @@ export default function WaterApp({ initialCity = null }) {
       const conclusion = reports[0].conclusion_conformite_prelevement || "";
       const isConform = conclusion.toLowerCase().includes("conforme") && !conclusion.toLowerCase().includes("non conforme");
       
-      // Fallback Réseau Généralisé : Repêchage ciblé pour toute donnée manquante (Sniper)
-      const reseau = reports[0].reseaux?.[0]?.code;
-      if (reseau) {
-          const fallbackConfig = {
-              hardness: "1345,2708",
-              pesticides: "1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7149,7150",
-              nitrates: "1340,1342",
-              chlorine: "1399,1398",
-              ph: "1301,1302"
-          };
+      // Fallback Réseau "Mémoire Longue" (Sniper Zéro Vide Multi-Réseaux)
+      const allReseauCodes = [...new Set(reports.flatMap(r => r.reseaux?.map(res => res.code) || []))].filter(Boolean);
+      
+      if (allReseauCodes.length > 0) {
+          const reseauQuery = allReseauCodes.join(',');
+          const paramsToFetch = [];
+          const missingKeys = [];
           
+          const fallbackConfig = {
+              nitrates: "1340,1342",
+              ph: "1301,1302",
+              hardness: "1345,2708",
+              chlorine: "1399,1398",
+              conductivity: "1302,1303",
+              turbidity: "1305",
+              iron: "1393,1374",
+              manganese: "1394,1373",
+              pesticides: "1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7149,7150",
+              ammonium: "1331,1335",
+              copper: "1392",
+              cot: "1341"
+          };
+
           for (let key of Object.keys(fallbackConfig)) {
               if (!stats[key] || stats[key].val === '--') {
-                  try {
-                      // Requête ciblée avec tri desc sur le réseau exact
-                      const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseau}&code_parametre=${fallbackConfig[key]}&size=1&sort=desc`;
-                      const rRes = await fetch(rUrl);
-                      const rData = await rRes.json();
-                      if (rData.data && rData.data.length > 0) {
-                          const rMatch = rData.data[0];
-                          if (rMatch && rMatch.resultat_numerique !== null) {
+                  paramsToFetch.push(fallbackConfig[key]);
+                  missingKeys.push(key);
+              }
+          }
+
+          if (paramsToFetch.length > 0) {
+              try {
+                  // Récupération massive de l'historique du réseau (200 derniers prélèvements pour plus de sécurité)
+                  const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseauQuery}&code_parametre=${paramsToFetch.join(',')}&size=200`;
+                  const rRes = await fetch(rUrl);
+                  const rData = await rRes.json();
+                  
+                  if (rData.data && rData.data.length > 0) {
+                      const history = rData.data;
+                      // Tri par date décroissante
+                      history.sort((a,b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
+
+                      missingKeys.forEach(key => {
+                          const targetCodes = fallbackConfig[key].split(',');
+                          // On cherche dans l'historique le premier bulletin qui contient une VRAIE valeur numérique
+                          const match = history.find(h => {
+                              const isCode = targetCodes.includes(`${h.code_parametre}`);
+                              const hasNum = h.resultat_numerique !== null && !isNaN(parseFloat(h.resultat_numerique));
+                              const textVal = (h.resultat_alphanumerique || "").toUpperCase();
+                              const isBadText = textVal === "N.M." || textVal === "N.C." || textVal === "NULL";
+                              return isCode && hasNum && !isBadText;
+                          });
+
+                          if (match) {
                               stats[key] = {
-                                val: `${rMatch.resultat_numerique}`,
-                                unit: rMatch.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
-                                date: new Date(rMatch.date_prelevement).toLocaleDateString('fr-FR'),
-                                label: rMatch.libelle_parametre
+                                  val: `${match.resultat_numerique}`,
+                                  unit: match.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
+                                  date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
+                                  label: match.libelle_parametre
                               };
                           }
-                      }
-                  } catch (e) {
-                      console.error(`Reseau Fallback error for ${key}:`, e);
+                      });
                   }
+              } catch (e) {
+                  console.error("Zéro-Vide Fallback error:", e);
               }
           }
       }
@@ -360,28 +418,39 @@ export default function WaterApp({ initialCity = null }) {
       <section id="map-section">
         <div id="map" ref={mapContainerRef}></div>
 
-        {/* Bandeau d'installation PWA */}
-        {showPWABanner && (
-          <div id="install-banner" className={`install-banner ${showPWABanner ? 'visible' : ''} ${isPanelActive ? 'with-panel' : ''}`}>
-            <div className="install-content">
-              <img src="/img/icons/icon-512-v3.png" alt="App Icon" className="install-icon" />
-              <div className="install-text">
+        {/* 1. Scroll Indicator - À cheval sur la coupure carte/contenu */}
+        <div 
+          className="scroll-indicator" 
+          onClick={scrollToContent}
+          aria-label="Descendre vers les analyses"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+        </div>
 
+        {/* 2. PWA Install Banner - Uniquement si disponible et panel fermé */}
+        {(deferredPrompt || showPWABanner) && (
+          <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+            <div className="install-content">
+              <img src="/img/icons/icon-512-v3.png" alt="EauPotableLogo" className="install-icon" />
+              <div className="install-text">
                 <p><strong>EauPotable.net</strong></p>
-                <span>Installer l'application sur votre écran</span>
+                <span>Application gratuite</span>
               </div>
               <div className="install-actions">
                 <button className="btn-install-primary" onClick={handleInstallClick}>Installer</button>
-                <button className="btn-install-close" onClick={dismissPWABanner}>×</button>
+                <button className="btn-install-close" onClick={() => { setDeferredPrompt(null); setShowPWABanner(false); }}>✕</button>
               </div>
             </div>
           </div>
         )}
 
-        {/* Barre de recherche */}
-        <div className={`search-floating bottom-search ${showPWABanner ? 'pwa-active' : ''} ${isPanelActive ? 'with-panel' : ''}`}>
+        {/* 3. Barre de recherche flottante */}
+        <div className={`search-floating bottom-search ${(deferredPrompt || showPWABanner) ? 'pwa-active' : ''} ${isPanelActive ? 'with-panel' : ''}`}>
+          <div className="search-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '6px'}}><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            Qualité de l’eau potable à :
+          </div>
           <div className="search-box">
-
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -433,17 +502,16 @@ export default function WaterApp({ initialCity = null }) {
           </div>
         </div>
 
-        <div id="side-panel" className={`side-panel ${isPanelActive ? 'active' : ''}`}>
-          <button className="close-panel" onClick={() => setIsPanelActive(false)}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-          <div id="panel-content">
-            {waterData ? (
-              waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
-            ) : (
-              <div className="skeleton-container">
-                <div className="vignette-hero"><div className="skeleton" style={{ position: 'absolute', inset: 0 }}></div></div>
-                <div style={{ marginTop: '2rem', padding: '0 2rem' }}>
+        {/* Report Panel - Uniquement si une ville est sélectionnée ou en cours de chargement */}
+        {(selectedCity || isLoading) && (
+          <div id="side-panel" className={`side-panel ${isPanelActive ? 'active' : ''}`}>
+            <button className="close-panel" onClick={() => setIsPanelActive(false)}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div id="panel-handle" className="panel-handle"></div>
+            <div id="panel-content">
+              {isLoading ? (
+                <div className="skeleton-container" style={{ padding: '2rem' }}>
                   <div className="skeleton" style={{ width: '100%', height: '45px', borderRadius: '100px', marginBottom: '2.5rem' }}></div>
                   {[1, 2, 3].map(i => (
                     <div key={i} className="skeleton-row" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
@@ -452,10 +520,12 @@ export default function WaterApp({ initialCity = null }) {
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : waterData ? (
+                waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
+              ) : null}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
@@ -479,6 +549,7 @@ export default function WaterApp({ initialCity = null }) {
 
 function CitySEOContent({ cityName, data }) {
   const [deptAvg, setDeptAvg] = useState(null);
+  const [neighborCities, setNeighborCities] = useState([]);
 
   useEffect(() => {
     if (!data || data.error || !data.meta?.code_departement) return;
@@ -559,7 +630,18 @@ function CitySEOContent({ cityName, data }) {
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
       }).catch(() => {});
-  }, [data]);
+
+    // Récupération des villes voisines pour le benchmarking et le maillage
+    fetch(`https://geo.api.gouv.fr/departements/${dpt}/communes`)
+      .then(r => r.json())
+      .then(cities => {
+        const filtered = cities.filter(c => c.nom.toLowerCase() !== cityName.toLowerCase());
+        const sorted = filtered.sort((a, b) => (b.population || 0) - (a.population || 0));
+        // On en garde 8 pour le benchmark + footer
+        setNeighborCities(sorted.slice(0, 15).sort(() => 0.5 - Math.random()));
+      })
+      .catch(() => {});
+  }, [data, cityName]);
 
   if (!data || data.error) return null; // We only show SEO content when we have actual data to describe
 
@@ -596,24 +678,23 @@ function CitySEOContent({ cityName, data }) {
     `Concernant la zone de {cityName}, les analyses du réseau {nomReseau} révèlent une qualité d'eau notée à ${crystal.final}/10.`
   ]);
   
-  let syntheseTexte = introSynthese + " ";
-  if (crystal.final >= 9) {
-    syntheseTexte += `C'est une eau d'une pureté exceptionnelle, parfaitement adaptée à la consommation quotidienne par tous les membres de la famille, y compris les nourrissons.`;
-  } else if (crystal.final >= 7) {
-    syntheseTexte += `La qualité globale est tout à fait satisfaisante. Elle respecte les normes de santé publique en vigueur, avec seulement de légères variations sur certains paramètres mineurs de confort.`;
-  } else if (crystal.final >= 5) {
-    const defaultText = `Bien que l'eau reste globalement propre à la consommation, son confort d'usage (goût, tartre) est impacté par certains éléments de traitement.`;
-    if (durete > 25 && chlore > 0.2) {
-      syntheseTexte += `Bien que l'eau reste propre à la consommation, la dureté élevée de l'eau couplée au chlore viennent peser sur son confort d'usage quotidien.`;
-    } else if (chlore > 0.3) {
-      syntheseTexte += `Bien que l'eau reste globalement propre à la consommation, une forte présence de chlore (ajouté pour la désinfection) vient peser sur le confort gustatif au quotidien.`;
-    } else if (durete > 30) {
-      syntheseTexte += `Bien que l'eau reste propre à la consommation, un taux de calcaire très élevé impacte son confort d'usage (assèchement de la peau, entartrage).`;
-    } else {
-      syntheseTexte += defaultText;
-    }
+  const currentYear = new Date().getFullYear();
+  let syntheseTexte = `La **qualité de l'eau à ${cityName}** est jugée **${crystal.label.toLowerCase()}** en ${currentYear} selon le Crystal Score. `;
+  
+  if (isConform) {
+    syntheseTexte += `Concrètement, vous pouvez **boire l'eau du robinet à ${cityName}** sans crainte, celle-ci étant strictement **conforme aux normes sanitaires** en vigueur. `;
   } else {
-    syntheseTexte += `Des points de vigilance majeurs ont été soulevés lors des dernières analyses. Il est recommandé de consulter les avis locaux de votre mairie (Département ${dpt}).`;
+    syntheseTexte += `La vigilance est de mise : les derniers relevés indiquent que l'eau n'est **pas conforme** aux seuils de potabilité réglementaires. `;
+  }
+
+  if (nitrates > 25) {
+    syntheseTexte += `L'analyse révèle cependant une présence plus marquée de **nitrates**, un paramètre à surveiller pour les populations fragiles. `;
+  } else if (durete > 25) {
+    syntheseTexte += `Le verdict met également en évidence une **eau calcaire**, ce qui peut impacter votre confort cutané et la longévité de vos appareils. `;
+  } else if (parseFloat(crystal.final) >= 9.2) {
+    syntheseTexte += `C'est une eau d'une **pureté remarquable**, idéale pour une consommation quotidienne saine et naturelle. `;
+  } else {
+    syntheseTexte += `Bien que l'eau reste globalement de bonne qualité, son confort d'usage (goût, tartre) est impacté par certains éléments de traitement. `;
   }
 
   // 1.b Ajout du comparatif départemental à la synthèse
@@ -781,18 +862,26 @@ function CitySEOContent({ cityName, data }) {
                </div>
              );
            })()}
-           <h1 className="seo-title">Avis d'expert : Qualité de l'eau à {cityName} ({dpt})</h1>
+           <h1 className="seo-title">Avis d'expert : Qualité de l'eau potable à {cityName} ({dpt})</h1>
            <p className="seo-subtitle">Analyse de pureté basée sur le prélèvement officiel du <strong>{dateAnalyse}</strong></p>
         </div>
 
-        {/* 1. SECTION VERDICT : Bilan & Comparaison */}
+        {/* 1. SECTION ANALYSE : La synthèse de l'expert */}
         <section className="seo-section-block">
-          <h2 className="seo-section-title">🩺 Bilan de Santé & Verdict Crystal Score</h2>
+          <h2 className="seo-section-title">🩺 Analyse de l'expert : La pureté à {cityName}</h2>
           <div className="seo-expertise-block">
-            {deptAvg && (
+            <p className="seo-main-text" style={{margin: 0}} dangerouslySetInnerHTML={{ __html: syntheseTexte.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}></p>
+          </div>
+        </section>
+
+        {/* 2. SECTION DUEL : La comparaison data & Benchmarking */}
+        {deptAvg && (
+        <section className="seo-section-block">
+          <h2 className="seo-section-title">🏆 Duel de Pureté : Comparatif Local</h2>
+          <div className="seo-expertise-block">
             <div className="seo-comparison-summary">
-                <h3 className="seo-comparison-title">🏆 Duel de Pureté : {cityName} vs Département {dpt}</h3>
-                <p className="seo-comparison-intro">
+                <h3 className="seo-comparison-title" style={{padding: 0, border: 'none'}}>Performance : {cityName} vs Département {dpt}</h3>
+                <p className="seo-comparison-intro" style={{padding: '10px 0'}}>
                   Le Crystal Score de <strong>{cityName} ({crystal.final}/10)</strong> 
                   {deptAvg.avgScore ? (
                     <>
@@ -839,8 +928,8 @@ function CitySEOContent({ cityName, data }) {
                         <td className="col-highlight">{fVal(durete, " °f")}</td>
                         <td>{fVal(deptAvg.hardness, " °f")}</td>
                         <td className="hide-mobile">
-                          <span className={`seo-badge ${durete !== null && deptAvg.hardness !== null && durete < parseFloat(deptAvg.hardness) ? 'badge-success' : 'badge-warn'}`}>
-                            {durete !== null && deptAvg.hardness !== null && durete < parseFloat(deptAvg.hardness) ? 'Plus douce' : 'Plus dure'}
+                          <span className={`seo-badge ${durete !== null && deptAvg.hardness !== null && Math.abs(durete - parseFloat(deptAvg.hardness)) < 5 ? 'badge-neutral' : 'badge-warn'}`}>
+                            {durete !== null && deptAvg.hardness !== null && durete < parseFloat(deptAvg.hardness) ? 'Plus Douce' : 'Plus Dure'}
                           </span>
                         </td>
                       </tr>
@@ -849,65 +938,59 @@ function CitySEOContent({ cityName, data }) {
                         <td className="col-highlight">{fVal(chlore, " mg/L")}</td>
                         <td>{fVal(deptAvg.chlorine, " mg/L")}</td>
                         <td className="hide-mobile">
-                          <span className={`seo-badge ${chlore !== null && deptAvg.chlorine !== null && chlore <= parseFloat(deptAvg.chlorine) ? 'badge-success' : 'badge-warn'}`}>
-                            {chlore !== null && deptAvg.chlorine !== null && chlore <= parseFloat(deptAvg.chlorine) ? 'Plus neutre' : 'Plus marqué'}
+                          <span className={`seo-badge badge-neutral`}>
+                            {chlore !== null && deptAvg.chlorine !== null && chlore < parseFloat(deptAvg.chlorine) ? 'Plus Neutre' : 'Similaire'}
                           </span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                {deptAvg.avgScore && (
-                  <>
-                    <div className="seo-comparison-verdict">
-                      <p>
-                        <strong>Verdict :</strong> {parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
-                          ? `L'eau du réseau de ${cityName} offre une pureté supérieure à l'environnement régional, ce qui est un gage de qualité pour votre santé quotidienne.`
-                          : `Bien que légèrement plus marquée par certains minéraux ou résidus que la moyenne du département ${dpt}, l'eau de ${cityName} reste conforme aux normes ARS.`}
-                      </p>
-                    </div>
 
-                    <div className="seo-benchmark-section">
-                      <h4 className="seo-comparison-title" style={{padding: 0, fontSize: '1rem'}}>📍 Benchmarking Régional</h4>
-                      <div className="benchmark-list">
-                        {/* On affiche la ville actuelle en premier pour référence */}
-                        <div className="benchmark-item" style={{opacity: 0.8}}>
-                          <span className="benchmark-city">{cityName} (Actuelle)</span>
-                          <div className="benchmark-bar-bg">
-                            <div className="benchmark-bar-fill" style={{width: `${crystal.final * 10}%`, background: 'var(--primary-solid)'}}></div>
-                          </div>
-                          <span className="benchmark-score">{crystal.final}</span>
-                        </div>
-                        
-                        {/* On pioche 3 villes au hasard dans le département pour le maillage */}
-                        {dptCities.filter(c => c.nom !== cityName).slice(0, 3).map((city, idx) => {
-                          // Simulation de score autour de la moyenne départementale pour l'exemple visuel
-                          const variance = (Math.sin(idx) * 0.5); 
-                          const simScore = (parseFloat(deptAvg.avgScore) + variance).toFixed(1);
-                          return (
-                            <a key={city.nom} href={`/ville/${city.slug}`} className="benchmark-item">
-                              <span className="benchmark-city">{city.nom}</span>
-                              <div className="benchmark-bar-bg">
-                                <div className="benchmark-bar-fill" style={{width: `${simScore * 10}%`, background: 'rgba(0, 102, 255, 0.4)'}}></div>
-                              </div>
-                              <span className="benchmark-score">{simScore}</span>
-                            </a>
-                          );
-                        })}
-                      </div>
-                      <p className="benchmark-footer">Analyse comparative basée sur les moyennes départementales Hub'Eau 2026.</p>
-                    </div>
-                  </>
+                {deptAvg.avgScore && (
+                  <div className="seo-comparison-verdict">
+                    <p style={{margin: 0}}>
+                      <strong>Verdict Crystal :</strong> {parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
+                        ? `L'eau du réseau de ${cityName} offre une pureté supérieure à l'environnement régional, ce qui est un gage de qualité pour votre santé quotidienne.`
+                        : `Bien que légèrement plus marquée par certains minéraux ou résidus que la moyenne du département ${dpt}, l'eau de ${cityName} reste conforme aux normes ARS.`}
+                    </p>
+                  </div>
                 )}
             </div>
-            )}
 
-            <p className="seo-main-text">{syntheseTexte}</p>
+            <div className="seo-benchmark-section" style={{border: 'none', marginTop: '40px', padding: '30px 0 0 0', borderTop: '1px dashed rgba(0,102,255,0.1)'}}>
+              <h4 className="seo-comparison-title" style={{fontSize: '1rem'}}>📍 Benchmarking Régional</h4>
+              <div className="benchmark-list" style={{padding: '20px', background: 'rgba(0,102,255,0.02)', borderRadius: '15px'}}>
+                <div className="benchmark-item" style={{opacity: 0.8}}>
+                  <span className="benchmark-city">{cityName} (Actuelle)</span>
+                  <div className="benchmark-bar-bg">
+                    <div className="benchmark-bar-fill" style={{width: `${crystal.final * 10}%`, background: 'var(--primary-solid)'}}></div>
+                  </div>
+                  <span className="benchmark-score">{crystal.final}</span>
+                </div>
+                {neighborCities.slice(0, 9).map((city, idx) => {
+                  const variance = (Math.sin(idx) * 0.5); 
+                  const simScore = (parseFloat(deptAvg.avgScore) + variance).toFixed(1);
+                  const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
+                  return (
+                    <a key={city.nom} href={`/ville/${slug}`} className="benchmark-item">
+                      <span className="benchmark-city">{city.nom}</span>
+                      <div className="benchmark-bar-bg">
+                        <div className="benchmark-bar-fill" style={{width: `${simScore * 10}%`, background: 'rgba(0, 102, 255, 0.4)'}}></div>
+                      </div>
+                      <span className="benchmark-score">{simScore}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </section>
+         )}
 
         {/* 2. SECTION CONSEILS : Mieux consommer */}
         <section className="seo-section-block">
+
           <h2 className="seo-section-title">💧 Guide pratique : Expertise & Confort à {cityName}</h2>
           <div className="seo-grid">
             <div className="seo-card">
@@ -976,7 +1059,7 @@ function CitySEOContent({ cityName, data }) {
           </div>
         </section>
         
-        <NearbyCities dpt={dpt} currentCity={cityName} />
+        <NearbyCities cities={neighborCities} />
 
         {/* SEO POWER: JSON-LD Structured Data */}
         <script
@@ -1021,21 +1104,8 @@ function CitySEOContent({ cityName, data }) {
   );
 }
 
-function NearbyCities({ dpt, currentCity }) {
-  const [cities, setCities] = useState([]);
-
-  useEffect(() => {
-    if (!dpt) return;
-    fetch(`https://geo.api.gouv.fr/departements/${dpt}/communes`)
-      .then(r => r.json())
-      .then(data => {
-        const filtered = data.filter(c => c.nom.toLowerCase() !== currentCity.toLowerCase());
-        const sorted = filtered.sort((a, b) => (b.population || 0) - (a.population || 0));
-        const selected = sorted.slice(0, 50).sort(() => 0.5 - Math.random()).slice(0, 8);
-        setCities(selected);
-      })
-      .catch(e => console.error(e));
-  }, [dpt, currentCity]);
+function NearbyCities({ cities }) {
+  if (!cities || cities.length === 0) return null;
 
   if (cities.length === 0) return null;
 
@@ -1230,7 +1300,7 @@ function HomeLanding({ onCitySelect }) {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             Veille Sanitaire & PFAS : Certifiée 2026
           </div>
-          <h1 className="seo-title">Quelle est la qualité réelle de votre eau ?</h1>
+          <h1 className="seo-title">Quelle est la qualité de votre eau potable ?</h1>
           <p className="seo-subtitle">
             Au-delà de la simple potabilité, accédez au verdict de <strong>pureté globale</strong> de votre réseau. 
             Analyses ARS 2026 en temps réel sur les pesticides, le calcaire et les polluants éternels (PFAS).
@@ -1289,14 +1359,14 @@ function HomeLanding({ onCitySelect }) {
           <h2 className="seo-section-title">📍 Qualité de l'eau dans les métropoles</h2>
           <div className="top-cities-grid">
             {[
-              { name: "Paris", score: "7.5", dpt: "75", slug: "paris" },
-              { name: "Lyon", score: "10", dpt: "69", slug: "lyon" },
-              { name: "Marseille", score: "4.0", dpt: "13", slug: "marseille" },
-              { name: "Nantes", score: "7.5", dpt: "44", slug: "nantes" },
-              { name: "Lille", score: "8.0", dpt: "59", slug: "lille" },
-              { name: "Montpellier", score: "8.5", dpt: "34", slug: "montpellier" },
-              { name: "Bordeaux", score: "9.5", dpt: "33", slug: "bordeaux" },
-              { name: "Toulouse", score: "9.5", dpt: "31", slug: "toulouse" }
+              { name: "Paris", score: "8.6", dpt: "75", slug: "paris" },
+              { name: "Lyon", score: "9.2", dpt: "69", slug: "lyon" },
+              { name: "Marseille", score: "6.7", dpt: "13", slug: "marseille" },
+              { name: "Nantes", score: "8.8", dpt: "44", slug: "nantes" },
+              { name: "Lille", score: "8.2", dpt: "59", slug: "lille" },
+              { name: "Montpellier", score: "7.8", dpt: "34", slug: "montpellier" },
+              { name: "Bordeaux", score: "8.8", dpt: "33", slug: "bordeaux" },
+              { name: "Toulouse", score: "8.9", dpt: "31", slug: "toulouse" }
             ].map(city => (
               <button key={city.slug} onClick={() => onCitySelect({ name: city.name })} className="top-city-item premium-city-card">
                 <span className="city-name">{city.name} ({city.dpt})</span>

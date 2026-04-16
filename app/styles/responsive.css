@@ -1,43 +1,60 @@
 /* Adaptive Binary Strategy: Mobile/Tablet (< 1024px) vs Desktop (>= 1024px) */
 
-/* MODE IMMERSIF: MOBILE & TABLETTES */
+/* 1. ELEMENTS UNIFIÉS (Identiques sur tous les écrans) */
+.search-floating.bottom-search {
+    bottom: 95px !important; 
+    top: auto;
+    width: 94%;
+    max-width: 500px; /* Sécurité pour desktop */
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrage total */
+}
+
+.scroll-indicator {
+    bottom: 25px !important;
+    left: 50%;
+    /* Plus de transform statique ici pour laisser l'animation respirer */
+    animation: bounce-premium 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite !important; 
+    z-index: 1000;
+}
+
+@keyframes bounce-premium {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* 2. MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
     header.transparent-header {
         padding: 0;
     }
 
     .nav-wrapper {
-        padding: 0 12px; /* Le logo reste proche du bord gauche */
+        padding: 0 12px;
     }
 
     .hamburger-btn {
-        margin-right: 12px; /* Seul le hamburger est écarté du bord droit */
-    }
-
-    .logo {
-        /* Styles maintenant gérés par les tokens dans variables.css */
+        margin-right: 12px;
     }
 
     /* Map occupies full smartphone/tablet height */
-    #map-section, #map {
+    #map-section,
+    #map {
         height: 100vh;
         height: 100svh;
     }
 
-    .search-floating {
-        bottom: 40px; /* Position basse par défaut alignée sur le desktop */
-        top: auto;
-        width: 94%;
-        z-index: 800;
-        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    /* Masquer la barre de recherche et la bannière quand l'analyse est ouverte */
-    body:has(.side-panel.active) .search-floating,
-    body:has(.side-panel.active) .install-banner {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(20px);
+    /* Masquer uniquement la bannière et le scroll quand l'analyse est ouverte */
+    body:has(.side-panel.active) .install-banner,
+    body:has(.side-panel.active) .scroll-indicator {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(40px) !important;
+        visibility: hidden;
     }
 
     .search-input {
@@ -49,53 +66,41 @@
     .side-panel {
         top: auto;
         bottom: -100%;
-        right: 10px; /* Marges latérales pour évite le débordement */
+        right: 10px;
         left: 10px;
-        width: auto; /* Laisser left/right gérer la largeur */
+        width: auto;
         height: 80vh;
         border-radius: var(--radius-lg);
-        box-shadow: 0 -15px 50px rgba(0,0,0,0.15);
+        box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.15);
         padding: 0;
         z-index: 2500;
-        overflow: visible; /* Autorise le bouton fermer sur la bordure */
-    }
-
-    .yuka-name {
-        grid-row: 1;
-        grid-column: 2;
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: var(--text-main);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* Empêche le nom de casser la grille en revenant à la ligne */
+        overflow: visible;
     }
 
     .side-panel.active {
-        bottom: 10px; /* Petit décollage du bas pour le look Premium Floating */
+        bottom: 10px;
         right: 10px;
         left: 10px;
     }
 
     #panel-content {
-        padding: 1rem; 
+        padding: 1rem;
     }
 
     .vignette-hero {
         height: 240px;
-        margin: -1rem -1rem 1.5rem -1rem; /* Perfectly flush on mobile */
+        margin: -1rem -1rem 1.5rem -1rem;
     }
 
-
     .close-panel {
-        top: -18px; 
-        right: 5px; 
+        top: -18px;
+        right: 5px;
         width: 36px;
         height: 36px;
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .desktop-only {
@@ -103,7 +108,7 @@
     }
 }
 
-/* MODE DASHBOARD: DESKTOP */
+/* 3. MODE DASHBOARD: DESKTOP */
 @media (min-width: 1024px) {
     .side-panel {
         top: 80px;
@@ -117,19 +122,18 @@
     }
 
     #panel-content {
-        padding: 1.5rem 1.25rem; /* Marges gauche et droite identiques pour une symétrie parfaite */
+        padding: 1.5rem 1.25rem;
     }
 
-
-
     .vignette-hero {
-        margin: -1.5rem -1.25rem 2rem -1.25rem; /* Perfectly flush on desktop */
+        margin: -1.5rem -1.25rem 2rem -1.25rem;
     }
 }
 
 /* Fix pour Safari Mobile (vh units) */
 @supports (-webkit-touch-callout: none) {
-    #map-section, #map {
-        height: -webkit-fill-available;
+    #map-section,
+    #map {
+        height: 100vh;
     }
 }
