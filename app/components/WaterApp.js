@@ -492,6 +492,7 @@ function CitySEOContent({ cityName, data }) {
         const nArr = [];
         const hArr = [];
         const cArr = [];
+        const pArr = [];
         let conformCount = 0;
         let evaluatedCount = 0;
         res.data.forEach(r => {
@@ -499,10 +500,8 @@ function CitySEOContent({ cityName, data }) {
           const isPhysicoConform = r.conformite_limites_pc_prelevement === 'C';
           const isBactConform = r.conformite_limites_bact_prelevement === 'C';
 
-          // On vérifie s'il y a au moins une donnée de conformité disponible
           if (r.conformite_limites_pc_prelevement === 'C' || r.conformite_limites_pc_prelevement === 'N') {
               evaluatedCount++;
-              // L'eau est jugée conforme si les DEUX volets (PC et Bact) sont 'C'
               if (isPhysicoConform && isBactConform) conformCount++;
           }
           
@@ -511,26 +510,30 @@ function CitySEOContent({ cityName, data }) {
           if (lbl.includes("nitrate")) nArr.push(r.resultat_numerique);
           if (lbl.includes("hydrotimetrique") || lbl.includes("durete")) hArr.push(r.resultat_numerique);
           if (lbl.includes("chlore")) cArr.push(r.resultat_numerique);
+          if (lbl.includes("pesticide")) pArr.push(r.resultat_numerique);
         });
         const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
         const total = evaluatedCount || 1;
         const avgNi = getAvg(nArr);
         const avgHa = getAvg(hArr);
-        const avgCl = cArr.length ? (cArr.reduce((a, b) => a + b, 0) / cArr.length) : null;
+        const avgCl = getAvg(cArr);
+        const avgPe = getAvg(pArr);
         
         // On calcule un Crystal Score basé sur les moyennes pour avoir un point de comparaison réel
         const simulatedScore = calculateCrystalScore({
           nitrates: { val: avgNi },
           hardness: { val: avgHa },
           chlorine: { val: avgCl },
-          bacteria: { val: 0 }, // On assume une bactério correcte en moyenne
-          ph: { val: 7.5 }      // Valeur neutre moyenne
+          pesticides: { val: avgPe },
+          bacteria: { val: 0 }, 
+          ph: { val: 7.5 }
         }, true).final;
 
         setDeptAvg({ 
           nitrates: avgNi?.toFixed(1), 
           hardness: avgHa?.toFixed(1), 
           chlorine: avgCl?.toFixed(2),
+          pesticides: avgPe?.toFixed(3),
           avgScore: simulatedScore,
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
