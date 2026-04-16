@@ -754,15 +754,12 @@ function CitySEOContent({ cityName, data }) {
           <div className="seo-expertise-block">
             {deptAvg && (
             <div className="seo-comparison-summary">
-                <div className="seo-comparison-text">
-                  <p>
-                    <strong>Duel de Pureté :</strong> Le Crystal Score de {cityName} ({crystal.final}/10) 
-                    {parseFloat(crystal.final) >= parseFloat(deptAvg.score) 
-                      ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.score}/10).` 
-                      : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.score}/10).`} 
-                    Une donnée clef à prendre en compte pour la surveillance de vos équipements et de votre santé.
-                  </p>
-                </div>
+                <p className="seo-comparison-intro">
+                  <strong>Duel de Pureté :</strong> Le Crystal Score de {cityName} ({crystal.final}/10) 
+                  {parseFloat(crystal.final) >= (deptAvg.avgScore || 7.0) 
+                    ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.avgScore || '7.0'}/10).` 
+                    : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.avgScore || '7.0'}/10).`} 
+                </p>
                 <div className="summary-table-wrapper">
                   <table className="comparison-table">
                     <thead>
