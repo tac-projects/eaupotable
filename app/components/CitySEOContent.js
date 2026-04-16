@@ -149,7 +149,7 @@ export default function CitySEOContent({ cityName, data }) {
     return variants[idx].replace(/\{cityName\}/g, cityName).replace(/\{nomReseau\}/g, nomReseau);
   };
 
-  const syntheseTexte = `La **qualité de l'eau à ${cityName}** est jugée **${crystal.label.toLowerCase()}** en ${currentYear} selon le Crystal Score. `;
+  let syntheseTexte = `La **qualité de l'eau à ${cityName}** est jugée **${crystal.label.toLowerCase()}** en ${currentYear} selon le Crystal Score. `;
   
   if (isConform) {
     syntheseTexte += `Concrètement, vous pouvez **boire l'eau du robinet à ${cityName}** sans crainte, celle-ci étant strictement **conforme aux normes sanitaires** en vigueur. `;
