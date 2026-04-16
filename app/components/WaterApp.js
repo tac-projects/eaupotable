@@ -791,13 +791,17 @@ function CitySEOContent({ cityName, data }) {
           <div className="seo-expertise-block">
             {deptAvg && (
             <div className="seo-comparison-summary">
+                <h3 className="seo-comparison-title">🏆 Duel de Pureté : {cityName} vs Département {dpt}</h3>
                 <p className="seo-comparison-intro">
-                  <strong>Duel de Pureté :</strong> Le Crystal Score de {cityName} ({crystal.final}/10) 
+                  Le Crystal Score de <strong>{cityName} ({crystal.final}/10)</strong> 
                   {deptAvg.avgScore ? (
-                    parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
-                      ? ` surpasse la moyenne départementale de ${dpt} (${deptAvg.avgScore}/10).` 
-                      : ` se situe légèrement sous la moyenne du département ${dpt} (${deptAvg.avgScore}/10).`
-                  ) : " est en cours d'analyse comparative avec la moyenne départementale..."} 
+                    <>
+                      {parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
+                        ? " surpasse la moyenne du " 
+                        : " se situe légèrement sous la moyenne du "}
+                      <a href={`/departement/${dpt}`} className="seo-dpt-link">département {dpt}</a> ({deptAvg.avgScore}/10).
+                    </>
+                  ) : " est en cours d'analyse comparative avec son secteur géographique..."} 
                 </p>
                 <div className="summary-table-wrapper">
                   <table className="comparison-table">
@@ -853,6 +857,16 @@ function CitySEOContent({ cityName, data }) {
                     </tbody>
                   </table>
                 </div>
+                {deptAvg.avgScore && (
+                  <div className="seo-comparison-verdict">
+                    <p>
+                      <strong>Verdict :</strong> {parseFloat(crystal.final) >= parseFloat(deptAvg.avgScore) 
+                        ? `L'eau du réseau de ${cityName} offre une pureté supérieure à l'environnement régional, ce qui est un gage de qualité pour votre santé quotidienne.`
+                        : `Bien que légèrement plus marquée par certains minéraux ou résidus que la moyenne du département ${dpt}, l'eau de ${cityName} reste conforme aux normes ARS.`}
+                    </p>
+                  </div>
+                )}
+            </div>
               </div>
             )}
 
