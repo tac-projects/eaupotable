@@ -83,6 +83,7 @@ export default function CitySEOContent({ cityName, data }) {
           chlorine: (avgCl)?.toFixed(2),
           pesticides: (avgPe || 0)?.toFixed(3),
           avgScore: simulatedScore,
+          count: res.data.length,
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
       }).catch(() => {});
@@ -307,7 +308,8 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>Absence</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(microVal.toLowerCase().includes('absence') ? 0 : 1, 0);
+                        const isAbsence = microVal ? microVal.toLowerCase().includes('absence') : isConform;
+                        const s = getDuelStatus(isAbsence ? 0 : 1, 0);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -372,7 +374,7 @@ export default function CitySEOContent({ cityName, data }) {
             </div>
 
             <div className="seo-comparison-verdict">
-              <strong>Verdict :</strong> {crystal.final >= (deptAvg?.score || 7) 
+              <strong>Verdict :</strong> {parseFloat(crystal.final) >= parseFloat(deptAvg?.avgScore || 7) 
                 ? `${cityName} surclasse la moyenne du département ${dpt}. Un réseau d'excellente facture.`
                 : `La qualité à ${cityName} est légèrement en retrait par rapport à la dynamique du département ${dpt}.`}
             </div>
