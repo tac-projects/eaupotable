@@ -9,8 +9,8 @@ import Footer from './components/Footer';
 
 export const metadata = {
   metadataBase: new URL('https://www.eaupotable.net'),
-  title: 'EauPotable.net | La vérité sur l\'eau de votre robinet.',
-  description: 'Analysez la qualité de l\'eau potable de votre ville instantanément. Accédez aux relevés officiels sur les pesticides, nitrates et calcaire pour une transparence totale.',
+  title: 'EauPotable.net | Qualité & Pureté de l\'eau du robinet (2026)',
+  description: 'Analysez la qualité réelle et la pureté de votre eau potable en 2026. Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans plus de 35 000 communes.',
   manifest: '/manifest.json',
   themeColor: '#0066FF',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',

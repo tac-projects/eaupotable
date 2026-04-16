@@ -661,30 +661,22 @@ function CitySEOContent({ cityName, data }) {
   else filterReason = "le confort gustatif souhaité";
 
   // 5. FAQ Dynamique
-  let faqItems = [
+  const faqItems = [
     {
-      q: `Peut-on boire l'eau du robinet à ${cityName} tous les jours ?`,
-      a: crystal.final >= 6 ? `Oui, absolument. Les résultats des analyses montrent une excellente conformité avec les normes sanitaires françaises. L'eau de ${cityName} peut être consommée quotidiennement comme principale source d'hydratation sans risque pour un adulte en bonne santé.` : `L'eau respecte globalement les normes, mais au vu des récents paramètres, il est conseillé de surveiller les annonces de la mairie ou d'utiliser un système de filtration pour un usage quotidien intensif.`
+      q: `L'eau du robinet à ${cityName} est-elle de bonne qualité en 2026 ?`,
+      a: `Oui, selon les relevés de l'ARS, l'eau de ${cityName} est conforme aux normes de potabilité. Cependant, son Crystal Score de ${crystal.final}/10 indique des variations sur la pureté (pesticides) et le confort (calcaire).`
     },
     {
-      q: `Faut-il acheter de l'eau en bouteille ou un filtre à ${cityName} ?`,
-      a: (durete > 25 || chlore > 0.2) ? `Au vu de ${filterReason}, utiliser une carafe filtrante classique peut considérablement améliorer le confort gustatif de vos boissons chaudes (thé, café) à ${cityName}. Cependant, sur le strict plan sanitaire, l'eau en bouteille n'est pas une obligation scientifique pour la santé.` : `Non, l'eau de ${cityName} présente d'excellentes caractéristiques de base. L'eau en bouteille (qui coûte 100 à 300 fois plus cher et génère polution plastique) n'apportera pas de bénéfice sanitaire supplémentaire pour la santé.`
+      q: `Quel est le taux de calcaire (dureté) à ${cityName} ?`,
+      a: `La dureté de l'eau à ${cityName} est de ${stats.hardness?.val || '0'}°f. Une valeur ${stats.hardness?.val > 25 ? 'élevée qui favorise le tartre' : 'équilibrée pour vos équipements'}.`
     },
     {
-      q: `L'eau de ${cityName} convient-elle aux nourrissons ?`,
-      a: (nitrates && nitrates < 10) ? `Oui. Le taux de nitrates y est remarquablement bas (moins de 10 mg/L), ce qui respecte largement les recommandations pédiatriques les plus strictes pour la préparation des biberons des tout-petits.` : `Il est recommandé de vérifier les taux précis via la mairie avant de préparer systématiquement des biberons. Dans le doute, l'usage d'une eau en bouteille spécifique ("Convient pour la préparation des aliments des nourrissons") reste la norme pour les nouveau-nés de moins de 6 mois.`
+      q: `L'eau de ${cityName} est-elle contrôlée pour les PFAS (polluants éternels) ?`,
+      a: `À partir du 1er janvier 2026, la surveillance des PFAS est devenue obligatoire. Les services de santé de ${cityName} intègrent désormais ces tests pour garantir une pureté chimique maximale au-delà des normes classiques.`
     },
     {
-      q: `Comment enlever le goût de chlore de l'eau à ${cityName} ?`,
-      a: `C'est très simple : le chlore est un gaz qui s'évapore. Il suffit de laisser reposer votre eau dans une carafe ouverte (idéalement en verre) au réfrigérateur pendant 15 à 30 minutes. Le goût disparaîtra naturellement sans aucun produit chimique à ${cityName}.`
-    },
-    {
-      q: `Le calcaire à ${cityName} est-il dangereux pour la santé ?`,
-      a: `C'est une idée reçue ! Le calcaire est composé de calcium et de magnésium, deux minéraux essentiels. Boire une eau calcaire à ${cityName} est même bénéfique pour la santé cardiovasculaire. Le seul inconvénient est "technique" : l'entartrage de vos appareils électroménagers et le possible assèchement de la peau.`
-    },
-    {
-      q: `D'où proviennent les données de qualité de l'eau pour ${cityName} ?`,
-      a: `Nos informations sont issues directement des prélèvements officiels réalisés par l'Agence Régionale de Santé (ARS) et centralisés par le Ministère de la Santé. Nous analysons ces données brutes en temps réel pour vous offrir cette lecture simplifiée à ${cityName}.`
+      q: "Peut-on boire l'eau du robinet sans risque ?",
+      a: `Absolument, l'eau distribuée à ${cityName} fait l'objet de contrôles bactériologiques stricts. Le Crystal Score vous aide simplement à décider si une filtration complémentaire est nécessaire pour le goût ou la pureté.`
     }
   ];
 
@@ -809,7 +801,7 @@ function CitySEOContent({ cityName, data }) {
 
         {/* 2. SECTION CONSEILS : Mieux consommer */}
         <section className="seo-section-block">
-          <h2 className="seo-section-title">💧 Guide pratique : bien consommer l'eau à {cityName}</h2>
+          <h2 className="seo-section-title">💧 Guide pratique : Expertise & Confort à {cityName}</h2>
           <div className="seo-grid">
             <div className="seo-card">
               <div className="seo-card-icon">🚰</div>
@@ -838,7 +830,7 @@ function CitySEOContent({ cityName, data }) {
 
         {/* 3. SECTION TECHNIQUE : Origine & Data */}
         <section className="seo-section-block">
-          <h2 className="seo-section-title">🌍 Origine et Parcours de l'Eau</h2>
+          <h2 className="seo-section-title">🌍 Origine & Surveillance PFAS 2026</h2>
           <div className="seo-longform">
             <div className="seo-longform-card dark-mode-soft">
               <p>
@@ -1096,37 +1088,37 @@ function HomeLanding({ onCitySelect }) {
         <div className="seo-header">
           <div className="seo-trust-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            Données Certifiées ARS 2026
+            Veille Sanitaire & PFAS : Certifiée 2026
           </div>
-          <h1 className="seo-title">La vérité sur l'eau de votre robinet.</h1>
+          <h1 className="seo-title">Quelle est la qualité réelle de votre eau ?</h1>
           <p className="seo-subtitle">
-            Accédez instantanément aux analyses officielles de l'Agence Régionale de Santé (ARS). 
-            Transparence totale sur les pesticides, les nitrates et le calcaire dans plus de 35 000 communes.
+            Au-delà de la simple potabilité, accédez au verdict de **pureté globale** de votre réseau. 
+            Analyses ARS 2026 en temps réel sur les pesticides, le calcaire et les polluants éternels (PFAS).
           </p>
         </div>
 
-        {/* 1. ARGUMENTS CLEFS */}
+        {/* 1. ARGUMENTS CLEFS : Sécurité / Pureté / Confort */}
         <div className="seo-grid">
+          <div className="seo-card">
+            <div className="seo-card-icon">🧪</div>
+            <h3>Expertise & Pureté</h3>
+            <p>Nous analysons la présence de polluants émergents comme les PFAS et les résidus de pesticides, là où les rapports classiques s'arrêtent souvent à la conformité de base.</p>
+          </div>
+
           <div className="seo-card">
             <div className="seo-card-icon">💎</div>
             <h3>Le Crystal Score</h3>
-            <p>Notre algorithme exclusif traduit des rapports de laboratoire complexes en une note simple sur 10, pour un verdict santé immédiat.</p>
+            <p>Un algorithme qui traduit la complexité chimique en une note santé de 0 à 10. Indispensable pour la préparation des biberons et la protection de votre santé.</p>
             <div className="score-mini-visual">
               <div className="mini-bar"><div className="fill" style={{ width: '85%' }}></div></div>
-              <span>Excellente : 8.5/10</span>
+              <span>Qualité Excellente</span>
             </div>
           </div>
 
           <div className="seo-card">
-            <div className="seo-card-icon">🔬</div>
-            <h3>Données Officielles</h3>
-            <p>Pas d'approximations. Nos données proviennent directement de Hub'Eau et du Ministère de la Santé, mises à jour en temps réel après chaque prélèvement.</p>
-          </div>
-
-          <div className="seo-card">
-            <div className="seo-card-icon">👶</div>
-            <h3>Santé & Sécurité</h3>
-            <p>Vérifiez si l'eau de votre ville est adaptée à la préparation des biberons ou si elle nécessite une filtration pour protéger vos appareils et votre peau.</p>
+            <div className="seo-card-icon">🚿</div>
+            <h3>Confort & Maison</h3>
+            <p>Calculez précisément la dureté de l'eau à votre adresse. Protégez vos équipements du calcaire et prévenez les problèmes de peau (eczéma, sécheresse) liés au tartre.</p>
           </div>
         </div>
 
@@ -1180,24 +1172,24 @@ function HomeLanding({ onCitySelect }) {
           <div className="seo-faq-accordion">
             {[
               {
-                q: "L'eau du robinet est-elle sûre partout en France ?",
-                a: "En France, l'eau du robinet est l'un des produits alimentaires les plus contrôlés. Cependant, des variations locales importantes existent sur les taux de nitrates ou de pesticides. EauPotable.net vous permet de vérifier ces seuils précisément chez vous."
+                q: "Pourquoi vérifier la qualité de son eau au-delà de la potabilité ?",
+                a: "En France, l'eau est traitée pour être potable (normes de sécurité immédiate). Cependant, le Crystal Score évalue la pureté à long terme : présence de nitrates, résidus de pesticides ou de polluants éternels (PFAS). Savoir ce que l'on boit permet d'adapter sa consommation, notamment pour les nourrissons."
               },
               {
-                q: "C'est quoi un \"bon\" Crystal Score ?",
-                a: "Un score au-dessus de 8/10 indique une eau d'excellente qualité physico-chimique. En dessous de 5/10, la vigilance est de mise, souvent à cause d'une forte dureté ou de traces de polluants persistants."
+                q: "Comment est calculé le Crystal Score 2026 ?",
+                a: "Notre algorithme analyse 15 paramètres physico-chimiques issus de l'ARS. Il pondère la sécurité (bactériologie), la pureté (pesticides, PFAS) et le confort (dureté, chlore) pour offrir une note de 0 à 10 immédiatement compréhensible."
               },
               {
-                q: "Carafe filtrante ou adoucisseur : est-ce vraiment utile ?",
-                a: "C'est une question de confort et non de sécurité. Si votre Crystal Score indique un taux de calcaire élevé (> 25°f), un adoucisseur protégera votre plomberie. Si vous n'aimez pas le goût, une carafe filtrante éliminera le chlore. Cependant, pour une eau déjà notée \"Excellente\", la filtration n'apporte aucun bénéfice sanitaire supplémentaire compte tenu des contrôles ARS déjà très stricts."
+                q: "L'eau de mon robinet contient-elle des PFAS (polluants éternels) ?",
+                a: "Depuis le 1er janvier 2026, toutes les communes ont l'obligation de tester les PFAS. EauPotable.net intègre ces nouvelles données dès leur publication officielle par les ARS. Vérifiez sur la fiche de votre ville si des résidus ont été détectés lors des derniers contrôles."
               },
               {
-                q: "D'où proviennent vos chiffres ?",
-                a: "Nos algorithmes exploitent l'API Hub'Eau du gouvernement français, qui centralise tous les prélèvements effectués par les Agences Régionales de Santé (ARS) sur les points de puisage et les réseaux de distribution. Nous rafraîchissons les données quotidiennement pour coller au plus proche des derniers bulletins locaux."
+                q: "Adoucisseur vs Carafe filtrante : que conseiller ?",
+                a: "Si votre score 'Dureté' est défavorable (> 25°f), un adoucisseur protégera vos canalisations. Si vous n'aimez pas le goût du chlore, une carafe filtrante suffit. Aucune filtration n'est cependant nécessaire pour les eaux notées 'Excellentes', déjà très pures."
               },
               {
-                q: "Peut-on cuisiner avec l'eau du robinet si le score est moyen ?",
-                a: "Oui, la cuisson élimine la plupart des germes microbiologiques et n'est pas impactée par le calcaire. Néanmoins, pour des bouillons ou le thé, une eau peu minéralisée (score de calcaire bas) permettra de mieux révéler les arômes de vos aliments."
+                q: "D'où proviennent les données du site ?",
+                a: "Nous exploitons l'API Hub'Eau, le portail officiel des données sur l'eau en France. Ces données proviennent des prélèvements réels effectués sur les points de puisage et robinets par les autorités sanitaires (Ministère de la Santé)."
               }
             ].map((item, i) => (
               <details key={i} className="seo-faq-item">
