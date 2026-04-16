@@ -537,24 +537,24 @@ function CitySEOContent({ cityName, data }) {
         const avgCu = getAvg(cuArr);
         
         const simulatedScore = calculateCrystalScore({
-          nitrates: { val: avgNi },
-          hardness: { val: avgHa },
-          chlorine: { val: avgCl },
-          pesticides: { val: avgPe },
-          iron: { val: avgFe },
-          manganese: { val: avgMn },
-          turbidity: { val: avgTu },
-          ammonium: { val: avgAm },
-          copper: { val: avgCu },
+          nitrates: { val: avgNi || nitrates },
+          hardness: { val: avgHa || durete },
+          chlorine: { val: avgCl || chlore },
+          pesticides: { val: avgPe || 0 }, // On assume 0 si vraiment introuvable au dept
+          iron: { val: avgFe || 0 },
+          manganese: { val: avgMn || 0 },
+          turbidity: { val: avgTu || 0 },
+          ammonium: { val: avgAm || 0 },
+          copper: { val: avgCu || 0 },
           bacteria: { val: 0 }, 
           ph: { val: 7.5 }
         }, true).final;
 
         setDeptAvg({ 
-          nitrates: avgNi?.toFixed(1), 
-          hardness: avgHa?.toFixed(1), 
-          chlorine: avgCl?.toFixed(2),
-          pesticides: avgPe?.toFixed(3),
+          nitrates: (avgNi || nitrates)?.toFixed(1), 
+          hardness: (avgHa || durete)?.toFixed(1), 
+          chlorine: (avgCl || chlore)?.toFixed(2),
+          pesticides: (avgPe || 0)?.toFixed(3),
           avgScore: simulatedScore,
           conformRate: ((conformCount / total) * 100).toFixed(0) 
         });
