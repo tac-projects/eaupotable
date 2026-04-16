@@ -33,10 +33,10 @@ export default function VillesIndexPage() {
           </nav>
 
           <header className="villes-header">
-            <h1>Répertoire National de la Qualité de l'Eau</h1>
+            <h1>Annuaire des Villes de France par Département</h1>
             <p className="villes-subtitle">
-              Accédez aux relevés d'analyses officiels de l'ARS pour les 101 départements français. 
-              Naviguez par département pour trouver votre commune.
+              Accédez aux verdicts de <strong>pureté et qualité de l'eau</strong> pour chaque commune française. 
+              Naviguez par département pour consulter les derniers rapports ARS 2026.
             </p>
           </header>
 

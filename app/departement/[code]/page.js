@@ -49,10 +49,10 @@ export default function DepartementPage({ params }) {
           </nav>
 
           <header className="dept-header">
-            <h1>Qualité de l'eau potable : {deptName} ({code})</h1>
+            <h1>Qualité de l'eau : Répertoire des communes du {deptName} ({code})</h1>
             <p className="dept-subtitle">
-              Sélectionnez votre commune pour consulter le rapport d'analyse détaillé de l'ARS 
-              pour le département {deptName}. Données actualisées en temps réel.
+              Sélectionnez votre ville ci-dessous pour accéder au verdict de <strong>pureté et de conformité 2026</strong>. 
+              Données certifiées ARS pour le département {deptName}.
             </p>
           </header>
 
