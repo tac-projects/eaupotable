@@ -258,24 +258,35 @@ main {
     color: var(--primary-solid);
 }
 
-.footer-badge-area {
+.footer-badges {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 .footer-trust-badge {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 20px;
-    background: var(--bg-surface);
+    padding: 8px 16px;
+    background: #0066FF08;
     border: 1px solid #0066FF1A;
     border-radius: 100px;
     color: var(--primary-solid);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     white-space: nowrap;
-    box-shadow: 0 4px 15px #0066ff0d;
+    text-decoration: none;
+    transition: var(--transition-premium);
+}
+
+.footer-trust-badge:hover {
+    background: #0066FF10;
+    border-color: var(--primary-solid);
+    transform: translateY(-2px);
 }
 
 .footer-bottom {
