@@ -307,6 +307,7 @@ main {
 .footer-status-badge {
     background: #E8F5E9;
     color: #2E7D32;
+    border: 1px solid #C8E6C9;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -316,27 +317,45 @@ main {
 .footer-trust-badge {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: #E3F2FD;
-    border: 1px solid #BBDEFB;
-    color: #1976D2;
+    gap: 4px; /* Un peu plus serré pour tenir à 4 */
     font-weight: 700;
     text-decoration: none;
     transition: var(--transition-premium);
 }
 
-.footer-trust-badge:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+.footer-trust-badge.blue {
+    background: #E3F2FD;
+    border: 1px solid #BBDEFB;
+    color: #1976D2;
 }
 
-@media (max-width: 900px) {
+.footer-trust-badge.indigo {
+    background: #F3E5F5;
+    border: 1px solid #E1BEE7;
+    color: #7B1FA2;
+}
+
+.footer-trust-badge.gold {
+    background: #FFF8E1;
+    border: 1px solid #FFECB3;
+    color: #F9A825;
+}
+
+.footer-trust-badge:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.95);
+}
+
+@media (max-width: 1100px) {
     .footer-bottom-row {
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
     }
     .footer-divider {
         display: none;
+    }
+    .footer-badges-inline {
+        justify-content: center;
     }
 }
 
