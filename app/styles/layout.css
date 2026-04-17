@@ -258,41 +258,86 @@ main {
     color: var(--primary-solid);
 }
 
-.footer-badges {
+.footer-bottom {
+    border-top: 1px solid var(--glass-border-light);
+    padding-top: 25px;
+    margin-top: 20px;
+}
+
+.footer-bottom-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.footer-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--glass-border-light);
+    display: block;
+}
+
+.footer-data-source a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: var(--transition-premium);
+}
+
+.footer-data-source a:hover {
+    color: var(--primary-solid);
+}
+
+.footer-badges-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-status-badge.smaller, .footer-trust-badge.smaller {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+}
+
+.footer-status-badge {
+    background: #E8F5E9;
+    color: #2E7D32;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .footer-trust-badge {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 16px;
-    background: #0066FF08;
-    border: 1px solid #0066FF1A;
-    border-radius: 100px;
-    color: var(--primary-solid);
+    gap: 6px;
+    background: #E3F2FD;
+    border: 1px solid #BBDEFB;
+    color: #1976D2;
     font-weight: 700;
-    font-size: 0.8rem;
-    white-space: nowrap;
     text-decoration: none;
     transition: var(--transition-premium);
 }
 
 .footer-trust-badge:hover {
-    background: #0066FF10;
-    border-color: var(--primary-solid);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
 }
 
-.footer-bottom {
-    border-top: 1px solid var(--glass-border-light);
-    padding-top: 30px;
-    text-align: center;
+@media (max-width: 900px) {
+    .footer-bottom-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .footer-divider {
+        display: none;
+    }
 }
 
 .footer-legal-row p {

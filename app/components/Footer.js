@@ -53,36 +53,41 @@ export default function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <div className="footer-info">
-            <span className="footer-year">© 2026 EauPotable.net.</span>
+          <div className="footer-bottom-row">
+            <span className="footer-copyright">© 2026 EauPotable.net.</span>
+            
+            <span className="footer-divider"></span>
+
             <span className="footer-data-source">
-              Données publiques Hub'Eau.{' '}
+              Données Hub'Eau.{' '}
               <a 
                 href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                style={{ color: 'inherit', textDecoration: 'underline', opacity: 0.8 }}
               >
-                Réutilisation officielle certifiée sur data.gouv.fr
+                Réutilisation officielle certifiée
               </a>
             </span>
-          </div>
-          <div className="footer-badges">
-            <div className="footer-status-badge">
-              <span className="status-dot"></span>
-              Analyses ARS 2026 en temps réel
+
+            <span className="footer-divider"></span>
+
+            <div className="footer-badges-inline">
+              <div className="footer-status-badge smaller">
+                <span className="status-dot"></span>
+                Analyses ARS 2026
+              </div>
+              <a 
+                href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="footer-trust-badge smaller"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '6px' }}>
+                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                </svg>
+                Certifié Data.gouv.fr
+              </a>
             </div>
-            <a 
-              href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="footer-trust-badge"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-              </svg>
-              Certifié Data.gouv.fr
-            </a>
           </div>
         </div>
       </div>
