@@ -17,8 +17,8 @@ async function notifyIndexNow() {
       const allUrls = xml.match(/https:\/\/www\.eaupotable\.net\/ville\/[a-z0-9-]+/g) || [];
       
       if (allUrls.length > 0) {
-        // Mélange et sélection de 50 URLs
-        randomUrls = allUrls.sort(() => 0.5 - Math.random()).slice(0, 50);
+        // Mélange et sélection de 1000 URLs
+        randomUrls = allUrls.sort(() => 0.5 - Math.random()).slice(0, 1000);
         console.log(`🎲 Rotation : ${randomUrls.length} villes sélectionnées aléatoirement.`);
       }
     }
