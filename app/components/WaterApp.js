@@ -306,7 +306,7 @@ export default function WaterApp({ initialCity = null }) {
         manganese: getParam([1394, 1373], ["manganese"]),
         pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277, 6278, 6279, 6280, 7150], ["pesticide"]),
         pfas: getParam([7149, 7148, 8194], ["pfas", "perfluoro"]),
-        microbio: getParam([1321, 1322], ["escherichia", "enterocoques", "coliformes"]),
+        microbiology: getParam([1321, 1322], ["escherichia", "enterocoques", "coliformes"]),
         ammonium: getParam([1331, 1335], ["ammonium"]),
         copper: getParam([1392], ["cuivre"]),
         cot: getParam([1341], ["organique total", "cot"])
@@ -333,8 +333,8 @@ export default function WaterApp({ initialCity = null }) {
               iron: "1393,1374",
               manganese: "1394,1373",
               pesticides: "1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7150",
-              pfas: "7149,7148,8194",
-              microbio: "1321,1322",
+              pfas: "7149,7148,8194,5980,6542,8738,6561,8740,6549,6025,8742",
+              bacteria: "1321,1322",
               ammonium: "1331,1335",
               copper: "1392",
               cot: "1341"
@@ -347,39 +347,36 @@ export default function WaterApp({ initialCity = null }) {
               }
           }
 
-          if (paramsToFetch.length > 0) {
+          if (missingKeys.length > 0) {
               try {
-                  // Récupération massive de l'historique du réseau (200 derniers prélèvements pour plus de sécurité)
-                  const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseauQuery}&code_parametre=${paramsToFetch.join(',')}&size=200`;
-                  const rRes = await fetch(rUrl);
-                  const rData = await rRes.json();
-                  
-                  if (rData.data && rData.data.length > 0) {
-                      const history = rData.data;
-                      // Tri par date décroissante
-                      history.sort((a,b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
-
-                      missingKeys.forEach(key => {
-                          const targetCodes = fallbackConfig[key].split(',');
-                          const match = history.find(h => {
-                              const isCode = targetCodes.includes(`${h.code_parametre}`);
-                              const valAlpha = (h.resultat_alphanumerique || "").toUpperCase();
-                              const valNum = h.resultat_numerique;
-                              const isBadText = valAlpha === "N.M." || valAlpha === "N.C." || valAlpha === "NULL";
-                              return isCode && (valNum !== null || (valAlpha !== "" && !isBadText));
-                          });
-
-                          if (match) {
-                              const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
+                  await Promise.all(missingKeys.map(async (key) => {
+                      const targetCodes = fallbackConfig[key];
+                      const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseauQuery}&code_parametre=${targetCodes}&size=1&sort=desc`;
+                      
+                      let rRes = await fetch(rUrl);
+                      let rData = await rRes.json();
+                      
+                      // Fallback ultime par Commune si pas de données sur le réseau spécifique (pour PFAS et Pesticides Globaux)
+                      if ((!rData.data || rData.data.length === 0) && selectedCity) {
+                          const communeUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(selectedCity)}&code_parametre=${targetCodes}&size=1&sort=desc`;
+                          const cRes = await fetch(communeUrl);
+                          rData = await cRes.json();
+                      }
+                      
+                      if (rData.data && rData.data.length > 0) {
+                          const match = rData.data[0];
+                          const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
+                          
+                          if (rawVal !== null && rawVal !== undefined) {
                               stats[key] = {
-                                  val: rawVal !== null ? `${rawVal}` : '--',
+                                  val: `${rawVal}`,
                                   unit: match.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
                                   date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
                                   label: match.libelle_parametre
                               };
                           }
-                      });
-                  }
+                      }
+                  }));
               } catch (e) {
                   console.error("Zéro-Vide Fallback error:", e);
               }

@@ -68,14 +68,14 @@ export default function HomeLanding({ onCitySelect }) {
           <h2 className="seo-section-title">📍 Qualité de l'eau dans les métropoles</h2>
           <div className="top-cities-grid">
             {[
-              { name: "Paris", score: "8.6", dpt: "75", slug: "paris" },
-              { name: "Lyon", score: "9.2", dpt: "69", slug: "lyon" },
-              { name: "Marseille", score: "6.7", dpt: "13", slug: "marseille" },
-              { name: "Nantes", score: "8.8", dpt: "44", slug: "nantes" },
-              { name: "Lille", score: "8.2", dpt: "59", slug: "lille" },
-              { name: "Montpellier", score: "7.8", dpt: "34", slug: "montpellier" },
-              { name: "Bordeaux", score: "8.8", dpt: "33", slug: "bordeaux" },
-              { name: "Toulouse", score: "8.9", dpt: "31", slug: "toulouse" }
+              { name: "Paris", score: "7.9", dpt: "75", slug: "paris" },
+              { name: "Lyon", score: "4.0", dpt: "69", slug: "lyon" },
+              { name: "Marseille", score: "5.1", dpt: "13", slug: "marseille" },
+              { name: "Nantes", score: "9.6", dpt: "44", slug: "nantes" },
+              { name: "Lille", score: "8.3", dpt: "59", slug: "lille" },
+              { name: "Montpellier", score: "8.6", dpt: "34", slug: "montpellier" },
+              { name: "Bordeaux", score: "8.6", dpt: "33", slug: "bordeaux" },
+              { name: "Toulouse", score: "9.4", dpt: "31", slug: "toulouse" }
             ].map(city => (
               <button key={city.slug} onClick={() => onCitySelect({ name: city.name })} className="top-city-item premium-city-card">
                 <span className="city-name">{city.name} ({city.dpt})</span>
