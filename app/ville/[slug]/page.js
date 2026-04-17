@@ -15,11 +15,11 @@ export async function generateMetadata({ params }) {
   const ogImageUrl = `/api/og?city=${encodeURIComponent(cityName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
   return {
-    title: `Qualité de l'eau potable à ${cityName} (2026) | EauPotable.net`,
-    description: `Découvrez si l'eau du robinet est potable à ${cityName}. Analyse complète : nitrates, calcaire, pesticides et pH. Données officielles ARS.`,
+    title: `Qualité de l'eau potable : ${cityName} (2026) | Analyses & PFAS`,
+    description: `📊 Qualité de l'eau à ${cityName} en temps réel. Analyse PFAS et verdict ARS 2026 via flux officiel direct : découvrez ce que contient votre eau du robinet aujourd'hui.`,
     openGraph: {
-      title: `Qualité de l'eau potable à ${cityName}`,
-      description: `L'eau de ${cityName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète.`,
+      title: `Qualité de l'eau potable : ${cityName} (2026)`,
+      description: `L'eau de ${cityName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
       images: [ogImageUrl],
     },
   };

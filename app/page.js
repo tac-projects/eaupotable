@@ -2,8 +2,8 @@ import WaterApp from './components/WaterApp';
 import Navbar from './components/Navbar';
 
 export const metadata = {
-  title: "EauPotable.net | Qualité de l'eau potable en France (2026)",
-  description: "Vérifiez la qualité de l'eau potable dans votre ville. Crystal Score de pureté, nitrates, calcaire et PFAS. Données officielles 2026.",
+  title: "Qualité de l'eau du robinet & PFAS : Analyse par Ville | EauPotable.net",
+  description: "📊 Suivez la qualité de l'eau potable en France en temps réel. Données officielles 2026 connectées aux flux ARS : PFAS, pesticides et calcaire dans votre commune.",
 };
 
 export default function Home() {
