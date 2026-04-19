@@ -1,9 +1,8 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import {
   calculateCrystalScore,
   getParameterStatus,
@@ -13,9 +12,15 @@ import {
   parseValue,
   POPULAR_CITIES
 } from '@/lib/water-utils';
-import CitySEOContent from './CitySEOContent';
-import HomeLanding from './HomeLanding';
-import WaterReport from './WaterReport';
+
+// Imports dynamiques pour réduire le TBT et le JS inutilisé
+const MapBackground = dynamic(() => import('./MapBackground'), { 
+  ssr: false,
+  loading: () => <div style={{ width: '100%', height: '100%', background: '#f0f4f8' }}></div>
+});
+const CitySEOContent = dynamic(() => import('./CitySEOContent'), { ssr: true });
+const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
+const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
@@ -40,7 +45,7 @@ export default function WaterApp({ initialCity = null }) {
   // Sharing States
   const [showShareFab, setShowShareFab] = useState(false);
 
-  const mapContainerRef = useRef(null);
+  // mapContainerRef supprimé car géré par MapBackground
   // 1. Animation Typewriter
   useEffect(() => {
     const texts = ["Paris, 75000", "Lyon, 69000", "Marseille, 13000", "Toulouse, 31000", "Nantes, 44000"];
@@ -162,35 +167,7 @@ export default function WaterApp({ initialCity = null }) {
     localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
   };
 
-  // 3. Mapbox Init
-  useEffect(() => {
-    if (!mapContainerRef.current) return;
-
-    mapboxgl.accessToken = mapboxToken;
-    const m = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [2.2137, 46.2276],
-      zoom: 5.0,
-      projection: 'globe',
-      interactive: false
-    });
-
-    m.on('style.load', () => { m.setFog({}); });
-    m.on('load', () => {
-      const layers = m.getStyle().layers;
-      for (let layer of layers) {
-        if (layer.layout && layer.layout['text-field']) {
-          m.setLayoutProperty(layer.id, 'text-field', ['coalesce', ['get', 'name_fr'], ['get', 'name']]);
-        }
-      }
-      setMap(m);
-    });
-
-
-
-    return () => m.remove();
-  }, []);
+  // La logique Mapbox a été déportée dans le composant dynamique MapBackground.js
 
   // 4. City Zoom Effect
   useEffect(() => {
@@ -417,7 +394,7 @@ export default function WaterApp({ initialCity = null }) {
   return (
     <main>
       <section id="map-section">
-        <div id="map" ref={mapContainerRef}></div>
+        <MapBackground onMapLoad={setMap} initialCity={initialCity} />
 
         {/* 1. Scroll Indicator - À cheval sur la coupure carte/contenu */}
           <div 
