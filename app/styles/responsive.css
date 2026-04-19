@@ -57,9 +57,31 @@
         visibility: hidden;
     }
 
-    .search-input {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
+    .home-search-container .search-box {
+        height: 60px !important;
+        padding: 0 8px !important; /* Réduit drastiquement */
+        gap: 4px;
+    }
+
+    .home-search-container .search-input {
+        font-size: 0.95rem !important;
+        padding: 0 4px !important;
+    }
+
+    .home-search-container .search-icon {
+        margin-left: 8px !important;
+        width: 16px !important;
+        flex-shrink: 0;
+    }
+
+    .home-search-container .geolocate-btn {
+        padding: 0 10px !important;
+        flex-shrink: 0;
+        border-left: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .home-search-container .search-divider {
+        display: none !important;
     }
 
     /* Bottom Sheet Style - Commun Mobile/Tablette */
@@ -105,6 +127,32 @@
 
     .desktop-only {
         display: none;
+    }
+
+    /* Sécurité Layout Globale */
+    .container, .seo-container, .footer-container {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    .hero-section {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        text-align: center;
+    }
+
+    .seo-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .top-cities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .home-landing .seo-title {
+        font-size: clamp(1.8rem, 8vw, 2.2rem) !important;
     }
 }
 

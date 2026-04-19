@@ -1,15 +1,12 @@
 .search-floating.bottom-search {
-    position: absolute;
-    bottom: 40px;
-    /* Centrage Foolproof : Aucun translateX requis */
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 94%;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     max-width: 500px;
-    z-index: 900;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: translateY(0);
+    z-index: 2000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .search-label {
@@ -169,17 +166,21 @@
 
 .search-results {
     position: absolute;
-    bottom: calc(100% + 10px);
-    /* Apparait AU-DESSUS de la barre */
-    top: auto;
+    top: calc(100% + 10px); /* Par défaut en dessous */
+    left: 0;
     width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     z-index: 950;
     overflow: hidden;
     display: none;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-search .search-results {
+    top: auto;
+    bottom: calc(100% + 10px); /* Au dessus si barre en bas */
     box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.1);
 }
 
@@ -1215,44 +1216,34 @@ main.content-wrapper {
 /* --- PWA INSTALL BANNER --- */
 .install-banner {
     position: fixed;
-    top: 90px;
+    bottom: -150px; /* Caché sous l'écran */
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 94%;
-    max-width: 500px;
-    background: var(--bg-light);
-    border-radius: 20px;
-    padding: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    z-index: 3000;
-    transition: top 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s;
+    width: 90%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.85); /* Glassmorphism */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 14px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    z-index: 5000;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-250px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .install-banner.visible {
-    animation: pwa-bounce-down 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    bottom: 25px; /* Reste à quelques centimètres du bas */
+    opacity: 1;
     pointer-events: auto;
+    animation: pwa-floating-slide 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
 }
 
-/* Mode bas de page lors du scroll (Transition fluide top->top) */
-.install-banner.scrolled {
-    top: calc(100vh - 85px); /* Se cale en bas de l'écran */
-    transition: top 1s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s, opacity 0.5s;
-}
-
-@supports (height: 100svh) {
-    .install-banner.scrolled {
-        top: calc(100svh - 85px);
-    }
-}
-
-@keyframes pwa-bounce-down {
-    0% { transform: translateY(-250px); opacity: 0; }
-    60% { transform: translateY(15px); opacity: 1; }
-    85% { transform: translateY(-8px); opacity: 1; }
+@keyframes pwa-floating-slide {
+    0% { transform: translateY(100px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
 

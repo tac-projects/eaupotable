@@ -16,7 +16,6 @@ import {
 // Imports normaux pour SSR et LCP optimal
 import CitySEOContent from './CitySEOContent';
 import HomeLanding from './HomeLanding';
-import FranceMap from './FranceMap';
 
 // Imports dynamiques uniquement pour les composants vraiment lourds et non critiques au démarrage
 const MapBackground = dynamic(() => import('./MapBackground'), { 
@@ -81,9 +80,14 @@ export default function WaterApp({ initialCity = null }) {
       timeout = setTimeout(type, speed);
     };
 
-    // type(); // Désactivé pour optimiser le TBT (Lighthouse)
-    setPlaceholder("Rechercher une ville...");
-    return () => clearTimeout(timeout);
+    // On attend 1.5s avant de démarrer l'animation pour optimiser le chargement (LCP)
+    const startTimeout = setTimeout(type, 1500);
+    setPlaceholder("Votre ville...");
+    
+    return () => {
+      clearTimeout(timeout);
+      clearTimeout(startTimeout);
+    };
   }, []);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -107,7 +111,7 @@ export default function WaterApp({ initialCity = null }) {
       // On attend aussi 5s ici pour ne pas court-circuiter le délai design
         setTimeout(() => {
           setShowPWABanner(true);
-        }, 20000);
+        }, 5000);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -117,7 +121,7 @@ export default function WaterApp({ initialCity = null }) {
     if (!selectedCity) {
       forceTimer = setTimeout(() => {
         setShowPWABanner(true);
-      }, 20000);
+      }, 5000);
     }
 
     return () => {
@@ -397,143 +401,105 @@ export default function WaterApp({ initialCity = null }) {
 
   return (
     <main>
-      <section id="map-section">
-        {/* FranceMap SVG : Le 'Champion' du LCP et de la performance */}
-        {!isMapReady && (
-          <div className="france-map-container">
-            <div className="skeleton-content" style={{ zIndex: 10 }}>
-              <h1 className="skeleton-title">Qualité &amp; Pureté de l&apos;eau potable</h1>
-              <p className="skeleton-subtitle">Analysez les PFAS et pesticides de votre ville</p>
+      {/* 2. PWA Install Banner - Toujours disponible si activée */}
+      {(deferredPrompt || showPWABanner) && (
+        <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'banner-with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+          <div className="install-content">
+            <img src="/img/icons/icon-512-v3.png" alt="EauPotableLogo" className="install-icon" />
+            <div className="install-text">
+              <p><strong>EauPotable.net</strong></p>
+              <span>Application gratuite</span>
             </div>
-            <FranceMap />
-          </div>
-        )}
-        
-        <MapBackground
-          onMapLoad={setMap}
-          onMapReady={() => setIsMapReady(true)}
-          initialCity={initialCity}
-        />
-
-        {/* 1. Scroll Indicator - À cheval sur la coupure carte/contenu */}
-          <div 
-            className={`scroll-indicator ${isPanelActive ? 'scroll-with-panel' : ''}`}
-            onClick={scrollToContent}
-            aria-label="Descendre vers les analyses"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-          </div>
-
-        {/* 2. PWA Install Banner - Uniquement si disponible et panel fermé */}
-        {(deferredPrompt || showPWABanner) && (
-          <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'banner-with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="install-content">
-              <img src="/img/icons/icon-512-v3.png" alt="EauPotableLogo" className="install-icon" />
-              <div className="install-text">
-                <p><strong>EauPotable.net</strong></p>
-                <span>Application gratuite</span>
-              </div>
-              <div className="install-actions">
-                <button className="btn-install-primary" onClick={handleInstallClick}>Installer</button>
-                <button className="btn-install-close" onClick={() => { setDeferredPrompt(null); setShowPWABanner(false); }}>✕</button>
-              </div>
+            <div className="install-actions">
+              <button className="btn-install-primary" onClick={handleInstallClick}>Installer</button>
+              <button className="btn-install-close" onClick={() => { setDeferredPrompt(null); setShowPWABanner(false); }}>✕</button>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* 3. Barre de recherche flottante */}
-        <div className={`search-floating bottom-search ${(deferredPrompt || showPWABanner) ? 'pwa-active' : ''} ${isPanelActive ? 'search-with-panel' : ''}`}>
-          <div className="search-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '6px'}}><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-            Qualité de l’eau potable à :
-          </div>
-          <div className="search-box">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={onSearchChange}
-              onFocus={() => setIsSearchFocused(true)}
-              onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
-              }}
-              placeholder={placeholder}
-              className="search-input"
-            />
-            {searchQuery && (
-              <button 
-                className="clear-search visible" 
-                onClick={() => { setSearchQuery(''); setSuggestions([]); }}
-                aria-label="Effacer la recherche"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            )}
-            <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </button>
-          </div>
-
-          <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
-            {!searchQuery && !selectedCity && (
-              <div className="popular-cities-list">
-                <p style={{ padding: '10px 20px', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--text-light)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>Villes populaires</p>
-                {POPULAR_CITIES.map(city => (
-                  <div key={city.slug} className="suggestion-item" onClick={() => handleSearchSelection({ text: city.name, place_name: city.name })}>
-                    {city.name}
+      {/* Report Panel - Uniquement si une ville est sélectionnée ou en cours de chargement */}
+      {(selectedCity || isLoading) && (
+        <div id="side-panel" className={`side-panel ${isPanelActive ? 'active' : ''}`}>
+          <button className="close-panel" onClick={() => setIsPanelActive(false)} aria-label="Fermer le panneau">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          <div id="panel-handle" className="panel-handle"></div>
+          <div id="panel-content">
+            {isLoading ? (
+              <div className="skeleton-container" style={{ padding: '2rem' }}>
+                <div className="skeleton" style={{ width: '100%', height: '45px', borderRadius: '100px', marginBottom: '2.5rem' }}></div>
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="skeleton-row" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
+                    <div className="skeleton" style={{ width: '32px', height: '32px', borderRadius: '50%' }}></div>
+                    <div style={{ flex: 1 }}><div className="skeleton" style={{ width: '70%', height: '12px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '40%', height: '8px' }}></div></div>
                   </div>
                 ))}
               </div>
-            )}
-            {suggestions.map((f, i) => (
-              <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
-                <strong>{f.text}</strong> <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>({f.context?.[0]?.text || ''})</span>
-              </div>
-            ))}
+            ) : waterData ? (
+              waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
+            ) : null}
           </div>
         </div>
-
-        {/* Report Panel - Uniquement si une ville est sélectionnée ou en cours de chargement */}
-        {(selectedCity || isLoading) && (
-          <div id="side-panel" className={`side-panel ${isPanelActive ? 'active' : ''}`}>
-            <button className="close-panel" onClick={() => setIsPanelActive(false)} aria-label="Fermer le panneau">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-            <div id="panel-handle" className="panel-handle"></div>
-            <div id="panel-content">
-              {isLoading ? (
-                <div className="skeleton-container" style={{ padding: '2rem' }}>
-                  <div className="skeleton" style={{ width: '100%', height: '45px', borderRadius: '100px', marginBottom: '2.5rem' }}></div>
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="skeleton-row" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                      <div className="skeleton" style={{ width: '32px', height: '32px', borderRadius: '50%' }}></div>
-                      <div style={{ flex: 1 }}><div className="skeleton" style={{ width: '70%', height: '12px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '40%', height: '8px' }}></div></div>
-                    </div>
-                  ))}
-                </div>
-              ) : waterData ? (
-                waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
-              ) : null}
-            </div>
-          </div>
-        )}
-      </section>
+      )}
 
       {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
       {selectedCity ? (
-        <CitySEOContent cityName={selectedCity} data={waterData} />
+        <div className="city-page-content">
+          <div style={{ height: '40vh', position: 'relative', overflow: 'hidden' }}>
+             <MapBackground
+                onMapLoad={setMap}
+                onMapReady={() => setIsMapReady(true)}
+                initialCity={selectedCity}
+              />
+          </div>
+
+          <div className="search-floating bottom-search visible">
+            <div className="search-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={onSearchChange}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
+                }}
+                placeholder="Autre ville..."
+                className="search-input"
+              />
+              <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
+                  {suggestions.map((f, i) => (
+                  <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
+                      <strong>{f.text}</strong> <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>({f.context?.[0]?.text || ''})</span>
+                  </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          <CitySEOContent cityName={selectedCity} data={waterData} />
+        </div>
       ) : (
-        <HomeLanding onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })} />
+        <HomeLanding 
+          onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })}
+          searchProps={{
+            searchQuery,
+            suggestions,
+            isSearchFocused,
+            placeholder,
+            onSearchChange,
+            handleSearchSelection,
+            setIsSearchFocused,
+            setSearchQuery,
+            setSuggestions,
+            geolocate
+          }}
+        />
       )}
 
       {/* Bouton de Partage Flottant (FAB) */}
