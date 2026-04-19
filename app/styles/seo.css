@@ -217,9 +217,9 @@
 
 .benchmark-item {
   display: grid;
-  grid-template-columns: 100px 1fr 40px;
+  grid-template-columns: 180px 1fr 45px;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   text-decoration: none;
   transition: transform 0.2s ease;
   padding: 6px 12px;
@@ -260,6 +260,14 @@
   font-weight: 700;
   color: var(--primary-solid);
   text-align: right;
+}
+
+@media (max-width: 600px) {
+  .benchmark-item {
+    grid-template-columns: 100px 1fr 40px;
+    gap: 8px;
+    padding: 6px 8px;
+  }
 }
 
 .benchmark-footer {

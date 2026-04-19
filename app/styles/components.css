@@ -141,27 +141,28 @@
 
 /* RECENTRE TOUT UNIFIÉ */
 @media (min-width: 768px) {
-    .with-panel {
+    .search-with-panel, 
+    .banner-with-panel {
         left: 0 !important;
         right: 400px !important;
-        width: 90% !important; /* On laisse un peu de marge */
-        max-width: 500px !important; /* MEME LARGEUR QUE LA BARRE */
+        width: 100% !important;
+        max-width: 500px !important;
         margin: 0 auto !important;
         display: flex !important;
         justify-content: center !important;
     }
 
     
-    #install-banner.with-panel {
+    #install-banner.banner-with-panel {
         transform: translateY(-150px) !important;
     }
     
-    #install-banner.visible.with-panel {
+    #install-banner.visible.banner-with-panel {
         transform: translateY(0) !important;
     }
     
 
-    .search-floating.with-panel.pwa-active {
+    .search-with-panel.pwa-active {
         bottom: 40px !important;
     }
 }

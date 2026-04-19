@@ -420,17 +420,17 @@ export default function WaterApp({ initialCity = null }) {
         <div id="map" ref={mapContainerRef}></div>
 
         {/* 1. Scroll Indicator - À cheval sur la coupure carte/contenu */}
-        <div 
-          className="scroll-indicator" 
-          onClick={scrollToContent}
-          aria-label="Descendre vers les analyses"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-        </div>
+          <div 
+            className={`scroll-indicator ${isPanelActive ? 'scroll-with-panel' : ''}`}
+            onClick={scrollToContent}
+            aria-label="Descendre vers les analyses"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+          </div>
 
         {/* 2. PWA Install Banner - Uniquement si disponible et panel fermé */}
         {(deferredPrompt || showPWABanner) && (
-          <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+          <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'banner-with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
             <div className="install-content">
               <img src="/img/icons/icon-512-v3.png" alt="EauPotableLogo" className="install-icon" />
               <div className="install-text">
@@ -446,7 +446,7 @@ export default function WaterApp({ initialCity = null }) {
         )}
 
         {/* 3. Barre de recherche flottante */}
-        <div className={`search-floating bottom-search ${(deferredPrompt || showPWABanner) ? 'pwa-active' : ''} ${isPanelActive ? 'with-panel' : ''}`}>
+        <div className={`search-floating bottom-search ${(deferredPrompt || showPWABanner) ? 'pwa-active' : ''} ${isPanelActive ? 'search-with-panel' : ''}`}>
           <div className="search-label">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '6px'}}><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
             Qualité de l’eau potable à :

@@ -17,72 +17,71 @@ export default function CitySEOContent({ cityName, data }) {
         const responseDirect = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=1000`);
         const res = await responseDirect.json();
         
-        if (!res.data) return;
-        const nArr = [];
-        const hArr = [];
-        const cArr = [];
-        const pArr = [];
-        const feArr = [];
-        const mnArr = [];
-        const tuArr = [];
-        const amArr = [];
-        const cuArr = [];
-        const phArr = [];
-        const coArr = [];
+        // --- LOGIQUE DÉMOCRATIQUE : Une ville = Une voix ---
+        const cityLatests = {}; 
+        
+        res.data.forEach(r => {
+          const cId = r.code_commune;
+          if (!cityLatests[cId]) cityLatests[cId] = {};
+          
+          const raw = r.resultat_numerique !== null ? r.resultat_numerique : r.resultat_alphanumerique;
+          if (raw === null || raw === undefined) return;
 
+          const code = parseInt(r.code_parametre);
+          const lbl = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          
+          const paramsMap = [
+            { key: 'ni', codes: [1340, 1342], kws: ['nitrate'] },
+            { key: 'ha', codes: [1345, 2708], kws: ['durete', 'hydrotimetrique'] },
+            { key: 'cl', codes: [1399, 1398], kws: ['chlore'] },
+            { key: 'pe', codes: [1107, 1667, 6272, 7150], kws: ['pesticide'] },
+            { key: 'ph', codes: [1301, 1302], kws: ['ph'] },
+            { key: 'tu', codes: [1305], kws: ['turbidite'] },
+            { key: 'co', codes: [1303, 1302], kws: ['conductivite'] }
+          ];
+
+          paramsMap.forEach(p => {
+            if (cityLatests[cId][p.key] !== undefined) return;
+            const isMatch = p.codes.includes(code) || p.kws.some(kw => lbl.includes(kw));
+            if (isMatch) {
+              cityLatests[cId][p.key] = parseValue(raw);
+            }
+          });
+        });
+
+        const getCommuneAvg = (key) => {
+          const values = Object.values(cityLatests).map(c => c[key]).filter(v => v !== undefined && !isNaN(v));
+          return values.length ? (values.reduce((a, b) => a + b, 0) / values.length) : null;
+        };
+
+        const avgNi = getCommuneAvg('ni');
+        const avgHa = getCommuneAvg('ha');
+        const avgCl = getCommuneAvg('cl');
+        const avgPe = getCommuneAvg('pe');
+        const avgPh = getCommuneAvg('ph');
+        const avgTu = getCommuneAvg('tu');
+        const avgCo = getCommuneAvg('co');
+        
         let conformCount = 0;
         let evaluatedCount = 0;
         res.data.forEach(r => {
           const isPhysicoConform = r.conformite_limites_pc_prelevement === 'C';
           const isBactConform = r.conformite_limites_bact_prelevement === 'C';
-
           if (r.conformite_limites_pc_prelevement === 'C' || r.conformite_limites_pc_prelevement === 'N') {
               evaluatedCount++;
               if (isPhysicoConform && isBactConform) conformCount++;
           }
-          
-          if (r.resultat_numerique === null) return;
-          const code = parseInt(r.code_parametre);
-          const lbl = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          if (lbl.includes("nitrate") || [1340, 1342].includes(code)) nArr.push(r.resultat_numerique);
-          if (lbl.includes("hydrotimetrique") || lbl.includes("durete") || [1345, 2708].includes(code)) hArr.push(r.resultat_numerique);
-          if (lbl.includes("chlore") || [1399, 1398].includes(code)) cArr.push(r.resultat_numerique);
-          if (lbl.includes("pesticide") || [1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277, 6278, 6279, 6280, 7149, 7150].includes(code)) pArr.push(r.resultat_numerique);
-          if (lbl.includes("fer total") || [1393, 1374].includes(code)) feArr.push(r.resultat_numerique);
-          if (lbl.includes("manganese") || [1394, 1373].includes(code)) mnArr.push(r.resultat_numerique);
-          if (lbl.includes("turbidite") || [1305].includes(code)) tuArr.push(r.resultat_numerique);
-          if (lbl.includes("ammonium") || [1331, 1335].includes(code)) amArr.push(r.resultat_numerique);
-          if (lbl.includes("cuivre") || [1392].includes(code)) cuArr.push(r.resultat_numerique);
-          if (lbl.includes("ph") || [1301, 1302].includes(code)) phArr.push(r.resultat_numerique);
-          if (lbl.includes("conductivite") || [1303, 1302].includes(code)) coArr.push(r.resultat_numerique);
         });
-
-        const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
         const total = evaluatedCount || 1;
-        const avgNi = getAvg(nArr);
-        const avgHa = getAvg(hArr);
-        const avgCl = getAvg(cArr);
-        const avgPe = getAvg(pArr);
-        const avgFe = getAvg(feArr);
-        const avgMn = getAvg(mnArr);
-        const avgTu = getAvg(tuArr);
-        const avgAm = getAvg(amArr);
-        const avgCu = getAvg(cuArr);
-        const avgPh = getAvg(phArr);
-        const avgCo = getAvg(coArr);
         
         const simulatedScore = calculateCrystalScore({
           nitrates: { val: avgNi || 0 }, 
           hardness: { val: avgHa || 0 },
           chlorine: { val: avgCl || 0 },
           pesticides: { val: avgPe || 0 },
-          iron: { val: avgFe || 0 },
-          manganese: { val: avgMn || 0 },
           turbidity: { val: avgTu || 0 },
-          ammonium: { val: avgAm || 0 },
-          copper: { val: avgCu || 0 },
           bacteria: { val: 0 }, 
-          ph: { val: 7.5 }
+          ph: { val: avgPh || 7.5 }
         }, true).final;
 
         const finalDeptStats = { 
@@ -348,7 +347,7 @@ export default function CitySEOContent({ cityName, data }) {
             <div className="summary-table-wrapper">
               <table className="comparison-table">
                 <thead>
-                  <tr><th>Indicateur</th><th className="col-highlight">À {cityName}</th><th>Moyenne {dpt}</th><th>Statut</th></tr>
+                  <tr><th>Indicateur</th><th className="col-highlight">À {cityName}</th><th>Moyenne du {dpt}</th><th>Statut</th></tr>
                 </thead>
                 <tbody>
                   <tr>
