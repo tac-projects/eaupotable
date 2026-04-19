@@ -45,6 +45,22 @@ main {
     overflow-x: hidden;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .hero-section::after {
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section::after {
+        animation: none; /* Disable mesh animation on mobile to save TBT */
+        opacity: 0.4;
+    }
+    .hero-section::before {
+        display: none; /* Disable grain filter on mobile to save paint/TBT */
+    }
+}
+
 .hero-section {
     background: #ffffff;
     background-image: 
@@ -240,25 +256,7 @@ main {
     line-height: 1.8;
 }
 
-.footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid var(--glass-border-light);
-    text-align: center;
-}
-
-.footer-bottom p {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-.footer-bottom a {
-    margin: 0 10px;
-    font-weight: 500;
-}
-
-.footer-bottom a:hover {
-    color: var(--primary-solid);
-}
+/* Styles SEO déplacés ou supprimés si en conflit */
 
 @media (max-width: 768px) {
     .seo-grid {
@@ -269,12 +267,13 @@ main {
 
 
 /* Main Layout Footer */
-.main-footer {
-    background: #FFFFFF;
-    border-top: 1px solid var(--glass-border-light);
-    padding: 60px 0 40px;
+.global-footer {
+    background: #f8fafc; /* Solid background for perfect contrast */
+    border-top: 1px solid #e2e8f0;
+    padding: 80px 0 40px;
     position: relative;
-    z-index: 100;
+    overflow: hidden;
+    z-index: 10;
 }
 
 .footer-container {
@@ -346,26 +345,26 @@ main {
 }
 
 .footer-bottom {
-    border-top: 1px solid var(--glass-border-light);
-    padding-top: 25px;
-    margin-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 30px;
+    margin-top: 40px;
 }
 
 .footer-bottom-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
-    font-size: 0.85rem;
-    color: var(--text-muted); /* Passage de text-light à text-muted pour l'accessibilité */
-    width: 100%; /* S'assure de ne pas dépasser le parent */
+    font-size: 0.95rem;
+    color: #1e293b; /* slate-800 for perfect contrast */
+    width: 100%;
 }
 
 .footer-divider {
     width: 1px;
     height: 14px;
-    background: var(--glass-border-light);
+    background: #cbd5e1; /* visible divider */
     display: block;
 }
 
@@ -476,7 +475,11 @@ main {
     }
 }
 
-
+@media (max-width: 768px) {
+    .grain-overlay {
+        display: none;
+    }
+}
 
 /* Pages de contenu (Contact / Légal) */
 main.content-wrapper {
