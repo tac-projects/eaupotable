@@ -19,8 +19,7 @@ import HomeLanding from './HomeLanding';
 
 // Imports dynamiques uniquement pour les composants vraiment lourds et non critiques au démarrage
 const MapBackground = dynamic(() => import('./MapBackground'), { 
-  ssr: false,
-  loading: () => <div style={{ width: '100%', height: '100%', background: '#f0f4f8' }}></div>
+  ssr: false
 });
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
@@ -28,6 +27,7 @@ const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2
 
 export default function WaterApp({ initialCity = null }) {
   const router = useRouter();
+  const [isMapReady, setIsMapReady] = useState(false);
   const [map, setMap] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -397,7 +397,21 @@ export default function WaterApp({ initialCity = null }) {
   return (
     <main>
       <section id="map-section">
-        <MapBackground onMapLoad={setMap} initialCity={initialCity} />
+        {/* Skeleton SSR : s'affiche immédiatement côté serveur = LCP optimal */}
+        {!isMapReady && (
+          <div className="map-skeleton">
+            <div className="skeleton-content">
+              <h1 className="skeleton-title">Qualité &amp; Pureté de l&apos;eau potable</h1>
+              <p className="skeleton-subtitle">Chargement de la carte interactive...</p>
+              <div className="skeleton-ripple"></div>
+            </div>
+          </div>
+        )}
+        <MapBackground
+          onMapLoad={setMap}
+          onMapReady={() => setIsMapReady(true)}
+          initialCity={initialCity}
+        />
 
         {/* 1. Scroll Indicator - À cheval sur la coupure carte/contenu */}
           <div 
