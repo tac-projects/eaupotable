@@ -223,7 +223,12 @@ export default function WaterApp({ initialCity = null }) {
     setSuggestions([]);
     const cityName = feature.text;
     const slug = cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-    router.push(`/ville/${slug}`, { scroll: false });
+    
+    // On retire { scroll: false } pour permettre le scroll auto de Next.js
+    // Et on force window.scrollTo(0,0) pour être certain d'arriver en haut (évite le glitch si le composant est persistent)
+    router.push(`/ville/${slug}`);
+    window.scrollTo(0, 0);
+    
     setSelectedCity(cityName);
     setIsLoading(true);
   };

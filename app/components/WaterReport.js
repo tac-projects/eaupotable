@@ -15,7 +15,7 @@ export default function WaterReport({ data, onShare }) {
   let scoreClass = (crystal.final < 5) ? "status-critical" : (crystal.final < 8) ? "status-warning" : (crystal.final < 8.5) ? "status-good" : "status-excellent";
 
   const paramsList = [
-    { name: "Microbiologie", key: "bacteria", data: { val: "Absence", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
+    { name: "Microbiologie", key: "microbiology", data: stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
     { name: "Nitrates", key: "nitrates", data: stats.nitrates },
     { name: "Pesticides", key: "pesticides", data: stats.pesticides },
     { name: "PFAS (Polluants éternels)", key: "pfas", data: stats.pfas },
@@ -61,7 +61,7 @@ function ParameterRow({ parameter }) {
   const isCentered = CENTERED_PARAMS.includes(key);
 
   let pos = 50;
-  if (key === "bacteria") { pos = (status.status === "perfect") ? 10 : 90; }
+  if (key === "bacteria" || key === "microbiology") { pos = (status.status === "perfect") ? 10 : 90; }
   else if (range && val && !isNaN(val)) {
     if (isCentered) {
       const [c1, w1, g1, g2, w2, c2] = range;
@@ -77,7 +77,17 @@ function ParameterRow({ parameter }) {
       <div className="yuka-row" onClick={() => setIsOpen(!isOpen)}>
         <div className="yuka-icon" dangerouslySetInnerHTML={{ __html: PARAM_ICONS[key] }} />
         <span className="yuka-name">{name}</span>
-        <div className="yuka-val">{data?.val || '--'} <small>{data?.unit || ''}</small></div>
+        <div className="yuka-val">
+          {(() => {
+            const isAbsence = key === 'microbiology' && (data?.val?.includes('<') || data?.val?.toLowerCase().includes('absence'));
+            return (
+              <>
+                {isAbsence ? 'Absence' : (data?.val || '--')}
+                {!isAbsence && data?.unit && <small> {data.unit}</small>}
+              </>
+            );
+          })()}
+        </div>
         <div className={`yuka-dot-small ${status.class}`}></div>
         <svg style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }} className="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <span className="yuka-subtitle">{status.subtitle}</span>

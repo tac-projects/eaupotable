@@ -11,10 +11,12 @@ export default function CitySEOContent({ cityName, data }) {
     if (!data || data.error || !data.meta?.code_departement) return;
     const dpt = data.meta.code_departement;
     
-    // Appel discret pour récupérer les prélèvements du département
-    fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=1000`)
-      .then(r => r.json())
-      .then(res => {
+    const fetchDeptData = async () => {
+      try {
+        // 1. Appel principal
+        const responseDirect = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=1000`);
+        const res = await responseDirect.json();
+        
         if (!res.data) return;
         const nArr = [];
         const hArr = [];
@@ -25,6 +27,8 @@ export default function CitySEOContent({ cityName, data }) {
         const tuArr = [];
         const amArr = [];
         const cuArr = [];
+        const phArr = [];
+        const coArr = [];
 
         let conformCount = 0;
         let evaluatedCount = 0;
@@ -49,6 +53,8 @@ export default function CitySEOContent({ cityName, data }) {
           if (lbl.includes("turbidite") || [1305].includes(code)) tuArr.push(r.resultat_numerique);
           if (lbl.includes("ammonium") || [1331, 1335].includes(code)) amArr.push(r.resultat_numerique);
           if (lbl.includes("cuivre") || [1392].includes(code)) cuArr.push(r.resultat_numerique);
+          if (lbl.includes("ph") || [1301, 1302].includes(code)) phArr.push(r.resultat_numerique);
+          if (lbl.includes("conductivite") || [1303, 1302].includes(code)) coArr.push(r.resultat_numerique);
         });
 
         const getAvg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
@@ -62,9 +68,11 @@ export default function CitySEOContent({ cityName, data }) {
         const avgTu = getAvg(tuArr);
         const avgAm = getAvg(amArr);
         const avgCu = getAvg(cuArr);
+        const avgPh = getAvg(phArr);
+        const avgCo = getAvg(coArr);
         
         const simulatedScore = calculateCrystalScore({
-          nitrates: { val: avgNi || 0 }, // Fallback safe
+          nitrates: { val: avgNi || 0 }, 
           hardness: { val: avgHa || 0 },
           chlorine: { val: avgCl || 0 },
           pesticides: { val: avgPe || 0 },
@@ -77,17 +85,63 @@ export default function CitySEOContent({ cityName, data }) {
           ph: { val: 7.5 }
         }, true).final;
 
-        setDeptAvg({ 
-          nitrates: (avgNi)?.toFixed(1), 
-          hardness: (avgHa)?.toFixed(1), 
-          chlorine: (avgCl)?.toFixed(2),
-          pesticides: (avgPe || 0)?.toFixed(3),
+        const finalDeptStats = { 
+          nitrates: avgNi ? avgNi.toFixed(1) : null, 
+          hardness: avgHa ? avgHa.toFixed(1) : null, 
+          chlorine: avgCl ? avgCl.toFixed(2) : null,
+          pesticides: avgPe ? avgPe.toFixed(3) : null,
+          pfas: avgPe ? 0 : null,
+          ph: avgPh ? avgPh.toFixed(1) : null,
+          turbidity: avgTu ? avgTu.toFixed(2) : null,
+          conductivity: avgCo ? avgCo.toFixed(0) : null,
+          microbiology: null,
           avgScore: simulatedScore,
-          conformRate: ((conformCount / total) * 100).toFixed(0) 
-        });
-      }).catch(() => {});
+          conformRate: total > 0 ? ((conformCount / total) * 100).toFixed(0) : null
+        };
 
-    // Récupération des villes voisines pour le benchmarking et le maillage
+        const fallbacks = [
+          { key: 'nitrates', codes: '1340,1342' },
+          { key: 'hardness', codes: '1345,2708' },
+          { key: 'pesticides', codes: '1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7149,7150' },
+          { key: 'pfas', codes: '7149,7148,8194,5980,6542' },
+          { key: 'microbiology', codes: '1447,1449,1042,6455' },
+          { key: 'ph', codes: '1301,1302' },
+          { key: 'chlorine', codes: '1399,1398' },
+          { key: 'turbidity', codes: '1305' },
+          { key: 'conductivity', codes: '1303' }
+        ];
+
+        await Promise.all(fallbacks.map(async (fb) => {
+          if (!finalDeptStats[fb.key] || finalDeptStats[fb.key] === '--') {
+            try {
+              const r = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&code_parametre=${fb.codes}&size=1&sort=desc`);
+              const d = await r.json();
+              if (d.data && d.data.length > 0) {
+                const m = d.data[0];
+                const raw = (m.resultat_alphanumerique && m.resultat_alphanumerique !== "null") ? m.resultat_alphanumerique : m.resultat_numerique;
+                
+                if (fb.key === 'microbiology') {
+                   const s = raw ? raw.toString().toLowerCase() : "";
+                   finalDeptStats[fb.key] = (s.includes('absence') || s.includes('<')) ? "Absence" : "Contrôlée";
+                } else {
+                   const val = parseValue(raw);
+                   if (!isNaN(val)) {
+                      const decimales = fb.key === 'pesticides' || fb.key === 'pfas' ? 3 : (fb.key === 'chlorine' ? 2 : 1);
+                      finalDeptStats[fb.key] = val.toFixed(decimales);
+                   }
+                }
+              }
+            } catch (e) {}
+          }
+        }));
+
+        setDeptAvg(finalDeptStats);
+      } catch (err) {}
+    };
+
+    fetchDeptData();
+
+    // Récupération des villes voisines
     fetch(`https://geo.api.gouv.fr/departements/${dpt}/communes`)
       .then(r => r.json())
       .then(cities => {
@@ -115,8 +169,12 @@ export default function CitySEOContent({ cityName, data }) {
   const durete = getVal(stats.hardness);
   const chlore = getVal(stats.chlorine);
   const pfas = getVal(stats.pfas);
-  const microbio = stats.microbio?.val || null;
+  const microbioRaw = stats.microbiology?.val || stats.bacteria?.val || null;
+  const microbio = (microbioRaw?.toLowerCase().includes('absence') || microbioRaw?.includes('<')) ? "Absence" : microbioRaw;
   const pesticides = getVal(stats.pesticides);
+  const acidity = getVal(stats.ph);
+  const turbidity = getVal(stats.turbidity);
+  const conductivity = getVal(stats.conductivity);
 
   const fVal = (val, unit = "") => (val === null || val === undefined || val === '--') ? '--' : `${val}${unit}`;
 
@@ -126,6 +184,9 @@ export default function CitySEOContent({ cityName, data }) {
   const pfasVal = fVal(pfas, " µg/L");
   const microVal = microbio || "--";
   const pestVal = fVal(pesticides, " µg/L");
+  const phVal = fVal(acidity, " pH");
+  const turbVal = fVal(turbidity, " NFU");
+  const condVal = fVal(conductivity, " µS/cm");
 
   const getDuelStatus = (val, avg, type = "lowerIsBetter") => {
     const v = parseValue(val);
@@ -293,7 +354,7 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>Conformité</strong></td>
                     <td className="col-highlight">{isConform ? '✅ 100%' : '⚠️ Alerte'}</td>
-                    <td>{deptAvg?.conformRate || '79'}%</td>
+                    <td>{deptAvg?.conformRate ? `${deptAvg.conformRate}%` : '--'}</td>
                     <td>
                       {(() => {
                         const s = getDuelStatus(isConform ? 100 : 0, deptAvg?.conformRate || 79, "higherIsBetter");
@@ -304,7 +365,7 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>Microbiologie</strong></td>
                     <td className="col-highlight">{microVal}</td>
-                    <td>Absence</td>
+                    <td>{deptAvg?.microbiology || '--'}</td>
                     <td>
                       {(() => {
                         const s = getDuelStatus(microVal.toLowerCase().includes('absence') ? 0 : 1, 0);
@@ -315,10 +376,10 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>PFAS (Polluants)</strong></td>
                     <td className="col-highlight">{pfasVal}</td>
-                    <td>0.1 µg/L</td>
+                    <td>{fVal(deptAvg?.pfas, " µg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(pfas, 0.1);
+                        const s = getDuelStatus(pfas, deptAvg?.pfas || 0.1);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -326,10 +387,10 @@ export default function CitySEOContent({ cityName, data }) {
                    <tr>
                     <td><strong>Pesticides</strong></td>
                     <td className="col-highlight">{pestVal}</td>
-                    <td>0.1 µg/L</td>
+                    <td>{fVal(deptAvg?.pesticides, " µg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(pesticides, 0.1);
+                        const s = getDuelStatus(pesticides, deptAvg?.pesticides || 0.1);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -337,10 +398,10 @@ export default function CitySEOContent({ cityName, data }) {
                    <tr>
                     <td><strong>Chlore libre</strong></td>
                     <td className="col-highlight">{chloreVal}</td>
-                    <td>0.1 mg/L</td>
+                    <td>{fVal(deptAvg?.chlorine, " mg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(chlore, 0.1);
+                        const s = getDuelStatus(chlore, deptAvg?.chlorine || 0.1);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -348,7 +409,7 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>Nitrates</strong></td>
                     <td className="col-highlight">{nitratesVal}</td>
-                    <td>{deptAvg?.nitrates || (nitrates > 0 ? (nitrates * 0.9).toFixed(1) : '6.5')} mg/L</td>
+                    <td>{fVal(deptAvg?.nitrates, " mg/L")}</td>
                     <td>
                       {(() => {
                         const s = getDuelStatus(nitrates, deptAvg?.nitrates || 6.5);
@@ -359,10 +420,43 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>Calcaire</strong></td>
                     <td className="col-highlight">{dureteVal}</td>
-                    <td>{deptAvg?.hardness || (durete > 0 ? (durete * 0.9).toFixed(1) : '25.5')} °f</td>
+                    <td>{fVal(deptAvg?.hardness, " °f")}</td>
                     <td>
                       {(() => {
                         const s = getDuelStatus(durete, deptAvg?.hardness || 25.5);
+                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
+                      })()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Acidité (pH)</strong></td>
+                    <td className="col-highlight">{phVal}</td>
+                    <td>{fVal(deptAvg?.ph, " pH")}</td>
+                    <td>
+                      {(() => {
+                        const s = getDuelStatus(acidity, deptAvg?.ph || 7.5, "centered");
+                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
+                      })()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Turbidité</strong></td>
+                    <td className="col-highlight">{turbVal}</td>
+                    <td>{fVal(deptAvg?.turbidity, " NFU")}</td>
+                    <td>
+                      {(() => {
+                        const s = getDuelStatus(turbidity, deptAvg?.turbidity || 0.1);
+                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
+                      })()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Conductivité</strong></td>
+                    <td className="col-highlight">{condVal}</td>
+                    <td>{fVal(deptAvg?.conductivity, " µS/cm")}</td>
+                    <td>
+                      {(() => {
+                        const s = getDuelStatus(conductivity, deptAvg?.conductivity || 400);
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
