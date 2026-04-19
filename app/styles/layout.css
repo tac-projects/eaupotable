@@ -388,61 +388,48 @@ main {
 }
 
 .footer-status-badge.smaller, .footer-trust-badge.smaller {
-    padding: 10px 18px;
-    font-size: 0.95rem;
-    border-radius: 10px;
-    letter-spacing: 0.02em;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    letter-spacing: 0.01em;
 }
 
 .footer-status-badge {
-    background: #022c22; /* emerald-950 (presque noir) */
-    color: #ffffff;
-    border: 1px solid #064e3b;
-    font-weight: 800;
+    background: #effaf3;
+    color: #166534; /* emerald-800 pour l'accessibilité */
+    border: 1px solid #c7ead1;
+    font-weight: 700;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.status-dot {
-    width: 6px;
-    height: 6px;
-    background: #4ade80; /* emerald-400 for high contrast on emerald-950 */
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
 .footer-trust-badge {
     display: flex;
     align-items: center;
-    gap: 4px; /* Un peu plus serré pour tenir à 4 */
+    gap: 4px;
     font-weight: 700;
     text-decoration: none;
     transition: var(--transition-premium);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .footer-trust-badge.blue {
-    background: #082f49; /* sky-950 */
-    border: 1px solid #0c4a6e;
-    color: #ffffff;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af; /* blue-800 */
 }
 
 .footer-trust-badge.indigo {
-    background: #2e1065; /* purple-950 */
-    border: 1px solid #4c1d95;
-    color: #ffffff;
+    background: #f5f3ff;
+    border-color: #ddd6fe;
+    color: #5b21b6; /* violet-800 */
 }
 
 .footer-trust-badge.gold {
-    background: #451a03; /* amber-950 */
-    border: 1px solid #78350f;
-    color: #ffffff;
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e; /* amber-800 */
 }
 
 .footer-trust-badge:hover {
