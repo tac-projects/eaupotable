@@ -52,7 +52,7 @@ main {
     z-index: 1;
 }
 
-.map-skeleton {
+.france-map-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -61,6 +61,7 @@ main {
     background: radial-gradient(circle at center, #f0f7ff 0%, #e0edff 100%);
     z-index: 2;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -73,32 +74,55 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-bottom: -50px; /* Chevauchement léger avec la carte */
 }
 
 .skeleton-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    line-height: 1.1;
     font-weight: 800;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
+    padding: 0 10px;
 }
 
 .skeleton-subtitle {
     font-size: 1rem;
     color: var(--text-muted);
     font-weight: 500;
+    margin-bottom: 20px;
 }
 
-.skeleton-ripple {
-    width: 250px;
-    height: 250px;
-    background: rgba(0, 102, 255, 0.05);
-    border-radius: 50%;
-    margin-top: 20px;
-    animation: skeleton-pulse 3s infinite ease-out;
+.france-svg {
+    width: 80%;
+    height: 80%;
+    max-width: 800px;
+    filter: drop-shadow(0 20px 50px rgba(0, 102, 255, 0.15));
 }
+
+.france-path {
+    transition: all 0.5s ease;
+}
+
+.bubble {
+    animation: float-bubble 10s infinite linear;
+    transform-origin: center;
+}
+
+@keyframes float-bubble {
+    0% { transform: translate(0, 0) scale(1); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translate(var(--tx, 50px), var(--ty, -100px)) scale(1.2); opacity: 0; }
+}
+
+.bubble-0 { --tx: 30px; --ty: -150px; animation-delay: 0s; }
+.bubble-1 { --tx: -40px; --ty: -180px; animation-delay: 2s; }
+.bubble-2 { --tx: 60px; --ty: -120px; animation-delay: 5s; }
+.bubble-3 { --tx: -20px; --ty: -200px; animation-delay: 1s; }
+.bubble-4 { --tx: 40px; --ty: -160px; animation-delay: 7s; }
 
 @keyframes skeleton-pulse {
     0% { transform: scale(0.5); opacity: 0; }

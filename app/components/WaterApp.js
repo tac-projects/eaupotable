@@ -16,6 +16,7 @@ import {
 // Imports normaux pour SSR et LCP optimal
 import CitySEOContent from './CitySEOContent';
 import HomeLanding from './HomeLanding';
+import FranceMap from './FranceMap';
 
 // Imports dynamiques uniquement pour les composants vraiment lourds et non critiques au démarrage
 const MapBackground = dynamic(() => import('./MapBackground'), { 
@@ -397,16 +398,17 @@ export default function WaterApp({ initialCity = null }) {
   return (
     <main>
       <section id="map-section">
-        {/* Skeleton SSR : s'affiche immédiatement côté serveur = LCP optimal */}
+        {/* FranceMap SVG : Le 'Champion' du LCP et de la performance */}
         {!isMapReady && (
-          <div className="map-skeleton">
-            <div className="skeleton-content">
+          <div className="france-map-container">
+            <div className="skeleton-content" style={{ zIndex: 10 }}>
               <h1 className="skeleton-title">Qualité &amp; Pureté de l&apos;eau potable</h1>
-              <p className="skeleton-subtitle">Chargement de la carte interactive...</p>
-              <div className="skeleton-ripple"></div>
+              <p className="skeleton-subtitle">Analysez les PFAS et pesticides de votre ville</p>
             </div>
+            <FranceMap />
           </div>
         )}
+        
         <MapBackground
           onMapLoad={setMap}
           onMapReady={() => setIsMapReady(true)}
