@@ -59,14 +59,7 @@ export default function Footer() {
             <span className="footer-divider"></span>
 
             <span className="footer-data-source">
-              Données Hub'Eau.{' '}
-              <a 
-                href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                Réutilisation officielle certifiée
-              </a>
+              Données en temps réel Hub'Eau (Ministère de la Santé).
             </span>
 
             <span className="footer-divider"></span>

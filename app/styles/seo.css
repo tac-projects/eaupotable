@@ -838,89 +838,192 @@
 }
 
 .cta-alert-card {
-    background: linear-gradient(135deg, var(--text-main) 0%, #2D3748 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #172554 100%);
     color: white;
-    border-radius: 24px;
-    padding: 40px;
+    border-radius: 32px;
+    padding: 45px;
     display: flex;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtile texture de vagues en arrière-plan */
+.cta-alert-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 13 50 13s16.36 2.347 25.96 5.937l1.768.661c.368.138.731.272 1.088.402H21.184z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .cta-alert-icon {
-    font-size: 3rem;
-    background: rgba(255,255,255,0.1);
-    width: 80px;
-    height: 80px;
+    font-size: 3.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.cta-alert-card:hover .cta-alert-icon {
+    transform: scale(1.05) rotate(5deg);
+}
+
+/* Animation Cloche Vigilante */
+@keyframes bellRing {
+    0%, 100% { transform: rotate(0); }
+    10%, 30%, 50% { transform: rotate(10deg); }
+    20%, 40% { transform: rotate(-10deg); }
+    60% { transform: rotate(0); }
+}
+
+.cta-alert-icon i, .cta-alert-icon span {
+    display: inline-block;
+    animation: bellRing 4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.cta-alert-icon.ringing i, .cta-alert-icon.ringing span {
+    animation: bellRing 0.8s ease-in-out infinite;
 }
 
 .cta-alert-content {
     flex: 1;
+    position: relative;
+    z-index: 2;
 }
 
 .cta-alert-content h3 {
     color: white;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    font-weight: 800;
+    font-family: var(--font-heading);
 }
 
 .cta-alert-content p {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-    max-width: 500px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 550px;
 }
 
 .cta-form {
     display: flex;
-    gap: 10px;
-    max-width: 450px;
+    gap: 12px;
+    max-width: 500px;
+    transition: all 0.4s ease;
 }
 
 .cta-input {
     flex: 1;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 12px;
-    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px 24px;
     color: white;
     font-family: inherit;
-    font-size: 0.95rem;
-}
-
-.cta-input::placeholder {
-    color: rgba(255,255,255,0.4);
-}
-
-.cta-btn {
-    background: var(--primary-solid);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-weight: 700;
-    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
     transition: all 0.3s ease;
 }
 
+.cta-input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+.cta-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+}
+
 .cta-btn:hover {
-    background: #0055DD;
-    transform: scale(1.02);
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
+}
+
+.cta-btn:active {
+    transform: translateY(0);
+}
+
+.cta-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #64748b;
+}
+
+/* Messages d'état */
+.cta-status {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.3s ease;
+}
+
+.cta-status.success { color: #4ade80; }
+.cta-status.error { color: #f87171; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
     .cta-alert-card {
         flex-direction: column;
         text-align: center;
-        padding: 30px 20px;
+        padding: 40px 24px;
+        gap: 25px;
     }
+    
+    .cta-alert-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.8rem;
+    }
+
     .cta-form {
         flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-alert-content p {
+        margin-bottom: 25px;
     }
 }
 

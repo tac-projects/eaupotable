@@ -1,10 +1,49 @@
 'use client';
 
+import { useState } from 'react';
+
 export default function HomeLanding({ onCitySelect }) {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('IDLE'); // IDLE, SENDING, SUCCESS, ERROR
+
+  const handleVigilanceSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('SENDING');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xeevkvqa', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'Nouvel abonnement : Vigilance Qualité Eau',
+          message: 'Demande d\'inscription aux alertes de vigilance sanitaire.'
+        })
+      });
+
+      if (response.ok) {
+        setStatus('SUCCESS');
+        setEmail('');
+        setTimeout(() => setStatus('IDLE'), 5000);
+      } else {
+        setStatus('ERROR');
+      }
+    } catch (error) {
+      console.error("Vigilance error:", error);
+      setStatus('ERROR');
+    }
+  };
+
   return (
     <section className="seo-section home-landing">
       <div className="seo-container">
         <div className="seo-header">
+
           <div className="seo-trust-badge">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             Veille Sanitaire & PFAS : Certifiée 2026
@@ -124,17 +163,47 @@ export default function HomeLanding({ onCitySelect }) {
           </div>
         </div>
 
-        {/* 5. CTA ALERTE VIGILANCE */}
+        {/* 5. CTA ALERTE VIGILANCE PREMIUM */}
         <div className="seo-section-block">
           <div className="cta-alert-card">
-            <div className="cta-alert-icon">🔔</div>
+            <div className={`cta-alert-icon ${status === 'SENDING' ? 'ringing' : ''}`}>
+              <span>🔔</span>
+            </div>
             <div className="cta-alert-content">
               <h3>Vigilance Qualité Eau</h3>
               <p>Recevez une notification immédiate par email si la qualité de l'eau de votre commune subit une modification ou un rappel sanitaire.</p>
-              <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
-                <input type="email" placeholder="Votre email..." className="cta-input" />
-                <button type="submit" className="cta-btn">M'abonner à l'alerte</button>
+              
+              <form className="cta-form" onSubmit={handleVigilanceSubmit}>
+                <input 
+                  type="email" 
+                  placeholder="Votre email..." 
+                  className="cta-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={status === 'SENDING' || status === 'SUCCESS'}
+                />
+                <button 
+                  type="submit" 
+                  className="cta-btn" 
+                  disabled={status === 'SENDING' || status === 'SUCCESS'}
+                >
+                  {status === 'SENDING' ? 'Traitement...' : status === 'SUCCESS' ? 'Bien inscrit !' : "M'abonner à l'alerte"}
+                </button>
               </form>
+
+              {status === 'SUCCESS' && (
+                <div className="cta-status success">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Inscription confirmée. Merci pour votre confiance.
+                </div>
+              )}
+              {status === 'ERROR' && (
+                <div className="cta-status error">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  Erreur serveur. Veuillez réessayer plus tard.
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1509,6 +1509,10 @@ main.content-wrapper {
     margin-top: 4rem;
     position: relative;
     z-index: 100;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .footer-container {

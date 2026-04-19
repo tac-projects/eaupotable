@@ -12,6 +12,11 @@ export const metadata = {
   title: 'EauPotable.net | Qualité & Pureté de l\'eau du robinet (2026)',
   description: 'Analysez la qualité réelle et la pureté de votre eau potable en 2026. Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans plus de 35 000 communes.',
   manifest: '/manifest.json',
+  icons: {
+    icon: '/img/favicon.svg',
+    shortcut: '/img/favicon.svg',
+    apple: '/img/icons/icon-512-v3.png',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',

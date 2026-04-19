@@ -41,7 +41,7 @@ main {
 
 #map-section {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: relative;
     overflow: visible; /* Permet au bouton scroll de déborder en bas */
 }
@@ -67,19 +67,6 @@ main {
     max-width: 100%; /* Suppression de la contrainte pour libérer l'espace */
 }
 
-
-
-main {
-    padding-top: 0;
-    min-height: 100vh;
-}
-
-#map-section {
-    height: 100vh; 
-    width: 100vw;
-    position: relative;
-    overflow: visible;
-}
 
 /* Footer SEO Premium */
 .site-footer {
@@ -272,6 +259,7 @@ main {
     flex-wrap: wrap;
     font-size: 0.85rem;
     color: var(--text-light);
+    width: 100%; /* S'assure de ne pas dépasser le parent */
 }
 
 .footer-divider {
@@ -295,7 +283,9 @@ main {
 .footer-badges-inline {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
+    flex-wrap: wrap; /* Correction : Permet aux badges de revenir à la ligne */
 }
 
 .footer-status-badge.smaller, .footer-trust-badge.smaller {
