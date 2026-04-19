@@ -1,24 +1,34 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
+
+// Interactions utilisateur qui déclenchent le chargement de Mapbox
+const INTERACTION_EVENTS = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
 
 export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
-  // On stocke les callbacks dans des refs pour éviter de re-déclencher l'effet
   const onMapLoadRef = useRef(onMapLoad);
   const onMapReadyRef = useRef(onMapReady);
+  const initialCityRef = useRef(initialCity);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    // Report de 4s de Mapbox pour libérer le thread principal au démarrage (TBT Optimization)
-    const timer = setTimeout(() => {
-      // Guard : si le composant a été démonté avant la fin du délai, on abandonne
-      if (!mapContainerRef.current) return;
+    const initMap = async () => {
+      // Guard : une seule initialisation possible
+      if (isInitialized.current || !mapContainerRef.current) return;
+      isInitialized.current = true;
+
+      // Retrait des listeners dès la première interaction
+      INTERACTION_EVENTS.forEach(e => window.removeEventListener(e, initMap));
+
+      // Import dynamique de mapbox-gl au moment de l'interaction (réel code-split)
+      const mapboxgl = (await import('mapbox-gl')).default;
+      await import('mapbox-gl/dist/mapbox-gl.css');
 
       mapboxgl.accessToken = mapboxToken;
       const m = new mapboxgl.Map({
@@ -40,13 +50,30 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
           }
         }
         mapRef.current = m;
+
+        // Zoom automatique si une ville est ciblée
+        const city = initialCityRef.current;
+        if (city) {
+          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`)
+            .then(r => r.json())
+            .then(data => {
+              if (data.features?.length > 0) {
+                m.flyTo({ center: data.features[0].center, zoom: 13, essential: true });
+              }
+            })
+            .catch(() => {});
+        }
+
         if (onMapLoadRef.current) onMapLoadRef.current(m);
         if (onMapReadyRef.current) onMapReadyRef.current();
       });
-    }, 4000);
+    };
+
+    // Écoute des interactions utilisateur (passive pour ne pas bloquer le scroll)
+    INTERACTION_EVENTS.forEach(e => window.addEventListener(e, initMap, { once: true, passive: true }));
 
     return () => {
-      clearTimeout(timer);
+      INTERACTION_EVENTS.forEach(e => window.removeEventListener(e, initMap));
       try {
         if (mapRef.current) {
           mapRef.current.remove();
@@ -56,22 +83,20 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
         // Cleanup silencieux
       }
     };
-  }, []); // [] : l'effet ne tourne qu'une seule fois au montage
+  }, []); // [] : une seule fois au montage
 
-  // Sync zoom quand la carte est prête et qu'une ville est ciblée
+  // Mise à jour de la ville sans re-déclencher l'effet principal
   useEffect(() => {
+    initialCityRef.current = initialCity;
     if (!mapRef.current || !initialCity) return;
-    const fetchAndZoom = async () => {
-      try {
-        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(initialCity)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.features?.length > 0) {
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(initialCity)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.features?.length > 0 && mapRef.current) {
           mapRef.current.flyTo({ center: data.features[0].center, zoom: 13, essential: true });
         }
-      } catch (err) { console.error("Zoom error", err); }
-    };
-    fetchAndZoom();
+      })
+      .catch(() => {});
   }, [initialCity]);
 
   return <div id="map" ref={mapContainerRef} style={{ width: '100%', height: '100%' }}></div>;
