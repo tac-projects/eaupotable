@@ -358,7 +358,7 @@ main {
     gap: 20px;
     flex-wrap: wrap;
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: var(--text-muted); /* Passage de text-light à text-muted pour l'accessibilité */
     width: 100%; /* S'assure de ne pas dépasser le parent */
 }
 
@@ -389,17 +389,17 @@ main {
 }
 
 .footer-status-badge.smaller, .footer-trust-badge.smaller {
-    padding: 7px 14px;
-    font-size: 0.8rem;
+    padding: 8px 16px;
+    font-size: 0.9rem;
     border-radius: 8px;
     letter-spacing: 0.02em;
 }
 
 .footer-status-badge {
-    background: #DCFCE7; /* emerald-100 */
-    color: #166534; /* emerald-800 */
+    background: #DCFCE7; 
+    color: #064e3b; /* emerald-900 pour contraste max sur fond clair */
     border: 1px solid #BBF7D0;
-    font-weight: 700;
+    font-weight: 800;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -417,19 +417,19 @@ main {
 .footer-trust-badge.blue {
     background: #E0F2FE;
     border: 1px solid #BAE6FD;
-    color: #075985;
+    color: #0c4a6e; /* sky-900 */
 }
 
 .footer-trust-badge.indigo {
     background: #F3E8FF;
     border: 1px solid #E9D5FF;
-    color: #6B21A8;
+    color: #581c87; /* purple-900 */
 }
 
 .footer-trust-badge.gold {
     background: #FEF3C7;
     border: 1px solid #FDE68A;
-    color: #92400E;
+    color: #78350f; /* amber-900 */
 }
 
 .footer-trust-badge:hover {

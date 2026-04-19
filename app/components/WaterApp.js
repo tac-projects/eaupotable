@@ -471,6 +471,7 @@ export default function WaterApp({ initialCity = null }) {
                 }}
                 placeholder="Autre ville..."
                 className="search-input"
+                aria-label="Rechercher une autre ville"
               />
               <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
                   {suggestions.map((f, i) => (

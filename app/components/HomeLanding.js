@@ -120,6 +120,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 }}
                 placeholder={placeholder}
                 className="search-input"
+                aria-label="Rechercher une ville ou un code postal"
                 />
                 {searchQuery && (
                 <button 
