@@ -80,8 +80,8 @@ export default function WaterApp({ initialCity = null }) {
       timeout = setTimeout(type, speed);
     };
 
-    // On attend 1.5s avant de démarrer l'animation pour optimiser le chargement (LCP)
-    const startTimeout = setTimeout(type, 1500);
+    // On réduit le délai d'attente avant le démarrage de l'animation (500ms au lieu de 1500ms)
+    const startTimeout = setTimeout(type, 500);
     setPlaceholder("Votre ville...");
     
     return () => {

@@ -448,6 +448,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
         <Script 
           src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" 
+          strategy="lazyOnload"
           onLoad={() => {
             if (window.turnstile && turnstileRef.current) {
               window.turnstile.render(turnstileRef.current, {
