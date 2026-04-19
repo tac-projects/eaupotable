@@ -14,6 +14,9 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
 
     // Report de 4s de Mapbox pour libérer le thread principal au démarrage (TBT Optimization)
     const timer = setTimeout(() => {
+      // Guard : si le composant a été démonté avant la fin du délai, on abandonne
+      if (!mapContainerRef.current) return;
+
       mapboxgl.accessToken = mapboxToken;
       const m = new mapboxgl.Map({
         container: mapContainerRef.current,
@@ -34,14 +37,21 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
           }
         }
         mapRef.current = m;
-        if (onMapLoad) onMapLoad(m);   // Passe la ref carte au parent
-        if (onMapReady) onMapReady();  // Signal : skeleton peut disparaître
+        if (onMapLoad) onMapLoad(m);
+        if (onMapReady) onMapReady();
       });
     }, 4000);
 
     return () => {
       clearTimeout(timer);
-      if (mapRef.current) mapRef.current.remove();
+      try {
+        if (mapRef.current) {
+          mapRef.current.remove();
+          mapRef.current = null;
+        }
+      } catch (e) {
+        // Cleanup silencieux : le composant peut avoir été démonté avant la fin de l'init
+      }
     };
   }, [onMapLoad, onMapReady]);
 
