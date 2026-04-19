@@ -404,6 +404,20 @@ main {
     gap: 6px;
 }
 
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background: #4ade80; /* emerald-400 for high contrast on emerald-950 */
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 .footer-trust-badge {
     display: flex;
     align-items: center;
