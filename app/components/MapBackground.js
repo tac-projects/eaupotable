@@ -8,6 +8,9 @@ const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2
 export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
+  // On stocke les callbacks dans des refs pour éviter de re-déclencher l'effet
+  const onMapLoadRef = useRef(onMapLoad);
+  const onMapReadyRef = useRef(onMapReady);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -37,8 +40,8 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
           }
         }
         mapRef.current = m;
-        if (onMapLoad) onMapLoad(m);
-        if (onMapReady) onMapReady();
+        if (onMapLoadRef.current) onMapLoadRef.current(m);
+        if (onMapReadyRef.current) onMapReadyRef.current();
       });
     }, 4000);
 
@@ -50,10 +53,10 @@ export default function MapBackground({ onMapLoad, onMapReady, initialCity }) {
           mapRef.current = null;
         }
       } catch (e) {
-        // Cleanup silencieux : le composant peut avoir été démonté avant la fin de l'init
+        // Cleanup silencieux
       }
     };
-  }, [onMapLoad, onMapReady]);
+  }, []); // [] : l'effet ne tourne qu'une seule fois au montage
 
   // Sync zoom quand la carte est prête et qu'une ville est ciblée
   useEffect(() => {
