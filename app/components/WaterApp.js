@@ -13,13 +13,15 @@ import {
   POPULAR_CITIES
 } from '@/lib/water-utils';
 
-// Imports dynamiques pour réduire le TBT et le JS inutilisé
+// Imports normaux pour SSR et LCP optimal
+import CitySEOContent from './CitySEOContent';
+import HomeLanding from './HomeLanding';
+
+// Imports dynamiques uniquement pour les composants vraiment lourds et non critiques au démarrage
 const MapBackground = dynamic(() => import('./MapBackground'), { 
   ssr: false,
   loading: () => <div style={{ width: '100%', height: '100%', background: '#f0f4f8' }}></div>
 });
-const CitySEOContent = dynamic(() => import('./CitySEOContent'), { ssr: true });
-const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';

@@ -12,32 +12,36 @@ export default function MapBackground({ onMapLoad, initialCity }) {
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    mapboxgl.accessToken = mapboxToken;
-    const m = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [2.2137, 46.2276],
-      zoom: 5.0,
-      projection: 'globe',
-      interactive: false
-    });
+    // Report de l'initialisation lourde de Mapbox pour libérer le thread principal au démarrage (TBT Optimization)
+    const timer = setTimeout(() => {
+        mapboxgl.accessToken = mapboxToken;
+        const m = new mapboxgl.Map({
+          container: mapContainerRef.current,
+          style: 'mapbox://styles/mapbox/light-v11',
+          center: [2.2137, 46.2276],
+          zoom: 5.0,
+          projection: 'globe',
+          interactive: false
+        });
 
-    m.on('style.load', () => { 
-      m.setFog({}); 
-    });
+        m.on('style.load', () => { 
+          m.setFog({}); 
+        });
 
-    m.on('load', () => {
-      const layers = m.getStyle().layers;
-      for (let layer of layers) {
-        if (layer.layout && layer.layout['text-field']) {
-          m.setLayoutProperty(layer.id, 'text-field', ['coalesce', ['get', 'name_fr'], ['get', 'name']]);
-        }
-      }
-      mapRef.current = m;
-      if (onMapLoad) onMapLoad(m);
-    });
+        m.on('load', () => {
+          const layers = m.getStyle().layers;
+          for (let layer of layers) {
+            if (layer.layout && layer.layout['text-field']) {
+              m.setLayoutProperty(layer.id, 'text-field', ['coalesce', ['get', 'name_fr'], ['get', 'name']]);
+            }
+          }
+          mapRef.current = m;
+          if (onMapLoad) onMapLoad(m);
+        });
+    }, 1500);
 
     return () => {
+      clearTimeout(timer);
       if (mapRef.current) {
         mapRef.current.remove();
       }
