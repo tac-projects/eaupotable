@@ -50,6 +50,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://hubeau.eaufrance.fr" />
+        <link rel="dns-prefetch" href="https://api.mapbox.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Grand+Hotel&display=swap" rel="stylesheet" />
       </head>
       <body className="full-height-body">

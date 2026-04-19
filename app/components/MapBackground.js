@@ -75,6 +75,8 @@ export default function MapBackground({ onMapLoad, initialCity }) {
       {!isMapLoaded && (
         <div className="map-skeleton">
           <div className="skeleton-content">
+            <h1 className="skeleton-title">Qualité & Pureté de l'eau potable</h1>
+            <p className="skeleton-subtitle">Chargement de la carte interactive...</p>
             <div className="skeleton-ripple"></div>
           </div>
         </div>
