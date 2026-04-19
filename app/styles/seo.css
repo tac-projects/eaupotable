@@ -51,6 +51,8 @@
     padding: 0 1.25rem;
     box-sizing: border-box;
     overflow: visible !important;
+    position: relative;
+    z-index: 10;
 }
 
 .seo-header {
@@ -193,7 +195,7 @@
     overflow: visible !important;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    margin: 60px 0;
+    margin: 120px 0 60px;
 }
 
 .cta-alert-content h3 {
