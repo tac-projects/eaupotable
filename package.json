@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm run indexnow",
+    "build": "npm run sitemap && next build && npm run indexnow",
     "start": "next start",
     "sitemap": "node scripts/generate-sitemap.js",
     "indexnow": "node scripts/notify-indexnow.js"
