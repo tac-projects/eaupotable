@@ -4,8 +4,22 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
+import { Inter, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const grandHotel = Grand_Hotel({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-grand-hotel',
+});
 
 export const metadata = {
   metadataBase: new URL('https://www.eaupotable.net'),
@@ -39,19 +53,14 @@ export const viewport = {
   themeColor: '#0066FF',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className="full-height-body">
+    <html lang="fr" className={`${inter.variable} ${grandHotel.variable} full-height-body`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://hubeau.eaufrance.fr" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Grand+Hotel&display=swap" rel="stylesheet" />
       </head>
       <body className="full-height-body">
         {children}

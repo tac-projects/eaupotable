@@ -8,28 +8,28 @@
     --primary-gradient: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
     --primary-glow: rgba(0, 102, 255, 0.15);
     
-    --text-main: #1A202C;
-    --text-muted: #4A5568;
-    --text-light: #718096;
-    --text-logo: #2D3748; /* Anthracite adouci */
+    --text-main: #111827; /* Gris plus foncé pour meilleur contraste */
+    --text-muted: #374151;
+    --text-light: #52617a; /* Plus sombre pour WCAG AA (ratio > 4.5:1) */
+    --text-logo: #1E293B;
     
-    /* Status Levels - Shared (Exact Yuka Palette) */
-    --status-excellent: #26b23b;
-    --status-good: #85D94D;
-    --status-warning: #FF9100;
-    --status-critical: #E6382F;
+    /* ... Status Levels - Shared (Exact Yuka Palette) ... */
+    --status-excellent: #16a34a;
+    --status-good: #84cc16;
+    --status-warning: #f59e0b;
+    --status-critical: #dc2626;
     
     /* Effects */
-    --glass-bg: rgba(255, 255, 255, 0.8);
-    --glass-blur: blur(15px);
-    --glass-border-light: 1px solid rgba(255, 255, 255, 0.4);
-    --ghost-border: 1px solid rgba(0, 0, 0, 0.05);
-    --shadow-premium: none;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-blur: blur(12px);
+    --glass-border-light: 1px solid rgba(255, 255, 255, 0.5);
+    --ghost-border: 1px solid rgba(0, 0, 0, 0.08);
+    --shadow-premium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     
-    /* Typography */
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-logo: 'Grand Hotel', cursive;
+    /* Typography - Linked to next/font variables from layout.js */
+    --font-heading: var(--font-inter), 'Inter', system-ui, sans-serif;
+    --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+    --font-logo: var(--font-grand-hotel), 'Grand Hotel', cursive;
 
     --transition-premium: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     --transition-slow: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);

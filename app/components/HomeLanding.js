@@ -144,7 +144,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
             <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
                 {!searchQuery && (
                 <div className="popular-cities-list">
-                    <p style={{ padding: '10px 20px', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 700, color: 'var(--text-light)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>Villes populaires</p>
+                    <p style={{ padding: '10px 20px', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 800, color: 'var(--text-muted)', borderBottom: '1px solid rgba(0,0,0,0.05)', letterSpacing: '0.05em' }}>Villes populaires</p>
                     {POPULAR_CITIES.map(city => (
                     <div key={city.slug} className="suggestion-item" onClick={() => handleSearchSelection({ text: city.name, place_name: city.name })}>
                         {city.name}
@@ -183,6 +183,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
       <div className="seo-container">
         {/* 1. ARGUMENTS CLEFS : Sécurité / Pureté / Confort */}
+        <h2 className="sr-only">Pourquoi analyser votre eau potable ?</h2>
         <div className="seo-grid">
           <div className="seo-card">
             <div className="seo-card-icon">🧪</div>
@@ -215,17 +216,17 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           <div className="how-it-works-steps">
             <div className="step-item">
               <span className="step-num">1</span>
-              <h4>Trouvez votre ville</h4>
+              <h3>Trouvez votre ville</h3>
               <p>Utilisez la barre de recherche pour identifier votre réseau de distribution.</p>
             </div>
             <div className="step-item">
               <span className="step-num">2</span>
-              <h4>Déchiffrez le score</h4>
+              <h3>Déchiffrez le score</h3>
               <p>Consultez votre Crystal Score et les rapports sanitaires officiels.</p>
             </div>
             <div className="step-item">
               <span className="step-num">3</span>
-              <h4>Optimisez votre eau</h4>
+              <h3>Optimisez votre eau</h3>
               <p>Suivez nos conseils pour filtrer le chlore ou le calcaire au quotidien.</p>
             </div>
           </div>

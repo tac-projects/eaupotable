@@ -211,7 +211,6 @@
     font-size: 1.1rem;
     margin-bottom: 30px;
     line-height: 1.6;
-    text-wrap: balance;
 }
 
 .seo-section-block {
@@ -235,6 +234,7 @@
 .cta-alert-icon {
     width: 100px;
     height: 100px;
+    aspect-ratio: 1 / 1;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 25px;
     display: flex;
@@ -257,7 +257,6 @@
     opacity: 0.9;
     margin-bottom: 30px;
     line-height: 1.6;
-    text-wrap: balance; /* Équilibre les lignes automatiquement */
 }
 
 .cta-form-inline {
@@ -351,7 +350,7 @@
 
 .cta-btn-inline {
     padding: 0 30px;
-    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #1e40af 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -403,6 +402,7 @@
 .seo-card-icon {
     width: 60px;
     height: 60px;
+    aspect-ratio: 1 / 1;
     background: rgba(0, 102, 255, 0.05);
     border-radius: 16px;
     display: flex;

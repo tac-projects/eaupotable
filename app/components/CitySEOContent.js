@@ -543,7 +543,7 @@ function NearbyCities({ cities }) {
   if (!cities || cities.length === 0) return null;
   return (
     <div className="seo-local-links">
-      <h3>📍 Explorez la qualité de l'eau dans votre bassin</h3>
+      <h2 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '25px', color: 'var(--text-main)' }}>📍 Explorez la qualité de l'eau dans votre bassin</h2>
       <div className="seo-tags-grid">
         {cities.map(c => {
           const slug = c.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
