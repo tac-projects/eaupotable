@@ -389,16 +389,16 @@ main {
 }
 
 .footer-status-badge.smaller, .footer-trust-badge.smaller {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    border-radius: 10px;
     letter-spacing: 0.02em;
 }
 
 .footer-status-badge {
-    background: #DCFCE7; 
-    color: #064e3b; /* emerald-900 pour contraste max sur fond clair */
-    border: 1px solid #BBF7D0;
+    background: #022c22; /* emerald-950 (presque noir) */
+    color: #ffffff;
+    border: 1px solid #064e3b;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -415,21 +415,21 @@ main {
 }
 
 .footer-trust-badge.blue {
-    background: #E0F2FE;
-    border: 1px solid #BAE6FD;
-    color: #0c4a6e; /* sky-900 */
+    background: #082f49; /* sky-950 */
+    border: 1px solid #0c4a6e;
+    color: #ffffff;
 }
 
 .footer-trust-badge.indigo {
-    background: #F3E8FF;
-    border: 1px solid #E9D5FF;
-    color: #581c87; /* purple-900 */
+    background: #2e1065; /* purple-950 */
+    border: 1px solid #4c1d95;
+    color: #ffffff;
 }
 
 .footer-trust-badge.gold {
-    background: #FEF3C7;
-    border: 1px solid #FDE68A;
-    color: #78350f; /* amber-900 */
+    background: #451a03; /* amber-950 */
+    border: 1px solid #78350f;
+    color: #ffffff;
 }
 
 .footer-trust-badge:hover {
