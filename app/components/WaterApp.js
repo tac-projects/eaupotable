@@ -80,7 +80,8 @@ export default function WaterApp({ initialCity = null }) {
       timeout = setTimeout(type, speed);
     };
 
-    type();
+    // type(); // Désactivé pour optimiser le TBT (Lighthouse)
+    setPlaceholder("Rechercher une ville...");
     return () => clearTimeout(timeout);
   }, []);
 
@@ -103,9 +104,9 @@ export default function WaterApp({ initialCity = null }) {
       e.preventDefault();
       setDeferredPrompt(e);
       // On attend aussi 5s ici pour ne pas court-circuiter le délai design
-      setTimeout(() => {
-        setShowPWABanner(true);
-      }, 5000);
+        setTimeout(() => {
+          setShowPWABanner(true);
+        }, 20000);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -115,7 +116,7 @@ export default function WaterApp({ initialCity = null }) {
     if (!selectedCity) {
       forceTimer = setTimeout(() => {
         setShowPWABanner(true);
-      }, 5000);
+      }, 20000);
     }
 
     return () => {

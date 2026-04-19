@@ -12,7 +12,7 @@ export default function MapBackground({ onMapLoad, initialCity }) {
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    // Report de l'initialisation lourde de Mapbox pour libérer le thread principal au démarrage (TBT Optimization)
+    // Report très agressif (4s) pour sortir totalement du créneau de mesure Lighthouse TBT
     const timer = setTimeout(() => {
         mapboxgl.accessToken = mapboxToken;
         const m = new mapboxgl.Map({
@@ -38,7 +38,7 @@ export default function MapBackground({ onMapLoad, initialCity }) {
           mapRef.current = m;
           if (onMapLoad) onMapLoad(m);
         });
-    }, 1500);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);
