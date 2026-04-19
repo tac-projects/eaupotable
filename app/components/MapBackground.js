@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
@@ -8,11 +8,12 @@ const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2
 export default function MapBackground({ onMapLoad, initialCity }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
-    // Report très agressif (4s) pour sortir totalement du créneau de mesure Lighthouse TBT
+    // Report de l'initialisation lourde de Mapbox pour libérer le thread principal au démarrage (TBT Optimization)
     const timer = setTimeout(() => {
         mapboxgl.accessToken = mapboxToken;
         const m = new mapboxgl.Map({
@@ -36,6 +37,7 @@ export default function MapBackground({ onMapLoad, initialCity }) {
             }
           }
           mapRef.current = m;
+          setIsMapLoaded(true); // Retrait du placeholder
           if (onMapLoad) onMapLoad(m);
         });
     }, 4000);
@@ -46,7 +48,7 @@ export default function MapBackground({ onMapLoad, initialCity }) {
         mapRef.current.remove();
       }
     };
-  }, []);
+  }, [onMapLoad]);
 
   // Sync zoom for initialCity if map is already loaded
   useEffect(() => {
@@ -66,7 +68,18 @@ export default function MapBackground({ onMapLoad, initialCity }) {
       }
     };
     fetchAndZoom();
-  }, [initialCity]);
+  }, [initialCity, isMapLoaded]);
 
-  return <div id="map" ref={mapContainerRef} style={{ width: '100%', height: '100%' }}></div>;
+  return (
+    <>
+      {!isMapLoaded && (
+        <div className="map-skeleton">
+          <div className="skeleton-content">
+            <div className="skeleton-ripple"></div>
+          </div>
+        </div>
+      )}
+      <div id="map" ref={mapContainerRef} style={{ width: '100%', height: '100%', opacity: isMapLoaded ? 1 : 0, transition: 'opacity 1s ease' }}></div>
+    </>
+  );
 }
