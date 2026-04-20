@@ -71,14 +71,14 @@ main {
     width: 100%;
     max-width: 100%;
     position: relative;
-    padding: 130px 1.25rem 100px;
+    padding: 130px 1.25rem 250px; /* Augmenté à 250px pour laisser de la place au dropdown */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid rgba(0, 102, 255, 0.05);
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: hidden; /* Retour à la normale pour isoler le contexte */
 }
 
 /* Effet de grain Premium */
