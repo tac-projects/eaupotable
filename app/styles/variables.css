@@ -4,14 +4,15 @@
     --surface: #F8FAFC;
     --surface-sunken: #EDF2F7;
     
-    --primary-solid: #0066FF;
-    --primary-gradient: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
-    --primary-glow: rgba(0, 102, 255, 0.15);
+    --primary-solid: #0046CC;
+    --primary-rgb: 0, 70, 204;
+    --primary-gradient: var(--primary-solid);
+    --primary-glow: rgba(var(--primary-rgb), 0.15);
     
-    --text-main: #111827; /* Gris plus foncé pour meilleur contraste */
-    --text-muted: #374151;
-    --text-light: #52617a; /* Plus sombre pour WCAG AA (ratio > 4.5:1) */
-    --text-logo: #1E293B;
+    --text-main: #0F172A; /* Midnight Blue très sombre au lieu de gris */
+    --text-muted: #334155;
+    --text-light: #64748B;
+    --text-logo: #0046CC; /* Le logo utilise désormais le bleu pur */
     
     /* ... Status Levels - Shared (Exact Yuka Palette) ... */
     --status-excellent: #16a34a;
@@ -54,5 +55,5 @@
     /* Header & Logo Tokens */
     --header-height: 60px;
     --font-size-logo: 1.8rem;
-    --logo-y-offset: 3px;
+    --logo-y-offset: 12px;
 }

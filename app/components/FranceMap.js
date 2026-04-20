@@ -16,8 +16,8 @@ export default function FranceMap() {
       >
         <defs>
           <linearGradient id="franceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#00D1FF', stopOpacity: 0.8 }} />
-            <stop offset="100%" style={{ stopColor: '#0066FF', stopOpacity: 0.9 }} />
+            <stop offset="0%" style={{ stopColor: '#0055FF', stopOpacity: 0.8 }} />
+            <stop offset="100%" style={{ stopColor: '#003399', stopOpacity: 0.9 }} />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="15" result="coloredBlur" />

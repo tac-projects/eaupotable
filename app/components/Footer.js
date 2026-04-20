@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-main">
           <div className="footer-brand">
-            <Link href="/" className="logo" style={{ marginBottom: '1.5rem', display: 'inline-flex' }}>
+            <Link href="/" className="logo">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-icon">
                 <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradientFooter)" />
                 <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
@@ -17,8 +17,8 @@ export default function Footer() {
                 <defs>
                   <linearGradient id="crystalGradientFooter" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#3FA9FE" />
-                    <stop offset="0.5" stopColor="#0066FF" />
-                    <stop offset="1" stopColor="#0047AB" />
+                    <stop offset="0.5" stopColor="#0055FF" />
+                    <stop offset="1" stopColor="#003399" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -77,7 +77,7 @@ export default function Footer() {
                 className="footer-trust-badge smaller blue"
                 aria-label="Voir la réutilisation officielle sur data.gouv.fr"
               >
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '5px' }}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="footer-badge-icon">
                   <path d="M12 2L1 12l1.41 1.41L12 3.83l9.59 9.58L23 12 12 2z" />
                 </svg>
                 Réutilisation officielle
@@ -90,14 +90,14 @@ export default function Footer() {
                 className="footer-trust-badge smaller indigo"
                 aria-label="Voir notre référencement sur Data.gouv.fr"
               >
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '5px' }}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="footer-badge-icon">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                 </svg>
                 Référencé Data.gouv.fr
               </a>
 
               <div className="footer-trust-badge smaller gold">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '5px' }}>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="footer-badge-icon">
                   <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                 </svg>
                 Partenaire Open Data

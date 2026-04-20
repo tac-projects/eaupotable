@@ -95,9 +95,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
       <div className="hero-section">
         <div className="seo-container">
           <div className="seo-header">
-            <h1 className="seo-title">Quelle est la qualité de votre eau potable{'\u00A0'}?</h1>
+            <h1 className="seo-title">Quelle est la qualité de <span className="text-primary">votre eau potable{'\u00A0'}?</span></h1>
             <p className="seo-subtitle">
-              Au-delà de la potabilité, accédez au verdict de <strong>pureté globale</strong>. 
+              Au-delà de la potabilité, accédez au verdict de <strong>pureté globale</strong>.
               Analyses ARS 2026 : pesticides, nitrates, bactéries, calcaire et PFAS.
             </p>
           </div>
@@ -105,59 +105,59 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           <div className="home-search-container">
             {/* ... barre de recherche existante ... */}
             <div className="search-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input
+              </svg>
+              <input
                 type="text"
                 value={searchQuery}
                 onChange={onSearchChange}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
                 onKeyDown={(e) => {
-                    if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
+                  if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
                 }}
                 placeholder={placeholder}
                 className="search-input"
                 aria-label="Rechercher une ville ou un code postal"
-                />
-                {searchQuery && (
-                <button 
-                    className="clear-search visible" 
-                    onClick={() => { setSearchQuery(''); setSuggestions([]); }}
-                    aria-label="Effacer la recherche"
+              />
+              {searchQuery && (
+                <button
+                  className="clear-search visible"
+                  onClick={() => { setSearchQuery(''); setSuggestions([]); }}
+                  aria-label="Effacer la recherche"
                 >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
+                  </svg>
                 </button>
-                )}
-                <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
+              )}
+              <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                </button>
+              </button>
             </div>
 
             <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
-                {!searchQuery && (
+              {!searchQuery && (
                 <div className="popular-cities-list">
-                    <p style={{ padding: '10px 20px', fontSize: '0.8rem', textTransform: 'uppercase', fontWeight: 800, color: 'var(--text-muted)', borderBottom: '1px solid rgba(0,0,0,0.05)', letterSpacing: '0.05em' }}>Villes populaires</p>
-                    {POPULAR_CITIES.map(city => (
+                  <p className="popular-cities-title">Villes populaires</p>
+                  {POPULAR_CITIES.map(city => (
                     <div key={city.slug} className="suggestion-item" onClick={() => handleSearchSelection({ text: city.name, place_name: city.name })}>
-                        {city.name}
+                      {city.name}
                     </div>
-                    ))}
+                  ))}
                 </div>
-                )}
-                {suggestions.map((f, i) => (
+              )}
+              {suggestions.map((f, i) => (
                 <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
-                    <strong>{f.text}</strong> <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>({f.context?.[0]?.text || ''})</span>
+                  <strong>{f.text}</strong> <span className="suggestion-context-text">({f.context?.[0]?.text || ''})</span>
                 </div>
-                ))}
+              ))}
             </div>
           </div>
 
@@ -183,37 +183,48 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
       </div>
 
       <div className="seo-container">
-        {/* 1. ARGUMENTS CLEFS : Sécurité / Pureté / Confort */}
-        <h2 className="sr-only">Pourquoi analyser votre eau potable ?</h2>
-        <div className="seo-grid">
-          <div className="seo-card">
-            <div className="seo-card-icon">🧪</div>
-            <h3>Analyse Intégrale</h3>
-            <p>Nous scrutons 15 paramètres critiques : nitrates, bactéries, pesticides, PFAS et métaux. Une vision à 360° de votre eau, bien au-delà des rapports simplifiés.</p>
+        {/* 1. ARGUMENTS CLEFS : Sécurité / Pureté /        {/* EN-TÊTE DE SECTION SERVICES */}
+        <div className="seo-section-block">
+          <div className="seo-section-header">
+            <h2 className="seo-main-title">Nos Services d'Analyse</h2>
+            <p className="seo-main-subtitle">Découvrez les différents aspects de la qualité de votre eau grâce à nos outils d'analyse simplifiés.</p>
           </div>
 
-          <div className="seo-card">
-            <div className="seo-card-icon">💎</div>
-            <h3>Le Crystal Score</h3>
-            <p>Un algorithme qui traduit la complexité chimique en une note santé de 0 à 10. Indispensable pour la préparation des biberons et la protection de vos proches.</p>
-          </div>
+          <div className="seo-grid">
+            <div className="seo-card">
+              <div className="seo-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 18h8" /><path d="M3 22h18" /><path d="M14 22a7 7 0 1 0 0-14h-1" /><path d="M9 14h2" /><path d="M9 12a2 2 0 1 1-2-2V6h6v4a2 2 0 1 1-2 2Z" /><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" /></svg>
+              </div>
+              <h3>Analyse Intégrale</h3>
+              <p>Nous scrutons 15 paramètres critiques : nitrates, bactéries, pesticides, PFAS et métaux. Une vision à 360° de votre eau, bien au-delà des rapports simplifiés.</p>
+            </div>
 
-          <div className="seo-card">
-            <div className="seo-card-icon">🚿</div>
-            <h3>Confort & Économies</h3>
-            <p>Maîtrisez la dureté de votre eau. Protégez vos équipements du calcaire, prévenez les problèmes de peau (eczéma) et optimisez votre consommation d'énergie.</p>
-          </div>
+            <div className="seo-card highlight">
+              <div className="popular-badge">LE PLUS POPULAIRE</div>
+              <div className="seo-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z" /><path d="M11 3 8 9l3 13 3-13-3-6Z" /><path d="M2 9h20" /></svg>
+              </div>
+              <h3>Le Crystal Score</h3>
+              <p>Un algorithme qui traduit la complexité chimique en une note santé de 0 à 10. Indispensable pour la préparation des biberons et la protection de vos proches.</p>
+            </div>
 
-          <div className="seo-card">
-            <div className="seo-card-icon">🔔</div>
-            <h3>Vigilance Active</h3>
-            <p>Ne subissez plus les pollutions locales. Soyez alerté immédiatement si un pic de nitrates ou une non-conformité bactériologique est détecté sur votre réseau.</p>
+            <div className="seo-card">
+              <div className="seo-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+              </div>
+              <h3>Confort & Économies</h3>
+              <p>Maîtrisez la dureté de votre eau. Protégez vos équipements du calcaire, prévenez les problèmes de peau (eczéma) et optimisez votre consommation d'énergie.</p>
+            </div>
           </div>
         </div>
 
+
         {/* 2. COMMENT ÇA MARCHE */}
         <div className="seo-section-block">
-          <h2 className="seo-section-title">🔍 3 étapes pour vérifier la qualité de votre eau{'\u00A0'}?</h2>
+        <div className="seo-section-header">
+          <h2 className="seo-main-title">3 étapes pour vérifier votre eau</h2>
+          <p className="seo-main-subtitle">Une méthode simple et transparente pour décrypter les données sanitaires de votre commune en quelques secondes.</p>
+        </div>
           <div className="how-it-works-steps">
             <div className="step-item">
               <span className="step-num">1</span>
@@ -235,27 +246,53 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
         {/* 3. SECTION METROPOLES : Analyses réelles */}
         <div className="seo-section-block">
-          <h2 className="seo-section-title">📍 Qualité de l'eau dans les métropoles</h2>
-          <div className="top-cities-grid">
-            {[
-              { name: "Paris", score: "7.9", dpt: "75", slug: "paris" },
-              { name: "Marseille", score: "5.1", dpt: "13", slug: "marseille" },
-              { name: "Lyon", score: "4.0", dpt: "69", slug: "lyon" },
-              { name: "Toulouse", score: "9.4", dpt: "31", slug: "toulouse" },
-              { name: "Nice", score: "9.4", dpt: "06", slug: "nice" },
-              { name: "Nantes", score: "9.6", dpt: "44", slug: "nantes" },
-              { name: "Montpellier", score: "8.6", dpt: "34", slug: "montpellier" },
-              { name: "Strasbourg", score: "9.1", dpt: "67", slug: "strasbourg" },
-              { name: "Bordeaux", score: "8.6", dpt: "33", slug: "bordeaux" },
-              { name: "Lille", score: "8.3", dpt: "59", slug: "lille" }
-            ].map(city => (
-              <button key={city.slug} onClick={() => onCitySelect({ name: city.name })} className="top-city-item premium-city-card">
-                <span className="city-name">{city.name} ({city.dpt})</span>
-                <span className="city-score">{city.score}/10</span>
-              </button>
-            ))}
+        <div className="seo-section-header">
+          <h2 className="seo-main-title">Qualité de l'eau des métropoles</h2>
+          <p className="seo-main-subtitle">Explorez les scores de pureté et la conformité bactériologique des plus grandes agglomérations de France.</p>
+        </div>
+
+          <div className="premium-metropolis-container">
+            <div className="premium-metropolis-header">
+              <div className="col-city">MÉTROPOLE</div>
+              <div className="col-score">SCORE MOYEN</div>
+            </div>
+            <div className="premium-metropolis-body">
+              {[
+                { name: "Paris", score: "7.9", dpt: "75", slug: "paris" },
+                { name: "Marseille", score: "5.1", dpt: "13", slug: "marseille" },
+                { name: "Lyon", score: "4.0", dpt: "69", slug: "lyon" },
+                { name: "Toulouse", score: "9.4", dpt: "31", slug: "toulouse" },
+                { name: "Nice", score: "9.4", dpt: "06", slug: "nice" },
+                { name: "Nantes", score: "9.6", dpt: "44", slug: "nantes" },
+                { name: "Montpellier", score: "8.6", dpt: "34", slug: "montpellier" },
+                { name: "Strasbourg", score: "9.1", dpt: "67", slug: "strasbourg" },
+                { name: "Bordeaux", score: "8.6", dpt: "33", slug: "bordeaux" },
+                { name: "Lille", score: "8.3", dpt: "59", slug: "lille" }
+              ].map(city => {
+                const scoreNum = parseFloat(city.score);
+                const scoreClass = scoreNum >= 8 ? 'excellent' : scoreNum >= 6 ? 'good' : scoreNum >= 4 ? 'warning' : 'critical';
+
+                return (
+                  <button
+                    key={city.slug}
+                    onClick={() => onCitySelect({ name: city.name })}
+                    className="premium-metropolis-row"
+                  >
+                    <div className="col-city">
+                      <strong>{city.name}</strong>
+                      <span className="city-dpt">({city.dpt})</span>
+                    </div>
+                    <div className="col-score">
+                      <span className={`score-badge ${scoreClass}`}>
+                        {Math.round(scoreNum * 10)} / 100
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          
+
           <div className="all-cities-link-container">
             <a href="/villes" className="btn-all-cities">
               <span>Explorer toutes les villes de France</span>
@@ -266,7 +303,10 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
         {/* 4. FAQ GENERALE */}
         <div className="seo-section-block">
-          <h2 className="seo-section-title">💬 Questions fréquentes sur l'eau potable</h2>
+        <div className="seo-section-header">
+          <h2 className="seo-main-title">Foire Aux Questions</h2>
+          <p className="seo-main-subtitle">Tout ce que vous devez savoir sur la potabilité, le calcaire et les polluants émergents (PFAS).</p>
+        </div>
           <div className="seo-faq-accordion">
             {[
               {
@@ -320,12 +360,12 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
             <div className="cta-alert-content">
               <h3>Vigilance Qualité Eau</h3>
               <p>Recevez une notification immédiate par email si la qualité de l'eau de votre commune subit une modification ou un rappel sanitaire.</p>
-              
+
               <form className="cta-form-inline" onSubmit={handleVigilanceSubmit}>
                 <div className="cta-input-wrapper">
-                  <input 
-                    type="text" 
-                    placeholder="Votre ville ou CP..." 
+                  <input
+                    type="text"
+                    placeholder="Votre ville ou CP..."
                     className="cta-input"
                     value={cityName}
                     onChange={(e) => handleVigilanceCityChange(e.target.value)}
@@ -337,8 +377,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   {isVigilanceFocused && vigilanceSuggestions.length > 0 && (
                     <div className="vigilance-suggestions-dropdown">
                       {vigilanceSuggestions.map((f, i) => (
-                        <div 
-                          key={i} 
+                        <div
+                          key={i}
                           className="vigilance-suggestion-item"
                           onClick={() => handleVigilanceCitySelect(f)}
                         >
@@ -348,9 +388,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                     </div>
                   )}
                 </div>
-                <input 
-                  type="email" 
-                  placeholder="Votre email..." 
+                <input
+                  type="email"
+                  placeholder="Votre email..."
                   className="cta-input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -360,9 +400,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
                 <div ref={turnstileRef} className="cf-turnstile-container-inline"></div>
 
-                <button 
-                  type="submit" 
-                  className="cta-btn-inline" 
+                <button
+                  type="submit"
+                  className="cta-btn-inline"
                   disabled={status === 'SENDING' || status === 'SUCCESS' || !turnstileToken}
                 >
                   {status === 'SENDING' ? '...' : status === 'SUCCESS' ? 'OK' : "S'abonner"}
@@ -447,8 +487,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           }}
         />
 
-        <Script 
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" 
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
           strategy="lazyOnload"
           onLoad={() => {
             if (window.turnstile && turnstileRef.current) {

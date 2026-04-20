@@ -30,7 +30,9 @@
 header.transparent-header {
     height: var(--header-height);
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
 
@@ -64,21 +66,22 @@ main {
 .hero-section {
     background: #ffffff;
     background-image: 
-        radial-gradient(at 0% 0%, rgba(0, 102, 255, 0.06) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(0, 210, 255, 0.06) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, rgba(var(--primary-rgb), 0.06) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(var(--primary-rgb), 0.04) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.8) 0px, transparent 80%),
-        radial-gradient(at 80% 80%, rgba(0, 102, 255, 0.04) 0px, transparent 50%);
+        radial-gradient(at 80% 80%, rgba(var(--primary-rgb), 0.04) 0px, transparent 50%);
     width: 100%;
     max-width: 100%;
     position: relative;
-    padding: 130px 1.25rem 250px; /* Augmenté à 250px pour laisser de la place au dropdown */
+    padding: 130px 1.25rem 110px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(0, 102, 255, 0.05);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.05);
+    z-index: 20;
     box-sizing: border-box;
-    overflow: hidden; /* Retour à la normale pour isoler le contexte */
+    overflow: visible; 
 }
 
 /* Effet de grain Premium */
@@ -102,7 +105,7 @@ main {
     max-width: 700px;
     margin: 3rem auto 1.5rem; /* Marges réduites et équilibrées */
     position: relative;
-    z-index: 100;
+    z-index: 1100;
     padding: 0 20px;
     width: 100%;
 }
@@ -131,8 +134,8 @@ main {
 
 .home-search-container .search-box {
     background: white;
-    border: 1px solid rgba(0, 102, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.08);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    box-shadow: 0 20px 40px rgba(var(--primary-rgb), 0.08);
     height: 70px;
     border-radius: 100px;
     padding: 0 25px;
@@ -142,9 +145,9 @@ main {
 }
 
 .home-search-container .search-box:focus-within {
-    box-shadow: 0 25px 50px rgba(0, 102, 255, 0.15);
+    box-shadow: 0 25px 50px rgba(var(--primary-rgb), 0.15);
     transform: translateY(-2px);
-    border-color: rgba(0, 102, 255, 0.3);
+    border-color: rgba(var(--primary-rgb), 0.3);
 }
 
 .home-search-container .search-input {
@@ -177,10 +180,9 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: var(--header-height);
-    padding: 0 20px;
     width: 100%;
-    max-width: 100%; /* Suppression de la contrainte pour libérer l'espace */
+    padding: 0 40px;
+    max-width: 100%;
 }
 
 
@@ -295,14 +297,17 @@ main {
     gap: 15px;
 }
 
-.footer-logo {
+.logo {
+    font-family: var(--font-logo);
+    font-size: var(--font-size-logo);
+    font-weight: 400;
+    color: var(--text-logo);
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--text-main);
-    text-decoration: none;
+    margin-bottom: 1.5rem;
+    display: inline-flex;
 }
 
 .footer-tagline {
@@ -415,9 +420,9 @@ main {
 }
 
 .footer-trust-badge.blue {
-    background: #eff6ff;
-    border-color: #bfdbfe;
-    color: #1e40af; /* blue-800 */
+    background: rgba(var(--primary-rgb), 0.05); /* Utilise le nouveau bleu avec transparence */
+    border-color: rgba(var(--primary-rgb), 0.15);
+    color: var(--primary-solid);
 }
 
 .footer-trust-badge.indigo {
@@ -573,7 +578,7 @@ main.content-wrapper {
 
 .form-group input:focus, .form-group textarea:focus {
     border-color: var(--primary-solid);
-    box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
     background: #FFF;
     outline: none;
 }
@@ -595,7 +600,7 @@ main.content-wrapper {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.3);
 }
 
 .legal-section {
@@ -666,9 +671,9 @@ main.content-wrapper {
 .form-error {
     margin-top: 15px;
     padding: 10px;
-    background: #FF000010;
-    border: 1px solid #FF000030;
-    color: #FF0000;
+    background: #FEF2F2;
+    border: 1px solid #FEE2E2;
+    color: #DC2626;
     border-radius: 8px;
     font-size: 0.9rem;
     text-align: center;
@@ -686,4 +691,8 @@ main.content-wrapper {
 
 .contact-grid.centered .form-card {
     width: 100%;
+}
+.footer-badge-icon {
+    margin-right: 5px;
+    flex-shrink: 0;
 }

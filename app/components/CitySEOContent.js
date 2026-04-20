@@ -331,7 +331,7 @@ export default function CitySEOContent({ cityName, data }) {
         <section className="seo-section-block">
           <h2 className="seo-section-title">🩺 Analyse de l'expert : La pureté à {cityName}</h2>
           <div className="seo-card">
-            <p className="seo-main-text" style={{ margin: 0 }} dangerouslySetInnerHTML={{ __html: syntheseTexte.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}></p>
+            <p className="seo-main-text" dangerouslySetInnerHTML={{ __html: syntheseTexte.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}></p>
           </div>
         </section>
 
@@ -340,7 +340,7 @@ export default function CitySEOContent({ cityName, data }) {
           <h2 className="seo-section-title">🏆 Duel de Pureté : Comparatif Local</h2>
           
           <div className="seo-card">
-            <p className="seo-comparison-intro" style={{ marginBottom: '20px' }}>
+            <p className="seo-comparison-intro">
                 Performance sanitaire de <strong>{cityName}</strong> face à la moyenne du <a href={`/departement/${dpt}`} className="seo-dpt-link">département {dpt}</a> (basée sur {deptAvg?.count || '12'} prélèvements).
             </p>
 
@@ -475,14 +475,14 @@ export default function CitySEOContent({ cityName, data }) {
         {/* BLOC 2 : BENCHMARKING RÉGIONAL */}
         <section className="seo-section-block">
           <h2 className="seo-section-title">📍 Benchmarking Régional</h2>
-          <div className="seo-card" style={{ padding: '35px' }}>
-            <p style={{ marginBottom: '25px', color: 'var(--text-muted)' }}>
+          <div className="seo-card benchmark-container">
+            <p className="benchmark-intro">
               Comparez le Crystal Score de <strong>{cityName}</strong> avec les villes limitrophes du département {dpt} pour identifier le meilleur réseau local.
             </p>
             
             <div className="benchmark-list">
               {/* Ville Actuelle */}
-              <div className="benchmark-item" style={{ background: 'rgba(0, 102, 255, 0.04)', borderRadius: '12px', border: '1px solid rgba(0, 102, 255, 0.1)' }}>
+              <div className="benchmark-item current-city">
                 <span className="benchmark-city">{cityName}</span>
                 <div className="benchmark-bar-bg"><div className="benchmark-bar-fill" style={{width: `${crystal.final * 10}%`}}></div></div>
                 <span className="benchmark-score">{crystal.final}</span>
@@ -500,7 +500,7 @@ export default function CitySEOContent({ cityName, data }) {
                   </a>
                 );
               }) : (
-                <div style={{ padding: '1rem', opacity: 0.5 }}>Analyse des réseaux voisins en cours...</div>
+                <div className="benchmark-loading">Analyse des réseaux voisins en cours...</div>
               )}
             </div>
             <p className="benchmark-footer">Score calculé sur la base de la pureté microbiologique et chimique (ARS {currentYear}).</p>
@@ -543,7 +543,7 @@ function NearbyCities({ cities }) {
   if (!cities || cities.length === 0) return null;
   return (
     <div className="seo-local-links">
-      <h2 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '25px', color: 'var(--text-main)' }}>📍 Explorez la qualité de l'eau dans votre bassin</h2>
+      <h2 className="nearby-cities-title">📍 Explorez la qualité de l'eau dans votre bassin</h2>
       <div className="seo-tags-grid">
         {cities.map(c => {
           const slug = c.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');

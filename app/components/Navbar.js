@@ -11,20 +11,13 @@ export default function Navbar() {
   return (
     <>
       <header className="transparent-header">
-        <div className="container nav-wrapper">
+        <div className="nav-wrapper">
           <Link href="/" className="logo">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-icon">
-              <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradient)" />
+              <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
               <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
               <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
               <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
-              <defs>
-                <linearGradient id="crystalGradient" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#3FA9FE" />
-                  <stop offset="0.5" stopColor="#0066FF" />
-                  <stop offset="1" stopColor="#0047AB" />
-                </linearGradient>
-              </defs>
             </svg>
             EauPotable.net
           </Link>
@@ -51,17 +44,10 @@ export default function Navbar() {
 
         <div className="logo-menu">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-menu-icon">
-            <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="url(#crystalGradientMenu)" />
-            <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-            <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
-            <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
-            <defs>
-              <linearGradient id="crystalGradientMenu" x1="12" y1="2.5" x2="12" y2="21.5" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#3FA9FE" />
-                <stop offset="0.5" stopColor="#0066FF" />
-                <stop offset="1" stopColor="#0047AB" />
-              </linearGradient>
-            </defs>
+            <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="white" />
+            <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="var(--primary-solid)" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+            <circle cx="9.5" cy="11.5" r="1.5" fill="var(--primary-solid)" opacity="0.8" />
+            <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="var(--primary-solid)" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
           </svg>
           EauPotable.net
         </div>

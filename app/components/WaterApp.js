@@ -427,13 +427,16 @@ export default function WaterApp({ initialCity = null }) {
           <div id="panel-handle" className="panel-handle"></div>
           <div id="panel-content">
             {isLoading ? (
-              <div className="skeleton-container" style={{ padding: '2rem' }}>
-                <div className="skeleton" style={{ width: '100%', height: '45px', borderRadius: '100px', marginBottom: '2.5rem' }}></div>
+              <div className="skeleton-container">
+                <div className="skeleton skeleton-line full" style={{ height: '45px', marginBottom: '2.5rem' }}></div>
                 {[1, 2, 3].map(i => (
-                  <div key={i} className="skeleton-row" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                    <div className="skeleton" style={{ width: '32px', height: '32px', borderRadius: '50%' }}></div>
-                    <div style={{ flex: 1 }}><div className="skeleton" style={{ width: '70%', height: '12px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '40%', height: '8px' }}></div></div>
-                  </div>
+                   <div key={i} className="skeleton-row">
+                     <div className="skeleton skeleton-circle"></div>
+                     <div style={{ flex: 1 }}>
+                       <div className="skeleton skeleton-line heading"></div>
+                       <div className="skeleton skeleton-line sub"></div>
+                     </div>
+                   </div>
                 ))}
               </div>
             ) : waterData ? (
@@ -476,7 +479,7 @@ export default function WaterApp({ initialCity = null }) {
               <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
                   {suggestions.map((f, i) => (
                   <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
-                      <strong>{f.text}</strong> <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>({f.context?.[0]?.text || ''})</span>
+                       <strong>{f.text}</strong> <span className="suggestion-context-text">({f.context?.[0]?.text || ''})</span>
                   </div>
                   ))}
               </div>

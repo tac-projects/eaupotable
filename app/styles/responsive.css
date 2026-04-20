@@ -2,29 +2,38 @@
 
 /* 1. ELEMENTS UNIFIÉS (Identiques sur tous les écrans) */
 .search-floating.bottom-search {
-    bottom: 95px !important; 
+    bottom: 95px !important;
     top: auto;
     width: 94%;
-    max-width: 500px; /* Sécurité pour desktop */
+    max-width: 500px;
+    /* Sécurité pour desktop */
     margin: 0 auto;
     left: 0;
     right: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrage total */
+    align-items: center;
+    /* Centrage total */
 }
 
 .scroll-indicator {
     bottom: 25px !important;
     left: 50%;
     /* Plus de transform statique ici pour laisser l'animation respirer */
-    animation: bounce-premium 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite !important; 
+    animation: bounce-premium 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite !important;
     z-index: 1000;
 }
 
 @keyframes bounce-premium {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
 }
 
 /* 2. MODE IMMERSIF: MOBILE & TABLETTES */
@@ -59,7 +68,8 @@
 
     .home-search-container .search-box {
         height: 60px !important;
-        padding: 0 8px !important; /* Réduit drastiquement */
+        padding: 0 8px !important;
+        /* Réduit drastiquement */
         gap: 4px;
     }
 
@@ -77,7 +87,7 @@
     .home-search-container .geolocate-btn {
         padding: 0 10px !important;
         flex-shrink: 0;
-        border-left: 1px solid rgba(0,0,0,0.05);
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .home-search-container .search-divider {
@@ -130,7 +140,9 @@
     }
 
     /* Sécurité Layout Globale */
-    .container, .seo-container, .footer-container {
+    .container,
+    .seo-container,
+    .footer-container {
         padding-left: 1.25rem !important;
         padding-right: 1.25rem !important;
     }
@@ -152,7 +164,13 @@
     }
 
     .home-landing .seo-title {
-        font-size: clamp(1.8rem, 8vw, 2.2rem) !important;
+        font-size: clamp(2.2rem, 10vw, 2.8rem) !important;
+        line-height: 1.1;
+    }
+
+    .home-landing .seo-main-title {
+        font-size: 1.6rem !important;
+        line-height: 1.2;
     }
 }
 
@@ -197,6 +215,7 @@
 
 /* Fix pour Safari Mobile (vh units) */
 @supports (-webkit-touch-callout: none) {
+
     #map-section,
     #map {
         height: 100vh;

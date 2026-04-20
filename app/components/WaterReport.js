@@ -36,7 +36,6 @@ export default function WaterReport({ data, onShare }) {
           fill 
           sizes="100vw"
           priority={false}
-          style={{ objectFit: 'cover' }}
           className="hero-bg"
         />
         <div className="hero-overlay"></div>
@@ -51,11 +50,16 @@ export default function WaterReport({ data, onShare }) {
           <div className="hero-footer"><h2 className="hero-city">{cityName}</h2><div className="hero-network">{nomReseau}</div></div>
         </div>
       </div>
-      <div className="report-content" style={{ padding: '0 0.5rem 2rem' }}>
-        <div className="report-section" style={{ marginTop: '2rem' }}><div className="section-header"><span>Analyse détaillée</span></div>
+      <div className="report-content">
+        <div className="report-section">
+          <div className="section-header"><span>Analyse détaillée</span></div>
           {paramsList.map((p, i) => (<ParameterRow key={i} parameter={p} />))}
         </div>
-        <div className="report-footer" style={{ marginTop: '2rem' }}><div className={`legal-badge ${isConform ? 'legal-ok' : 'legal-ko'}`}><span>Conformité : <strong>{isConform ? 'CONFORME' : 'NON CONFORME'}</strong></span></div></div>
+        <div className="report-footer">
+          <div className={`legal-badge ${isConform ? 'legal-ok' : 'legal-ko'}`}>
+            <span>Conformité : <strong>{isConform ? 'CONFORME' : 'NON CONFORME'}</strong></span>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -98,7 +102,9 @@ function ParameterRow({ parameter }) {
           })()}
         </div>
         <div className={`yuka-dot-small ${status.class}`}></div>
-        <svg style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }} className="yuka-toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg className={`yuka-toggle-arrow ${isOpen ? 'active' : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
         <span className="yuka-subtitle">{status.subtitle}</span>
       </div>
       {isOpen && (
@@ -110,26 +116,26 @@ function ParameterRow({ parameter }) {
             <div className="yuka-range-labels">
               {isCentered ? (
                 <>
-                  <span style={{ left: '11%' }}>{range[0]}</span>
-                  <span style={{ left: '33%' }}>{range[2]}</span>
-                  <span style={{ left: '67%' }}>{range[3]}</span>
-                  <span style={{ left: '89%' }}>{range[5]}</span>
+                  <span className="label-pos-11">{range[0]}</span>
+                  <span className="label-pos-33">{range[2]}</span>
+                  <span className="label-pos-67">{range[3]}</span>
+                  <span className="label-pos-89">{range[5]}</span>
                 </>
               ) : (
                 range && (
                   <>
-                    <span style={{ left: '0' }}>0</span>
-                    <span style={{ left: '25%' }}>{range[0]}</span>
-                    <span style={{ left: '50%' }}>{range[1]}</span>
-                    <span style={{ left: '75%' }}>{range[2]}</span>
-                    <span style={{ left: '100%', transform: 'translateX(-100%)' }}>
+                    <span className="label-pos-0">0</span>
+                    <span className="label-pos-25">{range[0]}</span>
+                    <span className="label-pos-50">{range[1]}</span>
+                    <span className="label-pos-75">{range[2]}</span>
+                    <span className="label-pos-100">
                       {Math.round((range[2] + (range[2] - range[1])) * 100) / 100}
                     </span>
                   </>
                 )
               )}
             </div>
-            <div className="yuka-date-info" style={{ marginTop: '10px', fontSize: '0.7rem', opacity: 0.6 }}>Analyse du {data?.date || 'N/A'}</div>
+            <div className="yuka-date-info vignette-date">Analyse du {data?.date || 'N/A'}</div>
           </div>
         </div>
       )}
