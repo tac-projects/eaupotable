@@ -42,9 +42,10 @@ main {
     position: relative;
 }
 
-.seo-section.home-landing {
-    padding: 0; /* On enlève le padding global pour laisser le héros prendre toute la largeur */
+.home-landing-page {
+    padding: 0;
     overflow-x: hidden;
+    width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -64,38 +65,93 @@ main {
 }
 
 .hero-section {
-    background: #ffffff;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(var(--primary-rgb), 0.06) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(var(--primary-rgb), 0.04) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(255, 255, 255, 0.8) 0px, transparent 80%),
-        radial-gradient(at 80% 80%, rgba(var(--primary-rgb), 0.04) 0px, transparent 50%);
-    width: 100%;
-    max-width: 100%;
     position: relative;
-    padding: 130px 1.25rem 110px; 
+    padding: 130px 1.25rem 110px;
+    background: #ffffff; /* Fallback */
+    overflow: visible; /* Correction : permet aux suggestions de recherche de dépasser la section */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid rgba(var(--primary-rgb), 0.05);
-    z-index: 20;
+    z-index: 100; /* Augmenté à 100 pour passer au dessus de toutes les couches du zébra */
     box-sizing: border-box;
-    overflow: visible; 
 }
 
-/* Effet de grain Premium */
-.hero-section::before {
-    content: "";
+/* Mesh Background Premium */
+.hero-mesh-background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     z-index: 1;
+    background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mesh-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+    animation: flow 25s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.18) 0%, transparent 70%);
+    top: -200px;
+    left: -100px;
+}
+
+.blob-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -5s;
+    animation-duration: 30s;
+}
+
+.blob-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    top: 20%;
+    right: 20%;
+    animation-delay: -12s;
+    animation-duration: 35s;
+}
+
+.mesh-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes flow {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -60px) scale(1.15); }
+    66% { transform: translate(-30px, 40px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+.seo-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 
@@ -106,8 +162,14 @@ main {
     margin: 3rem auto 1.5rem; /* Marges réduites et équilibrées */
     position: relative;
     z-index: 1100;
-    padding: 0 20px;
+    padding: 0 10px; /* Plus large sur mobile */
     width: 100%;
+}
+
+@media (min-width: 769px) {
+    .home-search-container {
+        padding: 0 20px;
+    }
 }
 
 .search-trust-bar {
@@ -191,7 +253,7 @@ main {
     background: var(--bg-surface);
     color: var(--text-main);
     padding: 40px 0;
-    border-top: 1px solid var(--glass-border-light);
+    border-top: none;
     position: relative;
     z-index: 10;
 }
@@ -271,7 +333,7 @@ main {
 /* Main Layout Footer */
 .global-footer {
     background: #f8fafc; /* Solid background for perfect contrast */
-    border-top: 1px solid #e2e8f0;
+    border-top: none;
     padding: 80px 0 40px;
     position: relative;
     overflow: hidden;
@@ -305,7 +367,7 @@ main {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 1.5rem;
     display: inline-flex;
 }
@@ -369,7 +431,7 @@ main {
 .footer-divider {
     width: 1px;
     height: 14px;
-    background: #cbd5e1; /* visible divider */
+    background: rgba(0, 0, 0, 0.05); /* very subtle divider */
     display: block;
 }
 
@@ -412,34 +474,23 @@ main {
 .footer-trust-badge {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    padding: 8px 14px;
     font-weight: 700;
     text-decoration: none;
-    transition: var(--transition-premium);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.footer-trust-badge.blue {
-    background: rgba(var(--primary-rgb), 0.05); /* Utilise le nouveau bleu avec transparence */
-    border-color: rgba(var(--primary-rgb), 0.15);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    background: rgba(var(--primary-rgb), 0.05);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
     color: var(--primary-solid);
-}
-
-.footer-trust-badge.indigo {
-    background: #f5f3ff;
-    border-color: #ddd6fe;
-    color: #5b21b6; /* violet-800 */
-}
-
-.footer-trust-badge.gold {
-    background: #fffbeb;
-    border-color: #fde68a;
-    color: #92400e; /* amber-800 */
+    transition: var(--transition-premium);
+    cursor: pointer;
 }
 
 .footer-trust-badge:hover {
-    transform: translateY(-1px);
-    filter: brightness(0.95);
+    background: rgba(var(--primary-rgb), 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.1);
 }
 
 @media (max-width: 1100px) {

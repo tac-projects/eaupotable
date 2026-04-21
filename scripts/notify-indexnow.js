@@ -10,6 +10,7 @@ async function notifyIndexNow() {
   let finalUrlList = [
     `https://${host}/`,
     `https://${host}/villes`,
+    `https://${host}/faq`,
     `https://${host}/sitemap.xml`,
     `https://${host}/contact`,
     `https://${host}/mentions-legales`

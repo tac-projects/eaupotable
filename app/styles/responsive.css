@@ -67,8 +67,9 @@
     }
 
     .home-search-container .search-box {
-        height: 60px !important;
-        padding: 0 8px !important;
+        height: 65px !important; /* Un peu plus haute pour le confort */
+        padding: 0 12px !important; /* Plus d'espace interne */
+        width: 100% !important; /* Utilise tout l'espace */
         /* Réduit drastiquement */
         gap: 4px;
     }
@@ -148,6 +149,8 @@
     }
 
     .hero-section {
+        padding-top: 100px !important; /* Moins d'espace en haut */
+        padding-bottom: 60px !important; /* Plus compact */
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         text-align: center;
@@ -155,7 +158,7 @@
 
     .seo-grid {
         grid-template-columns: 1fr !important;
-        gap: 20px !important;
+        gap: 45px !important; /* Espacement augmenté pour laisser respirer les badges */
     }
 
     .top-cities-grid {
@@ -163,14 +166,22 @@
         gap: 12px !important;
     }
 
-    .home-landing .seo-title {
-        font-size: clamp(2.2rem, 10vw, 2.8rem) !important;
+    .home-landing-page .seo-title {
+        font-size: 2.8rem !important; /* Enfin débloqué ! */
         line-height: 1.1;
     }
 
-    .home-landing .seo-main-title {
-        font-size: 1.6rem !important;
+    .home-landing-page .seo-main-title {
+        font-size: var(--fs-h2) !important;
         line-height: 1.2;
+    }
+
+    .home-content-section {
+        padding: 80px 0 !important;
+    }
+
+    .seo-br-desktop {
+        display: none !important;
     }
 }
 
@@ -210,6 +221,14 @@
     /* Alignement de la flèche (sans déformation) */
     .scroll-with-panel {
         left: calc(50% - 200px) !important;
+    }
+
+    .home-landing-page .seo-title {
+        font-size: var(--fs-display) !important;
+    }
+
+    .seo-section-header {
+        max-width: 100% !important;
     }
 }
 

@@ -4,7 +4,7 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
-import { Inter, Grand_Hotel } from 'next/font/google';
+import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
 
@@ -12,6 +12,12 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-manrope',
 });
 
 const grandHotel = Grand_Hotel({
@@ -29,7 +35,7 @@ export const metadata = {
   icons: {
     icon: '/img/favicon.svg',
     shortcut: '/img/favicon.svg',
-    apple: '/img/icons/icon-512-v3.png',
+    apple: '/img/icons/icon-512-v4.png',
   },
   appleWebApp: {
     capable: true,
@@ -57,7 +63,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${grandHotel.variable} full-height-body`}>
+    <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
       <head>
         <link rel="dns-prefetch" href="https://hubeau.eaufrance.fr" />
         <link rel="dns-prefetch" href="https://api.mapbox.com" />

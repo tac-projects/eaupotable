@@ -28,7 +28,7 @@
     --shadow-premium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     
     /* Typography - Linked to next/font variables from layout.js */
-    --font-heading: var(--font-inter), 'Inter', system-ui, sans-serif;
+    --font-heading: var(--font-manrope), 'Manrope', system-ui, sans-serif;
     --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
     --font-logo: var(--font-grand-hotel), 'Grand Hotel', cursive;
 
@@ -56,4 +56,24 @@
     --header-height: 60px;
     --font-size-logo: 1.8rem;
     --logo-y-offset: 12px;
+
+    /* Typographic Scale - Standardized */
+    --fs-display: 4rem;      /* Grand titre Hero */
+    --fs-h2: 2.5rem;       /* Titres de sections */
+    --fs-h3: 1.3rem;       /* Titres de composants (Cartes, FAQ) */
+    --fs-lead: 1.25rem;     /* Sous-titres et introductions */
+    --fs-body: 1rem;        /* Corps de texte standard */
+    --fs-small: 0.85rem;    /* Badges et micro-copie */
+}
+
+/* Redéfinition automatique pour Mobile/Tablette */
+@media (max-width: 1023px) {
+    :root {
+        --fs-display: 2.2rem;   /* Taille de base mobile */
+        --fs-h2: 1.6rem;        /* Titres de sections plus compacts */
+        --fs-h3: 1.15rem;       /* Titres de cartes plus fins */
+        --fs-lead: 1.1rem;      /* Sous-titres plus discrets */
+        --fs-body: 0.95rem;     /* Corps de texte légèrement réduit */
+        --fs-small: 0.8rem;
+    }
 }

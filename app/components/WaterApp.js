@@ -405,7 +405,12 @@ export default function WaterApp({ initialCity = null }) {
       {(deferredPrompt || showPWABanner) && (
         <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'banner-with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
           <div className="install-content">
-            <img src="/img/icons/icon-512-v3.png" alt="EauPotableLogo" className="install-icon" />
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="install-icon-svg">
+              <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
+              <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+              <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
+              <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
+            </svg>
             <div className="install-text">
               <p><strong>EauPotable.net</strong></p>
               <span>Application gratuite</span>

@@ -19,7 +19,7 @@ async function generateSitemap() {
     let sitemapFiles = [];
 
     // --- SITEMAP PRINCIPAL (Pages Statiques) ---
-    const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/mentions-legales`, `${DOMAIN}/contact` ];
+    const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/faq`, `${DOMAIN}/mentions-legales`, `${DOMAIN}/contact` ];
     const staticXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticUrls.map(url => `  <url><loc>${url}</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}
