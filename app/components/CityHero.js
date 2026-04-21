@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-export default function CityHero({ cityName, dpt, dateAnalyse, score, label }) {
+export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
   return (
     <section className="city-hero-section">
       <div className="city-hero-mesh"></div>
@@ -29,7 +29,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label }) {
               Qualité de l'eau à <span className="highlight">{cityName}</span>
             </h1>
             <p className="city-hero-subtitle">
-              Analyse complète du réseau de distribution <strong>{dpt}</strong> basée sur les dernières données du <strong>{dateAnalyse}</strong>.
+              Analyse complète du réseau de distribution {nomReseau || cityName} basée sur les dernières données du {dateAnalyse}.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label }) {
               </div>
               <div className="score-meta">
                 <span className="label">CRYSTAL SCORE</span>
-                <span className="verdict">{label}</span>
+                <span className="verdict">&nbsp;{label}</span>
               </div>
             </div>
           </div>

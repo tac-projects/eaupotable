@@ -1,25 +1,32 @@
 import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
 import { fetchCitySummary } from '../../../lib/water-utils';
+import { cache } from 'react';
+
+// Dédoublage de l'audit pour diviser le temps de chargement par 2
+const getCachedSummary = cache(async (cityName) => {
+  return await fetchCitySummary(cityName);
+});
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const cityName = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
+  // On transforme le slug proprement (ex: saint-herblain -> Saint-Herblain)
+  const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   
-  // On récupère le score réel pour l'image sociale
-  const summary = await fetchCitySummary(cityName);
-  const score = summary?.score || 'N/A';
-  const label = summary?.label || 'ANALYSE';
-  const statusClass = summary?.statusClass || 'status-good';
+  const summary = await getCachedSummary(cityNameFromSlug);
+  const officialName = summary?.cityName || cityNameFromSlug;
+  const score = summary?.crystal?.final || 'N/A';
+  const label = summary?.crystal?.label || 'ANALYSE';
+  const statusClass = summary?.crystal?.label?.toLowerCase().replace(/\s/g, '-') || 'status-good';
 
-  const ogImageUrl = `/api/og?city=${encodeURIComponent(cityName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
+  const ogImageUrl = `/api/og?city=${encodeURIComponent(officialName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
   return {
-    title: `Qualité de l'eau potable : ${cityName} (2026) | Analyses & PFAS`,
-    description: `📊 Qualité de l'eau à ${cityName} en temps réel. Analyse PFAS et verdict ARS 2026 via flux officiel direct : découvrez ce que contient votre eau du robinet aujourd'hui.`,
+    title: `Qualité de l'eau potable à ${officialName} (2026) | Crystal Score`,
+    description: `📊 Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les pesticides et PFAS détectés.`,
     openGraph: {
-      title: `Qualité de l'eau potable : ${cityName} (2026)`,
-      description: `L'eau de ${cityName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
+      title: `Qualité de l'eau potable : ${officialName} (2026)`,
+      description: `L'eau de ${officialName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
       images: [ogImageUrl],
     },
   };
@@ -27,12 +34,17 @@ export async function generateMetadata({ params }) {
 
 export default async function CityPage({ params }) {
   const { slug } = await params;
-  const cityName = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
+  
+  // On transforme le slug
+  const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
+  
+  const summary = await getCachedSummary(cityNameFromSlug);
+  const officialName = summary?.cityName || cityNameFromSlug;
 
   return (
     <>
       <Navbar />
-      <WaterApp initialCity={cityName} />
+      <WaterApp initialCity={officialName} initialData={summary} />
     </>
   );
 }

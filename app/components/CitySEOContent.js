@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useEffect, Fragment } from 'react';
-import { calculateCrystalScore, parseValue, getParameterStatus } from '@/lib/water-utils';
+import { calculateCrystalScore, parseValue, getParameterStatus, fetchRealCityScore } from '@/lib/water-utils';
 import CityAnalysisSection from './CityAnalysisSection';
 
 export default function CitySEOContent({ cityName, data }) {
   const [deptAvg, setDeptAvg] = useState(null);
   const [neighborCities, setNeighborCities] = useState([]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [analysisPhase, setAnalysisPhase] = useState('idle'); // idle, loading, done
+  const [analyzedCities, setAnalyzedCities] = useState([]);
 
   useEffect(() => {
     if (!data || data.error || !data.meta?.code_departement) return;
@@ -102,38 +105,72 @@ export default function CitySEOContent({ cityName, data }) {
         const fallbacks = [
           { key: 'nitrates', codes: '1340,1342' },
           { key: 'hardness', codes: '1345,2708' },
-          { key: 'pesticides', codes: '1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7149,7150' },
-          { key: 'pfas', codes: '7149,7148,8194,5980,6542' },
-          { key: 'microbiology', codes: '1447,1449,1042,6455' },
+          { key: 'pesticides', codes: '1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7150' },
+          { key: 'pfas', codes: '7149,7148,8194,5980,6542,8738,6561,8740,6549,6025,8742' },
+          { key: 'microbiology', codes: '1321,1322,1347,1348,1447,1449,1042,6455' },
           { key: 'ph', codes: '1301,1302' },
           { key: 'chlorine', codes: '1399,1398' },
           { key: 'turbidity', codes: '1305' },
-          { key: 'conductivity', codes: '1303' }
+          { key: 'conductivity', codes: '1302,1303' }
         ];
 
-        await Promise.all(fallbacks.map(async (fb) => {
-          if (!finalDeptStats[fb.key] || finalDeptStats[fb.key] === '--') {
+        const missingKeys = fallbacks.filter(fb => !finalDeptStats[fb.key] || finalDeptStats[fb.key] === '--');
+        if (missingKeys.length > 0) {
+            const allCodes = missingKeys.map(fb => fb.codes).join(',');
             try {
-              const r = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&code_parametre=${fb.codes}&size=1&sort=desc`);
-              const d = await r.json();
-              if (d.data && d.data.length > 0) {
-                const m = d.data[0];
-                const raw = (m.resultat_alphanumerique && m.resultat_alphanumerique !== "null") ? m.resultat_alphanumerique : m.resultat_numerique;
-                
-                if (fb.key === 'microbiology') {
-                   const s = raw ? raw.toString().toLowerCase() : "";
-                   finalDeptStats[fb.key] = (s.includes('absence') || s.includes('<')) ? "Absence" : "Contrôlée";
-                } else {
-                   const val = parseValue(raw);
-                   if (!isNaN(val)) {
-                      const decimales = fb.key === 'pesticides' || fb.key === 'pfas' ? 3 : (fb.key === 'chlorine' ? 2 : 1);
-                      finalDeptStats[fb.key] = val.toFixed(decimales);
-                   }
+                const r = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&code_parametre=${allCodes}&size=1000&sort=desc`);
+                if (r.ok) {
+                    const d = await r.json();
+                    if (d.data && d.data.length > 0) {
+                        missingKeys.forEach(fb => {
+                            const codes = fb.codes.split(',');
+                            const match = d.data.find(m => codes.includes(String(m.code_parametre)));
+                            if (match) {
+                                const raw = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
+                                if (fb.key === 'microbiology') {
+                                    const s = raw ? raw.toString().toLowerCase() : "";
+                                    finalDeptStats[fb.key] = (s.includes('absence') || s.includes('<') || s === "0" || s.includes('neant') || s.includes('non detecte')) ? "Absence" : "Contrôlée";
+                                } else {
+                                    const val = parseValue(raw);
+                                    if (!isNaN(val)) {
+                                        const decimales = fb.key === 'pesticides' || fb.key === 'pfas' ? 3 : (fb.key === 'chlorine' ? 2 : 1);
+                                        finalDeptStats[fb.key] = val.toFixed(decimales);
+                                    }
+                                }
+                            }
+                        });
+                    }
                 }
-              }
+                
+                // --- DEEP SEARCH FALLBACK ---
+                // Si après le batch il manque encore des données critiques (PFAS/Pesticides/Micro), on fait des appels ISOLÉS
+                const stillMissing = fallbacks.filter(fb => !finalDeptStats[fb.key] || finalDeptStats[fb.key] === '--');
+                if (stillMissing.length > 0) {
+                    await Promise.all(stillMissing.map(async (fb) => {
+                        try {
+                            const sr = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&code_parametre=${fb.codes}&size=1&sort=desc`);
+                            if (sr.ok) {
+                                const sd = await sr.json();
+                                if (sd.data?.[0]) {
+                                    const match = sd.data[0];
+                                    const raw = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
+                                    if (fb.key === 'microbiology') {
+                                        const s = raw ? raw.toString().toLowerCase() : "";
+                                        finalDeptStats[fb.key] = (s.includes('absence') || s.includes('<') || s === "0" || s.includes('neant') || s.includes('non detecte')) ? "Absence" : "Contrôlée";
+                                    } else {
+                                        const val = parseValue(raw);
+                                        if (!isNaN(val)) {
+                                            const decimales = fb.key === 'pesticides' || fb.key === 'pfas' ? 3 : (fb.key === 'chlorine' ? 2 : 1);
+                                            finalDeptStats[fb.key] = val.toFixed(decimales);
+                                        }
+                                    }
+                                }
+                            }
+                        } catch (e) {}
+                    }));
+                }
             } catch (e) {}
-          }
-        }));
+        }
 
         setDeptAvg(finalDeptStats);
       } catch (err) {}
@@ -141,32 +178,54 @@ export default function CitySEOContent({ cityName, data }) {
 
     fetchDeptData();
 
-    // Récupération des villes voisines
-    fetch(`https://geo.api.gouv.fr/departements/${dpt}/communes`)
-      .then(r => r.json())
-      .then(cities => {
-        const top10 = cities
-          .filter(c => c.nom.toLowerCase() !== cityName.toLowerCase())
-          .sort((a, b) => (b.population || 0) - (a.population || 0))
-          .slice(0, 10);
-        
-        // Création du pool incluant la ville actuelle
-        const pool = [
-          { nom: cityName, score: parseFloat(crystal.final), isCurrent: true, code: 'current' },
-          ...top10.map((c, i) => {
-            // Variation déterministe basée sur le nom pour un score stable
-            const variation = ((c.nom.length * 7) % 15) / 20 - 0.35; 
-            const simScore = Math.min(9.9, Math.max(6.5, parseFloat(deptAvg?.avgScore || crystal.final) + variation));
-            return { nom: c.nom, score: parseFloat(simScore.toFixed(1)), isCurrent: false, code: c.code };
-          })
-        ];
-
-        // Tri par score décroissant
-        pool.sort((a, b) => b.score - a.score);
-        setNeighborCities(pool);
-      })
-      .catch(() => {});
+    // Récupération des villes voisines (Geo API)
+    const codeDpt = data.meta.code_departement;
+    if (codeDpt) {
+      fetch(`https://geo.api.gouv.fr/departements/${codeDpt}/communes`)
+        .then(r => r.json())
+        .then(cities => {
+          if (Array.isArray(cities)) {
+            const topCities = cities
+              .filter(c => c.nom.toLowerCase() !== cityName.toLowerCase())
+              .sort((a, b) => (b.population || 0) - (a.population || 0))
+              .slice(0, 30);
+            setNeighborCities(topCities.map(c => ({ nom: c.nom, code: c.code, isCurrent: false })));
+          }
+        })
+        .catch(err => console.error("Geo API Error:", err));
+    }
   }, [data, cityName]);
+
+  const startAnalysis = async () => {
+    setIsAnalyzing(true);
+    setAnalysisPhase('loading');
+    
+    // On commence avec la ville actuelle
+    const currentCityData = { nom: cityName, score: parseFloat(crystal.final), isCurrent: true, code: 'current' };
+    let pool = [currentCityData];
+    setAnalyzedCities([...pool]);
+
+    // On lance les analyses une par une (ou par petits paquets) pour l'effet visuel
+    for (const city of neighborCities) {
+      try {
+        // On utilise notre nouveau Harvester centralisé via l'API interne ou l'import direct
+        // Note: fetchCitySummary (serveur) n'est pas dispo ici car on est en 'use client'
+        // On va donc fetch la route API qui utilise le Harvester
+        const res = await fetch(`/api/water-summary?city=${encodeURIComponent(city.nom)}`);
+        if (res.ok) {
+           const summary = await res.json();
+           if (summary && summary.crystal) {
+             pool.push({ nom: city.nom, score: parseFloat(summary.crystal.final), isCurrent: false, code: city.code });
+             const sortedPool = [...pool].sort((a, b) => b.score - a.score);
+             setAnalyzedCities(sortedPool);
+           }
+        }
+      } catch (err) {}
+      await new Promise(r => setTimeout(r, 200));
+    }
+    
+    setAnalysisPhase('done');
+  };
 
   if (!data || data.error) return null;
 
@@ -476,30 +535,44 @@ export default function CitySEOContent({ cityName, data }) {
           </div>
           <div className="seo-card benchmark-container">
             <div className="benchmark-list">
-              {neighborCities.length > 0 ? neighborCities.map((city) => {
-                const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
-                return (
-                  <a 
-                    key={city.nom} 
-                    href={city.isCurrent ? '#' : `/ville/${slug}`} 
-                    className={`benchmark-item ${city.isCurrent ? 'current-city' : ''}`}
-                    onClick={(e) => city.isCurrent && e.preventDefault()}
-                  >
-                    <span className="benchmark-city">{city.nom}</span>
-                    <div className="benchmark-bar-bg">
-                      <div 
-                        className="benchmark-bar-fill" 
-                        style={{
-                          width: `${city.score * 10}%`,
-                          opacity: city.isCurrent ? 1 : 0.6
-                        }}
-                      ></div>
-                    </div>
-                    <span className="benchmark-score">{city.score.toFixed(1)}</span>
-                  </a>
-                );
-              }) : (
-                <div className="benchmark-loading">Analyse des réseaux départementaux en cours...</div>
+              {analysisPhase === 'idle' ? (
+                <div className="benchmark-cta-container">
+                  <button className="benchmark-start-btn" onClick={startAnalysis}>
+                    <span className="btn-icon">⚡</span>
+                    Lancer l'audit comparatif
+                  </button>
+                  <p className="benchmark-cta-hint">Analyse en temps réel de 10 réseaux via Hub'Eau (3-5 sec)</p>
+                </div>
+              ) : (
+                analyzedCities.map((city) => {
+                  const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
+                  return (
+                    <a 
+                      key={city.nom} 
+                      href={city.isCurrent ? '#' : `/ville/${slug}`} 
+                      className={`benchmark-item ${city.isCurrent ? 'current-city' : ''} ${analysisPhase === 'loading' ? 'loading' : ''}`}
+                      onClick={(e) => city.isCurrent && e.preventDefault()}
+                    >
+                      <span className="benchmark-city">{city.nom}</span>
+                      <div className="benchmark-bar-bg">
+                        <div 
+                          className="benchmark-bar-fill" 
+                          style={{
+                            width: `${city.score * 10}%`,
+                            opacity: city.isCurrent ? 1 : 0.6
+                          }}
+                        ></div>
+                      </div>
+                      <span className="benchmark-score">{city.score.toFixed(1)}</span>
+                    </a>
+                  );
+                })
+              )}
+              {analysisPhase === 'loading' && analyzedCities.length <= neighborCities.length && (
+                <div className="benchmark-scanning-indicator">
+                  <div className="scanner-dot"></div>
+                  Audit du réseau de {neighborCities[analyzedCities.length - 1]?.nom || 'la commune'}...
+                </div>
               )}
             </div>
             <p className="benchmark-footer">Score calculé sur la base de la pureté microbiologique et chimique (ARS {currentYear}).</p>

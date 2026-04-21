@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import {
   calculateCrystalScore,
   getParameterStatus,
+  harvestWaterData,
   PARAM_ICONS,
   RANGES,
   CENTERED_PARAMS,
@@ -202,161 +203,20 @@ export default function WaterApp({ initialCity = null }) {
   };
 
   const fetchWaterData = async (cityName) => {
-
-
+    setIsLoading(true);
+    setWaterData(null);
     try {
-      const url = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(cityName)}&size=5000`;
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!data.data || data.data.length === 0) {
+      const data = await harvestWaterData(cityName);
+      if (!data) {
         setWaterData({ error: `Aucune donnée Hub'Eau pour ${cityName}.` });
         return;
       }
-      let reports = data.data;
-      
-      // Filtrage intelligent : pour les grandes villes, on accepte les arrondissements
-      const cleanTarget = cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ');
-      const exactMatch = reports.filter(r => {
-        const c = r.nom_commune.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/-/g, ' ');
-        // Pour les grandes métropoles, on accepte tout ce qui commence par le nom (Lyon 01, Paris 75...)
-        // On évite ainsi "Le Touquet Paris Plage" pour "Paris"
-        const metropoles = ['lyon', 'paris', 'marseille', 'bordeaux', 'toulouse', 'nantes', 'lille', 'montpellier'];
-        if (metropoles.includes(cleanTarget)) {
-          return c === cleanTarget || c.startsWith(cleanTarget + " ") || c.startsWith(cleanTarget + "-");
-        }
-        return c === cleanTarget || c.startsWith(cleanTarget + " ");
-      });
-
-      if (exactMatch.length > 0) {
-        reports = exactMatch;
-      }
-
-      reports.sort((a, b) => new Date(b.date_prelevement) - new Date(a.date_prelevement));
-
-      const getParam = (codes, keywords, requiredUnits = []) => {
-        const match = reports.find(r => {
-          const unit = (r.libelle_unite || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const label = (r.libelle_parametre || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const code = `${r.code_parametre}`;
-          // Filtrage spécifique : On veut tout sauf la température
-          const isTemp = label.includes("temp") || label.includes("t°") || unit.includes("°c") || unit.includes("celsius");
-          if (isTemp) return false;
-          if (requiredUnits.length > 0) {
-            const hasRequiredUnit = requiredUnits.some(ru => unit.includes(ru.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
-            if (!hasRequiredUnit) return false;
-          }
-          const isCodeMatch = codes.some(c => code === `${c}`);
-          const isWordMatch = keywords.some(kw => {
-            const lowKw = kw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            if (lowKw.length <= 3) {
-              const regex = new RegExp(`\\b${lowKw}\\b`, 'i');
-              return regex.test(label) || (lowKw === 'ph' && label.includes('potentiel hydrogene'));
-            }
-            return label.includes(lowKw);
-          });
-          return (isCodeMatch || isWordMatch) && (r.resultat_numerique !== null || r.resultat_alphanumerique !== null);
-        });
-        if (!match) return null;
-        const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
-        return {
-          val: rawVal !== null ? `${rawVal}` : '--',
-          unit: match.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
-          date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
-          label: match.libelle_parametre
-        };
-      };
-
-      const stats = {
-        nitrates: getParam([1340, 1342], []), 
-        ph: getParam([1301, 1302], ["ph", "potentiel hydrogene"], ["ph"]),
-        hardness: getParam([1345, 2708], ["hydrotimetrique", "durete", "th"]),
-        chlorine: getParam([1399, 1398], ["chlore libre", "chlore total"]),
-        conductivity: getParam([1302, 1303], ["conductivite"], ["µS", "siemens", "us/cm"]),
-        turbidity: getParam([1305], ["turbidite", "turb"]),
-        iron: getParam([1393, 1374], ["fer total", "fer dissous"]),
-        manganese: getParam([1394, 1373], ["manganese"]),
-        pesticides: getParam([1107, 1667, 6272, 6273, 6274, 6275, 6276, 6277, 6278, 6279, 6280, 7150], ["pesticide"]),
-        pfas: getParam([7149, 7148, 8194], ["pfas", "perfluoro"]),
-        microbiology: getParam([1321, 1322], ["escherichia", "enterocoques", "coliformes"]),
-        ammonium: getParam([1331, 1335], ["ammonium"]),
-        copper: getParam([1392], ["cuivre"]),
-        cot: getParam([1341], ["organique total", "cot"])
-      };
-
-      const conclusion = reports[0].conclusion_conformite_prelevement || "";
-      const isConform = conclusion.toLowerCase().includes("conforme") && !conclusion.toLowerCase().includes("non conforme");
-      
-      // Fallback Réseau "Mémoire Longue" (Sniper Zéro Vide Multi-Réseaux)
-      const allReseauCodes = [...new Set(reports.flatMap(r => r.reseaux?.map(res => res.code) || []))].filter(Boolean);
-      
-      if (allReseauCodes.length > 0) {
-          const reseauQuery = allReseauCodes.join(',');
-          const paramsToFetch = [];
-          const missingKeys = [];
-          
-          const fallbackConfig = {
-              nitrates: "1340,1342",
-              ph: "1301,1302",
-              hardness: "1345,2708",
-              chlorine: "1399,1398",
-              conductivity: "1302,1303",
-              turbidity: "1305",
-              iron: "1393,1374",
-              manganese: "1394,1373",
-              pesticides: "1107,1667,6272,6273,6274,6275,6276,6277,6278,6279,6280,7150",
-              pfas: "7149,7148,8194,5980,6542,8738,6561,8740,6549,6025,8742",
-              bacteria: "1321,1322",
-              ammonium: "1331,1335",
-              copper: "1392",
-              cot: "1341"
-          };
-
-          for (let key of Object.keys(fallbackConfig)) {
-              if (!stats[key] || stats[key].val === '--') {
-                  paramsToFetch.push(fallbackConfig[key]);
-                  missingKeys.push(key);
-              }
-          }
-
-          if (missingKeys.length > 0) {
-              try {
-                  await Promise.all(missingKeys.map(async (key) => {
-                      const targetCodes = fallbackConfig[key];
-                      const rUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_reseau=${reseauQuery}&code_parametre=${targetCodes}&size=1&sort=desc`;
-                      
-                      let rRes = await fetch(rUrl);
-                      let rData = await rRes.json();
-                      
-                      // Fallback ultime par Commune si pas de données sur le réseau spécifique (pour PFAS et Pesticides Globaux)
-                      if ((!rData.data || rData.data.length === 0) && selectedCity) {
-                          const communeUrl = `https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?nom_commune=${encodeURIComponent(selectedCity)}&code_parametre=${targetCodes}&size=1&sort=desc`;
-                          const cRes = await fetch(communeUrl);
-                          rData = await cRes.json();
-                      }
-                      
-                      if (rData.data && rData.data.length > 0) {
-                          const match = rData.data[0];
-                          const rawVal = (match.resultat_alphanumerique && match.resultat_alphanumerique !== "null") ? match.resultat_alphanumerique : match.resultat_numerique;
-                          
-                          if (rawVal !== null && rawVal !== undefined) {
-                              stats[key] = {
-                                  val: `${rawVal}`,
-                                  unit: match.libelle_unite?.replace(/\(.*\)/g, '').replace('unité ', '').trim() || '',
-                                  date: new Date(match.date_prelevement).toLocaleDateString('fr-FR'),
-                                  label: match.libelle_parametre
-                              };
-                          }
-                      }
-                  }));
-              } catch (e) {
-                  console.error("Zéro-Vide Fallback error:", e);
-              }
-          }
-      }
-
-      const crystal = calculateCrystalScore(stats, isConform);
-      setWaterData({ stats, isConform, crystal, meta: reports[0], cityName });
-    } catch (error) { console.error("Erreur API:", error); setWaterData({ error: "Erreur technique." }); } finally { setIsLoading(false); }
+      setWaterData(data);
+    } catch (err) {
+      setWaterData({ error: "Erreur de connexion aux serveurs Hub'Eau." });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onSearchChange = async (e) => {
@@ -415,6 +275,7 @@ export default function WaterApp({ initialCity = null }) {
             dateAnalyse={waterData?.meta ? new Date(waterData.meta.date_prelevement).toLocaleDateString('fr-FR') : ''}
             score={waterData?.crystal?.final || '--'}
             label={waterData?.crystal?.label || 'ANALYSE'}
+            nomReseau={(waterData?.meta?.nom_distributeur || waterData?.meta?.nom_reseau || selectedCity).split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ')}
           />
 
           <CitySEOContent cityName={selectedCity} data={waterData} />
