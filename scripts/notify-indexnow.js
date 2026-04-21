@@ -17,26 +17,27 @@ async function notifyIndexNow() {
   ];
 
   try {
-    const sitemapPath = path.join(__dirname, '../public/sitemap.xml');
-    if (fs.existsSync(sitemapPath)) {
-      const xml = fs.readFileSync(sitemapPath, 'utf8');
-      
-      // 1. On récupère TOUTES les URLs du sitemap
-      const allUrls = xml.match(/https:\/\/www\.eaupotable\.net\/[a-z0-9\/-]+/g) || [];
-      
-      // 2. On sépare les villes du reste (départements, etc.)
-      const cityUrls = allUrls.filter(url => url.includes('/ville/'));
-      const otherUrls = allUrls.filter(url => !url.includes('/ville/') && !finalUrlList.includes(url));
+    const sitemapDir = path.join(__dirname, '../public/sitemaps');
+    if (fs.existsSync(sitemapDir)) {
+      const files = fs.readdirSync(sitemapDir).filter(f => f.endsWith('.xml'));
+      console.log(`🔍 Exploration de ${files.length} sitemaps...`);
 
-      // 3. On ajoute TOUTES les "autres" pages (départements notamment)
-      finalUrlList = [...new Set([...finalUrlList, ...otherUrls])];
-      console.log(`📂 Pages structurelles (Home, Depts, etc.) : ${finalUrlList.length}`);
+      let allCityUrls = [];
+      for (const file of files) {
+        const content = fs.readFileSync(path.join(sitemapDir, file), 'utf8');
+        const urls = content.match(/https:\/\/www\.eaupotable\.net\/ville\/[a-z0-9\/-]+/g) || [];
+        allCityUrls = [...allCityUrls, ...urls];
+        // Si c'est un sitemap de département, on ajoute aussi l'URL du sitemap lui-même
+        finalUrlList.push(`https://${host}/sitemaps/${file}`);
+      }
+
+      console.log(`🏙️ Total villes découvertes : ${allCityUrls.length}`);
 
       // 4. On ajoute 500 villes aléatoires pour la rotation
-      const randomCities = cityUrls.sort(() => 0.5 - Math.random()).slice(0, 500);
-      finalUrlList = [...finalUrlList, ...randomCities];
+      const randomCities = allCityUrls.sort(() => 0.5 - Math.random()).slice(0, 500);
+      finalUrlList = [...new Set([...finalUrlList, ...randomCities])];
       
-      console.log(`🎲 Rotation : ${randomCities.length} villes sélectionnées.`);
+      console.log(`🎲 Rotation : ${randomCities.length} villes sélectionnées pour notification.`);
     }
   } catch (err) {
     console.error("⚠️ Erreur lors de la lecture du sitemap :", err.message);
