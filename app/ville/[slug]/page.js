@@ -3,6 +3,8 @@ import WaterApp from '../../components/WaterApp';
 import { fetchCitySummary } from '../../../lib/water-utils';
 import { cache } from 'react';
 
+const DOMAIN = 'https://www.eaupotable.net';
+
 // Dédoublage de l'audit pour diviser le temps de chargement par 2
 const getCachedSummary = cache(async (cityName) => {
   return await fetchCitySummary(cityName);
@@ -24,6 +26,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `Qualité de l'eau potable à ${officialName} (2026) | Crystal Score`,
     description: `📊 Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les pesticides et PFAS détectés.`,
+    alternates: {
+      canonical: `${DOMAIN}/ville/${slug}`,
+    },
     openGraph: {
       title: `Qualité de l'eau potable : ${officialName} (2026)`,
       description: `L'eau de ${officialName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
