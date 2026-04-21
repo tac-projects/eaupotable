@@ -16,24 +16,20 @@ import {
 // Imports normaux pour SSR et LCP optimal
 import CitySEOContent from './CitySEOContent';
 import HomeLanding from './HomeLanding';
+import CityHero from './CityHero';
 
-// Imports dynamiques uniquement pour les composants vraiment lourds et non critiques au démarrage
-const MapBackground = dynamic(() => import('./MapBackground'), { 
-  ssr: false
-});
+// WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
 export default function WaterApp({ initialCity = null }) {
   const router = useRouter();
-  const [isMapReady, setIsMapReady] = useState(false);
-  const [map, setMap] = useState(null);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCity, setSelectedCity] = useState(initialCity);
   const [waterData, setWaterData] = useState(null);
-  const [isPanelActive, setIsPanelActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
@@ -151,12 +147,12 @@ export default function WaterApp({ initialCity = null }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isPanelActive && window.scrollY > 300) setShowShareFab(true);
+      if (window.scrollY > 300) setShowShareFab(true);
       else setShowShareFab(false);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isPanelActive]);
+  }, []);
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
@@ -177,24 +173,11 @@ export default function WaterApp({ initialCity = null }) {
 
   // La logique Mapbox a été déportée dans le composant dynamique MapBackground.js
 
-  // 4. City Zoom Effect
+  // 4. City initial data fetch
   useEffect(() => {
-    if (!map || !initialCity) return;
-    const fetchAndZoom = async () => {
-      try {
-        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(initialCity)}.json?access_token=${mapboxToken}&country=FR&types=place&language=fr&limit=1`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.features?.length > 0) {
-          const feature = data.features[0];
-          map.flyTo({ center: feature.center, zoom: 13, essential: true });
-          // On ne remplit pas searchQuery pour laisser le placeholder animé tourner
-          fetchWaterData(feature.text);
-        }
-      } catch (err) { console.error("Zoom error", err); fetchWaterData(initialCity); }
-    };
-    fetchAndZoom();
-  }, [map, initialCity]);
+    if (!initialCity) return;
+    fetchWaterData(initialCity);
+  }, [initialCity]);
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -219,8 +202,6 @@ export default function WaterApp({ initialCity = null }) {
   };
 
   const fetchWaterData = async (cityName) => {
-    setIsPanelActive(false);
-    setTimeout(() => { setIsPanelActive(true); }, 400);
 
 
     try {
@@ -403,7 +384,7 @@ export default function WaterApp({ initialCity = null }) {
     <main>
       {/* 2. PWA Install Banner - Toujours disponible si activée */}
       {(deferredPrompt || showPWABanner) && (
-        <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isPanelActive ? 'banner-with-panel' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+        <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
           <div className="install-content">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="install-icon-svg">
               <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
@@ -423,73 +404,18 @@ export default function WaterApp({ initialCity = null }) {
         </div>
       )}
 
-      {/* Report Panel - Uniquement si une ville est sélectionnée ou en cours de chargement */}
-      {(selectedCity || isLoading) && (
-        <div id="side-panel" className={`side-panel ${isPanelActive ? 'active' : ''}`}>
-          <button className="close-panel" onClick={() => setIsPanelActive(false)} aria-label="Fermer le panneau">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-          <div id="panel-handle" className="panel-handle"></div>
-          <div id="panel-content">
-            {isLoading ? (
-              <div className="skeleton-container">
-                <div className="skeleton skeleton-line full" style={{ height: '45px', marginBottom: '2.5rem' }}></div>
-                {[1, 2, 3].map(i => (
-                   <div key={i} className="skeleton-row">
-                     <div className="skeleton skeleton-circle"></div>
-                     <div style={{ flex: 1 }}>
-                       <div className="skeleton skeleton-line heading"></div>
-                       <div className="skeleton skeleton-line sub"></div>
-                     </div>
-                   </div>
-                ))}
-              </div>
-            ) : waterData ? (
-              waterData.error ? (<div style={{ padding: '2rem', textAlign: 'center' }}>{waterData.error}</div>) : (<WaterReport data={waterData} onShare={handleShare} />)
-            ) : null}
-          </div>
-        </div>
-      )}
+
 
       {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
       {selectedCity ? (
         <div className="city-page-content">
-          <div style={{ height: '40vh', position: 'relative', overflow: 'hidden' }}>
-             <MapBackground
-                onMapLoad={setMap}
-                onMapReady={() => setIsMapReady(true)}
-                initialCity={selectedCity}
-              />
-          </div>
-
-          <div className="search-floating bottom-search visible">
-            <div className="search-box">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={onSearchChange}
-                onFocus={() => setIsSearchFocused(true)}
-                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
-                }}
-                placeholder="Autre ville..."
-                className="search-input"
-                aria-label="Rechercher une autre ville"
-              />
-              <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
-                  {suggestions.map((f, i) => (
-                  <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
-                       <strong>{f.text}</strong> <span className="suggestion-context-text">({f.context?.[0]?.text || ''})</span>
-                  </div>
-                  ))}
-              </div>
-            </div>
-          </div>
+          <CityHero 
+            cityName={selectedCity} 
+            dpt={waterData?.meta?.code_departement || ''} 
+            dateAnalyse={waterData?.meta ? new Date(waterData.meta.date_prelevement).toLocaleDateString('fr-FR') : ''}
+            score={waterData?.crystal?.final || '--'}
+            label={waterData?.crystal?.label || 'ANALYSE'}
+          />
 
           <CitySEOContent cityName={selectedCity} data={waterData} />
         </div>

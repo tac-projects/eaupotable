@@ -1091,6 +1091,11 @@
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
+    margin-top: 25px;
 }
 
 .comparison-table {
@@ -1102,25 +1107,30 @@
 
 .comparison-table th,
 .comparison-table td {
-    padding: 18px 20px;
+    padding: 16px 20px;
     text-align: left;
-    border-bottom: 1px solid rgba(var(--primary-rgb), 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .comparison-table th {
-    background: transparent;
-    color: var(--text-main);
-    font-weight: 700;
-    text-transform: uppercase;
+    background: #f1f5f9;
+    padding: 18px 20px;
+    color: var(--text-light);
     font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    border-bottom: 2px solid var(--primary-solid);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .comparison-table td.col-highlight {
     background: rgba(var(--primary-rgb), 0.02);
     font-weight: 700;
     color: var(--primary-solid) !important;
+}
+
+.comparison-table th.col-highlight {
+    background: #e2e8f0;
 }
 
 .comparison-table tr:last-child td {
@@ -1616,22 +1626,21 @@
     border-bottom: none !important;
 }
 
-/* On s'assure que le main, le body et le footer sont raccords en bleu-gris SEO */
+/* On s'assure que le main, le body et le footer sont raccords */
 main:has(.home-landing),
 body:has(.home-landing),
 main:has(.seo-content-wrapper),
 body:has(.seo-content-wrapper) {
-    background: #f0f4f8 !important;
+    background: #ffffff !important;
 }
 
 .main-footer,
 .global-footer {
     margin-top: 0 !important;
-    background: #f0f4f8 !important;
-    /* Harmonie totale avec la section SEO */
     position: relative;
     z-index: 100;
 }
+
 
 /* SEO UNIFIED DATA TABLE */
 .seo-data-table-unified {
@@ -1718,15 +1727,103 @@ body:has(.seo-content-wrapper) {
     color: var(--text-muted);
 }
 
-.benchmark-item.current-city {
-    background: rgba(var(--primary-rgb), 0.04) !important;
+.benchmark-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.benchmark-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 25px; /* Aligné sur Nantes */
+    text-decoration: none;
+    transition: var(--transition-premium);
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box; /* Crucial pour l'alignement */
+}
+
+.benchmark-item:hover:not(.current-city) {
+    background: rgba(var(--primary-rgb), 0.02);
     border-radius: 12px;
-    border: 1px solid rgba(var(--primary-rgb), 0.1) !important;
+}
+
+.benchmark-city {
+    width: 220px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.benchmark-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 50px;
+}
+
+.benchmark-bar-fill {
+    height: 100%;
+    background: var(--primary-solid);
+    border-radius: 10px;
+    transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.benchmark-score {
+    width: 45px;
+    flex-shrink: 0;
+    font-weight: 800;
+    color: var(--primary-solid);
+    text-align: right;
+    font-feature-settings: "tnum";
+}
+
+.benchmark-item.current-city {
+    background: rgba(var(--primary-rgb), 0.05) !important;
+    border-radius: 16px;
+    border: 1px solid rgba(var(--primary-rgb), 0.12) !important;
+    padding: 20px 25px; /* Identique au reste pour l'alignement */
+    margin: 10px 0 20px 0;
+    width: 100%;
+}
+
+.benchmark-item.current-city .benchmark-city {
+    font-weight: 800;
+    color: var(--primary-solid);
+    font-size: 1.1rem;
+}
+
+.benchmark-item.current-city .benchmark-bar-bg {
+    background: rgba(var(--primary-rgb), 0.1);
+    height: 12px;
+}
+
+.benchmark-item.current-city .benchmark-bar-fill {
+    background: var(--primary-solid);
+}
+
+.benchmark-footer {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
 }
 
 .benchmark-loading {
-    padding: 1rem;
-    opacity: 0.5;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0.6;
+    font-style: italic;
 }
 
 .nearby-cities-title {
