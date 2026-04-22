@@ -253,6 +253,40 @@
     text-align: center;
 }
 
+.seo-main-text {
+    text-align: left;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    width: 100%;
+    position: relative;
+    padding: 0 10px;
+}
+
+.seo-main-text::before {
+    content: "“";
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    font-size: 5rem;
+    color: var(--primary-solid);
+    opacity: 0.15;
+    font-family: var(--font-heading);
+    line-height: 1;
+}
+
+.seo-main-text::after {
+    content: "”";
+    position: absolute;
+    bottom: -40px;
+    right: -10px;
+    font-size: 5rem;
+    color: var(--primary-solid);
+    opacity: 0.15;
+    font-family: var(--font-heading);
+    line-height: 1;
+}
+
 .seo-card.highlight {
     border: 2px solid var(--primary-solid);
     box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.04), 0 25px 60px rgba(var(--primary-rgb), 0.02);

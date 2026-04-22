@@ -14,8 +14,17 @@ const getCachedSummary = cache(async (cityName) => {
 
 async function getLocalData(slug) {
   try {
-    // On essaie de charger le fichier du département 44
-    const filePath = path.join(process.cwd(), 'data', 'departments', '44.json');
+    // 1. On cherche le département de la ville dans l'index
+    const indexPath = path.join(process.cwd(), 'public', 'city-index.json');
+    if (!fs.existsSync(indexPath)) return null;
+    
+    const cityIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    const deptCode = cityIndex[slug];
+    
+    if (!deptCode) return null;
+
+    // 2. On charge le fichier du département correspondant
+    const filePath = path.join(process.cwd(), 'data', 'departments', `${deptCode}.json`);
     if (!fs.existsSync(filePath)) return null;
     
     const fileContent = fs.readFileSync(filePath, 'utf8');

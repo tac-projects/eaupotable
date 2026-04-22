@@ -59,6 +59,12 @@ export default function WaterReport({ data, onShare }) {
           <div className={`legal-badge ${isConform ? 'legal-ok' : 'legal-ko'}`}>
             <span>Conformité : <strong>{isConform ? 'CONFORME' : 'NON CONFORME'}</strong></span>
           </div>
+          {meta.conclusion && !isConform && (
+            <div className="ars-conclusion-minimal">
+              <p><strong>Verdict officiel :</strong> {meta.conclusion}</p>
+              <p className="ars-educational-tip">Un dépassement sur un paramètre technique (calcaire, fer, goût) peut entraîner ce statut même si les polluants majeurs sont absents.</p>
+            </div>
+          )}
         </div>
       </div>
     </>

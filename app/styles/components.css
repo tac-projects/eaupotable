@@ -2795,9 +2795,12 @@ main.content-wrapper {
 }
 
 .analysis-conformity-card {
-    margin-top: 30px;
+    margin-top: 60px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 15px;
 }
 
 .conformity-badge {
@@ -2810,7 +2813,7 @@ main.content-wrapper {
     font-size: var(--fs-lead);
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    box-shadow: none;
 }
 
 .conformity-badge.legal-ok { color: var(--status-excellent); background: #f0fdf4; border-color: #bbf7d0; }
@@ -2838,5 +2841,28 @@ main.content-wrapper {
 @media (max-width: 640px) {
     .analysis-grid { grid-template-columns: 1fr; }
     .conformity-badge { width: 100%; justify-content: center; font-size: 1rem; }
+}
+
+/* ARS Conclusion Minimalist */
+.ars-conclusion-minimal {
+    margin-top: 1rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ars-conclusion-minimal p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+
+.ars-educational-tip {
+    margin-top: 0.4rem !important;
+    font-size: 0.8rem !important;
+    opacity: 0.7;
+    font-style: italic;
 }
 
