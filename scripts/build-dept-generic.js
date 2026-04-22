@@ -112,6 +112,28 @@ const DEPT_REF = {
     "976": { name: "Mayotte", topCities: ["Mamoudzou", "Koungou", "Dzaoudzi", "Dembeni", "Tsingoni"] }
 };
 
+// 1bis. REGIONAL MAPPING
+const REGION_MAP = {
+    "Auvergne-Rhône-Alpes": ["01", "03", "07", "15", "26", "38", "42", "43", "63", "69", "73", "74"],
+    "Bourgogne-Franche-Comté": ["21", "25", "39", "58", "70", "71", "89", "90"],
+    "Bretagne": ["22", "29", "35", "56"],
+    "Centre-Val de Loire": ["18", "28", "36", "37", "41", "45"],
+    "Corse": ["2A", "2B"],
+    "Grand Est": ["08", "10", "51", "52", "54", "55", "57", "67", "68", "88"],
+    "Hauts-de-France": ["02", "59", "60", "62", "80"],
+    "Île-de-France": ["75", "77", "78", "91", "92", "93", "94", "95"],
+    "Normandie": ["14", "27", "50", "61", "76"],
+    "Nouvelle-Aquitaine": ["16", "17", "19", "23", "24", "33", "40", "47", "64", "79", "86", "87"],
+    "Occitanie": ["09", "11", "12", "30", "31", "32", "34", "46", "48", "65", "66", "81", "82"],
+    "Pays de la Loire": ["44", "49", "53", "72", "85"],
+    "Provence-Alpes-Côte d'Azur": ["04", "05", "06", "13", "83", "84"],
+    "Guadeloupe": ["971"], "Martinique": ["972"], "Guyane": ["973"], "La Réunion": ["974"], "Mayotte": ["976"]
+};
+
+// Helper to find region from dept code
+const getRegionForDept = (code) => Object.keys(REGION_MAP).find(r => REGION_MAP[r].includes(code)) || "France";
+
+
 // 2. CONFIGURATION & SANITARY PARAMETERS (National Codes)
 const config = {
     nitrates: { codes: ["1340", "1342"] },
@@ -371,7 +393,14 @@ async function buildDepartment(deptCode) {
     output.deptInfo.avgScore = Math.round((all.reduce((a,b) => a + b.crystal.final, 0) / all.length) * 10) / 10;
     output.deptInfo.conformRate = Math.round((all.filter(c => c.isConform).length / all.length) * 100);
     output.deptInfo.averages = avgData;
+    output.deptInfo.regionName = getRegionForDept(deptCode);
     
+    // Placeholder for regional data
+    output.regionalInfo = {
+        name: output.deptInfo.regionName,
+        averages: {}
+    };
+
     // Top Cities from reference
     output.deptInfo.topCities = deptInfo.topCities.map(name => {
         const slug = makeSlug(name);
@@ -383,10 +412,16 @@ async function buildDepartment(deptCode) {
         };
     });
 
-    const outputPath = path.join(__dirname, '..', 'data', 'departments', `${deptCode}.json`);
-    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-    console.log(`✅ Fichier généré : ${outputPath} (${all.length} communes)`);
+    return output;
 }
+
+// Function to write the file (moved out of buildDepartment)
+function saveDepartmentFile(deptCode, data) {
+    const outputPath = path.join(__dirname, '..', 'data', 'departments', `${deptCode}.json`);
+    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
+    console.log(`✅ Fichier généré : ${outputPath} (${Object.keys(data.cities).length} communes)`);
+}
+
 
 // 5. CLI HANDLER
 const args = process.argv.slice(2);
@@ -416,16 +451,81 @@ async function updateIndex() {
     console.log(`🗺️  Index mis à jour : ${Object.keys(index).length} villes référencées.`);
 }
 
+function calculateRegionalAverages(allDeptData) {
+    const regions = {};
+    Object.values(allDeptData).forEach(dept => {
+        const rName = dept.deptInfo.regionName;
+        if (!regions[rName]) regions[rName] = { scores: [], conformities: [], params: {} };
+        
+        regions[rName].scores.push(dept.deptInfo.avgScore);
+        regions[rName].conformities.push(dept.deptInfo.conformRate);
+        
+        Object.keys(dept.deptInfo.averages).forEach(pId => {
+            if (!regions[rName].params[pId]) regions[rName].params[pId] = [];
+            const val = parseValue(dept.deptInfo.averages[pId].val);
+            if (!isNaN(val)) {
+                regions[rName].params[pId].push({ val, unit: dept.deptInfo.averages[pId].unit });
+            }
+        });
+    });
+
+    const finalRegions = {};
+    Object.keys(regions).forEach(rName => {
+        const r = regions[rName];
+        finalRegions[rName] = {
+            score: Math.round((r.scores.reduce((a,b) => a+b, 0) / r.scores.length) * 10) / 10,
+            conformity: Math.round(r.conformities.reduce((a,b) => a+b, 0) / r.conformities.length),
+            averages: {}
+        };
+        
+        Object.keys(r.params).forEach(pId => {
+            const vals = r.params[pId].map(v => v.val);
+            if (vals.length > 0) {
+                const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
+                let formatted = mean.toFixed(2).replace('.', ',');
+                if (mean > 10) formatted = Math.round(mean).toString();
+                else if (mean < 0.1) formatted = mean <= 0.01 ? "< 0,01" : mean.toFixed(3).replace('.', ',');
+                
+                finalRegions[rName].averages[pId] = { 
+                    val: formatted, 
+                    unit: r.params[pId][0].unit 
+                };
+            }
+        });
+    });
+    return finalRegions;
+}
+
 (async () => {
+    const allResults = {};
+    
     if (allArg) {
+        // Passe 1 : Tout générer
         for (const code of Object.keys(DEPT_REF)) {
-            await buildDepartment(code);
+            allResults[code] = await buildDepartment(code);
+        }
+        
+        // Passe 2 : Calculer les régions
+        const regionalAverages = calculateRegionalAverages(allResults);
+        
+        // Passe 3 : Injecter et sauvegarder
+        for (const code of Object.keys(allResults)) {
+            const res = allResults[code];
+            const rName = res.deptInfo.regionName;
+            if (regionalAverages[rName]) {
+                res.regionalInfo.averages = regionalAverages[rName].averages;
+                res.regionalInfo.score = regionalAverages[rName].score;
+                res.regionalInfo.conformity = regionalAverages[rName].conformity;
+            }
+            saveDepartmentFile(code, res);
         }
         await updateIndex();
+        
     } else if (deptArg) {
         const codes = deptArg.split('=')[1].split(',');
         for (const code of codes) {
-            await buildDepartment(code);
+            const res = await buildDepartment(code);
+            saveDepartmentFile(code, res);
         }
         await updateIndex();
     } else {
@@ -438,3 +538,4 @@ Utilisation :
         `);
     }
 })();
+

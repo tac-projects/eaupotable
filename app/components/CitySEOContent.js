@@ -474,130 +474,80 @@ export default function CitySEOContent({ cityName, data }) {
           </div>
 
           <div className="summary-table-wrapper">
-             <table className="comparison-table">
-               <thead>
-                 <tr><th>Indicateur</th><th className="col-highlight">À {cityName}</th><th>Moyenne du {dpt}</th><th>Statut</th></tr>
-               </thead>
-               <tbody>
-                 {/* ... J'ai tronqué ici pour le TargetContent mais je vais tout remettre proprement ... */}
-                 <tr>
-                    <td><strong>Conformité</strong></td>
-                    <td className="col-highlight">{isConform ? '✅ 100%' : '⚠️ Alerte'}</td>
-                    <td>{deptAvg?.conformRate ? `${deptAvg.conformRate}%` : '--'}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(isConform ? 100 : 0, deptAvg?.conformRate || 79, "higherIsBetter");
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
+              <table className="comparison-table">
+                <thead>
                   <tr>
-                    <td><strong>Microbiologie</strong></td>
-                    <td className="col-highlight">{microVal}</td>
-                    <td>{fVal(deptAvg?.microbiology)}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(microVal.toLowerCase().includes('absence') ? 0 : 1, 0);
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
+                    <th>Indicateur</th>
+                    <th className="col-highlight">À {cityName}</th>
+                    {Object.keys(neighborCities).length > 1 && <th>Moyenne du {dpt}</th>}
+                    <th className="col-region-desktop">{data?.regionalInfo?.name || 'Région'}</th>
                   </tr>
-                   <tr>
-                    <td><strong>PFAS (Polluants)</strong></td>
-                    <td className="col-highlight">{pfasVal}</td>
-                    <td>{fVal(deptAvg?.pfas, " µg/L")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(pfas, gv(deptAvg?.pfas, 0.1));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Pesticides</strong></td>
-                    <td className="col-highlight">{pestVal}</td>
-                    <td>{fVal(deptAvg?.pesticides, " µg/L")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(pesticides, gv(deptAvg?.pesticides, 0.1));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Chlore libre</strong></td>
-                    <td className="col-highlight">{chloreVal}</td>
-                    <td>{fVal(deptAvg?.chlorine, " mg/L")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(chlore, gv(deptAvg?.chlorine, 0.1));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Nitrates</strong></td>
-                    <td className="col-highlight">{nitratesVal}</td>
-                    <td>{fVal(deptAvg?.nitrates, " mg/L")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(nitrates, gv(deptAvg?.nitrates, 6.5));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Calcaire</strong></td>
-                    <td className="col-highlight">{dureteVal}</td>
-                    <td>{fVal(deptAvg?.hardness, " °f")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(durete, gv(deptAvg?.hardness, 25.5));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Acidité (pH)</strong></td>
-                    <td className="col-highlight">{phVal}</td>
-                    <td>{fVal(deptAvg?.ph, " pH")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(acidity, gv(deptAvg?.ph, 7.5), "centered");
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Turbidité</strong></td>
-                    <td className="col-highlight">{turbVal}</td>
-                    <td>{fVal(deptAvg?.turbidity, " NFU")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(turbidity, gv(deptAvg?.turbidity, 0.1));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Conductivité</strong></td>
-                    <td className="col-highlight">{condVal}</td>
-                    <td>{fVal(deptAvg?.conductivity, " µS/cm")}</td>
-                    <td>
-                      {(() => {
-                        const s = getDuelStatus(conductivity, gv(deptAvg?.conductivity, 400));
-                        return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
-                      })()}
-                    </td>
-                  </tr>
-               </tbody>
-             </table>
+                </thead>
+                <tbody>
+                  {(() => {
+                    const regional = data?.regionalInfo?.averages || {};
+                    const rows = [
+                      { label: "Conformité", key: "conformity", city: isConform ? "100%" : "Alerte", dept: deptAvg?.conformRate ? `${deptAvg.conformRate}%` : "--", region: data?.regionalInfo?.conformity ? `${data.regionalInfo.conformity}%` : "--", higherIsBetter: true },
+                      { label: "Microbiologie", key: "microbiology", city: microVal, dept: fVal(deptAvg?.microbiology), region: fVal(regional?.microbiology) },
+                      { label: "PFAS (Polluants)", key: "pfas", city: pfasVal, dept: fVal(deptAvg?.pfas, " µg/L"), region: fVal(regional?.pfas, " µg/L") },
+                      { label: "Pesticides", key: "pesticides", city: pestVal, dept: fVal(deptAvg?.pesticides, " µg/L"), region: fVal(regional?.pesticides, " µg/L") },
+                      { label: "Chlore libre", key: "chlorine", city: chloreVal, dept: fVal(deptAvg?.chlorine, " mg/L"), region: fVal(regional?.chlorine, " mg/L") },
+                      { label: "Nitrates", key: "nitrates", city: nitratesVal, dept: fVal(deptAvg?.nitrates, " mg/L"), region: fVal(regional?.nitrates, " mg/L") },
+                      { label: "Calcaire", key: "hardness", city: dureteVal, dept: fVal(deptAvg?.hardness, " °f"), region: fVal(regional?.hardness, " °f") },
+                      { label: "Acidité (pH)", key: "ph", city: phVal, dept: fVal(deptAvg?.ph, " pH"), region: fVal(regional?.ph, " pH"), centered: 7.5 },
+                      { label: "Turbidité", key: "turbidity", city: turbVal, dept: fVal(deptAvg?.turbidity, " NFU"), region: fVal(regional?.turbidity, " NFU") },
+                      { label: "Conductivité", key: "conductivity", city: condVal, dept: fVal(deptAvg?.conductivity, " µS/cm"), region: fVal(regional?.conductivity, " µS/cm") }
+                    ];
+
+                    const getWinner = (row) => {
+                      const v1 = parseValue(row.city);
+                      const v2 = parseValue(row.dept);
+                      const v3 = parseValue(row.region);
+                      const vals = [v1, v2, v3].filter(v => !isNaN(v));
+                      if (vals.length === 0) return null;
+
+                      if (row.higherIsBetter) {
+                        const max = Math.max(...vals);
+                        if (v1 === max) return 'city';
+                        if (v2 === max) return 'dept';
+                        return 'region';
+                      }
+                      if (row.centered) {
+                        const d1 = Math.abs((v1 || 7.5) - 7.5);
+                        const d2 = Math.abs((v2 || 7.5) - 7.5);
+                        const d3 = Math.abs((v3 || 7.5) - 7.5);
+                        const diffs = [d1, d2, d3].filter((_, i) => !isNaN([v1, v2, v3][i]));
+                        const minD = Math.min(...diffs);
+                        if (d1 === minD) return 'city';
+                        if (d2 === minD) return 'dept';
+                        return 'region';
+                      }
+                      const min = Math.min(...vals);
+                      if (v1 === min) return 'city';
+                      if (v2 === min) return 'dept';
+                      return 'region';
+                    };
+
+                    return rows.map((row, i) => {
+                      const winner = getWinner(row);
+                      return (
+                        <tr key={i}>
+                          <td><strong>{row.label}</strong></td>
+                          <td className={`col-highlight ${winner === 'city' ? 'winner-highlight' : ''}`}>{row.city}</td>
+                          {Object.keys(neighborCities).length > 1 && <td className={winner === 'dept' ? 'winner-highlight' : ''}>{row.dept}</td>}
+                          <td className={`col-region-desktop ${winner === 'region' ? 'winner-highlight' : ''}`}>{row.region}</td>
+                        </tr>
+                      );
+                    });
+                  })()}
+                </tbody>
+              </table>
           </div>
 
           <div className="seo-comparison-verdict" style={{ marginTop: '25px', textAlign: 'center' }}>
             <strong>Verdict :</strong> {crystal.final >= (deptAvg?.score || 7) 
-              ? `${cityName} surclasse la moyenne du département ${dpt}. Un réseau d'excellente facture.`
-              : `La qualité à ${cityName} est légèrement en retrait par rapport à la dynamique du département ${dpt}.`}
+              ? `${cityName} surclasse la moyenne locale. Un réseau d'excellente facture.`
+              : `La qualité à ${cityName} est légèrement en retrait par rapport à la dynamique régionale.`}
           </div>
         </div>
       </section>
