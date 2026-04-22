@@ -1,0 +1,3363 @@
+{
+  "deptInfo": {
+    "code": "972",
+    "name": "Martinique",
+    "avgScore": 3.5,
+    "conformRate": 0,
+    "averages": {
+      "nitrates": {
+        "val": "2,95",
+        "unit": "  mg/L"
+      },
+      "ph": {
+        "val": "7,29",
+        "unit": "  pH"
+      },
+      "temperature": {
+        "val": "26",
+        "unit": "  °C"
+      },
+      "hardness": {
+        "val": "4,41",
+        "unit": "  °f"
+      },
+      "chlorine": {
+        "val": "0,57",
+        "unit": "  mg/L"
+      },
+      "pesticides": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "pfas": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "microbiology": {
+        "val": "Absence",
+        "unit": ""
+      },
+      "conductivity": {
+        "val": "145",
+        "unit": "  µS/cm"
+      },
+      "turbidity": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "iron": {
+        "val": "6,65",
+        "unit": "  µg/L"
+      },
+      "manganese": {
+        "val": "0,18",
+        "unit": "  µg/L"
+      },
+      "ammonium": {
+        "val": "< 0,01",
+        "unit": "  mg/L"
+      },
+      "copper": {
+        "val": "< 0,01",
+        "unit": "  mg(Cu)/L"
+      },
+      "organic_carbon": {
+        "val": "0,15",
+        "unit": "  mg(C)/L"
+      }
+    },
+    "topCities": [
+      {
+        "name": "Fort-De-France",
+        "score": 3.5,
+        "slug": "fort-de-france"
+      },
+      {
+        "name": "Le Lamentin",
+        "score": 7,
+        "slug": "le-lamentin"
+      },
+      {
+        "name": "Le Robert",
+        "score": 7,
+        "slug": "le-robert"
+      },
+      {
+        "name": "Schœlcher",
+        "score": 7,
+        "slug": "sch-lcher"
+      },
+      {
+        "name": "Ducos",
+        "score": 3.5,
+        "slug": "ducos"
+      }
+    ],
+    "regionName": "Martinique"
+  },
+  "cities": {
+    "basse-pointe": {
+      "cityName": "Basse-Pointe",
+      "reseau": "972000071",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "ph": {
+          "val": "7,3",
+          "unit": " pH",
+          "date": "09/02/2026"
+        },
+        "temperature": {
+          "val": "24",
+          "unit": " °C",
+          "date": "09/02/2026"
+        },
+        "hardness": {
+          "val": "2,54",
+          "unit": " °f",
+          "date": "26/01/2026"
+        },
+        "chlorine": {
+          "val": "0,7",
+          "unit": " mg/L",
+          "date": "09/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/09/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/09/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "09/02/2026"
+        },
+        "conductivity": {
+          "val": "99",
+          "unit": " µS/cm",
+          "date": "09/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/09/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/06/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "31/03/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "copper": {
+          "val": "0,0011",
+          "unit": " mg(Cu)/L",
+          "date": "17/06/2025"
+        },
+        "organic_carbon": {
+          "val": "0,64",
+          "unit": " mg(C)/L",
+          "date": "26/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-09",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "carbet-le": {
+      "cityName": "Carbet (le)",
+      "reseau": "972000789",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3,8",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "ph": {
+          "val": "7,8",
+          "unit": " pH",
+          "date": "26/01/2026"
+        },
+        "temperature": {
+          "val": "29,3",
+          "unit": " °C",
+          "date": "26/01/2026"
+        },
+        "hardness": {
+          "val": "5,63",
+          "unit": " °f",
+          "date": "26/01/2026"
+        },
+        "chlorine": {
+          "val": "0,19",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/01/2026"
+        },
+        "conductivity": {
+          "val": "179",
+          "unit": " µS/cm",
+          "date": "26/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/08/2025"
+        },
+        "ammonium": {
+          "val": "0,01",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "copper": {
+          "val": "0,0023",
+          "unit": " mg(Cu)/L",
+          "date": "01/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0,33",
+          "unit": " mg(C)/L",
+          "date": "26/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-26",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "case-pilote": {
+      "cityName": "Case-Pilote",
+      "reseau": "972000789",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3,8",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "ph": {
+          "val": "7,8",
+          "unit": " pH",
+          "date": "26/01/2026"
+        },
+        "temperature": {
+          "val": "29,3",
+          "unit": " °C",
+          "date": "26/01/2026"
+        },
+        "hardness": {
+          "val": "5,63",
+          "unit": " °f",
+          "date": "26/01/2026"
+        },
+        "chlorine": {
+          "val": "0,19",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/01/2026"
+        },
+        "conductivity": {
+          "val": "179",
+          "unit": " µS/cm",
+          "date": "26/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/09/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/08/2025"
+        },
+        "ammonium": {
+          "val": "0,01",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "copper": {
+          "val": "0,0023",
+          "unit": " mg(Cu)/L",
+          "date": "01/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0,33",
+          "unit": " mg(C)/L",
+          "date": "26/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-26",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "fort-de-france": {
+      "cityName": "Fort-De-France",
+      "reseau": "972000059",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,31",
+          "unit": " mg/L",
+          "date": "13/01/2026"
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "03/02/2026"
+        },
+        "temperature": {
+          "val": "25,7",
+          "unit": " °C",
+          "date": "03/02/2026"
+        },
+        "hardness": {
+          "val": "3,71",
+          "unit": " °f",
+          "date": "13/01/2026"
+        },
+        "chlorine": {
+          "val": "0,26",
+          "unit": " mg/L",
+          "date": "03/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "29/04/2024"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "03/02/2026"
+        },
+        "conductivity": {
+          "val": "118",
+          "unit": " µS/cm",
+          "date": "03/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "29/04/2024"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "29/04/2024"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "29/04/2024"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "13/01/2026"
+        },
+        "copper": {
+          "val": "0,0004",
+          "unit": " mg(Cu)/L",
+          "date": "02/04/2024"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "13/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "ODYSSI",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-03",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "lamentin-le": {
+      "cityName": "Lamentin (le)",
+      "reseau": "972003358",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "04/02/2026"
+        },
+        "temperature": {
+          "val": "27",
+          "unit": " °C",
+          "date": "04/02/2026"
+        },
+        "hardness": {
+          "val": "4,52",
+          "unit": " °f",
+          "date": "04/02/2026"
+        },
+        "chlorine": {
+          "val": "0,93",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "04/02/2026"
+        },
+        "conductivity": {
+          "val": "139",
+          "unit": " µS/cm",
+          "date": "04/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "copper": {
+          "val": "0,0012",
+          "unit": " mg(Cu)/L",
+          "date": "08/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0,4",
+          "unit": " mg(C)/L",
+          "date": "04/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "ODYSSI",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-04",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "morne-rouge-le": {
+      "cityName": "Morne-Rouge (le)",
+      "reseau": "972000067",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,7",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "26/01/2026"
+        },
+        "temperature": {
+          "val": "23,2",
+          "unit": " °C",
+          "date": "26/01/2026"
+        },
+        "hardness": {
+          "val": "2,65",
+          "unit": " °f",
+          "date": "26/01/2026"
+        },
+        "chlorine": {
+          "val": "0,41",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/01/2026"
+        },
+        "conductivity": {
+          "val": "100",
+          "unit": " µS/cm",
+          "date": "26/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/01/2026"
+        },
+        "copper": {
+          "val": "0,0085",
+          "unit": " mg(Cu)/L",
+          "date": "18/03/2025"
+        },
+        "organic_carbon": {
+          "val": "0,7",
+          "unit": " mg(C)/L",
+          "date": "26/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-26",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "precheur-le": {
+      "cityName": "Precheur (le)",
+      "reseau": "972000062",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "10",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "ph": {
+          "val": "7",
+          "unit": " pH",
+          "date": "19/01/2026"
+        },
+        "temperature": {
+          "val": "27,3",
+          "unit": " °C",
+          "date": "19/01/2026"
+        },
+        "hardness": {
+          "val": "6,38",
+          "unit": " °f",
+          "date": "19/01/2026"
+        },
+        "chlorine": {
+          "val": "0,26",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "19/01/2026"
+        },
+        "conductivity": {
+          "val": "213",
+          "unit": " µS/cm",
+          "date": "19/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "copper": {
+          "val": "0,0199",
+          "unit": " mg(Cu)/L",
+          "date": "01/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "19/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "robert-le": {
+      "cityName": "Robert (le)",
+      "reseau": "972000036",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "09/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "09/02/2026"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,4",
+          "unit": " mg/L",
+          "date": "09/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "09/02/2026"
+        },
+        "conductivity": {
+          "val": "108",
+          "unit": " µS/cm",
+          "date": "09/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,006",
+          "unit": " mg(Cu)/L",
+          "date": "02/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.M.E.",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-09",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "saint-pierre": {
+      "cityName": "Saint-Pierre",
+      "reseau": "972000062",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "10",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "ph": {
+          "val": "7",
+          "unit": " pH",
+          "date": "19/01/2026"
+        },
+        "temperature": {
+          "val": "27,3",
+          "unit": " °C",
+          "date": "19/01/2026"
+        },
+        "hardness": {
+          "val": "6,38",
+          "unit": " °f",
+          "date": "19/01/2026"
+        },
+        "chlorine": {
+          "val": "0,26",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "19/01/2026"
+        },
+        "conductivity": {
+          "val": "213",
+          "unit": " µS/cm",
+          "date": "19/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026"
+        },
+        "copper": {
+          "val": "0,0199",
+          "unit": " mg(Cu)/L",
+          "date": "01/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "19/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "trinite-la": {
+      "cityName": "Trinite (la)",
+      "reseau": "972000036",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "09/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "09/02/2026"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,4",
+          "unit": " mg/L",
+          "date": "09/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "09/02/2026"
+        },
+        "conductivity": {
+          "val": "108",
+          "unit": " µS/cm",
+          "date": "09/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,006",
+          "unit": " mg(Cu)/L",
+          "date": "02/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.M.E.",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-09",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "morne-vert-le": {
+      "cityName": "Morne-Vert (le)",
+      "reseau": "972000065",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "20/01/2026"
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "20/01/2026"
+        },
+        "temperature": {
+          "val": "26,8",
+          "unit": " °C",
+          "date": "20/01/2026"
+        },
+        "hardness": {
+          "val": "2,76",
+          "unit": " °f",
+          "date": "20/01/2026"
+        },
+        "chlorine": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "20/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "20/01/2026"
+        },
+        "conductivity": {
+          "val": "88",
+          "unit": " µS/cm",
+          "date": "20/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/05/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "20/01/2026"
+        },
+        "copper": {
+          "val": "0,006",
+          "unit": " mg(Cu)/L",
+          "date": "24/03/2025"
+        },
+        "organic_carbon": {
+          "val": "0,51",
+          "unit": " mg(C)/L",
+          "date": "20/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-01-20",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "bellefontaine": {
+      "cityName": "Bellefontaine",
+      "reseau": "972000061",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "25/08/2025"
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "10/02/2026"
+        },
+        "temperature": {
+          "val": "24",
+          "unit": " °C",
+          "date": "10/02/2026"
+        },
+        "hardness": {
+          "val": "5,34",
+          "unit": " °f",
+          "date": "19/11/2025"
+        },
+        "chlorine": {
+          "val": "0,5",
+          "unit": " mg/L",
+          "date": "10/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/02/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/02/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "10/02/2026"
+        },
+        "conductivity": {
+          "val": "98",
+          "unit": " µS/cm",
+          "date": "10/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/02/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "23/06/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/02/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/11/2025"
+        },
+        "copper": {
+          "val": "0,0004",
+          "unit": " mg(Cu)/L",
+          "date": "23/06/2025"
+        },
+        "organic_carbon": {
+          "val": "0,33",
+          "unit": " mg(C)/L",
+          "date": "26/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2026-02-10",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "ajoupa-bouillon-l": {
+      "cityName": "Ajoupa-Bouillon (l')",
+      "reseau": "972000068",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "11",
+          "unit": " mg/L",
+          "date": "01/07/2025"
+        },
+        "ph": {
+          "val": "7,6",
+          "unit": " pH",
+          "date": "05/12/2025"
+        },
+        "temperature": {
+          "val": "26",
+          "unit": " °C",
+          "date": "05/12/2025"
+        },
+        "hardness": {
+          "val": "3,32",
+          "unit": " °f",
+          "date": "01/12/2025"
+        },
+        "chlorine": {
+          "val": "0,8",
+          "unit": " mg/L",
+          "date": "05/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/07/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/07/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "05/12/2025"
+        },
+        "conductivity": {
+          "val": "124",
+          "unit": " µS/cm",
+          "date": "05/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/07/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/07/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "01/07/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "01/12/2025"
+        },
+        "copper": {
+          "val": "0,0033",
+          "unit": " mg(Cu)/L",
+          "date": "16/04/2024"
+        },
+        "organic_carbon": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-05",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "anses-d-arlet-les": {
+      "cityName": "Anses-D'arlet (les)",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "diamant-le": {
+      "cityName": "Diamant (le)",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "ducos": {
+      "cityName": "Ducos",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "fonds-saint-denis": {
+      "cityName": "Fonds-Saint-Denis",
+      "reseau": "972000064",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,54",
+          "unit": " mg/L",
+          "date": "03/11/2025"
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "01/12/2025"
+        },
+        "temperature": {
+          "val": "23,9",
+          "unit": " °C",
+          "date": "01/12/2025"
+        },
+        "hardness": {
+          "val": "4,1",
+          "unit": " °f",
+          "date": "01/12/2025"
+        },
+        "chlorine": {
+          "val": "0,49",
+          "unit": " mg/L",
+          "date": "01/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "01/12/2025"
+        },
+        "conductivity": {
+          "val": "138",
+          "unit": " µS/cm",
+          "date": "01/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "01/12/2025"
+        },
+        "copper": {
+          "val": "0,0019",
+          "unit": " mg(Cu)/L",
+          "date": "01/09/2025"
+        },
+        "organic_carbon": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-01",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "francois-le": {
+      "cityName": "Francois (le)",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "grand-riviere": {
+      "cityName": "Grand'riviere",
+      "reseau": "972000035",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,62",
+          "unit": " mg/L",
+          "date": "10/09/2025"
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "13/11/2025"
+        },
+        "temperature": {
+          "val": "27,6",
+          "unit": " °C",
+          "date": "13/11/2025"
+        },
+        "hardness": {
+          "val": "3,65",
+          "unit": " °f",
+          "date": "27/10/2025"
+        },
+        "chlorine": {
+          "val": "0,54",
+          "unit": " mg/L",
+          "date": "13/11/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/03/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/03/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "13/11/2025"
+        },
+        "conductivity": {
+          "val": "123",
+          "unit": " µS/cm",
+          "date": "13/11/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/03/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/06/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/03/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "27/10/2025"
+        },
+        "copper": {
+          "val": "0,0007",
+          "unit": " mg(Cu)/L",
+          "date": "03/06/2025"
+        },
+        "organic_carbon": {
+          "val": "0,51",
+          "unit": " mg(C)/L",
+          "date": "11/03/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-11-13",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "gros-morne": {
+      "cityName": "Gros-Morne",
+      "reseau": "972000078",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "61",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "manganese": {
+          "val": "3",
+          "unit": " µg/L",
+          "date": "18/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0005",
+          "unit": " mg(Cu)/L",
+          "date": "02/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "lorrain-le": {
+      "cityName": "Lorrain (le)",
+      "reseau": "972000079",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0003",
+          "unit": " mg(Cu)/L",
+          "date": "07/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "macouba": {
+      "cityName": "Macouba",
+      "reseau": "972000080",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "21/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0011",
+          "unit": " mg(Cu)/L",
+          "date": "21/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "marigot-le": {
+      "cityName": "Marigot (le)",
+      "reseau": "972000079",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0003",
+          "unit": " mg(Cu)/L",
+          "date": "07/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "marin-le": {
+      "cityName": "Marin (le)",
+      "reseau": "972000030",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0128",
+          "unit": " mg(Cu)/L",
+          "date": "11/08/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "riviere-pilote": {
+      "cityName": "Riviere-Pilote",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "riviere-salee": {
+      "cityName": "Riviere-Salee",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "saint-esprit": {
+      "cityName": "Saint-Esprit",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "saint-joseph": {
+      "cityName": "Saint-Joseph",
+      "reseau": "972000031",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "15/12/2025"
+        },
+        "ph": {
+          "val": "7,4",
+          "unit": " pH",
+          "date": "15/12/2025"
+        },
+        "temperature": {
+          "val": "25,8",
+          "unit": " °C",
+          "date": "15/12/2025"
+        },
+        "hardness": {
+          "val": "4,69",
+          "unit": " °f",
+          "date": "15/12/2025"
+        },
+        "chlorine": {
+          "val": "0,93",
+          "unit": " mg/L",
+          "date": "15/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "15/12/2025"
+        },
+        "conductivity": {
+          "val": "140",
+          "unit": " µS/cm",
+          "date": "15/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "15/12/2025"
+        },
+        "copper": {
+          "val": "0,0016",
+          "unit": " mg(Cu)/L",
+          "date": "04/11/2025"
+        },
+        "organic_carbon": {
+          "val": "0,31",
+          "unit": " mg(C)/L",
+          "date": "15/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.M.E.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-15",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "sainte-anne": {
+      "cityName": "Sainte-Anne",
+      "reseau": "972000030",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0128",
+          "unit": " mg(Cu)/L",
+          "date": "11/08/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "sainte-luce": {
+      "cityName": "Sainte-Luce",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "sainte-marie": {
+      "cityName": "Sainte-Marie",
+      "reseau": "972000078",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "61",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "manganese": {
+          "val": "3",
+          "unit": " µg/L",
+          "date": "18/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0005",
+          "unit": " mg(Cu)/L",
+          "date": "02/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "schoelcher": {
+      "cityName": "Schoelcher",
+      "reseau": "972003347",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,63",
+          "unit": " mg/L",
+          "date": "15/09/2025"
+        },
+        "ph": {
+          "val": "7,8",
+          "unit": " pH",
+          "date": "10/12/2025"
+        },
+        "temperature": {
+          "val": "24,1",
+          "unit": " °C",
+          "date": "10/12/2025"
+        },
+        "hardness": {
+          "val": "3,65",
+          "unit": " °f",
+          "date": "04/12/2025"
+        },
+        "chlorine": {
+          "val": "0,46",
+          "unit": " mg/L",
+          "date": "10/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "10/12/2025"
+        },
+        "conductivity": {
+          "val": "132",
+          "unit": " µS/cm",
+          "date": "10/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025"
+        },
+        "iron": {
+          "val": "20",
+          "unit": " µg/L",
+          "date": "26/05/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/12/2025"
+        },
+        "copper": {
+          "val": "0,011",
+          "unit": " mg(Cu)/L",
+          "date": "06/05/2025"
+        },
+        "organic_carbon": {
+          "val": "0,85",
+          "unit": " mg(C)/L",
+          "date": "16/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-10",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "trois-ilets-les": {
+      "cityName": "Trois-Ilets (les)",
+      "reseau": "972000029",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0018",
+          "unit": " mg(Cu)/L",
+          "date": "16/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    },
+    "vauclin-le": {
+      "cityName": "Vauclin (le)",
+      "reseau": "972000030",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "30/12/2025"
+        },
+        "temperature": {
+          "val": "24,8",
+          "unit": " °C",
+          "date": "30/12/2025"
+        },
+        "hardness": {
+          "val": "4,47",
+          "unit": " °f",
+          "date": "30/12/2025"
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/12/2025"
+        },
+        "conductivity": {
+          "val": "155",
+          "unit": " µS/cm",
+          "date": "30/12/2025"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "6",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/12/2025"
+        },
+        "copper": {
+          "val": "0,0128",
+          "unit": " mg(Cu)/L",
+          "date": "11/08/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "30/12/2025"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "S.A.U.R.",
+        "code_departement": "972",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau potable au vu des paramètres recherchés, naturellement faiblement minéralisée."
+      }
+    }
+  },
+  "regionalInfo": {
+    "name": "Martinique",
+    "averages": {
+      "nitrates": {
+        "val": "2,95",
+        "unit": "  mg/L"
+      },
+      "ph": {
+        "val": "7,29",
+        "unit": "  pH"
+      },
+      "temperature": {
+        "val": "26",
+        "unit": "  °C"
+      },
+      "hardness": {
+        "val": "4,41",
+        "unit": "  °f"
+      },
+      "chlorine": {
+        "val": "0,57",
+        "unit": "  mg/L"
+      },
+      "pesticides": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "pfas": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "microbiology": {
+        "val": "< 0,01",
+        "unit": ""
+      },
+      "conductivity": {
+        "val": "145",
+        "unit": "  µS/cm"
+      },
+      "turbidity": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "iron": {
+        "val": "6,65",
+        "unit": "  µg/L"
+      },
+      "manganese": {
+        "val": "0,18",
+        "unit": "  µg/L"
+      },
+      "ammonium": {
+        "val": "< 0,01",
+        "unit": "  mg/L"
+      },
+      "copper": {
+        "val": "< 0,01",
+        "unit": "  mg(Cu)/L"
+      },
+      "organic_carbon": {
+        "val": "0,15",
+        "unit": "  mg(C)/L"
+      }
+    },
+    "score": 3.5,
+    "conformity": 0
+  }
+}
