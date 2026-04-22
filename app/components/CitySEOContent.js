@@ -544,11 +544,36 @@ export default function CitySEOContent({ cityName, data }) {
               </table>
           </div>
 
-          <div className="seo-comparison-verdict" style={{ marginTop: '25px', textAlign: 'center' }}>
-            <strong>Verdict :</strong> {crystal.final >= (deptAvg?.score || 7) 
-              ? `${cityName} surclasse la moyenne locale. Un réseau d'excellente facture.`
-              : `La qualité à ${cityName} est légèrement en retrait par rapport à la dynamique régionale.`}
-          </div>
+          {(() => {
+            const cityScore = crystal.final;
+            const deptScore = deptAvg?.name ? deptAvg.score : (deptAvg?.score || 7.4);
+            const regionScore = data?.regionalInfo?.score || 7.4;
+            const deptLabel = deptAvg?.name ? `la ${deptAvg.name}` : `le département ${dpt}`;
+            const regionName = data?.regionalInfo?.name || "la région";
+
+            let assessment = "";
+            if (cityScore >= deptScore && cityScore >= regionScore) {
+              assessment = `affiche un bilan remarquable. Avec un Indice de Pureté de ${cityScore}/10, la commune se positionne non seulement au-dessus de la moyenne de ${deptLabel} (${deptScore}/10), mais confirme également son excellence à l'échelle de la région ${regionName} (${regionScore}/10). Cette performance, supérieure aux standards régionaux, témoigne d'une gestion rigoureuse des polluants et place le réseau local parmi les plus sûrs de la zone.`;
+            } else if (cityScore >= deptScore) {
+              assessment = `se situe dans une dynamique positive. Son score de ${cityScore}/10 surclasse la moyenne de ${deptLabel} (${deptScore}/10) et s'aligne globalement sur les performances de la région ${regionName} (${regionScore}/10). Le réseau de distribution garantit une sécurité sanitaire solide, conforme aux exigences de santé publique actuelles.`;
+            } else {
+              assessment = `présente des indicateurs à surveiller. Avec un score de ${cityScore}/10, la qualité de l'eau est légèrement en retrait par rapport aux moyennes constatées en ${deptLabel} (${deptScore}/10) et dans la région ${regionName} (${regionScore}/10). Ce décalage s'explique souvent par des caractéristiques géologiques locales ou des traces de paramètres techniques spécifiques à ce réseau.`;
+            }
+
+
+            return (
+              <div className="seo-comparison-verdict" style={{ marginTop: '30px', textAlign: 'left', lineHeight: '1.6', fontSize: '1.05rem', color: '#444' }}>
+                <h3 style={{ fontSize: '1.2rem', color: '#1e3a8a', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  Verdict Expert
+                </h3>
+                <p>
+                  En 2026, l'analyse de l'eau potable à <strong>{cityName}</strong> {assessment}
+                </p>
+              </div>
+            );
+          })()}
+
         </div>
       </section>
       <section className="home-content-section gray">

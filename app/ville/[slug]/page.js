@@ -64,10 +64,14 @@ async function getLocalData(slug) {
         ...fullData.deptInfo.averages,
         conformRate: fullData.deptInfo.conformRate,
         score: fullData.deptInfo.avgScore,
-        avgScore: fullData.deptInfo.avgScore
+        avgScore: fullData.deptInfo.avgScore,
+        name: fullData.deptInfo.name
       },
-      initialNeighborCities: neighborList
+
+      initialNeighborCities: neighborList,
+      regionalInfo: fullData.regionalInfo
     };
+
   } catch (e) {
     console.error("Local data error:", e);
     return null;
