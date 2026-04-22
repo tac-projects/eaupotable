@@ -2,6 +2,8 @@ import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
 import { fetchCitySummary } from '../../../lib/water-utils';
 import { cache } from 'react';
+import fs from 'fs';
+import path from 'path';
 
 const DOMAIN = 'https://www.eaupotable.net';
 
@@ -10,12 +12,52 @@ const getCachedSummary = cache(async (cityName) => {
   return await fetchCitySummary(cityName);
 });
 
+async function getLocalData(slug) {
+  try {
+    // On essaie de charger le fichier du département 44
+    const filePath = path.join(process.cwd(), 'data', 'departments', '44.json');
+    if (!fs.existsSync(filePath)) return null;
+    
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fullData = JSON.parse(fileContent);
+    
+    // On cherche la ville par son slug dans le fichier
+    const cityData = fullData.cities[slug];
+    
+    if (!cityData) return null;
+
+    // On injecte les données départementales pour éviter le fetch client
+    return {
+      ...cityData,
+      initialDeptAvg: {
+        ...fullData.deptInfo.averages,
+        conformRate: fullData.deptInfo.conformRate,
+        score: fullData.deptInfo.avgScore,
+        avgScore: fullData.deptInfo.avgScore
+      },
+      initialNeighborCities: fullData.deptInfo.topCities.map(c => ({
+        nom: c.name,
+        code: c.slug,
+        isCurrent: c.slug === slug
+      }))
+    };
+  } catch (e) {
+    console.error("Local data error:", e);
+    return null;
+  }
+}
+
+
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  // On transforme le slug proprement (ex: saint-herblain -> Saint-Herblain)
   const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   
-  const summary = await getCachedSummary(cityNameFromSlug);
+  let summary = await getLocalData(slug);
+  if (!summary) {
+    summary = await getCachedSummary(cityNameFromSlug);
+  }
+
   const officialName = summary?.cityName || cityNameFromSlug;
   const score = summary?.crystal?.final || 'N/A';
   const label = summary?.crystal?.label || 'ANALYSE';
@@ -39,11 +81,13 @@ export async function generateMetadata({ params }) {
 
 export default async function CityPage({ params }) {
   const { slug } = await params;
-  
-  // On transforme le slug
   const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   
-  const summary = await getCachedSummary(cityNameFromSlug);
+  let summary = await getLocalData(slug);
+  if (!summary) {
+    summary = await getCachedSummary(cityNameFromSlug);
+  }
+
   const officialName = summary?.cityName || cityNameFromSlug;
 
   return (
@@ -53,4 +97,5 @@ export default async function CityPage({ params }) {
     </>
   );
 }
+
 

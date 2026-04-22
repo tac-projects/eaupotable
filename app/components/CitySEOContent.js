@@ -14,9 +14,22 @@ export default function CitySEOContent({ cityName, data }) {
   useEffect(() => {
     if (!data || data.error || !data.meta?.code_departement) return;
     const dpt = data.meta.code_departement;
-    
+
     const fetchDeptData = async () => {
+
+      // Priorité aux données déjà injectées (via notre nouveau système JSON)
+      if (data.initialDeptAvg) {
+        setDeptAvg(data.initialDeptAvg);
+      }
+      if (data.initialNeighborCities) {
+        setNeighborCities(data.initialNeighborCities);
+      }
+
+      // Si on a tout ce qu'il faut, on s'arrête là (gain CPU massif)
+      if (data.initialDeptAvg && data.initialNeighborCities) return;
+
       try {
+
         // 1. Appel principal
         const responseDirect = await fetch(`https://hubeau.eaufrance.fr/api/v1/qualite_eau_potable/resultats_dis?code_departement=${dpt}&size=1000`);
         const res = await responseDirect.json();
@@ -229,7 +242,7 @@ export default function CitySEOContent({ cityName, data }) {
 
   if (!data || data.error) return null;
 
-  const { crystal, stats, isConform, meta } = data;
+  const { crystal: oldCrystal, stats, isConform, meta } = data;
   const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
   const dateAnalyse = new Date(meta.date_prelevement).toLocaleDateString('fr-FR');
   const dpt = meta.code_departement || "";
@@ -239,29 +252,68 @@ export default function CitySEOContent({ cityName, data }) {
     const n = parseValue(stat.val);
     return isNaN(n) ? null : n;
   };
-  
+
+  const getCrystalLabel = (s) => {
+    if (s >= 9) return "Excellent";
+    if (s >= 7.5) return "Bon";
+    if (s >= 5) return "Moyen";
+    return "Médiocre";
+  };
+
+  const microbioRaw = stats.microbiology?.val || stats.bacteria?.val || null;
+  const microVal = (microbioRaw?.toLowerCase().includes('absence') || microbioRaw?.includes('<')) ? "Absence" : microbioRaw;
+
+  const calculateScore = () => {
+    let score = 10;
+    const conf = parseValue(stats.conformity?.val);
+    const pest = parseValue(stats.pesticides?.val);
+    const pfasValNum = parseValue(stats.pfas?.val);
+    const nitr = parseValue(stats.nitrates?.val);
+    const chlo = parseValue(stats.chlorine?.val);
+
+    if (conf < 100) score -= 2.5;
+    if (microVal !== "Absence") score -= 5;
+    if (pest > 0) score -= (pest > 0.1 ? 4 : 1.5);
+    if (pfasValNum > 0) score -= (pfasValNum > 0.1 ? 4 : 1.5);
+    if (chlo > 0.1) score -= 0.5;
+    if (nitr > 15) score -= 1;
+    if (nitr > 25) score -= 2;
+
+    return Math.max(1, Math.min(10, score)).toFixed(1);
+  };
+
+  const dynamicScore = calculateScore();
+  const crystal = { final: dynamicScore, label: getCrystalLabel(parseFloat(dynamicScore)) };
+
   const nitrates = getVal(stats.nitrates);
   const durete = getVal(stats.hardness);
   const chlore = getVal(stats.chlorine);
   const pfas = getVal(stats.pfas);
-  const microbioRaw = stats.microbiology?.val || stats.bacteria?.val || null;
-  const microbio = (microbioRaw?.toLowerCase().includes('absence') || microbioRaw?.includes('<')) ? "Absence" : microbioRaw;
   const pesticides = getVal(stats.pesticides);
   const acidity = getVal(stats.ph);
   const turbidity = getVal(stats.turbidity);
   const conductivity = getVal(stats.conductivity);
 
-  const fVal = (val, unit = "") => (val === null || val === undefined || val === '--') ? '--' : `${val}${unit}`;
+  const fVal = (v, unit = "") => {
+    if (v === null || v === undefined || v === '--') return '--';
+    if (typeof v === 'object' && v.val !== undefined) return `${v.val}${v.unit || unit}`;
+    return `${v}${unit}`;
+  };
 
-  const nitratesVal = fVal(nitrates, " mg/L");
-  const dureteVal = fVal(durete, " °f");
-  const chloreVal = fVal(chlore, " mg/L");
-  const pfasVal = fVal(pfas, " µg/L");
-  const microVal = microbio || "--";
-  const pestVal = fVal(pesticides, " µg/L");
-  const phVal = fVal(acidity, " pH");
-  const turbVal = fVal(turbidity, " NFU");
-  const condVal = fVal(conductivity, " µS/cm");
+  const gv = (field, fallback = 0) => {
+    if (!field || field === '--') return fallback;
+    if (typeof field === 'object' && field.val !== undefined) return parseValue(field.val);
+    return parseValue(field);
+  };
+
+  const nitratesVal = fVal(stats.nitrates || nitrates, " mg/L");
+  const dureteVal = fVal(stats.hardness || durete, " °f");
+  const chloreVal = fVal(stats.chlorine || chlore, " mg/L");
+  const pfasVal = fVal(stats.pfas || pfas, " µg/L");
+  const pestVal = fVal(stats.pesticides || pesticides, " µg/L");
+  const phVal = fVal(stats.ph || acidity, " pH");
+  const turbVal = fVal(stats.turbidity || turbidity, " NFU");
+  const condVal = fVal(stats.conductivity || conductivity, " µS/cm");
 
   const getDuelStatus = (val, avg, type = "lowerIsBetter") => {
     const v = parseValue(val);
@@ -269,12 +321,26 @@ export default function CitySEOContent({ cityName, data }) {
     if (isNaN(v) || isNaN(a)) return { label: "Inconnu", class: "" };
     const diff = v - a;
     const tolerance = 0.05 * a;
-    if (Math.abs(diff) <= tolerance) return { label: "Similaire", class: "status-excellent" };
-    if (type === "lowerIsBetter") {
-        return diff < 0 ? { label: "Meilleur", class: "status-excellent" } : { label: "En retrait", class: "status-warning" };
-    } else {
-        return diff > 0 ? { label: "Meilleur", class: "status-excellent" } : { label: "En retrait", class: "status-warning" };
+    if (Math.abs(diff) <= tolerance) return { label: "SIMILAIRE", class: "status-excellent" };
+    
+    if (type === "centered") {
+      const ideal = 7.0; 
+      const distV = Math.abs(v - ideal);
+      const distA = Math.abs(a - ideal);
+      if (Math.abs(distV - distA) <= tolerance) return { label: "SIMILAIRE", class: "status-excellent" };
+      return distV < distA ? { label: "PLUS PUR", class: "status-excellent" } : { label: "MOINS PUR", class: "status-warning" };
     }
+
+    if (type === "higherIsBetter") {
+      if (diff > tolerance) return { label: "PLUS PUR", class: "status-excellent" };
+      return { label: "MOINS PUR", class: "status-warning" };
+    }
+
+    if (type === "lowerIsBetter") {
+      if (diff < -tolerance) return { label: "PLUS PUR", class: "status-excellent" };
+      return { label: "MOINS PUR", class: "status-warning" };
+    }
+    return { label: "SIMILAIRE", class: "status-excellent" };
   };
 
   const spin = (variants) => {
@@ -376,7 +442,7 @@ export default function CitySEOContent({ cityName, data }) {
       })}} />
       <section className="home-content-section white">
         <div className="seo-container">
-          <CityAnalysisSection stats={stats} isConform={isConform} meta={meta} />
+          <CityAnalysisSection stats={stats} isConform={isConform} meta={meta} crystal={crystal} />
         </div>
       </section>
 
@@ -420,7 +486,7 @@ export default function CitySEOContent({ cityName, data }) {
                   <tr>
                     <td><strong>Microbiologie</strong></td>
                     <td className="col-highlight">{microVal}</td>
-                    <td>{deptAvg?.microbiology || '--'}</td>
+                    <td>{fVal(deptAvg?.microbiology)}</td>
                     <td>
                       {(() => {
                         const s = getDuelStatus(microVal.toLowerCase().includes('absence') ? 0 : 1, 0);
@@ -428,13 +494,13 @@ export default function CitySEOContent({ cityName, data }) {
                       })()}
                     </td>
                   </tr>
-                  <tr>
+                   <tr>
                     <td><strong>PFAS (Polluants)</strong></td>
                     <td className="col-highlight">{pfasVal}</td>
                     <td>{fVal(deptAvg?.pfas, " µg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(pfas, deptAvg?.pfas || 0.1);
+                        const s = getDuelStatus(pfas, gv(deptAvg?.pfas, 0.1));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -445,7 +511,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.pesticides, " µg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(pesticides, deptAvg?.pesticides || 0.1);
+                        const s = getDuelStatus(pesticides, gv(deptAvg?.pesticides, 0.1));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -456,7 +522,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.chlorine, " mg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(chlore, deptAvg?.chlorine || 0.1);
+                        const s = getDuelStatus(chlore, gv(deptAvg?.chlorine, 0.1));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -467,7 +533,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.nitrates, " mg/L")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(nitrates, deptAvg?.nitrates || 6.5);
+                        const s = getDuelStatus(nitrates, gv(deptAvg?.nitrates, 6.5));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -478,7 +544,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.hardness, " °f")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(durete, deptAvg?.hardness || 25.5);
+                        const s = getDuelStatus(durete, gv(deptAvg?.hardness, 25.5));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -489,7 +555,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.ph, " pH")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(acidity, deptAvg?.ph || 7.5, "centered");
+                        const s = getDuelStatus(acidity, gv(deptAvg?.ph, 7.5), "centered");
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -500,7 +566,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.turbidity, " NFU")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(turbidity, deptAvg?.turbidity || 0.1);
+                        const s = getDuelStatus(turbidity, gv(deptAvg?.turbidity, 0.1));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>
@@ -511,7 +577,7 @@ export default function CitySEOContent({ cityName, data }) {
                     <td>{fVal(deptAvg?.conductivity, " µS/cm")}</td>
                     <td>
                       {(() => {
-                        const s = getDuelStatus(conductivity, deptAvg?.conductivity || 400);
+                        const s = getDuelStatus(conductivity, gv(deptAvg?.conductivity, 400));
                         return <div className={`seo-status-pill ${s.class}`}>{s.label}</div>;
                       })()}
                     </td>

@@ -24,14 +24,14 @@ const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
 const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
-export default function WaterApp({ initialCity = null }) {
+export default function WaterApp({ initialCity = null, initialData = null }) {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedCity, setSelectedCity] = useState(initialCity);
-  const [waterData, setWaterData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [waterData, setWaterData] = useState(initialData);
+  const [isLoading, setIsLoading] = useState(!initialData && !!initialCity);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
 
@@ -176,9 +176,9 @@ export default function WaterApp({ initialCity = null }) {
 
   // 4. City initial data fetch
   useEffect(() => {
-    if (!initialCity) return;
+    if (!initialCity || initialData) return;
     fetchWaterData(initialCity);
-  }, [initialCity]);
+  }, [initialCity, initialData]);
 
   const scrollToContent = () => {
     window.scrollTo({
