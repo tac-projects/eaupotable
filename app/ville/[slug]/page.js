@@ -27,6 +27,28 @@ async function getLocalData(slug) {
     if (!cityData) return null;
 
     // On injecte les données départementales pour éviter le fetch client
+    // On s'assure que la ville actuelle est dans la liste du benchmark
+    let neighborList = fullData.deptInfo.topCities.map(c => ({
+      nom: c.name,
+      score: c.score,
+      code: c.slug,
+      isCurrent: c.slug === slug
+    }));
+
+    const isCurrentInTop = neighborList.some(c => c.isCurrent);
+    if (!isCurrentInTop) {
+      // On AJOUTE la ville actuelle au lieu de remplacer (on aura 11 villes)
+      neighborList.push({
+        nom: cityData.cityName,
+        score: cityData.crystal.final,
+        code: slug,
+        isCurrent: true
+      });
+    }
+    
+    // On retrie toujours par score pour l'esthétique
+    neighborList.sort((a, b) => b.score - a.score);
+
     return {
       ...cityData,
       initialDeptAvg: {
@@ -35,11 +57,7 @@ async function getLocalData(slug) {
         score: fullData.deptInfo.avgScore,
         avgScore: fullData.deptInfo.avgScore
       },
-      initialNeighborCities: fullData.deptInfo.topCities.map(c => ({
-        nom: c.name,
-        code: c.slug,
-        isCurrent: c.slug === slug
-      }))
+      initialNeighborCities: neighborList
     };
   } catch (e) {
     console.error("Local data error:", e);

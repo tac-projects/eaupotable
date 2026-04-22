@@ -8,8 +8,8 @@ export default function CitySEOContent({ cityName, data }) {
   const [deptAvg, setDeptAvg] = useState(null);
   const [neighborCities, setNeighborCities] = useState([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisPhase, setAnalysisPhase] = useState('idle'); // idle, loading, done
-  const [analyzedCities, setAnalyzedCities] = useState([]);
+  const [analysisPhase, setAnalysisPhase] = useState(data?.initialNeighborCities ? 'done' : 'idle');
+  const [analyzedCities, setAnalyzedCities] = useState(data?.initialNeighborCities || []);
 
   useEffect(() => {
     if (!data || data.error || !data.meta?.code_departement) return;
@@ -22,7 +22,10 @@ export default function CitySEOContent({ cityName, data }) {
         setDeptAvg(data.initialDeptAvg);
       }
       if (data.initialNeighborCities) {
-        setNeighborCities(data.initialNeighborCities);
+        const sorted = [...data.initialNeighborCities].sort((a,b) => b.score - a.score);
+        setNeighborCities(sorted);
+        setAnalyzedCities(sorted);
+        setAnalysisPhase('done');
       }
 
       // Si on a tout ce qu'il faut, on s'arrête là (gain CPU massif)
@@ -629,7 +632,7 @@ export default function CitySEOContent({ cityName, data }) {
                           }}
                         ></div>
                       </div>
-                      <span className="benchmark-score">{city.score.toFixed(1)}</span>
+                      <span className="benchmark-score">{(city.score || 0).toFixed(1)}</span>
                     </a>
                   );
                 })
@@ -720,7 +723,7 @@ function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
       name: "Santé & Vigilance", 
       icon: "🔬",
       keys: [
-        { key: "microbio", label: "Microbiologie", limit: "0 n/mL" },
+        { key: "microbiology", label: "Microbiologie", limit: "0 n/mL" },
         { key: "nitrates", label: "Nitrates", limit: "50 mg/L" },
         { key: "pesticides", label: "Pesticides totaux", limit: "0.1 µg/L" },
         { key: "pfas", label: "PFAS (Polluants éternels)", limit: "0.1 µg/L" },
@@ -745,7 +748,7 @@ function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
         { key: "iron", label: "Fer total", limit: "200 µg/L" },
         { key: "manganese", label: "Manganèse", limit: "50 µg/L" },
         { key: "copper", label: "Cuivre", limit: "2.0 mg/L" },
-        { key: "cot", label: "Carbone Org. Total", limit: "Inconnu" }
+        { key: "organic_carbon", label: "Carbone Org. Total", limit: "Inconnu" }
       ]
     }
   ];
@@ -780,8 +783,8 @@ function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
                 </tr>
                 {dossier.keys.map(({ key, label, limit }) => {
                   const s = stats[key];
-                  const val = (key === 'microbio' && !s?.val) ? (isConform ? 'Absence' : 'Contrôlée') : (s?.val || '--');
-                  const unit = s?.unit || (key === 'microbio' ? 'germes' : '');
+                  const val = (key === 'microbiology' && !s?.val) ? (isConform ? 'Absence' : 'Contrôlée') : (s?.val || '--');
+                  const unit = s?.unit || (key === 'microbiology' ? 'germes' : '');
                   const status = getParameterStatus(key, val);
                   
                   return (

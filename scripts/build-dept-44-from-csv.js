@@ -3,9 +3,12 @@ const path = require('path');
 const readline = require('readline');
 
 // SISE-EAUX SUPREME ARCHIVIST (Multi-Network aware for Large Cities)
-const DEPT_CODE = "044";
+const DEPT_CODE = "44";
+const FILE_DEPT = "044";
 const YEARS = ["2026", "2025", "2024", "2023", "2022"];
 const DIRS = YEARS.map(y => path.join(__dirname, '..', 'data', 'archives', y));
+
+const makeSlug = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
 
 const config = {
     nitrates: { codes: ["1340", "1342"] },
@@ -20,8 +23,9 @@ const config = {
     turbidity: { codes: ["1305", "1706"] },
     iron: { codes: ["1393", "1391"] },
     manganese: { codes: ["1394"] },
-    ammonium: { codes: ["1331"] },
-    copper: { codes: ["1392"] }
+    ammonium: { codes: ["1331", "1335"] },
+    copper: { codes: ["1392"] },
+    organic_carbon: { codes: ["1841"] }
 };
 
 function splitCsv(line) {
@@ -45,7 +49,7 @@ function parseValue(val) {
     return isNaN(parsed) ? NaN : parsed;
 }
 
-function calculateCrystalScore(s, isConform) {
+function calculateCrystalScore(s, isConform, cityName) {
     let score = 10.0;
     if (!isConform) return { final: 3.5, label: "NON CONFORME", statusClass: "status-critical", explanation: "L'eau ne respecte pas les limites de qualité ARS." };
     
@@ -104,6 +108,9 @@ async function processCSV() {
     for await (const line of rlUdi) {
         const p = splitCsv(line);
         if (!p[1] || p[1] === 'nomcommune') continue;
+        // Filtre de sécurité : le code INSEE (p0) doit commencer par DEPT_CODE
+        if (!p[0] || !p[0].startsWith(DEPT_CODE)) continue;
+        
         const key = p[1].toUpperCase().trim(), cd = p[3];
         if (!udiMap[key]) udiMap[key] = [];
         if (!udiMap[key].includes(cd)) udiMap[key].push(cd);
@@ -112,7 +119,7 @@ async function processCSV() {
     // 2. PLV : On indexe par réseau ET on construit l'arborescence de parenté
     const parentTree = {}; // cdreseau -> cdreseauamont
     for (let i = 0; i < YEARS.length; i++) {
-        const f = path.join(DIRS[i], `DIS_PLV_${YEARS[i]}_${DEPT_CODE}.txt`);
+        const f = path.join(DIRS[i], `DIS_PLV_${YEARS[i]}_${FILE_DEPT}.txt`);
         if (!fs.existsSync(f)) continue;
         const rl = readline.createInterface({ input: fs.createReadStream(f) });
         for await (const line of rl) {
@@ -131,7 +138,7 @@ async function processCSV() {
 
     // 3. Charger RESULT
     for (let i = 0; i < YEARS.length; i++) {
-        const f = path.join(DIRS[i], `DIS_RESULT_${YEARS[i]}_${DEPT_CODE}.txt`);
+        const f = path.join(DIRS[i], `DIS_RESULT_${YEARS[i]}_${FILE_DEPT}.txt`);
         if (!fs.existsSync(f)) continue;
         const rl = readline.createInterface({ input: fs.createReadStream(f) });
         for await (const line of rl) {
@@ -164,8 +171,8 @@ async function processCSV() {
                 visited.add(currentUdi);
 
                 const history = udiHistory[currentUdi] || [];
-                // On scanne l'historique du réseau actuel
-                for (const entry of history.slice(0, 50)) {
+                // On scanne l'historique du réseau actuel (limite augmentée pour les grandes villes)
+                for (const entry of history.slice(0, 1000)) {
                     const refRes = resultsByRef[entry.ref] || {};
                     for (const [key, pConf] of Object.entries(config)) {
                         if (stats[key].val !== '--') continue; // Déjà trouvé plus récent/local
@@ -193,8 +200,8 @@ async function processCSV() {
         };
 
         findParamInHierarchy(udis);
-        const crystal = calculateCrystalScore(stats, isConform);
-        const slug = cityName.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-$/, '');
+        const crystal = calculateCrystalScore(stats, isConform, cityName);
+        const slug = makeSlug(cityName);
         output.cities[slug] = {
             cityName: cityName.split('-').map(w => w.charAt(0) + w.slice(1).toLowerCase()).join('-'),
             reseau: udis[0], isConform, crystal, stats,
@@ -230,7 +237,19 @@ async function processCSV() {
     output.deptInfo.avgScore = Math.round((all.reduce((a,b) => a + b.crystal.final, 0) / all.length) * 10) / 10;
     output.deptInfo.conformRate = Math.round((all.filter(c => c.isConform).length / all.length) * 100);
     output.deptInfo.averages = avgData;
-    output.deptInfo.topCities = all.map(c => ({ name: c.cityName, score: c.crystal.final, slug: c.cityName.toLowerCase().replace(/[^a-z0-9]/g, '-') })).sort((a,b) => b.score - a.score).slice(0, 50);
+    const majorCities44 = [
+        "Nantes", "Saint-Nazaire", "Saint-Herblain", "Rezé", "Saint-Sébastien-sur-Loire",
+        "Orvault", "Vertou", "Couëron", "Carquefou", "Bouguenais"
+    ];
+    output.deptInfo.topCities = majorCities44.map(name => {
+        const slug = makeSlug(name);
+        const city = output.cities[slug];
+        return {
+            name: city ? city.cityName : name,
+            score: city ? city.crystal.final : 7.0, // Fallback si pas trouvé (peu probable)
+            slug: slug
+        };
+    });
 
     fs.writeFileSync(path.join(__dirname, '..', 'data', 'departments', '44.json'), JSON.stringify(output, null, 2));
     console.log(`\n🏆 ARCHIVISTE SUPRÊME : Mission terminée. Les grandes villes sont désormais synchronisées avec leurs réseaux amont.`);

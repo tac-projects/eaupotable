@@ -1645,10 +1645,12 @@ body:has(.seo-content-wrapper) {
 /* SEO UNIFIED DATA TABLE */
 .seo-data-table-unified {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
+    border: 1px solid rgba(var(--primary-rgb), 0.15);
 }
 
 .seo-data-table-unified th {
