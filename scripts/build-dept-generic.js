@@ -154,7 +154,8 @@ const config = {
 };
 
 const YEARS = ["2026", "2025", "2024", "2023", "2022"];
-const ARCHIVE_DIR = path.join(__dirname, '..', 'data', 'archives');
+const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');
+
 
 // 3. UTILITIES
 const makeSlug = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
