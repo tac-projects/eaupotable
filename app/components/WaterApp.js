@@ -32,7 +32,6 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   const [waterData, setWaterData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(!initialData && !!initialCity);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [placeholder, setPlaceholder] = useState('');
 
   // PWA States
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -43,60 +42,16 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   // Sharing States
   const [showShareFab, setShowShareFab] = useState(false);
 
-  // mapContainerRef supprimé car géré par MapBackground
-  // 1. Animation Typewriter
-  useEffect(() => {
-    const texts = ["Paris, 75000", "Lyon, 69000", "Marseille, 13000", "Toulouse, 31000", "Nantes, 44000"];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let timeout;
-
-    const type = () => {
-      const currentText = texts[textIndex];
-      if (isDeleting) {
-        setPlaceholder(currentText.substring(0, charIndex - 1));
-        charIndex--;
-      } else {
-        setPlaceholder(currentText.substring(0, charIndex + 1));
-        charIndex++;
-      }
-
-      let speed = isDeleting ? 50 : 100;
-
-      if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true;
-        speed = 2000; // Pause at end
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        speed = 500;
-      }
-
-      timeout = setTimeout(type, speed);
-    };
-
-    // On réduit le délai d'attente avant le démarrage de l'animation (500ms au lieu de 1500ms)
-    const startTimeout = setTimeout(type, 500);
-    setPlaceholder("Votre ville...");
-    
-    return () => {
-      clearTimeout(timeout);
-      clearTimeout(startTimeout);
-    };
-  }, []);
-
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      // Si on scrolle plus de 100px, on passe en mode "bas de page"
       if (window.scrollY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -150,7 +105,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       if (window.scrollY > 300) setShowShareFab(true);
       else setShowShareFab(false);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

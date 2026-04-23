@@ -59,7 +59,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
       <head>
-        <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
       </head>
       <body className="full-height-body">
         {children}

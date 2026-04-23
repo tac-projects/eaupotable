@@ -111,6 +111,9 @@ export async function generateMetadata({ params }) {
       description: `L'eau de ${officialName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
       images: [ogImageUrl],
     },
+    other: {
+      'preconnect': 'https://hubeau.eaufrance.fr'
+    }
   };
 }
 

@@ -3,7 +3,63 @@
 import { useState, useRef, useEffect } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
-import { POPULAR_CITIES } from '@/lib/water-utils';
+import { POPULAR_CITIES, METROPOLIS_SCORES } from '@/lib/water-utils';
+
+const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, className, ariaLabel }) => {
+  const [placeholder, setPlaceholder] = useState("Votre ville...");
+
+  useEffect(() => {
+    const texts = ["Paris, 75000", "Lyon, 69000", "Marseille, 13000", "Toulouse, 31000", "Nantes, 44000"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timeout;
+
+    const type = () => {
+      const currentText = texts[textIndex];
+      if (isDeleting) {
+        setPlaceholder(currentText.substring(0, charIndex - 1));
+        charIndex--;
+      } else {
+        setPlaceholder(currentText.substring(0, charIndex + 1));
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true;
+        speed = 2000;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        speed = 500;
+      }
+
+      timeout = setTimeout(type, speed);
+    };
+
+    const startTimeout = setTimeout(type, 1000); // Délai plus long pour laisser le LCP se stabiliser
+    return () => {
+      clearTimeout(timeout);
+      clearTimeout(startTimeout);
+    };
+  }, []);
+
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onKeyDown={onKeyDown}
+      placeholder={placeholder}
+      className={className}
+      aria-label={ariaLabel}
+    />
+  );
+};
 
 export default function HomeLanding({ onCitySelect, searchProps }) {
   const [email, setEmail] = useState('');
@@ -12,30 +68,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [vigilanceSuggestions, setVigilanceSuggestions] = useState([]);
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
-  const [metropolisScores, setMetropolisScores] = useState([
-    { name: "Paris", score: "5.5", dpt: "75", slug: "paris" },
-    { name: "Marseille", score: "10", dpt: "13", slug: "marseille" },
-    { name: "Lyon", score: "8.5", dpt: "69", slug: "lyon" },
-    { name: "Toulouse", score: "10", dpt: "31", slug: "toulouse" },
-    { name: "Nice", score: "9.5", dpt: "06", slug: "nice" },
-    { name: "Nantes", score: "8", dpt: "44", slug: "nantes" },
-    { name: "Montpellier", score: "7.5", dpt: "34", slug: "montpellier" },
-    { name: "Strasbourg", score: "9", dpt: "67", slug: "strasbourg" },
-    { name: "Bordeaux", score: "8", dpt: "33", slug: "bordeaux" },
-    { name: "Lille", score: "5.5", dpt: "59", slug: "lille" }
-  ]);
+  const metropolisScores = METROPOLIS_SCORES;
   const turnstileRef = useRef(null);
-
-  // Chargement des scores réels depuis l'archiviste
-  useEffect(() => {
-    fetch('/data/metropolis.json')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) setMetropolisScores(data);
-      })
-      .catch(err => console.log("Note: scores par défaut utilisés pour l'accueil"));
-  }, []);
-
 
   const SITE_KEY = "0x4AAAAAAC_xXPQR0f_6hAhk";
 
@@ -43,7 +77,6 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
     searchQuery,
     suggestions,
     isSearchFocused,
-    placeholder,
     onSearchChange,
     handleSearchSelection,
     setIsSearchFocused,
@@ -138,8 +171,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              <input
-                type="text"
+              <TypewriterInput
                 value={searchQuery}
                 onChange={onSearchChange}
                 onFocus={() => setIsSearchFocused(true)}
@@ -147,9 +179,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
                 }}
-                placeholder={placeholder}
                 className="search-input"
-                aria-label="Rechercher une ville ou un code postal"
+                ariaLabel="Rechercher une ville ou un code postal"
               />
               {searchQuery && (
                 <button

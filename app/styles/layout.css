@@ -103,7 +103,9 @@ main {
 @media (max-width: 768px) {
     .mesh-blob {
         animation: none !important; /* Total disable on mobile for TBT */
-        filter: blur(40px); /* Lower blur for better paint perf */
+        filter: blur(30px); /* Lower blur for better paint perf */
+        will-change: auto !important; /* Avoid memory overhead when static */
+        opacity: 0.3; /* Subtle background */
     }
 }
 
