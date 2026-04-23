@@ -38,7 +38,6 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
 
   const SITE_KEY = "0x4AAAAAAC_xXPQR0f_6hAhk";
-  const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
   const {
     searchQuery,
@@ -55,17 +54,18 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
   const handleVigilanceCityChange = async (val) => {
     setCityName(val);
-    if (val.length < 3) {
+    if (val.length < 2) {
       setVigilanceSuggestions([]);
       return;
     }
     try {
-      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(val)}.json?access_token=${mapboxToken}&country=FR&types=place,postcode&language=fr&limit=5`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setVigilanceSuggestions(data.features || []);
+      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setVigilanceSuggestions(data || []);
+      }
     } catch (err) {
-      console.error("Mapbox error:", err);
+      console.error("Vigilance search error:", err);
     }
   };
 
@@ -182,9 +182,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   ))}
                 </div>
               )}
-              {suggestions.map((f, i) => (
-                <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(f)}>
-                  <strong>{f.text}</strong> <span className="suggestion-context-text">({f.context?.[0]?.text || ''})</span>
+              {suggestions.map((city, i) => (
+                <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(city)}>
+                  <strong>{city.text}</strong> <span className="suggestion-context-text">({city.dpt})</span>
                 </div>
               ))}
             </div>
@@ -437,13 +437,13 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                     />
                     {isVigilanceFocused && vigilanceSuggestions.length > 0 && (
                       <div className="vigilance-suggestions-dropdown">
-                        {vigilanceSuggestions.map((f, i) => (
+                        {vigilanceSuggestions.map((city, i) => (
                           <div
                             key={i}
                             className="vigilance-suggestion-item"
-                            onClick={() => handleVigilanceCitySelect(f)}
+                            onClick={() => handleVigilanceCitySelect(city)}
                           >
-                            <strong>{f.text}</strong> <span className="suggestion-context">({f.context?.[0]?.text || ''})</span>
+                            <strong>{city.text}</strong> <span className="suggestion-context">({city.dpt})</span>
                           </div>
                         ))}
                       </div>

@@ -8,17 +8,8 @@ import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-manrope',
-});
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: '--font-inter', display: 'swap' });
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: '--font-manrope', display: 'swap' });
 
 const grandHotel = Grand_Hotel({
   weight: '400',
@@ -33,9 +24,12 @@ export const metadata = {
   description: 'Analysez la qualité réelle et la pureté de votre eau potable en 2026. Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans plus de 35 000 communes.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/img/favicon.svg',
+    icon: [
+      { url: '/img/favicon.svg', type: 'image/svg+xml' },
+      { url: '/img/icons/google-search-icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/img/icons/google-search-icon.png',
     shortcut: '/img/favicon.svg',
-    apple: '/img/icons/icon-512-v4.png',
   },
   appleWebApp: {
     capable: true,
@@ -65,8 +59,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
       <head>
-        <link rel="dns-prefetch" href="https://hubeau.eaufrance.fr" />
-        <link rel="dns-prefetch" href="https://api.mapbox.com" />
+        <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
       </head>
       <body className="full-height-body">
         {children}

@@ -22,7 +22,6 @@ import CityHero from './CityHero';
 // WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
-const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
 
 export default function WaterApp({ initialCity = null, initialData = null }) {
   const router = useRouter();
@@ -190,8 +189,8 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   const handleSearchSelection = async (feature) => {
     setSearchQuery(""); // On vide la barre pour laisser le placeholder animé
     setSuggestions([]);
+    const slug = feature.slug;
     const cityName = feature.text;
-    const slug = cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
     
     // On retire { scroll: false } pour permettre le scroll auto de Next.js
     // Et on force window.scrollTo(0,0) pour être certain d'arriver en haut (évite le glitch si le composant est persistent)
@@ -222,22 +221,21 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   const onSearchChange = async (e) => {
     const val = e.target.value;
     setSearchQuery(val);
-    if (val.length < 3) { setSuggestions([]); return; }
-    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(val)}.json?access_token=${mapboxToken}&country=FR&types=place,postcode&language=fr&limit=5`;
-    const res = await fetch(url);
-    const data = await res.json();
-    setSuggestions(data.features || []);
+    if (val.length < 2) { setSuggestions([]); return; }
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setSuggestions(data || []);
+      }
+    } catch (err) {
+      console.error("Search error:", err);
+    }
   };
 
   const geolocate = () => {
-    if (!navigator.geolocation) return;
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      const { latitude, longitude } = pos.coords;
-      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${mapboxToken}&types=place&language=fr&limit=1`;
-      const res = await fetch(url);
-      const data = await res.json();
-      if (data.features?.length > 0) { handleSearchSelection(data.features[0]); }
-    });
+    // Géolocalisation désactivée car elle dépendait de Mapbox.
+    alert("La géolocalisation est temporairement indisponible.");
   };
 
   return (

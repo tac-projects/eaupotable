@@ -1138,6 +1138,7 @@
     min-width: 500px;
     border-collapse: collapse;
     font-size: 0.95rem;
+    table-layout: fixed;
 }
 
 .comparison-table th,
@@ -1145,6 +1146,8 @@
     padding: 16px 20px;
     text-align: left;
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .comparison-table th {
@@ -1156,6 +1159,11 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Équilibre parfait : 4 colonnes à 25% */
+.comparison-table th {
+    width: 25%;
 }
 
 .comparison-table td.col-highlight {

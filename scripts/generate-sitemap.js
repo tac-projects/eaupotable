@@ -4,18 +4,34 @@ const path = require('path');
 const DOMAIN = 'https://www.eaupotable.net';
 
 async function generateSitemap() {
-  console.log('🚀 Démarrage de la génération du sitemap indexé par départements...');
+  console.log('🚀 Démarrage de la génération du sitemap basé sur l\'index local...');
 
   try {
     const sitemapsDir = path.join(__dirname, '../public/sitemaps');
+    const indexPath = path.join(__dirname, '../public/city-index.json');
+    
     if (!fs.existsSync(sitemapsDir)) {
       fs.mkdirSync(sitemapsDir, { recursive: true });
     }
 
-    // 1. Récupérer les départements
-    const deptRes = await fetch('https://geo.api.gouv.fr/departements');
-    const departements = await deptRes.json();
-    
+    if (!fs.existsSync(indexPath)) {
+      console.error('❌ Erreur : city-index.json introuvable. Lancez d\'abord le script de build des données.');
+      return;
+    }
+
+    // 1. Charger l'index local
+    const cityIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    const departements = {};
+
+    // 2. Grouper les slugs par département
+    Object.entries(cityIndex).forEach(([slug, deptCode]) => {
+      // On ignore les entrées qui sont des codes INSEE numériques (5 chiffres)
+      if (/^\d{5}$/.test(slug)) return;
+      
+      if (!departements[deptCode]) departements[deptCode] = [];
+      departements[deptCode].push(slug);
+    });
+
     let sitemapFiles = [];
 
     // --- SITEMAP PRINCIPAL (Pages Statiques) ---
@@ -27,32 +43,23 @@ ${staticUrls.map(url => `  <url><loc>${url}</loc><changefreq>weekly</changefreq>
     fs.writeFileSync(path.join(sitemapsDir, 'sitemap-main.xml'), staticXml);
     sitemapFiles.push('sitemap-main.xml');
 
-    console.log(`📑 Génération des sitemaps pour ${departements.length} départements...`);
+    console.log(`📑 Génération des sitemaps pour ${Object.keys(departements).length} départements référencés...`);
 
     // --- SITEMAPS PAR DEPARTEMENT ---
-    for (const dept of departements) {
-      let deptUrls = [];
-      deptUrls.push(`${DOMAIN}/departement/${dept.code}`);
+    for (const [deptCode, slugs] of Object.entries(departements)) {
+      const deptUrls = [];
+      deptUrls.push(`${DOMAIN}/departement/${deptCode}`);
 
-      const cityRes = await fetch(`https://geo.api.gouv.fr/departements/${dept.code}/communes`);
-      const communes = await cityRes.json();
-
-      for (const city of communes) {
-        const slug = city.nom
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[^a-z0-9]/g, '-');
-        
+      slugs.forEach(slug => {
         deptUrls.push(`${DOMAIN}/ville/${slug}`);
-      }
+      });
 
       const deptXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${deptUrls.map(url => `  <url><loc>${url}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join('\n')}
 </urlset>`;
       
-      const fileName = `sitemap-dept-${dept.code}.xml`;
+      const fileName = `sitemap-dept-${deptCode}.xml`;
       fs.writeFileSync(path.join(sitemapsDir, fileName), deptXml);
       sitemapFiles.push(fileName);
       process.stdout.write('.');

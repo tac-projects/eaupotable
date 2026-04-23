@@ -12,8 +12,6 @@ export default function Navbar() {
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
 
-  const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -37,23 +35,23 @@ export default function Navbar() {
   const handleSearchChange = async (e) => {
     const val = e.target.value;
     setSearchQuery(val);
-    if (val.length < 3) {
+    if (val.length < 2) {
       setSuggestions([]);
       return;
     }
     try {
-      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(val)}.json?access_token=${mapboxToken}&country=FR&types=place,postcode&language=fr&limit=5`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setSuggestions(data.features || []);
+      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
+      if (res.ok) {
+        const data = await res.json();
+        setSuggestions(data || []);
+      }
     } catch (err) {
       console.error("Sidebar Search error:", err);
     }
   };
 
-  const handleSelect = (feature) => {
-    const cityName = feature.text;
-    const slug = cityName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+  const handleSelect = (city) => {
+    const slug = city.slug;
     setIsOpen(false);
     setSearchQuery('');
     setSuggestions([]);
@@ -149,9 +147,9 @@ export default function Navbar() {
                   ))}
                 </div>
               )}
-              {suggestions.map((f, i) => (
-                <div key={i} className="menu-suggestion-item" onClick={() => handleSelect(f)}>
-                  <strong>{f.text}</strong> <span className="menu-suggestion-context">({f.context?.[0]?.text || ''})</span>
+              {suggestions.map((city, i) => (
+                <div key={i} className="menu-suggestion-item" onClick={() => handleSelect(city)}>
+                  <strong>{city.text}</strong> <span className="menu-suggestion-context">({city.dpt})</span>
                 </div>
               ))}
             </div>

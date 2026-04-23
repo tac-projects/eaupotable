@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run sitemap && next build && npm run indexnow",
+    "build": "next build",
+    "build:full": "npm run sitemap && next build && npm run indexnow",
     "start": "next start",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "indexnow": "node scripts/notify-indexnow.js"
+    "sitemap": "node scripts/build-dept-generic.js --all && node scripts/sync-home-scores.js && node scripts/generate-sitemap.js",
+    "indexnow": "node scripts/notify-indexnow.js",
+    "ship": "npm run sitemap && git add . && git commit -m \"📦 Data & Sitemap Auto-Update\" && git push"
   },
   "dependencies": {
-    "mapbox-gl": "^3.21.0",
     "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4"

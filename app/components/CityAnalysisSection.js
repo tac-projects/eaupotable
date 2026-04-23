@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useMemo } from 'react';
 import {
   getParameterStatus,
   PARAM_ICONS,
@@ -10,7 +10,7 @@ import {
 } from '@/lib/water-utils';
 
 export default function CityAnalysisSection({ stats, isConform, meta }) {
-  const paramsList = [
+  const paramsList = useMemo(() => [
     { name: "Microbiologie", key: "microbiology", data: stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
     { name: "Nitrates", key: "nitrates", data: stats.nitrates },
     { name: "Pesticides", key: "pesticides", data: stats.pesticides },
@@ -20,18 +20,18 @@ export default function CityAnalysisSection({ stats, isConform, meta }) {
     { name: "Acidité (pH)", key: "ph", data: stats.ph },
     { name: "Turbidité", key: "turb", data: stats.turbidity },
     { name: "Conductivité", key: "cond", data: stats.conductivity },
-  ].filter(p => p.data && p.data.val !== undefined);
+  ].filter(p => p.data && p.data.val !== undefined), [stats, meta.date_prelevement]);
 
   return (
     <Fragment>
       <div className="seo-section-header">
         <h2 className="seo-main-title">Analyses Techniques</h2>
-        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels selon 12 indicateurs clés.</p>
+        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels selon 9 indicateurs clés.</p>
       </div>
       <div className="analysis-grid-container">
         <div className="analysis-grid">
-          {paramsList.map((p, i) => (
-            <AnalysisCard key={i} parameter={p} />
+          {paramsList.map((p) => (
+            <AnalysisCard key={p.key} parameter={p} />
           ))}
         </div>
         
@@ -56,22 +56,30 @@ export default function CityAnalysisSection({ stats, isConform, meta }) {
 function AnalysisCard({ parameter }) {
   const [isOpen, setIsOpen] = useState(false);
   const { name, key, data } = parameter;
-  const status = getParameterStatus(key, data?.val);
+  
+  const status = useMemo(() => getParameterStatus(key, data?.val), [key, data?.val]);
   const range = RANGES[key];
-  const val = parseValue(data?.val);
+  const val = useMemo(() => parseValue(data?.val), [data?.val]);
   const isCentered = CENTERED_PARAMS.includes(key);
 
-  let pos = 50;
-  if (key === "bacteria" || key === "microbiology") { pos = (status.status === "perfect") ? 10 : 90; }
-  else if (range && val && !isNaN(val)) {
-    if (isCentered) {
-      const [c1, w1, g1, g2, w2, c2] = range;
-      if (val <= g1) pos = 25; else if (val >= g2) pos = 75; else pos = 50;
-    } else {
-      const [b1, b2, b3] = range;
-      if (val <= b1) pos = 15; else if (val <= b2) pos = 45; else if (val <= b3) pos = 75; else pos = 90;
+  const pos = useMemo(() => {
+    let p = 50;
+    if (key === "bacteria" || key === "microbiology") { 
+        p = (status.status === "perfect") ? 10 : 90; 
     }
-  }
+    else if (range && val && !isNaN(val)) {
+      if (isCentered) {
+        const [c1, w1, g1, g2, w2, c2] = range;
+        if (val <= g1) p = 25; else if (val >= g2) p = 75; else p = 50;
+      } else {
+        const [b1, b2, b3] = range;
+        if (val <= b1) p = 15; else if (val <= b2) p = 45; else if (val <= b3) p = 75; else p = 90;
+      }
+    }
+    return p;
+  }, [key, status.status, range, val, isCentered]);
+
+  const isAbsence = useMemo(() => key === 'microbiology' && (data?.val?.includes('<') || data?.val?.toLowerCase().includes('absence')), [key, data?.val]);
 
   return (
     <div className={`analysis-card ${isOpen ? 'is-open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
@@ -86,15 +94,8 @@ function AnalysisCard({ parameter }) {
         
         <div className="analysis-card-right">
           <div className="analysis-card-result">
-            {(() => {
-              const isAbsence = key === 'microbiology' && (data?.val?.includes('<') || data?.val?.toLowerCase().includes('absence'));
-              return (
-                <>
-                  <span className="val">{isAbsence ? 'Absence' : (data?.val || '--')}</span>
-                  {!isAbsence && data?.unit && <span className="unit"> {data.unit}</span>}
-                </>
-              );
-            })()}
+            <span className="val">{isAbsence ? 'Absence' : (data?.val || '--')}</span>
+            {!isAbsence && data?.unit && <span className="unit"> {data.unit}</span>}
           </div>
           <div className={`analysis-card-status-dot ${status.class}`}></div>
           <svg className={`analysis-card-chevron ${isOpen ? 'is-active' : ''}`} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

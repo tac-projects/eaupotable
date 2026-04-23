@@ -19,7 +19,10 @@ async function getLocalData(slug) {
     if (!fs.existsSync(indexPath)) return null;
     
     const cityIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-    const deptCode = cityIndex[slug];
+    
+    // Normalisation de sécurité du slug entrant (gestion des tirets multiples)
+    const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
+    const deptCode = cityIndex[cleanSlug] || cityIndex[slug];
     
     if (!deptCode) return null;
 

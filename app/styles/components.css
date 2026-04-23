@@ -2838,6 +2838,93 @@ main.content-wrapper {
     .analysis-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* --- VIGNETTE HERO (WATER REPORT) --- */
+.vignette-hero {
+    position: relative;
+    height: 220px;
+    background: linear-gradient(135deg, #0055FF 0%, #0046CC 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.vignette-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+    z-index: 3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.hero-score-card {
+    background: white;
+    padding: 12px 18px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.hero-score-val {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.hero-status-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+.hero-footer {
+    text-align: right;
+    color: white;
+}
+
+.hero-city {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-network {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
 @media (max-width: 640px) {
     .analysis-grid { grid-template-columns: 1fr; }
     .conformity-badge { width: 100%; justify-content: center; font-size: 1rem; }
@@ -2865,4 +2952,153 @@ main.content-wrapper {
     opacity: 0.7;
     font-style: italic;
 }
+
+/* --- BENCHMARK AUDIT COMPONENT --- */
+.benchmark-container {
+    padding: 2rem;
+    margin-top: 1.5rem;
+}
+
+.benchmark-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.benchmark-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.benchmark-item:hover {
+    transform: translateX(8px);
+    background: white;
+    border-color: var(--primary-solid);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.08);
+}
+
+.benchmark-item.current-city {
+    background: white;
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.05);
+}
+
+.benchmark-city {
+    width: 140px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.benchmark-bar-bg {
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.benchmark-bar-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 100px;
+    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.benchmark-score {
+    width: 40px;
+    text-align: right;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--primary-solid);
+}
+
+.benchmark-cta-container {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.benchmark-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    background: var(--primary-solid);
+    color: white;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.3);
+}
+
+.benchmark-start-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.4);
+}
+
+.benchmark-start-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.benchmark-cta-hint {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.benchmark-scanning-indicator {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.scanner-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary-solid);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.benchmark-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .benchmark-city { width: 100px; font-size: 0.85rem; }
+    .benchmark-container { padding: 1rem; }
+    .benchmark-item { padding: 10px 14px; gap: 10px; }
+}
+
+/* --- STATUS COLORS --- */
+.status-excellent { background: var(--status-excellent) !important; color: white !important; }
+.status-good { background: var(--status-good) !important; color: white !important; }
+.status-warning { background: var(--status-warning) !important; color: white !important; }
+.status-critical { background: var(--status-critical) !important; color: white !important; }
+
 
