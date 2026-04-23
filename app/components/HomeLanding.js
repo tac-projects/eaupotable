@@ -327,10 +327,11 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                         <span className="city-dpt">({city.dpt})</span>
                       </div>
                       <div className="col-score">
-                        <span className={`score-badge ${scoreClass}`}>
-                          {Math.round(scoreNum * 10)} / 100
+                        <span className={`score-badge score-v2-${scoreClass}`}>
+                          {scoreNum.toFixed(1)} / 10
                         </span>
                       </div>
+
                     </button>
                   );
                 })}
