@@ -39,7 +39,7 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
       timeout = setTimeout(type, speed);
     };
 
-    const startTimeout = setTimeout(type, 1000); // Délai plus long pour laisser le LCP se stabiliser
+    const startTimeout = setTimeout(type, 2500); // Délai beaucoup plus long pour laisser le thread principal libre
     return () => {
       clearTimeout(timeout);
       clearTimeout(startTimeout);
@@ -47,17 +47,26 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
   }, []);
 
   return (
-    <input
-      type="text"
-      value={value}
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onKeyDown={onKeyDown}
-      placeholder={placeholder}
-      className={className}
-      aria-label={ariaLabel}
-    />
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .hero-section { min-height: 500px; contain: layout; }
+        @media (max-width: 768px) { .hero-section { min-height: 400px; } }
+        .hero-mesh-background { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background: #ffffff; overflow: hidden; }
+        .seo-title { opacity: 1 !important; visibility: visible !important; }
+        .home-search-container { min-height: 70px; }
+      `}} />
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
+        placeholder={placeholder}
+        className={className}
+        aria-label={ariaLabel}
+      />
+    </>
   );
 };
 

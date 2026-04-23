@@ -47,6 +47,8 @@
     width: 100%;
     position: relative;
     padding: 120px 0; /* Padding vertical pour faire respirer le zébra pattern */
+    content-visibility: auto; /* Magie moderne : ne calcule le rendu que si visible */
+    contain-intrinsic-size: 0 500px; /* Taille estimée pour éviter les sauts de scroll */
 }
 
 .home-content-section.white {

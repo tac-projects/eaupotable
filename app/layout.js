@@ -63,16 +63,27 @@ export default function RootLayout({ children }) {
       <body className="full-height-body">
         {children}
         <Footer />
-        <Script 
-          src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics-deferred" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-L7BMHXS6DJ');
+            window.addEventListener('load', function() {
+              const deferGTM = () => {
+                const script = document.createElement('script');
+                script.src = "https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ";
+                script.async = true;
+                document.head.appendChild(script);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-L7BMHXS6DJ');
+              };
+
+              if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => setTimeout(deferGTM, 1500));
+              } else {
+                setTimeout(deferGTM, 3000);
+              }
+            });
           `}
         </Script>
         <Script id="register-sw" strategy="afterInteractive">
