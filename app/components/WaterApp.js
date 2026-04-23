@@ -240,7 +240,6 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
             searchQuery,
             suggestions,
             isSearchFocused,
-            placeholder,
             onSearchChange,
             handleSearchSelection,
             setIsSearchFocused,
