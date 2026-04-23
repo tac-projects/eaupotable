@@ -12,7 +12,30 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [vigilanceSuggestions, setVigilanceSuggestions] = useState([]);
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
+  const [metropolisScores, setMetropolisScores] = useState([
+    { name: "Paris", score: "5.5", dpt: "75", slug: "paris" },
+    { name: "Marseille", score: "10", dpt: "13", slug: "marseille" },
+    { name: "Lyon", score: "8.5", dpt: "69", slug: "lyon" },
+    { name: "Toulouse", score: "10", dpt: "31", slug: "toulouse" },
+    { name: "Nice", score: "9.5", dpt: "06", slug: "nice" },
+    { name: "Nantes", score: "8", dpt: "44", slug: "nantes" },
+    { name: "Montpellier", score: "7.5", dpt: "34", slug: "montpellier" },
+    { name: "Strasbourg", score: "9", dpt: "67", slug: "strasbourg" },
+    { name: "Bordeaux", score: "8", dpt: "33", slug: "bordeaux" },
+    { name: "Lille", score: "5.5", dpt: "59", slug: "lille" }
+  ]);
   const turnstileRef = useRef(null);
+
+  // Chargement des scores réels depuis l'archiviste
+  useEffect(() => {
+    fetch('/data/metropolis.json')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setMetropolisScores(data);
+      })
+      .catch(err => console.log("Note: scores par défaut utilisés pour l'accueil"));
+  }, []);
+
 
   const SITE_KEY = "0x4AAAAAAC_xXPQR0f_6hAhk";
   const mapboxToken = 'pk.eyJ1IjoiY3Jhenl0YXJwZSIsImEiOiJjbW5wdDczZHQwMDc4MnJxeXN2OTMzYmFlIn0.V2B4cX82xIQntOorHu0XSA';
@@ -288,19 +311,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 <div className="col-score">SCORE MOYEN</div>
               </div>
               <div className="premium-metropolis-body">
-                {[
-                  { name: "Paris", score: "7.9", dpt: "75", slug: "paris" },
-                  { name: "Marseille", score: "5.1", dpt: "13", slug: "marseille" },
-                  { name: "Lyon", score: "4.0", dpt: "69", slug: "lyon" },
-                  { name: "Toulouse", score: "9.4", dpt: "31", slug: "toulouse" },
-                  { name: "Nice", score: "9.4", dpt: "06", slug: "nice" },
-                  { name: "Nantes", score: "9.6", dpt: "44", slug: "nantes" },
-                  { name: "Montpellier", score: "8.6", dpt: "34", slug: "montpellier" },
-                  { name: "Strasbourg", score: "9.1", dpt: "67", slug: "strasbourg" },
-                  { name: "Bordeaux", score: "8.6", dpt: "33", slug: "bordeaux" },
-                  { name: "Lille", score: "8.3", dpt: "59", slug: "lille" }
-                ].map(city => {
+                {metropolisScores.map(city => {
                   const scoreNum = parseFloat(city.score);
+
                   const scoreClass = scoreNum >= 8 ? 'excellent' : scoreNum >= 6 ? 'good' : scoreNum >= 4 ? 'warning' : 'critical';
 
                   return (
@@ -370,7 +383,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 },
                 {
                   q: "D'où proviennent les données du site\u00A0?",
-                  a: "Nous exploitons l'API Hub'Eau, le portail officiel de l'État. Ces données proviennent des prélèvements réels en sortie de robinet effectués par les autorités sanitaires (ARS / Ministère de la Santé)."
+                  a: "Nous exploitons les données de l'API Hub'Eau (État français) via notre base de données locale accélérée. Ces informations proviennent des prélèvements réels effectués par les autorités sanitaires (ARS) pour garantir une fiabilité totale."
+
                 }
               ].map((item, i) => (
                 <details key={i} className="seo-faq-item">
