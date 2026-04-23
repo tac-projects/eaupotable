@@ -358,11 +358,19 @@ async function buildDepartment(deptCode) {
         findParamInHierarchy(udis);
         const crystal = calculateCrystalScore(stats, isConform, cityName);
         const slug = makeSlug(cityName);
+        
+        // Restauration intelligente du nom (Accents)
+        let officialName = cityName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('-');
+        // On check si on a le nom propre dans notre base de référence (DEPT_REF)
+        const knownCity = deptInfo.topCities.find(c => makeSlug(c) === slug);
+        if (knownCity) officialName = knownCity;
+
         output.cities[slug] = {
-            cityName: cityName.split('-').map(w => w.charAt(0) + w.slice(1).toLowerCase()).join('-'),
+            cityName: officialName,
             reseau: udis[0], isConform, crystal, stats,
             meta: { nom_distributeur: nomDistributeur, code_departement: deptCode, date_prelevement: lastDate, conclusion: arsConclusion }
         };
+
     }
 
     const all = Object.values(output.cities);
@@ -417,7 +425,8 @@ async function buildDepartment(deptCode) {
 
 // Function to write the file (moved out of buildDepartment)
 function saveDepartmentFile(deptCode, data) {
-    const outputPath = path.join(__dirname, '..', 'data', 'departments', `${deptCode}.json`);
+    const outputPath = path.join(__dirname, '..', 'public', 'data', 'departments', `${deptCode}.json`);
+
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
     console.log(`✅ Fichier généré : ${outputPath} (${Object.keys(data.cities).length} communes)`);
 }
