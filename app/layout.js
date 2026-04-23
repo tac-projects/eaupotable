@@ -67,6 +67,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} full-height-body`}>
       <head>
+        {/* Chargement ultra-optimisé (Glyphs uniquement) pour l'identité visuelle sans impact LCP */}
+        <link 
+          rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=Grand+Hotel&text=EauPotable.net&display=swap" 
+        />
       </head>
       <body className="full-height-body">
         {children}
