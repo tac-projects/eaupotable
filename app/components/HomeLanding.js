@@ -94,6 +94,12 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
     geolocate
   } = searchProps;
 
+  useEffect(() => {
+    const handleToken = (e) => setTurnstileToken(e.detail);
+    window.addEventListener('turnstile-success', handleToken);
+    return () => window.removeEventListener('turnstile-success', handleToken);
+  }, []);
+
   const handleVigilanceCityChange = async (val) => {
     setCityName(val);
     if (val.length < 2) {
@@ -499,7 +505,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                     disabled={status === 'SENDING' || status === 'SUCCESS'}
                   />
 
-                  <div ref={turnstileRef} className="cf-turnstile-container-inline"></div>
+                  <div id="turnstile-container" className="cf-turnstile-container-inline"></div>
 
                   <button
                     type="submit"
@@ -529,7 +535,6 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
       </section>
 
 
-        {/* SEO POWER: JSON-LD Structured Data for Home */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -590,19 +595,35 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           }}
         />
 
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-          strategy="lazyOnload"
-          onLoad={() => {
-            if (window.turnstile && turnstileRef.current) {
-              window.turnstile.render(turnstileRef.current, {
-                sitekey: SITE_KEY,
-                callback: (token) => setTurnstileToken(token),
-                theme: 'dark'
-              });
-            }
-          }}
-        />
+        <Script id="turnstile-deferred" strategy="afterInteractive">
+          {`
+            window.addEventListener('load', function() {
+              const loadTurnstile = () => {
+                if (window.turnstile_loaded) return;
+                const script = document.createElement('script');
+                script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+                script.async = true;
+                script.onload = () => {
+                   window.turnstile_loaded = true;
+                   if (window.turnstile && document.getElementById('turnstile-container')) {
+                     window.turnstile.render('#turnstile-container', {
+                       sitekey: "${SITE_KEY}",
+                       theme: 'dark',
+                       callback: (token) => {
+                         window.dispatchEvent(new CustomEvent('turnstile-success', { detail: token }));
+                       }
+                     });
+                   }
+                };
+                document.head.appendChild(script);
+              };
+
+              // On charge Turnstile au premier mouvement de souris ou scroll
+              const events = ['mousedown', 'mousemove', 'keydown', 'touchstart', 'scroll'];
+              events.forEach(e => window.addEventListener(e, loadTurnstile, { passive: true, once: true }));
+            });
+          `}
+        </Script>
     </div>
 
   );

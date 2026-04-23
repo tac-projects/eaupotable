@@ -4,19 +4,13 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
-import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
+import { Inter, Manrope } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: '--font-inter', display: 'swap' });
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: '--font-manrope', display: 'swap' });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-inter', display: 'swap' });
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-manrope', display: 'swap' });
 
-const grandHotel = Grand_Hotel({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-grand-hotel',
-});
 
 export const metadata = {
   metadataBase: new URL('https://www.eaupotable.net'),
@@ -46,7 +40,21 @@ export const metadata = {
     locale: 'fr_FR',
     url: 'https://www.eaupotable.net',
     siteName: 'EauPotable.net',
-  }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://www.eaupotable.net',
+  },
 };
 
 export const viewport = {
@@ -57,7 +65,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
+    <html lang="fr" className={`${inter.variable} ${manrope.variable} full-height-body`}>
       <head>
       </head>
       <body className="full-height-body">
