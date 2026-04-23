@@ -521,6 +521,15 @@ function calculateRegionalAverages(allDeptData) {
         }
         await updateIndex();
         
+        // --- SYNCHRO ACCUEIL (Optionnel & Sécurisé) ---
+        try {
+            console.log("\n🔄 Mise à jour automatique des scores de l'accueil...");
+            const { execSync } = require('child_process');
+            execSync('node scripts/sync-home-scores.js', { stdio: 'inherit' });
+        } catch (e) {
+            console.warn("⚠️ Note: La synchro des scores de l'accueil a échoué, mais vos données sont sauvegardées.");
+        }
+
     } else if (deptArg) {
         const codes = deptArg.split('=')[1].split(',');
         for (const code of codes) {
@@ -528,6 +537,16 @@ function calculateRegionalAverages(allDeptData) {
             saveDepartmentFile(code, res);
         }
         await updateIndex();
+
+        // --- SYNCHRO ACCUEIL (Optionnel & Sécurisé) ---
+        try {
+            console.log("\n🔄 Mise à jour automatique des scores de l'accueil...");
+            const { execSync } = require('child_process');
+            execSync('node scripts/sync-home-scores.js', { stdio: 'inherit' });
+        } catch (e) {
+            console.warn("⚠️ Note: La synchro des scores de l'accueil a échoué, mais vos données sont sauvegardées.");
+        }
+
     } else {
         console.log(`
 🚀 SISE-EAUX ARCHIVISTE GÉNÉRIQUE
