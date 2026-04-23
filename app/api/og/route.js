@@ -37,7 +37,7 @@ export async function GET(request) {
         >
           {/* Logo / Header */}
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '40px' }}>
-             <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#1e40af', letterSpacing: '-0.02em' }}>EauPotable.net</div>
+             <div style={{ display: 'flex', fontSize: '24px', fontWeight: 'bold', color: '#1e40af', letterSpacing: '-0.02em' }}>EauPotable.net</div>
           </div>
 
           <div
@@ -78,12 +78,13 @@ export async function GET(request) {
                 boxShadow: `0 10px 30px ${circleColor}33`,
               }}
             >
-              <div style={{ fontSize: '72px', fontWeight: 900, color: 'white', lineHeight: 1 }}>{score}</div>
-              <div style={{ fontSize: '18px', fontWeight: 800, color: 'white', marginTop: '5px', opacity: 0.9 }}>/ 10</div>
+              <div style={{ display: 'flex', fontSize: '72px', fontWeight: 900, color: 'white', lineHeight: 1 }}>{score}</div>
+              <div style={{ display: 'flex', fontSize: '18px', fontWeight: 800, color: 'white', marginTop: '5px', opacity: 0.9 }}>/ 10</div>
             </div>
 
             <div
               style={{
+                display: 'flex',
                 marginTop: '30px',
                 padding: '8px 24px',
                 borderRadius: '12px',
@@ -97,6 +98,7 @@ export async function GET(request) {
             >
               EAU {label}
             </div>
+
           </div>
 
           <p style={{ marginTop: '40px', fontSize: '20px', color: '#6b7280', textAlign: 'center' }}>

@@ -24,7 +24,8 @@ async function getLocalData(slug) {
     if (!deptCode) return null;
 
     // 2. On charge le fichier du département correspondant
-    const filePath = path.join(process.cwd(), 'data', 'departments', `${deptCode}.json`);
+    const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${deptCode}.json`);
+
     if (!fs.existsSync(filePath)) return null;
     
     const fileContent = fs.readFileSync(filePath, 'utf8');

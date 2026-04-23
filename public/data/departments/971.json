@@ -1,0 +1,3175 @@
+{
+  "deptInfo": {
+    "code": "971",
+    "name": "Guadeloupe",
+    "avgScore": 8.9,
+    "conformRate": 100,
+    "averages": {
+      "nitrates": {
+        "val": "1,70",
+        "unit": "  mg/L"
+      },
+      "ph": {
+        "val": "7,38",
+        "unit": "  pH"
+      },
+      "temperature": {
+        "val": "27",
+        "unit": "  °C"
+      },
+      "hardness": {
+        "val": "10",
+        "unit": "  °f"
+      },
+      "chlorine": {
+        "val": "0,76",
+        "unit": "  mg/L"
+      },
+      "pesticides": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "pfas": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "microbiology": {
+        "val": "Absence",
+        "unit": ""
+      },
+      "conductivity": {
+        "val": "190",
+        "unit": "  µS/cm"
+      },
+      "turbidity": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "iron": {
+        "val": "31",
+        "unit": "  µg/L"
+      },
+      "manganese": {
+        "val": "0,44",
+        "unit": "  µg/L"
+      },
+      "ammonium": {
+        "val": "< 0,01",
+        "unit": "  mg/L"
+      },
+      "copper": {
+        "val": "0,012",
+        "unit": "  mg(Cu)/L"
+      },
+      "organic_carbon": {
+        "val": "0,22",
+        "unit": "  mg(C)/L"
+      }
+    },
+    "topCities": [
+      {
+        "name": "Les Abymes",
+        "score": 7,
+        "slug": "les-abymes"
+      },
+      {
+        "name": "Baie-Mahault",
+        "score": 9,
+        "slug": "baie-mahault"
+      },
+      {
+        "name": "Le Gosier",
+        "score": 7,
+        "slug": "le-gosier"
+      },
+      {
+        "name": "Sainte-Anne",
+        "score": 9,
+        "slug": "sainte-anne"
+      },
+      {
+        "name": "Petit-Bourg",
+        "score": 9,
+        "slug": "petit-bourg"
+      }
+    ],
+    "regionName": "Guadeloupe"
+  },
+  "cities": {
+    "abymes-les": {
+      "cityName": "Abymes (les)",
+      "reseau": "971000039",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "23/01/2026"
+        },
+        "temperature": {
+          "val": "26,3",
+          "unit": " °C",
+          "date": "23/01/2026"
+        },
+        "hardness": {
+          "val": "1,71",
+          "unit": " °f",
+          "date": "23/01/2026"
+        },
+        "chlorine": {
+          "val": "0,71",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/10/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "23/01/2026"
+        },
+        "conductivity": {
+          "val": "69",
+          "unit": " µS/cm",
+          "date": "23/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/10/2025"
+        },
+        "iron": {
+          "val": "12",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "copper": {
+          "val": "0,014",
+          "unit": " mg(Cu)/L",
+          "date": "05/11/2025"
+        },
+        "organic_carbon": {
+          "val": "0,28",
+          "unit": " mg(C)/L",
+          "date": "23/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-23",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "anse-bertrand": {
+      "cityName": "Anse-Bertrand",
+      "reseau": "971000055",
+      "isConform": true,
+      "crystal": {
+        "final": 8.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "30/01/2026"
+        },
+        "temperature": {
+          "val": "27,4",
+          "unit": " °C",
+          "date": "30/01/2026"
+        },
+        "hardness": {
+          "val": "34,89",
+          "unit": " °f",
+          "date": "30/01/2026"
+        },
+        "chlorine": {
+          "val": "0,92",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/01/2026"
+        },
+        "conductivity": {
+          "val": "69",
+          "unit": " µS/cm",
+          "date": "30/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "iron": {
+          "val": "22",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "copper": {
+          "val": "0,063",
+          "unit": " mg(Cu)/L",
+          "date": "22/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0,41",
+          "unit": " mg(C)/L",
+          "date": "30/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-30",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "baie-mahault": {
+      "cityName": "Baie-Mahault",
+      "reseau": "971000015",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "ph": {
+          "val": "6,64",
+          "unit": " pH",
+          "date": "26/02/2026"
+        },
+        "temperature": {
+          "val": "26,7",
+          "unit": " °C",
+          "date": "26/02/2026"
+        },
+        "hardness": {
+          "val": "1,69",
+          "unit": " °f",
+          "date": "26/02/2026"
+        },
+        "chlorine": {
+          "val": "0,48",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/02/2026"
+        },
+        "conductivity": {
+          "val": "70",
+          "unit": " µS/cm",
+          "date": "26/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "iron": {
+          "val": "12",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "26/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0,3",
+          "unit": " mg(C)/L",
+          "date": "26/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-26",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "baillif": {
+      "cityName": "Baillif",
+      "reseau": "971003977",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/02/2026"
+        },
+        "ph": {
+          "val": "7,66",
+          "unit": " pH",
+          "date": "23/02/2026"
+        },
+        "temperature": {
+          "val": "26,8",
+          "unit": " °C",
+          "date": "23/02/2026"
+        },
+        "hardness": {
+          "val": "1,26",
+          "unit": " °f",
+          "date": "23/02/2026"
+        },
+        "chlorine": {
+          "val": "1,092",
+          "unit": " mg/L",
+          "date": "23/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/02/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "23/02/2026"
+        },
+        "conductivity": {
+          "val": "91",
+          "unit": " µS/cm",
+          "date": "23/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "30/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "23/07/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/02/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "23/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "23/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-23",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "basse-terre": {
+      "cityName": "Basse-Terre",
+      "reseau": "971000132",
+      "isConform": true,
+      "crystal": {
+        "final": 9.5,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "ph": {
+          "val": "7,38",
+          "unit": " pH",
+          "date": "04/02/2026"
+        },
+        "temperature": {
+          "val": "23",
+          "unit": " °C",
+          "date": "04/02/2026"
+        },
+        "hardness": {
+          "val": "2,22",
+          "unit": " °f",
+          "date": "04/02/2026"
+        },
+        "chlorine": {
+          "val": "0,181",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/01/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "04/02/2026"
+        },
+        "conductivity": {
+          "val": "70",
+          "unit": " µS/cm",
+          "date": "04/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/01/2026"
+        },
+        "iron": {
+          "val": "38",
+          "unit": " µg/L",
+          "date": "08/01/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/01/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "08/01/2026"
+        },
+        "organic_carbon": {
+          "val": "0,32",
+          "unit": " mg(C)/L",
+          "date": "04/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-04",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "bouillante": {
+      "cityName": "Bouillante",
+      "reseau": "971000100",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "ph": {
+          "val": "8,14",
+          "unit": " pH",
+          "date": "26/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "26/02/2026"
+        },
+        "hardness": {
+          "val": "4,19",
+          "unit": " °f",
+          "date": "26/02/2026"
+        },
+        "chlorine": {
+          "val": "1,126",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/11/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/02/2026"
+        },
+        "conductivity": {
+          "val": "139",
+          "unit": " µS/cm",
+          "date": "26/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/11/2025"
+        },
+        "iron": {
+          "val": "34",
+          "unit": " µg/L",
+          "date": "20/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "20/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "30/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,21",
+          "unit": " mg(C)/L",
+          "date": "26/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-26",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "capesterre-belle-eau": {
+      "cityName": "Capesterre-Belle-Eau",
+      "reseau": "971000018",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,7",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "12/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "12/02/2026"
+        },
+        "hardness": {
+          "val": "3,97",
+          "unit": " °f",
+          "date": "12/02/2026"
+        },
+        "chlorine": {
+          "val": "0,99",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "12/02/2026"
+        },
+        "conductivity": {
+          "val": "130",
+          "unit": " µS/cm",
+          "date": "12/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "copper": {
+          "val": "0,013",
+          "unit": " mg(Cu)/L",
+          "date": "05/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "12/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "capesterre-de-marie-galante": {
+      "cityName": "Capesterre-De-Marie-Galante",
+      "reseau": "971000142",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "5,2",
+          "unit": " mg/L",
+          "date": "16/01/2026"
+        },
+        "ph": {
+          "val": "7,45",
+          "unit": " pH",
+          "date": "16/01/2026"
+        },
+        "temperature": {
+          "val": "29,7",
+          "unit": " °C",
+          "date": "16/01/2026"
+        },
+        "hardness": {
+          "val": "28,04",
+          "unit": " °f",
+          "date": "16/01/2026"
+        },
+        "chlorine": {
+          "val": "0,291",
+          "unit": " mg/L",
+          "date": "16/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/09/2024"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "16/01/2026"
+        },
+        "conductivity": {
+          "val": "688",
+          "unit": " µS/cm",
+          "date": "16/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "18/06/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/09/2024"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "16/01/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "18/06/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "16/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "KARUKER'O",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-16",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "gourbeyre": {
+      "cityName": "Gourbeyre",
+      "reseau": "971000060",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,72",
+          "unit": " mg/L",
+          "date": "20/02/2026"
+        },
+        "ph": {
+          "val": "7,3",
+          "unit": " pH",
+          "date": "24/02/2026"
+        },
+        "temperature": {
+          "val": "26,3",
+          "unit": " °C",
+          "date": "24/02/2026"
+        },
+        "hardness": {
+          "val": "12,94",
+          "unit": " °f",
+          "date": "20/02/2026"
+        },
+        "chlorine": {
+          "val": "0,971",
+          "unit": " mg/L",
+          "date": "24/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "24/02/2026"
+        },
+        "conductivity": {
+          "val": "190",
+          "unit": " µS/cm",
+          "date": "20/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "20/02/2026"
+        },
+        "copper": {
+          "val": "0,015",
+          "unit": " mg(Cu)/L",
+          "date": "15/01/2026"
+        },
+        "organic_carbon": {
+          "val": "0,35",
+          "unit": " mg(C)/L",
+          "date": "20/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-24",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Ce prélèvement est un recontrôle effectué suite à une contamination bactériologique observée sur le réseau et ayant entrainé une demande d'interdiction de consommation d'eau destinée à la consommation humaine le 24 février 2026. Au regard des présents résultats, une demande de levée de l'interdiction a été émise le 02 mars 2026."
+      }
+    },
+    "desirade-la": {
+      "cityName": "Desirade (la)",
+      "reseau": "971000030",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,58",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "13/02/2026"
+        },
+        "temperature": {
+          "val": "29",
+          "unit": " °C",
+          "date": "13/02/2026"
+        },
+        "hardness": {
+          "val": "2,04",
+          "unit": " °f",
+          "date": "13/02/2026"
+        },
+        "chlorine": {
+          "val": "0,5",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "13/02/2026"
+        },
+        "conductivity": {
+          "val": "73",
+          "unit": " µS/cm",
+          "date": "13/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "iron": {
+          "val": "93",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "29/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,34",
+          "unit": " mg(C)/L",
+          "date": "13/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-13",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "deshaies": {
+      "cityName": "Deshaies",
+      "reseau": "971000048",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "24/02/2026"
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "24/02/2026"
+        },
+        "temperature": {
+          "val": "27",
+          "unit": " °C",
+          "date": "24/02/2026"
+        },
+        "hardness": {
+          "val": "3,41",
+          "unit": " °f",
+          "date": "24/02/2026"
+        },
+        "chlorine": {
+          "val": "1,38",
+          "unit": " mg/L",
+          "date": "24/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "24/02/2026"
+        },
+        "conductivity": {
+          "val": "149",
+          "unit": " µS/cm",
+          "date": "24/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "24/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "24/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0,44",
+          "unit": " mg(C)/L",
+          "date": "24/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-24",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. L'eau est agressive et peut, dans certaines conditions, se révéler corrosive vis-à-vis des canalisations."
+      }
+    },
+    "grand-bourg": {
+      "cityName": "Grand-Bourg",
+      "reseau": "971000141",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "7,1",
+          "unit": " mg/L",
+          "date": "06/02/2026"
+        },
+        "ph": {
+          "val": "7,42",
+          "unit": " pH",
+          "date": "06/02/2026"
+        },
+        "temperature": {
+          "val": "27,5",
+          "unit": " °C",
+          "date": "06/02/2026"
+        },
+        "hardness": {
+          "val": "33,09",
+          "unit": " °f",
+          "date": "06/02/2026"
+        },
+        "chlorine": {
+          "val": "0,358",
+          "unit": " mg/L",
+          "date": "06/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "21/03/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "06/02/2026"
+        },
+        "conductivity": {
+          "val": "788",
+          "unit": " µS/cm",
+          "date": "06/02/2026"
+        },
+        "turbidity": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "12/09/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "21/03/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "06/02/2026"
+        },
+        "copper": {
+          "val": "0,017",
+          "unit": " mg(Cu)/L",
+          "date": "12/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "06/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "KARUKER'O",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-06",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "gosier-le": {
+      "cityName": "Gosier (le)",
+      "reseau": "971000072",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "6,7",
+          "unit": " mg/L",
+          "date": "02/02/2026"
+        },
+        "ph": {
+          "val": "7,47",
+          "unit": " pH",
+          "date": "02/02/2026"
+        },
+        "temperature": {
+          "val": "27",
+          "unit": " °C",
+          "date": "02/02/2026"
+        },
+        "hardness": {
+          "val": "2,1",
+          "unit": " °f",
+          "date": "02/02/2026"
+        },
+        "chlorine": {
+          "val": "0,46",
+          "unit": " mg/L",
+          "date": "02/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "02/02/2026"
+        },
+        "conductivity": {
+          "val": "423",
+          "unit": " µS/cm",
+          "date": "02/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "iron": {
+          "val": "93",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "02/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "07/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0,36",
+          "unit": " mg(C)/L",
+          "date": "02/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-02",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "goyave": {
+      "cityName": "Goyave",
+      "reseau": "971003982",
+      "isConform": true,
+      "crystal": {
+        "final": 8.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,94",
+          "unit": " mg/L",
+          "date": "16/02/2026"
+        },
+        "ph": {
+          "val": "7,4",
+          "unit": " pH",
+          "date": "16/02/2026"
+        },
+        "temperature": {
+          "val": "29",
+          "unit": " °C",
+          "date": "16/02/2026"
+        },
+        "hardness": {
+          "val": "27,35",
+          "unit": " °f",
+          "date": "16/02/2026"
+        },
+        "chlorine": {
+          "val": "1,14",
+          "unit": " mg/L",
+          "date": "16/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "16/02/2026"
+        },
+        "conductivity": {
+          "val": "96",
+          "unit": " µS/cm",
+          "date": "16/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "16/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "02/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "16/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-16",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "lamentin": {
+      "cityName": "Lamentin",
+      "reseau": "971000047",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "04/02/2026"
+        },
+        "temperature": {
+          "val": "25,2",
+          "unit": " °C",
+          "date": "04/02/2026"
+        },
+        "hardness": {
+          "val": "1,87",
+          "unit": " °f",
+          "date": "04/02/2026"
+        },
+        "chlorine": {
+          "val": "0,81",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "04/02/2026"
+        },
+        "conductivity": {
+          "val": "80",
+          "unit": " µS/cm",
+          "date": "04/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/10/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "02/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,45",
+          "unit": " mg(C)/L",
+          "date": "04/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-04",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "morne-a-l-eau": {
+      "cityName": "Morne-A-L'eau",
+      "reseau": "971000089",
+      "isConform": true,
+      "crystal": {
+        "final": 7.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "17",
+          "unit": " mg/L",
+          "date": "03/02/2026"
+        },
+        "ph": {
+          "val": "6,97",
+          "unit": " pH",
+          "date": "03/02/2026"
+        },
+        "temperature": {
+          "val": "26,8",
+          "unit": " °C",
+          "date": "03/02/2026"
+        },
+        "hardness": {
+          "val": "31,41",
+          "unit": " °f",
+          "date": "03/02/2026"
+        },
+        "chlorine": {
+          "val": "0,56",
+          "unit": " mg/L",
+          "date": "03/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "03/02/2026"
+        },
+        "conductivity": {
+          "val": "740",
+          "unit": " µS/cm",
+          "date": "03/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "03/02/2026"
+        },
+        "copper": {
+          "val": "0,046",
+          "unit": " mg(Cu)/L",
+          "date": "15/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "03/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-03",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "moule-le": {
+      "cityName": "Moule (le)",
+      "reseau": "971000030",
+      "isConform": true,
+      "crystal": {
+        "final": 7.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,58",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "13/02/2026"
+        },
+        "temperature": {
+          "val": "29",
+          "unit": " °C",
+          "date": "13/02/2026"
+        },
+        "hardness": {
+          "val": "2,04",
+          "unit": " °f",
+          "date": "13/02/2026"
+        },
+        "chlorine": {
+          "val": "0,5",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "pfas": {
+          "val": "0,004",
+          "unit": " µg/L",
+          "date": "04/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "13/02/2026"
+        },
+        "conductivity": {
+          "val": "73",
+          "unit": " µS/cm",
+          "date": "13/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "iron": {
+          "val": "93",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "29/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,34",
+          "unit": " mg(C)/L",
+          "date": "13/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-13",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "petit-bourg": {
+      "cityName": "Petit-Bourg",
+      "reseau": "971000015",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "ph": {
+          "val": "6,64",
+          "unit": " pH",
+          "date": "26/02/2026"
+        },
+        "temperature": {
+          "val": "26,7",
+          "unit": " °C",
+          "date": "26/02/2026"
+        },
+        "hardness": {
+          "val": "1,69",
+          "unit": " °f",
+          "date": "26/02/2026"
+        },
+        "chlorine": {
+          "val": "0,48",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "26/02/2026"
+        },
+        "conductivity": {
+          "val": "70",
+          "unit": " µS/cm",
+          "date": "26/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "iron": {
+          "val": "12",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/02/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "26/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0,3",
+          "unit": " mg(C)/L",
+          "date": "26/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-26",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "petit-canal": {
+      "cityName": "Petit-Canal",
+      "reseau": "971000055",
+      "isConform": true,
+      "crystal": {
+        "final": 8.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "30/01/2026"
+        },
+        "temperature": {
+          "val": "27,4",
+          "unit": " °C",
+          "date": "30/01/2026"
+        },
+        "hardness": {
+          "val": "34,89",
+          "unit": " °f",
+          "date": "30/01/2026"
+        },
+        "chlorine": {
+          "val": "0,92",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/01/2026"
+        },
+        "conductivity": {
+          "val": "69",
+          "unit": " µS/cm",
+          "date": "30/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "iron": {
+          "val": "22",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "copper": {
+          "val": "0,063",
+          "unit": " mg(Cu)/L",
+          "date": "22/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0,41",
+          "unit": " mg(C)/L",
+          "date": "30/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-30",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "pointe-a-pitre": {
+      "cityName": "Pointe-A-Pitre",
+      "reseau": "971000043",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "ph": {
+          "val": "7",
+          "unit": " pH",
+          "date": "23/01/2026"
+        },
+        "temperature": {
+          "val": "26,8",
+          "unit": " °C",
+          "date": "23/01/2026"
+        },
+        "hardness": {
+          "val": "1,44",
+          "unit": " °f",
+          "date": "23/01/2026"
+        },
+        "chlorine": {
+          "val": "0,73",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "23/01/2026"
+        },
+        "conductivity": {
+          "val": "74",
+          "unit": " µS/cm",
+          "date": "23/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "iron": {
+          "val": "62",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "13/01/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "13/01/2026"
+        },
+        "organic_carbon": {
+          "val": "0,54",
+          "unit": " mg(C)/L",
+          "date": "23/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-23",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "pointe-noire": {
+      "cityName": "Pointe-Noire",
+      "reseau": "971000117",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "05/02/2026"
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "05/02/2026"
+        },
+        "temperature": {
+          "val": "26,9",
+          "unit": " °C",
+          "date": "05/02/2026"
+        },
+        "hardness": {
+          "val": "3,69",
+          "unit": " °f",
+          "date": "05/02/2026"
+        },
+        "chlorine": {
+          "val": "1,02",
+          "unit": " mg/L",
+          "date": "05/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "05/02/2026"
+        },
+        "conductivity": {
+          "val": "130",
+          "unit": " µS/cm",
+          "date": "05/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025"
+        },
+        "iron": {
+          "val": "36",
+          "unit": " µg/L",
+          "date": "09/09/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "05/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "06/06/2025"
+        },
+        "organic_carbon": {
+          "val": "0,22",
+          "unit": " mg(C)/L",
+          "date": "05/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-05",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "port-louis": {
+      "cityName": "Port-Louis",
+      "reseau": "971000055",
+      "isConform": true,
+      "crystal": {
+        "final": 8.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "30/01/2026"
+        },
+        "temperature": {
+          "val": "27,4",
+          "unit": " °C",
+          "date": "30/01/2026"
+        },
+        "hardness": {
+          "val": "34,89",
+          "unit": " °f",
+          "date": "30/01/2026"
+        },
+        "chlorine": {
+          "val": "0,92",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "30/01/2026"
+        },
+        "conductivity": {
+          "val": "69",
+          "unit": " µS/cm",
+          "date": "30/01/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "iron": {
+          "val": "22",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "30/01/2026"
+        },
+        "copper": {
+          "val": "0,063",
+          "unit": " mg(Cu)/L",
+          "date": "22/07/2025"
+        },
+        "organic_carbon": {
+          "val": "0,41",
+          "unit": " mg(C)/L",
+          "date": "30/01/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-01-30",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "saint-claude": {
+      "cityName": "Saint-Claude",
+      "reseau": "971000118",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "25/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "25/02/2026"
+        },
+        "temperature": {
+          "val": "21,5",
+          "unit": " °C",
+          "date": "25/02/2026"
+        },
+        "hardness": {
+          "val": "2,23",
+          "unit": " °f",
+          "date": "25/02/2026"
+        },
+        "chlorine": {
+          "val": "0,693",
+          "unit": " mg/L",
+          "date": "25/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/06/2024"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "25/02/2026"
+        },
+        "conductivity": {
+          "val": "81",
+          "unit": " µS/cm",
+          "date": "25/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/11/2025"
+        },
+        "iron": {
+          "val": "54",
+          "unit": " µg/L",
+          "date": "08/09/2025"
+        },
+        "manganese": {
+          "val": "14",
+          "unit": " µg/L",
+          "date": "25/06/2024"
+        },
+        "ammonium": {
+          "val": "0,09",
+          "unit": " mg/L",
+          "date": "25/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "08/09/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "25/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-25",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "saint-francois": {
+      "cityName": "Saint-Francois",
+      "reseau": "971000030",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,58",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "13/02/2026"
+        },
+        "temperature": {
+          "val": "29",
+          "unit": " °C",
+          "date": "13/02/2026"
+        },
+        "hardness": {
+          "val": "2,04",
+          "unit": " °f",
+          "date": "13/02/2026"
+        },
+        "chlorine": {
+          "val": "0,5",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "13/02/2026"
+        },
+        "conductivity": {
+          "val": "73",
+          "unit": " µS/cm",
+          "date": "13/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "iron": {
+          "val": "93",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "29/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,34",
+          "unit": " mg(C)/L",
+          "date": "13/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-13",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "saint-louis": {
+      "cityName": "Saint-Louis",
+      "reseau": "971000143",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "5,4",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "ph": {
+          "val": "7,82",
+          "unit": " pH",
+          "date": "11/02/2026"
+        },
+        "temperature": {
+          "val": "26,2",
+          "unit": " °C",
+          "date": "11/02/2026"
+        },
+        "hardness": {
+          "val": "26,38",
+          "unit": " °f",
+          "date": "11/02/2026"
+        },
+        "chlorine": {
+          "val": "0,358",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "11/02/2026"
+        },
+        "conductivity": {
+          "val": "717",
+          "unit": " µS/cm",
+          "date": "11/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/11/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "copper": {
+          "val": "0,012",
+          "unit": " mg(Cu)/L",
+          "date": "07/11/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "11/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "KARUKER'O",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-11",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "sainte-anne": {
+      "cityName": "Sainte-Anne",
+      "reseau": "971000030",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,58",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "13/02/2026"
+        },
+        "temperature": {
+          "val": "29",
+          "unit": " °C",
+          "date": "13/02/2026"
+        },
+        "hardness": {
+          "val": "2,04",
+          "unit": " °f",
+          "date": "13/02/2026"
+        },
+        "chlorine": {
+          "val": "0,5",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "13/02/2026"
+        },
+        "conductivity": {
+          "val": "73",
+          "unit": " µS/cm",
+          "date": "13/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "iron": {
+          "val": "93",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/12/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "13/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "29/10/2025"
+        },
+        "organic_carbon": {
+          "val": "0,34",
+          "unit": " mg(C)/L",
+          "date": "13/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-13",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "sainte-rose": {
+      "cityName": "Sainte-Rose",
+      "reseau": "971000052",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "02/02/2026"
+        },
+        "ph": {
+          "val": "7",
+          "unit": " pH",
+          "date": "06/02/2026"
+        },
+        "temperature": {
+          "val": "25,6",
+          "unit": " °C",
+          "date": "06/02/2026"
+        },
+        "hardness": {
+          "val": "2,15",
+          "unit": " °f",
+          "date": "02/02/2026"
+        },
+        "chlorine": {
+          "val": "1,12",
+          "unit": " mg/L",
+          "date": "06/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "06/02/2026"
+        },
+        "conductivity": {
+          "val": "104",
+          "unit": " µS/cm",
+          "date": "02/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "iron": {
+          "val": "165",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "02/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "02/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0,73",
+          "unit": " mg(C)/L",
+          "date": "02/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-06",
+        "conclusion": "Eau d'alimentation conforme à la règlementation en vigueur mais s'écarte de la référence de qualité pour le paramètre aluminium. La présence de ce paramètre est à surveiller. Ce prélèvement est un recontrôle effectué suite à une teneur supérieure à la valeur fixée par la réglementation en vigueur observée sur le réseau de distribution le 02 février 2026 et ayant entrainé une demande de restriction de consommation localisée. Une demande de levée de cette restriction a été émise le 10 février 2026."
+      }
+    },
+    "terre-de-bas": {
+      "cityName": "Terre-De-Bas",
+      "reseau": "971000018",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,7",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "12/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "12/02/2026"
+        },
+        "hardness": {
+          "val": "3,97",
+          "unit": " °f",
+          "date": "12/02/2026"
+        },
+        "chlorine": {
+          "val": "0,99",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "12/02/2026"
+        },
+        "conductivity": {
+          "val": "130",
+          "unit": " µS/cm",
+          "date": "12/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "copper": {
+          "val": "0,013",
+          "unit": " mg(Cu)/L",
+          "date": "05/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "12/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "terre-de-haut": {
+      "cityName": "Terre-De-Haut",
+      "reseau": "971000018",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,7",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "12/02/2026"
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "12/02/2026"
+        },
+        "hardness": {
+          "val": "3,97",
+          "unit": " °f",
+          "date": "12/02/2026"
+        },
+        "chlorine": {
+          "val": "0,99",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "12/02/2026"
+        },
+        "conductivity": {
+          "val": "130",
+          "unit": " µS/cm",
+          "date": "12/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/12/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/10/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026"
+        },
+        "copper": {
+          "val": "0,013",
+          "unit": " mg(Cu)/L",
+          "date": "05/12/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "12/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qu alité en vigueur pour l'ensemble des paramètres mesurés"
+      }
+    },
+    "trois-rivieres": {
+      "cityName": "Trois-Rivieres",
+      "reseau": "971000016",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,98",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "ph": {
+          "val": "6,9",
+          "unit": " pH",
+          "date": "11/02/2026"
+        },
+        "temperature": {
+          "val": "23,5",
+          "unit": " °C",
+          "date": "11/02/2026"
+        },
+        "hardness": {
+          "val": "2,22",
+          "unit": " °f",
+          "date": "11/02/2026"
+        },
+        "chlorine": {
+          "val": "1,16",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/01/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/01/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "11/02/2026"
+        },
+        "conductivity": {
+          "val": "98",
+          "unit": " µS/cm",
+          "date": "11/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/01/2026"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/01/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/01/2026"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "11/02/2026"
+        },
+        "copper": {
+          "val": "0,023",
+          "unit": " mg(Cu)/L",
+          "date": "14/01/2026"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "11/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SMGEAG",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-11",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "vieux-fort": {
+      "cityName": "Vieux-Fort",
+      "reseau": "971000135",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "5,2",
+          "unit": " mg/L",
+          "date": "10/02/2026"
+        },
+        "ph": {
+          "val": "7",
+          "unit": " pH",
+          "date": "10/02/2026"
+        },
+        "temperature": {
+          "val": "25,7",
+          "unit": " °C",
+          "date": "10/02/2026"
+        },
+        "hardness": {
+          "val": "7,24",
+          "unit": " °f",
+          "date": "10/02/2026"
+        },
+        "chlorine": {
+          "val": "0,47",
+          "unit": " mg/L",
+          "date": "10/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "10/02/2026"
+        },
+        "conductivity": {
+          "val": "223",
+          "unit": " µS/cm",
+          "date": "10/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025"
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/06/2025"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/06/2025"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "10/02/2026"
+        },
+        "copper": {
+          "val": "0,02",
+          "unit": " mg(Cu)/L",
+          "date": "22/04/2025"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "10/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-10",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "vieux-habitants": {
+      "cityName": "Vieux-Habitants",
+      "reseau": "971000092",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,65",
+          "unit": " mg/L",
+          "date": "19/02/2026"
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "19/02/2026"
+        },
+        "temperature": {
+          "val": "27,1",
+          "unit": " °C",
+          "date": "19/02/2026"
+        },
+        "hardness": {
+          "val": "1,49",
+          "unit": " °f",
+          "date": "19/02/2026"
+        },
+        "chlorine": {
+          "val": "1,1",
+          "unit": " mg/L",
+          "date": "19/02/2026"
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/02/2026"
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/02/2026"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " n/(100mL)",
+          "date": "19/02/2026"
+        },
+        "conductivity": {
+          "val": "88",
+          "unit": " µS/cm",
+          "date": "19/02/2026"
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/02/2026"
+        },
+        "iron": {
+          "val": "21",
+          "unit": " µg/L",
+          "date": "19/02/2026"
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/02/2026"
+        },
+        "ammonium": {
+          "val": "0,05",
+          "unit": " mg/L",
+          "date": "19/02/2026"
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg(Cu)/L",
+          "date": "19/02/2026"
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg(C)/L",
+          "date": "19/02/2026"
+        }
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "971",
+        "date_prelevement": "2026-02-19",
+        "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    }
+  },
+  "regionalInfo": {
+    "name": "Guadeloupe",
+    "averages": {
+      "nitrates": {
+        "val": "1,70",
+        "unit": "  mg/L"
+      },
+      "ph": {
+        "val": "7,38",
+        "unit": "  pH"
+      },
+      "temperature": {
+        "val": "27",
+        "unit": "  °C"
+      },
+      "hardness": {
+        "val": "10,00",
+        "unit": "  °f"
+      },
+      "chlorine": {
+        "val": "0,76",
+        "unit": "  mg/L"
+      },
+      "pesticides": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "pfas": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "microbiology": {
+        "val": "< 0,01",
+        "unit": ""
+      },
+      "conductivity": {
+        "val": "190",
+        "unit": "  µS/cm"
+      },
+      "turbidity": {
+        "val": "< 0,01",
+        "unit": "  µg/L"
+      },
+      "iron": {
+        "val": "31",
+        "unit": "  µg/L"
+      },
+      "manganese": {
+        "val": "0,44",
+        "unit": "  µg/L"
+      },
+      "ammonium": {
+        "val": "< 0,01",
+        "unit": "  mg/L"
+      },
+      "copper": {
+        "val": "0,012",
+        "unit": "  mg(Cu)/L"
+      },
+      "organic_carbon": {
+        "val": "0,22",
+        "unit": "  mg(C)/L"
+      }
+    },
+    "score": 8.9,
+    "conformity": 100
+  }
+}
