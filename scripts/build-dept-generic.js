@@ -160,6 +160,31 @@ const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');
 // 3. UTILITIES
 const makeSlug = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
 
+/**
+ * Normalise les noms de villes administratives (ex: "CHEYLARD (LE)" -> "LE CHEYLARD")
+ */
+function normalizeCityName(rawName) {
+    let name = rawName.toUpperCase().trim();
+    // Liste des patterns d'articles à déplacer du suffixe vers le préfixe
+    const patterns = [
+        { suffix: / \(LE\)$/, prefix: "LE " },
+        { suffix: / \(LA\)$/, prefix: "LA " },
+        { suffix: / \(LES\)$/, prefix: "LES " },
+        { suffix: / \(L'\)$/, prefix: "L' " },
+        { suffix: / LE$/, prefix: "LE " },
+        { suffix: / LA$/, prefix: "LA " },
+        { suffix: / LES$/, prefix: "LES " }
+    ];
+
+    for (const p of patterns) {
+        if (p.suffix.test(name)) {
+            return p.prefix + name.replace(p.suffix, "").trim();
+        }
+    }
+    return name;
+}
+
+
 function splitCsv(line) {
     const result = [];
     let current = ''; let inQuotes = false;
@@ -255,9 +280,12 @@ async function buildDepartment(deptCode) {
                 // Filtre par code département
                 if (!p[0].startsWith(deptCode)) continue;
                 
-                const key = p[1].toUpperCase().trim(), cd = p[3];
+                const rawName = p[1].toUpperCase().trim();
+                const key = normalizeCityName(rawName);
+                const cd = p[3];
                 if (!udiMap[key]) udiMap[key] = [];
                 if (!udiMap[key].includes(cd)) udiMap[key].push(cd);
+
             }
         }
     }
@@ -360,11 +388,13 @@ async function buildDepartment(deptCode) {
         const crystal = calculateCrystalScore(stats, isConform, cityName);
         const slug = makeSlug(cityName);
         
-        // Restauration intelligente du nom (Accents)
-        let officialName = cityName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join('-');
+        // Restauration intelligente du nom (Accents et formatage)
+        let officialName = cityName.toLowerCase().replace(/(^|[ -])([a-z])/g, (match, sep, char) => sep + char.toUpperCase());
+        
         // On check si on a le nom propre dans notre base de référence (DEPT_REF)
         const knownCity = deptInfo.topCities.find(c => makeSlug(c) === slug);
         if (knownCity) officialName = knownCity;
+
 
         output.cities[slug] = {
             cityName: officialName,
@@ -439,7 +469,8 @@ const deptArg = args.find(a => a.startsWith('--dept='));
 const allArg = args.includes('--all');
 
 async function updateIndex() {
-    const dir = path.join(__dirname, '..', 'data', 'departments');
+    const dir = path.join(__dirname, '..', 'public', 'data', 'departments');
+
     if (!fs.existsSync(dir)) return;
     const index = {};
     const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
