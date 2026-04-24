@@ -67,9 +67,6 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       <body className="full-height-body">
         {children}
         <Footer />
