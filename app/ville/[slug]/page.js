@@ -135,7 +135,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `Qualité de l'eau potable à ${officialName} (2026) | Crystal Score`,
-    description: `📊 Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les pesticides et PFAS détectés.`,
+    description: `Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les pesticides et PFAS détectés.`,
     alternates: {
       canonical: `${DOMAIN}/ville/${slug}`,
     },
