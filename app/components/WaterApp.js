@@ -222,15 +222,6 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       {/* Section SEO dynamique : Rapport Ville ou Home Landing */}
       {selectedCity ? (
         <div className="city-page-content">
-          <CityHero 
-            cityName={selectedCity} 
-            dpt={waterData?.meta?.code_departement || ''} 
-            dateAnalyse={waterData?.meta ? new Date(waterData.meta.date_prelevement).toLocaleDateString('fr-FR') : ''}
-            score={waterData?.crystal?.final || '--'}
-            label={waterData?.crystal?.label || 'ANALYSE'}
-            nomReseau={(waterData?.meta?.nom_distributeur || waterData?.meta?.nom_reseau || selectedCity).split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ')}
-          />
-
           <CitySEOContent cityName={selectedCity} data={waterData} />
         </div>
       ) : (

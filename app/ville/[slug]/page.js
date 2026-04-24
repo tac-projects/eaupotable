@@ -142,6 +142,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
+import CityHero from '../../components/CityHero';
+
 export default async function CityPage({ params }) {
   const { slug } = await params;
   const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
@@ -152,10 +154,19 @@ export default async function CityPage({ params }) {
   }
 
   const officialName = summary?.cityName || cityNameFromSlug;
+  const nomReseau = (summary?.meta?.nom_distributeur || summary?.meta?.nom_reseau || officialName).split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
 
   return (
     <>
       <Navbar />
+      <CityHero 
+        cityName={officialName}
+        dpt={summary?.meta?.code_departement || ''}
+        dateAnalyse={summary?.meta?.date_prelevement ? new Date(summary.meta.date_prelevement).toLocaleDateString('fr-FR') : '2026'}
+        score={summary?.crystal?.final || '--'}
+        label={summary?.crystal?.label || 'ANALYSE'}
+        nomReseau={nomReseau}
+      />
       <WaterApp initialCity={officialName} initialData={summary} />
     </>
   );

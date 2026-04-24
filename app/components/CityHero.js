@@ -1,4 +1,4 @@
-'use client';
+// Composant de rendu serveur pour un LCP optimal
 
 import React from 'react';
 
