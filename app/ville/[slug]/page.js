@@ -112,6 +112,7 @@ async function getLocalData(slug) {
       initialDeptAvg: {
         score: fullData.deptInfo.avgScore,
         name: fullData.deptInfo.name,
+        conformRate: fullData.deptInfo.conformRate,
         averages: fullData.deptInfo.averages
       },
       initialNeighborCities: neighborList,
