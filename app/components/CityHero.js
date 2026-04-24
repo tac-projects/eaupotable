@@ -11,8 +11,9 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
         .city-hero-title { font-size: 3rem; font-weight: 800; color: #0f172a; margin-bottom: 20px; line-height: 1.1; }
         .score-badge { background: white; border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; min-width: 140px; contain: content; }
         .num { font-size: 3.5rem; font-weight: 900; line-height: 1; color: #0f172a; }
-        .badge-pulse { display: block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+        .badge-pulse { display: block; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; margin-right: 10px; position: relative; }
+        .badge-pulse::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: inherit; border-radius: inherit; animation: pulse-transform 2s cubic-bezier(0.24, 0, 0.38, 1) infinite; }
+        @keyframes pulse-transform { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
       `}} />
       <div className="city-hero-mesh"></div>
       <div className="city-hero-grain"></div>
