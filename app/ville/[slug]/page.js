@@ -82,15 +82,31 @@ async function getLocalData(slug) {
 
     const isConform = rawCityData.meta?.is_conform !== false;
 
-    // On prend les 10 plus grandes villes du département (pré-calculées dans deptInfo)
-    const neighborList = (fullData.deptInfo.topCities || [])
+    // 1. Liste pour le Benchmark (Top 10 des plus grandes villes)
+    const benchmarkCities = (fullData.deptInfo.topCities || [])
       .map(c => ({
         nom: c.name,
         score: c.score,
         code: c.slug,
         isCurrent: c.slug === slug
       }))
-      .sort((a, b) => b.score - a.score); // On les trie par score pour le benchmark
+      .sort((a, b) => b.score - a.score); // Tri par score pour le classement
+
+    // 2. Liste pour le maillage SEO (Top 10 + 20 au hasard = 30 villes)
+    const otherCities = Object.entries(fullData.cities)
+      .filter(([cSlug]) => !benchmarkCities.some(bc => bc.code === cSlug))
+      .map(([cSlug, cData]) => ({
+        nom: cData.cityName,
+        score: cData.crystal?.final || 0,
+        code: cSlug,
+        isCurrent: cSlug === slug
+      }));
+
+    const random20 = otherCities
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 20);
+
+    const neighborList = [...benchmarkCities, ...random20];
 
     return {
       ...cityData,
@@ -102,6 +118,7 @@ async function getLocalData(slug) {
         averages: fullData.deptInfo.averages
       },
       initialNeighborCities: neighborList,
+      benchmarkCities,
       regionalInfo: fullData.regionalInfo
     };
 

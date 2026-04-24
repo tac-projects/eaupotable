@@ -52,7 +52,7 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
             <p className="benchmark-cta-hint">Analyse en temps réel de {neighborCities.length} réseaux via Hub'Eau (3-5 sec)</p>
           </div>
         ) : (
-          analyzedCities.map((city) => {
+          analyzedCities.map((city, index) => {
             const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
             return (
               <a 
@@ -61,6 +61,7 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
                 className={`benchmark-item ${city.isCurrent ? 'current-city' : ''} ${analysisPhase === 'loading' ? 'loading' : ''}`}
                 onClick={(e) => city.isCurrent && e.preventDefault()}
               >
+                <span className="benchmark-rank">#{index + 1}</span>
                 <span className="benchmark-city">{city.nom}</span>
                 <div className="benchmark-bar-bg">
                   <div 
@@ -83,7 +84,7 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
           </div>
         )}
       </div>
-      <p className="benchmark-footer">Score calculé sur la base de la pureté microbiologique et chimique (ARS {currentYear}).</p>
+      <p className="benchmark-footer">Classement basé sur l'Indice de Pureté Cristal Score (Données ARS {currentYear}).</p>
     </div>
   );
 }
