@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+let searchIndexCache = null;
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get('q');
@@ -11,8 +13,11 @@ export async function GET(request) {
   }
 
   try {
-    const indexPath = path.join(process.cwd(), 'public', 'city-index.json');
-    const cityIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    if (!searchIndexCache) {
+      const indexPath = path.join(process.cwd(), 'public', 'city-index.json');
+      searchIndexCache = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    }
+    const cityIndex = searchIndexCache;
     
     const query = q.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     

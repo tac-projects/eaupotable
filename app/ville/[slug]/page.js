@@ -12,13 +12,20 @@ const getCachedSummary = cache(async (cityName) => {
   return await fetchCitySummary(cityName);
 });
 
+let cityIndexCache = null;
+
 async function getLocalData(slug) {
   try {
-    // 1. On cherche le département de la ville dans l'index
-    const indexPath = path.join(process.cwd(), 'public', 'city-index.json');
-    if (!fs.existsSync(indexPath)) return null;
+    // 1. On cherche le département de la ville dans l'index (avec cache mémoire)
+    if (!cityIndexCache) {
+      const indexPath = path.join(process.cwd(), 'public', 'city-index.json');
+      if (fs.existsSync(indexPath)) {
+        cityIndexCache = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+      }
+    }
     
-    const cityIndex = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    if (!cityIndexCache) return null;
+    const cityIndex = cityIndexCache;
     
     // Normalisation de sécurité du slug entrant (gestion des tirets multiples)
     const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
