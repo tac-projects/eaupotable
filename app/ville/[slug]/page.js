@@ -88,7 +88,7 @@ async function getLocalData(slug) {
       score: c.score,
       code: c.slug,
       isCurrent: c.slug === slug
-    })).slice(0, 8); // Limiter à 8 pour le SEO/Mobile
+    }));
 
     return {
       ...cityData,
