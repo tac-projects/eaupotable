@@ -2,8 +2,11 @@
 
 import { useMemo, Fragment } from 'react';
 import { parseValue, getParameterStatus } from '@/lib/water-utils';
-import CityAnalysisSection from './CityAnalysisSection';
-import BenchmarkAudit from './BenchmarkAudit';
+import dynamic from 'next/dynamic';
+const CityAnalysisSection = dynamic(() => import('./CityAnalysisSection'), { ssr: true });
+const BenchmarkAudit = dynamic(() => import('./BenchmarkAudit'), { ssr: true });
+const SeoDataTable = dynamic(() => import('./SeoDataTable'), { ssr: true });
+const NearbyCities = dynamic(() => import('./NearbyCities'), { ssr: true });
 
 export default function CitySEOContent({ cityName, data }) {
   if (!data || data.error || !data.meta) return null;
@@ -390,119 +393,6 @@ export default function CitySEOContent({ cityName, data }) {
           <NearbyCities cities={neighborCities} dpt={dpt} />
         </div>
       </section>
-    </div>
-  );
-}
-
-function NearbyCities({ cities, dpt }) {
-  if (!cities || cities.length === 0) return null;
-  return (
-    <Fragment>
-      <div className="seo-section-header">
-        <h2 className="seo-main-title">Communes du département</h2>
-        <p className="seo-main-subtitle">Explorez les rapports de pureté des autres territoires du département {dpt}.</p>
-      </div>
-      <div className="seo-tags-grid">
-        {cities.filter(c => !c.isCurrent).map(c => {
-          const slug = c.code || c.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
-          return (<a key={slug} href={`/ville/${slug}`} className="seo-city-tag">Eau à {c.nom}</a>)
-        })}
-      </div>
-    </Fragment>
-  );
-}
-
-function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
-  const dossiers = [
-    { 
-      name: "Santé & Vigilance", 
-      icon: "🔬",
-      keys: [
-        { key: "microbiology", label: "Microbiologie", limit: "0 n/mL" },
-        { key: "nitrates", label: "Nitrates", limit: "50 mg/L" },
-        { key: "pesticides", label: "Pesticides totaux", limit: "0.1 µg/L" },
-        { key: "pfas", label: "PFAS (Polluants éternels)", limit: "0.1 µg/L" },
-        { key: "ammonium", label: "Ammonium", limit: "0.1 mg/L" }
-      ]
-    },
-    { 
-      name: "Confort & Usage", 
-      icon: "🛁",
-      keys: [
-        { key: "hardness", label: "Calcaire (Dureté TH)", limit: "Indicateur" },
-        { key: "chlorine", label: "Chlore Libre", limit: "< 0.1 recommandé" },
-        { key: "ph", label: "Potentiel Hydrogène (pH)", limit: "6.5 - 9.0" },
-        { key: "conductivity", label: "Conductivité", limit: "1100 µS/cm" },
-        { key: "turbidity", label: "Turbidité", limit: "< 2 NFU" }
-      ]
-    },
-    { 
-      name: "Traces & Minéraux", 
-      icon: "🏗️",
-      keys: [
-        { key: "iron", label: "Fer total", limit: "200 µg/L" },
-        { key: "manganese", label: "Manganèse", limit: "50 µg/L" },
-        { key: "copper", label: "Cuivre", limit: "2.0 mg/L" },
-        { key: "organic_carbon", label: "Carbone Org. Total", limit: "Inconnu" }
-      ]
-    }
-  ];
-
-  return (
-    <div className="seo-audit-registry">
-      <div className="source-verification-badge">
-        <span className="badge-icon">🛡️</span>
-        <span className="badge-text">
-          Source certifiée : <strong>Registre technique officiel de l'ARS</strong> (Réseau {nomReseau}) à {cityName}.
-        </span>
-      </div>
-      
-      <div className="table-responsive-wrapper">
-        <table className="seo-data-table-unified">
-          <thead>
-            <tr>
-              <th>Paramètre testé</th>
-              <th>Valeur relevée</th>
-              <th>Statut</th>
-              <th>Norme / Limite</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dossiers.map((dossier, di) => (
-              <Fragment key={di}>
-                <tr className="dossier-divider-row">
-                  <td colSpan="4">
-                    <span className="dossier-icon">{dossier.icon}</span>
-                    {dossier.name}
-                  </td>
-                </tr>
-                {dossier.keys.map(({ key, label, limit }) => {
-                  const s = stats[key];
-                  const val = (key === 'microbiology' && !s?.val) ? (isConform ? 'Absence' : 'Contrôlée') : (s?.val || '--');
-                  const unit = s?.unit || (key === 'microbiology' ? 'germes' : '');
-                  const status = getParameterStatus(key, val);
-                  
-                  return (
-                    <tr key={key}>
-                      <td className="param-label-unified"><strong>{label}</strong></td>
-                      <td className="param-val-unified">
-                        <span className="val-num">{val}</span>
-                        <span className="val-unit">{unit}</span>
-                      </td>
-                      <td>
-                        <div className={`seo-status-pill ${status.class}`}>
-                          {status.statusLabel}
-                        </div>
-                      </td>
-                      <td className="param-limit-col">{limit}</td>
-                    </tr>
-                  );
-                })}
-              </Fragment>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </div>
   );
 }
