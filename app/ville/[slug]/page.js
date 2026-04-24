@@ -83,12 +83,28 @@ async function getLocalData(slug) {
     const isConform = rawCityData.meta?.is_conform !== false;
 
     // On prépare la liste des voisins (déjà filtrée)
-    const neighborList = fullData.deptInfo.topCities.map(c => ({
+    const top10 = (fullData.deptInfo.topCities || []).map(c => ({
       nom: c.name,
       score: c.score,
       code: c.slug,
       isCurrent: c.slug === slug
     }));
+
+    const otherCities = Object.entries(fullData.cities)
+      .filter(([cSlug]) => !top10.some(tc => tc.code === cSlug))
+      .map(([cSlug, cData]) => ({
+        nom: cData.cityName,
+        score: cData.crystal?.final || 0,
+        code: cSlug,
+        isCurrent: cSlug === slug
+      }));
+
+    // Sélection aléatoire de 20 autres villes pour le brassage SEO
+    const random20 = otherCities
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 20);
+
+    const neighborList = [...top10, ...random20];
 
     return {
       ...cityData,
