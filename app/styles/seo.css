@@ -37,6 +37,8 @@
     z-index: 1000;
     box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.02);
     overflow: visible !important;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
 }
 
 .home-landing {

@@ -5,6 +5,11 @@ import React from 'react';
 export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
   return (
     <section className="city-hero-section">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .city-hero-section { min-height: 400px; contain: layout; background: #f1f5f9; position: relative; }
+        .city-hero-container { opacity: 1 !important; visibility: visible !important; }
+        .score-badge { contain: content; }
+      `}} />
       <div className="city-hero-mesh"></div>
       <div className="city-hero-grain"></div>
       
