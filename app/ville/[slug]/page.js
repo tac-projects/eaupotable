@@ -49,43 +49,54 @@ async function getLocalData(slug) {
     if (!fullData) return null;
     
     // On cherche la ville par son slug dans le fichier
-    const cityData = fullData.cities[slug];
-    
-    if (!cityData) return null;
+    const rawCityData = fullData.cities[slug];
+    if (!rawCityData) return null;
 
-    // On injecte les données départementales pour éviter le fetch client
-    // On s'assure que la ville actuelle est dans la liste du benchmark
-    let neighborList = fullData.deptInfo.topCities.map(c => ({
+    // NETTOYAGE DU PAYLOAD : On n'envoie que le strict nécessaire au client
+    const cityData = {
+      cityName: rawCityData.cityName,
+      crystal: rawCityData.crystal,
+      stats: {
+        microbiology: rawCityData.stats?.microbiology,
+        nitrates: rawCityData.stats?.nitrates,
+        pesticides: rawCityData.stats?.pesticides,
+        pfas: rawCityData.stats?.pfas,
+        chlorine: rawCityData.stats?.chlorine,
+        hardness: rawCityData.stats?.hardness,
+        ph: rawCityData.stats?.ph,
+        turbidity: rawCityData.stats?.turbidity,
+        conductivity: rawCityData.stats?.conductivity,
+        iron: rawCityData.stats?.iron,
+        manganese: rawCityData.stats?.manganese,
+        copper: rawCityData.stats?.copper,
+        organic_carbon: rawCityData.stats?.organic_carbon,
+      },
+      meta: {
+        code_departement: rawCityData.meta?.code_departement,
+        date_prelevement: rawCityData.meta?.date_prelevement,
+        nom_distributeur: rawCityData.meta?.nom_distributeur,
+        nom_reseau: rawCityData.meta?.nom_reseau,
+        conclusion: rawCityData.meta?.conclusion
+      }
+    };
+
+    const isConform = rawCityData.meta?.is_conform !== false;
+
+    // On prépare la liste des voisins (déjà filtrée)
+    const neighborList = fullData.deptInfo.topCities.map(c => ({
       nom: c.name,
       score: c.score,
       code: c.slug,
       isCurrent: c.slug === slug
-    }));
-
-    const isCurrentInTop = neighborList.some(c => c.isCurrent);
-    if (!isCurrentInTop) {
-      // On AJOUTE la ville actuelle au lieu de remplacer (on aura 11 villes)
-      neighborList.push({
-        nom: cityData.cityName,
-        score: cityData.crystal.final,
-        code: slug,
-        isCurrent: true
-      });
-    }
-    
-    // On retrie toujours par score pour l'esthétique
-    neighborList.sort((a, b) => b.score - a.score);
+    })).slice(0, 8); // Limiter à 8 pour le SEO/Mobile
 
     return {
       ...cityData,
+      isConform,
       initialDeptAvg: {
-        ...fullData.deptInfo.averages,
-        conformRate: fullData.deptInfo.conformRate,
         score: fullData.deptInfo.avgScore,
-        avgScore: fullData.deptInfo.avgScore,
         name: fullData.deptInfo.name
       },
-
       initialNeighborCities: neighborList,
       regionalInfo: fullData.regionalInfo
     };
