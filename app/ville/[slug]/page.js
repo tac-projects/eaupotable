@@ -13,6 +13,7 @@ const getCachedSummary = cache(async (cityName) => {
 });
 
 let cityIndexCache = null;
+let deptDataCache = new Map();
 
 async function getLocalData(slug) {
   try {
@@ -27,19 +28,25 @@ async function getLocalData(slug) {
     if (!cityIndexCache) return null;
     const cityIndex = cityIndexCache;
     
-    // Normalisation de sécurité du slug entrant (gestion des tirets multiples)
+    // Normalisation de sécurité du slug entrant
     const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
     const deptCode = cityIndex[cleanSlug] || cityIndex[slug];
     
     if (!deptCode) return null;
 
-    // 2. On charge le fichier du département correspondant
-    const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${deptCode}.json`);
+    // 2. On charge le fichier du département correspondant (avec cache mémoire)
+    let fullData = null;
+    if (deptDataCache.has(deptCode)) {
+      fullData = deptDataCache.get(deptCode);
+    } else {
+      const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${deptCode}.json`);
+      if (fs.existsSync(filePath)) {
+        fullData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        deptDataCache.set(deptCode, fullData);
+      }
+    }
 
-    if (!fs.existsSync(filePath)) return null;
-    
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const fullData = JSON.parse(fileContent);
+    if (!fullData) return null;
     
     // On cherche la ville par son slug dans le fichier
     const cityData = fullData.cities[slug];
