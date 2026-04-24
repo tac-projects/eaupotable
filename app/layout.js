@@ -82,30 +82,16 @@ export default function RootLayout({ children }) {
       <body className="full-height-body">
         {children}
         <Footer />
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
+          strategy="lazyOnload"
+        />
         <Script id="google-analytics-init" strategy="lazyOnload">
           {`
-            const loadGA = () => {
-              if (window.gaLoaded) return;
-              window.gaLoaded = true;
-              
-              const script = document.createElement('script');
-              script.src = "https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ";
-              script.async = true;
-              document.head.appendChild(script);
-
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-L7BMHXS6DJ');
-              
-              window.removeEventListener('scroll', loadGA);
-              window.removeEventListener('mousemove', loadGA);
-              window.removeEventListener('touchstart', loadGA);
-            };
-
-            window.addEventListener('scroll', loadGA, { passive: true });
-            window.addEventListener('mousemove', loadGA, { passive: true });
-            window.addEventListener('touchstart', loadGA, { passive: true });
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L7BMHXS6DJ');
           `}
         </Script>
         <Script id="register-sw" strategy="afterInteractive">

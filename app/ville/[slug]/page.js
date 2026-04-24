@@ -110,15 +110,7 @@ async function getLocalData(slug) {
 
 import { POPULAR_CITIES } from '../../../lib/water-utils';
 
-export async function generateStaticParams() {
-  // On pré-génère les pages des villes les plus populaires pour un TTFB de 0ms
-  return POPULAR_CITIES.map((city) => ({
-    slug: city.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-')
-  }));
-}
-
-export const dynamic = 'force-static';
-export const revalidate = 86400; // 24h
+export const revalidate = 86400; // Cache de 24h après la première visite
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
