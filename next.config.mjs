@@ -5,7 +5,8 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   experimental: {
-    optimizeCss: true, // Optimise l'ordre de chargement du CSS
+    optimizeCss: true,
+    nextScriptWorkers: true
   }
 };
 
