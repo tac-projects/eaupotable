@@ -6,9 +6,13 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
   return (
     <section className="city-hero-section">
       <style dangerouslySetInnerHTML={{ __html: `
-        .city-hero-section { min-height: 400px; contain: layout; background: #f1f5f9; position: relative; }
-        .city-hero-container { opacity: 1 !important; visibility: visible !important; }
-        .score-badge { contain: content; }
+        .city-hero-section { min-height: 450px; contain: layout; background: #f8fafc; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%; }
+        .city-hero-container { width: 100%; max-width: 1200px; padding: 0 20px; z-index: 10; opacity: 1 !important; visibility: visible !important; }
+        .city-hero-title { font-size: 3rem; font-weight: 800; color: #0f172a; margin-bottom: 20px; line-height: 1.1; }
+        .score-badge { background: white; border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; min-width: 140px; contain: content; }
+        .num { font-size: 3.5rem; font-weight: 900; line-height: 1; color: #0f172a; }
+        .badge-pulse { display: block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; margin-right: 8px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
       `}} />
       <div className="city-hero-mesh"></div>
       <div className="city-hero-grain"></div>

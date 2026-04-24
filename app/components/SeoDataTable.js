@@ -80,7 +80,7 @@ export default function SeoDataTable({ cityName, stats, nomReseau, isConform }) 
                         <span className="val-unit">{unit}</span>
                       </td>
                       <td>
-                        <div className={`seo-status-pill ${status.class}`} style={{ minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div className={`seo-status-pill ${status.class}`} style={{ minHeight: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 15px' }}>
                           {status.statusLabel}
                         </div>
                       </td>

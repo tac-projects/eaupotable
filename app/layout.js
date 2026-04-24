@@ -66,13 +66,19 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} full-height-body`}>
-      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         {/* Chargement ultra-optimisé (Glyphs uniquement) pour l'identité visuelle sans impact LCP */}
+        <link 
+          rel="preload" 
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Grand+Hotel&text=EauPotable.net&display=swap" 
+        />
         <link 
           rel="stylesheet" 
           href="https://fonts.googleapis.com/css2?family=Grand+Hotel&text=EauPotable.net&display=swap" 
         />
-      </head>
       <body className="full-height-body">
         {children}
         <Footer />
