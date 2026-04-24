@@ -60,15 +60,15 @@ export default function CitySEOContent({ cityName, data }) {
       condVal: fVal(stats.conductivity, " µS/cm"),
       dept: {
         conform: deptAvg?.conformRate ? `${deptAvg.conformRate}%` : "--",
-        micro: fVal(deptAvg?.microbiology),
-        pfas: fVal(deptAvg?.pfas, " µg/L"),
-        pest: fVal(deptAvg?.pesticides, " µg/L"),
-        chlorine: fVal(deptAvg?.chlorine, " mg/L"),
-        nitrates: fVal(deptAvg?.nitrates, " mg/L"),
-        hardness: fVal(deptAvg?.hardness, " °f"),
-        ph: fVal(deptAvg?.ph, " pH"),
-        turbidity: fVal(deptAvg?.turbidity, " NFU"),
-        conductivity: fVal(deptAvg?.conductivity, " µS/cm")
+        micro: fVal(deptAvg?.averages?.microbiology),
+        pfas: fVal(deptAvg?.averages?.pfas, " µg/L"),
+        pest: fVal(deptAvg?.averages?.pesticides, " µg/L"),
+        chlorine: fVal(deptAvg?.averages?.chlorine, " mg/L"),
+        nitrates: fVal(deptAvg?.averages?.nitrates, " mg/L"),
+        hardness: fVal(deptAvg?.averages?.hardness, " °f"),
+        ph: fVal(deptAvg?.averages?.ph, " pH"),
+        turbidity: fVal(deptAvg?.averages?.turbidity, " NFU"),
+        conductivity: fVal(deptAvg?.averages?.conductivity, " µS/cm")
       },
       region: {
         conform: regionalInfo.conformity ? `${regionalInfo.conformity}%` : "--",
