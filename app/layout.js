@@ -4,12 +4,13 @@ import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/seo.css';
-import { Inter, Manrope } from 'next/font/google';
+import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-inter', display: 'swap' });
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-manrope', display: 'swap' });
+const grandHotel = Grand_Hotel({ subsets: ["latin"], weight: ["400"], variable: '--font-grand-hotel', display: 'swap' });
 
 
 export const metadata = {
@@ -65,20 +66,10 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${manrope.variable} full-height-body`}>
+    <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        {/* Chargement ultra-optimisé (Glyphs uniquement) pour l'identité visuelle sans impact LCP */}
-        <link 
-          rel="preload" 
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Grand+Hotel&text=EauPotable.net&display=swap" 
-        />
-        <link 
-          rel="stylesheet" 
-          href="https://fonts.googleapis.com/css2?family=Grand+Hotel&text=EauPotable.net&display=swap" 
-        />
       <body className="full-height-body">
         {children}
         <Footer />
