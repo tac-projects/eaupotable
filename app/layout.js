@@ -84,7 +84,10 @@ export default function RootLayout({ children }) {
         <Footer />
         <Script id="google-analytics-init" strategy="lazyOnload">
           {`
-            setTimeout(() => {
+            const loadGA = () => {
+              if (window.gaLoaded) return;
+              window.gaLoaded = true;
+              
               const script = document.createElement('script');
               script.src = "https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ";
               script.async = true;
@@ -94,7 +97,15 @@ export default function RootLayout({ children }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-L7BMHXS6DJ');
-            }, 5000);
+              
+              window.removeEventListener('scroll', loadGA);
+              window.removeEventListener('mousemove', loadGA);
+              window.removeEventListener('touchstart', loadGA);
+            };
+
+            window.addEventListener('scroll', loadGA, { passive: true });
+            window.addEventListener('mousemove', loadGA, { passive: true });
+            window.addEventListener('touchstart', loadGA, { passive: true });
           `}
         </Script>
         <Script id="register-sw" strategy="afterInteractive">

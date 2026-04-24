@@ -117,6 +117,9 @@ export async function generateStaticParams() {
   }));
 }
 
+export const dynamic = 'force-static';
+export const revalidate = 86400; // 24h
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
