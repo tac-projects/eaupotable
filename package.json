@@ -12,9 +12,17 @@
     "ship": "npm run sitemap && git add . && git commit -m \"📦 Data & Sitemap Auto-Update\" && git push"
   },
   "dependencies": {
-    "@builder.io/partytown": "^0.10.3",
     "next": "16.2.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
-  }
+    "react-dom": "19.2.4",
+    "@builder.io/partytown": "^0.10.3"
+  },
+  "browserslist": [
+    "last 2 chrome versions",
+    "last 2 safari versions",
+    "last 2 firefox versions",
+    "last 2 edge versions",
+    "last 2 ios versions",
+    "not dead"
+  ]
 }
