@@ -522,15 +522,19 @@ function calculateRegionalAverages(allDeptData) {
         Object.keys(r.params).forEach(pId => {
             const vals = r.params[pId].map(v => v.val);
             if (vals.length > 0) {
-                const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
-                let formatted = mean.toFixed(2).replace('.', ',');
-                if (mean > 10) formatted = Math.round(mean).toString();
-                else if (mean < 0.1) formatted = mean <= 0.01 ? "< 0,01" : mean.toFixed(3).replace('.', ',');
-                
-                finalRegions[rName].averages[pId] = { 
-                    val: formatted, 
-                    unit: r.params[pId][0].unit 
-                };
+                if (pId === 'microbiology') {
+                    finalRegions[rName].averages[pId] = { val: "Absence", unit: "" };
+                } else {
+                    const mean = vals.reduce((a,b) => a+b, 0) / vals.length;
+                    let formatted = mean.toFixed(2).replace('.', ',');
+                    if (mean > 10) formatted = Math.round(mean).toString();
+                    else if (mean < 0.1) formatted = mean <= 0.01 ? "< 0,01" : mean.toFixed(3).replace('.', ',');
+                    
+                    finalRegions[rName].averages[pId] = { 
+                        val: formatted, 
+                        unit: r.params[pId][0].unit 
+                    };
+                }
             }
         });
     });
