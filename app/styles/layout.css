@@ -248,7 +248,7 @@ main {
 @media (max-width: 1023px) {
     .hero-split-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
         text-align: center;
     }
     .hero-left {
@@ -256,7 +256,17 @@ main {
         text-align: center;
     }
     .hero-right {
-        display: none;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: -1.5rem;
+    }
+    .hero-left .seo-source-line,
+    .hero-left .source-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 100%;
     }
 }
 
@@ -320,7 +330,7 @@ main {
 
 @media (max-width: 1023px) {
     .home-search-container {
-        margin: 3rem auto 1.5rem;
+        margin: 1rem auto 1.5rem;
         padding: 0 10px;
     }
 }

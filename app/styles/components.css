@@ -433,23 +433,30 @@
         padding: 80px 0 40px;
         text-align: center;
     }
+    .city-hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
     .city-hero-breadcrumb {
         justify-content: center;
+        margin-bottom: 3rem;
     }
     .city-hero-subtitle {
         margin: 0 auto;
+        font-size: 1rem;
     }
-    .hero-water-image-container.city-variant {
+    .hero-water-image-container {
         margin: 0 auto;
-        max-width: 320px;
+        max-width: 280px;
     }
-    .crystal-score-badge.city-variant {
+    .crystal-score-badge {
         position: relative;
         bottom: 0;
         right: 0;
-        margin: -30px auto 0;
+        margin: -50px auto 0;
         width: 100%;
-        max-width: 250px;
+        max-width: 240px;
+        text-align: left;
     }
 }
 
@@ -635,7 +642,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     line-height: normal;
     transform: translateY(var(--logo-y-offset));
     /* Compensation agressive pour la police cursive */
@@ -1569,11 +1576,11 @@ main.content-wrapper {
 
 /* Utility Classes */
 .logo-icon {
-    margin-right: 8px;
+    margin-right: 0;
 }
 
 .logo-menu-icon {
-    margin-right: 12px;
+    margin-right: 0;
 }
 
 .full-height-body {
@@ -2648,7 +2655,7 @@ main.content-wrapper {
         display: none !important;
     }
     .city-hero-section {
-        padding: 60px 0 40px;
+        padding: 80px 0 40px;
         min-height: 350px;
     }
 }
@@ -2669,6 +2676,13 @@ main.content-wrapper {
     color: var(--text-light);
     margin-bottom: var(--spacing-xl);
     font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .city-hero-breadcrumb {
+        margin-bottom: 3rem;
+        justify-content: center;
+    }
 }
 
 .city-hero-breadcrumb a {
@@ -3158,46 +3172,64 @@ main.content-wrapper {
 }
 
 /* --- BENCHMARK AUDIT COMPONENT --- */
+/* --- BENCHMARK SECTION --- */
 .benchmark-container {
-    padding: 2rem;
+    padding: 2.5rem;
     margin-top: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .benchmark-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
 }
 
 .benchmark-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 18px;
+    gap: 20px;
+    padding: 12px 24px;
     background: #f8fafc;
     border: 1px solid rgba(0, 0, 0, 0.04);
-    border-radius: 14px;
+    border-radius: 16px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .benchmark-item:hover {
     transform: translateX(8px);
     background: white;
     border-color: var(--primary-solid);
-    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.08);
+    box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.08);
 }
 
 .benchmark-item.current-city {
     background: white;
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
-    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.05);
+    border: 1.5px solid rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.05);
+}
+
+.benchmark-rank {
+    width: 35px;
+    flex-shrink: 0;
+    font-weight: 800;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
 }
 
 .benchmark-city {
-    width: 140px;
+    width: 220px;
+    flex-shrink: 0;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-main);
     white-space: nowrap;
     overflow: hidden;
@@ -3206,52 +3238,70 @@ main.content-wrapper {
 
 .benchmark-bar-bg {
     flex: 1;
-    height: 8px;
+    height: 10px;
     background: #e2e8f0;
     border-radius: 100px;
     overflow: hidden;
     position: relative;
+    min-width: 50px;
 }
 
 .benchmark-bar-fill {
     height: 100%;
     background: var(--primary-gradient);
     border-radius: 100px;
-    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: width 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .benchmark-score {
-    width: 40px;
+    width: 45px;
+    flex-shrink: 0;
     text-align: right;
-    font-weight: 800;
-    font-size: 0.95rem;
+    font-weight: 900;
+    font-size: 1rem;
     color: var(--primary-solid);
+    font-feature-settings: "tnum";
+}
+
+.benchmark-item.loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% { left: 100%; }
 }
 
 .benchmark-cta-container {
     text-align: center;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
 }
 
 .benchmark-start-btn {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 28px;
+    padding: 16px 32px;
     background: var(--primary-solid);
     color: white;
     border-radius: 100px;
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(var(--primary-rgb), 0.25);
 }
 
 .benchmark-start-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(var(--primary-rgb), 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(var(--primary-rgb), 0.35);
 }
 
 .benchmark-start-btn:disabled {
@@ -3260,43 +3310,84 @@ main.content-wrapper {
 }
 
 .benchmark-cta-hint {
-    margin-top: 1rem;
-    font-size: 0.85rem;
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
     color: var(--text-light);
 }
 
 .benchmark-scanning-indicator {
     padding: 1.5rem;
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-solid);
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .scanner-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: var(--primary-solid);
     border-radius: 50%;
-    animation: pulse 1.5s infinite;
+    animation: pulse-scanner 0.8s infinite alternate;
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.4);
+}
+
+@keyframes pulse-scanner {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1.2); opacity: 1; }
 }
 
 .benchmark-footer {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-light);
-    opacity: 0.7;
+    opacity: 0.8;
+    font-style: italic;
 }
 
-@media (max-width: 600px) {
-    .benchmark-city { width: 100px; font-size: 0.85rem; }
+/* Mobile Layout - 2 Rows */
+@media (max-width: 650px) {
     .benchmark-container { padding: 1rem; }
-    .benchmark-item { padding: 10px 14px; gap: 10px; }
+    
+    .benchmark-item {
+        display: grid;
+        grid-template-areas: 
+            "rank city score"
+            "bar bar bar";
+        grid-template-columns: auto 1fr auto;
+        gap: 12px 10px;
+        padding: 15px 18px;
+    }
+
+    .benchmark-rank { 
+        grid-area: rank; 
+        width: auto; 
+        font-size: 0.85rem;
+    }
+    
+    .benchmark-city { 
+        grid-area: city; 
+        width: auto; 
+        font-size: 0.95rem;
+        font-weight: 800;
+    }
+    
+    .benchmark-score { 
+        grid-area: score; 
+        width: auto; 
+        font-size: 1rem;
+    }
+    
+    .benchmark-bar-bg { 
+        grid-area: bar; 
+        margin-top: 2px;
+        height: 10px;
+    }
 }
 
 /* --- STATUS COLORS --- */
