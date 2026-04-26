@@ -136,21 +136,21 @@ const getRegionForDept = (code) => Object.keys(REGION_MAP).find(r => REGION_MAP[
 
 // 2. CONFIGURATION & SANITARY PARAMETERS (National Codes)
 const config = {
-    nitrates: { codes: ["1340", "1342"] },
-    ph: { codes: ["1302"] },
-    temperature: { codes: ["1301"] },
-    hardness: { codes: ["1345"] },
-    chlorine: { codes: ["1398", "1399"] },
-    pesticides: { codes: ["1107", "1667", "7150"] },
-    pfas: { codes: ["7149", "8847"] },
-    microbiology: { codes: ["1321", "1322", "1449", "1447", "1042"] },
-    conductivity: { codes: ["1303"] },
-    turbidity: { codes: ["1305", "1706"] },
-    iron: { codes: ["1393", "1391"] },
-    manganese: { codes: ["1394"] },
-    ammonium: { codes: ["1331", "1335"] },
-    copper: { codes: ["1392"] },
-    organic_carbon: { codes: ["1841"] }
+    nitrates: { codes: ["1340", "1342"], unit: "mg/L" },
+    ph: { codes: ["1302"], unit: "pH" },
+    temperature: { codes: ["1301"], unit: "°C" },
+    hardness: { codes: ["1345"], unit: "°f" },
+    chlorine: { codes: ["1398", "1399"], unit: "mg/L" },
+    pesticides: { codes: ["1107", "1667", "7150"], unit: "µg/L" },
+    pfas: { codes: ["7149", "8847"], unit: "µg/L" },
+    microbiology: { codes: ["1321", "1322", "1449", "1447", "1042"], unit: "Absence" },
+    conductivity: { codes: ["1303"], unit: "µS/cm" },
+    turbidity: { codes: ["1295", "1305"], unit: "NFU" },
+    iron: { codes: ["1393", "1391"], unit: "µg/L" },
+    manganese: { codes: ["1394"], unit: "µg/L" },
+    ammonium: { codes: ["1331", "1335"], unit: "mg/L" },
+    copper: { codes: ["1392"], unit: "mg/L" },
+    organic_carbon: { codes: ["1841"], unit: "mg/L" }
 };
 
 const YEARS = ["2026", "2025", "2024", "2023", "2022"];
@@ -366,7 +366,7 @@ async function buildDepartment(deptCode) {
                             if (refRes[code]) {
                                 let v = refRes[code].val;
                                 if (key === 'microbiology' && (v === '0' || v.toLowerCase().includes('absence'))) v = "Absence";
-                                let unit = (refRes[code].unit || "").replace('mg(Cl2)/L', 'mg/L').replace('unité pH', 'pH');
+                                let unit = pConf.unit || (refRes[code].unit || "").replace('mg(Cl2)/L', 'mg/L').replace('unité pH', 'pH');
                                 stats[key] = { val: v, unit: " " + unit, date: new Date(entry.date).toLocaleDateString('fr-FR') };
                                 if (lastDate === "N/A") { 
                                     lastDate = entry.date; 
@@ -574,7 +574,36 @@ function calculateRegionalAverages(allDeptData) {
     } else if (deptArg) {
         const codes = deptArg.split('=')[1].split(',');
         for (const code of codes) {
-            const res = await buildDepartment(code);
+            allResults[code] = await buildDepartment(code);
+        }
+        
+        // Charger les données manquantes de la région pour les départements demandés
+        for (const code of codes) {
+            const rName = allResults[code].deptInfo.regionName;
+            const regionalDepts = REGION_MAP[rName] || [];
+            for (const rDept of regionalDepts) {
+                if (!allResults[rDept]) {
+                    const filePath = path.join(__dirname, '..', 'public', 'data', 'departments', `${rDept}.json`);
+                    if (fs.existsSync(filePath)) {
+                        try {
+                            allResults[rDept] = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+                        } catch (e) {}
+                    }
+                }
+            }
+        }
+
+        const regionalAverages = calculateRegionalAverages(allResults);
+
+        for (const code of codes) {
+            const res = allResults[code];
+            if (!res) continue;
+            const rName = res.deptInfo.regionName;
+            if (regionalAverages[rName]) {
+                res.regionalInfo.averages = regionalAverages[rName].averages;
+                res.regionalInfo.score = regionalAverages[rName].score;
+                res.regionalInfo.conformity = regionalAverages[rName].conformity;
+            }
             saveDepartmentFile(code, res);
         }
         await updateIndex();

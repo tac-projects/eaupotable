@@ -1,6 +1,6 @@
 import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
-import { fetchCitySummary } from '../../../lib/water-utils';
+import { fetchCitySummary, calculateCrystalScore } from '../../../lib/water-utils';
 import { cache } from 'react';
 import fs from 'fs';
 import path from 'path';
@@ -81,6 +81,11 @@ async function getLocalData(slug) {
     };
 
     const isConform = rawCityData.meta?.is_conform !== false;
+    
+    // RECALCUL DYNAMIQUE : On recalcule le score et les labels pour garantir la prise en compte 
+    // des nouvelles règles métier (labels masculins, arrondis) sans attendre un nouveau crawl.
+    const recalculatedCrystal = calculateCrystalScore(cityData.stats, isConform);
+    cityData.crystal = recalculatedCrystal;
 
     // 1. Liste pour le Benchmark (Top 10 des plus grandes villes)
     const benchmarkCities = (fullData.deptInfo.topCities || [])

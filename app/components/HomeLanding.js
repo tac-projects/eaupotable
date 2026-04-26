@@ -48,13 +48,6 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        .hero-section { min-height: 500px; contain: layout; }
-        @media (max-width: 768px) { .hero-section { min-height: 400px; } }
-        .hero-mesh-background { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background: #ffffff; overflow: hidden; }
-        .seo-title { opacity: 1 !important; visibility: visible !important; }
-        .home-search-container { min-height: 70px; }
-      `}} />
       <input
         type="text"
         value={value}
@@ -172,97 +165,132 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           <div className="mesh-noise"></div>
         </div>
         <div className="seo-container">
-          <div className="seo-header">
-            <h1 className="seo-title">Quelle est la qualité de <br />votre <span className="text-primary">eau potable{'\u00A0'}?</span></h1>
-            <p className="seo-subtitle">
-              Vérifiez instantanément la qualité de l'eau du robinet dans votre ville. Accédez au verdict de pureté globale basé sur les analyses de pesticides, nitrates, PFAS et bactéries.
-            </p>
-          </div>
+          <div className="hero-split-container">
+            <div className="hero-left">
+              <div className="seo-header">
+                <h1 className="seo-title">Quelle est la qualité de votre <span className="text-primary">eau potable{'\u00A0'}?</span></h1>
+                <p className="seo-subtitle">
+                  Vérifiez la qualité de l'eau du robinet parmi <strong>35 000 communes</strong>. Découvrez le <strong>Crystal Score™</strong> de votre ville : un verdict de pureté globale analysant <strong>pesticides</strong>, <strong>PFAS</strong>, <strong>nitrates</strong> et l'intégralité des indicateurs de santé officiels.
+                </p>
+              </div>
 
-          <div className="home-search-container">
-            {/* ... barre de recherche existante ... */}
-            <div className="search-box">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <TypewriterInput
-                value={searchQuery}
-                onChange={onSearchChange}
-                onFocus={() => setIsSearchFocused(true)}
-                onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
-                }}
-                className="search-input"
-                ariaLabel="Rechercher une ville ou un code postal"
-              />
-              {searchQuery && (
-                <button
-                  className="clear-search visible"
-                  onClick={() => { setSearchQuery(''); setSuggestions([]); }}
-                  aria-label="Effacer la recherche"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+              <div className="home-search-container">
+                <div className="search-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className="search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
-                </button>
-              )}
-              <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </button>
-            </div>
+                  <TypewriterInput
+                    value={searchQuery}
+                    onChange={onSearchChange}
+                    onFocus={() => setIsSearchFocused(true)}
+                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
+                    }}
+                    className="search-input"
+                    ariaLabel="Rechercher une ville ou un code postal"
+                  />
+                  {searchQuery && (
+                    <button
+                      className="clear-search visible"
+                      onClick={() => { setSearchQuery(''); setSuggestions([]); }}
+                      aria-label="Effacer la recherche"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                  )}
+                  <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
 
-            <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
-              {!searchQuery && (
-                <div className="popular-cities-list">
-                  <p className="popular-cities-title">Villes populaires</p>
-                  {POPULAR_CITIES.slice(0, 8).map(city => (
-                    <div key={city.slug} className="suggestion-item" onClick={() => handleSearchSelection({ text: city.name, place_name: city.name })}>
-                      {city.name}
+                <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
+                  {!searchQuery && (
+                    <div className="popular-cities-list">
+                      <p className="popular-cities-title">Villes populaires</p>
+                      {POPULAR_CITIES.slice(0, 8).map(city => (
+                        <div key={city.slug} className="suggestion-item" onClick={() => handleSearchSelection({ text: city.name, slug: city.slug })}>
+                          {city.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {suggestions.map((city, i) => (
+                    <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(city)}>
+                      <strong>{city.text}</strong> <span className="suggestion-context-text">({city.dpt})</span>
                     </div>
                   ))}
                 </div>
-              )}
-              {suggestions.map((city, i) => (
-                <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(city)}>
-                  <strong>{city.text}</strong> <span className="suggestion-context-text">({city.dpt})</span>
-                </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
-          <div className="seo-source-line">
-            <span className="source-label">Sources officielles :</span>
-            <div className="source-links">
-              <a 
-                href="https://sante.gouv.fr/sante-et-environnement/eaux/eau" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="source-link"
-              >
-                Données ARS 2026 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-              <a 
-                href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="source-link"
-              >
-                Référencé Data.gouv.fr <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-              <a 
-                href="https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="source-link"
-              >
-                Partenaire Open Data <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
+              <div className="seo-source-line">
+                <div className="source-links">
+                  <a 
+                    href="https://sante.gouv.fr/sante-et-environnement/eaux/eau" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="source-link"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    Données ARS 2026
+                  </a>
+                  <a 
+                    href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="source-link"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                      <path d="M12 2l10 5v10l-10 5L2 17V7l10-5z"/>
+                      <path d="M12 22V12"/><path d="M22 7l-10 5L2 7"/>
+                    </svg>
+                    Référencé Data.gouv.fr
+                  </a>
+                  <a 
+                    href="https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="source-link"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                      <path d="M2 21c0-3 1.85-5.36 5.08-6C10.9 14.19 13.1 13 15 12"/>
+                    </svg>
+                    Partenaire Open Data
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-right">
+              <div className="hero-water-image-container">
+                <img 
+                  src="/images/hero-water-glass.png" 
+                  alt="Verre d'eau cristalline" 
+                  className="hero-water-image"
+                  loading="eager"
+                />
+                <div className="crystal-score-badge">
+                  <div className="crystal-badge-header">
+                    <svg className="crystal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M6 3h12l4 6-10 13L2 9Z" />
+                      <path d="M12 3l-4 6 4 13 4-13-4-6" />
+                    </svg>
+                    Crystal Score™
+                  </div>
+                  <div className="crystal-badge-val">9.8<span>/10</span></div>
+                  <div className="crystal-badge-desc">Notre algorithme de<br />pureté de l'eau</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -365,7 +393,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   return (
                     <button
                       key={city.slug}
-                      onClick={() => onCitySelect({ name: city.name })}
+                      onClick={() => onCitySelect(city)}
                       className="premium-metropolis-row"
                     >
                       <div className="col-city">

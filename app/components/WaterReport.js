@@ -36,7 +36,7 @@ export default function WaterReport({ data, onShare }) {
         </button>
         <div className="hero-content">
           <div className="hero-score-card">
-            <div className="hero-score-val">{crystal.final}/10</div>
+            <div className="hero-score-val">{typeof crystal.final === 'number' ? crystal.final.toFixed(1) : crystal.final}/10</div>
             <div className={`hero-status-badge ${scoreClass}`}>{crystal.label}</div>
           </div>
           <div className="hero-footer"><h2 className="hero-city">{cityName}</h2><div className="hero-network">{nomReseau}</div></div>

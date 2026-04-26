@@ -5,20 +5,10 @@ import React from 'react';
 export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
   return (
     <section className="city-hero-section">
-      <style dangerouslySetInnerHTML={{ __html: `
-        .city-hero-section { min-height: 450px; contain: layout; background: #f8fafc; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%; }
-        .city-hero-container { width: 100%; max-width: 1200px; padding: 0 20px; z-index: 10; opacity: 1 !important; visibility: visible !important; }
-        .city-hero-title { font-size: 3rem; font-weight: 800; color: #0f172a; margin-bottom: 20px; line-height: 1.1; }
-        .score-badge { background: white; border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; min-width: 140px; contain: content; }
-        .num { font-size: 3.5rem; font-weight: 900; line-height: 1; color: #0f172a; }
-        .badge-pulse { display: block; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; margin-right: 10px; position: relative; }
-        .badge-pulse::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: inherit; border-radius: inherit; animation: pulse-transform 2s cubic-bezier(0.24, 0, 0.38, 1) infinite; }
-        @keyframes pulse-transform { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
-      `}} />
       <div className="city-hero-mesh"></div>
       <div className="city-hero-grain"></div>
       
-      <div className="city-hero-container">
+      <div className="seo-container">
         <nav className="city-hero-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Accueil</a>
           <span className="sep">›</span>
@@ -29,8 +19,8 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
           <span className="curr">{cityName}</span>
         </nav>
         
-        <div className="city-hero-main">
-          <div className="city-hero-info">
+        <div className="hero-split-container">
+          <div className="hero-left">
             <div className="city-hero-badge">
               <span className="badge-pulse"></span>
               RELEVÉ OFFICIEL ARS 2026
@@ -39,19 +29,68 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
               Qualité de l'eau à <span className="highlight">{cityName}</span>
             </h1>
             <p className="city-hero-subtitle">
-              Analyse complète du réseau de distribution {nomReseau || cityName} basée sur les dernières données du {dateAnalyse}.
+              Analyse complète du réseau de distribution <strong>{nomReseau || cityName}</strong> basée sur les dernières données du <strong>{dateAnalyse}</strong>.
             </p>
+            
+            <div className="seo-source-line">
+              <div className="source-links">
+                <a 
+                  href="https://sante.gouv.fr/sante-et-environnement/eaux/eau" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="source-link"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  Données ARS 2026
+                </a>
+                <a 
+                  href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="source-link"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                    <path d="M12 2l10 5v10l-10 5L2 17V7l10-5z"/>
+                    <path d="M12 22V12"/><path d="M22 7l-10 5L2 7"/>
+                  </svg>
+                  Référencé Data.gouv.fr
+                </a>
+                <a 
+                  href="https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="source-link"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C10.9 14.19 13.1 13 15 12"/>
+                  </svg>
+                  Partenaire Open Data
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div className="city-hero-score-card">
-            <div className={`score-badge ${label?.toLowerCase().replace(/\s/g, '-') || 'status-good'}`}>
-              <div className="score-value">
-                <span className="num">{score}</span>
-                <span className="total">/10</span>
-              </div>
-              <div className="score-meta">
-                <span className="label">CRYSTAL SCORE</span>
-                <span className="verdict">&nbsp;{label}</span>
+          <div className="hero-right">
+            <div className="hero-water-image-container city-variant">
+              <img 
+                src="/images/hero-water-glass.png" 
+                alt="Verre d'eau pure"
+                className="hero-water-image"
+                loading="eager"
+              />
+              <div className="crystal-score-badge city-variant">
+                <div className="crystal-badge-header">
+                  <svg className="crystal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M6 3h12l4 6-10 13L2 9Z" />
+                    <path d="M12 3l-4 6 4 13 4-13-4-6" />
+                  </svg>
+                  Crystal Score™
+                </div>
+                <div className="crystal-badge-val">{typeof score === 'number' ? score.toFixed(1) : score}<span>/10</span></div>
+                <div className="crystal-badge-desc">Verdict : <strong>{label}</strong></div>
               </div>
             </div>
           </div>

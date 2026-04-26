@@ -86,7 +86,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     if (!waterData) return;
     const shareData = {
       title: `Qualité de l'eau à ${selectedCity}`,
-      text: `L'eau de ${selectedCity} est notée ${waterData.crystal.final}/10 sur EauPotable.net. Découvrez l'analyse complète !`,
+      text: `L'eau de ${selectedCity} est notée ${waterData.crystal.final.toFixed(1)}/10 sur EauPotable.net. Découvrez l'analyse complète !`,
       url: window.location.href
     };
 
@@ -226,7 +226,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
         </div>
       ) : (
         <HomeLanding 
-          onCitySelect={(city) => handleSearchSelection({ text: city.name, place_name: city.name })}
+          onCitySelect={(city) => handleSearchSelection({ text: city.name, slug: city.slug })}
           searchProps={{
             searchQuery,
             suggestions,

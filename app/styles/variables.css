@@ -27,6 +27,12 @@
     --ghost-border: 1px solid rgba(0, 0, 0, 0.08);
     --shadow-premium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     
+    /* Crystal Score Badge Tokens */
+    --crystal-bg: rgba(255, 255, 255, 0.7);
+    --crystal-border: 1px solid rgba(255, 255, 255, 0.4);
+    --crystal-shadow: 0 20px 40px rgba(0, 70, 204, 0.12);
+    --crystal-accent: #0046CC;
+    
     /* Typography - Linked to next/font variables from layout.js */
     --font-heading: var(--font-manrope), 'Manrope', system-ui, sans-serif;
     --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
