@@ -1,0 +1,170 @@
+.methodologyPage {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    padding-bottom: 6rem;
+}
+
+/* Hero Section Adjustments for Methodology */
+.methodologyPage .hero-section {
+    padding-bottom: 4rem;
+}
+
+.methodologyPage .hero-water-image {
+    box-shadow: var(--crystal-shadow);
+    border: var(--glass-border-light);
+}
+
+@media (max-width: 1023px) {
+    .methodologyPage .hero-water-image-container {
+        margin: 2rem auto 0;
+    }
+}
+
+/* Sections & Zebra Pattern */
+.section {
+    width: 100%;
+    padding: 6rem 0;
+}
+
+.section.zebra {
+    background-color: var(--surface);
+    border-top: 1px solid var(--surface-sunken);
+    border-bottom: 1px solid var(--surface-sunken);
+}
+
+.sectionContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.section h2 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.introText {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+    font-size: var(--fs-lead);
+    color: var(--text-muted);
+}
+
+/* Penalty Grid */
+.penaltyGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.penaltyCard {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border: var(--ghost-border);
+    box-shadow: var(--shadow-premium);
+    transition: var(--transition-premium);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.penaltyCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.cardIcon {
+    width: 56px;
+    height: 56px;
+    background: var(--primary-glow);
+    color: var(--primary-solid);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardIcon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.penaltyCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 700;
+}
+
+.penaltyBadge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--status-critical);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: var(--fs-small);
+    font-weight: 700;
+    width: fit-content;
+}
+
+.penaltyBadge.warning {
+    background: var(--status-warning);
+}
+
+.cardExplanation {
+    color: var(--text-muted);
+    font-size: var(--fs-body);
+}
+
+.expertQuote {
+    margin-top: auto;
+    font-style: italic;
+    color: var(--primary-solid);
+    font-size: 0.9rem;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--surface-sunken);
+}
+
+/* Verdict Scale */
+.scaleContainer {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    overflow-x: auto;
+}
+
+.scaleTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.scaleTable th, .scaleTable td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--surface-sunken);
+}
+
+.labelBadge {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: var(--fs-small);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh;
+    }
+    .section {
+        padding: 4rem var(--spacing-md);
+    }
+}

@@ -19,6 +19,25 @@ export async function GET(request) {
     };
     const circleColor = colors[status] || '#3b82f6';
 
+    // 1. Protection Radicale du CPU : Détection des User-Agents
+    const ua = request.headers.get('user-agent')?.toLowerCase() || '';
+    
+    // Whitelist des agents qui ont réellement besoin de l'image dynamique (Réseaux Sociaux)
+    const isSocialShare = 
+      ua.includes('facebookexternalhit') || 
+      ua.includes('twitterbot') || 
+      ua.includes('linkedinbot') || 
+      ua.includes('whatsapp') || 
+      ua.includes('slackbot') || 
+      ua.includes('discordbot') ||
+      ua.includes('telegrambot');
+
+    // Si c'est un bot d'indexation ou un crawler (pas un partage social), on redirige vers le statique
+    // Cela économise 100% du CPU de génération pour 99% des requêtes de bots.
+    if (!isSocialShare && (ua.includes('bot') || ua.includes('crawl') || ua.includes('spider'))) {
+      return Response.redirect(new URL('/images/og-default.png', request.url), 302);
+    }
+
     return new ImageResponse(
       (
         <div
@@ -109,6 +128,9 @@ export async function GET(request) {
       {
         width: 1200,
         height: 630,
+        headers: {
+          'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=600',
+        },
       }
     );
   } catch (e) {

@@ -28,6 +28,7 @@ export default function Footer() {
         <nav className="footer-nav-minimal">
           <Link href="/">Accueil</Link>
           <Link href="/villes">Toutes les villes</Link>
+          <Link href="/methodologie">Méthodologie</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/mentions-legales">Mentions Légales</Link>

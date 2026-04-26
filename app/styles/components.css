@@ -247,12 +247,14 @@
     right: -100%;
     width: 320px;
     height: 100vh;
+    height: 100dvh;
     background: var(--bg-light);
     z-index: 3000;
     transition: var(--transition-premium);
     box-shadow: none;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid var(--surface-sunken);
 }
 
 .main-menu.active {
@@ -493,7 +495,6 @@
     font-size: 2.2rem;
     font-weight: 400;
     color: var(--text-logo);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .menu-items {
@@ -628,7 +629,6 @@
 
 .menu-footer {
     padding: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 0.75rem;
     color: var(--text-light);
 }
@@ -781,6 +781,20 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: white;
+}
+
+.methodology-link {
+    font-size: 0.65rem;
+    color: var(--primary-solid);
+    text-decoration: underline;
+    margin-top: 8px;
+    font-weight: 700;
+    opacity: 0.8;
+    transition: var(--transition-premium);
+}
+
+.methodology-link:hover {
+    opacity: 1;
 }
 
 /* Coloration Status Hero */
