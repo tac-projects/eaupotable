@@ -1,16 +1,12 @@
+import { notFound, redirect } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
-import { fetchCitySummary, calculateCrystalScore } from '../../../lib/water-utils';
+import { calculateCrystalScore } from '../../../lib/water-utils';
 import { cache } from 'react';
 import fs from 'fs';
 import path from 'path';
 
 const DOMAIN = 'https://www.eaupotable.net';
-
-// Dédoublage de l'audit pour diviser le temps de chargement par 2
-const getCachedSummary = cache(async (cityName) => {
-  return await fetchCitySummary(cityName);
-});
 
 let cityIndexCache = null;
 let deptDataCache = new Map();
@@ -140,17 +136,17 @@ export const revalidate = 86400; // Cache de 24h après la première visite
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   
-  let summary = await getLocalData(slug);
-  if (!summary) {
-    summary = await getCachedSummary(cityNameFromSlug);
-  }
+  const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  if (slug !== cleanSlug) return {}; // La redirection sera gérée par la page
+  
+  const summary = await getLocalData(cleanSlug);
+  if (!summary) return { title: "Ville non trouvée" };
 
-  const officialName = summary?.cityName || cityNameFromSlug;
-  const score = summary?.crystal?.final || 'N/A';
-  const label = summary?.crystal?.label || 'ANALYSE';
-  const statusClass = summary?.crystal?.label?.toLowerCase().replace(/\s/g, '-') || 'status-good';
+  const officialName = summary.cityName;
+  const score = summary.crystal?.final || 'N/A';
+  const label = summary.crystal?.label || 'ANALYSE';
+  const statusClass = summary.crystal?.label?.toLowerCase().replace(/\s/g, '-') || 'status-good';
 
   const ogImageUrl = `/api/og?city=${encodeURIComponent(officialName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
@@ -158,7 +154,7 @@ export async function generateMetadata({ params }) {
     title: `Qualité de l'eau potable à ${officialName} (2026) | Crystal Score`,
     description: `Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les taux de pesticides et de PFAS détectés dans votre réseau de distribution.`,
     alternates: {
-      canonical: `${DOMAIN}/ville/${slug}`,
+      canonical: `${DOMAIN}/ville/${cleanSlug}`,
     },
     openGraph: {
       title: `Qualité de l'eau potable : ${officialName} (2026)`,
@@ -175,25 +171,38 @@ import CityHero from '../../components/CityHero';
 
 export default async function CityPage({ params }) {
   const { slug } = await params;
-  const cityNameFromSlug = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
   
-  let summary = await getLocalData(slug);
-  if (!summary) {
-    summary = await getCachedSummary(cityNameFromSlug);
+  // 1. Normalisation du slug (sécurité SEO)
+  const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  
+  // 2. Redirection 301 si le slug est mal formé
+  if (slug !== cleanSlug) {
+    redirect(`/ville/${cleanSlug}`);
   }
 
-  const officialName = summary?.cityName || cityNameFromSlug;
-  const nomReseau = (summary?.meta?.nom_distributeur || summary?.meta?.nom_reseau || officialName).split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+  // 3. Récupération des données locales uniquement
+  const summary = await getLocalData(cleanSlug);
+  
+  // 4. Si aucune donnée locale n'est trouvée -> Vraie 404
+  if (!summary) {
+    notFound();
+  }
+
+  const officialName = summary.cityName;
+  const nomReseau = (summary.meta?.nom_distributeur || summary.meta?.nom_reseau || officialName)
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
 
   return (
     <>
       <Navbar />
       <CityHero 
         cityName={officialName}
-        dpt={summary?.meta?.code_departement || ''}
-        dateAnalyse={summary?.meta?.date_prelevement ? new Date(summary.meta.date_prelevement).toLocaleDateString('fr-FR') : '2026'}
-        score={summary?.crystal?.final || '--'}
-        label={summary?.crystal?.label || 'ANALYSE'}
+        dpt={summary.meta?.code_departement || ''}
+        dateAnalyse={summary.meta?.date_prelevement ? new Date(summary.meta.date_prelevement).toLocaleDateString('fr-FR') : '2026'}
+        score={summary.crystal?.final || '--'}
+        label={summary.crystal?.label || 'ANALYSE'}
         nomReseau={nomReseau}
       />
       <WaterApp initialCity={officialName} initialData={summary} />
