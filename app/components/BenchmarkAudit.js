@@ -84,7 +84,7 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
           </div>
         )}
       </div>
-      <p className="benchmark-footer">Classement basé sur l'Indice de Pureté Cristal Score (Données ARS {currentYear}).</p>
+      <p className="benchmark-footer">Classement basé sur l'Indice de Pureté Crystal Score (Données ARS {currentYear}).</p>
     </div>
   );
 }

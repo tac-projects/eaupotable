@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
@@ -273,11 +274,14 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
             <div className="hero-right">
               <div className="hero-water-image-container">
-                <img 
+                <Image 
                   src="/images/hero-water-glass.png" 
-                  alt="Verre d'eau cristalline" 
+                  alt="Analyse qualité eau potable France 2026 - Crystal Score" 
                   className="hero-water-image"
-                  loading="eager"
+                  width={600}
+                  height={600}
+                  priority={true}
+                  sizes="(max-width: 1023px) 280px, 600px"
                 />
                 <div className="crystal-score-badge">
                   <div className="crystal-badge-header">
@@ -422,8 +426,98 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
         </div>
       </section>
 
-      {/* 4. FAQ GENERALE */}
+      {/* 4. NOTRE ENGAGEMENT & EXPERTISE */}
       <section className="home-content-section white">
+        <div className="seo-container">
+          <div className="seo-section-block">
+            <div className="seo-section-header">
+              <h2 className="seo-main-title">Un Observatoire au service des citoyens</h2>
+              <p className="seo-main-subtitle">L'indépendance et la transparence au cœur de notre algorithme de santé.</p>
+            </div>
+            <div className="seo-manifesto-centered">
+              <div className="manifesto-text">
+                <p>
+                  EauPotable.net est né d'un constat simple : l'opacité des rapports sanitaires officiels. Notre mission est de démocratiser l'accès à l'information sur la <strong>pureté de l'eau</strong> en transformant des données complexes en un indicateur universel : le <strong>Crystal Score™</strong>.
+                </p>
+                <p>
+                  Chaque jour, nos algorithmes scrutent les prélèvements des <strong>Agences Régionales de Santé (ARS)</strong> pour détecter les polluants émergents, des pesticides aux PFAS. Nous croyons que la transparence est la première étape vers une consommation plus saine et responsable.
+                </p>
+              </div>
+              
+              <div className="manifesto-stats-row">
+                <div className="m-stat-item">
+                  <span className="m-stat-val">35k+</span>
+                  <span className="m-stat-label">Communes analysées</span>
+                </div>
+                <div className="m-stat-item">
+                  <span className="m-stat-val">24/7</span>
+                  <span className="m-stat-label">Veille sanitaire</span>
+                </div>
+                <div className="m-stat-item">
+                  <span className="m-stat-val">100%</span>
+                  <span className="m-stat-label">Données Officielles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .seo-manifesto-centered {
+          max-width: 850px;
+          margin: 0 auto;
+        }
+        .manifesto-text p {
+          font-size: 1.15rem;
+          line-height: 1.8;
+          color: var(--text-muted);
+          margin-bottom: 25px;
+          text-align: justify;
+          text-justify: inter-word;
+        }
+        .manifesto-stats-row {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          background: var(--surface);
+          padding: 40px;
+          border-radius: 32px;
+          margin-top: 50px;
+          border: 1px solid rgba(0,0,0,0.03);
+        }
+        .m-stat-item {
+          text-align: center;
+        }
+        .m-stat-val {
+          display: block;
+          font-size: 2.2rem;
+          font-weight: 900;
+          color: var(--primary-solid);
+          margin-bottom: 8px;
+        }
+        .m-stat-label {
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          font-weight: 800;
+          color: var(--text-light);
+          letter-spacing: 0.08em;
+        }
+        @media (max-width: 768px) {
+          .manifesto-text p {
+            text-align: left;
+            font-size: 1.05rem;
+          }
+          .manifesto-stats-row {
+            flex-direction: column;
+            gap: 35px;
+            padding: 35px 20px;
+          }
+        }
+      `}</style>
+
+      {/* 5. FAQ GENERALE */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-block">
             <div className="seo-section-header">
@@ -484,8 +578,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
         </div>
       </section>
 
-      {/* 5. CTA ALERTE VIGILANCE PREMIUM */}
-      <section className="home-content-section gray">
+      {/* 6. CTA ALERTE VIGILANCE PREMIUM */}
+      <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-block">
             <div className="cta-alert-card">
@@ -568,55 +662,89 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
+              "@graph": [
                 {
-                  "@type": "Question",
-                  "name": "Pourquoi vérifier la qualité de son eau au-delà de la potabilité ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "En France, l'eau est traitée pour être potable (normes de sécurité immédiate). Cependant, le Crystal Score évalue la pureté à long terme : présence de nitrates, résidus de pesticides ou de polluants éternels (PFAS). Savoir ce que l'on boit permet d'adapter sa consommation."
+                  "@type": "WebSite",
+                  "@id": "https://www.eaupotable.net/#website",
+                  "url": "https://www.eaupotable.net",
+                  "name": "EauPotable.net",
+                  "publisher": { "@id": "https://www.eaupotable.net/#organization" }
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.eaupotable.net/#organization",
+                  "name": "EauPotable.net",
+                  "url": "https://www.eaupotable.net",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.eaupotable.net/img/icons/google-search-icon.png",
+                    "width": "512",
+                    "height": "512"
+                  },
+                  "description": "Observatoire citoyen indépendant analysant la pureté de l'eau du robinet et des PFAS dans plus de 35 000 communes de France.",
+                  "founder": {
+                    "@type": "Person",
+                    "@id": "https://www.linkedin.com/in/thomasalexiscailleau",
+                    "name": "Thomas-Alexis Cailleau",
+                    "jobTitle": "Fondateur & CEO",
+                    "url": "https://www.linkedin.com/in/thomasalexiscailleau",
+                    "sameAs": ["https://www.linkedin.com/in/thomasalexiscailleau"]
                   }
                 },
                 {
-                  "@type": "Question",
-                  "name": "Comment est calculé le Crystal Score 2026 ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Notre algorithme analyse 15 paramètres physico-chimiques issus de l'ARS. Il pondère la sécurité (bactériologie), la pureté (pesticides, PFAS) et le confort (dureté, chlore) pour offrir une note de 0 à 10 immédiatement compréhensible."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Peut-on utiliser l'eau du robinet pour la préparation des biberons ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier cette conformité critique pour la sécurité des nourrissons."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Est-il plus sain de boire l'eau du robinet ou de l'eau en bouteille ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "L'eau du robinet est le produit alimentaire le plus contrôlé. Elle évite la pollution plastique et contient moins de microplastiques que l'eau en bouteille. C'est l'option la plus saine et écologique."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "L'eau du robinet contient-elle des PFAS (polluants éternels) ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Depuis le 1er janvier 2026, toutes les communes ont l'obligation de tester les PFAS. EauPotable.net intègre ces nouvelles données dès leur publication officielle par les ARS pour chaque commune de France."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "D'où proviennent les données du site ?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nous exploitons l'API Hub'Eau, le portail officiel de l'État français. Les données proviennent des prélèvements réels en sortie de robinet effectués par les autorités sanitaires (ARS)."
-                  }
+                  "@type": "FAQPage",
+                  "@id": "https://www.eaupotable.net/#faq",
+                  "isPartOf": { "@id": "https://www.eaupotable.net/#website" },
+                  "mainEntity": [
+                    {
+                      "@type": "Question",
+                      "name": "Pourquoi vérifier la qualité de son eau au-delà de la potabilité ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "En France, l'eau est traitée pour être potable (normes de sécurité immédiate). Cependant, le Crystal Score évalue la pureté à long terme : présence de nitrates, résidus de pesticides ou de polluants éternels (PFAS). Savoir ce que l'on boit permet d'adapter sa consommation."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Comment est calculé le Crystal Score 2026 ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Notre algorithme analyse 15 paramètres physico-chimiques issus de l'ARS. Il pondère la sécurité (bactériologie), la pureté (pesticides, PFAS) et le confort (dureté, chlore) pour offrir une note de 0 à 10 immédiatement compréhensible."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Peut-on utiliser l'eau du robinet pour la préparation des biberons ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier cette conformité critique pour la sécurité des nourrissons."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Est-il plus sain de boire l'eau du robinet ou de l'eau en bouteille ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "L'eau du robinet est le produit alimentaire le plus contrôlé. Elle évite la pollution plastique et contient moins de microplastiques que l'eau en bouteille. C'est l'option la plus saine et écologique."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "L'eau du robinet contient-elle des PFAS (polluants éternels) ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Depuis le 1er janvier 2026, toutes les communes ont l'obligation de tester les PFAS. EauPotable.net intègre ces nouvelles données dès leur publication officielle par les ARS pour chaque commune de France."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "D'où proviennent les données du site ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Nous exploitons l'API Hub'Eau, le portail officiel de l'État français. Les données proviennent des prélèvements réels en sortie de robinet effectués par les autorités sanitaires (ARS)."
+                      }
+                    }
+                  ]
                 }
               ]
             })

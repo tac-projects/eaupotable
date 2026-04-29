@@ -30,11 +30,22 @@ export async function GET(request) {
       ua.includes('whatsapp') || 
       ua.includes('slackbot') || 
       ua.includes('discordbot') ||
-      ua.includes('telegrambot');
+      ua.includes('telegrambot') ||
+      ua.includes('applebot'); // Ajout AppleBot pour iMessage
+
+    // Détection agressive des bots d'indexation et SEO
+    const isBot = 
+      ua.includes('bot') || 
+      ua.includes('crawl') || 
+      ua.includes('spider') || 
+      ua.includes('ahrefs') || 
+      ua.includes('semrush') || 
+      ua.includes('dotbot') || 
+      ua.includes('yandex') || 
+      ua.includes('baiduspider');
 
     // Si c'est un bot d'indexation ou un crawler (pas un partage social), on redirige vers le statique
-    // Cela économise 100% du CPU de génération pour 99% des requêtes de bots.
-    if (!isSocialShare && (ua.includes('bot') || ua.includes('crawl') || ua.includes('spider'))) {
+    if (!isSocialShare && isBot) {
       return Response.redirect(new URL('/images/og-default.png', request.url), 302);
     }
 
@@ -129,7 +140,7 @@ export async function GET(request) {
         width: 1200,
         height: 630,
         headers: {
-          'Cache-Control': 'public, s-maxage=604800, stale-while-revalidate=600',
+          'Cache-Control': 'public, s-maxage=31536000, immutable',
         },
       }
     );

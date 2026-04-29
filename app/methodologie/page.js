@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import '../styles/methodology.css';
@@ -63,13 +64,14 @@ const MethodologyPage = () => {
               </div>
 
               <div className="hero-right">
-                <div className="hero-water-image-container">
-                  <img 
+                 <div className="hero-water-image-container">
+                  <Image 
                     src="/images/methodology-hero-premium.webp" 
                     alt="Analyse scientifique de la pureté de l'eau Crystal Score" 
                     className="hero-water-image"
                     width={600}
                     height={500}
+                    priority={true}
                     style={{ objectFit: 'cover', borderRadius: '24px' }}
                   />
                   <div className="crystal-score-badge">

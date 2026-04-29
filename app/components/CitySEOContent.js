@@ -171,7 +171,7 @@ export default function CitySEOContent({ cityName, data }) {
       },
       {
         q: `L'eau de ${cityName} contient-elle des PFAS (polluants éternels) ?`,
-        a: `La surveillance des PFAS devient systématique en 2026. À ${cityName}, les derniers relevés indiquent des taux ${parseValue(stats.pesticides?.val) > 0.1 ? 'à surveiller' : 'conformes aux futures normes européennes (0.1 µg/L)'}.`
+        a: `La surveillance des PFAS devient systématique en 2026. À ${cityName}, les derniers relevés indiquent des taux ${parseValue(stats.pfas?.val) > 0.1 ? 'à surveiller' : 'conformes aux futures normes européennes (0.1 µg/L)'}.`
       },
       {
         q: `Dois-je utiliser une carafe filtrante ou un adoucisseur à ${cityName} ?`,
@@ -216,8 +216,8 @@ export default function CitySEOContent({ cityName, data }) {
       <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
-            <h2 className="seo-main-title">Duel de Pureté</h2>
-            <p className="seo-main-subtitle">Comparez les performances de <strong>{cityName}</strong> avec le département <strong>{deptAvg?.name || `Département ${dpt}`} ({dpt})</strong> et la région <strong>{regionalInfo?.name || 'la région'}</strong>.</p>
+            <h2 className="seo-main-title">Qualité de l'eau : Duel de Pureté</h2>
+            <p className="seo-main-subtitle">Comparez les analyses de <strong>{cityName}</strong> avec le département <strong>{deptAvg?.name || `Département ${dpt}`} ({dpt})</strong> et la région <strong>{regionalInfo?.name || 'la région'}</strong>.</p>
           </div>
 
           <div className="summary-table-wrapper">
@@ -321,14 +321,15 @@ export default function CitySEOContent({ cityName, data }) {
       <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
-            <h2 className="seo-main-title">L'Analyse de l'Expert</h2>
-            <p className="seo-main-subtitle">Interprétation détaillée et conclusion de nos spécialistes en santé environnementale.</p>
+            <h2 className="seo-main-title">Verdict de l'Expert : L'eau est-elle saine ?</h2>
+            <p className="seo-main-subtitle">Interprétation détaillée des analyses ARS et conclusion de nos spécialistes en santé environnementale.</p>
           </div>
-          <div className="seo-card expert-analysis-card" style={{ padding: '30px' }}>
-            <div className="expert-synthesis-body" style={{ lineHeight: '1.8', color: '#334155', fontSize: '1.05rem', textAlign: 'left' }}>
+          <div className="seo-card expert-analysis-card">
+            <div className="expert-synthesis-body">
               <p>
                 <span dangerouslySetInnerHTML={{ __html: syntheseTexte.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}></span>
-                {" "}
+              </p>
+              <p>
                 <strong>Verdict de l'expert :</strong> en {currentYear}, l'analyse de l'eau potable à <strong>{cityName}</strong> {(() => {
                   const cityScore = crystal.final;
                   const deptScore = deptAvg?.score || 7.4;
@@ -383,12 +384,108 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 7 : VOISINES (BLANC) */}
+      {/* SECTION 7 : TRUST CARD (CARTE DE TRANSPARENCE) */}
       <section className="home-content-section white">
+        <div className="seo-container">
+          <div className="seo-section-header">
+            <h2 className="seo-main-title">Transparence & Méthodologie</h2>
+            <p className="seo-main-subtitle">
+              Les analyses de l'eau à <strong>{cityName}</strong> sont extraites en temps réel des bases de données <strong>SISE-Eaux</strong> du Ministère de la Santé (données Hub'Eau).
+            </p>
+          </div>
+
+          <div className="trust-card-premium">
+            <div className="trust-card-content">
+              <div className="trust-card-main">
+                <div className="trust-card-badge">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V7L12 2Z" fill="var(--primary-solid)"/>
+                    <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span>Observatoire Citoyen & Indépendant</span>
+                </div>
+                <h3>Comment est calculé le Crystal Score™ ?</h3>
+                <p>
+                  Le Crystal Score™ est un indice de pureté de 0 à 10. Il agrège les données de conformité microbiologique et physico-chimique de la base <strong>SISE-Eaux</strong>, 
+                  pondérées par les seuils de vigilance européens sur les polluants émergents (<strong>PFAS</strong>, métabolites de pesticides). 
+                  Contrairement aux rapports officiels qui se limitent à "Conforme/Non Conforme", notre algorithme évalue la qualité réelle pour une consommation à long terme.
+                </p>
+                <div className="trust-external-links">
+                  <a href="https://hubeau.eaufrance.fr/page/api-ecoulement-cours-eau" target="_blank" rel="nofollow noreferrer">Accéder aux données brutes (Hub'Eau)</a>
+                  <span className="sep">•</span>
+                  <a href="https://www.ecologie.gouv.fr/pfas-polluants-eternels" target="_blank" rel="nofollow noreferrer">Réglementation PFAS (Gouvernement)</a>
+                </div>
+              </div>
+              <div className="trust-card-actions">
+                <div className="trust-card-info-group">
+                  <div className="trust-card-info">
+                    <span className="info-label">Référentiel</span>
+                    <span className="info-value">Données ARS {currentYear}</span>
+                  </div>
+                  <div className="trust-card-info">
+                    <span className="info-label">Algorithme</span>
+                    <span className="info-value">Crystal™ v2.4</span>
+                  </div>
+                </div>
+                <a href="/methodologie" className="trust-card-btn">Détail de la Méthodologie</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8 : VOISINES (GRIS) */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <NearbyCities cities={neighborCities} dpt={dpt} />
         </div>
       </section>
+
+      <style jsx>{`
+        .trust-external-links {
+          margin-top: 25px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+
+        .trust-external-links a {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: #0046CC;
+          text-decoration: none;
+          background: rgba(0, 70, 204, 0.05);
+          padding: 6px 14px;
+          border-radius: 100px;
+          border: 1px solid rgba(0, 70, 204, 0.1);
+          transition: all 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .trust-external-links a:hover {
+          background: #0046CC;
+          color: white !important;
+          transform: translateY(-1px);
+        }
+
+        .trust-external-links .sep {
+          color: #CBD5E1;
+          font-size: 0.8rem;
+          display: none; /* Cache le point car on utilise des badges */
+        }
+
+        @media (max-width: 640px) {
+          .trust-external-links {
+            gap: 10px;
+          }
+          .trust-external-links a {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
 }
