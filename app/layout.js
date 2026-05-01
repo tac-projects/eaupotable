@@ -3,7 +3,6 @@ import './styles/base.css';
 import './styles/layout.css';
 import './styles/components.css';
 import './styles/responsive.css';
-import './styles/seo.css';
 import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';

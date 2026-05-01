@@ -308,6 +308,7 @@
     flex-direction: column;
     gap: 0.4rem;
     min-width: 180px;
+    height: 100px; /* Taille fixe pour stabiliser le layout */
     animation: float 5s ease-in-out infinite;
     z-index: 20;
 }
