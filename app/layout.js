@@ -76,9 +76,9 @@ export default function RootLayout({ children }) {
         <Footer />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics-init" strategy="afterInteractive">
+        <Script id="google-analytics-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -86,15 +86,18 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-L7BMHXS6DJ');
           `}
         </Script>
-        <Script id="register-sw" strategy="afterInteractive">
+        <Script id="register-sw" strategy="lazyOnload">
           {`
             if ('serviceWorker' in navigator) {
               window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                  console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function(err) {
-                  console.log('ServiceWorker registration failed: ', err);
-                });
+                // On retarde l'enregistrement du SW pour ne pas bloquer le thread principal
+                setTimeout(() => {
+                  navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    // Registration successful
+                  }, function(err) {
+                    // Registration failed
+                  });
+                }, 4000);
               });
             }
           `}
