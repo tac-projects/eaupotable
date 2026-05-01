@@ -72,9 +72,9 @@ export default function RootLayout({ children }) {
         <Footer />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
-          strategy="worker"
+          strategy="afterInteractive"
         />
-        <Script id="google-analytics-init" strategy="worker">
+        <Script id="google-analytics-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
