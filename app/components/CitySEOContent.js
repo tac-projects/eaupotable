@@ -1,5 +1,4 @@
 'use client';
-import '../styles/seo.css';
 
 import { useMemo, Fragment } from 'react';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
