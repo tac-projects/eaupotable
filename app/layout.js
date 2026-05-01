@@ -56,6 +56,10 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.eaupotable.net',
   },
+  other: {
+    'preconnect': ['https://www.googletagmanager.com', 'https://www.google-analytics.com'],
+    'dns-prefetch': ['https://www.googletagmanager.com', 'https://www.google-analytics.com']
+  }
 };
 
 export const viewport = {

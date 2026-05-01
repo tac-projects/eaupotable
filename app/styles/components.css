@@ -266,7 +266,8 @@
 .hero-water-image-container {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Passage à 600px pour un impact visuel maximum */
+    max-width: 600px;
+    aspect-ratio: 1 / 1;
 }
 
 .hero-water-image {
