@@ -15,9 +15,9 @@ import {
 } from '@/lib/water-utils';
 
 // Imports normaux pour SSR et LCP optimal
-import CitySEOContent from './CitySEOContent';
-import HomeLanding from './HomeLanding';
-import CityHero from './CityHero';
+// Imports dynamiques pour réduire le bundle initial et le TBT
+const CitySEOContent = dynamic(() => import('./CitySEOContent'), { ssr: true });
+const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 
 // WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
