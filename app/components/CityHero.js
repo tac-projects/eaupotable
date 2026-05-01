@@ -79,7 +79,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
               <Image 
                 src="/images/hero-water-glass.png" 
                 alt={`Qualité de l'eau potable à ${cityName} - Rapport 2026`}
-                className="hero-water-image"
+                className="hero-water-image no-anim"
                 width={600}
                 height={600}
                 priority={true}
