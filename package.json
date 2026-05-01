@@ -9,7 +9,8 @@
     "start": "next start",
     "sitemap": "node scripts/build-dept-generic.js --all && node scripts/sync-home-scores.js && node scripts/generate-sitemap.js",
     "indexnow": "node scripts/notify-indexnow.js",
-    "ship": "npm run sitemap && git add . && git commit -m \"📦 Data & Sitemap Auto-Update\" && git push"
+    "ship": "npm run sitemap && git add . && git commit -m \"📦 Data & Sitemap Auto-Update\" && git push",
+    "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {
     "next": "16.2.3",
