@@ -56,10 +56,6 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.eaupotable.net',
   },
-  other: {
-    'preconnect': ['https://www.googletagmanager.com', 'https://www.google-analytics.com'],
-    'dns-prefetch': ['https://www.googletagmanager.com', 'https://www.google-analytics.com']
-  }
 };
 
 export const viewport = {
@@ -71,6 +67,11 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
+      </head>
       <body className="full-height-body">
         {children}
         <Footer />

@@ -83,6 +83,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
                 width={600}
                 height={600}
                 priority={true}
+                fetchPriority="high"
                 sizes="(max-width: 1023px) 280px, 600px"
               />
               <div className="crystal-score-badge city-variant">
