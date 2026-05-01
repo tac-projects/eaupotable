@@ -1,6 +1,7 @@
 // Composant de rendu serveur pour un LCP optimal
 
 import React from 'react';
+import Image from 'next/image';
 
 export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
   return (
@@ -75,11 +76,14 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
 
           <div className="hero-right">
             <div className="hero-water-image-container city-variant">
-              <img 
+              <Image 
                 src="/images/hero-water-glass.png" 
                 alt={`Qualité de l'eau potable à ${cityName} - Rapport 2026`}
                 className="hero-water-image"
-                loading="eager"
+                width={600}
+                height={600}
+                priority={true}
+                sizes="(max-width: 1023px) 280px, 600px"
               />
               <div className="crystal-score-badge city-variant">
                 <div className="crystal-badge-header">
