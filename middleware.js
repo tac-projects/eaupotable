@@ -2,24 +2,35 @@ import { NextResponse } from 'next/server';
 
 /**
  * Middleware pour forcer l'utilisation du domaine canonique protégé par Cloudflare.
- * Cela empêche les bots de contourner la sécurité en utilisant l'adresse technique Vercel.
+ * Cela empêche les bots de contourner la sécurité en utilisant l'adresse technique Vercel ou l'IP directe.
  */
 export function middleware(request) {
   const host = request.headers.get('host');
+  const cfRay = request.headers.get('cf-ray');
   const { pathname, search } = request.nextUrl;
 
-  // On n'applique la redirection qu'en production et si l'hôte n'est pas le bon
-  // On ignore localhost pour le développement
+  // On n'applique la redirection et le blocage qu'en production
   if (
     process.env.NODE_ENV === 'production' &&
     host && 
-    host !== 'www.eaupotable.net' &&
     !host.includes('localhost')
   ) {
-    return NextResponse.redirect(
-      `https://www.eaupotable.net${pathname}${search}`,
-      301
-    );
+    // 1. Redirection vers le domaine canonique (si on arrive via l'adresse Vercel)
+    if (host !== 'www.eaupotable.net') {
+      return NextResponse.redirect(
+        `https://www.eaupotable.net${pathname}${search}`,
+        301
+      );
+    }
+
+    // 2. Blocage des accès directs par IP (sans passer par Cloudflare)
+    // Cloudflare ajoute toujours l'en-tête 'cf-ray'. S'il est absent, c'est un accès direct.
+    if (!cfRay) {
+      return new NextResponse(
+        'Access Denied: Direct IP access is prohibited.',
+        { status: 403 }
+      );
+    }
   }
 
   return NextResponse.next();
