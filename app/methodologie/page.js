@@ -131,7 +131,14 @@ const MethodologyPage = () => {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v10"/><path d="m16 8-4 4-4-4"/><path d="M18 22H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2Z"/></svg>
                 </div>
                 <h3>Pesticides</h3>
-                <span className="penaltyBadge">-1.5 à -4.0 POINTS</span>
+                <span className="penaltyBadge">
+                  <span className="responsive-range">
+                    <span>-1.5</span>
+                    <span>à</span>
+                    <span>-4.0</span>
+                  </span>
+                  <span style={{ marginLeft: '4px' }}>POINTS</span>
+                </span>
                 <p className="cardExplanation">
                   Détection de molécules chimiques issues de l'agriculture. Pénalisé dès la première 
                   trace pour anticiper les risques d'exposition.
@@ -145,7 +152,14 @@ const MethodologyPage = () => {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
                 </div>
                 <h3>Polluants PFAS</h3>
-                <span className="penaltyBadge">-1.5 à -4.0 POINTS</span>
+                <span className="penaltyBadge">
+                  <span className="responsive-range">
+                    <span>-1.5</span>
+                    <span>à</span>
+                    <span>-4.0</span>
+                  </span>
+                  <span style={{ marginLeft: '4px' }}>POINTS</span>
+                </span>
                 <p className="cardExplanation">
                   Les "polluants éternels" sont traités avec une tolérance zéro. Leur persistance 
                   exceptionnelle justifie une déduction majeure.
@@ -159,7 +173,14 @@ const MethodologyPage = () => {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>
                 </div>
                 <h3>Nitrates</h3>
-                <span className="penaltyBadge">-1.0 à -4.0 POINTS</span>
+                <span className="penaltyBadge">
+                  <span className="responsive-range">
+                    <span>-1.0</span>
+                    <span>à</span>
+                    <span>-4.0</span>
+                  </span>
+                  <span style={{ marginLeft: '4px' }}>POINTS</span>
+                </span>
                 <p className="cardExplanation">
                   Indicateurs de la pression agricole sur les nappes. Déduction par paliers 
                   (15, 25 et 40 mg/L) pour valoriser les eaux de source.
@@ -187,7 +208,14 @@ const MethodologyPage = () => {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
                 </div>
                 <h3>Confort & Goût</h3>
-                <span className="penaltyBadge warning">-0.5 à -2.0 POINTS</span>
+                <span className="penaltyBadge warning">
+                  <span className="responsive-range">
+                    <span>-0.5</span>
+                    <span>à</span>
+                    <span>-2.0</span>
+                  </span>
+                  <span style={{ marginLeft: '4px' }}>POINTS</span>
+                </span>
                 <p className="cardExplanation">
                   Impact du Chlore (goût) et du Calcaire (dureté). Des bémols mineurs qui 
                   différencient une eau potable d'une eau agréable.
@@ -216,7 +244,13 @@ const MethodologyPage = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>9.7 — 10.0</strong></td>
+                    <td>
+                      <strong className="responsive-range" style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>
+                        <span>9.7</span>
+                        <span>—</span>
+                        <span>10.0</span>
+                      </strong>
+                    </td>
                     <td>
                       <div className="seo-status-pill status-excellent" style={{ display: 'inline-flex', padding: '8px 16px', borderRadius: '100px', fontWeight: '800', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                         EXCEPTIONNEL
@@ -225,7 +259,13 @@ const MethodologyPage = () => {
                     <td className="param-limit-col">Une pureté totale, digne des meilleures eaux de source.</td>
                   </tr>
                   <tr>
-                    <td><strong style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>9.2 — 9.6</strong></td>
+                    <td>
+                      <strong className="responsive-range" style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>
+                        <span>9.2</span>
+                        <span>—</span>
+                        <span>9.6</span>
+                      </strong>
+                    </td>
                     <td>
                       <div className="seo-status-pill status-excellent" style={{ display: 'inline-flex', padding: '8px 16px', borderRadius: '100px', fontWeight: '800', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                         EXCELLENT
@@ -234,7 +274,13 @@ const MethodologyPage = () => {
                     <td className="param-limit-col">Qualité remarquable, quasiment aucun polluant détecté.</td>
                   </tr>
                   <tr>
-                    <td><strong style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>8.5 — 9.1</strong></td>
+                    <td>
+                      <strong className="responsive-range" style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>
+                        <span>8.5</span>
+                        <span>—</span>
+                        <span>9.1</span>
+                      </strong>
+                    </td>
                     <td>
                       <div className="seo-status-pill status-good" style={{ display: 'inline-flex', padding: '8px 16px', borderRadius: '100px', fontWeight: '800', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                         TRÈS BON
@@ -243,7 +289,13 @@ const MethodologyPage = () => {
                     <td className="param-limit-col">Très bonne qualité globale, malgré quelques paramètres mineurs.</td>
                   </tr>
                   <tr>
-                    <td><strong style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>7.0 — 8.4</strong></td>
+                    <td>
+                      <strong className="responsive-range" style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>
+                        <span>7.0</span>
+                        <span>—</span>
+                        <span>8.4</span>
+                      </strong>
+                    </td>
                     <td>
                       <div className="seo-status-pill status-good" style={{ display: 'inline-flex', padding: '8px 16px', borderRadius: '100px', fontWeight: '800', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                         SATISFAISANT
@@ -252,7 +304,13 @@ const MethodologyPage = () => {
                     <td className="param-limit-col">Une eau saine qui respecte les équilibres fondamentaux.</td>
                   </tr>
                   <tr>
-                    <td><strong style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>5.0 — 6.9</strong></td>
+                    <td>
+                      <strong className="responsive-range" style={{ fontSize: '1.1rem', color: 'var(--primary-solid)' }}>
+                        <span>5.0</span>
+                        <span>—</span>
+                        <span>6.9</span>
+                      </strong>
+                    </td>
                     <td>
                       <div className="seo-status-pill status-warning" style={{ display: 'inline-flex', padding: '8px 16px', borderRadius: '100px', fontWeight: '800', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                         MÉDIOCRE
@@ -340,6 +398,42 @@ const MethodologyPage = () => {
                   </p>
                 </div>
               </details>
+
+              <details className="seo-faq-item">
+                <summary className="seo-faq-question">
+                  <h3>Le Crystal Score est-il le même pour tous les foyers d'une même ville ?</h3>
+                  <span className="faq-icon"></span>
+                </summary>
+                <div className="seo-faq-answer">
+                  <p>
+                    Généralement oui, car les données sont agrégées par Unité de Distribution (UDI). Cependant, dans les très grandes métropoles, il peut exister plusieurs réseaux. Notre algorithme identifie l'UDI principale desservant la majorité de la population pour garantir le score le plus représentatif de votre commune.
+                  </p>
+                </div>
+              </details>
+
+              <details className="seo-faq-item">
+                <summary className="seo-faq-question">
+                  <h3>Un score inférieur à 7 signifie-t-il que l'eau est dangereuse ?</h3>
+                  <span className="faq-icon"></span>
+                </summary>
+                <div className="seo-faq-answer">
+                  <p>
+                    Pas nécessairement. Une eau avec un score de 5 ou 6 reste "potable" au sens de la loi, mais elle présente des défauts de pureté (traces de pesticides, chlore excessif, calcaire). Ce score est un indicateur de vigilance : il vous signale simplement qu'une filtration domestique (charbon actif, osmose) pourrait être bénéfique pour retrouver une pureté optimale.
+                  </p>
+                </div>
+              </details>
+
+              <details className="seo-faq-item">
+                <summary className="seo-faq-question">
+                  <h3>Comment gérez-vous les polluants qui n'ont pas encore de limites réglementaires ?</h3>
+                  <span className="faq-icon"></span>
+                </summary>
+                <div className="seo-faq-answer">
+                  <p>
+                    C'est là que le Crystal Score se distingue. Dès qu'une recommandation de l'ANSES ou une étude scientifique sérieuse signale un risque sur une molécule (même sans seuil légal strict), nous appliquons un principe de précaution et déduisons des points. Nous n'attendons pas les mises à jour administratives pour vous alerter.
+                  </p>
+                </div>
+              </details>
             </div>
 
             {/* Fin de section FAQ */}
@@ -403,6 +497,30 @@ const MethodologyPage = () => {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "Les scores sont recalculés à chaque nouvelle publication de données par l'ARS. Si un prélèvement récent détecte une variation, le Crystal Score s'ajuste instantanément."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Le Crystal Score est-il le même pour tous les foyers d'une même ville ?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Généralement oui, car les données sont agrégées par Unité de Distribution (UDI). Cependant, dans les très grandes métropoles, il peut exister plusieurs réseaux. Notre algorithme identifie l'UDI principale desservant la majorité de la population."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Un score inférieur à 7 signifie-t-il que l'eau est dangereuse ?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Pas nécessairement. Une eau avec un score de 5 ou 6 reste potable au sens de la loi, mais elle présente des défauts de pureté. Ce score est un indicateur de vigilance suggérant qu'une filtration domestique pourrait être bénéfique."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Comment gérez-vous les polluants qui n'ont pas encore de limites réglementaires ?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Dès qu'une recommandation de l'ANSES ou une étude scientifique signale un risque sur une molécule (même sans seuil légal strict), nous appliquons un principe de précaution et déduisons des points sans attendre les mises à jour administratives."
                     }
                   }
                 ]

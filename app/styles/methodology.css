@@ -168,3 +168,18 @@
         padding: 4rem var(--spacing-md);
     }
 }
+/* Responsive Range Inversion (High on top for mobile) */
+.responsive-range {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+@media (max-width: 600px) {
+    .responsive-range {
+        flex-direction: column-reverse;
+        gap: 0;
+        line-height: 1.1;
+        text-align: center;
+    }
+}
