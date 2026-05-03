@@ -18,6 +18,8 @@ export default function CitySEOContent({ cityName, data }) {
   const dpt = meta.code_departement || "";
 
   const currentYear = new Date().getFullYear();
+  const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
+  const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   // 1. Formatage du gestionnaire de réseau
   const nomReseau = useMemo(() => {
@@ -200,6 +202,24 @@ export default function CitySEOContent({ cityName, data }) {
               "mainEntity": faqItems.map(item => ({
                 "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a }
               }))
+            },
+            {
+              "@type": "Dataset",
+              "name": `Qualité de l'eau potable à ${cityName} (${currentMonthYear})`,
+              "description": `Données officielles ARS sur la potabilité, les PFAS, les pesticides et les nitrates pour le réseau de distribution de ${cityName}. Analyse mise à jour en ${currentMonthYear}.`,
+              "url": `https://www.eaupotable.net/ville/${data.meta?.slug || ""}`,
+              "variableMeasured": [
+                { "@type": "PropertyValue", "name": "Conformité bactériologique", "value": isConform ? "Conforme" : "Non conforme" },
+                { "@type": "PropertyValue", "name": "PFAS", "unitText": "µg/L", "value": parseValue(stats.pfas?.val) || 0 },
+                { "@type": "PropertyValue", "name": "Pesticides", "unitText": "µg/L", "value": parseValue(stats.pesticides?.val) || 0 },
+                { "@type": "PropertyValue", "name": "Nitrates", "unitText": "mg/L", "value": parseValue(stats.nitrates?.val) || 0 },
+                { "@type": "PropertyValue", "name": "Dureté", "unitText": "°f", "value": parseValue(stats.hardness?.val) || 0 }
+              ],
+              "creator": { "@id": "https://www.eaupotable.net/#organization" },
+              "isAccessibleForFree": true,
+              "license": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+              "spatialCoverage": { "@type": "Place", "name": cityName },
+              "temporalCoverage": `${currentYear}`
             }
           ]
         })
