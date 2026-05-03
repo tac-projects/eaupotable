@@ -156,15 +156,18 @@ export async function generateMetadata({ params }) {
   const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
+  const priceString = summary.prix?.total ? `${summary.prix.total.toFixed(2).replace('.', ',')} €/m³` : 'tarifs locaux';
+  const scoreString = typeof score === 'number' ? score.toFixed(1).replace('.', ',') : score;
+
   return {
     title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
-    description: `✅ Bilan interactif de la potabilité à ${officialName} en ${currentMonthYear}. Consultez votre Crystal Score™ (pureté), le taux de calcaire et les PFAS détectés par l'ARS.`,
+    description: `✅ Prix de l'eau : ${priceString} | Note de pureté : ${scoreString}/10. L'eau de ${officialName} est-elle saine ? Découvrez les taux de calcaire et de PFAS.`,
     alternates: {
       canonical: `${DOMAIN}/ville/${cleanSlug}`,
     },
     openGraph: {
       title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
-      description: `L'eau de ${officialName} est-elle saine ? ✅ Score de pureté, Calcaire et PFAS. Consultez le bilan interactif complet.`,
+      description: `Prix : ${priceString}. Score de pureté : ${scoreString}/10. Consultez le bilan santé interactif de l'eau à ${officialName} (Calcaire, PFAS).`,
       images: [ogImageUrl],
     },
   };
