@@ -67,12 +67,14 @@ async function getLocalData(slug) {
         copper: rawCityData.stats?.copper,
         organic_carbon: rawCityData.stats?.organic_carbon,
       },
+      prix: rawCityData.prix || null,
       meta: {
         code_departement: rawCityData.meta?.code_departement,
         date_prelevement: rawCityData.meta?.date_prelevement,
         nom_distributeur: rawCityData.meta?.nom_distributeur,
         nom_reseau: rawCityData.meta?.nom_reseau,
-        conclusion: rawCityData.meta?.conclusion
+        conclusion: rawCityData.meta?.conclusion,
+        insee: rawCityData.meta?.insee
       }
     };
 

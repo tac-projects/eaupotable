@@ -10,7 +10,7 @@ const NearbyCities = dynamic(() => import('./NearbyCities'), { ssr: true });
 export default function CitySEOContent({ cityName, data }) {
   if (!data || data.error || !data.meta) return null;
 
-  const { crystal, stats, isConform, meta } = data;
+  const { crystal, stats, isConform, meta, prix } = data;
   const deptAvg = data.initialDeptAvg;
   const neighborCities = data.initialNeighborCities || [];
   const benchmarkCities = data.benchmarkCities || neighborCities.slice(0, 10);
@@ -390,8 +390,75 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 6 : FAQ (GRIS) */}
-      <section className="home-content-section gray">
+      {/* SECTION PRIX DE L'EAU (GRIS) */}
+      {prix && (prix.aep || prix.ac) && (
+        <section className="home-content-section gray">
+          <div className="seo-container">
+            <div className="seo-section-header">
+              <h2 className="seo-main-title">Quel est le prix de l'eau à {cityName} ?</h2>
+              <p className="seo-main-subtitle">Détail des tarifs officiels (TTC) pour la part Eau Potable et la part Assainissement.</p>
+            </div>
+
+            <div className="price-grid-premium">
+              <div className="price-card-item">
+                <div className="price-card-header">
+                  <div className="price-card-icon blue" dangerouslySetInnerHTML={{ __html: PARAM_ICONS.chlorine }} />
+                  <span className="price-card-label">Eau Potable</span>
+                </div>
+                <div className="price-card-value">
+                  {prix.aep ? `${prix.aep.toFixed(2).replace('.', ',')} €` : '--'}
+                  <span className="price-unit">/ m³ TTC</span>
+                </div>
+                <p className="price-card-desc">Production, pompage et distribution jusqu'à votre robinet.</p>
+              </div>
+
+              <div className="price-card-item">
+                <div className="price-card-header">
+                  <div className="price-card-icon purple">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 18V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 8H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="price-card-label">Assainissement</span>
+                </div>
+                <div className="price-card-value">
+                  {prix.ac ? `${prix.ac.toFixed(2).replace('.', ',')} €` : '--'}
+                  <span className="price-unit">/ m³ TTC</span>
+                </div>
+                <p className="price-card-desc">Collecte et traitement des eaux usées en station d'épuration.</p>
+              </div>
+
+              <div className="price-card-item highlight">
+                <div className="price-card-header">
+                  <div className="price-card-icon white">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 10h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M4 14h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="price-card-label">Total Facturé</span>
+                </div>
+                <div className="price-card-value">
+                  {prix.total ? `${prix.total.toFixed(2).replace('.', ',')} €` : '--'}
+                  <span className="price-unit">/ m³ moyen</span>
+                </div>
+                <p className="price-card-desc">Coût global au mètre cube basé sur une consommation de 120 m³.</p>
+              </div>
+            </div>
+
+            <div className="price-footer-notice">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Source : Observatoire National SISPEA ({currentYear}). Les tarifs incluent les taxes et redevances.</span>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 6 : FAQ (BLANC) */}
+      <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Foire Aux Questions</h2>
@@ -409,7 +476,7 @@ export default function CitySEOContent({ cityName, data }) {
       </section>
 
       {/* SECTION 7 : TRUST CARD (CARTE DE TRANSPARENCE) */}
-      <section className="home-content-section white">
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Transparence & Méthodologie</h2>
@@ -458,8 +525,8 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 8 : VOISINES (GRIS) */}
-      <section className="home-content-section gray">
+      {/* SECTION 8 : VOISINES (BLANC) */}
+      <section className="home-content-section white">
         <div className="seo-container">
           <NearbyCities cities={neighborCities} dpt={dpt} />
         </div>
@@ -472,6 +539,109 @@ export default function CitySEOContent({ cityName, data }) {
           align-items: center;
           gap: 15px;
           flex-wrap: wrap;
+        }
+
+        .price-grid-premium {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 25px;
+          margin-top: 40px;
+        }
+
+        .price-card-item {
+          background: #ffffff;
+          border-radius: 24px;
+          padding: 30px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+          transition: all 0.3s ease;
+        }
+
+        .price-card-item:hover {
+          transform: translateY(-5px);
+          border-color: #3b82f6;
+        }
+
+        .price-card-item.highlight {
+          background: #0046CC;
+          color: white;
+          border: none;
+        }
+
+        .price-card-item.highlight .price-card-label,
+        .price-card-item.highlight .price-card-value,
+        .price-card-item.highlight .price-unit,
+        .price-card-item.highlight .price-card-desc {
+          color: white !important;
+        }
+
+        .price-card-item.highlight .price-card-icon {
+          color: white !important;
+        }
+
+        .price-card-item.highlight .price-card-desc {
+          opacity: 0.9;
+        }
+
+        .price-card-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 20px;
+        }
+
+        .price-card-icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .price-card-icon.blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .price-card-icon.purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+        .price-card-icon.white { background: rgba(255, 255, 255, 0.2); color: white; }
+
+        .price-card-label {
+          font-weight: 700;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .price-card-value {
+          font-size: 2.5rem;
+          font-weight: 800;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
+        }
+
+        .price-unit {
+          font-size: 1rem;
+          font-weight: 500;
+          opacity: 0.7;
+        }
+
+        .price-card-desc {
+          font-size: 0.9rem;
+          line-height: 1.5;
+          opacity: 0.8;
+        }
+
+        .price-footer-notice {
+          margin-top: 30px;
+          padding: 15px 20px;
+          background: #fefce8;
+          border-radius: 12px;
+          border: 1px solid #fef08a;
+          color: #854d0e;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
 
         .trust-external-links a {

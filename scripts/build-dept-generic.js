@@ -268,6 +268,13 @@ async function buildDepartment(deptCode) {
 
     const udiMap = {}; const udiHistory = {}; const resultsByRef = {}; 
     const parentTree = {};
+    
+    // Chargement des prix consolidés
+    const pricesPath = path.join(__dirname, '..', 'source-data', 'prices.json');
+    let prices = {};
+    if (fs.existsSync(pricesPath)) {
+        prices = JSON.parse(fs.readFileSync(pricesPath, 'utf8'));
+    }
 
     // 1. UDI_COM : Mapping INSEE -> Réseaux
     for (const year of YEARS) {
@@ -283,8 +290,8 @@ async function buildDepartment(deptCode) {
                 const rawName = p[1].toUpperCase().trim();
                 const key = normalizeCityName(rawName);
                 const cd = p[3];
-                if (!udiMap[key]) udiMap[key] = [];
-                if (!udiMap[key].includes(cd)) udiMap[key].push(cd);
+                if (!udiMap[key]) udiMap[key] = { udis: [], insee: p[0] };
+                if (!udiMap[key].udis.includes(cd)) udiMap[key].udis.push(cd);
 
             }
         }
@@ -344,7 +351,10 @@ async function buildDepartment(deptCode) {
     };
 
     for (const cityName of Object.keys(udiMap)) {
-        const udis = udiMap[cityName];
+        const cityInfo = udiMap[cityName];
+        const udis = cityInfo.udis;
+        const insee = cityInfo.insee;
+
         const stats = {}; Object.keys(config).forEach(k => stats[k] = { val: '--', unit: '', date: 'N/A' });
         let isConform = true, lastDate = "N/A", arsConclusion = "", nomDistributeur = "le gestionnaire local";
 
@@ -399,7 +409,8 @@ async function buildDepartment(deptCode) {
         output.cities[slug] = {
             cityName: officialName,
             reseau: udis[0], isConform, crystal, stats,
-            meta: { nom_distributeur: nomDistributeur, code_departement: deptCode, date_prelevement: lastDate, conclusion: arsConclusion }
+            prix: prices[insee] || null,
+            meta: { nom_distributeur: nomDistributeur, code_departement: deptCode, insee: insee, date_prelevement: lastDate, conclusion: arsConclusion }
         };
 
     }

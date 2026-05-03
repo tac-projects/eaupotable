@@ -13,10 +13,11 @@
     "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.10.3",
     "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "@builder.io/partytown": "^0.10.3"
+    "xlsx": "^0.18.5"
   },
   "browserslist": [
     "chrome 110",

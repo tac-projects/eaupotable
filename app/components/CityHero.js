@@ -27,7 +27,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
               RELEVÉ OFFICIEL ARS 2026
             </div>
             <h1 className="city-hero-title">
-              Qualité de l'eau à <span className="highlight">{cityName}</span>
+              Qualité de l'eau potable à <span className="highlight">{cityName}</span>
             </h1>
             <p className="city-hero-subtitle">
               Analyse complète du réseau de distribution <strong>{nomReseau || cityName}</strong> basée sur les dernières données du <strong>{dateAnalyse}</strong>.
