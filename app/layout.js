@@ -15,8 +15,8 @@ const grandHotel = Grand_Hotel({ subsets: ["latin"], weight: ["400"], variable: 
 
 export const metadata = {
   metadataBase: new URL('https://www.eaupotable.net'),
-  title: 'EauPotable.net | Qualité & Pureté de l\'eau du robinet (2026)',
-  description: 'Analysez la qualité réelle et la pureté de votre eau potable en 2026. Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans plus de 35 000 communes.',
+  title: `EauPotable.net | Qualité & Pureté de l'eau du robinet (${new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date()).charAt(0).toUpperCase() + new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date()).slice(1)} ${new Date().getFullYear()})`,
+  description: `💧 Analysez la qualité réelle et la pureté de votre eau potable en ${new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date()).charAt(0).toUpperCase() + new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date()).slice(1)} ${new Date().getFullYear()}. ✅ Verdict ARS immédiat sur les pesticides, calcaire et PFAS dans 35 000 communes.`,
   manifest: '/manifest.json',
   icons: {
     icon: [

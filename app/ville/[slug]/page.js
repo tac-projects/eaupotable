@@ -150,15 +150,19 @@ export async function generateMetadata({ params }) {
 
   const ogImageUrl = `/api/og?city=${encodeURIComponent(officialName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
+  const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
+
   return {
-    title: `Qualité de l'eau potable à ${officialName} (2026) | Crystal Score`,
-    description: `Analyse complète de la qualité de l'eau à ${officialName} en 2026. Découvrez le verdict officiel ARS, les taux de pesticides et de PFAS détectés dans votre réseau de distribution.`,
+    title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
+    description: `✅ Bilan interactif de la potabilité à ${officialName} en ${currentMonthYear}. Consultez votre Crystal Score™ (pureté), le taux de calcaire et les PFAS détectés par l'ARS.`,
     alternates: {
       canonical: `${DOMAIN}/ville/${cleanSlug}`,
     },
     openGraph: {
-      title: `Qualité de l'eau potable : ${officialName} (2026)`,
-      description: `L'eau de ${officialName} est-elle saine ? Score : ${score}/10. Consultez l'analyse complète du verdict ARS : PFAS et pesticides.`,
+      title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
+      description: `L'eau de ${officialName} est-elle saine ? ✅ Score de pureté, Calcaire et PFAS. Consultez le bilan interactif complet.`,
       images: [ogImageUrl],
     },
   };

@@ -18,24 +18,26 @@ export async function generateMetadata({ params }) {
   } catch (e) {}
 
   const currentYear = new Date().getFullYear();
+  const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
+  const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   return {
-    title: `Qualité de l'eau : ${deptName} (${code}) | Bilan ${currentYear} & PFAS`,
-    description: `✅ Eau potable en ${deptName} (${code}) : Score de pureté moyen ${avgScore}/10. Consultez les analyses PFAS, calcaire et nitrates pour les communes du département.`,
+    title: `Eau potable : ${deptName} (${code}) | Bilan (${currentMonthYear})`,
+    description: `✅ Eau potable en ${deptName} (${code}) en ${currentMonthYear} : Score moyen ${avgScore}/10. Consultez les analyses PFAS, calcaire et nitrates par commune.`,
     alternates: {
       canonical: `https://www.eaupotable.net/departement/${code}`,
     },
     openGraph: {
-      title: `Qualité de l'eau : ${deptName} (${code}) | Rapport Officiel`,
-      description: `Analyses consolidées de l'eau potable pour le département ${deptName}. Focus PFAS et conformité ARS ${currentYear}.`,
+      title: `Eau potable : ${deptName} (${code}) | Rapport (${currentMonthYear})`,
+      description: `Analyses consolidées de l'eau potable pour le département ${deptName}. ✅ Focus PFAS et conformité ARS ${currentMonthYear}.`,
       type: 'website',
       url: `https://www.eaupotable.net/departement/${code}`,
       images: [`/api/og?city=${encodeURIComponent(deptName)}&score=${avgScore}&label=BILAN&status=status-good`],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Qualité de l'eau : ${deptName}`,
-      description: `Bilan complet de la potabilité en ${deptName}.`,
+      title: `Eau potable : ${deptName} (${currentMonthYear})`,
+      description: `Bilan complet de la potabilité en ${deptName} : PFAS, Calcaire et Nitrates.`,
     }
   };
 }
