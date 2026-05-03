@@ -33,12 +33,13 @@ async function generateSitemap() {
     });
 
     let sitemapFiles = [];
+    const todayDate = new Date().toISOString().split('T')[0];
 
     // --- SITEMAP PRINCIPAL (Pages Statiques) ---
     const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/faq`, `${DOMAIN}/methodologie`, `${DOMAIN}/mentions-legales`, `${DOMAIN}/contact` ];
     const staticXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticUrls.map(url => `  <url><loc>${url}</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}
+${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}
 </urlset>`;
     fs.writeFileSync(path.join(sitemapsDir, 'sitemap-main.xml'), staticXml);
     sitemapFiles.push('sitemap-main.xml');
@@ -56,7 +57,7 @@ ${staticUrls.map(url => `  <url><loc>${url}</loc><changefreq>weekly</changefreq>
 
       const deptXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${deptUrls.map(url => `  <url><loc>${url}</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`).join('\n')}
+${deptUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`).join('\n')}
 </urlset>`;
       
       const fileName = `sitemap-dept-${deptCode}.xml`;
@@ -70,7 +71,7 @@ ${deptUrls.map(url => `  <url><loc>${url}</loc><changefreq>monthly</changefreq><
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapFiles.map(file => `  <sitemap>
     <loc>${DOMAIN}/sitemaps/${file}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <lastmod>${todayDate}</lastmod>
   </sitemap>`).join('\n')}
 </sitemapindex>`;
 
