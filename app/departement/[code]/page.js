@@ -56,35 +56,56 @@ export default async function DepartementPage({ params }) {
 
   const deptName = deptData?.deptInfo?.name || `Département ${code}`;
   const currentYear = new Date().getFullYear();
+  const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
+  const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   // JSON-LD pour la FAQ et la page
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": `Peut-on boire l'eau du robinet sans risque en ${deptName} ?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Avec un taux de conformité de ${deptData?.deptInfo?.conformRate}%, l'eau en ${deptName} est officiellement potable selon les normes de l'ARS. Le Crystal Score moyen de ${deptData?.deptInfo?.avgScore}/10 permet d'évaluer la pureté réelle au-delà de la simple conformité.`
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Peut-on boire l'eau du robinet sans risque en ${deptName} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Avec un taux de conformité de ${deptData?.deptInfo?.conformRate}%, l'eau en ${deptName} est officiellement potable selon les normes de l'ARS. Le Crystal Score moyen de ${deptData?.deptInfo?.avgScore}/10 permet d'évaluer la pureté réelle au-delà de la simple conformité.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Quels sont les polluants recherchés en ${deptName} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Les analyses couvrent la microbiologie, les nitrates, les pesticides et, depuis 2026, la recherche systématique des polluants éternels (PFAS) dans l'ensemble du département ${deptName}.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Où trouver le rapport officiel de l'ARS pour ${deptName} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Les données brutes sont disponibles sur le portail SISE-Eaux du Ministère de la Santé. EauPotable.net synthétise ces informations pour chaque commune de ${deptName}.`
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": `Quels sont les polluants recherchés en ${deptName} ?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Les analyses couvrent la microbiologie, les nitrates, les pesticides et, depuis 2026, la recherche systématique des polluants éternels (PFAS) dans l'ensemble du département ${deptName}.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `Où trouver le rapport officiel de l'ARS pour ${deptName} ?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Les données brutes sont disponibles sur le portail SISE-Eaux du Ministère de la Santé. EauPotable.net synthétise ces informations pour chaque commune de ${deptName}.`
-        }
+        "@type": "Dataset",
+        "name": `Bilan de la qualité de l'eau : département ${deptName} (${currentMonthYear})`,
+        "description": `Synthèse consolidée des analyses d'eau potable pour le département ${deptName}. Inclut les statistiques de conformité, PFAS et pesticides pour l'ensemble des communes du secteur. Analyse mise à jour en ${currentMonthYear}.`,
+        "url": `https://www.eaupotable.net/departement/${code}`,
+        "variableMeasured": [
+          "Taux de conformité départemental",
+          "Moyenne Crystal Score",
+          "Présence de polluants éternels (PFAS)",
+          "Nitrates et Pesticides"
+        ],
+        "creator": { "@id": "https://www.eaupotable.net/#organization" },
+        "spatialCoverage": { "@type": "Place", "name": deptName },
+        "temporalCoverage": `${currentYear}`
       }
     ]
   };

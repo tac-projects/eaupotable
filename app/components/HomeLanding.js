@@ -745,6 +745,15 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                       }
                     }
                   ]
+                },
+                {
+                  "@type": "DataCatalog",
+                  "@id": "https://www.eaupotable.net/#catalog",
+                  "name": "Observatoire National de la Qualité de l'Eau Potable",
+                  "description": "Catalogue complet des analyses de potabilité, PFAS et pesticides pour les 35 000 communes de France. Données officielles mises à jour quotidiennement.",
+                  "publisher": { "@id": "https://www.eaupotable.net/#organization" },
+                  "url": "https://www.eaupotable.net",
+                  "dataset": { "@id": "https://www.eaupotable.net/#website" }
                 }
               ]
             })
