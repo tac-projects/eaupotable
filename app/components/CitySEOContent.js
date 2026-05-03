@@ -178,6 +178,10 @@ export default function CitySEOContent({ cityName, data }) {
       {
         q: `Dois-je utiliser une carafe filtrante ou un adoucisseur à ${cityName} ?`,
         a: `${durete > 25 ? "L'eau étant calcaire (" + metrics.dureteVal + "), un adoucisseur protégera vos installations." : "L'eau est naturellement douce, un adoucisseur est inutile."} Pour le goût, une carafe filtrante peut aider si vous êtes sensible au chlore.`
+      },
+      {
+        q: `Peut-on boire l'eau chaude du robinet à ${cityName} ?`,
+        a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude. La chaleur favorise le développement bactérien et la dissolution de métaux lourds issus de votre installation intérieure. Utilisez toujours l'eau froide."
       }
     ];
   }, [cityName, isConform, crystal, stats, metrics, currentYear]);

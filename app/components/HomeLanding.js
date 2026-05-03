@@ -551,6 +551,10 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   a: "Si votre score 'Dureté' est élevé (> 25°f), un adoucisseur protégera vos installations. Pour le goût du chlore, une carafe filtrante suffit. Aucune filtration n'est requise pour les eaux notées 'Excellentes'."
                 },
                 {
+                  q: "Peut-on boire l'eau chaude du robinet\u00A0?",
+                  a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude du robinet. La chaleur favorise le développement bactérien (légionelles) et la dissolution de métaux lourds (plomb, cuivre) issus de vos canalisations ou de votre ballon d'eau chaude. Utilisez toujours l'eau froide pour vos besoins alimentaires."
+                },
+                {
                   q: "D'où proviennent les données du site\u00A0?",
                   a: "Nous exploitons les données de l'API Hub'Eau (État français) via notre base de données locale accélérée. Ces informations proviennent des prélèvements réels effectués par les autorités sanitaires (ARS) pour garantir une fiabilité totale."
 
@@ -742,6 +746,14 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                       "acceptedAnswer": {
                         "@type": "Answer",
                         "text": "Nous exploitons l'API Hub'Eau, le portail officiel de l'État français. Les données proviennent des prélèvements réels en sortie de robinet effectués par les autorités sanitaires (ARS)."
+                      }
+                    },
+                    {
+                      "@type": "Question",
+                      "name": "Peut-on boire l'eau chaude du robinet ?",
+                      "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude du robinet. La chaleur favorise le développement bactérien et la dissolution de métaux lourds dans vos canalisations. Utilisez toujours l'eau froide."
                       }
                     }
                   ]
