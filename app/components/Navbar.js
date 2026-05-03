@@ -32,22 +32,29 @@ export default function Navbar() {
     }
   };
 
-  const handleSearchChange = async (e) => {
-    const val = e.target.value;
-    setSearchQuery(val);
-    if (val.length < 2) {
-      setSuggestions([]);
-      return;
-    }
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
-      if (res.ok) {
-        const data = await res.json();
-        setSuggestions(data || []);
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (searchQuery.length < 2) {
+        setSuggestions([]);
+        return;
       }
-    } catch (err) {
-      console.error("Sidebar Search error:", err);
-    }
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+        if (res.ok) {
+          const data = await res.json();
+          setSuggestions(data || []);
+        }
+      } catch (err) {
+        console.error("Sidebar Search error:", err);
+      }
+    };
+
+    const handler = setTimeout(fetchSuggestions, 300);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const handleSelect = (city) => {
@@ -193,6 +200,7 @@ export default function Navbar() {
               FAQ
             </Link>
           </li>
+          <hr className="menu-separator" />
           <li>
             <Link href="/contact" onClick={() => setIsOpen(false)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="menu-icon">
@@ -213,7 +221,6 @@ export default function Navbar() {
         </ul>
 
         <div className="menu-footer">
-          <p>&copy; 2026 EauPotable.net - La transparence sur votre eau</p>
         </div>
       </div>
     </>

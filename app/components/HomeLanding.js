@@ -94,21 +94,29 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
     return () => window.removeEventListener('turnstile-success', handleToken);
   }, []);
 
-  const handleVigilanceCityChange = async (val) => {
-    setCityName(val);
-    if (val.length < 2) {
-      setVigilanceSuggestions([]);
-      return;
-    }
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
-      if (res.ok) {
-        const data = await res.json();
-        setVigilanceSuggestions(data || []);
+  useEffect(() => {
+    const fetchVigilanceSuggestions = async () => {
+      if (cityName.length < 2) {
+        setVigilanceSuggestions([]);
+        return;
       }
-    } catch (err) {
-      console.error("Vigilance search error:", err);
-    }
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(cityName)}`);
+        if (res.ok) {
+          const data = await res.json();
+          setVigilanceSuggestions(data || []);
+        }
+      } catch (err) {
+        console.error("Vigilance search error:", err);
+      }
+    };
+
+    const handler = setTimeout(fetchVigilanceSuggestions, 300);
+    return () => clearTimeout(handler);
+  }, [cityName]);
+
+  const handleVigilanceCityChange = (val) => {
+    setCityName(val);
   };
 
   const handleVigilanceCitySelect = (feature) => {
@@ -171,7 +179,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
               <div className="seo-header">
                 <h1 className="seo-title">Quelle est la qualité de votre <span className="text-primary">eau potable{'\u00A0'}?</span></h1>
                 <p className="seo-subtitle">
-                  Vérifiez la qualité de l'eau du robinet parmi <strong>35 000 communes</strong>. Découvrez le <strong>Crystal Score™</strong> de votre ville : un verdict de pureté globale analysant <strong>pesticides</strong>, <strong>PFAS</strong>, <strong>nitrates</strong> et l'intégralité des indicateurs de santé officiels.
+                  Vérifiez la qualité de l'eau du robinet parmi <strong>35 000 communes</strong>. Découvrez le <strong>Crystal Score™</strong> de votre ville : un verdict de pureté globale analysant <strong>pesticides</strong>, <strong>PFAS</strong>, <strong>nitrates</strong>, <strong>calcaire</strong> et l'intégralité des indicateurs de santé officiels.
                 </p>
               </div>
 

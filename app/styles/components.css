@@ -493,7 +493,7 @@
 }
 
 .logo-menu {
-    padding: 4rem 2rem 2rem;
+    padding: 2.5rem 2rem 1.2rem;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -505,14 +505,22 @@
 }
 
 .menu-items {
-    padding: 2rem;
+    padding: 1.2rem 2rem;
     list-style: none;
     flex: 1;
 }
 
 .menu-items li {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.2rem;
 }
+
+.menu-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin: 1.2rem 0;
+}
+
+
 
 .menu-items a {
     text-decoration: none;
@@ -545,7 +553,7 @@
 
 /* Menu Search */
 .menu-search-wrapper {
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     position: relative;
     z-index: 10;
 }

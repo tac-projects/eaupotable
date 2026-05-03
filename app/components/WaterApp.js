@@ -56,28 +56,40 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   }, []);
 
   useEffect(() => {
+    const checkPWAStatus = () => {
+      const isExcluded = localStorage.getItem('pwa-banner-excluded');
+      const now = new Date().getTime();
+      if (isExcluded && now < parseInt(isExcluded)) return false;
+
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator && window.navigator.standalone);
+      if (isStandalone) return false;
+
+      return true;
+    };
+
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      // On attend aussi 5s ici pour ne pas court-circuiter le délai design
+      if (checkPWAStatus()) {
         setTimeout(() => {
           setShowPWABanner(true);
         }, 5000);
+      }
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
-    // FORÇAGE TOTAL POUR TEST DESIGN (ignore le localStorage)
-    let forceTimer;
-    if (!selectedCity) {
-      forceTimer = setTimeout(() => {
+    // Affichage intelligent (respecte le status et le localStorage)
+    let smartTimer;
+    if (!selectedCity && checkPWAStatus()) {
+      smartTimer = setTimeout(() => {
         setShowPWABanner(true);
-      }, 5000);
+      }, 8000); // Un peu plus de délai pour ne pas agresser au chargement
     }
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      if (forceTimer) clearTimeout(forceTimer);
+      if (smartTimer) clearTimeout(smartTimer);
     };
   }, [selectedCity]);
 
@@ -121,8 +133,9 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
 
   const dismissPWABanner = () => {
     setShowPWABanner(false);
-    const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
-    const expiryDate = new Date().getTime() + sevenDaysInMs;
+    setDeferredPrompt(null);
+    const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
+    const expiryDate = new Date().getTime() + threeDaysInMs;
     localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
   };
 
@@ -173,19 +186,29 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     }
   };
 
-  const onSearchChange = async (e) => {
-    const val = e.target.value;
-    setSearchQuery(val);
-    if (val.length < 2) { setSuggestions([]); return; }
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
-      if (res.ok) {
-        const data = await res.json();
-        setSuggestions(data || []);
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      if (searchQuery.length < 2) {
+        setSuggestions([]);
+        return;
       }
-    } catch (err) {
-      console.error("Search error:", err);
-    }
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+        if (res.ok) {
+          const data = await res.json();
+          setSuggestions(data || []);
+        }
+      } catch (err) {
+        console.error("Search error:", err);
+      }
+    };
+
+    const handler = setTimeout(fetchSuggestions, 300);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  const onSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const geolocate = () => {
@@ -211,7 +234,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
             </div>
             <div className="install-actions">
               <button className="btn-install-primary" onClick={handleInstallClick}>Installer</button>
-              <button className="btn-install-close" onClick={() => { setDeferredPrompt(null); setShowPWABanner(false); }}>✕</button>
+              <button className="btn-install-close" onClick={dismissPWABanner}>✕</button>
             </div>
           </div>
         </div>

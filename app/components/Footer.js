@@ -19,7 +19,7 @@ export default function Footer() {
           </Link>
           <p className="footer-mission-text">
             L'observatoire citoyen indépendant qui démocratise l'accès aux données sanitaires. 
-            Suivi quotidien des PFAS, nitrates et pesticides dans 35 000 communes de France 
+            Suivi quotidien des PFAS, nitrates, pesticides et calcaire dans 35 000 communes de France 
             pour une transparence totale sur l'eau de votre robinet.
           </p>
         </div>
