@@ -9,6 +9,11 @@ export function middleware(request) {
   const cfRay = request.headers.get('cf-ray');
   const { pathname, search } = request.nextUrl;
 
+  // Exception pour la clé IndexNow (doit être accessible par Bing/Yandex sans cf-ray)
+  if (pathname.endsWith('7be75716d932ac5e09522369aa85b026.txt')) {
+    return NextResponse.next();
+  }
+
   // On n'applique la redirection et le blocage qu'en production
   if (
     process.env.NODE_ENV === 'production' &&
