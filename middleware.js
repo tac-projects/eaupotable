@@ -10,7 +10,7 @@ export function middleware(request) {
   const { pathname, search } = request.nextUrl;
 
   // Exception pour la clé IndexNow (doit être accessible par Bing/Yandex sans cf-ray)
-  if (pathname.endsWith('7be75716d932ac5e09522369aa85b026.txt')) {
+  if (pathname.endsWith('ef78ad28c2ff4d22960654cdf41745d4.txt')) {
     return NextResponse.next();
   }
 

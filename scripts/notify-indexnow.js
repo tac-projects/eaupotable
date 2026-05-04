@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const host = "www.eaupotable.net";
-const key = "7be75716d932ac5e09522369aa85b026";
+const key = "ef78ad28c2ff4d22960654cdf41745d4";
 
 async function notifyIndexNow() {
   console.log(`🚀 Préparation de la notification IndexNow pour ${host}...`);
