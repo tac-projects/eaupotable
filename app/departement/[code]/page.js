@@ -6,6 +6,7 @@ export async function generateMetadata({ params }) {
   const { code } = await params;
   let deptName = `Département ${code}`;
   let avgScore = "";
+  let cityCount = 0;
 
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${code}.json`);
@@ -14,6 +15,7 @@ export async function generateMetadata({ params }) {
       const data = JSON.parse(fileData);
       deptName = data.deptInfo?.name || deptName;
       avgScore = data.deptInfo?.avgScore || "";
+      cityCount = data.cities ? Object.keys(data.cities).length : 0;
     }
   } catch (e) {}
 
@@ -21,23 +23,27 @@ export async function generateMetadata({ params }) {
   const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
+  const scoreString = typeof avgScore === 'number' ? avgScore.toFixed(1).replace('.', ',') : avgScore;
+  const title = `Qualité de l'eau : ${deptName} (${code}) | Calcaire & PFAS - ${currentMonthYear}`;
+  const description = `Votre eau du robinet est-elle saine ? 💧 Classement ${deptName} (${code}). Score moyen : ${scoreString}/10 (${cityCount} communes). Bilan PFAS, Calcaire & Prix par commune.`;
+
   return {
-    title: `Eau potable : ${deptName} (${code}) | Bilan (${currentMonthYear})`,
-    description: `✅ Eau potable en ${deptName} (${code}) en ${currentMonthYear} : Score moyen ${avgScore}/10. Consultez les analyses PFAS, calcaire et nitrates par commune.`,
+    title,
+    description,
     alternates: {
       canonical: `https://www.eaupotable.net/departement/${code}`,
     },
     openGraph: {
-      title: `Eau potable : ${deptName} (${code}) | Rapport (${currentMonthYear})`,
-      description: `Analyses consolidées de l'eau potable pour le département ${deptName}. ✅ Focus PFAS et conformité ARS ${currentMonthYear}.`,
+      title,
+      description,
       type: 'website',
       url: `https://www.eaupotable.net/departement/${code}`,
-      images: [`/api/og?city=${encodeURIComponent(deptName)}&score=${avgScore}&label=BILAN&status=status-good`],
+      images: [`/api/og?city=${encodeURIComponent(deptName)}&score=${avgScore}&label=CLASSEMENT&status=status-good`],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Eau potable : ${deptName} (${currentMonthYear})`,
-      description: `Bilan complet de la potabilité en ${deptName} : PFAS, Calcaire et Nitrates.`,
+      title,
+      description,
     }
   };
 }

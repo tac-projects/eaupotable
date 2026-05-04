@@ -156,18 +156,28 @@ export async function generateMetadata({ params }) {
   const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
-  const priceString = summary.prix?.total ? `${summary.prix.total.toFixed(2).replace('.', ',')} €/m³` : 'tarifs locaux';
+  const deptCode = summary.meta?.code_departement || '';
   const scoreString = typeof score === 'number' ? score.toFixed(1).replace('.', ',') : score;
+  const priceString = summary.prix?.total ? `${summary.prix.total.toFixed(2).replace('.', ',')}€/m³` : null;
+
+  const title = `Qualité de l'eau à ${officialName} (${deptCode}) : Calcaire & PFAS - ${currentMonthYear}`;
+  const description = `Votre eau du robinet est-elle saine ? 💧 Score : ${scoreString}/10${priceString ? ` - Prix : ${priceString}` : ''}. Découvrez le bilan complet (Calcaire, Nitrates & PFAS) selon les données de l'ARS.`;
 
   return {
-    title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
-    description: `✅ Prix de l'eau : ${priceString} | Note de pureté : ${scoreString}/10. L'eau de ${officialName} est-elle saine ? Découvrez les taux de calcaire et de PFAS.`,
+    title,
+    description,
     alternates: {
       canonical: `${DOMAIN}/ville/${cleanSlug}`,
     },
     openGraph: {
-      title: `Eau potable à ${officialName} (${currentMonthYear}) : Calcaire & PFAS`,
-      description: `Prix : ${priceString}. Score de pureté : ${scoreString}/10. Consultez le bilan santé interactif de l'eau à ${officialName} (Calcaire, PFAS).`,
+      title,
+      description,
+      images: [ogImageUrl],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
       images: [ogImageUrl],
     },
   };

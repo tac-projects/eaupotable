@@ -2,8 +2,8 @@ import WaterApp from './components/WaterApp';
 import Navbar from './components/Navbar';
 
 export const metadata = {
-  title: "Qualité de l'eau du robinet & PFAS : Analyse par Ville | EauPotable.net",
-  description: "📊 Suivez la qualité de l'eau potable en France en temps réel. Données officielles 2026 connectées aux flux ARS : PFAS, pesticides et calcaire dans votre commune.",
+  title: "Eau potable en France : Qualité, PFAS & Prix | EauPotable.net",
+  description: "Votre eau du robinet est-elle saine ? 💧 Découvrez la qualité de l'eau, le calcaire et les PFAS pour 35 000 communes. Bilan santé complet et prix de l'eau.",
   alternates: {
     canonical: "https://www.eaupotable.net",
   },
