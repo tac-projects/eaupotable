@@ -43,7 +43,7 @@ async function notifyIndexNow() {
     console.error("⚠️ Erreur lors de la lecture du sitemap :", err.message);
   }
   
-  const url = "https://www.bing.com/indexnow";
+  const url = "https://api.indexnow.org/indexnow";
   const data = {
     host: host,
     key: key,
