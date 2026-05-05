@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "0,10",
+        "val": "< 0,01",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -90,90 +90,105 @@
         "nitrates": {
           "val": "40",
           "unit": " mg/L",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "ph": {
           "val": "7,89",
           "unit": " pH",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "temperature": {
           "val": "12",
           "unit": " °C",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "hardness": {
           "val": "29,98",
           "unit": " °f",
-          "date": "26/12/2025"
+          "date": "26/12/2025",
+          "timestamp": 1766707200000
         },
         "chlorine": {
           "val": "0,14",
           "unit": " mg/L",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "05/12/2025"
+          "date": "05/12/2025",
+          "timestamp": 1764892800000
         },
         "pfas": {
           "val": "0,001",
           "unit": " µg/L",
-          "date": "05/12/2025"
+          "date": "05/12/2025",
+          "timestamp": 1764892800000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "conductivity": {
           "val": "562",
           "unit": " µS/cm",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "05/12/2025"
+          "date": "05/12/2025",
+          "timestamp": 1764892800000
         },
         "ammonium": {
           "val": "0",
           "unit": " mg/L",
-          "date": "30/12/2025"
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "copper": {
-          "val": "0,103",
+          "val": "0",
           "unit": " mg/L",
-          "date": "10/12/2025"
+          "date": "05/12/2025",
+          "timestamp": 1764892800000
         },
         "organic_carbon": {
           "val": "0,52",
           "unit": " mg/L",
-          "date": "26/12/2025"
+          "date": "26/12/2025",
+          "timestamp": 1766707200000
         }
-      },
-      "meta": {
-        "nom_distributeur": "EAU DE PARIS",
-        "code_departement": "75",
-        "date_prelevement": "2025-12-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
-        "insee": "75056"
       },
       "prix": {
         "aep": 2.03,
         "ac": 2.28,
         "total": 4.31
+      },
+      "meta": {
+        "nom_distributeur": "EAU DE PARIS",
+        "code_departement": "75",
+        "insee": "75056",
+        "date_prelevement": "2025-12-30",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }
   },
@@ -233,7 +248,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "0,13",
+        "val": "15",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -242,6 +257,6 @@
       }
     },
     "score": 6.3,
-    "conformity": 84
+    "conformity": 85
   }
 }

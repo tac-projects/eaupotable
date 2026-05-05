@@ -140,17 +140,17 @@ const config = {
     ph: { codes: ["1302"], unit: "pH" },
     temperature: { codes: ["1301"], unit: "°C" },
     hardness: { codes: ["1345"], unit: "°f" },
-    chlorine: { codes: ["1398", "1399"], unit: "mg/L" },
-    pesticides: { codes: ["1107", "1667", "7150"], unit: "µg/L" },
-    pfas: { codes: ["7149", "8847"], unit: "µg/L" },
-    microbiology: { codes: ["1321", "1322", "1449", "1447", "1042"], unit: "Absence" },
-    conductivity: { codes: ["1303"], unit: "µS/cm" },
-    turbidity: { codes: ["1295", "1305"], unit: "NFU" },
+    chlorine: { codes: ["1398", "1399", "1754", "1545"], unit: "mg/L" },
+    pesticides: { codes: ["1107", "1667", "7150", "1668", "1669", "6276"], unit: "µg/L" },
+    pfas: { codes: ["7149", "8847", "8194", "8195", "8848", "8849"], unit: "µg/L" },
+    microbiology: { codes: ["1321", "1322", "1449", "1447", "1042", "1306"], unit: "Absence" },
+    conductivity: { codes: ["1303", "1304"], unit: "µS/cm" },
+    turbidity: { codes: ["1295", "1305", "1706"], unit: "NFU" },
     iron: { codes: ["1393", "1391"], unit: "µg/L" },
-    manganese: { codes: ["1394"], unit: "µg/L" },
+    manganese: { codes: ["1394", "1373"], unit: "µg/L" },
     ammonium: { codes: ["1331", "1335"], unit: "mg/L" },
-    copper: { codes: ["1392"], unit: "mg/L" },
-    organic_carbon: { codes: ["1841"], unit: "mg/L" }
+    copper: { codes: ["1392", "1370"], unit: "mg/L" },
+    organic_carbon: { codes: ["1841", "1842"], unit: "mg/L" }
 };
 
 const YEARS = ["2026", "2025", "2024", "2023", "2022"];
@@ -368,17 +368,27 @@ async function buildDepartment(deptCode) {
                 visited.add(currentUdi);
 
                 const history = udiHistory[currentUdi] || [];
-                for (const entry of history.slice(0, 1000)) {
+                // On parcourt TOUTE l'historique pour CHAQUE paramètre manquant
+                for (const entry of history) {
                     const refRes = resultsByRef[entry.ref] || {};
                     for (const [key, pConf] of Object.entries(config)) {
+                        // Si on a déjà une valeur pour cet indicateur, on ne cherche pas plus vieux
                         if (stats[key].val !== '--') continue;
+                        
                         for (const code of pConf.codes) {
                             if (refRes[code]) {
                                 let v = refRes[code].val;
                                 if (key === 'microbiology' && (v === '0' || v.toLowerCase().includes('absence'))) v = "Absence";
                                 let unit = pConf.unit || (refRes[code].unit || "").replace('mg(Cl2)/L', 'mg/L').replace('unité pH', 'pH');
-                                stats[key] = { val: v, unit: " " + unit, date: new Date(entry.date).toLocaleDateString('fr-FR') };
-                                if (lastDate === "N/A") { 
+                                stats[key] = { 
+                                    val: v, 
+                                    unit: " " + unit, 
+                                    date: new Date(entry.date).toLocaleDateString('fr-FR'),
+                                    timestamp: new Date(entry.date).getTime()
+                                };
+                                
+                                // On ne met à jour la conclusion ARS que si c'est le prélèvement le plus récent GLOBALEMENT
+                                if (lastDate === "N/A" || new Date(entry.date) > new Date(lastDate)) { 
                                     lastDate = entry.date; 
                                     arsConclusion = entry.conclusion;
                                     nomDistributeur = entry.distributeur || "le gestionnaire local";
@@ -388,9 +398,14 @@ async function buildDepartment(deptCode) {
                             }
                         }
                     }
+                    // Si tous les indicateurs sont trouvés, on peut arrêter pour cet UDI
+                    if (Object.values(stats).every(s => s.val !== '--')) break;
                 }
-                if (parentTree[currentUdi]) queue.push(parentTree[currentUdi]);
-                if (Object.values(stats).every(s => s.val !== '--')) break;
+                
+                // Si on a encore des manques, on remonte au réseau parent
+                if (parentTree[currentUdi] && !Object.values(stats).every(s => s.val !== '--')) {
+                    queue.push(parentTree[currentUdi]);
+                }
             }
         };
 
