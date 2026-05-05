@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "79",
     "name": "Deux-Sèvres",
-    "avgScore": 7.7,
-    "conformRate": 96,
+    "avgScore": 7.6,
+    "conformRate": 95,
     "averages": {
       "nitrates": {
         "val": "20",
@@ -28649,12 +28649,12 @@
     "loubigne": {
       "cityName": "Loubigne",
       "reseau": "079000193",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
@@ -28694,9 +28694,10 @@
           "timestamp": 1728000000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,0011",
+          "unit": " µg/L",
+          "date": "05/08/2025",
+          "timestamp": 1754352000000
         },
         "microbiology": {
           "val": "Absence",
@@ -28756,19 +28757,19 @@
         "nom_distributeur": "SMAEP 4B",
         "code_departement": "79",
         "insee": "79153",
-        "date_prelevement": "2024-12-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2025-08-05",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Eau légèrement agressive. L'indice d'activité alpha-globale est supérieur à 0,1 Bq/l.Une analyse de recontrôlea été demandée."
       }
     },
     "loubille": {
       "cityName": "Loubille",
       "reseau": "079000193",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
@@ -28808,9 +28809,10 @@
           "timestamp": 1728000000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,0011",
+          "unit": " µg/L",
+          "date": "05/08/2025",
+          "timestamp": 1754352000000
         },
         "microbiology": {
           "val": "Absence",
@@ -28870,19 +28872,19 @@
         "nom_distributeur": "SMAEP 4B",
         "code_departement": "79",
         "insee": "79154",
-        "date_prelevement": "2024-12-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2025-08-05",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Eau légèrement agressive. L'indice d'activité alpha-globale est supérieur à 0,1 Bq/l.Une analyse de recontrôlea été demandée."
       }
     },
     "villemain": {
       "cityName": "Villemain",
       "reseau": "079000193",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
@@ -28922,9 +28924,10 @@
           "timestamp": 1728000000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,0011",
+          "unit": " µg/L",
+          "date": "05/08/2025",
+          "timestamp": 1754352000000
         },
         "microbiology": {
           "val": "Absence",
@@ -28984,8 +28987,8 @@
         "nom_distributeur": "SMAEP 4B",
         "code_departement": "79",
         "insee": "79349",
-        "date_prelevement": "2024-12-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2025-08-05",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Eau légèrement agressive. L'indice d'activité alpha-globale est supérieur à 0,1 Bq/l.Une analyse de recontrôlea été demandée."
       }
     },
     "caunay": {
@@ -29572,7 +29575,7 @@
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,52",
+        "val": "7,51",
         "unit": "  pH"
       },
       "temperature": {
@@ -29620,7 +29623,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "9,85",
+        "val": "9,86",
         "unit": "  mg/L"
       },
       "organic_carbon": {

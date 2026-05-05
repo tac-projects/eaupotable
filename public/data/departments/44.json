@@ -14,7 +14,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "13",
+        "val": "12",
         "unit": "  °C"
       },
       "hardness": {
@@ -38,19 +38,19 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "453",
+        "val": "452",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,26",
+        "val": "0,25",
         "unit": "  NFU"
       },
       "iron": {
-        "val": "16",
+        "val": "15",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "3,95",
+        "val": "3,91",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -62,7 +62,7 @@
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,43",
+        "val": "1,42",
         "unit": "  mg/L"
       }
     },
@@ -8963,8 +8963,8 @@
       },
       "prix": {
         "aep": 2.28,
-        "ac": null,
-        "total": 2.28
+        "ac": 1.77,
+        "total": 4.05
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -10513,8 +10513,8 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "26/06/2024",
+          "timestamp": 1719360000000
         },
         "pfas": {
           "val": "0,0066",
@@ -11033,8 +11033,8 @@
       },
       "prix": {
         "aep": 2.28,
-        "ac": null,
-        "total": 2.28
+        "ac": 3.04,
+        "total": 5.32
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -15343,8 +15343,8 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "26/06/2024",
+          "timestamp": 1719360000000
         },
         "pfas": {
           "val": "0,0066",
@@ -20977,8 +20977,8 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "26/06/2024",
+          "timestamp": 1719360000000
         },
         "pfas": {
           "val": "0,0066",
@@ -21267,8 +21267,8 @@
       },
       "prix": {
         "aep": 2.28,
-        "ac": null,
-        "total": 2.28
+        "ac": 9.9,
+        "total": 12.18
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -23567,8 +23567,8 @@
       },
       "prix": {
         "aep": 2.28,
-        "ac": null,
-        "total": 2.28
+        "ac": 1.73,
+        "total": 4.01
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -23922,13 +23922,473 @@
         "date_prelevement": "2026-02-13",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "ferel": {
+      "cityName": "Ferel",
+      "reseau": "044000130",
+      "isConform": true,
+      "crystal": {
+        "final": 7,
+        "label": "MÉDIOCRE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-warning"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "17",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "temperature": {
+          "val": "11,2",
+          "unit": " °C",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "hardness": {
+          "val": "16,7",
+          "unit": " °f",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "chlorine": {
+          "val": "0,36",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "04/02/2026",
+          "timestamp": 1770163200000
+        },
+        "pfas": {
+          "val": "0,0006",
+          "unit": " µg/L",
+          "date": "04/02/2026",
+          "timestamp": 1770163200000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "conductivity": {
+          "val": "443",
+          "unit": " µS/cm",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "iron": {
+          "val": "3",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "copper": {
+          "val": "4",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "organic_carbon": {
+          "val": "1,2",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        }
+      },
+      "prix": {
+        "aep": 2.23,
+        "ac": 3.04,
+        "total": 5.27
+      },
+      "meta": {
+        "nom_distributeur": "SUEZ 56",
+        "code_departement": "44",
+        "insee": "56058",
+        "date_prelevement": "2026-02-24",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "sevremoine": {
+      "cityName": "Sevremoine",
+      "reseau": "044000141",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "11",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "ph": {
+          "val": "7,8",
+          "unit": " pH",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "temperature": {
+          "val": "11",
+          "unit": " °C",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "hardness": {
+          "val": "19,3",
+          "unit": " °f",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "chlorine": {
+          "val": "0,51",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/11/2025",
+          "timestamp": 1763942400000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/03/2025",
+          "timestamp": 1742342400000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "conductivity": {
+          "val": "478",
+          "unit": " µS/cm",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "iron": {
+          "val": "12",
+          "unit": " µg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "manganese": {
+          "val": "1",
+          "unit": " µg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "copper": {
+          "val": "7",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "organic_carbon": {
+          "val": "1,8",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        }
+      },
+      "prix": {
+        "aep": 2.21,
+        "ac": null,
+        "total": 2.21
+      },
+      "meta": {
+        "nom_distributeur": "SAUR - CLISSON",
+        "code_departement": "44",
+        "insee": "49301",
+        "date_prelevement": "2026-02-17",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "apremont": {
+      "cityName": "Apremont",
+      "reseau": "044000655",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "12",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "ph": {
+          "val": "8,2",
+          "unit": " pH",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "temperature": {
+          "val": "11",
+          "unit": " °C",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "hardness": {
+          "val": "14,6",
+          "unit": " °f",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "chlorine": {
+          "val": "0,46",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "07/10/2025",
+          "timestamp": 1759795200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "23/09/2025",
+          "timestamp": 1758585600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "conductivity": {
+          "val": "397",
+          "unit": " µS/cm",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "iron": {
+          "val": "8",
+          "unit": " µg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "manganese": {
+          "val": "4",
+          "unit": " µg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "copper": {
+          "val": "18",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "organic_carbon": {
+          "val": "1,6",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        }
+      },
+      "prix": {
+        "aep": 2.47,
+        "ac": 3.83,
+        "total": 6.3
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "44",
+        "insee": "85006",
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "redon": {
+      "cityName": "Redon",
+      "reseau": "044004436",
+      "isConform": true,
+      "crystal": {
+        "final": 7,
+        "label": "MÉDIOCRE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-warning"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "16",
+          "unit": " mg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "ph": {
+          "val": "8,2",
+          "unit": " pH",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "temperature": {
+          "val": "11,2",
+          "unit": " °C",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "hardness": {
+          "val": "14",
+          "unit": " °f",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "chlorine": {
+          "val": "0,3",
+          "unit": " mg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "18/12/2025",
+          "timestamp": 1766016000000
+        },
+        "pfas": {
+          "val": "0,00389",
+          "unit": " µg/L",
+          "date": "22/10/2025",
+          "timestamp": 1761091200000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "conductivity": {
+          "val": "435",
+          "unit": " µS/cm",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "iron": {
+          "val": "2",
+          "unit": " µg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "manganese": {
+          "val": "3",
+          "unit": " µg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "copper": {
+          "val": "24",
+          "unit": " mg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        },
+        "organic_carbon": {
+          "val": "0,78",
+          "unit": " mg/L",
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
+        }
+      },
+      "prix": {
+        "aep": null,
+        "ac": 3.57,
+        "total": 3.57
+      },
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "44",
+        "insee": "35236",
+        "date_prelevement": "2026-02-25",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
     "name": "Pays de la Loire",
     "averages": {
       "nitrates": {
-        "val": "17",
+        "val": "16",
         "unit": "  mg/L"
       },
       "ph": {
@@ -23972,7 +24432,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "1,92",
+        "val": "1,91",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -23980,11 +24440,11 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "5,21",
+        "val": "5,24",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,35",
+        "val": "1,34",
         "unit": "  mg/L"
       }
     },

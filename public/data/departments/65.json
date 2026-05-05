@@ -3,10 +3,10 @@
     "code": "65",
     "name": "Hautes-Pyrénées",
     "avgScore": 9,
-    "conformRate": 94,
+    "conformRate": 93,
     "averages": {
       "nitrates": {
-        "val": "6,13",
+        "val": "6,10",
         "unit": "  mg/L"
       },
       "ph": {
@@ -46,7 +46,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "8,86",
+        "val": "8,89",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -58,11 +58,11 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "9,93",
+        "val": "9,83",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,37",
+        "val": "0,38",
         "unit": "  mg/L"
       }
     },
@@ -3633,12 +3633,12 @@
     "artalens-souin": {
       "cityName": "Artalens-Souin",
       "reseau": "065000491",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 10,
-        "label": "EXCELLENTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
@@ -3678,9 +3678,10 @@
           "timestamp": 1667952000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "18/02/2026",
+          "timestamp": 1771372800000
         },
         "microbiology": {
           "val": "Absence",
@@ -3737,11 +3738,11 @@
         "total": 2.11
       },
       "meta": {
-        "nom_distributeur": "MAIRIE DE ARTALENS-SOUIN",
+        "nom_distributeur": "STEM HAUTACAM",
         "code_departement": "65",
         "insee": "65036",
-        "date_prelevement": "2026-01-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2026-02-18",
+        "conclusion": "Résultats complémentaires sur la recherche des paramètres PFAS. Conclu sion sanitaire pour l'ensemble des paramètres recherchés lors des prél èvements effectués à la même date : « Eau d'alimentation non conforme aux exigences de qualité en vigueur. La non-conformité concerne au moi ns un paramètre microbiologique. Cependant, la détection des germes pr ésents dans l'eau n'a pas nécessité de restriction de la consommation de l'eau. Les PFAS respectent les limites et références de qualité imp osées. »"
       }
     },
     "artiguemy": {
@@ -12354,8 +12355,8 @@
       },
       "prix": {
         "aep": 1.43,
-        "ac": null,
-        "total": 1.43
+        "ac": 2.32,
+        "total": 3.75
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE CADEAC",
@@ -17816,9 +17817,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.82,
         "ac": 1.21,
-        "total": 1.21
+        "total": 3.03
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE ESTERRE",
@@ -18718,7 +18719,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 2.03,
+        "total": 2.03
+      },
       "meta": {
         "nom_distributeur": "SIAEP DE HOUNTAGNERE",
         "code_departement": "65",
@@ -22514,9 +22519,10 @@
           "timestamp": 1747008000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "microbiology": {
           "val": "Absence",
@@ -22573,10 +22579,10 @@
         "total": 6.45
       },
       "meta": {
-        "nom_distributeur": "VEOLIA EAU CGE",
+        "nom_distributeur": "CATLP",
         "code_departement": "65",
         "insee": "65221",
-        "date_prelevement": "2026-02-16",
+        "date_prelevement": "2026-02-24",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -23883,9 +23889,10 @@
           "timestamp": 1769040000000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/01/2022",
+          "timestamp": 1641168000000
         },
         "pfas": {
           "val": "0",
@@ -23918,9 +23925,10 @@
           "timestamp": 1707350400000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/01/2022",
+          "timestamp": 1641168000000
         },
         "ammonium": {
           "val": "0",
@@ -23929,9 +23937,10 @@
           "timestamp": 1769040000000
         },
         "copper": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " mg/L",
+          "date": "03/01/2022",
+          "timestamp": 1641168000000
         },
         "organic_carbon": {
           "val": "1",
@@ -24001,9 +24010,10 @@
           "timestamp": 1770681600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "12/11/2025",
+          "timestamp": 1762905600000
         },
         "microbiology": {
           "val": "Absence",
@@ -43991,7 +44001,11 @@
           "timestamp": 1770076800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.24,
+        "ac": 2.06,
+        "total": 4.3
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE SIREIX",
         "code_departement": "65",
@@ -48737,8 +48751,8 @@
       },
       "prix": {
         "aep": 1.08,
-        "ac": null,
-        "total": 1.08
+        "ac": 1.04,
+        "total": 2.12
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE VILLELONGUE",
@@ -49531,8 +49545,8 @@
       },
       "prix": {
         "aep": 1.72,
-        "ac": null,
-        "total": 1.72
+        "ac": 1.25,
+        "total": 2.97
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE BAREGES",
@@ -50090,7 +50104,11 @@
           "timestamp": 1762128000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 0.39,
+        "total": 0.39
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE AVEZAC-PRAT-LAHITTE",
         "code_departement": "65",
@@ -50989,10 +51007,10 @@
       "reseau": "065003562",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENTE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -51026,14 +51044,16 @@
           "timestamp": 1764806400000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/12/2025",
+          "timestamp": 1765238400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,034",
+          "unit": " µg/L",
+          "date": "09/12/2025",
+          "timestamp": 1765238400000
         },
         "microbiology": {
           "val": "Absence",
@@ -51060,9 +51080,10 @@
           "timestamp": 1698278400000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/12/2025",
+          "timestamp": 1765238400000
         },
         "ammonium": {
           "val": "0",
@@ -51071,9 +51092,10 @@
           "timestamp": 1764806400000
         },
         "copper": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "25,9",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "organic_carbon": {
           "val": "0",
@@ -51091,7 +51113,7 @@
         "nom_distributeur": "SPL-EBCS",
         "code_departement": "65",
         "insee": "65175",
-        "date_prelevement": "2025-12-04",
+        "date_prelevement": "2026-02-24",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -53113,17 +53135,588 @@
         "date_prelevement": "2025-11-21",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "montegut-arros": {
+      "cityName": "Montegut-Arros",
+      "reseau": "065000671",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "4,7",
+          "unit": " mg/L",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "ph": {
+          "val": "7,4",
+          "unit": " pH",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "temperature": {
+          "val": "14,2",
+          "unit": " °C",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "hardness": {
+          "val": "21,6",
+          "unit": " °f",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "chlorine": {
+          "val": "0,42",
+          "unit": " mg/L",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/12/2024",
+          "timestamp": 1734393600000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "21/01/2026",
+          "timestamp": 1768953600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "conductivity": {
+          "val": "452",
+          "unit": " µS/cm",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "iron": {
+          "val": "9,18",
+          "unit": " µg/L",
+          "date": "13/11/2025",
+          "timestamp": 1762992000000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "17/12/2024",
+          "timestamp": 1734393600000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        },
+        "copper": {
+          "val": "0,016",
+          "unit": " mg/L",
+          "date": "13/11/2025",
+          "timestamp": 1762992000000
+        },
+        "organic_carbon": {
+          "val": "0,427",
+          "unit": " mg/L",
+          "date": "09/01/2026",
+          "timestamp": 1767916800000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "SIAEP DE MASSEUBE",
+        "code_departement": "65",
+        "insee": "32283",
+        "date_prelevement": "2026-01-21",
+        "conclusion": "Résultats complémentaires sur la recherche des paramètres PFAS. Conclu sion sanitaire pour l'ensemble des paramètres recherchés lors des prél èvements effectués à la même date : « Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés . »"
+      }
+    },
+    "asson": {
+      "cityName": "Asson",
+      "reseau": "065000713",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,6",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "temperature": {
+          "val": "10,5",
+          "unit": " °C",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "hardness": {
+          "val": "12,4",
+          "unit": " °f",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "conductivity": {
+          "val": "242",
+          "unit": " µS/cm",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "iron": {
+          "val": "12,7",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "organic_carbon": {
+          "val": "0,745",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        }
+      },
+      "prix": {
+        "aep": 2.58,
+        "ac": 2.58,
+        "total": 5.16
+      },
+      "meta": {
+        "nom_distributeur": "VEOLIA EAU CGE",
+        "code_departement": "65",
+        "insee": "64068",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "arthez-d-asson": {
+      "cityName": "Arthez-D'asson",
+      "reseau": "065000713",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,6",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "temperature": {
+          "val": "10,5",
+          "unit": " °C",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "hardness": {
+          "val": "12,4",
+          "unit": " °f",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "conductivity": {
+          "val": "242",
+          "unit": " µS/cm",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "iron": {
+          "val": "12,7",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "organic_carbon": {
+          "val": "0,745",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        }
+      },
+      "prix": {
+        "aep": 2.58,
+        "ac": 2.58,
+        "total": 5.16
+      },
+      "meta": {
+        "nom_distributeur": "VEOLIA EAU CGE",
+        "code_departement": "65",
+        "insee": "64058",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "lalongue": {
+      "cityName": "Lalongue",
+      "reseau": "065000713",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,6",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "temperature": {
+          "val": "10,5",
+          "unit": " °C",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "hardness": {
+          "val": "12,4",
+          "unit": " °f",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "conductivity": {
+          "val": "242",
+          "unit": " µS/cm",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "iron": {
+          "val": "12,7",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "organic_carbon": {
+          "val": "0,745",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        }
+      },
+      "prix": {
+        "aep": 2.83,
+        "ac": null,
+        "total": 2.83
+      },
+      "meta": {
+        "nom_distributeur": "VEOLIA EAU CGE",
+        "code_departement": "65",
+        "insee": "64307",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "lespielle": {
+      "cityName": "Lespielle",
+      "reseau": "065000713",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,6",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "ph": {
+          "val": "8,1",
+          "unit": " pH",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "temperature": {
+          "val": "10,5",
+          "unit": " °C",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "hardness": {
+          "val": "12,4",
+          "unit": " °f",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "chlorine": {
+          "val": "0,69",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "conductivity": {
+          "val": "242",
+          "unit": " µS/cm",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "iron": {
+          "val": "12,7",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "28/08/2024",
+          "timestamp": 1724803200000
+        },
+        "organic_carbon": {
+          "val": "0,745",
+          "unit": " mg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
+        }
+      },
+      "prix": {
+        "aep": 2.83,
+        "ac": null,
+        "total": 2.83
+      },
+      "meta": {
+        "nom_distributeur": "VEOLIA EAU CGE",
+        "code_departement": "65",
+        "insee": "64337",
+        "date_prelevement": "2026-01-19",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
     "name": "Occitanie",
     "averages": {
       "nitrates": {
-        "val": "8,12",
+        "val": "8,13",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,67",
+        "val": "7,68",
         "unit": "  pH"
       },
       "temperature": {
@@ -53159,7 +53752,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,94",
+        "val": "7,97",
         "unit": "  µg/L"
       },
       "manganese": {

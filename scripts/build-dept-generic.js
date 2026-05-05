@@ -158,7 +158,15 @@ const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');
 
 
 // 3. UTILITIES
-const makeSlug = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
+const makeSlug = (s) => s.toLowerCase()
+    .replace(/œ/g, 'oe')
+    .replace(/æ/g, 'ae')
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/-$/, '')
+    .replace(/^-/, '');
 
 /**
  * Normalise les noms de villes administratives (ex: "CHEYLARD (LE)" -> "LE CHEYLARD")
@@ -276,6 +284,13 @@ async function buildDepartment(deptCode) {
         prices = JSON.parse(fs.readFileSync(pricesPath, 'utf8'));
     }
 
+    // MAPPING MANUEL : Pour les villes où le matching auto échoue
+    const MANUAL_INSEE = {
+        "ABERGEMENT CLEMENCIAT": "01001",
+        "ABERGEMENT DE VAREY": "01002",
+        "COLIGNY": "01115"
+    };
+
     // 1. UDI_COM : Mapping INSEE -> Réseaux
     for (const year of YEARS) {
         const udiFile = path.join(ARCHIVE_DIR, year, `DIS_COM_UDI_${year}.txt`);
@@ -289,8 +304,13 @@ async function buildDepartment(deptCode) {
                 
                 const rawName = p[1].toUpperCase().trim();
                 const key = normalizeCityName(rawName);
+                let insee = p[0];
+
+                // Correction manuelle si besoin
+                if (MANUAL_INSEE[rawName]) insee = MANUAL_INSEE[rawName];
+                
+                if (!udiMap[key]) udiMap[key] = { udis: [], insee: insee };
                 const cd = p[3];
-                if (!udiMap[key]) udiMap[key] = { udis: [], insee: p[0] };
                 if (!udiMap[key].udis.includes(cd)) udiMap[key].udis.push(cd);
 
             }
@@ -308,8 +328,18 @@ async function buildDepartment(deptCode) {
         const rl = readline.createInterface({ input: fs.createReadStream(f) });
         for await (const line of rl) {
             const p = splitCsv(line); if (p[1] === 'cdreseau' || !p[1]) continue;
-            const cd = p[1], amont = p[4], ref = p[7], date = p[8], conclusion = p[10], distri = p[12];
+            const cd = p[1], insee = p[2], cityName = p[3], amont = p[4], ref = p[7], date = p[8], conclusion = p[10], distri = p[12];
             
+            // Aspiration Totale : Si la ville est dans un prélèvement mais pas dans le mapping officiel, on l'ajoute
+            if (insee && cityName) {
+                const key = normalizeCityName(cityName);
+                if (!udiMap[key]) {
+                    udiMap[key] = { udis: [cd], insee: insee };
+                } else if (!udiMap[key].udis.includes(cd)) {
+                    udiMap[key].udis.push(cd);
+                }
+            }
+
             if (amont && amont.trim() && amont !== cd) {
                 parentTree[cd] = amont.trim();
             }
@@ -331,6 +361,7 @@ async function buildDepartment(deptCode) {
             if (p[0] === 'cddept') continue;
             // referenceprel(1), cdparam(3), valtraduite(14), unit(10)
             const ref = p[1], paramId = p[3], valRaw = p[14], unit = p[10];
+
             if (!resultsByRef[ref]) resultsByRef[ref] = {};
             
             // Formatage de la valeur pour éviter les 0.000000
@@ -555,7 +586,7 @@ function calculateRegionalAverages(allDeptData) {
                     let formatted = mean.toFixed(2).replace('.', ',');
                     if (mean > 10) formatted = Math.round(mean).toString();
                     else if (mean < 0.1) formatted = mean <= 0.01 ? "< 0,01" : mean.toFixed(3).replace('.', ',');
-                    
+ 
                     finalRegions[rName].averages[pId] = { 
                         val: formatted, 
                         unit: r.params[pId][0].unit 
@@ -602,14 +633,17 @@ function calculateRegionalAverages(allDeptData) {
         }
 
     } else if (deptArg) {
-        const codes = deptArg.split('=')[1].split(',');
+        const rawCodes = deptArg.split('=')[1].split(',');
+        const codes = rawCodes.map(c => c.length === 1 ? '0' + c : c);
         for (const code of codes) {
             allResults[code] = await buildDepartment(code);
         }
         
         // Charger les données manquantes de la région pour les départements demandés
         for (const code of codes) {
-            const rName = allResults[code].deptInfo.regionName;
+            const deptData = allResults[code];
+            if (!deptData || !deptData.deptInfo) continue;
+            const rName = deptData.deptInfo.regionName;
             const regionalDepts = REGION_MAP[rName] || [];
             for (const rDept of regionalDepts) {
                 if (!allResults[rDept]) {

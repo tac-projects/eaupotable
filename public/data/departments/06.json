@@ -10,11 +10,11 @@
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,82",
+        "val": "7,81",
         "unit": "  pH"
       },
       "temperature": {
-        "val": "8,95",
+        "val": "8,98",
         "unit": "  °C"
       },
       "hardness": {
@@ -38,7 +38,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "420",
+        "val": "421",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -46,7 +46,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,13",
+        "val": "7,09",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "9,74",
+        "val": "9,68",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -2612,8 +2612,8 @@
       },
       "prix": {
         "aep": 1.57,
-        "ac": null,
-        "total": 1.57
+        "ac": 1.36,
+        "total": 2.93
       },
       "meta": {
         "nom_distributeur": "CARF",
@@ -5025,8 +5025,8 @@
       },
       "prix": {
         "aep": 2.65,
-        "ac": null,
-        "total": 2.65
+        "ac": 2.26,
+        "total": 4.91
       },
       "meta": {
         "nom_distributeur": "REGIE DES EAUX DU CANAL BELLETRUD",
@@ -6977,8 +6977,8 @@
       },
       "prix": {
         "aep": 1.57,
-        "ac": null,
-        "total": 1.57
+        "ac": 1.36,
+        "total": 2.93
       },
       "meta": {
         "nom_distributeur": "CARF",
@@ -9522,10 +9522,10 @@
       "reseau": "006000363",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENTE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -9565,9 +9565,10 @@
           "timestamp": 1763510400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,025",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "microbiology": {
           "val": "Absence",
@@ -9624,10 +9625,10 @@
         "total": 1.69
       },
       "meta": {
-        "nom_distributeur": "SO'EAU",
+        "nom_distributeur": "SEML EAUX DE MOUANS",
         "code_departement": "06",
         "insee": "06085",
-        "date_prelevement": "2026-02-18",
+        "date_prelevement": "2026-02-24",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -10139,9 +10140,10 @@
           "timestamp": 1763510400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/03/2025",
+          "timestamp": 1743033600000
         },
         "microbiology": {
           "val": "Absence",
@@ -11974,9 +11976,10 @@
           "timestamp": 1763510400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "microbiology": {
           "val": "Absence",
@@ -12033,10 +12036,10 @@
         "total": 1.69
       },
       "meta": {
-        "nom_distributeur": "SO'EAU",
+        "nom_distributeur": "SUEZ EAU FRANCE",
         "code_departement": "06",
         "insee": "06108",
-        "date_prelevement": "2026-02-18",
+        "date_prelevement": "2026-02-24",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -14789,8 +14792,8 @@
       },
       "prix": {
         "aep": 1.57,
-        "ac": null,
-        "total": 1.57
+        "ac": 1.36,
+        "total": 2.93
       },
       "meta": {
         "nom_distributeur": "CARF",
@@ -18122,8 +18125,8 @@
       },
       "prix": {
         "aep": 1.57,
-        "ac": null,
-        "total": 1.57
+        "ac": 1.36,
+        "total": 2.93
       },
       "meta": {
         "nom_distributeur": "CARF",
@@ -18237,8 +18240,8 @@
       },
       "prix": {
         "aep": 1.57,
-        "ac": null,
-        "total": 1.57
+        "ac": 1.36,
+        "total": 2.93
       },
       "meta": {
         "nom_distributeur": "CARF",
@@ -18820,13 +18823,124 @@
         "date_prelevement": "2025-11-18",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "ventimille-italie": {
+      "cityName": "Ventimille Italie",
+      "reseau": "006000026",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "2,5",
+          "unit": " mg/L",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "ph": {
+          "val": "7,6",
+          "unit": " pH",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "temperature": {
+          "val": "14,6",
+          "unit": " °C",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "hardness": {
+          "val": "28,51",
+          "unit": " °f",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "chlorine": {
+          "val": "0,17",
+          "unit": " mg/L",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/01/2025",
+          "timestamp": 1736294400000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "conductivity": {
+          "val": "546",
+          "unit": " µS/cm",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "turbidity": {
+          "val": "0,12",
+          "unit": " NFU",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "organic_carbon": {
+          "val": "0,33",
+          "unit": " mg/L",
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "ORFEO-VEOLIA",
+        "code_departement": "06",
+        "insee": "99001",
+        "date_prelevement": "2026-02-26",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
     "name": "Provence-Alpes-Côte d'Azur",
     "averages": {
       "nitrates": {
-        "val": "3,81",
+        "val": "3,82",
         "unit": "  mg/L"
       },
       "ph": {
@@ -18834,7 +18948,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "9,68",
+        "val": "9,69",
         "unit": "  °C"
       },
       "hardness": {
@@ -18858,7 +18972,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "524",
+        "val": "523",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -18866,7 +18980,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,18",
+        "val": "7,15",
         "unit": "  µg/L"
       },
       "manganese": {

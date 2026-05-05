@@ -26,8 +26,36 @@ async function getLocalData(slug) {
     
     // Normalisation de sécurité du slug entrant
     const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
-    const deptCode = cityIndex[cleanSlug] || cityIndex[slug];
+    let deptCode = cityIndex[cleanSlug] || cityIndex[slug];
     
+    // LOGIQUE DE RÉCUPÉRATION (RECOVERY) :
+    // Si le slug n'est pas trouvé, on tente des méthodes de secours (Fuzzy Matching)
+    if (!deptCode) {
+      const allSlugs = Object.keys(cityIndex);
+      
+      // 1. Normalisation ultra-agressive (on ne garde que les consonnes et chiffres pour le "son")
+      const fuzzy = (s) => s.toLowerCase().replace(/[aeiouyœæ]/g, '').replace(/-+/g, '');
+      const cleanFuzzy = fuzzy(cleanSlug);
+      
+      const fuzzyMatch = allSlugs.find(s => fuzzy(s) === cleanFuzzy);
+      if (fuzzyMatch) return { redirect: fuzzyMatch };
+
+      // 2. Patchs syntaxiques (tirets surnuméraires hérités de l'ancien makeSlug)
+      // On tente de supprimer les tirets qui pourraient être des ligatures mal gérées
+      const noDash = cleanSlug.replace(/-/g, '');
+      const noDashMatch = allSlugs.find(s => s.replace(/-/g, '') === noDash);
+      if (noDashMatch) return { redirect: noDashMatch };
+
+      // 3. Recherche par inclusion (ex: saint-ouen-sur-seine -> saint-ouen)
+      const partialMatch = allSlugs.find(s => 
+        (cleanSlug.startsWith(s + '-') || s.startsWith(cleanSlug + '-')) && 
+        Math.abs(s.length - cleanSlug.length) < 20
+      );
+      if (partialMatch) return { redirect: partialMatch };
+
+      return null;
+    }
+
     if (!deptCode) return null;
 
     // 2. On charge le fichier du département correspondant (avec cache mémoire)
@@ -143,7 +171,7 @@ export async function generateMetadata({ params }) {
   if (slug !== cleanSlug) return {}; // La redirection sera gérée par la page
   
   const summary = await getLocalData(cleanSlug);
-  if (!summary) return { title: "Ville non trouvée" };
+  if (!summary || summary.redirect) return { title: "Qualité de l'eau - EauPotable.net" };
 
   const officialName = summary.cityName;
   const score = summary.crystal?.final || 'N/A';
@@ -197,8 +225,15 @@ export default async function CityPage({ params }) {
   }
 
   // 3. Récupération des données locales uniquement
-  const summary = await getLocalData(cleanSlug);
+  const result = await getLocalData(cleanSlug);
   
+  // 3bis. Gestion de la redirection de récupération
+  if (result?.redirect) {
+    redirect(`/ville/${result.redirect}`);
+  }
+
+  const summary = result;
+
   // 4. Si aucune donnée locale n'est trouvée -> Vraie 404
   if (!summary) {
     notFound();

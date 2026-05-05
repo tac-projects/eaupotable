@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "7,06",
+        "val": "7,05",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -7553,9 +7553,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.29,
         "ac": 1.42,
-        "total": 1.42
+        "total": 2.71
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE ASTE-BEON",
@@ -9045,7 +9045,11 @@
           "timestamp": 1763596800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 0.12,
+        "ac": null,
+        "total": 0.12
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE AYDIUS",
         "code_departement": "64",
@@ -13534,7 +13538,7 @@
       "reseau": "064000346",
       "isConform": true,
       "crystal": {
-        "final": 10,
+        "final": 9.5,
         "label": "EXCELLENTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
         "statusClass": "status-excellent"
@@ -13565,14 +13569,16 @@
           "timestamp": 1770163200000
         },
         "chlorine": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,27",
+          "unit": " mg/L",
+          "date": "04/02/2026",
+          "timestamp": 1770163200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "23/09/2025",
+          "timestamp": 1758585600000
         },
         "pfas": {
           "val": "0",
@@ -13599,14 +13605,16 @@
           "timestamp": 1770163200000
         },
         "iron": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "25,9",
+          "unit": " µg/L",
+          "date": "15/01/2026",
+          "timestamp": 1768435200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/01/2026",
+          "timestamp": 1768435200000
         },
         "ammonium": {
           "val": "0",
@@ -13615,9 +13623,10 @@
           "timestamp": 1770163200000
         },
         "copper": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,0903",
+          "unit": " mg/L",
+          "date": "15/01/2026",
+          "timestamp": 1768435200000
         },
         "organic_carbon": {
           "val": "0",
@@ -33828,7 +33837,11 @@
           "timestamp": 1765238400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.52,
+        "ac": 1.8,
+        "total": 4.32
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE LANNE-EN-BARETOUS",
         "code_departement": "64",
@@ -62788,7 +62801,7 @@
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,52",
+        "val": "7,51",
         "unit": "  pH"
       },
       "temperature": {
@@ -62836,7 +62849,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "9,85",
+        "val": "9,86",
         "unit": "  mg/L"
       },
       "organic_carbon": {

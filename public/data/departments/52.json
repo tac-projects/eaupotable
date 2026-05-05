@@ -50,7 +50,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "3,87",
+        "val": "3,83",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -1904,7 +1904,11 @@
           "timestamp": 1769990400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.33,
+        "ac": null,
+        "total": 1.33
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE ARNANCOURT",
         "code_departement": "52",
@@ -4653,7 +4657,11 @@
           "timestamp": 1770336000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.66,
+        "ac": null,
+        "total": 1.66
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE BLECOURT",
         "code_departement": "52",
@@ -4825,9 +4833,10 @@
           "timestamp": 1737072000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "microbiology": {
           "val": "Absence",
@@ -8308,7 +8317,11 @@
           "timestamp": 1767916800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.91,
+        "ac": 1.85,
+        "total": 3.76
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE CHALVRAINES",
         "code_departement": "52",
@@ -11852,8 +11865,8 @@
       },
       "prix": {
         "aep": 2.59,
-        "ac": null,
-        "total": 2.59
+        "ac": 1.23,
+        "total": 3.82
       },
       "meta": {
         "nom_distributeur": "SIAEP NORD BASSIGNY",
@@ -14198,9 +14211,10 @@
           "timestamp": 1768348800000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "30/01/2026",
+          "timestamp": 1769731200000
         },
         "pfas": {
           "val": "0",
@@ -14233,9 +14247,10 @@
           "timestamp": 1755561600000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,09",
+          "unit": " µg/L",
+          "date": "30/01/2026",
+          "timestamp": 1769731200000
         },
         "ammonium": {
           "val": "0",
@@ -14262,10 +14277,10 @@
         "total": 0.84
       },
       "meta": {
-        "nom_distributeur": "MAIRIE DE DAMPIERRE",
+        "nom_distributeur": "MAIRIE DE CHANGEY",
         "code_departement": "52",
         "insee": "52163",
-        "date_prelevement": "2026-01-14",
+        "date_prelevement": "2026-01-30",
         "conclusion": "Eau d'alimentation conforme aux limites de qualité sur le plan bactériologique mais non conforme aux références de qualité en raison de la présence de coliformes totaux. Toutefois, la présence seule de ces germes indicateurs de bon fonctionnement du traitement ou de la propreté des installations ne présente pas de risque sanitaire pour le consommateur. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau."
       }
     },
@@ -14371,7 +14386,11 @@
           "timestamp": 1767571200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.51,
+        "ac": null,
+        "total": 1.51
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE DANCEVOIR",
         "code_departement": "52",
@@ -15003,9 +15022,10 @@
           "timestamp": 1737072000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "microbiology": {
           "val": "Absence",
@@ -15572,9 +15592,10 @@
           "timestamp": 1737072000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "microbiology": {
           "val": "Absence",
@@ -17271,9 +17292,10 @@
           "timestamp": 1771804800000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/07/2025",
+          "timestamp": 1752105600000
         },
         "pfas": {
           "val": "0",
@@ -17306,9 +17328,10 @@
           "timestamp": 1686787200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,17",
+          "unit": " µg/L",
+          "date": "10/07/2025",
+          "timestamp": 1752105600000
         },
         "ammonium": {
           "val": "0",
@@ -20470,9 +20493,10 @@
           "timestamp": 1759449600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/01/2026",
+          "timestamp": 1769558400000
         },
         "microbiology": {
           "val": "Absence",
@@ -20532,7 +20556,7 @@
         "nom_distributeur": "SUEZ",
         "code_departement": "52",
         "insee": "52235",
-        "date_prelevement": "2026-01-13",
+        "date_prelevement": "2026-01-28",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -20638,9 +20662,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.47,
         "ac": 1.69,
-        "total": 1.69
+        "total": 4.16
       },
       "meta": {
         "nom_distributeur": "SIAEP LA MANOISE",
@@ -21094,7 +21118,11 @@
           "timestamp": 1769040000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.75,
+        "ac": null,
+        "total": 1.75
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE HUMBERVILLE",
         "code_departement": "52",
@@ -21607,9 +21635,10 @@
           "timestamp": 1752105600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "22/09/2025",
+          "timestamp": 1758499200000
         },
         "microbiology": {
           "val": "Absence",
@@ -22114,7 +22143,11 @@
           "timestamp": 1769040000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.29,
+        "ac": null,
+        "total": 3.29
+      },
       "meta": {
         "nom_distributeur": "SIAEP LA MANOISE",
         "code_departement": "52",
@@ -22335,7 +22368,11 @@
           "timestamp": 1767571200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.72,
+        "ac": null,
+        "total": 1.72
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE LAFERTE-SUR-AUBE",
         "code_departement": "52",
@@ -22620,9 +22657,10 @@
           "timestamp": 1762387200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "16/05/2025",
+          "timestamp": 1747353600000
         },
         "microbiology": {
           "val": "Absence",
@@ -23874,9 +23912,10 @@
           "timestamp": 1770249600000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/07/2023",
+          "timestamp": 1690416000000
         },
         "pfas": {
           "val": "0",
@@ -23909,9 +23948,10 @@
           "timestamp": 1734307200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/07/2023",
+          "timestamp": 1690416000000
         },
         "ammonium": {
           "val": "0",
@@ -24164,8 +24204,8 @@
       },
       "prix": {
         "aep": 1.6,
-        "ac": null,
-        "total": 1.6
+        "ac": 0.66,
+        "total": 2.26
       },
       "meta": {
         "nom_distributeur": "SIAEP LEFFONDS-RICHEBOURG-SEMOUTIER",
@@ -26621,9 +26661,10 @@
           "timestamp": 1738108800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025",
+          "timestamp": 1757376000000
         },
         "microbiology": {
           "val": "Absence",
@@ -26906,8 +26947,8 @@
       },
       "prix": {
         "aep": 1.85,
-        "ac": null,
-        "total": 1.85
+        "ac": 0.16,
+        "total": 2.01
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE MARCILLY-EN-BASSIGNY",
@@ -30562,7 +30603,11 @@
           "timestamp": 1769385600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.41,
+        "ac": 1.43,
+        "total": 2.84
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE NONCOURT-SUR-LE-RONGEANT",
         "code_departement": "52",
@@ -31640,9 +31685,10 @@
           "timestamp": 1769040000000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "22/01/2026",
+          "timestamp": 1769040000000
         },
         "pfas": {
           "val": "0",
@@ -31675,9 +31721,10 @@
           "timestamp": 1683072000000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,15",
+          "unit": " µg/L",
+          "date": "22/01/2026",
+          "timestamp": 1769040000000
         },
         "ammonium": {
           "val": "0",
@@ -34330,8 +34377,8 @@
       },
       "prix": {
         "aep": 2.41,
-        "ac": null,
-        "total": 2.41
+        "ac": 1.43,
+        "total": 3.84
       },
       "meta": {
         "nom_distributeur": "SIAEP LA MANOISE",
@@ -35762,9 +35809,10 @@
           "timestamp": 1738108800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025",
+          "timestamp": 1757376000000
         },
         "microbiology": {
           "val": "Absence",
@@ -38901,8 +38949,8 @@
       },
       "prix": {
         "aep": 2.45,
-        "ac": null,
-        "total": 2.45
+        "ac": 3.38,
+        "total": 5.83
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE SAINT-THIEBAULT",
@@ -45019,9 +45067,10 @@
           "date": "N/A"
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/04/2025",
+          "timestamp": 1745452800000
         },
         "microbiology": {
           "val": "Absence",
@@ -46789,7 +46838,11 @@
           "timestamp": 1759104000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.69,
+        "ac": null,
+        "total": 1.69
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE AIGREMONT",
         "code_departement": "52",
@@ -48637,7 +48690,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "9,36",
+        "val": "9,35",
         "unit": "  °C"
       },
       "hardness": {
@@ -48661,7 +48714,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "512",
+        "val": "514",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -48673,7 +48726,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "1,96",
+        "val": "1,95",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -48681,15 +48734,15 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "7,56",
+        "val": "7,59",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,85",
+        "val": "0,86",
         "unit": "  mg/L"
       }
     },
-    "score": 7.1,
-    "conformity": 80
+    "score": 7,
+    "conformity": 79
   }
 }

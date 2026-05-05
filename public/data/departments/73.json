@@ -6,7 +6,7 @@
     "conformRate": 70,
     "averages": {
       "nitrates": {
-        "val": "2,56",
+        "val": "2,55",
         "unit": "  mg/L"
       },
       "ph": {
@@ -14,7 +14,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "7,87",
+        "val": "7,88",
         "unit": "  °C"
       },
       "hardness": {
@@ -38,7 +38,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "354",
+        "val": "355",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -46,11 +46,11 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "3,32",
+        "val": "3,31",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "0,65",
+        "val": "0,67",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "4,50",
+        "val": "4,46",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -1063,9 +1063,10 @@
           "timestamp": 1687910400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "08/09/2025",
+          "timestamp": 1757289600000
         },
         "microbiology": {
           "val": "Absence",
@@ -2603,9 +2604,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 0.84,
         "ac": 2.67,
-        "total": 2.67
+        "total": 3.51
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE AVRIEUX",
@@ -4213,9 +4214,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.22,
         "ac": 5.46,
-        "total": 5.46
+        "total": 7.68
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE BONNEVAL SUR ARC",
@@ -6962,8 +6963,8 @@
       },
       "prix": {
         "aep": 3.18,
-        "ac": null,
-        "total": 3.18
+        "ac": 1.4,
+        "total": 4.58
       },
       "meta": {
         "nom_distributeur": "CC DE YENNE",
@@ -10519,9 +10520,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 0.7,
         "ac": 2.67,
-        "total": 2.67
+        "total": 3.37
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE LE FRENEY",
@@ -13444,9 +13445,10 @@
           "timestamp": 1724803200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/12/2025",
+          "timestamp": 1765324800000
         },
         "microbiology": {
           "val": "Absence",
@@ -16201,9 +16203,10 @@
           "timestamp": 1690848000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/07/2025",
+          "timestamp": 1752105600000
         },
         "microbiology": {
           "val": "Absence",
@@ -23943,10 +23946,10 @@
       "reseau": "073000714",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCELLENTE",
+        "final": 8.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -23986,9 +23989,10 @@
           "timestamp": 1726099200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,002",
+          "unit": " µg/L",
+          "date": "12/03/2025",
+          "timestamp": 1741737600000
         },
         "microbiology": {
           "val": "Absence",
@@ -25187,7 +25191,11 @@
           "timestamp": 1770768000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.93,
+        "ac": null,
+        "total": 2.93
+      },
       "meta": {
         "nom_distributeur": "SA EHT",
         "code_departement": "73",
@@ -26103,9 +26111,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.66,
         "ac": 3.25,
-        "total": 3.25
+        "total": 4.91
       },
       "meta": {
         "nom_distributeur": "REGIE DES EAUX DE TIGNES",
@@ -27498,10 +27506,10 @@
       "reseau": "073000044",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCELLENTE",
+        "final": 8.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -27541,9 +27549,10 @@
           "timestamp": 1721692800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,034",
+          "unit": " µg/L",
+          "date": "19/01/2026",
+          "timestamp": 1768780800000
         },
         "microbiology": {
           "val": "Absence",
@@ -27770,9 +27779,10 @@
           "timestamp": 1648080000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "31/07/2025",
+          "timestamp": 1753920000000
         },
         "microbiology": {
           "val": "Absence",
@@ -29599,9 +29609,10 @@
           "timestamp": 1712275200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,002",
+          "unit": " µg/L",
+          "date": "15/12/2025",
+          "timestamp": 1765756800000
         },
         "microbiology": {
           "val": "Absence",
@@ -29661,7 +29672,7 @@
         "nom_distributeur": "SYNDICAT DE LA ROCHETTE",
         "code_departement": "73",
         "insee": "73052",
-        "date_prelevement": "2025-08-08",
+        "date_prelevement": "2025-12-15",
         "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
       }
     },
@@ -29767,7 +29778,11 @@
           "timestamp": 1764547200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.14,
+        "ac": null,
+        "total": 3.14
+      },
       "meta": {
         "nom_distributeur": "VEOLIA TERRITOIRE ISERE SAVOIE",
         "code_departement": "73",
@@ -30506,9 +30521,10 @@
           "timestamp": 1762387200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/04/2024",
+          "timestamp": 1712275200000
         },
         "pfas": {
           "val": "--",
@@ -30540,9 +30556,10 @@
           "timestamp": 1657065600000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "2,05",
+          "unit": " µg/L",
+          "date": "05/04/2024",
+          "timestamp": 1712275200000
         },
         "ammonium": {
           "val": "0",
@@ -30551,9 +30568,10 @@
           "timestamp": 1762387200000
         },
         "copper": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " mg/L",
+          "date": "05/04/2024",
+          "timestamp": 1712275200000
         },
         "organic_carbon": {
           "val": "0,34",
@@ -30790,8 +30808,8 @@
       },
       "prix": {
         "aep": 1.64,
-        "ac": null,
-        "total": 1.64
+        "ac": 0.42,
+        "total": 2.06
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE SAINT LEGER",
@@ -31239,7 +31257,11 @@
           "timestamp": 1756252800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.02,
+        "ac": 1.4,
+        "total": 4.42
+      },
       "meta": {
         "nom_distributeur": "VEOLIA TERRITOIRE ISERE SAVOIE",
         "code_departement": "73",
@@ -31472,13 +31494,128 @@
         "date_prelevement": "2026-02-24",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "chapareillan": {
+      "cityName": "Chapareillan",
+      "reseau": "073000513",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "1",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "temperature": {
+          "val": "8,3",
+          "unit": " °C",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "hardness": {
+          "val": "33",
+          "unit": " °f",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "chlorine": {
+          "val": "0,14",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "04/06/2025",
+          "timestamp": 1748995200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "04/06/2025",
+          "timestamp": 1748995200000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "conductivity": {
+          "val": "667",
+          "unit": " µS/cm",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "turbidity": {
+          "val": "0,73",
+          "unit": " NFU",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "04/06/2025",
+          "timestamp": 1748995200000
+        },
+        "manganese": {
+          "val": "3,98",
+          "unit": " µg/L",
+          "date": "04/06/2025",
+          "timestamp": 1748995200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "04/06/2025",
+          "timestamp": 1748995200000
+        },
+        "organic_carbon": {
+          "val": "1,3",
+          "unit": " mg/L",
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
+        }
+      },
+      "prix": {
+        "aep": 2.42,
+        "ac": 2.7,
+        "total": 5.12
+      },
+      "meta": {
+        "nom_distributeur": "VEOLIA TERRITOIRE ISERE SAVOIE",
+        "code_departement": "73",
+        "insee": "38075",
+        "date_prelevement": "2026-02-17",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
     "name": "Auvergne-Rhône-Alpes",
     "averages": {
       "nitrates": {
-        "val": "8,38",
+        "val": "8,36",
         "unit": "  mg/L"
       },
       "ph": {
@@ -31486,7 +31623,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "9,11",
+        "val": "9,03",
         "unit": "  °C"
       },
       "hardness": {
@@ -31518,7 +31655,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,64",
+        "val": "7,55",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -31530,7 +31667,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "6,50",
+        "val": "6,41",
         "unit": "  mg/L"
       },
       "organic_carbon": {

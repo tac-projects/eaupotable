@@ -22,7 +22,7 @@
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,41",
+        "val": "0,42",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -38,11 +38,11 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "386",
+        "val": "385",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,025",
+        "val": "0,028",
         "unit": "  NFU"
       },
       "iron": {
@@ -50,7 +50,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "5,00",
+        "val": "4,98",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -62,7 +62,7 @@
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,97",
+        "val": "0,96",
         "unit": "  mg/L"
       }
     },
@@ -1923,7 +1923,11 @@
           "timestamp": 1771891200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SUEZ",
         "code_departement": "56",
@@ -2149,7 +2153,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -3061,7 +3069,11 @@
           "timestamp": 1771891200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SUEZ",
         "code_departement": "56",
@@ -4796,10 +4808,10 @@
       "reseau": "056000161",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -4835,14 +4847,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "pfas": {
-          "val": "0,0065",
+          "val": "0",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "microbiology": {
           "val": "Absence",
@@ -4869,10 +4881,10 @@
           "timestamp": 1770681600000
         },
         "manganese": {
-          "val": "0",
+          "val": "0,6",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "ammonium": {
           "val": "0",
@@ -4899,10 +4911,10 @@
         "total": 4.31
       },
       "meta": {
-        "nom_distributeur": "SUEZ",
+        "nom_distributeur": "AQUALIA",
         "code_departement": "56",
         "insee": "56045",
-        "date_prelevement": "2026-02-24",
+        "date_prelevement": "2026-02-10",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -7419,7 +7431,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -11454,10 +11470,10 @@
       "reseau": "056000161",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -11493,14 +11509,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "pfas": {
-          "val": "0,0065",
+          "val": "0",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "microbiology": {
           "val": "Absence",
@@ -11527,10 +11543,10 @@
           "timestamp": 1770681600000
         },
         "manganese": {
-          "val": "0",
+          "val": "0,6",
           "unit": " µg/L",
-          "date": "24/02/2026",
-          "timestamp": 1771891200000
+          "date": "10/02/2026",
+          "timestamp": 1770681600000
         },
         "ammonium": {
           "val": "0",
@@ -11557,10 +11573,10 @@
         "total": 4.31
       },
       "meta": {
-        "nom_distributeur": "SUEZ",
+        "nom_distributeur": "AQUALIA",
         "code_departement": "56",
         "insee": "56108",
-        "date_prelevement": "2026-02-24",
+        "date_prelevement": "2026-02-10",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
@@ -12586,7 +12602,11 @@
           "timestamp": 1772064000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -13401,10 +13421,10 @@
       "reseau": "056000272",
       "isConform": true,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
+        "final": 7,
+        "label": "MÉDIOCRE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -13444,9 +13464,10 @@
           "timestamp": 1730937600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,0059",
+          "unit": " µg/L",
+          "date": "22/10/2025",
+          "timestamp": 1761091200000
         },
         "microbiology": {
           "val": "Absence",
@@ -14756,8 +14777,8 @@
       },
       "prix": {
         "aep": 2.79,
-        "ac": null,
-        "total": 2.79
+        "ac": 3.91,
+        "total": 6.7
       },
       "meta": {
         "nom_distributeur": "SAUR",
@@ -15095,7 +15116,11 @@
           "timestamp": 1772064000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -15109,10 +15134,10 @@
       "reseau": "056000224",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -15148,14 +15173,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "29/10/2025",
-          "timestamp": 1761696000000
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
         },
         "pfas": {
-          "val": "0,0013",
+          "val": "0",
           "unit": " µg/L",
-          "date": "29/10/2025",
-          "timestamp": 1761696000000
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
         },
         "microbiology": {
           "val": "Absence",
@@ -15206,7 +15231,11 @@
           "timestamp": 1772064000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -15432,7 +15461,11 @@
           "timestamp": 1772064000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -18525,7 +18558,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -18751,7 +18788,11 @@
           "timestamp": 1772064000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -20188,9 +20229,10 @@
           "timestamp": 1703635200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "06/02/2025",
+          "timestamp": 1738800000000
         },
         "microbiology": {
           "val": "Absence",
@@ -21850,7 +21892,11 @@
           "timestamp": 1771891200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SUEZ",
         "code_departement": "56",
@@ -23793,7 +23839,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 3.46,
+        "total": 3.46
+      },
       "meta": {
         "nom_distributeur": "SAUR",
         "code_departement": "56",
@@ -28545,9 +28595,10 @@
           "timestamp": 1725321600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "04/03/2025",
+          "timestamp": 1741046400000
         },
         "microbiology": {
           "val": "Absence",
@@ -28607,8 +28658,8 @@
         "nom_distributeur": "SAUR",
         "code_departement": "56",
         "insee": "56066",
-        "date_prelevement": "2024-09-03",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et satisfaisant aux références de qualité pour les paramètres analysés mais dont l'équilibre calcocarbonique calculé témoigne d'un caractère agressif marqué."
+        "date_prelevement": "2025-03-04",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et satisfaisant aux références de qualité pour les paramètres analysés à l'exception d'une activité en radon supérieure à la référence fixée à 100 Bq/l et restant inférieure à 1000 Bq/l et dont l'équilibre calcocarbonique calculé témoigne d'un caractère agressif marqué."
       }
     },
     "bono": {
@@ -28725,6 +28776,117 @@
         "date_prelevement": "2026-02-26",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "paimpont": {
+      "cityName": "Paimpont",
+      "reseau": "056000515",
+      "isConform": true,
+      "crystal": {
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-warning"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "19",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "ph": {
+          "val": "7,6",
+          "unit": " pH",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "temperature": {
+          "val": "10,4",
+          "unit": " °C",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "hardness": {
+          "val": "8,05",
+          "unit": " °f",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "chlorine": {
+          "val": "0,55",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "pfas": {
+          "val": "0,0007",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "conductivity": {
+          "val": "224",
+          "unit": " µS/cm",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "turbidity": {
+          "val": "0,72",
+          "unit": " NFU",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/11/2025",
+          "timestamp": 1764115200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "copper": {
+          "val": "27",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        },
+        "organic_carbon": {
+          "val": "0,61",
+          "unit": " mg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "SAUR",
+        "code_departement": "56",
+        "insee": "35211",
+        "date_prelevement": "2026-02-24",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
@@ -28775,7 +28937,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "3,04",
+        "val": "3,08",
         "unit": "  µg/L"
       },
       "ammonium": {

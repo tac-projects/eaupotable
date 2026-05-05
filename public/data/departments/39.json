@@ -6,7 +6,7 @@
     "conformRate": 91,
     "averages": {
       "nitrates": {
-        "val": "7,99",
+        "val": "7,98",
         "unit": "  mg/L"
       },
       "ph": {
@@ -38,7 +38,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "483",
+        "val": "484",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -46,11 +46,11 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "9,28",
+        "val": "9,24",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "0,054",
+        "val": "0,053",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -2147,7 +2147,11 @@
           "timestamp": 1770681600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.76,
+        "ac": null,
+        "total": 1.76
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE ARSURE ARSURETTE",
         "code_departement": "39",
@@ -3997,10 +4001,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -4036,14 +4040,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -4072,8 +4076,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -5925,7 +5929,11 @@
           "timestamp": 1771804800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.27,
+        "ac": null,
+        "total": 2.27
+      },
       "meta": {
         "nom_distributeur": "SIAEP LES CHAUMOIS",
         "code_departement": "39",
@@ -8914,10 +8922,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -8953,14 +8961,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -8989,8 +8997,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -10838,9 +10846,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.76,
         "ac": 2.6,
-        "total": 2.6
+        "total": 4.36
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE CHARNOD",
@@ -14945,7 +14953,11 @@
           "timestamp": 1771200000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 1.3,
+        "total": 1.3
+      },
       "meta": {
         "nom_distributeur": "VEOLIA EAU - UNITE TERR CHAMPAGNOLE",
         "code_departement": "39",
@@ -15563,9 +15575,10 @@
           "timestamp": 1770163200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "16/04/2025",
+          "timestamp": 1744761600000
         },
         "pfas": {
           "val": "--",
@@ -16763,7 +16776,11 @@
           "timestamp": 1768262400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.67,
+        "ac": null,
+        "total": 2.67
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE COYRIERE",
         "code_departement": "39",
@@ -17274,14 +17291,16 @@
           "timestamp": 1770595200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/03/2025",
+          "timestamp": 1740960000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/03/2025",
+          "timestamp": 1740960000000
         },
         "microbiology": {
           "val": "Absence",
@@ -17678,9 +17697,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.78,
         "ac": 2.71,
-        "total": 2.71
+        "total": 4.49
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE CROTENAY",
@@ -19849,7 +19868,11 @@
           "timestamp": 1771891200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.8,
+        "ac": null,
+        "total": 2.8
+      },
       "meta": {
         "nom_distributeur": "SIVOM DE LA REGION D'ARINTHOD",
         "code_departement": "39",
@@ -20705,14 +20728,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "02/09/2025",
+          "timestamp": 1756771200000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "02/09/2025",
+          "timestamp": 1756771200000
         },
         "microbiology": {
           "val": "Absence",
@@ -20741,8 +20764,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "02/09/2025",
+          "timestamp": 1756771200000
         },
         "ammonium": {
           "val": "0",
@@ -21553,8 +21576,8 @@
       },
       "prix": {
         "aep": 3.2,
-        "ac": null,
-        "total": 3.2
+        "ac": 3.48,
+        "total": 6.68
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. POLIGNY",
@@ -22010,7 +22033,11 @@
           "timestamp": 1770595200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.65,
+        "ac": null,
+        "total": 1.65
+      },
       "meta": {
         "nom_distributeur": "SIE DES FOULLETONS",
         "code_departement": "39",
@@ -23174,10 +23201,10 @@
       "reseau": "039000516",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENTE",
+        "final": 8,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -23213,14 +23240,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -26133,9 +26160,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.8,
         "ac": 2.6,
-        "total": 2.6
+        "total": 5.4
       },
       "meta": {
         "nom_distributeur": "LYONNAISE DES EAUX AG. SAONE JURA",
@@ -26707,7 +26734,11 @@
           "timestamp": 1770595200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.65,
+        "ac": null,
+        "total": 1.65
+      },
       "meta": {
         "nom_distributeur": "SIE DES FOULLETONS",
         "code_departement": "39",
@@ -28926,14 +28957,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -28960,9 +28993,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -29384,14 +29418,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "03/03/2025",
+          "timestamp": 1740960000000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "03/03/2025",
+          "timestamp": 1740960000000
         },
         "microbiology": {
           "val": "Absence",
@@ -29420,8 +29454,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "22/10/2025",
-          "timestamp": 1761091200000
+          "date": "03/03/2025",
+          "timestamp": 1740960000000
         },
         "ammonium": {
           "val": "0,01",
@@ -30604,10 +30638,10 @@
       "reseau": "039000672",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -30643,14 +30677,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -30679,8 +30713,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -32207,10 +32241,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -32246,14 +32280,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -32282,8 +32316,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -32304,7 +32338,11 @@
           "timestamp": 1771200000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 2.91,
+        "total": 2.91
+      },
       "meta": {
         "nom_distributeur": "VEOLIA EAU - UNITE TERR CHAMPAGNOLE",
         "code_departement": "39",
@@ -32647,8 +32685,8 @@
       },
       "prix": {
         "aep": 2.61,
-        "ac": null,
-        "total": 2.61
+        "ac": 2.19,
+        "total": 4.8
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE CHASSAL",
@@ -32873,7 +32911,11 @@
           "timestamp": 1768262400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.21,
+        "ac": null,
+        "total": 3.21
+      },
       "meta": {
         "nom_distributeur": "LYONNAISE DES EAUX AG. SAONE JURA",
         "code_departement": "39",
@@ -34248,9 +34290,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.42,
         "ac": 2.71,
-        "total": 2.71
+        "total": 4.13
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE MONTIGNY SUR L'AIN",
@@ -34816,7 +34858,11 @@
           "timestamp": 1768262400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.21,
+        "ac": null,
+        "total": 3.21
+      },
       "meta": {
         "nom_distributeur": "LYONNAISE DES EAUX AG. SAONE JURA",
         "code_departement": "39",
@@ -34830,10 +34876,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -34869,14 +34915,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -34905,8 +34951,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -35734,8 +35780,8 @@
       },
       "prix": {
         "aep": 4.23,
-        "ac": null,
-        "total": 4.23
+        "ac": 2.66,
+        "total": 6.89
       },
       "meta": {
         "nom_distributeur": "LYONNAISE DES EAUX AG. SAONE JURA",
@@ -36880,7 +36926,11 @@
           "timestamp": 1768780800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.27,
+        "ac": null,
+        "total": 2.27
+      },
       "meta": {
         "nom_distributeur": "SIAEP DE LA HAUTE SEILLE",
         "code_departement": "39",
@@ -37332,7 +37382,11 @@
           "timestamp": 1771891200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.86,
+        "ac": null,
+        "total": 1.86
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE OFFLANGES",
         "code_departement": "39",
@@ -38248,8 +38302,8 @@
       },
       "prix": {
         "aep": 2.78,
-        "ac": null,
-        "total": 2.78
+        "ac": 1.86,
+        "total": 4.64
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. CHAUSSIN",
@@ -38301,14 +38355,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -38335,9 +38391,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -39625,8 +39682,8 @@
       },
       "prix": {
         "aep": 2.78,
-        "ac": null,
-        "total": 2.78
+        "ac": 2.56,
+        "total": 5.34
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. CHAUSSIN",
@@ -40549,10 +40606,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -40588,14 +40645,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -40624,8 +40681,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -43044,9 +43101,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.7,
         "ac": 3.1,
-        "total": 3.1
+        "total": 5.8
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. ROCHEFORT SUR NENON",
@@ -43098,14 +43155,16 @@
           "timestamp": 1768262400000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "microbiology": {
           "val": "Absence",
@@ -43616,7 +43675,11 @@
           "timestamp": 1770595200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.65,
+        "ac": null,
+        "total": 1.65
+      },
       "meta": {
         "nom_distributeur": "SIE DES FOULLETONS",
         "code_departement": "39",
@@ -44241,14 +44304,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -44275,9 +44340,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -44813,14 +44879,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -44847,9 +44915,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -45101,9 +45170,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.65,
         "ac": 3.27,
-        "total": 3.27
+        "total": 4.92
       },
       "meta": {
         "nom_distributeur": "SAUR - AG. BOURGOGNE FRANCHE-COMTÉ",
@@ -46251,9 +46320,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.8,
         "ac": 2.6,
-        "total": 2.6
+        "total": 5.4
       },
       "meta": {
         "nom_distributeur": "LYONNAISE DES EAUX AG. SAONE JURA",
@@ -49975,14 +50044,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -50009,9 +50080,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -51178,7 +51250,11 @@
           "timestamp": 1771286400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.36,
+        "ac": null,
+        "total": 1.36
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE UXELLES",
         "code_departement": "39",
@@ -51291,8 +51367,8 @@
       },
       "prix": {
         "aep": 3.2,
-        "ac": null,
-        "total": 3.2
+        "ac": 2.14,
+        "total": 5.34
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. POLIGNY",
@@ -51307,10 +51383,10 @@
       "reseau": "039001192",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -51346,14 +51422,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "microbiology": {
           "val": "Absence",
@@ -51382,8 +51458,8 @@
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "17/11/2025",
-          "timestamp": 1763337600000
+          "date": "24/03/2025",
+          "timestamp": 1742774400000
         },
         "ammonium": {
           "val": "0",
@@ -53118,7 +53194,11 @@
           "timestamp": 1770768000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.8,
+        "ac": null,
+        "total": 2.8
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE VILLARD SAINT SAUVEUR",
         "code_departement": "39",
@@ -54032,8 +54112,8 @@
       },
       "prix": {
         "aep": 3.2,
-        "ac": null,
-        "total": 3.2
+        "ac": 2.29,
+        "total": 5.49
       },
       "meta": {
         "nom_distributeur": "S.O.G.E.D.O. POLIGNY",
@@ -54775,14 +54855,16 @@
           "timestamp": 1771891200000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -54809,9 +54891,10 @@
           "timestamp": 1741651200000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "24/02/2026",
+          "timestamp": 1771891200000
         },
         "ammonium": {
           "val": "0,01",
@@ -55401,7 +55484,11 @@
           "timestamp": 1738540800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.02,
+        "ac": null,
+        "total": 2.02
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE CENSEAU",
         "code_departement": "39",
@@ -55625,7 +55712,11 @@
           "timestamp": 1760486400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.03,
+        "ac": null,
+        "total": 2.03
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE CONTE",
         "code_departement": "39",
@@ -56239,9 +56330,10 @@
           "date": "N/A"
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/04/2025",
+          "timestamp": 1744588800000
         },
         "microbiology": {
           "val": "Absence",
@@ -56262,14 +56354,16 @@
           "timestamp": 1759795200000
         },
         "iron": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/04/2025",
+          "timestamp": 1744588800000
         },
         "manganese": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "14/04/2025",
+          "timestamp": 1744588800000
         },
         "ammonium": {
           "val": "0",
@@ -56278,9 +56372,10 @@
           "timestamp": 1759795200000
         },
         "copper": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "14",
+          "unit": " mg/L",
+          "date": "14/04/2025",
+          "timestamp": 1744588800000
         },
         "organic_carbon": {
           "val": "0,52",
@@ -56289,7 +56384,11 @@
           "timestamp": 1753142400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 0.77,
+        "ac": null,
+        "total": 0.77
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE VULVOZ",
         "code_departement": "39",
@@ -56513,13 +56612,132 @@
           "timestamp": 1771200000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.44,
+        "ac": null,
+        "total": 2.44
+      },
       "meta": {
         "nom_distributeur": "MAIRIE ANNEXE DE VAUX SUR POLIGNY",
         "code_departement": "39",
         "insee": "39548",
         "date_prelevement": "2026-02-16",
         "conclusion": "Eau d'alimentation conforme aux limites de qualité. Référence de qualité non satisfaisante pour le paramètre suivant : Col iformes."
+      }
+    },
+    "savigny-en-revermont": {
+      "cityName": "Savigny-En-Revermont",
+      "reseau": "039001510",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "3,1",
+          "unit": " mg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "ph": {
+          "val": "7,2",
+          "unit": " pH",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "temperature": {
+          "val": "10",
+          "unit": " °C",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "hardness": {
+          "val": "35,1",
+          "unit": " °f",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "chlorine": {
+          "val": "0,25",
+          "unit": " mg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025",
+          "timestamp": 1748217600000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/05/2025",
+          "timestamp": 1748217600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "conductivity": {
+          "val": "650",
+          "unit": " µS/cm",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "turbidity": {
+          "val": "0,4",
+          "unit": " NFU",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        },
+        "copper": {
+          "val": "0,015",
+          "unit": " mg/L",
+          "date": "13/10/2025",
+          "timestamp": 1760313600000
+        },
+        "organic_carbon": {
+          "val": "0,84",
+          "unit": " mg/L",
+          "date": "11/02/2026",
+          "timestamp": 1770768000000
+        }
+      },
+      "prix": {
+        "aep": 2.64,
+        "ac": 1.83,
+        "total": 4.47
+      },
+      "meta": {
+        "nom_distributeur": "SIAEP DE BEAUFORT SAINTE AGNES",
+        "code_departement": "39",
+        "insee": "71506",
+        "date_prelevement": "2026-02-11",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }
   },

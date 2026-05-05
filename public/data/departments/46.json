@@ -654,7 +654,11 @@
           "timestamp": 1759449600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 1.11,
+        "total": 1.11
+      },
       "meta": {
         "nom_distributeur": "SAUR FRANCE 46",
         "code_departement": "46",
@@ -3063,10 +3067,10 @@
       "reseau": "046000561",
       "isConform": true,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
+        "final": 7,
+        "label": "MÉDIOCRE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -3106,9 +3110,10 @@
           "timestamp": 1680566400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,001",
+          "unit": " µg/L",
+          "date": "20/11/2025",
+          "timestamp": 1763596800000
         },
         "microbiology": {
           "val": "Absence",
@@ -8881,10 +8886,10 @@
       "reseau": "046000408",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -8924,9 +8929,10 @@
           "timestamp": 1686528000000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,001",
+          "unit": " µg/L",
+          "date": "11/12/2025",
+          "timestamp": 1765411200000
         },
         "microbiology": {
           "val": "Absence",
@@ -12523,10 +12529,10 @@
       "reseau": "046000538",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -12566,9 +12572,10 @@
           "timestamp": 1747180800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,001",
+          "unit": " µg/L",
+          "date": "09/09/2025",
+          "timestamp": 1757376000000
         },
         "microbiology": {
           "val": "Absence",
@@ -14345,7 +14352,7 @@
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
-    "c-ur-de-causse": {
+    "coeur-de-causse": {
       "cityName": "Cœur De Causse",
       "reseau": "046000535",
       "isConform": true,
@@ -20260,9 +20267,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.82,
         "ac": 1.81,
-        "total": 1.81
+        "total": 3.63
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE MOLIERES",
@@ -23219,8 +23226,8 @@
       },
       "prix": {
         "aep": 3.32,
-        "ac": null,
-        "total": 3.32
+        "ac": 2.07,
+        "total": 5.39
       },
       "meta": {
         "nom_distributeur": "COMMUNAUTE D'AGGLO DU GRAND CAHORS",
@@ -24873,9 +24880,10 @@
           "timestamp": 1680652800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "16/09/2025",
+          "timestamp": 1757980800000
         },
         "microbiology": {
           "val": "Absence",
@@ -35539,7 +35547,11 @@
           "timestamp": 1759449600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.2,
+        "ac": null,
+        "total": 2.2
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE SAINT CIRQ MADELON",
         "code_departement": "46",
@@ -36123,11 +36135,11 @@
     "name": "Occitanie",
     "averages": {
       "nitrates": {
-        "val": "8,12",
+        "val": "8,13",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,67",
+        "val": "7,68",
         "unit": "  pH"
       },
       "temperature": {
@@ -36163,7 +36175,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,94",
+        "val": "7,97",
         "unit": "  µg/L"
       },
       "manganese": {

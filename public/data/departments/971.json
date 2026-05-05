@@ -6,11 +6,11 @@
     "conformRate": 100,
     "averages": {
       "nitrates": {
-        "val": "1,70",
+        "val": "1,61",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,38",
+        "val": "7,42",
         "unit": "  pH"
       },
       "temperature": {
@@ -22,7 +22,7 @@
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,76",
+        "val": "0,73",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -38,19 +38,19 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "190",
+        "val": "225",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,28",
+        "val": "0,30",
         "unit": "  NFU"
       },
       "iron": {
-        "val": "31",
+        "val": "29",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "0,44",
+        "val": "0,41",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -58,11 +58,11 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "49",
+        "val": "53",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,22",
+        "val": "0,21",
         "unit": "  mg/L"
       }
     },
@@ -84,7 +84,7 @@
       },
       {
         "name": "Sainte-Anne",
-        "score": 9,
+        "score": 7.5,
         "slug": "sainte-anne"
       },
       {
@@ -2964,10 +2964,10 @@
       "reseau": "971000030",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -3007,9 +3007,10 @@
           "timestamp": 1766102400000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,004",
+          "unit": " µg/L",
+          "date": "04/02/2026",
+          "timestamp": 1770163200000
         },
         "microbiology": {
           "val": "Absence",
@@ -3759,17 +3760,238 @@
         "date_prelevement": "2026-02-19",
         "conclusion": "Eau d'alimentation faiblement minéralisée conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "saint-barthelemy": {
+      "cityName": "Saint-Barthelemy",
+      "reseau": "971000159",
+      "isConform": true,
+      "crystal": {
+        "final": 9.5,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "ph": {
+          "val": "8,5",
+          "unit": " pH",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "temperature": {
+          "val": "29,4",
+          "unit": " °C",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "hardness": {
+          "val": "5,58",
+          "unit": " °f",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "chlorine": {
+          "val": "0,16",
+          "unit": " mg/L",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/12/2025",
+          "timestamp": 1764720000000
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "conductivity": {
+          "val": "593",
+          "unit": " µS/cm",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "29/12/2025",
+          "timestamp": 1766966400000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "03/12/2025",
+          "timestamp": 1764720000000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "copper": {
+          "val": "35",
+          "unit": " mg/L",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "23/01/2026",
+          "timestamp": 1769126400000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "SAUR SAINT-BARTHELEMY",
+        "code_departement": "971",
+        "insee": "97701",
+        "date_prelevement": "2026-01-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "saint-martin": {
+      "cityName": "Saint-Martin",
+      "reseau": "971000160",
+      "isConform": true,
+      "crystal": {
+        "final": 9.5,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "0,54",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "ph": {
+          "val": "7,6",
+          "unit": " pH",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "temperature": {
+          "val": "28",
+          "unit": " °C",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "hardness": {
+          "val": "13,44",
+          "unit": " °f",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "chlorine": {
+          "val": "0,14",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "conductivity": {
+          "val": "998",
+          "unit": " µS/cm",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "turbidity": {
+          "val": "1,2",
+          "unit": " NFU",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "iron": {
+          "val": "18",
+          "unit": " µg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "copper": {
+          "val": "225",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        },
+        "organic_carbon": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "SAUR SAINT-MARTIN",
+        "code_departement": "971",
+        "insee": "97801",
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation conforme à la règlementation en vigueur mais s'écarte de la référence de qualité pour le paramètre aluminium. La présence de ce paramètre est à surveiller. Ce prélèvement est un recontrôle effectué suite à la présence de non conformités physico-chimiques observées sur le réseau de distribution résultant d'un problème technique identifié au niveau de la station de traitement."
+      }
     }
   },
   "regionalInfo": {
     "name": "Guadeloupe",
     "averages": {
       "nitrates": {
-        "val": "1,70",
+        "val": "1,61",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,38",
+        "val": "7,42",
         "unit": "  pH"
       },
       "temperature": {
@@ -3781,7 +4003,7 @@
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,76",
+        "val": "0,73",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -3797,19 +4019,19 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "190",
+        "val": "225",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,28",
+        "val": "0,30",
         "unit": "  NFU"
       },
       "iron": {
-        "val": "31",
+        "val": "29",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "0,44",
+        "val": "0,41",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -3817,11 +4039,11 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "49",
+        "val": "53",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,22",
+        "val": "0,21",
         "unit": "  mg/L"
       }
     },

@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "3,26",
+        "val": "3,27",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -20765,7 +20765,11 @@
           "timestamp": 1767916800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 1.43,
+        "ac": null,
+        "total": 1.43
+      },
       "meta": {
         "nom_distributeur": "REGIE DES EAUX",
         "code_departement": "24",
@@ -27890,8 +27894,8 @@
       },
       "prix": {
         "aep": 2.68,
-        "ac": null,
-        "total": 2.68
+        "ac": 3.24,
+        "total": 5.92
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -38683,7 +38687,11 @@
           "timestamp": 1771286400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.43,
+        "ac": null,
+        "total": 3.43
+      },
       "meta": {
         "nom_distributeur": "REGIE DES EAUX",
         "code_departement": "24",
@@ -42819,8 +42827,8 @@
       },
       "prix": {
         "aep": 2.69,
-        "ac": null,
-        "total": 2.69
+        "ac": 3.99,
+        "total": 6.68
       },
       "meta": {
         "nom_distributeur": "AGUR",
@@ -46605,8 +46613,8 @@
       },
       "prix": {
         "aep": 3.44,
-        "ac": null,
-        "total": 3.44
+        "ac": 3.63,
+        "total": 7.07
       },
       "meta": {
         "nom_distributeur": "SOGEDO VILLETOUREIX",
@@ -49131,9 +49139,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 1.31,
         "ac": 3.72,
-        "total": 3.72
+        "total": 5.03
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE SAINT-VINCENT DE COSSE",
@@ -49822,8 +49830,8 @@
       },
       "prix": {
         "aep": 2.96,
-        "ac": null,
-        "total": 2.96
+        "ac": 2.47,
+        "total": 5.43
       },
       "meta": {
         "nom_distributeur": "VEOLIA",
@@ -57572,9 +57580,10 @@
           "timestamp": 1746489600000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "microbiology": {
           "val": "Absence",
@@ -57867,6 +57876,117 @@
         "date_prelevement": "2026-02-20",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
+    },
+    "orliaguet": {
+      "cityName": "Orliaguet",
+      "reseau": "024000267",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "6,7",
+          "unit": " mg/L",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "ph": {
+          "val": "7,4",
+          "unit": " pH",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "temperature": {
+          "val": "9,8",
+          "unit": " °C",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "hardness": {
+          "val": "30,3",
+          "unit": " °f",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "chlorine": {
+          "val": "0,21",
+          "unit": " mg/L",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2025",
+          "timestamp": 1756339200000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2025",
+          "timestamp": 1756339200000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "conductivity": {
+          "val": "540",
+          "unit": " µS/cm",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2025",
+          "timestamp": 1756339200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "28/08/2025",
+          "timestamp": 1756339200000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        },
+        "copper": {
+          "val": "9",
+          "unit": " mg/L",
+          "date": "28/08/2025",
+          "timestamp": 1756339200000
+        },
+        "organic_carbon": {
+          "val": "0,6",
+          "unit": " mg/L",
+          "date": "16/02/2026",
+          "timestamp": 1771200000000
+        }
+      },
+      "prix": null,
+      "meta": {
+        "nom_distributeur": "VEOLIA",
+        "code_departement": "24",
+        "insee": "24314",
+        "date_prelevement": "2026-02-16",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
     }
   },
   "regionalInfo": {
@@ -57877,7 +57997,7 @@
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,52",
+        "val": "7,51",
         "unit": "  pH"
       },
       "temperature": {
@@ -57925,7 +58045,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "9,85",
+        "val": "9,86",
         "unit": "  mg/L"
       },
       "organic_carbon": {

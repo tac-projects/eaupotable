@@ -14,7 +14,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "8,78",
+        "val": "8,77",
         "unit": "  °C"
       },
       "hardness": {
@@ -46,7 +46,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "6,87",
+        "val": "6,85",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "5,48",
+        "val": "5,47",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -374,9 +374,10 @@
           "timestamp": 1712275200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "18/11/2025",
+          "timestamp": 1763424000000
         },
         "microbiology": {
           "val": "Absence",
@@ -2376,7 +2377,11 @@
           "timestamp": 1767657600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.37,
+        "ac": null,
+        "total": 2.37
+      },
       "meta": {
         "nom_distributeur": "MAIRIE ASQUINS",
         "code_departement": "89",
@@ -9603,8 +9608,8 @@
       },
       "prix": {
         "aep": 3.6,
-        "ac": null,
-        "total": 3.6
+        "ac": 3.63,
+        "total": 7.23
       },
       "meta": {
         "nom_distributeur": "VEOLIA EAU",
@@ -10981,9 +10986,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.46,
         "ac": 2.52,
-        "total": 2.52
+        "total": 4.98
       },
       "meta": {
         "nom_distributeur": "MAIRIE CHICHERY",
@@ -12472,7 +12477,11 @@
           "timestamp": 1770163200000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.01,
+        "ac": null,
+        "total": 2.01
+      },
       "meta": {
         "nom_distributeur": "REGIE VIV'EAU",
         "code_departement": "89",
@@ -17177,7 +17186,11 @@
           "timestamp": 1768176000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.14,
+        "ac": null,
+        "total": 3.14
+      },
       "meta": {
         "nom_distributeur": "MAIRIE FOISSY LES VEZELAY",
         "code_departement": "89",
@@ -21076,8 +21089,8 @@
       },
       "prix": {
         "aep": 3.95,
-        "ac": null,
-        "total": 3.95
+        "ac": 2.13,
+        "total": 6.08
       },
       "meta": {
         "nom_distributeur": "VEOLIA EAU",
@@ -22222,7 +22235,11 @@
           "timestamp": 1770940800000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.78,
+        "ac": 2.81,
+        "total": 5.59
+      },
       "meta": {
         "nom_distributeur": "SUEZ EAU FRANCE",
         "code_departement": "89",
@@ -22466,7 +22483,7 @@
       "reseau": "089000549",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
         "statusClass": "status-warning"
@@ -22509,9 +22526,10 @@
           "timestamp": 1711411200000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0,003",
+          "unit": " µg/L",
+          "date": "10/09/2025",
+          "timestamp": 1757462400000
         },
         "microbiology": {
           "val": "Absence",
@@ -27040,8 +27058,8 @@
       },
       "prix": {
         "aep": 3.7,
-        "ac": null,
-        "total": 3.7
+        "ac": 3.54,
+        "total": 7.24
       },
       "meta": {
         "nom_distributeur": "SUEZ EAU FRANCE",
@@ -28189,8 +28207,8 @@
       },
       "prix": {
         "aep": 2.08,
-        "ac": null,
-        "total": 2.08
+        "ac": 2.03,
+        "total": 4.11
       },
       "meta": {
         "nom_distributeur": "MAIRIE NOYERS SUR SEREIN",
@@ -28879,8 +28897,8 @@
       },
       "prix": {
         "aep": 2.85,
-        "ac": null,
-        "total": 2.85
+        "ac": 2.78,
+        "total": 5.63
       },
       "meta": {
         "nom_distributeur": "REGIE VIV'EAU",
@@ -30136,7 +30154,11 @@
           "timestamp": 1769126400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.21,
+        "ac": null,
+        "total": 2.21
+      },
       "meta": {
         "nom_distributeur": "MAIRIE PIFFONDS",
         "code_departement": "89",
@@ -31394,8 +31416,8 @@
       },
       "prix": {
         "aep": 3.6,
-        "ac": null,
-        "total": 3.6
+        "ac": 2.36,
+        "total": 5.96
       },
       "meta": {
         "nom_distributeur": "FEDERATION EAUX PUISAYE-FORTERRE",
@@ -32080,8 +32102,8 @@
       },
       "prix": {
         "aep": 3.7,
-        "ac": null,
-        "total": 3.7
+        "ac": 2.21,
+        "total": 5.91
       },
       "meta": {
         "nom_distributeur": "SUEZ EAU FRANCE",
@@ -33800,7 +33822,11 @@
           "timestamp": 1768953600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.24,
+        "ac": null,
+        "total": 3.24
+      },
       "meta": {
         "nom_distributeur": "MAIRIE JOIGNY",
         "code_departement": "89",
@@ -33911,7 +33937,11 @@
           "timestamp": 1769126400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.9,
+        "ac": null,
+        "total": 2.9
+      },
       "meta": {
         "nom_distributeur": "MAIRIE SAINT BRANCHER",
         "code_departement": "89",
@@ -35400,8 +35430,8 @@
       },
       "prix": {
         "aep": 3.7,
-        "ac": null,
-        "total": 3.7
+        "ac": 0.56,
+        "total": 4.26
       },
       "meta": {
         "nom_distributeur": "SUEZ EAU FRANCE",
@@ -37235,7 +37265,11 @@
           "timestamp": 1769558400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.34,
+        "ac": null,
+        "total": 2.34
+      },
       "meta": {
         "nom_distributeur": "SIAEP LES SOURCES",
         "code_departement": "89",
@@ -40780,7 +40814,11 @@
           "timestamp": 1768521600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.14,
+        "ac": null,
+        "total": 2.14
+      },
       "meta": {
         "nom_distributeur": "MAIRIE TANLAY",
         "code_departement": "89",
@@ -41578,8 +41616,8 @@
       },
       "prix": {
         "aep": 2.85,
-        "ac": null,
-        "total": 2.85
+        "ac": 2.89,
+        "total": 5.74
       },
       "meta": {
         "nom_distributeur": "REGIE VIV'EAU",
@@ -42268,8 +42306,8 @@
       },
       "prix": {
         "aep": 3.6,
-        "ac": null,
-        "total": 3.6
+        "ac": 2.08,
+        "total": 5.68
       },
       "meta": {
         "nom_distributeur": "FEDERATION EAUX PUISAYE-FORTERRE",
@@ -43530,7 +43568,11 @@
           "timestamp": 1770681600000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.93,
+        "ac": null,
+        "total": 2.93
+      },
       "meta": {
         "nom_distributeur": "MAIRIE VAULT DE LUGNY",
         "code_departement": "89",
@@ -44331,9 +44373,9 @@
         }
       },
       "prix": {
-        "aep": null,
+        "aep": 2.27,
         "ac": 3.24,
-        "total": 3.24
+        "total": 5.51
       },
       "meta": {
         "nom_distributeur": "MAIRIE VERMENTON",
@@ -46973,8 +47015,8 @@
       },
       "prix": {
         "aep": 2.84,
-        "ac": null,
-        "total": 2.84
+        "ac": 2.65,
+        "total": 5.49
       },
       "meta": {
         "nom_distributeur": "MAIRIE PERCENEIGE",
@@ -48581,6 +48623,232 @@
         "code_departement": "89",
         "insee": "89486",
         "date_prelevement": "2026-01-19",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "fontaines-les-seches": {
+      "cityName": "Fontaines-Les-Seches",
+      "reseau": "089000736",
+      "isConform": true,
+      "crystal": {
+        "final": 8.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "19",
+          "unit": " mg/L",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "ph": {
+          "val": "",
+          "unit": " pH",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "temperature": {
+          "val": "5,7",
+          "unit": " °C",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "hardness": {
+          "val": "31,91",
+          "unit": " °f",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "chlorine": {
+          "val": "0,07",
+          "unit": " mg/L",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025",
+          "timestamp": 1762300800000
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "conductivity": {
+          "val": "615",
+          "unit": " µS/cm",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "turbidity": {
+          "val": "0,14",
+          "unit": " NFU",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025",
+          "timestamp": 1762300800000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "05/11/2025",
+          "timestamp": 1762300800000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        },
+        "copper": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "05/11/2025",
+          "timestamp": 1762300800000
+        },
+        "organic_carbon": {
+          "val": "0,58",
+          "unit": " mg/L",
+          "date": "14/01/2026",
+          "timestamp": 1768348800000
+        }
+      },
+      "prix": {
+        "aep": 2.75,
+        "ac": null,
+        "total": 2.75
+      },
+      "meta": {
+        "nom_distributeur": "SET",
+        "code_departement": "89",
+        "insee": "21279",
+        "date_prelevement": "2026-01-14",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
+    "channes": {
+      "cityName": "Channes",
+      "reseau": "089000437",
+      "isConform": true,
+      "crystal": {
+        "final": 7.5,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "32",
+          "unit": " mg/L",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "ph": {
+          "val": "",
+          "unit": " pH",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "temperature": {
+          "val": "7,2",
+          "unit": " °C",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "hardness": {
+          "val": "32,68",
+          "unit": " °f",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "chlorine": {
+          "val": "0,09",
+          "unit": " mg/L",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "09/09/2025",
+          "timestamp": 1757376000000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "conductivity": {
+          "val": "635",
+          "unit": " µS/cm",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "turbidity": {
+          "val": "0,14",
+          "unit": " NFU",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "iron": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "manganese": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        },
+        "copper": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "organic_carbon": {
+          "val": "0,71",
+          "unit": " mg/L",
+          "date": "26/01/2026",
+          "timestamp": 1769385600000
+        }
+      },
+      "prix": {
+        "aep": 3.3,
+        "ac": null,
+        "total": 3.3
+      },
+      "meta": {
+        "nom_distributeur": "SDDEA",
+        "code_departement": "89",
+        "insee": "10079",
+        "date_prelevement": "2026-01-26",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }

@@ -2722,7 +2722,11 @@
           "timestamp": 1767830400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.24,
+        "ac": 1.64,
+        "total": 4.88
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE BARNAS",
         "code_departement": "07",
@@ -3634,7 +3638,11 @@
           "timestamp": 1770854400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 1.52,
+        "total": 1.52
+      },
       "meta": {
         "nom_distributeur": "SAUR MONTELIMAR",
         "code_departement": "07",
@@ -11673,7 +11681,11 @@
           "timestamp": 1770854400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 2.49,
+        "total": 2.49
+      },
       "meta": {
         "nom_distributeur": "SAUR MONTELIMAR",
         "code_departement": "07",
@@ -12361,8 +12373,8 @@
       },
       "prix": {
         "aep": 1.93,
-        "ac": null,
-        "total": 1.93
+        "ac": 1.22,
+        "total": 3.15
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE LE LAC-D'ISSARLES",
@@ -14771,7 +14783,11 @@
           "timestamp": 1771200000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 2.39,
+        "ac": 1.13,
+        "total": 3.52
+      },
       "meta": {
         "nom_distributeur": "MAIRIE DE MALARCE-SUR-LA-THINES",
         "code_departement": "07",
@@ -16264,8 +16280,8 @@
       },
       "prix": {
         "aep": 2.35,
-        "ac": null,
-        "total": 2.35
+        "ac": 2.67,
+        "total": 5.02
       },
       "meta": {
         "nom_distributeur": "MAIRIE DE MONTPEZAT-SOUS-BAUZON",
@@ -19239,8 +19255,8 @@
       },
       "prix": {
         "aep": 3.21,
-        "ac": null,
-        "total": 3.21
+        "ac": 2.25,
+        "total": 5.46
       },
       "meta": {
         "nom_distributeur": "SYDEO, SERVICE PUBLIC DE L'EAU CŒUR D'ARDÈCHE",
@@ -20957,7 +20973,11 @@
           "timestamp": 1771286400000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": null,
+        "ac": 1.6,
+        "total": 1.6
+      },
       "meta": {
         "nom_distributeur": "SAUR MONTELIMAR",
         "code_departement": "07",
@@ -22923,12 +22943,12 @@
     "saint-didier-sous-aubenas": {
       "cityName": "Saint-Didier-Sous-Aubenas",
       "reseau": "007000351",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
@@ -22964,14 +22984,14 @@
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "30/09/2025",
-          "timestamp": 1759190400000
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
         },
         "pfas": {
-          "val": "0,002",
+          "val": "0,001",
           "unit": " µg/L",
-          "date": "30/09/2025",
-          "timestamp": 1759190400000
+          "date": "25/02/2026",
+          "timestamp": 1771977600000
         },
         "microbiology": {
           "val": "Absence",
@@ -23031,8 +23051,8 @@
         "nom_distributeur": "MAIRIE DE AUBENAS",
         "code_departement": "07",
         "insee": "07229",
-        "date_prelevement": "2026-02-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2026-02-25",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
       }
     },
     "saint-etienne-de-boulogne": {
@@ -28418,7 +28438,11 @@
           "timestamp": 1770768000000
         }
       },
-      "prix": null,
+      "prix": {
+        "aep": 3.44,
+        "ac": null,
+        "total": 3.44
+      },
       "meta": {
         "nom_distributeur": "SAUR MONTELIMAR",
         "code_departement": "07",
@@ -31340,9 +31364,10 @@
           "timestamp": 1770681600000
         },
         "pesticides": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/03/2024",
+          "timestamp": 1711324800000
         },
         "pfas": {
           "val": "0",
@@ -38421,7 +38446,7 @@
     "name": "Auvergne-Rhône-Alpes",
     "averages": {
       "nitrates": {
-        "val": "8,38",
+        "val": "8,36",
         "unit": "  mg/L"
       },
       "ph": {
@@ -38429,7 +38454,7 @@
         "unit": "  pH"
       },
       "temperature": {
-        "val": "9,11",
+        "val": "9,03",
         "unit": "  °C"
       },
       "hardness": {
@@ -38461,7 +38486,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "7,64",
+        "val": "7,55",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -38473,7 +38498,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "6,50",
+        "val": "6,41",
         "unit": "  mg/L"
       },
       "organic_carbon": {
