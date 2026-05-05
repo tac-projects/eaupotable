@@ -219,9 +219,13 @@ export default function CitySEOContent({ cityName, data }) {
                 { "@type": "PropertyValue", "name": "Nitrates", "unitText": "mg/L", "value": parseValue(stats.nitrates?.val) || 0 },
                 { "@type": "PropertyValue", "name": "Dureté", "unitText": "°f", "value": parseValue(stats.hardness?.val) || 0 }
               ],
-              "creator": { "@id": "https://www.eaupotable.net/#organization" },
+              "creator": {
+                "@type": "Person",
+                "name": "Thomas-Alexis Cailleau",
+                "url": "https://www.linkedin.com/in/thomasalexiscailleau"
+              },
               "isAccessibleForFree": true,
-              "license": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+              "license": "https://www.eaupotable.net/mentions-legales",
               "spatialCoverage": { "@type": "Place", "name": cityName },
               "temporalCoverage": `${currentYear}`
             }

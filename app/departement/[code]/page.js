@@ -111,7 +111,12 @@ export default async function DepartementPage({ params }) {
           "Présence de polluants éternels (PFAS)",
           "Nitrates et Pesticides"
         ],
-        "creator": { "@id": "https://www.eaupotable.net/#organization" },
+        "creator": {
+          "@type": "Person",
+          "name": "Thomas-Alexis Cailleau",
+          "url": "https://www.linkedin.com/in/thomasalexiscailleau"
+        },
+        "license": "https://www.eaupotable.net/mentions-legales",
         "spatialCoverage": { "@type": "Place", "name": deptName },
         "temporalCoverage": `${currentYear}`
       }
