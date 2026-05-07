@@ -46,7 +46,16 @@ async function getLocalData(slug) {
       const noDashMatch = allSlugs.find(s => s.replace(/-/g, '') === noDash);
       if (noDashMatch) return { redirect: noDashMatch };
 
-      // 3. Recherche par inclusion (ex: saint-ouen-sur-seine -> saint-ouen)
+      // 3. Patch d'inversion d'article (ex: ulmes-les -> les-ulmes, puy-notre-dame-le -> le-puy-notre-dame)
+      if (cleanSlug.includes('-')) {
+        const parts = cleanSlug.split('-');
+        if (parts.length > 1) {
+          const lastToFront = [parts[parts.length - 1], ...parts.slice(0, -1)].join('-');
+          if (cityIndex[lastToFront]) return { redirect: lastToFront };
+        }
+      }
+
+      // 4. Recherche par inclusion (ex: saint-ouen-sur-seine -> saint-ouen)
       const partialMatch = allSlugs.find(s => 
         (cleanSlug.startsWith(s + '-') || s.startsWith(cleanSlug + '-')) && 
         Math.abs(s.length - cleanSlug.length) < 20
