@@ -53,11 +53,11 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
           </div>
         ) : (
           analyzedCities.map((city, index) => {
-            const slug = city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
+            const finalSlug = city.code || city.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '-');
             return (
               <a 
                 key={city.nom} 
-                href={city.isCurrent ? '#' : `/ville/${slug}`} 
+                href={city.isCurrent ? '#' : `/ville/${finalSlug}`} 
                 className={`benchmark-item ${city.isCurrent ? 'current-city' : ''} ${analysisPhase === 'loading' ? 'loading' : ''}`}
                 onClick={(e) => city.isCurrent && e.preventDefault()}
               >

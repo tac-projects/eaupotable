@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
 import { calculateCrystalScore } from '../../../lib/water-utils';
@@ -230,7 +230,7 @@ export default async function CityPage({ params }) {
   
   // 2. Redirection 301 si le slug est mal formé
   if (slug !== cleanSlug) {
-    redirect(`/ville/${cleanSlug}`);
+    permanentRedirect(`/ville/${cleanSlug}`);
   }
 
   // 3. Récupération des données locales uniquement
@@ -238,7 +238,7 @@ export default async function CityPage({ params }) {
   
   // 3bis. Gestion de la redirection de récupération
   if (result?.redirect) {
-    redirect(`/ville/${result.redirect}`);
+    permanentRedirect(`/ville/${result.redirect}`);
   }
 
   const summary = result;
