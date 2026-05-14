@@ -23,6 +23,10 @@ export function middleware(request) {
     url.pathname = '/ville/goulles';
     return NextResponse.redirect(url, 301);
   }
+  if (pathname === '/departement' || pathname === '/departement/') {
+    url.pathname = '/villes';
+    return NextResponse.redirect(url, 301);
+  }
 
   // On n'applique la redirection et le blocage qu'en production
   if (
