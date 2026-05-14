@@ -3546,6 +3546,121 @@
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
+    "bouessay": {
+      "cityName": "Bouessay",
+      "reseau": "053000362",
+      "isConform": false,
+      "crystal": {
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+      },
+      "stats": {
+        "nitrates": {
+          "val": "28",
+          "unit": " mg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "ph": {
+          "val": "7,5",
+          "unit": " pH",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "temperature": {
+          "val": "9",
+          "unit": " °C",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "hardness": {
+          "val": "25,2",
+          "unit": " °f",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "chlorine": {
+          "val": "0,25",
+          "unit": " mg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/03/2025",
+          "timestamp": 1742860800000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "conductivity": {
+          "val": "1280",
+          "unit": " µS/cm",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "iron": {
+          "val": "11",
+          "unit": " µg/L",
+          "date": "03/09/2025",
+          "timestamp": 1756857600000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "25/03/2025",
+          "timestamp": 1742860800000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        },
+        "copper": {
+          "val": "0,0029",
+          "unit": " mg/L",
+          "date": "03/09/2025",
+          "timestamp": 1756857600000
+        },
+        "organic_carbon": {
+          "val": "0,73",
+          "unit": " mg/L",
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
+        }
+      },
+      "prix": {
+        "aep": 3.43,
+        "ac": 2.03,
+        "total": 5.46
+      },
+      "meta": {
+        "nom_distributeur": "C.C. DU PAYS DE MESLAY-GREZ",
+        "code_departement": "53",
+        "insee": "53037",
+        "date_prelevement": "2026-02-05",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+      }
+    },
     "boulay-les-ifs": {
       "cityName": "Boulay-Les-Ifs",
       "reseau": "053000451",
@@ -9183,7 +9298,7 @@
     },
     "entrammes": {
       "cityName": "Entrammes",
-      "reseau": "053003954",
+      "reseau": "053003872",
       "isConform": true,
       "crystal": {
         "final": 6.5,
@@ -9919,9 +10034,10 @@
           "timestamp": 1700524800000
         },
         "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/02/2026",
+          "timestamp": 1771459200000
         },
         "microbiology": {
           "val": "Absence",
@@ -12747,32 +12863,32 @@
     },
     "larchamp": {
       "cityName": "Larchamp",
-      "reseau": "053003956",
-      "isConform": true,
+      "reseau": "053003536",
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
+        "final": 3.5,
+        "label": "NON CONFORME",
+        "statusClass": "status-critical",
+        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
       },
       "stats": {
         "nitrates": {
-          "val": "42",
+          "val": "47",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
         },
         "ph": {
           "val": "8,1",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
         },
         "temperature": {
-          "val": "12",
+          "val": "9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
         },
         "hardness": {
           "val": "14,4",
@@ -12781,10 +12897,10 @@
           "timestamp": 1770854400000
         },
         "chlorine": {
-          "val": "0,58",
+          "val": "0,62",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/02/2026",
+          "timestamp": 1770854400000
         },
         "pesticides": {
           "val": "0",
@@ -12853,11 +12969,11 @@
         "total": 6.06
       },
       "meta": {
-        "nom_distributeur": "COMMUNAUTÉ DE COMMUNES DE L'ERNÉE",
+        "nom_distributeur": "SAUR-FRANCE",
         "code_departement": "53",
         "insee": "53126",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2026-02-12",
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
       }
     },
     "lassay-les-chateaux": {
@@ -18610,6 +18726,121 @@
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
+    "preaux": {
+      "cityName": "Preaux",
+      "reseau": "053000369",
+      "isConform": true,
+      "crystal": {
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-warning"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "37",
+          "unit": " mg/L",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "ph": {
+          "val": "7,1",
+          "unit": " pH",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "temperature": {
+          "val": "13,5",
+          "unit": " °C",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "hardness": {
+          "val": "33,5",
+          "unit": " °f",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "chlorine": {
+          "val": "0,78",
+          "unit": " mg/L",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/09/2024",
+          "timestamp": 1726704000000
+        },
+        "pfas": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "conductivity": {
+          "val": "652",
+          "unit": " µS/cm",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "turbidity": {
+          "val": "0",
+          "unit": " NFU",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "iron": {
+          "val": "2",
+          "unit": " µg/L",
+          "date": "07/10/2024",
+          "timestamp": 1728259200000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "19/09/2024",
+          "timestamp": 1726704000000
+        },
+        "ammonium": {
+          "val": "0",
+          "unit": " mg/L",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        },
+        "copper": {
+          "val": "0,0057",
+          "unit": " mg/L",
+          "date": "07/10/2024",
+          "timestamp": 1728259200000
+        },
+        "organic_carbon": {
+          "val": "0,76",
+          "unit": " mg/L",
+          "date": "18/09/2025",
+          "timestamp": 1758153600000
+        }
+      },
+      "prix": {
+        "aep": 2.2,
+        "ac": 1.76,
+        "total": 3.96
+      },
+      "meta": {
+        "nom_distributeur": "C.C. DU PAYS DE MESLAY-GREZ",
+        "code_departement": "53",
+        "insee": "53184",
+        "date_prelevement": "2025-09-18",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
     "pre-en-pail-saint-samson": {
       "cityName": "Pre-En-Pail-Saint-Samson",
       "reseau": "053000386",
@@ -24247,7 +24478,7 @@
     },
     "saint-ouen-des-toits": {
       "cityName": "Saint-Ouen-Des-Toits",
-      "reseau": "053003955",
+      "reseau": "053000167",
       "isConform": false,
       "crystal": {
         "final": 3.5,
@@ -27465,236 +27696,6 @@
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
-    "bouessay": {
-      "cityName": "Bouessay",
-      "reseau": "053000362",
-      "isConform": false,
-      "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
-      },
-      "stats": {
-        "nitrates": {
-          "val": "28",
-          "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "ph": {
-          "val": "7,5",
-          "unit": " pH",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "temperature": {
-          "val": "9",
-          "unit": " °C",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "hardness": {
-          "val": "25,2",
-          "unit": " °f",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "chlorine": {
-          "val": "0,25",
-          "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "25/03/2025",
-          "timestamp": 1742860800000
-        },
-        "pfas": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "15/07/2025",
-          "timestamp": 1752537600000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "conductivity": {
-          "val": "1280",
-          "unit": " µS/cm",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "turbidity": {
-          "val": "0",
-          "unit": " NFU",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "iron": {
-          "val": "11",
-          "unit": " µg/L",
-          "date": "03/09/2025",
-          "timestamp": 1756857600000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "25/03/2025",
-          "timestamp": 1742860800000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        },
-        "copper": {
-          "val": "0,0029",
-          "unit": " mg/L",
-          "date": "03/09/2025",
-          "timestamp": 1756857600000
-        },
-        "organic_carbon": {
-          "val": "0,73",
-          "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
-        }
-      },
-      "prix": {
-        "aep": 3.43,
-        "ac": 2.03,
-        "total": 5.46
-      },
-      "meta": {
-        "nom_distributeur": "C.C. DU PAYS DE MESLAY-GREZ",
-        "code_departement": "53",
-        "insee": "53037",
-        "date_prelevement": "2026-02-05",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
-      }
-    },
-    "preaux": {
-      "cityName": "Preaux",
-      "reseau": "053000369",
-      "isConform": true,
-      "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "37",
-          "unit": " mg/L",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "ph": {
-          "val": "7,1",
-          "unit": " pH",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "temperature": {
-          "val": "13,5",
-          "unit": " °C",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "hardness": {
-          "val": "33,5",
-          "unit": " °f",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "chlorine": {
-          "val": "0,78",
-          "unit": " mg/L",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "19/09/2024",
-          "timestamp": 1726704000000
-        },
-        "pfas": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "conductivity": {
-          "val": "652",
-          "unit": " µS/cm",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "turbidity": {
-          "val": "0",
-          "unit": " NFU",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "iron": {
-          "val": "2",
-          "unit": " µg/L",
-          "date": "07/10/2024",
-          "timestamp": 1728259200000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "19/09/2024",
-          "timestamp": 1726704000000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        },
-        "copper": {
-          "val": "0,0057",
-          "unit": " mg/L",
-          "date": "07/10/2024",
-          "timestamp": 1728259200000
-        },
-        "organic_carbon": {
-          "val": "0,76",
-          "unit": " mg/L",
-          "date": "18/09/2025",
-          "timestamp": 1758153600000
-        }
-      },
-      "prix": {
-        "aep": 2.2,
-        "ac": 1.76,
-        "total": 3.96
-      },
-      "meta": {
-        "nom_distributeur": "C.C. DU PAYS DE MESLAY-GREZ",
-        "code_departement": "53",
-        "insee": "53184",
-        "date_prelevement": "2025-09-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
     "ombree-d-anjou": {
       "cityName": "Ombree D'anjou",
       "reseau": "053000158",
@@ -28073,7 +28074,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "469",
+        "val": "470",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -28085,7 +28086,7 @@
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "1,91",
+        "val": "2,07",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -28093,11 +28094,11 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "5,24",
+        "val": "5,47",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,34",
+        "val": "1,35",
         "unit": "  mg/L"
       }
     },

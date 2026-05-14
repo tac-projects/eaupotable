@@ -6,11 +6,11 @@
     "conformRate": 82,
     "averages": {
       "nitrates": {
-        "val": "6,48",
+        "val": "6,50",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,42",
+        "val": "7,36",
         "unit": "  pH"
       },
       "temperature": {
@@ -18,11 +18,11 @@
         "unit": "  °C"
       },
       "hardness": {
-        "val": "8,31",
+        "val": "7,82",
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,61",
+        "val": "0,63",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -38,11 +38,11 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "310",
+        "val": "302",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,59",
+        "val": "0,53",
         "unit": "  NFU"
       },
       "iron": {
@@ -54,15 +54,15 @@
         "unit": "  µg/L"
       },
       "ammonium": {
-        "val": "0,081",
+        "val": "0,078",
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "152",
+        "val": "154",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,06",
+        "val": "1,13",
         "unit": "  mg/L"
       }
     },
@@ -89,7 +89,7 @@
       },
       {
         "name": "Tsingoni",
-        "score": 9.5,
+        "score": 9,
         "slug": "tsingoni"
       }
     ],
@@ -1464,6 +1464,120 @@
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
+    "m-tsangamouji": {
+      "cityName": "M'tsangamouji",
+      "reseau": "976003469",
+      "isConform": true,
+      "crystal": {
+        "final": 9,
+        "label": "EXCELLENTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-excellent"
+      },
+      "stats": {
+        "nitrates": {
+          "val": "1,6",
+          "unit": " mg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "ph": {
+          "val": "7,9",
+          "unit": " pH",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "temperature": {
+          "val": "30,4",
+          "unit": " °C",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "hardness": {
+          "val": "8,5",
+          "unit": " °f",
+          "date": "23/04/2024",
+          "timestamp": 1713830400000
+        },
+        "chlorine": {
+          "val": "0,89",
+          "unit": " mg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "pesticides": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "22/08/2023",
+          "timestamp": 1692662400000
+        },
+        "pfas": {
+          "val": "--",
+          "unit": "",
+          "date": "N/A"
+        },
+        "microbiology": {
+          "val": "Absence",
+          "unit": " Absence",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "conductivity": {
+          "val": "405",
+          "unit": " µS/cm",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "turbidity": {
+          "val": "0,14",
+          "unit": " NFU",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "iron": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "manganese": {
+          "val": "0",
+          "unit": " µg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "ammonium": {
+          "val": "0,026",
+          "unit": " mg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "copper": {
+          "val": "45",
+          "unit": " mg/L",
+          "date": "12/11/2024",
+          "timestamp": 1731369600000
+        },
+        "organic_carbon": {
+          "val": "1,2",
+          "unit": " mg/L",
+          "date": "23/04/2024",
+          "timestamp": 1713830400000
+        }
+      },
+      "prix": {
+        "aep": 2.5,
+        "ac": 2.75,
+        "total": 5.25
+      },
+      "meta": {
+        "nom_distributeur": "SMAE",
+        "code_departement": "976",
+        "insee": "97613",
+        "date_prelevement": "2024-11-12",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+      }
+    },
     "ouangani": {
       "cityName": "Ouangani",
       "reseau": "976003487",
@@ -1808,10 +1922,10 @@
     },
     "tsingoni": {
       "cityName": "Tsingoni",
-      "reseau": "976003881",
+      "reseau": "976000059",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
+        "final": 9,
         "label": "EXCELLENTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
         "statusClass": "status-excellent"
@@ -1820,32 +1934,32 @@
         "nitrates": {
           "val": "1,1",
           "unit": " mg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "ph": {
-          "val": "8,2",
+          "val": "7,5",
           "unit": " pH",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "temperature": {
-          "val": "31,1",
+          "val": "27,8",
           "unit": " °C",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "hardness": {
-          "val": "10,5",
+          "val": "8,5",
           "unit": " °f",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "08/12/2025",
+          "timestamp": 1765152000000
         },
         "chlorine": {
-          "val": "0,24",
+          "val": "0,66",
           "unit": " mg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "pesticides": {
           "val": "0",
@@ -1861,50 +1975,50 @@
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "conductivity": {
-          "val": "304",
+          "val": "176",
           "unit": " µS/cm",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "turbidity": {
-          "val": "0,64",
+          "val": "0,22",
           "unit": " NFU",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "ammonium": {
-          "val": "0,08",
+          "val": "0",
           "unit": " mg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "copper": {
-          "val": "84",
+          "val": "85",
           "unit": " mg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "30/12/2025",
+          "timestamp": 1767052800000
         },
         "organic_carbon": {
           "val": "0",
           "unit": " mg/L",
-          "date": "12/01/2026",
-          "timestamp": 1768176000000
+          "date": "08/12/2025",
+          "timestamp": 1765152000000
         }
       },
       "prix": {
@@ -1916,121 +2030,7 @@
         "nom_distributeur": "SMAE",
         "code_departement": "976",
         "insee": "97617",
-        "date_prelevement": "2026-01-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "m-tsangamouji": {
-      "cityName": "M'tsangamouji",
-      "reseau": "976003883",
-      "isConform": true,
-      "crystal": {
-        "final": 9,
-        "label": "EXCELLENTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-excellent"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "1,3",
-          "unit": " mg/L",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "ph": {
-          "val": "8,1",
-          "unit": " pH",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "temperature": {
-          "val": "26,4",
-          "unit": " °C",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "hardness": {
-          "val": "14,9",
-          "unit": " °f",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "chlorine": {
-          "val": "0,91",
-          "unit": " mg/L",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "22/08/2023",
-          "timestamp": 1692662400000
-        },
-        "pfas": {
-          "val": "--",
-          "unit": "",
-          "date": "N/A"
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "conductivity": {
-          "val": "411",
-          "unit": " µS/cm",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "turbidity": {
-          "val": "0,7",
-          "unit": " NFU",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "iron": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "20/08/2024",
-          "timestamp": 1724112000000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        },
-        "copper": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "20/08/2024",
-          "timestamp": 1724112000000
-        },
-        "organic_carbon": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "26/08/2025",
-          "timestamp": 1756166400000
-        }
-      },
-      "prix": {
-        "aep": 2.5,
-        "ac": 2.75,
-        "total": 5.25
-      },
-      "meta": {
-        "nom_distributeur": "SMAE",
-        "code_departement": "976",
-        "insee": "97613",
-        "date_prelevement": "2025-08-26",
+        "date_prelevement": "2025-12-30",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }
@@ -2039,11 +2039,11 @@
     "name": "Mayotte",
     "averages": {
       "nitrates": {
-        "val": "6,48",
+        "val": "6,50",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,42",
+        "val": "7,36",
         "unit": "  pH"
       },
       "temperature": {
@@ -2051,11 +2051,11 @@
         "unit": "  °C"
       },
       "hardness": {
-        "val": "8,31",
+        "val": "7,82",
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,61",
+        "val": "0,63",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -2067,11 +2067,11 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "310",
+        "val": "302",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,59",
+        "val": "0,53",
         "unit": "  NFU"
       },
       "iron": {
@@ -2083,15 +2083,15 @@
         "unit": "  µg/L"
       },
       "ammonium": {
-        "val": "0,081",
+        "val": "0,078",
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "152",
+        "val": "154",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,06",
+        "val": "1,13",
         "unit": "  mg/L"
       }
     },
