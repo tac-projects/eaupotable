@@ -81,8 +81,21 @@ async function getLocalData(slug) {
 
     if (!fullData) return null;
     
-    // On cherche la ville par son slug dans le fichier
-    const rawCityData = fullData.cities[slug];
+    // On cherche la ville par son slug normalisé dans le fichier (évite les 404 sur les majuscules)
+    let rawCityData = fullData.cities[cleanSlug] || fullData.cities[slug];
+
+    // GESTION DES HOMONYMES : Si non trouvé, on tente de retirer le suffixe de département (ex: apremont-01 -> apremont)
+    // Cela permet d'avoir des URLs uniques dans l'index global tout en gardant des clés simples dans les fichiers JSON.
+    if (!rawCityData && cleanSlug.includes('-')) {
+      const parts = cleanSlug.split('-');
+      const lastPart = parts[parts.length - 1].toUpperCase();
+      // Test si le dernier segment est un code département (ex: 01, 44, 974, 2A, 2B)
+      if (/^\d{2,3}$|^2[AB]$/.test(lastPart)) {
+        const baseSlug = parts.slice(0, -1).join('-');
+        rawCityData = fullData.cities[baseSlug];
+      }
+    }
+
     if (!rawCityData) return null;
 
     // NETTOYAGE DU PAYLOAD : On n'envoie que le strict nécessaire au client

@@ -153,7 +153,7 @@ const config = {
     organic_carbon: { codes: ["1841", "1842"], unit: "mg/L" }
 };
 
-const YEARS = ["2026", "2025", "2024", "2023", "2022"];
+const YEARS = ["2022", "2023", "2024", "2025", "2026"];
 const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');
 
 
@@ -530,23 +530,46 @@ async function updateIndex() {
 
     if (!fs.existsSync(dir)) return;
     const index = {};
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+    const collisions = [];
+    // Tri alphabétique des fichiers pour garantir un index stable (01 avant 85)
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort();
+
+    console.log(`🔍 Analyse de ${files.length} fichiers départementaux pour l'index...`);
+
     for (const f of files) {
         const dept = f.replace('.json', '');
         try {
             const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
             if (data.cities) {
                 Object.keys(data.cities).forEach(slug => {
-                    index[slug] = dept;
+                    if (index[slug] && index[slug] !== dept) {
+                        // COLLISION : On crée un slug unique pour ce nouveau département
+                        // L'ancien garde le slug court (Priorité au premier département dans l'ordre alphabétique)
+                        const uniqueSlug = `${slug}-${dept}`;
+                        index[uniqueSlug] = dept;
+                        collisions.push({ original: slug, unique: uniqueSlug, depts: [index[slug], dept] });
+                    } else {
+                        index[slug] = dept;
+                    }
                 });
             }
         } catch (e) {
             console.error(`❌ Erreur lecture index pour ${f}:`, e);
         }
     }
+
     const indexPath = path.join(__dirname, '..', 'public', 'city-index.json');
     fs.writeFileSync(indexPath, JSON.stringify(index, null, 2));
+
     console.log(`🗺️  Index mis à jour : ${Object.keys(index).length} villes référencées.`);
+    if (collisions.length > 0) {
+        console.warn(`⚠️  Attention : ${collisions.length} collisions gérées via des slugs uniques.`);
+        if (collisions.length <= 10) {
+            console.table(collisions);
+        } else {
+            console.log("Exemples de résolutions :", collisions.slice(0, 5));
+        }
+    }
 }
 
 function calculateRegionalAverages(allDeptData) {
