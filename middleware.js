@@ -8,6 +8,21 @@ export function middleware(request) {
   const host = request.headers.get('host');
   const cfRay = request.headers.get('cf-ray');
   const { pathname, search } = request.nextUrl;
+  const url = request.nextUrl.clone();
+
+  // 1. Redirections SEO spécifiques pour nettoyer les 404 Google Search Console
+  if (pathname === '/rgpd') {
+    url.pathname = '/mentions-legales';
+    return NextResponse.redirect(url, 301);
+  }
+  if (pathname === '/ville/waldighoffen') {
+    url.pathname = '/ville/waldighofen';
+    return NextResponse.redirect(url, 301);
+  }
+  if (pathname === '/ville/les-goulles') {
+    url.pathname = '/ville/goulles';
+    return NextResponse.redirect(url, 301);
+  }
 
   // On n'applique la redirection et le blocage qu'en production
   if (
