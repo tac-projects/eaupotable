@@ -332,8 +332,14 @@ export default function CitySEOContent({ cityName, data }) {
       <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-header">
-            <h2 className="seo-main-title">Benchmark Départemental</h2>
-            <p className="seo-main-subtitle">Performance de {cityName} face aux 10 plus grandes agglomérations de {deptAvg?.name || `votre département`} ({dpt}).</p>
+            <h2 className="seo-main-title">
+              {data.isMetropolis ? "Benchmark des Métropoles" : "Benchmark Départemental"}
+            </h2>
+            <p className="seo-main-subtitle">
+              {data.isMetropolis 
+                ? `Performance de ${cityName} face aux 10 plus grandes agglomérations de France.`
+                : `Performance de ${cityName} face aux 10 plus grandes agglomérations de ${deptAvg?.name || 'votre département'} (${dpt}).`}
+            </p>
           </div>
           <BenchmarkAudit
             cityName={cityName}
@@ -532,7 +538,7 @@ export default function CitySEOContent({ cityName, data }) {
       {/* SECTION 8 : VOISINES (BLANC) */}
       <section className="home-content-section white">
         <div className="seo-container">
-          <NearbyCities cities={neighborCities} dpt={dpt} />
+          <NearbyCities cities={neighborCities} dpt={dpt} isMetropolis={data.isMetropolis} />
         </div>
       </section>
 

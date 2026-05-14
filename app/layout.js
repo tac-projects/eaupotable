@@ -66,13 +66,13 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`}>
+    <html lang="fr" className={`${inter.variable} ${manrope.variable} ${grandHotel.variable} full-height-body`} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
       </head>
-      <body className="full-height-body">
+      <body className="full-height-body" suppressHydrationWarning>
         {children}
         <Footer />
         <Script 

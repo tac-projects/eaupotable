@@ -136,14 +136,38 @@ async function getLocalData(slug) {
     cityData.crystal = recalculatedCrystal;
 
     // 1. Liste pour le Benchmark (Top 10 des plus grandes villes)
-    const benchmarkCities = (fullData.deptInfo.topCities || [])
-      .map(c => ({
-        nom: c.name,
-        score: c.score,
-        code: c.slug,
-        isCurrent: c.slug === slug
-      }))
-      .sort((a, b) => b.score - a.score); // Tri par score pour le classement
+    let benchmarkCities = [];
+    let isMetropolis = false;
+
+    if (deptCode === '75') {
+      try {
+        const metroPath = path.join(process.cwd(), 'public', 'data', 'metropolis.json');
+        if (fs.existsSync(metroPath)) {
+          const metroData = JSON.parse(fs.readFileSync(metroPath, 'utf8'));
+          benchmarkCities = metroData.map(c => ({
+            nom: c.name,
+            score: parseFloat(c.score),
+            code: c.slug,
+            isCurrent: c.slug === cleanSlug || c.slug === slug
+          }));
+          isMetropolis = true;
+        }
+      } catch (e) {
+        console.error("Error loading metropolis data:", e);
+      }
+    }
+
+    if (benchmarkCities.length === 0) {
+      benchmarkCities = (fullData.deptInfo.topCities || [])
+        .map(c => ({
+          nom: c.name,
+          score: c.score,
+          code: c.slug,
+          isCurrent: c.slug === cleanSlug || c.slug === slug
+        }));
+    }
+
+    benchmarkCities.sort((a, b) => b.score - a.score); // Tri par score pour le classement
 
     // 2. Liste pour le maillage SEO (Top 10 + 20 au hasard = 30 villes)
     const otherCities = Object.entries(fullData.cities)
@@ -152,18 +176,49 @@ async function getLocalData(slug) {
         nom: cData.cityName,
         score: cData.crystal?.final || 0,
         code: cSlug,
-        isCurrent: cSlug === slug
+        isCurrent: cSlug === cleanSlug || cSlug === slug
       }));
 
     const random20 = otherCities
       .sort(() => Math.random() - 0.5)
       .slice(0, 20);
 
-    const neighborList = [...benchmarkCities, ...random20];
+    const neighborList = isMetropolis ? [
+      { name: "Marseille", slug: "marseille" },
+      { name: "Lyon", slug: "lyon" },
+      { name: "Toulouse", slug: "toulouse" },
+      { name: "Nice", slug: "nice" },
+      { name: "Nantes", slug: "nantes" },
+      { name: "Montpellier", slug: "montpellier" },
+      { name: "Strasbourg", slug: "strasbourg" },
+      { name: "Bordeaux", slug: "bordeaux" },
+      { name: "Lille", slug: "lille" },
+      { name: "Rennes", slug: "rennes" },
+      { name: "Reims", slug: "reims" },
+      { name: "Saint-Étienne", slug: "saint-etienne" },
+      { name: "Le Havre", slug: "le-havre" },
+      { name: "Toulon", slug: "toulon" },
+      { name: "Grenoble", slug: "grenoble" },
+      { name: "Dijon", slug: "dijon" },
+      { name: "Angers", slug: "angers" },
+      { name: "Nîmes", slug: "nimes" },
+      { name: "Villeurbanne", slug: "villeurbanne" },
+      { name: "Saint-Denis", slug: "saint-denis" },
+      { name: "Aix-en-Provence", slug: "aix-en-provence" },
+      { name: "Le Mans", slug: "le-mans" },
+      { name: "Clermont-Ferrand", slug: "clermont-ferrand" },
+      { name: "Brest", slug: "brest" },
+      { name: "Tours", slug: "tours" },
+      { name: "Amiens", slug: "amiens" },
+      { name: "Limoges", slug: "limoges" },
+      { name: "Annecy", slug: "annecy" },
+      { name: "Perpignan", slug: "perpignan" }
+    ].map(v => ({ nom: v.name, code: v.slug, isCurrent: false })) : [...benchmarkCities, ...random20];
 
     return {
       ...cityData,
       isConform,
+      isMetropolis,
       initialDeptAvg: {
         score: fullData.deptInfo.avgScore,
         name: fullData.deptInfo.name,
