@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, Fragment } from 'react';
+import Link from 'next/link';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
 import dynamic from 'next/dynamic';
 const CityAnalysisSection = dynamic(() => import('./CityAnalysisSection'), { ssr: true });
@@ -254,7 +255,13 @@ export default function CitySEOContent({ cityName, data }) {
                 <tr>
                   <th>Indicateur</th>
                   <th className="col-highlight">À {cityName}</th>
-                  {neighborCities.length > 0 && <th>{deptAvg?.name || `Département ${dpt}`}</th>}
+                  {neighborCities.length > 0 && (
+                    <th>
+                      <Link href={`/departement/${dpt}`} className="table-header-link">
+                        {deptAvg?.name || `Département ${dpt}`}
+                      </Link>
+                    </th>
+                  )}
                   <th>{regionalInfo?.name || 'Région'}</th>
                   <th>France</th>
                 </tr>
@@ -512,9 +519,9 @@ export default function CitySEOContent({ cityName, data }) {
                   Contrairement aux rapports officiels qui se limitent à "Conforme/Non Conforme", notre algorithme évalue la qualité réelle pour une consommation à long terme.
                 </p>
                 <div className="trust-external-links">
-                  <a href="https://hubeau.eaufrance.fr/page/api-ecoulement-cours-eau" target="_blank" rel="nofollow noreferrer">Accéder aux données brutes (Hub'Eau)</a>
+                  <a href="https://hubeau.eaufrance.fr/page/api-qualite-eau-potable" target="_blank" rel="nofollow noreferrer">Accéder aux données brutes (Hub'Eau)</a>
                   <span className="sep">•</span>
-                  <a href="https://www.ecologie.gouv.fr/pfas-polluants-eternels" target="_blank" rel="nofollow noreferrer">Réglementation PFAS (Gouvernement)</a>
+                  <a href="https://www.ecologie.gouv.fr/politiques-publiques/pfas-surveillance-letat-eaux-france" target="_blank" rel="nofollow noreferrer">Réglementation PFAS (Gouvernement)</a>
                 </div>
               </div>
               <div className="trust-card-actions">
@@ -543,6 +550,18 @@ export default function CitySEOContent({ cityName, data }) {
       </section>
 
       <style jsx>{`
+        .table-header-link {
+          color: inherit;
+          text-decoration: underline;
+          text-decoration-style: dotted;
+          text-underline-offset: 4px;
+          transition: color 0.2s ease;
+        }
+        .table-header-link:hover {
+          color: #3b82f6;
+          text-decoration-style: solid;
+        }
+
         .trust-external-links {
           margin-top: 25px;
           display: flex;
@@ -655,6 +674,10 @@ export default function CitySEOContent({ cityName, data }) {
         }
 
         .trust-external-links a {
+          position: relative;
+          z-index: 10;
+          cursor: pointer;
+          pointer-events: auto !important;
           font-size: 0.85rem;
           font-weight: 700;
           color: #0046CC;

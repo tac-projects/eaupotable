@@ -15,6 +15,7 @@ export default function DepartementClient({ code, deptData }) {
 
   const deptName = deptInfo.name || `Département ${code}`;
   const deptScore = deptInfo.avgScore || 'N/A';
+  const topCities = deptInfo.topCities || [];
 
   return (
     <div className="dept-page">
@@ -166,7 +167,7 @@ export default function DepartementClient({ code, deptData }) {
               </div>
               <div className="top-ten-grid">
                 {citiesList.slice(0, 10).map((city, idx) => (
-                  <a key={city.slug} href={`/ville/${city.slug}`} className="top-ten-item">
+                  <a key={city.slug} href={`/ville/${city.slug}`} className="top-ten-item" aria-label={`Qualité de l'eau à ${city.cityName} - Voir l'analyse`}>
                     <span className="ten-rank">#{idx + 1}</span>
                     <span className="ten-name">{city.cityName}</span>
                     <span className="ten-score">{city.crystal?.final?.toFixed(1)}/10</span>
@@ -176,7 +177,58 @@ export default function DepartementClient({ code, deptData }) {
             </div>
           </section>
 
-          {/* SECTION 3 : FAQ (BLANC) */}
+          {/* SECTION 2 BIS : PRINCIPALES VILLES (BLANC) */}
+          {topCities.length > 0 && (
+            <section className="zebra-section white">
+              <div className="dept-container">
+                <div className="section-header">
+                  <h2 className="seo-main-title">Focus : Qualité de l'eau dans les plus grandes villes</h2>
+                  <p className="seo-main-subtitle">Analyses et indices de pureté des principales communes de : {deptName}</p>
+                </div>
+                <div className="top-ten-grid">
+                  {topCities.map((city, idx) => (
+                    <a key={city.slug} href={`/ville/${city.slug}`} className="top-ten-item" aria-label={`Qualité de l'eau à ${city.name} - Voir l'analyse`}>
+                      <span className="ten-rank">#{idx + 1}</span>
+                      <span className="ten-name">{city.name}</span>
+                      <span className="ten-score">{city.score !== null && city.score !== undefined ? city.score.toFixed(1) : 'N/A'}/10</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* SECTION 3 : REPERTOIRE (GRIS) */}
+          <section className="zebra-section gray">
+            <div className="dept-container">
+              <div className="section-header">
+                <h2 className="seo-main-title">Répertoire Complet des {citiesList.length} Communes</h2>
+                <p className="seo-main-subtitle">Accédez au rapport de pureté détaillé de chaque ville du département</p>
+              </div>
+
+              <div className="city-list-grid">
+                {citiesList.map(city => (
+                  <a key={city.slug} href={`/ville/${city.slug}`} className="city-link-card" aria-label={`Qualité de l'eau à ${city.cityName} - Voir l'analyse`}>
+                    <div className="city-card-header">
+                      <span className="city-name">{city.cityName}</span>
+                      <div className={`city-score-badge ${city.crystal?.statusClass || ''}`}>
+                        {city.crystal?.final?.toFixed(1) || 'N/A'}
+                      </div>
+                    </div>
+                    <div className="city-card-meta">
+                      <span className="city-label">{city.crystal?.label || 'Analyse en cours'}</span>
+                      <span className="city-sep">•</span>
+                      <span className={`city-status ${city.isConform ? 'conform' : 'non-conform'}`}>
+                        {city.isConform ? 'Conforme' : 'Non conforme'}
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* SECTION 4 : FAQ (BLANC) */}
           <section className="zebra-section white">
             <div className="seo-container">
               <div className="seo-section-header">
@@ -222,36 +274,6 @@ export default function DepartementClient({ code, deptData }) {
                     <summary className="seo-faq-question"><h3>{item.q}</h3><span className="faq-icon"></span></summary>
                     <div className="seo-faq-answer"><p>{item.a}</p></div>
                   </details>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* SECTION 4 : REPERTOIRE (GRIS) */}
-          <section className="zebra-section gray">
-            <div className="dept-container">
-              <div className="section-header">
-                <h2 className="seo-main-title">Répertoire Complet des {citiesList.length} Communes</h2>
-                <p className="seo-main-subtitle">Accédez au rapport de pureté détaillé de chaque ville du département</p>
-              </div>
-
-              <div className="city-list-grid">
-                {citiesList.map(city => (
-                  <a key={city.slug} href={`/ville/${city.slug}`} className="city-link-card">
-                    <div className="city-card-header">
-                      <span className="city-name">{city.cityName}</span>
-                      <div className={`city-score-badge ${city.crystal?.statusClass || ''}`}>
-                        {city.crystal?.final?.toFixed(1) || 'N/A'}
-                      </div>
-                    </div>
-                    <div className="city-card-meta">
-                      <span className="city-label">{city.crystal?.label || 'Analyse en cours'}</span>
-                      <span className="city-sep">•</span>
-                      <span className={`city-status ${city.isConform ? 'conform' : 'non-conform'}`}>
-                        {city.isConform ? 'Conforme' : 'Non conforme'}
-                      </span>
-                    </div>
-                  </a>
                 ))}
               </div>
             </div>

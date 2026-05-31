@@ -498,7 +498,20 @@ async function buildDepartment(deptCode) {
     };
 
     // Top Cities from reference
-    output.deptInfo.topCities = deptInfo.topCities.map(name => {
+    const topCitiesList = [...deptInfo.topCities];
+    
+    // Si moins de 10 villes, on complète avec d'autres villes du département (triées par ordre alphabétique pour la stabilité)
+    if (topCitiesList.length < 10) {
+        const otherAvailableCities = Object.keys(output.cities)
+            .map(slug => output.cities[slug].cityName)
+            .filter(name => !topCitiesList.some(existingName => makeSlug(existingName) === makeSlug(name)))
+            .sort((a, b) => a.localeCompare(b, 'fr'));
+            
+        const needed = 10 - topCitiesList.length;
+        topCitiesList.push(...otherAvailableCities.slice(0, needed));
+    }
+
+    output.deptInfo.topCities = topCitiesList.map(name => {
         const slug = makeSlug(name);
         const city = output.cities[slug];
         return {

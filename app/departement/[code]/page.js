@@ -24,8 +24,8 @@ export async function generateMetadata({ params }) {
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   const scoreString = typeof avgScore === 'number' ? avgScore.toFixed(1).replace('.', ',') : avgScore;
-  const title = `Qualité de l'eau : ${deptName} (${code}) | Calcaire & PFAS - ${currentMonthYear}`;
-  const description = `Votre eau du robinet est-elle saine ? 💧 Classement ${deptName} (${code}). Score moyen : ${scoreString}/10 (${cityCount} communes). Bilan PFAS, Calcaire & Prix par commune.`;
+  const title = `Qualité de l'eau en ${deptName} (${code}) : Calcaire & PFAS - ${currentMonthYear}`;
+  const description = `Votre eau du robinet est-elle saine ? 💧 Score moyen : ${scoreString}/10. Découvrez le classement et le bilan complet (Calcaire, Nitrates & PFAS) des ${cityCount} communes de ${deptName}.`;
 
   return {
     title,
@@ -117,7 +117,15 @@ export default async function DepartementPage({ params }) {
           "url": "https://www.linkedin.com/in/thomasalexiscailleau"
         },
         "license": "https://www.eaupotable.net/mentions-legales",
-        "spatialCoverage": { "@type": "Place", "name": deptName },
+        "spatialCoverage": { 
+          "@type": "AdministrativeArea", 
+          "name": deptName,
+          "containsPlace": (deptData?.deptInfo?.topCities || []).map(city => ({
+            "@type": "City",
+            "name": city.name,
+            "url": `https://www.eaupotable.net/ville/${city.slug}`
+          }))
+        },
         "temporalCoverage": `${currentYear}`
       }
     ]
