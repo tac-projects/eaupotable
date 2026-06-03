@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import DepartementClient from './DepartementClient';
 
+export const revalidate = 86400; // Cache ISR de 24h après la première visite
+
 export async function generateMetadata({ params }) {
   const { code } = await params;
   let deptName = `Département ${code}`;
