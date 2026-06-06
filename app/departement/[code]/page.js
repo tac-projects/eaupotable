@@ -120,13 +120,8 @@ export default async function DepartementPage({ params }) {
         },
         "license": "https://www.eaupotable.net/mentions-legales",
         "spatialCoverage": { 
-          "@type": "AdministrativeArea", 
-          "name": deptName,
-          "containsPlace": (deptData?.deptInfo?.topCities || []).map(city => ({
-            "@type": "City",
-            "name": city.name,
-            "url": `https://www.eaupotable.net/ville/${city.slug}`
-          }))
+          "@type": "Place", 
+          "name": deptName
         },
         "temporalCoverage": `${currentYear}`
       }
