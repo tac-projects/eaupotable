@@ -3,6 +3,7 @@
 import { useMemo, Fragment } from 'react';
 import Link from 'next/link';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
+import { generateExpertVerdict, FOCUS_VARIANTS, FAQ_VARIANTS, hashCity } from '@/lib/content-variants';
 import dynamic from 'next/dynamic';
 const CityAnalysisSection = dynamic(() => import('./CityAnalysisSection'), { ssr: true });
 const BenchmarkAudit = dynamic(() => import('./BenchmarkAudit'), { ssr: true });
@@ -81,111 +82,158 @@ export default function CitySEOContent({ cityName, data }) {
     };
   }, [stats, deptAvg, regionalInfo]);
 
-  // 3. Synthèse de l'Expert
+  // 3. Synthèse de l'Expert (nouveau système à 4 profils + 15 variantes par slot)
   const syntheseTexte = useMemo(() => {
-    const spinSentence = (variants, seed) => {
-      const idx = (cityName.length + seed + (dpt ? parseInt(dpt) : 0)) % variants.length;
-      return variants[idx].replace(/\{cityName\}/g, cityName).replace(/\{nomReseau\}/g, nomReseau).replace(/\{currentYear\}/g, currentYear);
-    };
+    const cityScore = crystal?.final ?? 0;
+    return generateExpertVerdict({
+      cityName,
+      nomReseau,
+      isConform,
+      cityScore,
+      deptAvg,
+      dpt,
+      regionalInfo,
+      currentYear,
+      metrics,
+    });
+  }, [cityName, nomReseau, isConform, crystal, deptAvg, dpt, regionalInfo, currentYear, metrics]);
 
-    let text = spinSentence([
-      `La **qualité de l'eau à {cityName}** est jugée **${isConform ? 'conforme' : 'non conforme'}** en {currentYear} selon les relevés de l'ARS. `,
-      `D'après les dernières données de l'ARS en {currentYear}, l'eau à **{cityName}** présente un bilan **${isConform ? 'favorable' : 'insatisfaisant'}** au niveau de sa conformité sanitaire. `,
-      `Le verdict officiel de l'ARS pour {currentYear} à **{cityName}** confirme une eau **${isConform ? 'conforme' : 'non conforme'}** aux exigences de potabilité actuelles. `
-    ], 1);
-
-    text += spinSentence([
-      `La distribution, gérée par **{nomReseau}**, fait l'objet d'un suivi rigoureux pour garantir la sécurité sanitaire des habitants. `,
-      `Le réseau local, opéré par **{nomReseau}**, est régulièrement analysé par les autorités pour s'assurer du respect des seuils réglementaires. `,
-      `Sous la supervision technique de **{nomReseau}**, les infrastructures locales acheminent l'eau potable vers les foyers de la commune. `
-    ], 2);
-
-    if (isConform) {
-      text += spinSentence([
-        `Concrètement, vous pouvez **boire l'eau du robinet à {cityName}** sans crainte, celle-ci respectant les normes de sécurité en vigueur. `,
-        `Les résultats indiquent que la consommation d'eau du robinet à **{cityName}** ne présente aucun risque sanitaire identifié par les autorités. `
-      ], 3);
-    } else {
-      text += `La vigilance est de mise : les relevés officiels indiquent des dépassements sur certains paramètres microbiologiques ou physico-chimiques. `;
-    }
-
-    const durete = parseValue(stats.hardness?.val);
-    if (durete > 25) text += `Le verdict met en évidence une **eau calcaire** (${metrics.dureteVal}), ce qui peut impacter votre confort cutané et la longévité de vos appareils. `;
-    else if (durete > 0 && durete < 10) text += `À l'inverse, l'eau est ici très douce, ce qui préserve les canalisations mais demande une attention sur la corrosion. `;
-
-    const nitrates = parseValue(stats.nitrates?.val);
-    if (nitrates > 20) text += `On note une présence de **nitrates** (${metrics.nitratesVal}), un taux qui reste sous la limite mais mérite l'attention pour les nourrissons. `;
-
-    if (deptAvg?.conformRate) text += ` Globalement, le département ${dpt} affiche un taux de conformité de ${deptAvg.conformRate}%, une dynamique dans laquelle **${cityName}** s'inscrit pleinement.`;
-
-    const pfas = parseValue(stats.pfas?.val);
-    if (pfas !== null && !isNaN(pfas)) text += ` Enfin, concernant les **PFAS (polluants éternels)**, les analyses de 2026 à ${cityName} ${pfas > 0.1 ? "révèlent une présence à surveiller" : "ne détectent aucune anomalie majeure"}, le taux restant sous le seuil de 0.1 µg/L.`;
-
-    return text.replace(/\{cityName\}/g, cityName).replace(/\{nomReseau\}/g, nomReseau);
-  }, [cityName, nomReseau, isConform, stats, metrics, deptAvg, dpt, currentYear]);
-
-  // 4. Focus & Santé
+  // 4. Focus & Santé (variantes enrichies)
   const focusContent = useMemo(() => {
     const durete = parseValue(stats.hardness?.val);
     const chlore = parseValue(stats.chlorine?.val);
     const nitrates = parseValue(stats.nitrates?.val);
     const pfas = parseValue(stats.pfas?.val);
 
+    const h = hashCity(cityName, dpt);
+
+    // Calcaire
+    let calcaire;
+    if (durete > 25) {
+      const pool = FOCUS_VARIANTS.calcaire.eleve;
+      calcaire = pool[h % pool.length];
+    } else if (durete > 0 && durete < 10) {
+      const pool = FOCUS_VARIANTS.calcaire.douce;
+      calcaire = pool[h % pool.length];
+    } else {
+      const pool = FOCUS_VARIANTS.calcaire.moyenne;
+      calcaire = pool[h % pool.length];
+    }
+
+    // Chlore
+    let chloreObj;
+    if (chlore > 0.1) {
+      const pool = FOCUS_VARIANTS.chlore.present;
+      chloreObj = pool[(h + 1) % pool.length];
+    } else {
+      const pool = FOCUS_VARIANTS.chlore.absent;
+      chloreObj = pool[(h + 1) % pool.length];
+    }
+
+    // Santé
+    const pfasValNum = parseFloat(String(metrics.pfasVal).replace("<", "").replace(",", "."));
+    let sante;
+    if (!isConform || (pfasValNum > 0.08) || (nitrates > 30)) {
+      const pool = FOCUS_VARIANTS.sante.vigilance;
+      sante = pool[(h + 2) % pool.length];
+    } else if (pfasValNum > 0.04 || nitrates > 20) {
+      const pool = FOCUS_VARIANTS.sante.bonne;
+      sante = pool[(h + 2) % pool.length];
+    } else {
+      const pool = FOCUS_VARIANTS.sante.excellent;
+      sante = pool[(h + 2) % pool.length];
+    }
+
+    const vars = { cityName, dureteVal: metrics.dureteVal, chloreVal: metrics.chloreVal, nitratesVal: metrics.nitratesVal, pfasVal: metrics.pfasVal };
+
     return {
       calcaire: {
-        titre: durete > 25 ? `🧼 Alerte Calcaire à ${cityName}` : `✨ Douceur de l'eau à ${cityName}`,
-        texte: durete > 25
-          ? `L'eau de ${cityName} affiche une dureté importante (${metrics.dureteVal}). Sans adoucisseur, le tartre s'accumulera rapidement dans votre chauffe-eau et vos équipements.`
-          : `L'équilibre minéral de ${cityName} est parfait (${metrics.dureteVal}). Votre eau est naturellement douce, préservant ainsi vos équipements et votre peau au quotidien.`
+        titre: calcaire.titre.replace(/\{cityName\}/g, cityName).replace(/\{dureteVal\}/g, metrics.dureteVal),
+        texte: calcaire.texte.replace(/\{cityName\}/g, cityName).replace(/\{dureteVal\}/g, metrics.dureteVal),
       },
       chlore: {
-        titre: chlore > 0.1 ? "🧪 Atténuer le goût de chlore" : "💧 Une eau au goût neutre",
-        texte: chlore > 0.1
-          ? `Avec un taux de ${metrics.chloreVal}, un léger goût de Javel peut être présent. Laissez reposer l'eau 15 minutes en carafe avant dégustation pour évaporer le chlore.`
-          : `Grâce à un réseau parfaitement optimisé, le taux de chlore à ${cityName} est extrêmement faible, garantissant une eau sans aucune odeur désagréable.`
+        titre: chloreObj.titre.replace(/\{cityName\}/g, cityName).replace(/\{chloreVal\}/g, metrics.chloreVal),
+        texte: chloreObj.texte.replace(/\{cityName\}/g, cityName).replace(/\{chloreVal\}/g, metrics.chloreVal),
       },
       sante: {
-        titre: (!isConform || pfas > 0.1 || nitrates > 20) ? "🛡️ Vigilance & Santé" : "🥗 Pureté & Vitalité",
-        texte: (!isConform)
-          ? `La qualité de l'eau à ${cityName} présente des non-conformités techniques ou sanitaires relevées par l'ARS (${metrics.pfasVal} PFAS, ${metrics.nitratesVal} Nitrates). Une vigilance particulière est recommandée, notamment pour les personnes sensibles.`
-          : (pfas > 0.1 || nitrates > 20)
-            ? `Bien que conforme globalement, la présence de traces (${metrics.pfasVal} de PFAS ou ${metrics.nitratesVal} de nitrates) nécessite une attention particulière pour les personnes fragiles et les nourrissons.`
-            : `Les indicateurs de santé (Nitrates : ${metrics.nitratesVal}, PFAS : ${metrics.pfasVal}) sont excellents. L'eau de ${cityName} est parfaitement adaptée à une consommation quotidienne.`
-      }
+        titre: sante.titre.replace(/\{cityName\}/g, cityName).replace(/\{nitratesVal\}/g, metrics.nitratesVal).replace(/\{pfasVal\}/g, metrics.pfasVal),
+        texte: sante.texte.replace(/\{cityName\}/g, cityName).replace(/\{nitratesVal\}/g, metrics.nitratesVal).replace(/\{pfasVal\}/g, metrics.pfasVal),
+      },
     };
-  }, [cityName, isConform, stats, metrics]);
+  }, [cityName, isConform, stats, metrics, dpt]);
 
   const faqItems = useMemo(() => {
     const durete = parseValue(stats.hardness?.val);
+    const pfasVal = stats.pfas?.val || "--";
+    const score = crystal?.final ?? "--";
+    const h = hashCity(cityName, dpt);
+
+    // Qualité
+    let qualiteAnswer;
+    if (score >= 7) {
+      const pool = FAQ_VARIANTS.qualite.bonne;
+      qualiteAnswer = pool[h % pool.length];
+    } else if (score >= 4) {
+      const pool = FAQ_VARIANTS.qualite.moyenne;
+      qualiteAnswer = pool[h % pool.length];
+    } else {
+      const pool = FAQ_VARIANTS.qualite.mauvaise;
+      qualiteAnswer = pool[h % pool.length];
+    }
+    qualiteAnswer = qualiteAnswer.replace(/\{score\}/g, String(score)).replace(/\{cityName\}/g, cityName).replace(/\{currentYear\}/g, String(currentYear));
+
+    // Calcaire
+    let dureteConclusion;
+    if (durete > 25) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.dur;
+    else if (durete > 10) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.moyen;
+    else dureteConclusion = FAQ_VARIANTS.calcaireConclusion.doux;
+    const calcaireAnswer = FAQ_VARIANTS.calcaire[0]
+      .replace(/\{durete\}/g, String(stats.hardness?.val || "--"))
+      .replace(/\{cityName\}/g, cityName)
+      .replace(/\{conclusion\}/g, dureteConclusion);
+
+    // PFAS
+    const pfasValNum = parseFloat(String(pfasVal).replace("<", "").replace(",", "."));
+    const pfasKey = (pfasValNum > 0.08) ? "present" : "absent";
+    const pfasAnswer = FAQ_VARIANTS.pfas[pfasKey]
+      .replace(/\{cityName\}/g, cityName)
+      .replace(/\{pfas\}/g, String(pfasVal));
+
+    // Carafe
+    let carafeKey = "moyenne";
+    if (durete > 25) carafeKey = "calcaire";
+    else if (durete < 10) carafeKey = "douce";
+    const carafeAnswer = FAQ_VARIANTS.carafe[carafeKey]
+      .replace(/\{cityName\}/g, cityName)
+      .replace(/\{dureteVal\}/g, metrics.dureteVal);
+
     return [
       {
         q: `L'eau du robinet à ${cityName} est-elle de bonne qualité en ${currentYear} ?`,
-        a: isConform
-          ? `Oui, avec un score Crystal de ${crystal.final}/10, l'eau de ${cityName} est jugée de bonne qualité et respecte les normes sanitaires de l'ARS.`
-          : `La vigilance est de mise : le score de ${crystal.final}/10 reflète des dépassements sur certains critères de qualité. L'eau est officiellement classée comme non conforme par l'ARS.`
+        a: qualiteAnswer,
       },
       {
         q: `Quel est le taux exact de calcaire à ${cityName} ?`,
-        a: `Les dernières analyses mesurent une dureté (TH) de ${stats.hardness?.val || '--'}°f à ${cityName}. ${durete > 25 ? 'Une eau considérée comme très calcaire.' : 'Une eau équilibrée.'}`
+        a: calcaireAnswer,
       },
       {
         q: `Y a-t-il des nitrates dans l'eau de ${cityName} ?`,
-        a: `Le taux de nitrates relevé est de ${stats.nitrates?.val || '--'} mg/L. La limite de qualité sanitaire est fixée à 50 mg/L par les autorités.`
+        a: `Le taux de nitrates relevé est de ${stats.nitrates?.val || "--"} mg/L. La limite de qualité sanitaire est fixée à 50 mg/L par les autorités.`,
       },
       {
         q: `L'eau de ${cityName} contient-elle des PFAS (polluants éternels) ?`,
-        a: `La surveillance des PFAS devient systématique en 2026. À ${cityName}, les derniers relevés indiquent des taux ${parseValue(stats.pfas?.val) > 0.1 ? 'à surveiller' : 'conformes aux futures normes européennes (0.1 µg/L)'}.`
+        a: pfasAnswer,
       },
       {
         q: `Dois-je utiliser une carafe filtrante ou un adoucisseur à ${cityName} ?`,
-        a: `${durete > 25 ? "L'eau étant calcaire (" + metrics.dureteVal + "), un adoucisseur protégera vos installations." : "L'eau est naturellement douce, un adoucisseur est inutile."} Pour le goût, une carafe filtrante peut aider si vous êtes sensible au chlore.`
+        a: carafeAnswer,
       },
       {
         q: `Peut-on boire l'eau chaude du robinet à ${cityName} ?`,
-        a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude. La chaleur favorise le développement bactérien et la dissolution de métaux lourds issus de votre installation intérieure. Utilisez toujours l'eau froide."
+        a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude. La chaleur favorise le développement bactérien et la dissolution de métaux lourds issus de votre installation intérieure. Utilisez toujours l'eau froide.",
       }
     ];
-  }, [cityName, isConform, crystal, stats, metrics, currentYear]);
+  }, [cityName, isConform, crystal, stats, metrics, currentYear, dpt]);
 
   return (
     <div className="city-seo-master">
@@ -372,18 +420,40 @@ export default function CitySEOContent({ cityName, data }) {
               </p>
               <p>
                 <strong>Verdict de l'expert :</strong> en {currentYear}, l'analyse de l'eau potable à <strong>{cityName}</strong> {(() => {
-                  const cityScore = crystal.final;
+                  const cityScore = crystal?.final ?? 0;
                   const deptScore = deptAvg?.score || 7.4;
                   const regionScore = regionalInfo?.score || 7.4;
                   const deptLabel = deptAvg?.name ? `la ${deptAvg.name}` : `le département ${dpt}`;
                   const regionName = regionalInfo?.name || "la région";
+                  const h = hashCity(cityName, dpt);
 
                   if (cityScore >= deptScore && cityScore >= regionScore) {
-                    return `affiche un bilan remarquable. Avec un Indice de Pureté de ${cityScore}/10, la commune se positionne non seulement au-dessus de la moyenne de ${deptLabel} (${deptScore}/10), mais confirme également son excellence à l'échelle de la région ${regionName} (${regionScore}/10). Cette performance témoigne d'une gestion rigoureuse et place le réseau local parmi les plus sûrs de la zone.`;
+                    const best = [
+                      `affiche un bilan remarquable. Avec un Indice de Pureté de ${cityScore}/10, la commune se positionne au-dessus des moyennes de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Cette performance témoigne d'une gestion rigoureuse et place le réseau local parmi les plus sûrs de la zone.`,
+                      `est une excellente élève. Son score de ${cityScore}/10 dépasse à la fois ${deptLabel} (${deptScore}/10) et ${regionName} (${regionScore}/10). Un résultat qui reflète un investissement sérieux dans la qualité de l'eau.`,
+                      `confirme son excellence. Avec ${cityScore}/10, la commune fait mieux que ${deptLabel} (${deptScore}/10) et que la moyenne régionale (${regionScore}/10). Les habitants peuvent être fiers de leur eau.`,
+                      `se distingue nettement. Le score de ${cityScore}/10 surpasse les références départementales (${deptScore}/10) et régionales (${regionScore}/10). Une eau parmi les plus fiables du secteur.`,
+                      `brille par ses résultats. Avec ${cityScore}/10, elle dépasse ${deptLabel} (${deptScore}/10) et se hisse au-dessus de ${regionName} (${regionScore}/10). Une performance solide et durable.`,
+                    ];
+                    return best[h % best.length];
                   } else if (cityScore >= deptScore) {
-                    return `se situe dans une dynamique positive. Son score de ${cityScore}/10 surclasse la moyenne de ${deptLabel} (${deptScore}/10) et s'aligne sur les performances de la région ${regionName} (${regionScore}/10). Le réseau garantit une sécurité sanitaire solide.`;
+                    const good = [
+                      `se situe dans une dynamique positive. Son score de ${cityScore}/10 surclasse la moyenne de ${deptLabel} (${deptScore}/10) et s'aligne sur les performances de ${regionName} (${regionScore}/10). Le réseau garantit une sécurité sanitaire solide.`,
+                      `fait mieux que son département. Avec ${cityScore}/10, elle dépasse ${deptLabel} (${deptScore}/10) et se rapproche de la moyenne de ${regionName} (${regionScore}/10). Une tendance encourageante.`,
+                      `affiche des résultats encourageants. Le score de ${cityScore}/10 est supérieur à ${deptLabel} (${deptScore}/10), même s'il reste en deçà de ${regionName} (${regionScore}/10). La direction est bonne.`,
+                      `montre une progression notable face à ${deptLabel} (${deptScore}/10) avec un score de ${cityScore}/10. La commune s'aligne progressivement sur les standards régionaux (${regionScore}/10).`,
+                      `témoigne d'une amélioration continue. Avec ${cityScore}/10, la commune devance ${deptLabel} (${deptScore}/10) et converge vers le niveau de ${regionName} (${regionScore}/10).`,
+                    ];
+                    return good[h % good.length];
                   } else {
-                    return `présente des indicateurs à surveiller. Avec un score de ${cityScore}/10, la qualité de l'eau est légèrement en retrait par rapport aux moyennes de ${deptLabel} (${deptScore}/10) et de la région ${regionName} (${regionScore}/10). Ce décalage mérite une attention particulière sur les paramètres techniques locaux.`;
+                    const attention = [
+                      `présente des indicateurs à surveiller. Avec un score de ${cityScore}/10, la qualité de l'eau est en retrait par rapport à ${deptLabel} (${deptScore}/10) et à ${regionName} (${regionScore}/10). Ce décalage mérite une attention particulière sur les paramètres techniques locaux.`,
+                      `nécessite une vigilance accrue. Le score de ${cityScore}/10 est inférieur à ${deptLabel} (${deptScore}/10) et à ${regionName} (${regionScore}/10). Des améliorations sont nécessaires pour rejoindre les standards du territoire.`,
+                      `accuse un retard par rapport à son territoire. Avec ${cityScore}/10, la commune est en dessous de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Un plan d'action serait bénéfique.`,
+                      `doit poursuivre ses efforts. Le score de ${cityScore}/10 reste inférieur aux références de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). La situation n'est pas critique mais mérite un suivi.`,
+                      `a une marge de progression. Avec ${cityScore}/10, la qualité de l'eau est moins bonne qu'à l'échelle de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Une surveillance renforcée est conseillée.`,
+                    ];
+                    return attention[h % attention.length];
                   }
                 })()}
               </p>
