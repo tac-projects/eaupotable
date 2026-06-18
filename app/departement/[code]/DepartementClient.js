@@ -1,5 +1,6 @@
 "use client";
 import Navbar from '../../components/Navbar';
+import Image from 'next/image';
 import '../../styles/seo.css';
 import '../../styles/components.css';
 
@@ -78,11 +79,13 @@ export default function DepartementClient({ code, deptData }) {
 
               <div className="hero-right">
                 <div className="hero-water-image-container city-variant">
-                  <img 
-                    src="/images/hero-water-glass.png" 
+                  <Image
+                    src="/images/hero-water-glass.webp"
                     alt={`Analyse de la qualité de l'eau : département ${deptName}`}
                     className="hero-water-image"
-                    loading="eager"
+                    width={600}
+                    height={600}
+                    priority
                   />
                   <div className="crystal-score-badge city-variant">
                     <div className="crystal-badge-header">

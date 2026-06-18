@@ -283,7 +283,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
             <div className="hero-right">
               <div className="hero-water-image-container">
                 <Image 
-                  src="/images/hero-water-glass.png" 
+                  src="/images/hero-water-glass.webp"
                   alt="Analyse qualité eau potable France 2026 - Crystal Score" 
                   className="hero-water-image"
                   width={600}

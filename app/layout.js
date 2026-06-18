@@ -71,6 +71,22 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
+        <link rel="alternate" type="application/rss+xml" title="EauPotable.net" href="https://www.eaupotable.net/feed.xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'EauPotable.net',
+              url: 'https://www.eaupotable.net',
+              description: 'Observatoire citoyen indépendant de la qualité de l\'eau du robinet en France — 35 000 communes analysées.',
+              sameAs: [
+                'https://www.linkedin.com/in/thomasalexiscailleau',
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="full-height-body" suppressHydrationWarning>
         {children}
