@@ -7,7 +7,7 @@ export const metadata = {
   title: "Méthodologie Crystal Score™ | Comment nous auditons la qualité de l'eau",
   description: "Découvrez l'algorithme rigoureux derrière le Crystal Score. Transparence totale sur les seuils de polluants, pesticides, PFAS et microbiologie.",
   alternates: {
-    canonical: 'https://eaupotable.net/methodologie',
+    canonical: 'https://www.eaupotable.net/methodologie',
   },
 };
 
@@ -453,13 +453,13 @@ const MethodologyPage = () => {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Accueil",
-                    "item": "https://eaupotable.net"
+                    "item": "https://www.eaupotable.net"
                   },
                   {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Méthodologie",
-                    "item": "https://eaupotable.net/methodologie"
+                    "item": "https://www.eaupotable.net/methodologie"
                   }
                 ]
               },

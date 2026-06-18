@@ -44,9 +44,21 @@ export async function GET(request) {
       ua.includes('yandex') || 
       ua.includes('baiduspider');
 
-    // Si c'est un bot d'indexation ou un crawler (pas un partage social), on redirige vers le statique
+    // Si c'est un bot d'indexation ou un crawler (pas un partage social), on sert le statique
+    // en 200 pour éviter les erreurs "redirect" dans Google Search Console.
     if (!isSocialShare && isBot) {
-      return Response.redirect(new URL('/images/og-default.png', request.url), 302);
+      const imageUrl = new URL('/images/og-default.png', request.url);
+      const imageResponse = await fetch(imageUrl.toString());
+      if (imageResponse.ok) {
+        return new Response(imageResponse.body, {
+          status: 200,
+          headers: {
+            'Content-Type': 'image/png',
+            'Cache-Control': 'public, s-maxage=31536000, immutable',
+          },
+        });
+      }
+      // Fallback : si l'image statique est introuvable, on laisse passer la génération dynamique
     }
 
     return new ImageResponse(

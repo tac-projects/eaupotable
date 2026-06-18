@@ -20,6 +20,17 @@ function checkRateLimit(request) {
   const pathname = request.nextUrl.pathname;
   if (!isDynamicPage(pathname)) return { allowed: true };
 
+  // Exemption des crawlers légitimes pour ne pas brider l'indexation
+  const ua = request.headers.get('user-agent')?.toLowerCase() || '';
+  const isSearchEngine =
+    ua.includes('googlebot') ||
+    ua.includes('bingbot') ||
+    ua.includes('slurp') ||
+    ua.includes('duckduckbot') ||
+    ua.includes('baiduspider') ||
+    ua.includes('yandexbot');
+  if (isSearchEngine) return { allowed: true };
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     || request.headers.get('x-real-ip')
     || '127.0.0.1';

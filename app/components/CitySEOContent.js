@@ -196,9 +196,9 @@ export default function CitySEOContent({ cityName, data }) {
             {
               "@type": "BreadcrumbList",
               "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://eaupotable.net/" },
-                { "@type": "ListItem", "position": 2, "name": "France", "item": "https://eaupotable.net/villes" },
-                { "@type": "ListItem", "position": 3, "name": `Département ${dpt}`, "item": `https://eaupotable.net/departement/${dpt}` },
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.eaupotable.net/" },
+                { "@type": "ListItem", "position": 2, "name": "France", "item": "https://www.eaupotable.net/villes" },
+                { "@type": "ListItem", "position": 3, "name": `Département ${dpt}`, "item": `https://www.eaupotable.net/departement/${dpt}` },
                 { "@type": "ListItem", "position": 4, "name": cityName }
               ]
             },
