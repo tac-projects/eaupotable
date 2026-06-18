@@ -19,48 +19,6 @@ export async function GET(request) {
     };
     const circleColor = colors[status] || '#3b82f6';
 
-    // 1. Protection Radicale du CPU : Détection des User-Agents
-    const ua = request.headers.get('user-agent')?.toLowerCase() || '';
-    
-    // Whitelist des agents qui ont réellement besoin de l'image dynamique (Réseaux Sociaux)
-    const isSocialShare = 
-      ua.includes('facebookexternalhit') || 
-      ua.includes('twitterbot') || 
-      ua.includes('linkedinbot') || 
-      ua.includes('whatsapp') || 
-      ua.includes('slackbot') || 
-      ua.includes('discordbot') ||
-      ua.includes('telegrambot') ||
-      ua.includes('applebot'); // Ajout AppleBot pour iMessage
-
-    // Détection agressive des bots d'indexation et SEO
-    const isBot = 
-      ua.includes('bot') || 
-      ua.includes('crawl') || 
-      ua.includes('spider') || 
-      ua.includes('ahrefs') || 
-      ua.includes('semrush') || 
-      ua.includes('dotbot') || 
-      ua.includes('yandex') || 
-      ua.includes('baiduspider');
-
-    // Si c'est un bot d'indexation ou un crawler (pas un partage social), on sert le statique
-    // en 200 pour éviter les erreurs "redirect" dans Google Search Console.
-    if (!isSocialShare && isBot) {
-      const imageUrl = new URL('/images/og-default.png', request.url);
-      const imageResponse = await fetch(imageUrl.toString());
-      if (imageResponse.ok) {
-        return new Response(imageResponse.body, {
-          status: 200,
-          headers: {
-            'Content-Type': 'image/png',
-            'Cache-Control': 'public, s-maxage=31536000, immutable',
-          },
-        });
-      }
-      // Fallback : si l'image statique est introuvable, on laisse passer la génération dynamique
-    }
-
     return new ImageResponse(
       (
         <div
