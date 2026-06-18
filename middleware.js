@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 // ---------------------------------------------------------------------------
 // Rate limiter global (mémoire edge) pour protéger les pages dynamiques.
 // Limite : 60 requêtes / minute / IP sur /ville/ et /departement/.
-// Le middleware tourne sur l'edge Vercel, donc très rapide et sans cold start.
+// Le middleware tourne sur l'edge runtime Next.js, donc très rapide et sans cold start.
 // ---------------------------------------------------------------------------
 const rateLimitMap = new Map();
 

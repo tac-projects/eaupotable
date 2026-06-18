@@ -31,7 +31,7 @@ export default function LegalPage() {
           <div className="legal-section">
             <h2>2. Hébergement</h2>
             <p>
-              Le site est hébergé par la société <strong>Vercel Inc.</strong>, située au 340 S Lemon Ave #1150, Walnut, CA 91789, États-Unis.
+              Le site est hébergé sur un serveur dédié en France (OVH/Contabo). L'infrastructure est gérée directement par l'éditeur du site.
             </p>
           </div>
 
