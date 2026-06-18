@@ -61,7 +61,11 @@ async function run() {
         if (insee) {
             if (insee.length === 4) insee = '0' + insee;
             if (!inseeData[insee]) inseeData[insee] = {};
-            inseeData[insee].aepId = r[18]?.toString().trim();
+            if (!inseeData[insee].aepIds) inseeData[insee].aepIds = [];
+            const id = r[18]?.toString().trim();
+            if (id && !inseeData[insee].aepIds.includes(id)) {
+                inseeData[insee].aepIds.push(id);
+            }
         }
     });
 
@@ -72,7 +76,11 @@ async function run() {
         if (insee) {
             if (insee.length === 4) insee = '0' + insee;
             if (!inseeData[insee]) inseeData[insee] = {};
-            inseeData[insee].acId = r[18]?.toString().trim();
+            if (!inseeData[insee].acIds) inseeData[insee].acIds = [];
+            const id = r[18]?.toString().trim();
+            if (id && !inseeData[insee].acIds.includes(id)) {
+                inseeData[insee].acIds.push(id);
+            }
         }
     });
 
@@ -99,18 +107,23 @@ async function run() {
     const finalPrices = {};
     let count = 0;
 
+    // Helper : essayer chaque service ID sur la cascade d'années
+    const cascadeFind = (ids, year2024, year2023, year2022) => {
+        if (!ids || ids.length === 0) return 0;
+        // 2024
+        for (const sid of ids) { if (year2024[sid]) return year2024[sid]; }
+        // 2023 +3%
+        for (const sid of ids) { if (year2023[sid]) return parseFloat((year2023[sid] * 1.03).toFixed(2)); }
+        // 2022 +6%
+        for (const sid of ids) { if (year2022[sid]) return parseFloat((year2022[sid] * 1.06).toFixed(2)); }
+        return 0;
+    };
+
     for (const insee in inseeData) {
         const ids = inseeData[insee];
-        
-        // Cascade Eau Potable
-        let aep = aep2024[ids.aepId] || 0;
-        if (aep === 0 && aep2023[ids.aepId]) aep = parseFloat((aep2023[ids.aepId] * 1.03).toFixed(2));
-        if (aep === 0 && aep2022[ids.aepId]) aep = parseFloat((aep2022[ids.aepId] * 1.06).toFixed(2));
 
-        // Cascade Assainissement
-        let ac = ac2024[ids.acId] || 0;
-        if (ac === 0 && ac2023[ids.acId]) ac = parseFloat((ac2023[ids.acId] * 1.03).toFixed(2));
-        if (ac === 0 && ac2022[ids.acId]) ac = parseFloat((ac2022[ids.acId] * 1.06).toFixed(2));
+        let aep = cascadeFind(ids.aepIds, aep2024, aep2023, aep2022);
+        let ac = cascadeFind(ids.acIds, ac2024, ac2023, ac2022);
 
         // Overrides Manuels (Prioritaires)
         if (MANUAL_OVERRIDES[insee]) {
