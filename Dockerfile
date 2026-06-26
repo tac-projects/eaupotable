@@ -19,7 +19,7 @@ COPY . .
 # Build Next.js
 RUN npm run build
 
-# ---- Stage 3 : Production (image finale, seulement les dépendances prod) ----
+# ---- Stage 3 : Production (image finale, dépendances prod uniquement) ----
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -31,9 +31,11 @@ ENV NODE_ENV=production \
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Copie des dépendances production uniquement
+# Copie des dépendances complètes puis suppression des devDependencies
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package-lock.json ./
+RUN npm prune --omit=dev
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 

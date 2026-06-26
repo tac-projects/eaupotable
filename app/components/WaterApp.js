@@ -139,8 +139,6 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
   };
 
-  // La logique Mapbox a été déportée dans le composant dynamique MapBackground.js
-
   // 4. City initial data fetch
   useEffect(() => {
     if (!initialCity || initialData) return;

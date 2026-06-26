@@ -5,6 +5,15 @@ import path from 'path';
 let searchIndexCache = null;
 
 // ---------------------------------------------------------------------------
+// Headers CORS (l'API est publique mais restreinte au domaine principal)
+// ---------------------------------------------------------------------------
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': 'https://www.eaupotable.net',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+// ---------------------------------------------------------------------------
 // Rate limiter côté serveur (mémoire) pour protéger l'API des abus.
 // Limite : 20 requêtes par fenêtre de 60 secondes par IP.
 // ---------------------------------------------------------------------------
@@ -49,6 +58,7 @@ export async function GET(request) {
       {
         status: 429,
         headers: {
+          ...CORS_HEADERS,
           'Retry-After': Math.ceil((reset - Date.now()) / 1000).toString(),
           'X-RateLimit-Remaining': '0',
         },
@@ -63,10 +73,26 @@ export async function GET(request) {
   if (!q || q.length < 2) {
     return NextResponse.json([], {
       headers: {
+        ...CORS_HEADERS,
         'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400',
         'X-RateLimit-Remaining': remaining.toString(),
       },
     });
+  }
+
+  // Validation de sécurité : limite de longueur + whitelist de caractères
+  if (q.length > 100) {
+    return NextResponse.json(
+      { error: 'Requête trop longue (max 100 caractères).' },
+      { status: 400, headers: CORS_HEADERS }
+    );
+  }
+  // N'autorise que les caractères typiques des noms de villes françaises
+  if (!/^[\w\s\-'’éèêëàâäùûüôöîïçÉÈÊËÀÂÄÙÛÜÔÖÎÏÇ.,()]+$/u.test(q)) {
+    return NextResponse.json(
+      { error: 'Caractères non autorisés dans la recherche.' },
+      { status: 400, headers: CORS_HEADERS }
+    );
   }
 
   // --- 3. Recherche --------------------------------------------------------
@@ -105,6 +131,7 @@ export async function GET(request) {
 
     return NextResponse.json(matches, {
       headers: {
+        ...CORS_HEADERS,
         'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400',
         'X-RateLimit-Remaining': remaining.toString(),
       },
@@ -112,8 +139,17 @@ export async function GET(request) {
   } catch (e) {
     return NextResponse.json([], {
       headers: {
+        ...CORS_HEADERS,
         'Cache-Control': 'public, max-age=3600, s-maxage=86400',
       },
     });
   }
+}
+
+// Gestionnaire OPTIONS pour les requêtes CORS preflight
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: CORS_HEADERS,
+  });
 }
