@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//etc/nginx/sites-enabled/**)",
+      "Read(//etc/nginx/sites-available/**)",
+      "Read(//etc/nginx/conf.d/**)",
+      "Bash(sudo iptables -L -n)",
+      "Bash(iptables -L -n)",
+      "Bash(tail -5000 /var/log/nginx/eaupotable-access.log 2>/dev/null | head -100)",
+      "Read(//var/log/nginx/**)",
+      "Bash(tail -5000 /var/log/nginx/access.log 2>/dev/null | head -100)",
+      "Bash(sudo last -20)",
+      "Bash(last -20)",
+      "Bash(sudo grep -i \"failed\\\\|invalid\\\\|break-in\\\\| refused\\\\|blocked\" /var/log/auth.log)",
+      "Read(//var/log/**)",
+      "Bash(awk '{print $1}' /var/log/nginx/eaupotable-access.log)",
+      "Bash(docker compose *)",
+      "Bash(docker build *)",
+      "Bash(dpkg -l)",
+      "Bash(openssl version *)"
+    ]
+  }
+}
