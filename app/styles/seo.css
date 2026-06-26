@@ -541,13 +541,9 @@
 }
 
 .cf-turnstile-container-inline {
-    display: none;
-    /* Invisible mais présent dans le DOM pour validation */
-}
-
-/* On n'affiche Turnstile que s'il n'est pas en mode invisible pour ne pas casser le layout */
-.cf-turnstile-visible .cf-turnstile-container-inline {
-    display: block;
+    /* Turnstile invisible : le widget gère lui-même sa visibilité.
+       Le conteneur doit rester dans le flux pour que Turnstile puisse
+       afficher le challenge (popup) quand nécessaire. */
 }
 
 

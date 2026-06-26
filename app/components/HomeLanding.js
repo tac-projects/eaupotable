@@ -73,6 +73,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
   const metropolisScores = METROPOLIS_SCORES;
   const turnstileRef = useRef(null);
+  const pendingSubmitRef = useRef(false);
 
   const SITE_KEY = "0x4AAAAAAC_xXPQR0f_6hAhk";
 
@@ -89,10 +90,23 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
   } = searchProps;
 
   useEffect(() => {
-    const handleToken = (e) => setTurnstileToken(e.detail);
+    const handleToken = (e) => {
+      setTurnstileToken(e.detail);
+    };
     window.addEventListener('turnstile-success', handleToken);
     return () => window.removeEventListener('turnstile-success', handleToken);
   }, []);
+
+  // Relancer la soumission automatiquement quand le token Turnstile arrive
+  // après une tentative de submit sans token
+  useEffect(() => {
+    if (turnstileToken && pendingSubmitRef.current) {
+      pendingSubmitRef.current = false;
+      // Re-déclencher la soumission via un event submit sur le formulaire
+      const form = document.querySelector('.cta-form-inline');
+      if (form) form.requestSubmit();
+    }
+  }, [turnstileToken]);
 
   useEffect(() => {
     const fetchVigilanceSuggestions = async () => {
@@ -127,7 +141,16 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
   const handleVigilanceSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !cityName || !turnstileToken) return;
+    if (!email || !cityName) return;
+
+    // Déclencher le challenge Turnstile invisible si pas encore de token
+    if (!turnstileToken) {
+      pendingSubmitRef.current = true;
+      if (window.turnstile && window.__turnstileWidgetId !== undefined) {
+        window.turnstile.execute(window.__turnstileWidgetId);
+      }
+      return;
+    }
 
     setStatus('SENDING');
 
@@ -606,7 +629,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   <div className="cta-input-wrapper">
                     <input
                       type="text"
-                      placeholder="Votre ville ou CP..."
+                      placeholder="Votre ville..."
                       className="cta-input"
                       value={cityName}
                       onChange={(e) => handleVigilanceCityChange(e.target.value)}
@@ -644,7 +667,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   <button
                     type="submit"
                     className="cta-btn-inline"
-                    disabled={status === 'SENDING' || status === 'SUCCESS' || !turnstileToken}
+                    disabled={status === 'SENDING' || status === 'SUCCESS'}
                   >
                     {status === 'SENDING' ? '...' : status === 'SUCCESS' ? 'OK' : "S'abonner"}
                   </button>
@@ -791,13 +814,14 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 script.onload = () => {
                    window.turnstile_loaded = true;
                    if (window.turnstile && document.getElementById('turnstile-container')) {
-                     window.turnstile.render('#turnstile-container', {
+                     const widgetId = window.turnstile.render('#turnstile-container', {
                        sitekey: "${SITE_KEY}",
-                       theme: 'dark',
+                       size: 'invisible',
                        callback: (token) => {
                          window.dispatchEvent(new CustomEvent('turnstile-success', { detail: token }));
                        }
                      });
+                     window.__turnstileWidgetId = widgetId;
                    }
                 };
                 document.head.appendChild(script);

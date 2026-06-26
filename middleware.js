@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 // ---------------------------------------------------------------------------
 // Rate limiter global (mémoire edge) pour protéger les pages dynamiques.
-// Limite : 60 requêtes / minute / IP sur /ville/ et /departement/.
+// Limite : 20 requêtes / minute / IP sur /ville/ et /departement/.
 // Le middleware tourne sur l'edge runtime Next.js, donc très rapide et sans cold start.
 // ---------------------------------------------------------------------------
 const rateLimitMap = new Map();
@@ -37,7 +37,7 @@ function checkRateLimit(request) {
 
   const now = Date.now();
   const windowMs = 60_000; // 1 minute
-  const maxRequests = 60;   // 60 requêtes max par fenêtre (1/sec, raisonnable)
+  const maxRequests = 20;   // 20 requêtes max par fenêtre (suffisant pour un humain, dissuasif pour un scraper)
 
   const record = rateLimitMap.get(ip);
   if (!record || now - record.windowStart > windowMs) {
