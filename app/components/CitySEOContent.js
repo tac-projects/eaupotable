@@ -275,7 +275,7 @@ export default function CitySEOContent({ cityName, data }) {
               },
               "isAccessibleForFree": true,
               "license": "https://www.eaupotable.net/mentions-legales",
-              "spatialCoverage": { "@type": "Place", "name": cityName },
+              "spatialCoverage": { "@type": "City", "name": cityName },
               "temporalCoverage": `${currentYear}`
             }
           ]

@@ -119,9 +119,13 @@ export default async function DepartementPage({ params }) {
           "url": "https://www.linkedin.com/in/thomasalexiscailleau"
         },
         "license": "https://www.eaupotable.net/mentions-legales",
-        "spatialCoverage": { 
-          "@type": "Place", 
-          "name": deptName
+        "spatialCoverage": {
+          "@type": "AdministrativeArea",
+          "name": deptName,
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "France"
+          }
         },
         "temporalCoverage": `${currentYear}`
       }
