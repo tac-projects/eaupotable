@@ -27,10 +27,19 @@ async function generateSitemap() {
     Object.entries(cityIndex).forEach(([slug, deptCode]) => {
       // On ignore les entrées qui sont des codes INSEE numériques (5 chiffres)
       if (/^\d{5}$/.test(slug)) return;
-      
+
       if (!departements[deptCode]) departements[deptCode] = [];
       departements[deptCode].push(slug);
     });
+
+    // 2bis. Charger la liste des métropoles pour priorisation
+    const metropolisPath = path.join(__dirname, '../public/data/metropolis.json');
+    const metropoleSlugs = new Set();
+    if (fs.existsSync(metropolisPath)) {
+      const metropolisData = JSON.parse(fs.readFileSync(metropolisPath, 'utf8'));
+      metropolisData.forEach(city => metropoleSlugs.add(city.slug));
+      console.log(`🏙️  ${metropoleSlugs.size} métropoles détectées pour priorisation`);
+    }
 
     let sitemapFiles = [];
     const todayDate = new Date().toISOString().split('T')[0];
@@ -48,16 +57,26 @@ ${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod>
 
     // --- SITEMAPS PAR DEPARTEMENT ---
     for (const [deptCode, slugs] of Object.entries(departements)) {
-      const deptUrls = [];
-      deptUrls.push(`${DOMAIN}/departement/${deptCode}`);
+      const deptPriority = '0.8';
+      const metroPriority = '1.0';
+      const stdPriority = '0.7';
+      const metroChangefreq = 'daily';
+      const stdChangefreq = 'weekly';
+
+      const deptUrls = [
+        `  <url><loc>${DOMAIN}/departement/${deptCode}</loc><lastmod>${todayDate}</lastmod><changefreq>${stdChangefreq}</changefreq><priority>${deptPriority}</priority></url>`
+      ];
 
       slugs.forEach(slug => {
-        deptUrls.push(`${DOMAIN}/ville/${slug}`);
+        const isMetropole = metropoleSlugs.has(slug);
+        const priority = isMetropole ? metroPriority : stdPriority;
+        const changefreq = isMetropole ? metroChangefreq : stdChangefreq;
+        deptUrls.push(`  <url><loc>${DOMAIN}/ville/${slug}</loc><lastmod>${todayDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
       });
 
       const deptXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${deptUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`).join('\n')}
+${deptUrls.join('\n')}
 </urlset>`;
       
       const fileName = `sitemap-dept-${deptCode}.xml`;

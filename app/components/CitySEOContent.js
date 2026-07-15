@@ -2,6 +2,7 @@
 
 import { useMemo, Fragment } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
 import { generateExpertVerdict, FOCUS_VARIANTS, FAQ_VARIANTS, hashCity } from '@/lib/content-variants';
 import dynamic from 'next/dynamic';
@@ -10,6 +11,8 @@ const BenchmarkAudit = dynamic(() => import('./BenchmarkAudit'), { ssr: true });
 const NearbyCities = dynamic(() => import('./NearbyCities'), { ssr: true });
 
 export default function CitySEOContent({ cityName, data }) {
+  const pathname = usePathname();
+  const pageSlug = pathname ? pathname.replace(/^\/ville\//, '') : '';
   if (!data || data.error || !data.meta) return null;
 
   const { crystal, stats, isConform, meta, prix } = data;
@@ -260,7 +263,7 @@ export default function CitySEOContent({ cityName, data }) {
               "@type": "Dataset",
               "name": `Qualité de l'eau potable à ${cityName} (${currentMonthYear})`,
               "description": `Données officielles ARS sur la potabilité, les PFAS, les pesticides et les nitrates pour le réseau de distribution de ${cityName}. Analyse mise à jour en ${currentMonthYear}.`,
-              "url": `https://www.eaupotable.net/ville/${data.meta?.slug || ""}`,
+              "url": `https://www.eaupotable.net/ville/${pageSlug || data.meta?.slug || ""}`,
               "variableMeasured": [
                 { "@type": "PropertyValue", "name": "Conformité bactériologique", "value": isConform ? "Conforme" : "Non conforme" },
                 { "@type": "PropertyValue", "name": "PFAS", "unitText": "µg/L", "value": parseValue(stats.pfas?.val) || 0 },
@@ -275,7 +278,7 @@ export default function CitySEOContent({ cityName, data }) {
               },
               "isAccessibleForFree": true,
               "license": "https://www.eaupotable.net/mentions-legales",
-              "spatialCoverage": { "@type": "City", "name": cityName },
+              "spatialCoverage": { "@type": "Place", "name": cityName },
               "temporalCoverage": `${currentYear}`
             }
           ]

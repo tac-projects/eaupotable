@@ -17,7 +17,26 @@
       "Bash(docker compose *)",
       "Bash(docker build *)",
       "Bash(dpkg -l)",
-      "Bash(openssl version *)"
+      "Bash(openssl version *)",
+      "Bash(nginx -s reload)",
+      "Bash(python3 -c 'print\\(\"a\"*101\\)')",
+      "Bash(rm /var/www/eaupotable/app/components/MapBackground.js && echo \"MapBackground.js supprimé\")",
+      "Bash(npm audit *)",
+      "Bash(docker run *)",
+      "Bash(git reset *)",
+      "mcp__puppeteer__puppeteer_screenshot",
+      "mcp__puppeteer__puppeteer_evaluate",
+      "mcp__playwright__browser_screenshot",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "Bash(cp /tmp/search-console-key.json /var/www/eaupotable/.claude/search-console-key.json)",
+      "Bash(chmod 600 /var/www/eaupotable/.claude/search-console-key.json)"
+    ],
+    "additionalDirectories": [
+      "/var/www/eaupotable/app/components"
     ]
   }
 }

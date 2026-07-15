@@ -120,10 +120,10 @@ export default async function DepartementPage({ params }) {
         },
         "license": "https://www.eaupotable.net/mentions-legales",
         "spatialCoverage": {
-          "@type": "AdministrativeArea",
+          "@type": "Place",
           "name": deptName,
           "containedInPlace": {
-            "@type": "Country",
+            "@type": "Place",
             "name": "France"
           }
         },
