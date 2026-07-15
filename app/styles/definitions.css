@@ -1,0 +1,205 @@
+/* ==========================================================================
+   PAGE DÉFINITIONS — Lexique de l'Eau Potable
+   Design system cohérent avec FAQ & Méthodologie
+   ========================================================================== */
+
+.definitions-page {
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  padding-bottom: 0;
+}
+
+/* ---- HERO ---- */
+.definitions-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 120px 0 100px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.definitions-hero .seo-breadcrumb {
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.definitions-main-title {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.definitions-main-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- GRILLE ---- */
+.definitions-content-section {
+  padding: 100px 0;
+  background: var(--bg-light);
+}
+
+.definitions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.definition-card {
+  background: white;
+  padding: var(--spacing-xl) var(--spacing-xl) 36px;
+  border-radius: var(--radius-lg);
+  border: var(--ghost-border);
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-premium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  scroll-margin-top: 80px; /* pour les ancres */
+}
+
+.definition-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- HEADER DE CARTE (icône + titre) ---- */
+.definition-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.definition-card-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: var(--primary-glow);
+  color: var(--primary-solid);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.definition-card-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.definition-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* ---- CORPS DE CARTE ---- */
+.definition-card-summary {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.definition-card-details {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ---- CTA FOOTER ---- */
+.definitions-footer-cta {
+  background: var(--surface);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.definitions-cta-card {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.definitions-cta-card h3 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.definitions-cta-card p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .definitions-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .definitions-main-title {
+    font-size: 2.2rem;
+  }
+
+  .definitions-main-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .definitions-hero {
+    padding: 80px 0 60px;
+  }
+
+  .definitions-content-section {
+    padding: 60px 0;
+  }
+
+  .definitions-footer-cta {
+    padding: 60px 0;
+  }
+
+  .definitions-cta-card {
+    padding: 40px 24px;
+    border-radius: 28px;
+  }
+
+  .definitions-cta-card h3 {
+    font-size: 1.8rem;
+  }
+
+  .definition-card {
+    padding: 24px;
+  }
+
+  .definition-card-header {
+    gap: 12px;
+  }
+
+  .definition-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .definition-card-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+}
