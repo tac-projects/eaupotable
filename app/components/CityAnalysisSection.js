@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Fragment, useMemo } from 'react';
+import Link from 'next/link';
 import {
   getParameterStatus,
   PARAM_ICONS,
@@ -8,6 +9,18 @@ import {
   CENTERED_PARAMS,
   parseValue
 } from '@/lib/water-utils';
+
+const DEFINITION_ANCHORS = {
+  microbiology: 'microbiologie',
+  nitrates: 'nitrates',
+  pesticides: 'pesticides',
+  pfas: 'pfas',
+  chlorine: 'chlore',
+  hardness: 'calcaire',
+  ph: 'ph',
+  turb: 'turbidite',
+  cond: 'conductivite',
+};
 
 export default function CityAnalysisSection({ stats, isConform, meta }) {
   const paramsList = useMemo(() => [
@@ -87,7 +100,16 @@ function AnalysisCard({ parameter }) {
         <div className="analysis-card-left">
           <div className="analysis-card-icon" dangerouslySetInnerHTML={{ __html: PARAM_ICONS[key] }} />
           <div className="analysis-card-main-info">
-            <h3 className="analysis-card-name">{name}</h3>
+            <h3 className="analysis-card-name">
+              <Link
+                href={`/definitions#${DEFINITION_ANCHORS[key] || key}`}
+                className="analysis-card-name-link"
+                onClick={(e) => e.stopPropagation()}
+                title={`Définition : ${name}`}
+              >
+                {name}
+              </Link>
+            </h3>
             <div className="analysis-card-subtitle">{status.subtitle}</div>
           </div>
         </div>
