@@ -54,7 +54,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.eaupotable.net',
+    canonical: 'https://www.eaupotable.net/',
   },
 };
 
@@ -71,7 +71,6 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://hubeau.eaufrance.fr" />
-        <link rel="alternate" type="application/rss+xml" title="EauPotable.net" href="https://www.eaupotable.net/feed.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
