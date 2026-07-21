@@ -1,18 +1,28 @@
 User-agent: *
 Allow: /
-Disallow: /api/search
-Disallow: /api/og
+Disallow: /api/
 Disallow: /_next/static/
 Disallow: /_next/data/
 
+# Autoriser spécifiquement les moteurs de recherche IA à t'indexer et te citer
 User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: ClaudeBot
-Allow: /
+# Bloquer uniquement les scrapers agressifs qui n'apportent aucun trafic
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
 
 Sitemap: https://www.eaupotable.net/sitemap.xml
 # LLMS: https://www.eaupotable.net/llms.txt
