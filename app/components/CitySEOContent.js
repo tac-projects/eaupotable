@@ -428,9 +428,9 @@ export default function CitySEOContent({ cityName, data }) {
             <p className="seo-main-subtitle">Conseils personnalisés pour optimiser l'usage de votre eau au quotidien.</p>
           </div>
           <div className="seo-grid">
-            <div className="seo-card"><h3>{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p></div>
-            <div className="seo-card"><h3>{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p></div>
-            <div className="seo-card"><h3>{focusContent.sante.titre}</h3><p>{focusContent.sante.texte}</p></div>
+            <div className="seo-card"><h3>{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p><Link href="/definitions#calcaire" className="seo-card-link">Qu'est-ce que le calcaire ?</Link></div>
+            <div className="seo-card"><h3>{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p><Link href="/definitions#chlore" className="seo-card-link">Qu'est-ce que le chlore libre ?</Link></div>
+            <div className="seo-card"><h3>{focusContent.sante.titre}</h3><p>{focusContent.sante.texte}</p><Link href="/definitions#pfas" className="seo-card-link">Tout savoir sur les PFAS</Link></div>
           </div>
         </div>
       </section>
@@ -516,6 +516,9 @@ export default function CitySEOContent({ cityName, data }) {
                 <div className="seo-faq-answer"><p>{item.a}</p></div>
               </details>
             ))}
+          </div>
+          <div className="faq-more-cta">
+            <Link href="/definitions" className="faq-more-btn">📖 Comprendre tous les paramètres (PFAS, nitrates, calcaire…)</Link>
           </div>
         </div>
       </section>

@@ -318,6 +318,19 @@
     box-shadow: none;
 }
 
+.seo-card-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary-solid);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.seo-card-link:hover {
+    opacity: 0.7;
+}
+
 /* Suppression des ombres des cartes spécifique à la Homepage */
 .home-landing-page .seo-card,
 .home-landing-page .seo-card.highlight,

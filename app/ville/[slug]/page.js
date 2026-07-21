@@ -2,6 +2,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
 import { calculateCrystalScore } from '../../../lib/water-utils';
+import { hashCity } from '../../../lib/content-variants';
 import { cache } from 'react';
 import fs from 'fs';
 import path from 'path';
@@ -180,7 +181,7 @@ async function getLocalData(slug) {
       }));
 
     const random20 = otherCities
-      .sort(() => Math.random() - 0.5)
+      .sort((a, b) => (hashCity(a.code, slug) % 1000) - (hashCity(b.code, slug) % 1000))
       .slice(0, 20);
 
     const neighborList = isMetropolis ? [
