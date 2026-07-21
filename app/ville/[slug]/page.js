@@ -128,7 +128,7 @@ async function getLocalData(slug) {
       }
     };
 
-    const isConform = rawCityData.meta?.is_conform !== false;
+    const isConform = rawCityData.isConform !== false;
     
     // RECALCUL DYNAMIQUE : On recalcule le score et les labels pour garantir la prise en compte 
     // des nouvelles règles métier (labels masculins, arrondis) sans attendre un nouveau crawl.
@@ -289,6 +289,7 @@ export async function generateMetadata({ params }) {
 }
 
 import CityHero from '../../components/CityHero';
+import CityJsonLd from '../../components/CityJsonLd';
 
 export default async function CityPage({ params }) {
   const { slug } = await params;
@@ -324,8 +325,16 @@ export default async function CityPage({ params }) {
 
   return (
     <>
+      <CityJsonLd
+        cityName={officialName}
+        cleanSlug={cleanSlug}
+        dpt={summary.meta?.code_departement || ''}
+        isConform={summary.isConform}
+        crystal={summary.crystal}
+        stats={summary.stats}
+      />
       <Navbar />
-      <CityHero 
+      <CityHero
         cityName={officialName}
         dpt={summary.meta?.code_departement || ''}
         dateAnalyse={summary.meta?.date_prelevement ? new Date(summary.meta.date_prelevement).toLocaleDateString('fr-FR') : '2026'}

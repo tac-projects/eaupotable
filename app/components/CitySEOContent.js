@@ -240,51 +240,6 @@ export default function CitySEOContent({ cityName, data }) {
 
   return (
     <div className="city-seo-master">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.eaupotable.net/" },
-                { "@type": "ListItem", "position": 2, "name": "France", "item": "https://www.eaupotable.net/villes" },
-                { "@type": "ListItem", "position": 3, "name": `Département ${dpt}`, "item": `https://www.eaupotable.net/departement/${dpt}` },
-                { "@type": "ListItem", "position": 4, "name": cityName }
-              ]
-            },
-            {
-              "@type": "FAQPage",
-              "mainEntity": faqItems.map(item => ({
-                "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a }
-              }))
-            },
-            {
-              "@type": "Dataset",
-              "name": `Qualité de l'eau potable à ${cityName} (${currentMonthYear})`,
-              "description": `Données officielles ARS sur la potabilité, les PFAS, les pesticides et les nitrates pour le réseau de distribution de ${cityName}. Analyse mise à jour en ${currentMonthYear}.`,
-              "url": `https://www.eaupotable.net/ville/${pageSlug || data.meta?.slug || ""}`,
-              "variableMeasured": [
-                { "@type": "PropertyValue", "name": "Conformité bactériologique", "value": isConform ? "Conforme" : "Non conforme" },
-                { "@type": "PropertyValue", "name": "PFAS", "unitText": "µg/L", "value": parseValue(stats.pfas?.val) || 0 },
-                { "@type": "PropertyValue", "name": "Pesticides", "unitText": "µg/L", "value": parseValue(stats.pesticides?.val) || 0 },
-                { "@type": "PropertyValue", "name": "Nitrates", "unitText": "mg/L", "value": parseValue(stats.nitrates?.val) || 0 },
-                { "@type": "PropertyValue", "name": "Dureté", "unitText": "°f", "value": parseValue(stats.hardness?.val) || 0 }
-              ],
-              "creator": {
-                "@type": "Person",
-                "name": "Thomas-Alexis Cailleau",
-                "url": "https://www.linkedin.com/in/thomasalexiscailleau"
-              },
-              "isAccessibleForFree": true,
-              "license": "https://www.eaupotable.net/mentions-legales",
-              "spatialCoverage": { "@type": "Place", "name": cityName },
-              "temporalCoverage": `${currentYear}`
-            }
-          ]
-        })
-      }} />
-
       {/* SECTION 1 : ANALYSE (BLANC) */}
       <section className="home-content-section white">
         <div className="seo-container">
