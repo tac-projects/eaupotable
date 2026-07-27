@@ -8,8 +8,8 @@ import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-inter', display: 'swap' });
-const manrope = Manrope({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-manrope', display: 'swap' });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-inter', display: 'swap', preload: true });
+const manrope = Manrope({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-manrope', display: 'swap', preload: true });
 const grandHotel = Grand_Hotel({ subsets: ["latin"], weight: ["400"], variable: '--font-grand-hotel', display: 'swap' });
 
 
