@@ -3,7 +3,7 @@
 > Audit SEO complet — réalisé le 12/08/2026 (analyse 100 % lecture seule, aucune modification du code).
 > Ce fichier est la **mémoire des points à corriger**. Cocher les cases au fil du travail.
 
-**Statut :** points 1, 2 et 3 **corrigés et vérifiés par build le 12/08/2026** (commit à venir). Points 4 à 7 toujours ouverts.
+**Statut :** points 1, 2, 3 **corrigés et vérifiés** (commit `b626d66`) et **point 4 corrigé** (en attente de commit) le 12/08/2026. Script `npm run ship` **supprimé** le 12/08. Points 5, 6, 7 toujours ouverts.
 
 ---
 
@@ -85,15 +85,17 @@
 
 **Constat**
 - `scripts/generate-sitemap.js:45` : `lastmod` = **date de génération** (aujourd'hui figé au 2026-07-15 partout), pas la date des données.
-- La FAQ du site annonce une synchro **quotidienne** des données, mais le sitemap n'est régénéré que lors de `npm run ship` (manuel + commit).
+- La FAQ du site annonce une synchro **quotidienne** des données, mais le sitemap n'est régénéré que manuellement (`node scripts/generate-sitemap.js`).
+- ⚠️ `npm run ship` (qui commitait + pushait automatiquement) a été **supprimé le 12/08/2026** — fini le commit/push automatique sans revue. La régénération du sitemap est désormais un acte volontaire.
 - `sitemap-main.xml` liste **`/mentions-legales` et `/contact`** (priority 1.0) alors que ces pages sont **`noindex, nofollow`** (`app/contact/page.js:7`, `app/mentions-legales/page.js:6`).
 - **`public/sitemaps/sitemap-dept-049.xml`** : fichier **orphelin** (04/05/2026) avec des slugs cassés de l'ancien format (`/ville/breille-les-pins--la-`, double tirets). Non référencé par l'index → pas crawlé, mais à supprimer.
 
 **Correctif**
-- [ ] Retirer `/mentions-legales` et `/contact` de `staticUrls` dans `scripts/generate-sitemap.js:48`.
-- [ ] Supprimer `public/sitemaps/sitemap-dept-049.xml`.
-- [ ] Optionnel : `lastmod` = date de dernière MAJ des données (issue de la synchro Hub'Eau), pas la date de génération.
-- [ ] S'assurer que le sitemap est régénéré **à chaque déploiement** (pas seulement à la main).
+- [x] Retirer `/mentions-legales` et `/contact` de `staticUrls` dans `scripts/generate-sitemap.js` → **fait** (avec commentaire explicite dans le script).
+- [x] Supprimer `public/sitemaps/sitemap-dept-049.xml` → **fait**, aucun résidu dans l'index.
+- [x] Régénérer (`node scripts/generate-sitemap.js`) → **fait** : `lastmod` frais (12/08/2026), 35 410 URLs (35 304 villes + 101 dépt + 5 statiques), plus de `049`, `mentions-legales`/`contact` absents de `sitemap-main.xml`.
+- [ ] `lastmod` = date de dernière MAJ des données → voir **point 6** (toujours ouvert).
+- [ ] Automatiser la régénération du sitemap au déploiement → **à décider** (le script `ship` auto-push ayant été supprimé, la régénération est volontaire).
 
 ---
 
