@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import Script from 'next/script';
 import Link from 'next/link';
 import { POPULAR_CITIES, METROPOLIS_SCORES } from '@/lib/water-utils';
 
@@ -72,10 +71,46 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
   const [vigilanceSuggestions, setVigilanceSuggestions] = useState([]);
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
   const metropolisScores = METROPOLIS_SCORES;
-  const turnstileRef = useRef(null);
   const pendingSubmitRef = useRef(false);
+  const turnstileLoadRef = useRef(null);
 
   const SITE_KEY = "0x4AAAAAAC_xXPQR0f_6hAhk";
+
+  // Charge le script Turnstile à la demande (au premier clic sur « S'abonner »)
+  // et rend le widget invisible dans le conteneur du formulaire.
+  // Promise partagée pour éviter un double chargement en cas de double-clic.
+  const loadTurnstile = () => {
+    if (window.turnstile_loaded) return Promise.resolve(true);
+    if (!turnstileLoadRef.current) {
+      turnstileLoadRef.current = new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+        script.async = true;
+        script.onload = () => {
+          window.turnstile_loaded = true;
+          if (window.turnstile && document.getElementById('turnstile-container')) {
+            window.__turnstileWidgetId = window.turnstile.render('#turnstile-container', {
+              sitekey: SITE_KEY,
+              size: 'invisible',
+              callback: (token) => {
+                window.dispatchEvent(new CustomEvent('turnstile-success', { detail: token }));
+              },
+              'error-callback': () => {
+                window.dispatchEvent(new CustomEvent('turnstile-error'));
+              },
+            });
+          }
+          resolve(true);
+        };
+        script.onerror = () => {
+          turnstileLoadRef.current = null;
+          resolve(false);
+        };
+        document.head.appendChild(script);
+      });
+    }
+    return turnstileLoadRef.current;
+  };
 
   const {
     searchQuery,
@@ -93,8 +128,18 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
     const handleToken = (e) => {
       setTurnstileToken(e.detail);
     };
+    // Si le challenge Turnstile échoue, on sort du mode « en attente » et on
+    // affiche une erreur au lieu de laisser le clic silencieux.
+    const handleTurnstileError = () => {
+      pendingSubmitRef.current = false;
+      setStatus('ERROR');
+    };
     window.addEventListener('turnstile-success', handleToken);
-    return () => window.removeEventListener('turnstile-success', handleToken);
+    window.addEventListener('turnstile-error', handleTurnstileError);
+    return () => {
+      window.removeEventListener('turnstile-success', handleToken);
+      window.removeEventListener('turnstile-error', handleTurnstileError);
+    };
   }, []);
 
   // Relancer la soumission automatiquement quand le token Turnstile arrive
@@ -143,12 +188,19 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
     e.preventDefault();
     if (!email || !cityName) return;
 
-    // Déclencher le challenge Turnstile invisible si pas encore de token
+    // Déclencher le challenge Turnstile invisible si pas encore de token.
+    // Le script est chargé à la demande (au clic) : on attend le chargement,
+    // puis on exécute le challenge. En cas d'échec de chargement, on affiche
+    // une erreur plutôt qu'un clic silencieux.
     if (!turnstileToken) {
       pendingSubmitRef.current = true;
-      if (window.turnstile && window.__turnstileWidgetId !== undefined) {
-        window.turnstile.execute(window.__turnstileWidgetId);
+      const loaded = await loadTurnstile();
+      if (!loaded || !window.turnstile || window.__turnstileWidgetId === undefined) {
+        pendingSubmitRef.current = false;
+        setStatus('ERROR');
+        return;
       }
+      window.turnstile.execute(window.__turnstileWidgetId);
       return;
     }
 
@@ -175,7 +227,9 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
         setEmail('');
         setCityName('');
         // Reset turnstile for next time
-        if (window.turnstile) window.turnstile.reset(turnstileRef.current);
+        if (window.turnstile && window.__turnstileWidgetId !== undefined) {
+          window.turnstile.reset(window.__turnstileWidgetId);
+        }
         setTurnstileToken(null);
         setTimeout(() => setStatus('IDLE'), 5000);
       } else {
@@ -802,37 +856,6 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
             })
           }}
         />
-
-        <Script id="turnstile-deferred" strategy="afterInteractive">
-          {`
-            window.addEventListener('load', function() {
-              const loadTurnstile = () => {
-                if (window.turnstile_loaded) return;
-                const script = document.createElement('script');
-                script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-                script.async = true;
-                script.onload = () => {
-                   window.turnstile_loaded = true;
-                   if (window.turnstile && document.getElementById('turnstile-container')) {
-                     const widgetId = window.turnstile.render('#turnstile-container', {
-                       sitekey: "${SITE_KEY}",
-                       size: 'invisible',
-                       callback: (token) => {
-                         window.dispatchEvent(new CustomEvent('turnstile-success', { detail: token }));
-                       }
-                     });
-                     window.__turnstileWidgetId = widgetId;
-                   }
-                };
-                document.head.appendChild(script);
-              };
-
-              // On charge Turnstile au premier mouvement de souris ou scroll
-              const events = ['mousedown', 'mousemove', 'keydown', 'touchstart', 'scroll'];
-              events.forEach(e => window.addEventListener(e, loadTurnstile, { passive: true, once: true }));
-            });
-          `}
-        </Script>
     </div>
 
   );
