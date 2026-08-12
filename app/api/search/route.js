@@ -103,7 +103,13 @@ export async function GET(request) {
     }
     const cityIndex = searchIndexCache;
 
-    const query = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    // Normalise la requ\u00eate pour qu'elle corresponde au format des slugs du city-index
+    // (espaces et apostrophes deviennent des tirets, les accents sont retir\u00e9s)
+    const query = q.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .trim()
+      .replace(/[\s'\u2019]+/g, '-')
+      .replace(/-{2,}/g, '-');
 
     const matches = Object.keys(cityIndex)
       .filter(key => key.includes(query) && isNaN(key))
