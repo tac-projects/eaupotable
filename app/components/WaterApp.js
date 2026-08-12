@@ -94,19 +94,30 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   }, [selectedCity]);
 
   // 3. Logique de Partage & FAB
-  const handleShare = async () => {
-    if (!waterData) return;
-    const shareData = {
+  const buildShareData = () => {
+    // Page d'accueil (aucune ville) ou erreur fetch : partage générique du site
+    if (!waterData || !waterData.crystal || !selectedCity) {
+      return {
+        title: "EauPotable.net — Qualité de l'eau en France",
+        text: "Découvrez la qualité de l'eau du robinet de votre ville : calcaire, nitrates, PFAS et prix, grâce au Crystal Score™ sur EauPotable.net.",
+        url: window.location.href
+      };
+    }
+    // Page ville : partage spécifique au rapport
+    return {
       title: `Qualité de l'eau à ${selectedCity}`,
       text: `L'eau de ${selectedCity} est notée ${waterData.crystal.final.toFixed(1)}/10 sur EauPotable.net. Découvrez l'analyse complète !`,
       url: window.location.href
     };
+  };
 
+  const handleShare = async () => {
+    const shareData = buildShareData();
     try {
       if (navigator.share) {
         await navigator.share(shareData);
       } else {
-        await navigator.clipboard.writeText(window.location.href);
+        await navigator.clipboard.writeText(shareData.url);
         alert("Lien copié dans le presse-papier !");
       }
     } catch (err) { console.log("Partage annulé ou erreur:", err); }
@@ -127,6 +138,9 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
       setShowPWABanner(false);
+      const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
+      const expiryDate = new Date().getTime() + threeDaysInMs;
+      localStorage.setItem('pwa-banner-excluded', expiryDate.toString());
     }
     setDeferredPrompt(null);
   };
@@ -266,7 +280,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       <button 
         className={`floating-share-fab ${showShareFab ? 'visible' : ''}`}
         onClick={handleShare}
-        aria-label="Partager ce rapport"
+        aria-label={selectedCity ? 'Partager ce rapport' : 'Partager EauPotable.net'}
       >
         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
       </button>

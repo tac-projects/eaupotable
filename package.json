@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:full": "npm run sitemap && next build",
-    "start": "next start",
+    "start": "next start -H 127.0.0.1",
     "sitemap": "node scripts/build-dept-generic.js --all && node scripts/sync-home-scores.js && node scripts/generate-sitemap.js",
     "ship": "npm run sitemap && git add . && git commit -m \"📦 Data & Sitemap Auto-Update\" && git push",
     "postinstall": "partytown copylib public/~partytown"

@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
   '/',
   '/img/favicon.svg',
   '/img/logo.svg',
-  '/img/icons/icon-512-v3.png',
+  '/img/icons/google-search-icon.png',
   '/img/vignette-bg.png',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Grand+Hotel&display=swap'
 ];
