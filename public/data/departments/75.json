@@ -2,27 +2,27 @@
   "deptInfo": {
     "code": "75",
     "name": "Paris",
-    "avgScore": 6.2,
+    "avgScore": 5.5,
     "conformRate": 100,
     "averages": {
       "nitrates": {
-        "val": "38",
+        "val": "40",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,71",
+        "val": "7,89",
         "unit": "  pH"
       },
       "temperature": {
-        "val": "13",
+        "val": "12",
         "unit": "  °C"
       },
       "hardness": {
-        "val": "27",
+        "val": "30",
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,12",
+        "val": "0,14",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -38,11 +38,11 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "566",
+        "val": "562",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,18",
+        "val": "< 0,01",
         "unit": "  NFU"
       },
       "iron": {
@@ -62,7 +62,7 @@
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "0,65",
+        "val": "0,52",
         "unit": "  mg/L"
       }
     },
@@ -71,16 +71,6 @@
         "name": "Paris",
         "score": 5.5,
         "slug": "paris"
-      },
-      {
-        "name": "L' Hay-Les-Roses",
-        "score": 7.5,
-        "slug": "l-hay-les-roses"
-      },
-      {
-        "name": "Saint-Cloud",
-        "score": 5.5,
-        "slug": "saint-cloud"
       }
     ],
     "regionName": "Île-de-France"
@@ -198,236 +188,6 @@
         "code_departement": "75",
         "insee": "75056",
         "date_prelevement": "2025-12-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "saint-cloud": {
-      "cityName": "Saint-Cloud",
-      "reseau": "075000222",
-      "isConform": true,
-      "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "36",
-          "unit": " mg/L",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "ph": {
-          "val": "7,64",
-          "unit": " pH",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "temperature": {
-          "val": "13,2",
-          "unit": " °C",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "hardness": {
-          "val": "26,02",
-          "unit": " °f",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
-        },
-        "chlorine": {
-          "val": "0,11",
-          "unit": " mg/L",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "04/12/2025",
-          "timestamp": 1764806400000
-        },
-        "pfas": {
-          "val": "0,001",
-          "unit": " µg/L",
-          "date": "04/12/2025",
-          "timestamp": 1764806400000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "conductivity": {
-          "val": "594",
-          "unit": " µS/cm",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "turbidity": {
-          "val": "0,18",
-          "unit": " NFU",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "iron": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "04/12/2025",
-          "timestamp": 1764806400000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
-        },
-        "copper": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "04/12/2025",
-          "timestamp": 1764806400000
-        },
-        "organic_carbon": {
-          "val": "0,71",
-          "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
-        }
-      },
-      "prix": {
-        "aep": 2.38,
-        "ac": 2.61,
-        "total": 4.99
-      },
-      "meta": {
-        "nom_distributeur": "EAU DE PARIS",
-        "code_departement": "75",
-        "insee": "92064",
-        "date_prelevement": "2025-12-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "l-hay-les-roses": {
-      "cityName": "L' Hay-Les-Roses",
-      "reseau": "075000225",
-      "isConform": true,
-      "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "37",
-          "unit": " mg/L",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "ph": {
-          "val": "7,6",
-          "unit": " pH",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "temperature": {
-          "val": "13,9",
-          "unit": " °C",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "hardness": {
-          "val": "25,94",
-          "unit": " °f",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "chlorine": {
-          "val": "0,1",
-          "unit": " mg/L",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "11/12/2025",
-          "timestamp": 1765411200000
-        },
-        "pfas": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "11/12/2025",
-          "timestamp": 1765411200000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "conductivity": {
-          "val": "542",
-          "unit": " µS/cm",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "turbidity": {
-          "val": "0,35",
-          "unit": " NFU",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "iron": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "11/12/2025",
-          "timestamp": 1765411200000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        },
-        "copper": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "11/12/2025",
-          "timestamp": 1765411200000
-        },
-        "organic_carbon": {
-          "val": "0,71",
-          "unit": " mg/L",
-          "date": "26/12/2025",
-          "timestamp": 1766707200000
-        }
-      },
-      "prix": {
-        "aep": 2.18,
-        "ac": 3.63,
-        "total": 5.81
-      },
-      "meta": {
-        "nom_distributeur": "EAU DE PARIS",
-        "code_departement": "75",
-        "insee": "94038",
-        "date_prelevement": "2025-12-26",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }

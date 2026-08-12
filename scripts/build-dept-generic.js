@@ -330,8 +330,11 @@ async function buildDepartment(deptCode) {
             const p = splitCsv(line); if (p[1] === 'cdreseau' || !p[1]) continue;
             const cd = p[1], insee = p[2], cityName = p[3], amont = p[4], ref = p[7], date = p[8], conclusion = p[10], distri = p[12];
             
-            // Aspiration Totale : Si la ville est dans un prélèvement mais pas dans le mapping officiel, on l'ajoute
-            if (insee && cityName) {
+            // Aspiration Totale : Si la ville est dans un prélèvement mais pas dans le mapping officiel, on l'ajoute.
+            // ⚠️ Fix 12/08/2026 : on valide que l'INSEE appartient bien au département construit (insee.startsWith(deptCode)),
+            // sinon des villes des départements voisins (ex: saint-cloud / INSEE 92 dans le fichier PLV 075) étaient aspirées
+            // dans le mauvais département. L'INSEE fait foi pour l'attribution départementale.
+            if (insee && cityName && insee.startsWith(deptCode)) {
                 const key = normalizeCityName(cityName);
                 if (!udiMap[key]) {
                     udiMap[key] = { udis: [cd], insee: insee };

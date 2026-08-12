@@ -3,7 +3,7 @@
 > Audit SEO complet — réalisé le 12/08/2026 (analyse 100 % lecture seule, aucune modification du code).
 > Ce fichier est la **mémoire des points à corriger**. Cocher les cases au fil du travail.
 
-**Statut :** points 1, 2, 3 **corrigés et vérifiés** (commit `b626d66`) et **point 4 corrigé** (en attente de commit) le 12/08/2026. Script `npm run ship` **supprimé** le 12/08. Points 5, 6, 7 toujours ouverts.
+**Statut :** points 1, 2, 3, 4 **et 5 corrigés et vérifiés le 12/08/2026** (commits `b626d66`, `b8fd0e3`, + point 5 à committer). Script `npm run ship` **supprimé** le 12/08. Points 6 et 7 toujours ouverts.
 
 ---
 
@@ -99,19 +99,28 @@
 
 ---
 
-## 🟠 5. Donnée erronée — 2 villes mal rattachées au département
+## 🟠 5. Donnée erronée — attribution départementale cassée (305+ villes)
 
-**Constat** (`public/city-index.json`)
-- `saint-cloud` → `75` (en réalité **92**, Hauts-de-Seine)
-- `l-hay-les-roses` → `75` (en réalité **94**, Val-de-Marne)
-- Contrôles OK par ailleurs : `lyon→69`, `marseille→13`, `nantes→44`, `strasbourg→67`, `metz→57`, `paris→75`.
+> ⚠️ **Le vrai périmètre était bien plus large que 2 villes** : 309 villes avaient un INSEE incohérent avec leur fichier dépt.
 
-**Impact** : breadcrumb « Département 75 » erroné, contexte départemental faux (moyennes ARS, villes voisines), groupement sitemap incorrect → pertinence SEO local affaiblie.
+**Cause racine** (`scripts/build-dept-generic.js`, lignes ~333-341)
+L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle apparaissait dans le fichier PLV de ce dépt**, sans revalider son INSEE. Or un même réseau d'eau est relevé dans plusieurs fichiers dépt (ex. Saint-Cloud dans le PLV **075** — *Eau de Paris* — et dans le **092** — *Aquavesc*). Résultat : la ville était dupliquée dans les deux fichiers, avec des scores différents, et l'index gardait l'entrée du premier dépt (ordre alphabétique) — souvent le mauvais.
 
-**Correctif**
-- [ ] Corriger le mappage dans la source de données / le script de build (`saint-cloud → 92`, `l-hay-les-roses → 94`).
-- [ ] Régénérer `city-index.json` et les sitemaps.
-- [ ] Vérifier qu'aucune autre ville n'est mal affectée (script de contrôle à prévoir).
+**Impact mesuré**
+- **303 villes en doublon** dans un mauvais fichier dépt (l'entrée correcte existait ailleurs)
+- **203 d'entre elles avec un score affiché différent** (certaines passent de 10 à 3,5) — le site affichait le score du mauvais dépt
+- **303 URLs de collision** (`/ville/saint-cloud-92`, `/ville/aubenton-08`, …) → duplicate content
+- breadcrumbs « Département 75 » pour des villes du 92/94, contexte dépt faux
+
+**Correctif appliqué (12/08/2026)**
+- [x] **`scripts/fix-dept-attribution.js`** (nouveau) : supprime les 303 doublons mal affectés, déplace `loeuilley` et `attricourt` → 70, conserve 4 cas limites (communes étrangères `99xxx` + COM `977/978`), recalcule les agrégats dépt (avgScore, conformRate, averages, topCities) avec les **formules exactes du build**, régénère `city-index.json`.
+- [x] **`scripts/build-dept-generic.js`** : aspiration PLV patchée (`insee.startsWith(deptCode)`) → l'INSEE fait foi, le bug ne reviendra pas à la prochaine génération.
+- [x] **`app/ville/[slug]/page.js`** : règle de redirection 301 pour les 303 anciennes URLs de collision (`{base}-{dept}` → base) — les homonymes légitimes restent dans l'index et ne sont jamais redirigés.
+- [x] Sitemaps régénérés : **35 107 URLs** (35 001 villes + 101 dépt + 5 statiques), plus aucun doublon de collision.
+
+**Effets de bord assumés** : ~203 scores affichés changent (le score du bon dépt remplace celui du mauvais). À surveiller dans GSC : les anciennes URLs de collision doivent rediriger en 301 (pas de 404).
+
+**Pour mémoire** : 4 cas limites conservés tels quels (Ventimiglia `99001`, Meix-devant-Virton `99004`, St-Barthélémy `97701`, St-Martin `97801` — communes étrangères / COM sans fichier dépt dédié).
 
 ---
 

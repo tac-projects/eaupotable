@@ -38,7 +38,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "585",
+        "val": "584",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -46,11 +46,11 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "9,61",
+        "val": "9,63",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "2,45",
+        "val": "2,47",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -103,11 +103,6 @@
         "slug": "aillieres-beauvoir"
       },
       {
-        "name": "Alencon",
-        "score": 8,
-        "slug": "alencon"
-      },
-      {
         "name": "Amne",
         "score": 9.5,
         "slug": "amne"
@@ -116,6 +111,11 @@
         "name": "Ancinnes",
         "score": 9.5,
         "slug": "ancinnes"
+      },
+      {
+        "name": "Aillieres-Beauvoir",
+        "score": 7,
+        "slug": "aillieres-beavoir"
       }
     ],
     "regionName": "Pays de la Loire"
@@ -41058,351 +41058,6 @@
         "code_departement": "72",
         "insee": "72382",
         "date_prelevement": "2026-02-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "alencon": {
-      "cityName": "Alencon",
-      "reseau": "072000837",
-      "isConform": true,
-      "crystal": {
-        "final": 8,
-        "label": "SATISFAISANTE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "13",
-          "unit": " mg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "ph": {
-          "val": "7,5",
-          "unit": " pH",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "temperature": {
-          "val": "15,3",
-          "unit": " °C",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "hardness": {
-          "val": "21,9",
-          "unit": " °f",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "chlorine": {
-          "val": "0,21",
-          "unit": " mg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "14/10/2025",
-          "timestamp": 1760400000000
-        },
-        "pfas": {
-          "val": "0,0023",
-          "unit": " µg/L",
-          "date": "14/10/2025",
-          "timestamp": 1760400000000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "conductivity": {
-          "val": "738",
-          "unit": " µS/cm",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "turbidity": {
-          "val": "0",
-          "unit": " NFU",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "iron": {
-          "val": "17",
-          "unit": " µg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "manganese": {
-          "val": "0,6",
-          "unit": " µg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        },
-        "copper": {
-          "val": "5",
-          "unit": " mg/L",
-          "date": "14/10/2025",
-          "timestamp": 1760400000000
-        },
-        "organic_carbon": {
-          "val": "1,1",
-          "unit": " mg/L",
-          "date": "13/02/2026",
-          "timestamp": 1770940800000
-        }
-      },
-      "prix": {
-        "aep": 2.8,
-        "ac": 2.8,
-        "total": 5.6
-      },
-      "meta": {
-        "nom_distributeur": "EAUX DE NORMANDIE",
-        "code_departement": "72",
-        "insee": "61001",
-        "date_prelevement": "2026-02-13",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "origny-le-roux": {
-      "cityName": "Origny-Le-Roux",
-      "reseau": "072003560",
-      "isConform": true,
-      "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "17",
-          "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "ph": {
-          "val": "7,4",
-          "unit": " pH",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "temperature": {
-          "val": "13",
-          "unit": " °C",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "hardness": {
-          "val": "33",
-          "unit": " °f",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "chlorine": {
-          "val": "0,44",
-          "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "pesticides": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "02/06/2025",
-          "timestamp": 1748822400000
-        },
-        "pfas": {
-          "val": "0,001",
-          "unit": " µg/L",
-          "date": "02/06/2025",
-          "timestamp": 1748822400000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "conductivity": {
-          "val": "691",
-          "unit": " µS/cm",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "turbidity": {
-          "val": "0",
-          "unit": " NFU",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "iron": {
-          "val": "2,3",
-          "unit": " µg/L",
-          "date": "02/06/2025",
-          "timestamp": 1748822400000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "02/06/2025",
-          "timestamp": 1748822400000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        },
-        "copper": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "02/06/2025",
-          "timestamp": 1748822400000
-        },
-        "organic_carbon": {
-          "val": "0,76",
-          "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
-        }
-      },
-      "prix": {
-        "aep": 2.4,
-        "ac": 4.36,
-        "total": 6.76
-      },
-      "meta": {
-        "nom_distributeur": "SIVU PERCHE SUD",
-        "code_departement": "72",
-        "insee": "61319",
-        "date_prelevement": "2025-11-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
-      }
-    },
-    "couetron-au-perche": {
-      "cityName": "Couetron-Au-Perche",
-      "reseau": "072003576",
-      "isConform": true,
-      "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
-      },
-      "stats": {
-        "nitrates": {
-          "val": "27",
-          "unit": " mg/L",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "ph": {
-          "val": "7,6",
-          "unit": " pH",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "temperature": {
-          "val": "13",
-          "unit": " °C",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "hardness": {
-          "val": "23,8",
-          "unit": " °f",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "chlorine": {
-          "val": "0,31",
-          "unit": " mg/L",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "pesticides": {
-          "val": "0,044",
-          "unit": " µg/L",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "pfas": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "19/02/2025",
-          "timestamp": 1739923200000
-        },
-        "microbiology": {
-          "val": "Absence",
-          "unit": " Absence",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "conductivity": {
-          "val": "553",
-          "unit": " µS/cm",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "turbidity": {
-          "val": "0",
-          "unit": " NFU",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "iron": {
-          "val": "3",
-          "unit": " µg/L",
-          "date": "19/02/2025",
-          "timestamp": 1739923200000
-        },
-        "manganese": {
-          "val": "0",
-          "unit": " µg/L",
-          "date": "19/02/2025",
-          "timestamp": 1739923200000
-        },
-        "ammonium": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        },
-        "copper": {
-          "val": "0",
-          "unit": " mg/L",
-          "date": "19/02/2025",
-          "timestamp": 1739923200000
-        },
-        "organic_carbon": {
-          "val": "0,37",
-          "unit": " mg/L",
-          "date": "07/10/2025",
-          "timestamp": 1759795200000
-        }
-      },
-      "prix": {
-        "aep": 1.87,
-        "ac": 1.47,
-        "total": 3.34
-      },
-      "meta": {
-        "nom_distributeur": "MAIRIE COUETRON AU PERCHE",
-        "code_departement": "72",
-        "insee": "41248",
-        "date_prelevement": "2025-10-07",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }

@@ -57,11 +57,18 @@ async function getLocalData(slug) {
       }
 
       // 4. Recherche par inclusion (ex: saint-ouen-sur-seine -> saint-ouen)
-      const partialMatch = allSlugs.find(s => 
-        (cleanSlug.startsWith(s + '-') || s.startsWith(cleanSlug + '-')) && 
+      const partialMatch = allSlugs.find(s =>
+        (cleanSlug.startsWith(s + '-') || s.startsWith(cleanSlug + '-')) &&
         Math.abs(s.length - cleanSlug.length) < 20
       );
       if (partialMatch) return { redirect: partialMatch };
+
+      // 5. Slug de collision "base-dept" (ex: saint-cloud-92, aubenton-08) : ancien artefact de
+      // dédoublonnage dont l'entrée a disparu de l'index après correction de l'attribution dépt.
+      // Les homonymes légitimes restent DANS l'index (ce chemin n'est jamais atteint pour eux) ;
+      // si la base existe, c'est la même commune → redirection en 301.
+      const suffixMatch = cleanSlug.match(/^(.*)-(\d{2,3}|2[AB])$/);
+      if (suffixMatch && cityIndex[suffixMatch[1]]) return { redirect: suffixMatch[1] };
 
       return null;
     }
