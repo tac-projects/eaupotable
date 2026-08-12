@@ -3,7 +3,7 @@
 > Audit SEO complet — réalisé le 12/08/2026 (analyse 100 % lecture seule, aucune modification du code).
 > Ce fichier est la **mémoire des points à corriger**. Cocher les cases au fil du travail.
 
-**Statut :** points 1 à 6 **corrigés et vérifiés le 12/08/2026** (commits `b626d66`, `b8fd0e3`, `7573fff`). Script `npm run ship` **supprimé** le 12/08. **Point 7 (contenu home) encore ouvert** + **nouveau chantier prioritaire : fraîcheur des données** (section dédiée ci-dessous).
+**Statut :** points 1 à 6 **corrigés et vérifiés le 12/08/2026** (commits `b626d66`, `b8fd0e3`, `7573fff`) + **chantier C (fraîcheur des données) réalisé** (commit à venir). Script `npm run ship` **supprimé** le 12/08. **Point 7 (contenu home) encore ouvert** + **affichage de la date réelle des prélèvements** à corriger (voir chantier C).
 
 ---
 
@@ -155,19 +155,28 @@ L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle ap
 
 ---
 
-## 🔴 Chantier prioritaire — Fraîcheur des données (découvert le 12/08/2026)
+## 🔴 Chantier C — Fraîcheur des données (traité le 12/08/2026)
 
-**Constat**
-- Dernier prélèvement par dépt : **02/2026** (99 dépts), 12/2025 (1), sans date (1). Les données sont **figées depuis ~6 mois**.
-- La FAQ annonce une **« mise à jour quotidienne »** — non reflétée dans les données.
-- Les pages affichent « Analyse mise à jour en **août 2026** » alors que le dernier prélèvement date de février → **sur-vente de fraîcheur** (confiance utilisateur + perception Google).
-- `source-data/archives/` : dernier fichier PLV/RESULT téléchargé ≈ 02/2026 → la synchro Hub'Eau/SISE-Eaux ne tourne plus.
+**Problème initial** : données figées depuis 02/2026 (99 dépts), FAQ annonçant une « mise à jour quotidienne » non reflétée.
 
-**Actions à mener**
-- [ ] Re-synchroniser les archives (UDI/PLV/RESULT) depuis Hub'Eau (SISE-Eaux) — nouvelles données 2026.
-- [ ] Relancer `node scripts/build-dept-generic.js --all` (le fix d'attribution dépt sera appliqué) + post-traitement (prix, home scores) + régénération sitemap.
-- [ ] Afficher la **date réelle du dernier prélèvement** sur les pages (au lieu du mois courant) — à corriger dans `CityJsonLd.js`, `CitySEOContent.js`, `generateMetadata`.
+**Causes**
+- `api.hubeau.eaufrance.fr` est **mort** (NXDOMAIN) — Hub'Eau a migré sur `hubeau.eaufrance.fr` (celui déjà autorisé par le CSP du site).
+- Aucun script de synchro n'existait : les archives SISE-Eaux étaient téléchargées à la main.
+
+**Source retrouvée** : dataset officiel data.gouv.fr « Résultats du contrôle sanitaire de l'eau distribuée commune par commune » (Ministère de la Santé), MAJ 05/08/2026 → `dis-2026-dept.zip` (137 Mo).
+
+**Ce qui a été fait**
+- [x] Archives 2026 remplacées par l'export frais (prélèvements jusqu'au **30/06/2026**).
+- [x] Rebuild complet `node scripts/build-dept-generic.js --all` + `sync-home-scores` + sitemap.
+- [x] **Fix isConform (scoring)** : le parsing traitait toute conclusion sans le mot « conforme » (température, conductivité…) comme une non-conformité sanitaire → des centaines de villes étiquetées « NON CONFORME » à tort. Désormais : `isConform = !conclusion.includes("non conforme aux limites")` → seules les **237 vraies non-conformités sanitaires** restent NON CONFORME.
+- [x] Vérifs : 0 mismatch INSEE/dépt, 34 999 villes, aucun dépt vide, baisses contrôlées (ex. nitrates à 40 mg/L sur `chezy`).
+
+**Changements assumés** : ~7 700 scores de villes changent (5 153 ↑, 2 542 ↓) — donnée fraîche + conformité sanitaire juste. Métropoles rétablies (Marseille/Toulouse/Nice redeviennent EXCELLENTES).
+
+**Reste à faire**
+- [ ] Afficher la **date réelle du dernier prélèvement** sur les pages (au lieu du mois courant « Analyse mise à jour en août 2026 ») — `CityJsonLd.js`, `CitySEOContent.js`, `generateMetadata`.
 - [ ] Aligner la FAQ sur la fréquence réelle de mise à jour.
+- [ ] Re-télécharger aussi les années 2022-2025 (mises à jour en 07/2026 sur data.gouv.fr) — le 2026 suffit pour les scores actuels.
 
 ---
 
@@ -200,7 +209,7 @@ L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle ap
 | 5 | Attribution départementale (303 doublons) | ✅ | Moyen-élevé |
 | 6 | `sw.js` NetworkFirst | ✅ | Faible |
 | 7 | Contenu home côté client | ⏳ ouvert | Faible |
-| **C** | **Fraîcheur des données** (re-sync Hub'Eau) | 🔴 à traiter | **Élevé** |
+| **C** | **Fraîcheur des données** (re-sync + fix conformité) | ✅ | **Élevé** |
 
 ---
 

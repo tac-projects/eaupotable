@@ -426,7 +426,11 @@ async function buildDepartment(deptCode) {
                                     lastDate = entry.date; 
                                     arsConclusion = entry.conclusion;
                                     nomDistributeur = entry.distributeur || "le gestionnaire local";
-                                    isConform = entry.conclusion.toLowerCase().includes("conforme") && !entry.conclusion.toLowerCase().includes("non conforme"); 
+                                    // Conformité SANITAIRE uniquement (fix 12/08/2026) : on ne flag "NON CONFORME"
+                                    // que sur une non-conformité aux LIMITES de qualité (risque sanitaire).
+                                    // Les non-conformités aux RÉFÉRENCES (température, conductivité, agressivité…)
+                                    // sont cosmétiques et ne doivent pas faire basculer une ville en NON CONFORME.
+                                    isConform = !entry.conclusion.toLowerCase().includes("non conforme aux limites");
                                 }
                                 break;
                             }

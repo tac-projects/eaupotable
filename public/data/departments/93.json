@@ -2,27 +2,27 @@
   "deptInfo": {
     "code": "93",
     "name": "Seine-Saint-Denis",
-    "avgScore": 3.9,
-    "conformRate": 10,
+    "avgScore": 7.9,
+    "conformRate": 100,
     "averages": {
       "nitrates": {
-        "val": "17",
+        "val": "18",
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,71",
+        "val": "7,69",
         "unit": "  pH"
       },
       "temperature": {
-        "val": "11",
+        "val": "23",
         "unit": "  °C"
       },
       "hardness": {
-        "val": "25",
+        "val": "33",
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,21",
+        "val": "0,15",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -38,7 +38,7 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "518",
+        "val": "650",
         "unit": "  µS/cm"
       },
       "turbidity": {
@@ -46,7 +46,7 @@
         "unit": "  NFU"
       },
       "iron": {
-        "val": "1,57",
+        "val": "< 0,01",
         "unit": "  µg/L"
       },
       "manganese": {
@@ -54,68 +54,68 @@
         "unit": "  µg/L"
       },
       "ammonium": {
-        "val": "< 0,01",
+        "val": "0,013",
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "41",
+        "val": "38",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,97",
+        "val": "1,21",
         "unit": "  mg/L"
       }
     },
     "topCities": [
       {
         "name": "Saint-Denis",
-        "score": 3.5,
+        "score": 8,
         "slug": "saint-denis"
       },
       {
         "name": "Montreuil",
-        "score": 3.5,
+        "score": 8,
         "slug": "montreuil"
       },
       {
         "name": "Aubervilliers",
-        "score": 3.5,
+        "score": 8,
         "slug": "aubervilliers"
       },
       {
         "name": "Aulnay-sous-Bois",
-        "score": 3.5,
+        "score": 8,
         "slug": "aulnay-sous-bois"
       },
       {
         "name": "Drancy",
-        "score": 3.5,
+        "score": 8,
         "slug": "drancy"
       },
       {
         "name": "Bagnolet",
-        "score": 3.5,
+        "score": 8,
         "slug": "bagnolet"
       },
       {
         "name": "Bobigny",
-        "score": 3.5,
+        "score": 8,
         "slug": "bobigny"
       },
       {
         "name": "Bondy",
-        "score": 3.5,
+        "score": 8,
         "slug": "bondy"
       },
       {
-        "name": "Aubervilliers",
-        "score": 7,
-        "slug": "abervilliers"
+        "name": "Clichy-Sous-Bois",
+        "score": 8,
+        "slug": "clichy-sous-bois"
       },
       {
-        "name": "Aulnay-sous-Bois",
-        "score": 7,
-        "slug": "alnay-sos-bois"
+        "name": "Coubron",
+        "score": 8,
+        "slug": "coubron"
       }
     ],
     "regionName": "Île-de-France"
@@ -124,103 +124,103 @@
     "aubervilliers": {
       "cityName": "Aubervilliers",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -232,110 +232,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93001",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "aulnay-sous-bois": {
       "cityName": "Aulnay-sous-Bois",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -347,110 +347,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93005",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "bagnolet": {
       "cityName": "Bagnolet",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -462,8 +462,8 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93006",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "le-blanc-mesnil": {
@@ -471,41 +471,41 @@
       "reseau": "093000063",
       "isConform": true,
       "crystal": {
-        "final": 4.5,
-        "label": "MÉDIOCRE",
+        "final": 7.5,
+        "label": "SATISFAISANTE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-warning"
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "22,5",
+          "val": "0,91",
           "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "ph": {
           "val": "7,6",
           "unit": " pH",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "temperature": {
-          "val": "13,4",
+          "val": "20,1",
           "unit": " °C",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "hardness": {
-          "val": "18,4",
+          "val": "36,6",
           "unit": " °f",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "chlorine": {
-          "val": "0,24",
+          "val": "0,18",
           "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "pesticides": {
           "val": "0",
@@ -514,28 +514,28 @@
           "timestamp": 1769040000000
         },
         "pfas": {
-          "val": "0,12",
+          "val": "0,01",
           "unit": " µg/L",
-          "date": "22/01/2026",
-          "timestamp": 1769040000000
+          "date": "12/03/2026",
+          "timestamp": 1773273600000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "conductivity": {
-          "val": "446",
+          "val": "712",
           "unit": " µS/cm",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "iron": {
           "val": "0",
@@ -552,20 +552,20 @@
         "ammonium": {
           "val": "0",
           "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "32,7",
+          "val": "0,0073",
           "unit": " mg/L",
-          "date": "22/01/2026",
-          "timestamp": 1769040000000
+          "date": "02/06/2026",
+          "timestamp": 1780358400000
         },
         "organic_carbon": {
-          "val": "0,75",
+          "val": "1,3",
           "unit": " mg/L",
-          "date": "05/02/2026",
-          "timestamp": 1770249600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         }
       },
       "prix": {
@@ -577,110 +577,110 @@
         "nom_distributeur": "SUEZ EAU FRANCE",
         "code_departement": "93",
         "insee": "93007",
-        "date_prelevement": "2026-02-05",
+        "date_prelevement": "2026-06-15",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "bobigny": {
       "cityName": "Bobigny",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -692,110 +692,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93008",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "bondy": {
       "cityName": "Bondy",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -807,110 +807,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93010",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "le-bourget": {
       "cityName": "Le Bourget",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -922,110 +922,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93013",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "clichy-sous-bois": {
       "cityName": "Clichy-Sous-Bois",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1037,110 +1037,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93014",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "coubron": {
       "cityName": "Coubron",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1152,110 +1152,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93015",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "la-courneuve": {
       "cityName": "La Courneuve",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1267,110 +1267,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93027",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "drancy": {
       "cityName": "Drancy",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1382,110 +1382,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93029",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "dugny": {
       "cityName": "Dugny",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1497,8 +1497,8 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93030",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "epinay-sur-seine": {
@@ -1506,101 +1506,101 @@
       "reseau": "093000113",
       "isConform": true,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
+        "final": 6.5,
+        "label": "MÉDIOCRE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
-          "val": "21,1",
+          "val": "19,6",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "ph": {
-          "val": "7,9",
+          "val": "7,8",
           "unit": " pH",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "temperature": {
-          "val": "14,2",
+          "val": "21,3",
           "unit": " °C",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "hardness": {
-          "val": "19",
+          "val": "28,4",
           "unit": " °f",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "chlorine": {
-          "val": "0,23",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,001",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "conductivity": {
-          "val": "440",
+          "val": "608",
           "unit": " µS/cm",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "iron": {
-          "val": "21",
+          "val": "0",
           "unit": " µg/L",
-          "date": "15/12/2025",
-          "timestamp": 1765756800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "ammonium": {
-          "val": "0,027",
+          "val": "0",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "copper": {
-          "val": "55,5",
+          "val": "27,3",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "organic_carbon": {
-          "val": "0,72",
+          "val": "1,4",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         }
       },
       "prix": {
@@ -1612,110 +1612,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93031",
-        "date_prelevement": "2026-02-10",
+        "date_prelevement": "2026-06-11",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "gagny": {
       "cityName": "Gagny",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1727,110 +1727,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93032",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "gournay-sur-marne": {
       "cityName": "Gournay-Sur-Marne",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1842,110 +1842,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93033",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "l-ile-saint-denis": {
       "cityName": "L' Ile-Saint-Denis",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -1957,110 +1957,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93039",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "les-lilas": {
       "cityName": "Les Lilas",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2072,110 +2072,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93045",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "livry-gargan": {
       "cityName": "Livry-Gargan",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2187,110 +2187,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93046",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "montfermeil": {
       "cityName": "Montfermeil",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2302,110 +2302,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93047",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "montreuil": {
       "cityName": "Montreuil",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2417,110 +2417,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93048",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "neuilly-plaisance": {
       "cityName": "Neuilly-Plaisance",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2532,110 +2532,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93049",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "neuilly-sur-marne": {
       "cityName": "Neuilly-Sur-Marne",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2647,110 +2647,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93050",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "noisy-le-grand": {
       "cityName": "Noisy-Le-Grand",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2762,110 +2762,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93051",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "noisy-le-sec": {
       "cityName": "Noisy-Le-Sec",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2877,110 +2877,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93053",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "pantin": {
       "cityName": "Pantin",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -2992,110 +2992,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93055",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "les-pavillons-sous-bois": {
       "cityName": "Les Pavillons-Sous-Bois",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3107,110 +3107,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93057",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "pierrefitte-sur-seine": {
       "cityName": "Pierrefitte-Sur-Seine",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3222,110 +3222,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93059",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "le-pre-saint-gervais": {
       "cityName": "Le Pre-Saint-Gervais",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3337,110 +3337,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93061",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "le-raincy": {
       "cityName": "Le Raincy",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3452,110 +3452,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93062",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "romainville": {
       "cityName": "Romainville",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3567,110 +3567,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93063",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "rosny-sous-bois": {
       "cityName": "Rosny-Sous-Bois",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3682,110 +3682,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93064",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "saint-denis": {
       "cityName": "Saint-Denis",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3797,110 +3797,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93066",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "saint-ouen": {
       "cityName": "Saint-Ouen",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -3912,110 +3912,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93070",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "sevran": {
       "cityName": "Sevran",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -4027,110 +4027,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93071",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "stains": {
       "cityName": "Stains",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -4142,8 +4142,8 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93072",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "tremblay-en-france": {
@@ -4160,32 +4160,32 @@
         "nitrates": {
           "val": "0",
           "unit": " mg/L",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "ph": {
-          "val": "7,8",
+          "val": "7,5",
           "unit": " pH",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "temperature": {
-          "val": "13,6",
+          "val": "15,6",
           "unit": " °C",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "hardness": {
-          "val": "37",
+          "val": "44,5",
           "unit": " °f",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "chlorine": {
-          "val": "0,37",
+          "val": "0,21",
           "unit": " mg/L",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "pesticides": {
           "val": "0",
@@ -4202,20 +4202,20 @@
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "conductivity": {
-          "val": "535",
+          "val": "712",
           "unit": " µS/cm",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "turbidity": {
-          "val": "0,13",
+          "val": "0",
           "unit": " NFU",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "iron": {
           "val": "0",
@@ -4232,20 +4232,20 @@
         "ammonium": {
           "val": "0",
           "unit": " mg/L",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,00888",
           "unit": " mg/L",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "02/04/2026",
+          "timestamp": 1775088000000
         },
         "organic_carbon": {
-          "val": "0,83",
+          "val": "0,88",
           "unit": " mg/L",
-          "date": "20/02/2026",
-          "timestamp": 1771545600000
+          "date": "28/05/2026",
+          "timestamp": 1779926400000
         }
       },
       "prix": {
@@ -4257,110 +4257,110 @@
         "nom_distributeur": "REGIE TREMBLAY",
         "code_departement": "93",
         "insee": "93073",
-        "date_prelevement": "2026-02-20",
+        "date_prelevement": "2026-05-28",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "vaujours": {
       "cityName": "Vaujours",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -4372,110 +4372,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93074",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "villemomble": {
       "cityName": "Villemomble",
       "reseau": "093000089",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "17",
+          "val": "19,1",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "ph": {
           "val": "7,7",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "temperature": {
-          "val": "10,8",
+          "val": "23,9",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "hardness": {
-          "val": "25,6",
+          "val": "32,5",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "chlorine": {
-          "val": "0,2",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "pfas": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "conductivity": {
-          "val": "523",
+          "val": "649",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "iron": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "23/02/2026",
-          "timestamp": 1771804800000
+          "date": "18/05/2026",
+          "timestamp": 1779062400000
         },
         "ammonium": {
-          "val": "0",
+          "val": "0,015",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "15/06/2026",
+          "timestamp": 1781481600000
         },
         "copper": {
-          "val": "43,1",
+          "val": "41,7",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,2",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "12/06/2026",
+          "timestamp": 1781222400000
         }
       },
       "prix": {
@@ -4487,110 +4487,110 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93077",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "villepinte": {
       "cityName": "Villepinte",
       "reseau": "093000074",
-      "isConform": false,
+      "isConform": true,
       "crystal": {
-        "final": 3.5,
-        "label": "NON CONFORME",
-        "statusClass": "status-critical",
-        "explanation": "L'eau ne respecte pas les limites de qualité ARS."
+        "final": 8,
+        "label": "SATISFAISANTE",
+        "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
-          "val": "15,3",
+          "val": "21,5",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "ph": {
-          "val": "7,7",
+          "val": "7,6",
           "unit": " pH",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "temperature": {
-          "val": "11",
+          "val": "20,3",
           "unit": " °C",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "hardness": {
-          "val": "26,9",
+          "val": "30",
           "unit": " °f",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "chlorine": {
-          "val": "0,29",
+          "val": "0,25",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "21/10/2025",
-          "timestamp": 1761004800000
+          "date": "26/03/2026",
+          "timestamp": 1774483200000
         },
         "pfas": {
-          "val": "0,005",
+          "val": "0",
           "unit": " µg/L",
-          "date": "21/10/2025",
-          "timestamp": 1761004800000
+          "date": "26/03/2026",
+          "timestamp": 1774483200000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "conductivity": {
-          "val": "548",
+          "val": "640",
           "unit": " µS/cm",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "iron": {
-          "val": "21",
+          "val": "0",
           "unit": " µg/L",
-          "date": "30/12/2025",
-          "timestamp": 1767052800000
+          "date": "26/03/2026",
+          "timestamp": 1774483200000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "21/10/2025",
-          "timestamp": 1761004800000
+          "date": "26/03/2026",
+          "timestamp": 1774483200000
         },
         "ammonium": {
-          "val": "0,035",
+          "val": "0",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "copper": {
-          "val": "0,0145",
+          "val": "0",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/03/2026",
+          "timestamp": 1774483200000
         },
         "organic_carbon": {
-          "val": "2,1",
+          "val": "1,4",
           "unit": " mg/L",
-          "date": "25/02/2026",
-          "timestamp": 1771977600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         }
       },
       "prix": {
@@ -4602,8 +4602,8 @@
         "nom_distributeur": "VEOLIA EAU IDF NORD",
         "code_departement": "93",
         "insee": "93078",
-        "date_prelevement": "2026-02-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "date_prelevement": "2026-06-11",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "villetaneuse": {
@@ -4611,101 +4611,101 @@
       "reseau": "093000113",
       "isConform": true,
       "crystal": {
-        "final": 8.5,
-        "label": "SATISFAISANTE",
+        "final": 6.5,
+        "label": "MÉDIOCRE",
         "explanation": "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.",
-        "statusClass": "status-good"
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
-          "val": "21,1",
+          "val": "19,6",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "ph": {
-          "val": "7,9",
+          "val": "7,8",
           "unit": " pH",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "temperature": {
-          "val": "14,2",
+          "val": "21,3",
           "unit": " °C",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "hardness": {
-          "val": "19",
+          "val": "28,4",
           "unit": " °f",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "chlorine": {
-          "val": "0,23",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "pesticides": {
           "val": "0",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "pfas": {
-          "val": "0",
+          "val": "0,001",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "microbiology": {
           "val": "Absence",
           "unit": " Absence",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "conductivity": {
-          "val": "440",
+          "val": "608",
           "unit": " µS/cm",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "turbidity": {
           "val": "0",
           "unit": " NFU",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "iron": {
-          "val": "21",
+          "val": "0",
           "unit": " µg/L",
-          "date": "15/12/2025",
-          "timestamp": 1765756800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "manganese": {
           "val": "0",
           "unit": " µg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "25/03/2026",
+          "timestamp": 1774396800000
         },
         "ammonium": {
-          "val": "0,027",
+          "val": "0",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "copper": {
-          "val": "55,5",
+          "val": "27,3",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         },
         "organic_carbon": {
-          "val": "0,72",
+          "val": "1,4",
           "unit": " mg/L",
-          "date": "10/02/2026",
-          "timestamp": 1770681600000
+          "date": "11/06/2026",
+          "timestamp": 1781136000000
         }
       },
       "prix": {
@@ -4717,7 +4717,7 @@
         "nom_distributeur": "FRANCILIANE",
         "code_departement": "93",
         "insee": "93079",
-        "date_prelevement": "2026-02-10",
+        "date_prelevement": "2026-06-11",
         "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     }
@@ -4730,19 +4730,19 @@
         "unit": "  mg/L"
       },
       "ph": {
-        "val": "7,63",
+        "val": "7,56",
         "unit": "  pH"
       },
       "temperature": {
-        "val": "12",
+        "val": "19",
         "unit": "  °C"
       },
       "hardness": {
-        "val": "25",
+        "val": "27",
         "unit": "  °f"
       },
       "chlorine": {
-        "val": "0,26",
+        "val": "0,25",
         "unit": "  mg/L"
       },
       "pesticides": {
@@ -4758,19 +4758,19 @@
         "unit": ""
       },
       "conductivity": {
-        "val": "580",
+        "val": "617",
         "unit": "  µS/cm"
       },
       "turbidity": {
-        "val": "0,15",
+        "val": "0,058",
         "unit": "  NFU"
       },
       "iron": {
-        "val": "5,45",
+        "val": "4,41",
         "unit": "  µg/L"
       },
       "manganese": {
-        "val": "0,14",
+        "val": "0,17",
         "unit": "  µg/L"
       },
       "ammonium": {
@@ -4778,15 +4778,15 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "15",
+        "val": "20",
         "unit": "  mg/L"
       },
       "organic_carbon": {
-        "val": "1,08",
+        "val": "0,87",
         "unit": "  mg/L"
       }
     },
-    "score": 6.5,
-    "conformity": 87
+    "score": 7.1,
+    "conformity": 100
   }
 }
