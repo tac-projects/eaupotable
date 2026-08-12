@@ -47,6 +47,19 @@ self.addEventListener('fetch', (event) => {
      return;
   }
 
+  // Navigation (pages HTML) : réseau d'abord → version fraîche après déploiement,
+  // cache en secours si hors-ligne. Fix 12/08/2026 : la home était servie depuis le
+  // cache (Cache First) jusqu'au bump manuel de CACHE_NAME, donc obsolète après un deploy.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() =>
+        caches.match(event.request).then((r) => r || caches.match('/'))
+      )
+    );
+    return;
+  }
+
+  // Assets : Cache First, puis réseau
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);

@@ -3,7 +3,7 @@
 > Audit SEO complet — réalisé le 12/08/2026 (analyse 100 % lecture seule, aucune modification du code).
 > Ce fichier est la **mémoire des points à corriger**. Cocher les cases au fil du travail.
 
-**Statut :** points 1, 2, 3, 4 **et 5 corrigés et vérifiés le 12/08/2026** (commits `b626d66`, `b8fd0e3`, + point 5 à committer). Script `npm run ship` **supprimé** le 12/08. Points 6 et 7 toujours ouverts.
+**Statut :** points 1 à 6 **corrigés et vérifiés le 12/08/2026** (commits `b626d66`, `b8fd0e3`, `7573fff`). Script `npm run ship` **supprimé** le 12/08. **Point 7 (contenu home) encore ouvert** + **nouveau chantier prioritaire : fraîcheur des données** (section dédiée ci-dessous).
 
 ---
 
@@ -94,8 +94,8 @@
 - [x] Retirer `/mentions-legales` et `/contact` de `staticUrls` dans `scripts/generate-sitemap.js` → **fait** (avec commentaire explicite dans le script).
 - [x] Supprimer `public/sitemaps/sitemap-dept-049.xml` → **fait**, aucun résidu dans l'index.
 - [x] Régénérer (`node scripts/generate-sitemap.js`) → **fait** : `lastmod` frais (12/08/2026), 35 410 URLs (35 304 villes + 101 dépt + 5 statiques), plus de `049`, `mentions-legales`/`contact` absents de `sitemap-main.xml`.
-- [ ] `lastmod` = date de dernière MAJ des données → voir **point 6** (toujours ouvert).
-- [ ] Automatiser la régénération du sitemap au déploiement → **à décider** (le script `ship` auto-push ayant été supprimé, la régénération est volontaire).
+- [x] `lastmod` = date des données → **décision 12/08 : NON retenu.** Données figées depuis 02/2026 → un lastmod à la date de prélèvement rendrait tout le sitemap périmé et réduirait le crawl. On garde `lastmod` = date de génération (le HTML change réellement à chaque build). Le vrai chantier = **fraîcheur des données** (section dédiée ci-dessous).
+- [ ] Automatiser la régénération du sitemap au déploiement → **à intégrer** au process de déploiement (`ship` supprimé, régénération volontaire pour l'instant).
 
 ---
 
@@ -134,8 +134,8 @@ L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle ap
 **Impact** : UX dégradée + décalage possible entre le titre indexé par Google et le titre réellement servi aux utilisateurs. (Pas d'impact direct sur le crawl Googlebot, qui n'utilise pas le SW.)
 
 **Correctif**
-- [ ] Passer la home en `NetworkFirst` dans le handler fetch, ou
-- [ ] Auto-incrémenter la version du cache à chaque build (variable injectée au build).
+- [x] Passer la home en `NetworkFirst` → **fait (12/08)** : les navigations HTML passent réseau d'abord, cache en secours (hors-ligne). La home est fraîche après chaque déploiement, sans bump manuel de `CACHE_NAME`.
+- [ ] Optionnel : auto-incrémenter la version du cache au build (utile si on pré-cache davantage de contenus).
 
 ---
 
@@ -152,6 +152,22 @@ L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle ap
 **Correctif**
 - [ ] Nettoyer l'import mort de `WaterReport` dans `app/components/WaterApp.js`.
 - [ ] Optionnel : enrichir le contenu SSR de la home (section rédactionnelle statique).
+
+---
+
+## 🔴 Chantier prioritaire — Fraîcheur des données (découvert le 12/08/2026)
+
+**Constat**
+- Dernier prélèvement par dépt : **02/2026** (99 dépts), 12/2025 (1), sans date (1). Les données sont **figées depuis ~6 mois**.
+- La FAQ annonce une **« mise à jour quotidienne »** — non reflétée dans les données.
+- Les pages affichent « Analyse mise à jour en **août 2026** » alors que le dernier prélèvement date de février → **sur-vente de fraîcheur** (confiance utilisateur + perception Google).
+- `source-data/archives/` : dernier fichier PLV/RESULT téléchargé ≈ 02/2026 → la synchro Hub'Eau/SISE-Eaux ne tourne plus.
+
+**Actions à mener**
+- [ ] Re-synchroniser les archives (UDI/PLV/RESULT) depuis Hub'Eau (SISE-Eaux) — nouvelles données 2026.
+- [ ] Relancer `node scripts/build-dept-generic.js --all` (le fix d'attribution dépt sera appliqué) + post-traitement (prix, home scores) + régénération sitemap.
+- [ ] Afficher la **date réelle du dernier prélèvement** sur les pages (au lieu du mois courant) — à corriger dans `CityJsonLd.js`, `CitySEOContent.js`, `generateMetadata`.
+- [ ] Aligner la FAQ sur la fréquence réelle de mise à jour.
 
 ---
 
@@ -175,22 +191,24 @@ L'« aspiration PLV » ajoutait une ville dans un département **dès qu'elle ap
 
 ## 📋 Priorités
 
-| # | Action | Effort | Impact |
-|---|--------|--------|--------|
-| 1 | Canonical sur `/villes` + `/faq` | ~5 min | Élevé (dé-indexation évitée) |
-| 2 | Image OG par défaut dans le layout | ~10 min | Moyen (partage social) |
-| 3 | Élargir l'exemption crawlers du rate limiter | ~5 min | Moyen (faux 429 GSC) |
-| 4 | Nettoyer sitemap (contact/mentions, `049`) | ~10 min | Faible |
-| 5 | Corriger le mappage 75 des 2 villes | ~15 min | Faible (pertinence locale) |
-| 6 | `lastmod` sitemap = date des données | ~15 min | Faible (fréquence recrawl) |
-| 7 | `NetworkFirst` sur `/` dans `sw.js` | ~10 min | Faible (fraîcheur visiteur) |
+| # | Action | État | Impact |
+|---|--------|------|--------|
+| 1 | Canonical `/villes` + `/faq` | ✅ | Élevé |
+| 2 | Image OG par défaut | ✅ | Moyen |
+| 3 | Exemption crawlers rate limiter | ✅ | Moyen |
+| 4 | Sitemap : noindex + `049` | ✅ | Faible |
+| 5 | Attribution départementale (303 doublons) | ✅ | Moyen-élevé |
+| 6 | `sw.js` NetworkFirst | ✅ | Faible |
+| 7 | Contenu home côté client | ⏳ ouvert | Faible |
+| **C** | **Fraîcheur des données** (re-sync Hub'Eau) | 🔴 à traiter | **Élevé** |
 
 ---
 
 ## 🔍 Contrôles à refaire après correctifs
 
-- [ ] `/villes` et `/faq` : canonical correct dans le HTML rendu.
-- [ ] `og:image` présent sur home, `/villes`, `/faq`, `/definitions`, `/methodologie`.
-- [ ] Inspection d'URL GSC sur une page `/ville/` : pas de 429.
-- [ ] `npm run sitemap` : plus de `/mentions-legales` ni `/contact`, plus de fichier `049`.
-- [ ] Régénérer l'index : `saint-cloud` → 92, `l-hay-les-roses` → 94.
+- [x] `/villes` et `/faq` : canonical correct dans le HTML rendu.
+- [x] `og:image` présent sur home, `/villes`, `/faq`, `/definitions`, `/methodologie`.
+- [x] Inspection d'URL GSC sur une page `/ville/` : pas de 429 (exemption élargie).
+- [x] `npm run sitemap` : plus de `/mentions-legales` ni `/contact`, plus de fichier `049`.
+- [x] Régénérer l'index : `saint-cloud` → 92, `l-hay-les-roses` → 94.
+- [ ] Après déploiement : surveiller dans GSC que les 303 anciennes URLs de collision redirigent en 301 (pas de 404).
