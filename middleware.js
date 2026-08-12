@@ -20,15 +20,29 @@ function checkRateLimit(request) {
   const pathname = request.nextUrl.pathname;
   if (!isDynamicPage(pathname)) return { allowed: true };
 
-  // Exemption des crawlers légitimes pour ne pas brider l'indexation
+  // Exemption des crawlers légitimes pour ne pas brider l'indexation.
+  // Inclut l'UA de l'outil "Inspection d'URL" de Google (google-inspectiontool)
+  // pour éviter de faux 429 lors de vérifications dans Search Console.
   const ua = request.headers.get('user-agent')?.toLowerCase() || '';
   const isSearchEngine =
     ua.includes('googlebot') ||
+    ua.includes('google-inspectiontool') ||
+    ua.includes('googleother') ||
+    ua.includes('adsbot-google') ||
     ua.includes('bingbot') ||
     ua.includes('slurp') ||
     ua.includes('duckduckbot') ||
     ua.includes('baiduspider') ||
-    ua.includes('yandexbot');
+    ua.includes('yandexbot') ||
+    ua.includes('applebot') ||
+    ua.includes('seznam') ||
+    ua.includes('sogou') ||
+    ua.includes('naver') ||
+    ua.includes('petalbot') ||
+    ua.includes('ahrefs') ||
+    ua.includes('semrush') ||
+    ua.includes('mj12') ||
+    ua.includes('dotbot');
   if (isSearchEngine) return { allowed: true };
 
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()

@@ -35,12 +35,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'EauPotable.net',
     description: 'La vérité sur l\'eau de votre robinet.',
+    images: ['https://www.eaupotable.net/images/og-default.webp'],
   },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://www.eaupotable.net',
     siteName: 'EauPotable.net',
+    images: ['https://www.eaupotable.net/images/og-default.webp'],
   },
   robots: {
     index: true,

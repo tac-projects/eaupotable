@@ -4,9 +4,13 @@ import FAQClient from './FAQClient';
 export const metadata = {
   title: 'FAQ 2026 Qualité de l\'eau : PFAS, Nitrates, Santé & Sécurité | EauPotable.net',
   description: 'Le guide complet (20 questions d\'experts) sur l\'eau du robinet : polluants éternels (PFAS), pesticides, biberons, calcaire et conservation. Données officielles ARS.',
+  alternates: {
+    canonical: 'https://www.eaupotable.net/faq',
+  },
   openGraph: {
     title: 'Tout savoir sur votre Eau : Le Guide des 20 Questions Clés',
     description: 'PFAS, Nitrates, Santé des nourrissons : l\'expertise de l\'observatoire citoyen.',
+    images: ['https://www.eaupotable.net/images/og-default.webp'],
   },
 };
 
