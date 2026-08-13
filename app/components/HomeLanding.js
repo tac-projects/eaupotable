@@ -9,7 +9,7 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
   const [placeholder, setPlaceholder] = useState("Votre ville...");
 
   useEffect(() => {
-    const texts = ["Paris, 75000", "Lyon, 69000", "Marseille, 13000", "Toulouse, 31000", "Nantes, 44000"];
+    const texts = ["Paris", "Lyon", "Marseille", "Toulouse", "Nantes"];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -275,7 +275,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                       if (e.key === 'Enter' && suggestions.length > 0) { handleSearchSelection(suggestions[0]); }
                     }}
                     className="search-input"
-                    ariaLabel="Rechercher une ville ou un code postal"
+                    ariaLabel="Rechercher une ville"
                   />
                   {searchQuery && (
                     <button
