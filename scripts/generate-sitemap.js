@@ -47,7 +47,7 @@ async function generateSitemap() {
     // --- SITEMAP PRINCIPAL (Pages Statiques) ---
     // Pages statiques indexables UNIQUEMENT — les pages noindex (contact, mentions-legales)
     // ne doivent pas apparaître dans un sitemap.
-    const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/definitions`, `${DOMAIN}/faq`, `${DOMAIN}/methodologie` ];
+    const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/definitions`, `${DOMAIN}/faq`, `${DOMAIN}/methodologie`, `${DOMAIN}/pfas-eau-potable` ];
     const staticXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}

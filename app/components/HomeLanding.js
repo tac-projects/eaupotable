@@ -629,7 +629,8 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                 },
                 {
                   q: "L'eau de mon robinet contient-elle des PFAS (polluants éternels)\u00A0?",
-                  a: "Depuis le 1er janvier 2026, toutes les communes doivent tester les PFAS. EauPotable.net intègre ces données dès leur publication. Vérifiez sur la fiche de votre ville si des résidus ont été détectés récemment."
+                  a: "Depuis le 1er janvier 2026, toutes les communes doivent tester les PFAS. EauPotable.net intègre ces données dès leur publication. Vérifiez sur la fiche de votre ville si des résidus ont été détectés récemment.",
+                  link: "/pfas-eau-potable"
                 },
                 {
                   q: "Adoucisseur vs Carafe filtrante\u00A0: que conseiller\u00A0?",
@@ -652,6 +653,12 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
                   </summary>
                   <div className="seo-faq-answer">
                     <p>{item.a}</p>
+                    {item.link && (
+                      <Link href={item.link} className="faq-more-btn">
+                        Le bilan PFAS 2026 par commune
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </Link>
+                    )}
                   </div>
                 </details>
               ))}
