@@ -541,8 +541,24 @@ export default function PfasPage() {
                 '@type': 'Dataset',
                 name: 'Contamination PFAS dans l\'eau potable en France — données communales',
                 description: `Aggrégation des prélèvements PFAS (ARS) pour ${fmtFr(national.tested)} communes françaises : traces, alertes et dépassements du seuil réglementaire.`,
-                publisher: { '@id': `${DOMAIN}/#organization` },
+                creator: {
+                  '@type': 'Organization',
+                  '@id': `${DOMAIN}/#organization`,
+                  name: 'EauPotable.net',
+                  url: DOMAIN
+                },
+                publisher: {
+                  '@type': 'Organization',
+                  '@id': `${DOMAIN}/#organization`,
+                  name: 'EauPotable.net',
+                  url: DOMAIN
+                },
+                license: `${DOMAIN}/mentions-legales`,
                 url: `${DOMAIN}/pfas-eau-potable`,
+                spatialCoverage: {
+                  '@type': 'Place',
+                  name: 'France'
+                },
                 temporalCoverage: `2026-01-01/${generatedAt}`
               }
             ])
