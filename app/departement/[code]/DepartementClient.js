@@ -257,6 +257,10 @@ export default function DepartementClient({ code, deptData }) {
                     a: `Les services de l'ARS surveillent prioritairement les traces de pesticides d'origine agricole, les nitrates, ainsi que les polluants émergents comme les PFAS et les métabolites de chloridazone.`
                   },
                   {
+                    q: `Y a-t-il des PFAS dans l'eau des communes de ${deptName} ?`,
+                    a: <>La recherche des PFAS (polluants éternels) est obligatoire depuis le 1er janvier 2026. Consultez la <a href="/pfas-eau-potable">carte de France des PFAS</a> puis la fiche de votre commune pour connaître la valeur exacte mesurée par l'ARS.</>
+                  },
+                  {
                     q: `Est-il nécessaire d'utiliser une carafe filtrante en ${deptName} ?`,
                     a: `L'usage d'une carafe peut être utile pour supprimer le goût de chlore, mais elle ne remplace pas une vérification du Crystal Score pour les polluants chimiques lourds. Attention à changer les filtres régulièrement pour éviter la prolifération bactérienne.`
                   },

@@ -5,6 +5,86 @@ export const runtime = 'edge';
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
+
+    if (searchParams.get('pfas') === '1') {
+      const tested = searchParams.get('tested') || '32 455';
+      const alerts = searchParams.get('alerts') || '485';
+      const over = searchParams.get('over') || '32';
+
+      const stats = [
+        { val: tested, label: 'COMMUNES TESTÉES', color: '#1e40af' },
+        { val: alerts, label: 'COMMUNES EN ALERTE', color: '#ea580c' },
+        { val: over, label: 'DÉPASSEMENTS DU SEUIL', color: '#dc2626' }
+      ];
+
+      return new ImageResponse(
+        (
+          <div
+            style={{
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#fff',
+              backgroundImage: 'linear-gradient(to bottom right, #eff6ff 0%, #dbeafe 100%)',
+              padding: '50px',
+              fontFamily: 'system-ui',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', fontSize: '26px', fontWeight: 'bold', color: '#1e40af', letterSpacing: '-0.02em', marginBottom: '30px' }}>
+              EauPotable.net
+            </div>
+            <h1
+              style={{
+                fontSize: '58px',
+                fontWeight: 900,
+                color: '#111827',
+                margin: '0 0 8px 0',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              PFAS dans l&apos;eau du robinet
+            </h1>
+            <p style={{ fontSize: '26px', color: '#6b7280', margin: '0 0 36px 0', fontWeight: 600 }}>
+              Le bilan 2026, commune par commune
+            </p>
+            <div style={{ display: 'flex', gap: '20px' }}>
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    borderRadius: '24px',
+                    padding: '24px 32px',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                  }}
+                >
+                  <div style={{ display: 'flex', fontSize: '44px', fontWeight: 900, color: s.color }}>{s.val}</div>
+                  <div style={{ display: 'flex', fontSize: '15px', fontWeight: 800, color: '#6b7280', letterSpacing: '0.06em', marginTop: '4px' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: '32px', fontSize: '20px', color: '#6b7280' }}>
+              Données officielles ARS — carte de France et classements
+            </p>
+          </div>
+        ),
+        {
+          width: 1200,
+          height: 630,
+          headers: {
+            'Cache-Control': 'public, s-maxage=31536000, immutable',
+          },
+        }
+      );
+    }
+
     const city = searchParams.get('city') || 'Ma Ville';
     const score = searchParams.get('score') || '9.2';
     const label = searchParams.get('label') || 'EXCELLENTE';

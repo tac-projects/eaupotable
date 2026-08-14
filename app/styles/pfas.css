@@ -227,6 +227,194 @@
   color: var(--text-light);
 }
 
+/* ---- CARTE DE FRANCE PFAS ---- */
+.pfas-map-block {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: var(--ghost-border);
+  box-shadow: var(--shadow-premium);
+  padding: 32px;
+}
+
+.pfas-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pfas-map-link {
+  outline: none;
+}
+
+.pfas-map-path {
+  stroke: #ffffff;
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+  transition: fill-opacity 0.15s ease;
+}
+
+.pfas-map-path:hover,
+.pfas-map-path:focus-visible {
+  fill-opacity: 0.75;
+  stroke: #1e293b;
+  stroke-width: 1.2;
+}
+
+.pfas-map-zero {
+  fill: #e8edf5;
+}
+
+.pfas-map-low {
+  fill: #fcd34d;
+}
+
+.pfas-map-high {
+  fill: #f97316;
+}
+
+.pfas-map-over {
+  fill: #dc2626;
+}
+
+.pfas-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pfas-map-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pfas-map-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.pfas-map-swatch.pfas-map-zero {
+  background: #e8edf5;
+}
+
+.pfas-map-swatch.pfas-map-low {
+  background: #fcd34d;
+}
+
+.pfas-map-swatch.pfas-map-high {
+  background: #f97316;
+}
+
+.pfas-map-swatch.pfas-map-over {
+  background: #dc2626;
+}
+
+.pfas-map-note {
+  margin: 16px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* ---- PROSE (sections santé, élimination, bouteille) ---- */
+.pfas-prose {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-main);
+}
+
+.pfas-prose p {
+  margin-bottom: 20px;
+}
+
+.pfas-prose ul {
+  margin: 0 0 24px;
+  padding-left: 24px;
+}
+
+.pfas-prose li {
+  margin-bottom: 10px;
+}
+
+/* ---- TABLEAU DES SEUILS ---- */
+.pfas-threshold-table {
+  max-width: 820px;
+  margin: 28px auto 0;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: var(--ghost-border);
+  box-shadow: var(--shadow-premium);
+  overflow: hidden;
+}
+
+.pfas-threshold-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.pfas-threshold-table thead {
+  background: var(--surface-sunken);
+}
+
+.pfas-threshold-table th {
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: var(--text-light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pfas-threshold-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.pfas-threshold-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pfas-threshold-table td:first-child {
+  font-weight: 800;
+  font-family: var(--font-heading);
+}
+
+/* ---- SOURCES ---- */
+.pfas-sources-list {
+  max-width: 820px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.pfas-sources-list li {
+  margin-bottom: 14px;
+}
+
+.pfas-sources-list a {
+  color: var(--primary-solid);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-premium);
+}
+
+.pfas-sources-list a:hover {
+  border-bottom-color: var(--primary-solid);
+}
+
 /* ---- TABLEAU TOP COMMUNES ---- */
 .pfas-table-container {
   background: white;

@@ -898,6 +898,13 @@
     margin: 0;
 }
 
+.seo-faq-answer a {
+    color: var(--primary-solid);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 @keyframes fadeInSlide {
     from {
         opacity: 0;
