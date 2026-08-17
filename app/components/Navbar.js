@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
+import MobileSearchSheet from './MobileSearchSheet';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 
 export default function Navbar() {
@@ -12,13 +13,10 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
-  const menuSearchRef = useRef(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const openSearch = () => {
-    setIsOpen(true);
-    setTimeout(() => {
-      menuSearchRef.current?.focus();
-    }, 200);
+    setIsSearchOpen(true);
   };
 
   useEffect(() => {
@@ -140,7 +138,6 @@ export default function Navbar() {
                 if (e.key === 'Enter' && suggestions.length > 0) { handleSelect(suggestions[0]); }
               }}
               className="menu-search-input"
-              ref={menuSearchRef}
             />
           </div>
           {isFocused && (suggestions.length > 0 || !searchQuery) && (
@@ -268,7 +265,7 @@ export default function Navbar() {
           </svg>
           <span>Villes</span>
         </Link>
-        <button className="mbn-item mbn-search" onClick={openSearch} aria-label="Rechercher une ville">
+        <button className={`mbn-item mbn-search ${isSearchOpen ? 'active' : ''}`} onClick={openSearch} aria-label="Rechercher une ville">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -290,6 +287,8 @@ export default function Navbar() {
           <span>FAQ</span>
         </Link>
       </nav>
+
+      <MobileSearchSheet open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
 }
