@@ -1,16 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
+  const menuSearchRef = useRef(null);
+
+  const openSearch = () => {
+    setIsOpen(true);
+    setTimeout(() => {
+      menuSearchRef.current?.focus();
+    }, 200);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -131,6 +140,7 @@ export default function Navbar() {
                 if (e.key === 'Enter' && suggestions.length > 0) { handleSelect(suggestions[0]); }
               }}
               className="menu-search-input"
+              ref={menuSearchRef}
             />
           </div>
           {isFocused && (suggestions.length > 0 || !searchQuery) && (
@@ -242,6 +252,44 @@ export default function Navbar() {
         <div className="menu-footer">
         </div>
       </div>
+
+      <nav className="mobile-bottom-nav" aria-label="Navigation mobile">
+        <Link href="/" className={`mbn-item ${pathname === '/' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          <span>Accueil</span>
+        </Link>
+        <Link href="/villes" className={`mbn-item ${pathname === '/villes' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Villes</span>
+        </Link>
+        <button className="mbn-item mbn-search" onClick={openSearch} aria-label="Rechercher une ville">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Recherche</span>
+        </button>
+        <Link href="/pfas-eau-potable" className={`mbn-item ${pathname === '/pfas-eau-potable' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>PFAS</span>
+        </Link>
+        <Link href="/faq" className={`mbn-item ${pathname === '/faq' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+          <span>FAQ</span>
+        </Link>
+      </nav>
     </>
   );
 }

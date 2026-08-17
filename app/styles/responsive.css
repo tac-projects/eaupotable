@@ -1,6 +1,9 @@
 /* Adaptive Binary Strategy: Mobile/Tablet (< 1024px) vs Desktop (>= 1024px) */
 
 /* 1. ELEMENTS UNIFIÉS (Identiques sur tous les écrans) */
+.mobile-bottom-nav {
+    display: none;
+}
 
 /* 2. MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
@@ -29,6 +32,85 @@
         pointer-events: none !important;
         transform: translateY(40px) !important;
         visibility: hidden;
+    }
+
+    /* Bottom Navigation — Mobile uniquement */
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: calc(62px + env(safe-area-inset-bottom));
+        padding-bottom: env(safe-area-inset-bottom);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        z-index: 2400;
+    }
+
+    .mbn-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        background: none;
+        border: none;
+        color: var(--text-light);
+        font-family: var(--font-body);
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        padding: 0 2px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mbn-item svg {
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .mbn-item:active svg {
+        transform: scale(1.2);
+    }
+
+    .mbn-item.active {
+        color: var(--primary-solid);
+    }
+
+    .mbn-search {
+        margin: -14px 0 0;
+    }
+
+    .mbn-search svg {
+        width: 26px;
+        height: 26px;
+        padding: 7px;
+        background: var(--primary-solid);
+        color: white;
+        border-radius: 50%;
+        box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.4);
+        box-sizing: content-box;
+    }
+
+    .mbn-search.active {
+        color: var(--primary-solid);
+    }
+
+    /* Espace sous le contenu pour ne pas être masqué par la bottom nav */
+    .global-footer {
+        padding-bottom: calc(3rem + 62px + env(safe-area-inset-bottom));
+    }
+
+    body:has(.side-panel.active) .mobile-bottom-nav {
+        transform: translateY(110%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .home-search-container .search-box {
