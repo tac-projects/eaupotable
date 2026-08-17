@@ -132,22 +132,22 @@
     /* Mobile Search Sheet */
     .mobile-search-sheet {
         position: fixed;
-        bottom: calc(62px + env(safe-area-inset-bottom));
+        top: calc(var(--header-height) + 10px);
         left: 10px;
         right: 10px;
         display: block;
         background: #ffffff;
         border-radius: 20px;
-        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         border: 1px solid rgba(0, 0, 0, 0.06);
         z-index: 2600;
         overflow: hidden;
-        animation: mss-slide-up 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        animation: mss-slide-down 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15);
     }
 
-    @keyframes mss-slide-up {
+    @keyframes mss-slide-down {
         from {
-            transform: translateY(30px);
+            transform: translateY(-30px);
             opacity: 0;
         }
 
