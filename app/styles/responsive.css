@@ -9,6 +9,10 @@
     display: none;
 }
 
+.mss-overlay {
+    display: none;
+}
+
 /* 2. MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
     header.transparent-header {
@@ -130,6 +134,28 @@
     }
 
     /* Mobile Search Sheet */
+    .mss-overlay {
+        position: fixed;
+        top: var(--header-height);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        background: rgba(0, 0, 0, 0.25);
+        z-index: 2550;
+        animation: mss-fade-in 0.25s ease;
+    }
+
+    @keyframes mss-fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
     .mobile-search-sheet {
         position: fixed;
         top: calc(var(--header-height) + 10px);
