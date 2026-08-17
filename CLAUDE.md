@@ -1,3 +1,7 @@
+# Projet
+
+Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte PFAS nationale. Servi sur https://www.eaupotable.net.
+
 # Concurrents
 
 - https://infoeau.fr/

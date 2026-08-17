@@ -1,40 +1,6 @@
 /* Adaptive Binary Strategy: Mobile/Tablet (< 1024px) vs Desktop (>= 1024px) */
 
 /* 1. ELEMENTS UNIFIÉS (Identiques sur tous les écrans) */
-.search-floating.bottom-search {
-    bottom: 95px !important;
-    top: auto;
-    width: 94%;
-    max-width: 500px;
-    /* Sécurité pour desktop */
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Centrage total */
-}
-
-.scroll-indicator {
-    bottom: 25px !important;
-    left: 50%;
-    /* Plus de transform statique ici pour laisser l'animation respirer */
-    animation: bounce-premium 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite !important;
-    z-index: 1000;
-}
-
-@keyframes bounce-premium {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-}
 
 /* 2. MODE IMMERSIF: MOBILE & TABLETTES */
 @media (max-width: 1023px) {
@@ -58,8 +24,7 @@
     }
 
     /* Masquer uniquement la bannière et le scroll quand l'analyse est ouverte */
-    body:has(.side-panel.active) .install-banner,
-    body:has(.side-panel.active) .scroll-indicator {
+    body:has(.side-panel.active) .install-banner {
         opacity: 0 !important;
         pointer-events: none !important;
         transform: translateY(40px) !important;
@@ -216,23 +181,6 @@
 
     .vignette-hero {
         margin: -1.5rem -1.25rem 2rem -1.25rem;
-    }
-
-    /* Alignement spécifique des conteneurs larges (Barre de recherche & Bannière) */
-    .search-floating.with-panel,
-    .install-banner.with-panel {
-        left: 0 !important;
-        right: 400px !important;
-        width: 100% !important;
-        max-width: 500px !important;
-        margin: 0 auto !important;
-        display: flex !important;
-        justify-content: center !important;
-    }
-
-    /* Alignement de la flèche (sans déformation) */
-    .scroll-with-panel {
-        left: calc(50% - 200px) !important;
     }
 
     .home-landing-page .seo-title {
