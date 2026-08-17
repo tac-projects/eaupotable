@@ -34,6 +34,11 @@
         visibility: hidden;
     }
 
+    /* Bannière PWA au-dessus de la bottom nav */
+    .install-banner.visible {
+        bottom: calc(62px + env(safe-area-inset-bottom) + 40px);
+    }
+
     /* Bottom Navigation — Mobile uniquement */
     .mobile-bottom-nav {
         position: fixed;
@@ -42,9 +47,7 @@
         right: 0;
         height: calc(62px + env(safe-area-inset-bottom));
         padding-bottom: env(safe-area-inset-bottom);
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: #ffffff;
         border-top: 1px solid rgba(0, 0, 0, 0.06);
         box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
         display: flex;
@@ -65,6 +68,7 @@
         color: var(--text-light);
         font-family: var(--font-body);
         font-size: 0.65rem;
+        line-height: 1.6;
         font-weight: 700;
         text-decoration: none;
         cursor: pointer;
@@ -85,13 +89,17 @@
     }
 
     .mbn-search {
-        margin: -14px 0 0;
+        position: relative;
     }
 
     .mbn-search svg {
-        width: 26px;
-        height: 26px;
-        padding: 7px;
+        position: absolute;
+        top: -26px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 35px;
+        height: 35px;
+        padding: 9px;
         background: var(--primary-solid);
         color: white;
         border-radius: 50%;
@@ -101,6 +109,10 @@
 
     .mbn-search.active {
         color: var(--primary-solid);
+    }
+
+    .mbn-search span {
+        margin-top: 24.8px;
     }
 
     /* Espace sous le contenu pour ne pas être masqué par la bottom nav */

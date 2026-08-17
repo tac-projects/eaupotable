@@ -84,7 +84,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     if (!selectedCity && checkPWAStatus()) {
       smartTimer = setTimeout(() => {
         setShowPWABanner(true);
-      }, 8000); // Un peu plus de délai pour ne pas agresser au chargement
+      }, 5000); // Un peu plus de délai pour ne pas agresser au chargement
     }
 
     return () => {
@@ -231,8 +231,8 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
   return (
     <main>
       {/* 2. PWA Install Banner - Toujours disponible si activée */}
-      {(deferredPrompt || showPWABanner) && (
-        <div id="install-banner" className={`install-banner ${(deferredPrompt || showPWABanner) ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+      {showPWABanner && (
+        <div id="install-banner" className={`install-banner visible ${isScrolled ? 'scrolled' : ''}`}>
           <div className="install-content">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="install-icon-svg">
               <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
@@ -278,7 +278,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
 
       {/* Bouton de Partage Flottant (FAB) */}
       <button 
-        className={`floating-share-fab ${showShareFab ? 'visible' : ''}`}
+        className={`floating-share-fab ${showShareFab && !showPWABanner ? 'visible' : ''}`}
         onClick={handleShare}
         aria-label={selectedCity ? 'Partager ce rapport' : 'Partager EauPotable.net'}
       >
