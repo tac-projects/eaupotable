@@ -63,19 +63,28 @@ export default function VillesIndexClient({ initialDepartements }) {
           min-height: 80vh;
         }
         .villes-header {
+          text-align: center;
           margin-bottom: 50px;
+        }
+        .villes-header :global(.seo-breadcrumb) {
+          justify-content: center;
+          margin-bottom: 24px;
         }
         .villes-header h1 {
           font-family: var(--font-heading);
-          font-size: 2.5rem;
+          font-size: 3.5rem;
+          font-weight: 800;
           color: var(--text-main);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
         }
         .villes-subtitle {
-          font-size: 1.1rem;
+          font-size: 1.25rem;
           color: var(--text-muted);
-          max-width: 800px;
-          line-height: 1.6;
-          margin-top: 15px;
+          max-width: 760px;
+          margin: 0 auto;
+          line-height: 1.7;
         }
         .dept-grid {
           display: grid;
@@ -118,6 +127,11 @@ export default function VillesIndexClient({ initialDepartements }) {
           padding: 50px;
           text-align: center;
           color: var(--text-light);
+        }
+        @media (max-width: 768px) {
+          .villes-header h1 {
+            font-size: 2.3rem;
+          }
         }
       `}</style>
     </div>
