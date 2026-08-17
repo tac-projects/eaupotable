@@ -81,7 +81,7 @@ export default function VillesIndexClient({ initialDepartements }) {
         }
         .villes-subtitle {
           font-size: 1.25rem;
-          color: var(--text-muted);
+          color: var(--text-light);
           max-width: 760px;
           margin: 0 auto;
           line-height: 1.7;

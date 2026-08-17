@@ -28,16 +28,16 @@ export default function DepartementClient({ code, deptData }) {
           <div className="city-hero-grain"></div>
           
           <div className="seo-container">
+            <nav className="city-hero-breadcrumb" aria-label="Breadcrumb">
+              <a href="/">Accueil</a>
+              <span className="sep">›</span>
+              <a href="/villes">France</a>
+              <span className="sep">›</span>
+              <span className="curr">{deptName}</span>
+            </nav>
+
             <div className="hero-split-container">
               <div className="hero-left">
-                <nav className="city-hero-breadcrumb" aria-label="Breadcrumb">
-                  <a href="/">Accueil</a>
-                  <span className="sep">›</span>
-                  <a href="/villes">France</a>
-                  <span className="sep">›</span>
-                  <span className="curr">{deptName}</span>
-                </nav>
-
                 <div className="city-hero-badge">
                   <span className="badge-pulse"></span>
                   BILAN DÉPARTEMENTAL 2026
