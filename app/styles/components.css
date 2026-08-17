@@ -2257,6 +2257,11 @@ main.content-wrapper {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.faq-hero .seo-breadcrumb {
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
 .faq-main-title {
     font-family: var(--font-heading);
     font-size: 3.5rem;
@@ -2570,6 +2575,7 @@ main.content-wrapper {
 .city-hero-breadcrumb {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-sm);
     font-size: var(--fs-small);
     color: var(--text-light);

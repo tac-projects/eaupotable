@@ -19,6 +19,11 @@ export default function FAQClient({ faqData }) {
       {/* 1. HERO SECTION FAQ */}
       <section className="faq-hero">
         <div className="seo-container">
+          <nav className="seo-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Accueil</a>
+            <span className="sep">›</span>
+            <span className="curr">FAQ</span>
+          </nav>
           <h1 className="faq-main-title">Questions Fréquentes</h1>
           <p className="faq-main-subtitle">
             Retrouvez toutes les réponses à vos interrogations sur la qualité, la pureté et les contrôles de l'eau de votre robinet en France.
