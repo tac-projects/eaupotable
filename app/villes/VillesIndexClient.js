@@ -70,6 +70,10 @@ export default function VillesIndexClient({ initialDepartements }) {
           justify-content: center;
           margin-bottom: 24px;
         }
+        .villes-main :global(.seo-breadcrumb) {
+          justify-content: center;
+          margin-bottom: 24px;
+        }
         .villes-header h1 {
           font-family: var(--font-heading);
           font-size: 3.5rem;
