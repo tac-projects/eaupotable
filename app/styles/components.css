@@ -344,10 +344,22 @@
 
 .crystal-score-badge.city-variant {
     bottom: 12%;
-    right: -5%;
+    right: 0;
     min-width: 200px;
     padding: 1.25rem;
     z-index: 30;
+}
+
+.city-hero-section .hero-split-container {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    .city-hero-section .crystal-score-badge.city-variant {
+        position: absolute;
+        bottom: 12%;
+        right: 0;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -376,6 +388,15 @@
         bottom: 0;
         right: 0;
         margin: -50px auto 0;
+        width: 100%;
+        max-width: 240px;
+        text-align: left;
+    }
+    .city-hero-section .crystal-score-badge.city-variant {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 1.25rem auto 0;
         width: 100%;
         max-width: 240px;
         text-align: left;
