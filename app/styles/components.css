@@ -380,15 +380,28 @@
         max-width: 240px;
         text-align: left;
     }
-    .city-hero-section .hero-split-container {
-        gap: 0;
+    .city-page-hero .hero-split-container {
+        gap: 1rem;
+        justify-items: center;
     }
-    .city-hero-section .hero-right {
+    .city-page-hero .hero-left {
+        display: contents;
+    }
+    .city-page-hero .city-hero-badge {
         order: 1;
+    }
+    .city-page-hero .city-hero-title {
+        order: 2;
+    }
+    .city-page-hero .hero-right {
+        order: 3;
         margin-top: 0;
     }
-    .city-hero-section .hero-left {
-        order: 2;
+    .city-page-hero .city-hero-subtitle {
+        order: 4;
+    }
+    .city-page-hero .seo-source-line {
+        order: 5;
     }
 }
 

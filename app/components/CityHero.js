@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
   return (
-    <section className="city-hero-section">
+    <section className="city-hero-section city-page-hero">
       <div className="city-hero-mesh"></div>
       <div className="city-hero-grain"></div>
       
