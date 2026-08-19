@@ -10,9 +10,9 @@
     left: 0;
     width: 100%;
     z-index: 2000;
-    background: rgba(255, 255, 255, 0.92) !important; /* Satin White : Masque le fond tout en restant lumineux */
-    backdrop-filter: blur(10px); /* On le garde au cas où le navigateur l'active pour d'autres */
-    -webkit-backdrop-filter: blur(10px);
+    background: #FFFFFF !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     transition: background 0.3s;

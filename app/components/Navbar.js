@@ -104,23 +104,6 @@ export default function Navbar() {
       <div className={`menu-overlay ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(false)}></div>
 
       <div id="main-menu" className={`main-menu ${isOpen ? 'active' : ''}`} inert={!isOpen}>
-        <button id="close-menu" className="close-menu" aria-label="Fermer le menu" onClick={() => setIsOpen(false)}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-
-        <Link href="/" className="logo-menu" onClick={() => setIsOpen(false)}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-menu-icon">
-            <path d="M12 21.5C16.1421 21.5 19.5 18.1421 19.5 14C19.5 9.85786 12 2.5 12 2.5C12 2.5 4.5 9.85786 4.5 14C4.5 18.1421 7.85786 21.5 12 21.5Z" fill="var(--primary-solid)" />
-            <path d="M12 5.5C10 7.5 7.5 10.5 7.5 14" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
-            <circle cx="9.5" cy="11.5" r="1.5" fill="white" opacity="0.8" />
-            <path d="M11 19.5C13 19.5 16 18.5 17 16" stroke="white" strokeWidth="0.8" strokeLinecap="round" opacity="0.3" />
-          </svg>
-          EauPotable.net
-        </Link>
-
         <div className="menu-search-wrapper">
           <div className="menu-search-box">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="menu-search-icon">
