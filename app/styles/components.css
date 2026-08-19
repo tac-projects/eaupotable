@@ -381,15 +381,8 @@
         text-align: left;
     }
     .city-page-hero .hero-split-container {
-        gap: 1rem;
+        gap: 0;
         justify-items: center;
-    }
-    .city-page-hero .hero-water-image-container {
-        max-width: 260px;
-    }
-    .city-page-hero .crystal-score-badge.city-variant {
-        margin: -90px auto 0;
-        max-width: 210px;
     }
     .city-page-hero .hero-left {
         display: contents;
@@ -402,16 +395,14 @@
     }
     .city-page-hero .hero-right {
         order: 3;
-        margin-top: 0;
+        margin-top: -38px;
     }
     .city-page-hero .city-hero-subtitle {
         order: 4;
+        margin-top: 1rem;
     }
     .city-page-hero .seo-source-line {
         order: 5;
-    }
-    .city-page-hero .hero-right {
-        margin-top: -70px;
     }
     .city-page-hero .hero-water-image-container {
         max-width: 260px;
