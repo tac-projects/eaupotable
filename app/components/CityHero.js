@@ -32,18 +32,6 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
             <p className="city-hero-subtitle">
               Analyse complète du réseau de distribution <strong>{nomReseau || cityName}</strong> basée sur les dernières données du <strong>{dateAnalyse}</strong>.
             </p>
-
-            <div className="crystal-score-badge city-variant">
-              <div className="crystal-badge-header">
-                <svg className="crystal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M6 3h12l4 6-10 13L2 9Z" />
-                  <path d="M12 3l-4 6 4 13 4-13-4-6" />
-                </svg>
-                Crystal Score™
-              </div>
-              <div className="crystal-badge-val">{typeof score === 'number' ? score.toFixed(1) : score}<span>/10</span></div>
-              <div className="crystal-badge-desc">Verdict : <strong>{label}</strong></div>
-            </div>
             
             <div className="seo-source-line">
               <div className="source-links">
@@ -98,6 +86,17 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
                 fetchPriority="high"
                 sizes="(max-width: 1023px) 280px, 600px"
               />
+              <div className="crystal-score-badge city-variant">
+                <div className="crystal-badge-header">
+                  <svg className="crystal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M6 3h12l4 6-10 13L2 9Z" />
+                    <path d="M12 3l-4 6 4 13 4-13-4-6" />
+                  </svg>
+                  Crystal Score™
+                </div>
+                <div className="crystal-badge-val">{typeof score === 'number' ? score.toFixed(1) : score}<span>/10</span></div>
+                <div className="crystal-badge-desc">Verdict : <strong>{label}</strong></div>
+              </div>
             </div>
           </div>
         </div>
