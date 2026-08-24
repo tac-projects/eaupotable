@@ -12,15 +12,23 @@ const DOMAIN = 'https://www.eaupotable.net';
 // Normalisation identique au makeSlug du build : œ→oe, æ→ae, suppression des accents,
 // collapse des tirets. Convertit les slugs hérités accentués/ligaturés (vandœuvre-lès-nancy)
 // vers leur forme canonique ASCII (vandoeuvre-les-nancy) de façon déterministe.
-const normalizeSlug = (s) => s.toLowerCase()
-  .replace(/œ/g, 'oe')
-  .replace(/æ/g, 'ae')
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[^a-z0-9]/g, '-')
-  .replace(/-+/g, '-')
-  .replace(/-$/, '')
-  .replace(/^-/, '');
+// Le slug peut arriver percent-encodé (sch%C5%93nau) selon le serveur frontal : on décode
+// d'abord (tolérant si déjà décodé).
+const normalizeSlug = (s) => {
+  let decoded = s;
+  for (let i = 0; i < 3 && decoded.includes('%'); i++) {
+    try { decoded = decodeURIComponent(decoded); } catch { break; }
+  }
+  return decoded.toLowerCase()
+    .replace(/œ/g, 'oe')
+    .replace(/æ/g, 'ae')
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/-$/, '')
+    .replace(/^-/, '');
+};
 
 let cityIndexCache = null;
 let deptDataCache = new Map();
