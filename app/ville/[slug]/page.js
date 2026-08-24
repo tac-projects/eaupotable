@@ -9,6 +9,19 @@ import path from 'path';
 
 const DOMAIN = 'https://www.eaupotable.net';
 
+// Normalisation identique au makeSlug du build : œ→oe, æ→ae, suppression des accents,
+// collapse des tirets. Convertit les slugs hérités accentués/ligaturés (vandœuvre-lès-nancy)
+// vers leur forme canonique ASCII (vandoeuvre-les-nancy) de façon déterministe.
+const normalizeSlug = (s) => s.toLowerCase()
+  .replace(/œ/g, 'oe')
+  .replace(/æ/g, 'ae')
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .replace(/[^a-z0-9]/g, '-')
+  .replace(/-+/g, '-')
+  .replace(/-$/, '')
+  .replace(/^-/, '');
+
 let cityIndexCache = null;
 let deptDataCache = new Map();
 
@@ -25,29 +38,23 @@ async function getLocalData(slug) {
     if (!cityIndexCache) return null;
     const cityIndex = cityIndexCache;
     
-    // Normalisation de sécurité du slug entrant
-    const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
-    let deptCode = cityIndex[cleanSlug] || cityIndex[slug];
-    
+    // Normalisation de sécurité du slug entrant (même normalisation que makeSlug du build)
+    const cleanSlug = normalizeSlug(slug);
+    let deptCode = cityIndex[cleanSlug];
+
     // LOGIQUE DE RÉCUPÉRATION (RECOVERY) :
-    // Si le slug n'est pas trouvé, on tente des méthodes de secours (Fuzzy Matching)
+    // Uniquement des transformations EXACTES qui préservent l'identité de la commune.
+    // Interdiction du matching "à la sonorité" (consonnes, inclusion partielle) qui redirigeait
+    // vers des homonymes d'autres départements (ex: grandchamp-des-fontaines → grandchamp 08).
     if (!deptCode) {
       const allSlugs = Object.keys(cityIndex);
-      
-      // 1. Normalisation ultra-agressive (on ne garde que les consonnes et chiffres pour le "son")
-      const fuzzy = (s) => s.toLowerCase().replace(/[aeiouyœæ]/g, '').replace(/-+/g, '');
-      const cleanFuzzy = fuzzy(cleanSlug);
-      
-      const fuzzyMatch = allSlugs.find(s => fuzzy(s) === cleanFuzzy);
-      if (fuzzyMatch) return { redirect: fuzzyMatch };
 
-      // 2. Patchs syntaxiques (tirets surnuméraires hérités de l'ancien makeSlug)
-      // On tente de supprimer les tirets qui pourraient être des ligatures mal gérées
+      // 1. Patchs syntaxiques (tirets surnuméraires hérités de l'ancien makeSlug)
       const noDash = cleanSlug.replace(/-/g, '');
       const noDashMatch = allSlugs.find(s => s.replace(/-/g, '') === noDash);
       if (noDashMatch) return { redirect: noDashMatch };
 
-      // 3. Patch d'inversion d'article (ex: ulmes-les -> les-ulmes, puy-notre-dame-le -> le-puy-notre-dame)
+      // 2. Patch d'inversion d'article (ex: ulmes-les -> les-ulmes, puy-notre-dame-le -> le-puy-notre-dame)
       if (cleanSlug.includes('-')) {
         const parts = cleanSlug.split('-');
         if (parts.length > 1) {
@@ -56,19 +63,35 @@ async function getLocalData(slug) {
         }
       }
 
-      // 4. Recherche par inclusion (ex: saint-ouen-sur-seine -> saint-ouen)
-      const partialMatch = allSlugs.find(s =>
-        (cleanSlug.startsWith(s + '-') || s.startsWith(cleanSlug + '-')) &&
-        Math.abs(s.length - cleanSlug.length) < 20
-      );
-      if (partialMatch) return { redirect: partialMatch };
-
-      // 5. Slug de collision "base-dept" (ex: saint-cloud-92, aubenton-08) : ancien artefact de
+      // 3. Slug de collision "base-dept" (ex: saint-cloud-92, aubenton-08) : ancien artefact de
       // dédoublonnage dont l'entrée a disparu de l'index après correction de l'attribution dépt.
       // Les homonymes légitimes restent DANS l'index (ce chemin n'est jamais atteint pour eux) ;
       // si la base existe, c'est la même commune → redirection en 301.
       const suffixMatch = cleanSlug.match(/^(.*)-(\d{2,3}|2[AB])$/);
       if (suffixMatch && cityIndex[suffixMatch[1]]) return { redirect: suffixMatch[1] };
+
+      // 4. Anciens slugs de communes renommées/fusionnées → slug canonique actuel.
+      // Liste fermée : aucune redirection "devineresse" au-delà. Une commune absente du jeu de
+      // données (fusionnée/supprimée) doit renvoyer une vraie 404, pas une mauvaise cible.
+      const legacyRedirects = {
+        'arrancy-sur-crusnes': 'arrancy-sur-crusne',
+        'castellet-en-luberon': 'castellet',
+        'champdeniers': 'champdeniers-saint-denis',
+        'corbieres-en-provence': 'corbieres',
+        'exideuil-sur-vienne': 'exideuil',
+        'grandchamp-des-fontaines': 'grandchamps-des-fontaines',
+        'grigny-sur-rhone': 'grigny-69',
+        'labatut-figuieres': 'labatut-40',
+        'laval-en-belledonne': 'laval',
+        'menitre': 'la-menitre',
+        'moncourt-fromonville': 'montcourt-fromonville',
+        'montignac-lascaux': 'montignac',
+        'ponts-de-ce': 'les-ponts-de-ce',
+        'rairies': 'les-rairies',
+        'tessoualle': 'la-tessoualle',
+      };
+      const target = legacyRedirects[cleanSlug];
+      if (target && cityIndex[target]) return { redirect: target };
 
       return null;
     }
@@ -90,7 +113,7 @@ async function getLocalData(slug) {
     if (!fullData) return null;
     
     // On cherche la ville par son slug normalisé dans le fichier (évite les 404 sur les majuscules)
-    let rawCityData = fullData.cities[cleanSlug] || fullData.cities[slug];
+    let rawCityData = fullData.cities[cleanSlug];
 
     // GESTION DES HOMONYMES : Si non trouvé, on tente de retirer le suffixe de département (ex: apremont-01 -> apremont)
     // Cela permet d'avoir des URLs uniques dans l'index global tout en gardant des clés simples dans les fichiers JSON.
@@ -252,7 +275,7 @@ export const revalidate = 86400; // Cache de 24h après la première visite
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   
-  const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  const cleanSlug = normalizeSlug(slug);
   if (slug !== cleanSlug) return {}; // La redirection sera gérée par la page
   
   const summary = await getLocalData(cleanSlug);
@@ -302,27 +325,30 @@ import CityJsonLd from '../../components/CityJsonLd';
 export default async function CityPage({ params }) {
   const { slug } = await params;
   
-  // 1. Normalisation du slug (sécurité SEO)
-  const cleanSlug = slug.toLowerCase().replace(/-+/g, '-').replace(/-$/, '').replace(/^-/, '');
-  
-  // 2. Redirection 301 si le slug est mal formé
-  if (slug !== cleanSlug) {
-    permanentRedirect(`/ville/${cleanSlug}`);
-  }
+  // 1. Normalisation du slug (sécurité SEO) : convertit les formes héritées
+  // (accents/ligatures, double tirets) vers la forme canonique ASCII.
+  const cleanSlug = normalizeSlug(slug);
 
-  // 3. Récupération des données locales uniquement
+  // 2. Récupération des données locales uniquement
   const result = await getLocalData(cleanSlug);
   
-  // 3bis. Gestion de la redirection de récupération
+  // 2bis. Gestion de la redirection de récupération
   if (result?.redirect) {
     permanentRedirect(`/ville/${result.redirect}`);
   }
 
   const summary = result;
 
-  // 4. Si aucune donnée locale n'est trouvée -> Vraie 404
+  // 3. Si aucune donnée locale n'est trouvée -> Vraie 404
   if (!summary) {
     notFound();
+  }
+
+  // 4. Redirection 301 si le slug entrant n'était pas dans sa forme canonique
+  // (ex: vandœuvre-lès-nancy -> vandoeuvre-les-nancy). Vérifié APRÈS la résolution
+  // pour ne jamais rediriger vers un slug invalide (évite les chaînes à 2 sauts).
+  if (slug !== cleanSlug) {
+    permanentRedirect(`/ville/${cleanSlug}`);
   }
 
   const officialName = summary.cityName;
