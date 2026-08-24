@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { buildDeptFaq } from '../../../lib/dept-editorial';
 import DepartementClient from './DepartementClient';
 
 export const revalidate = 86400; // Cache ISR de 24h après la première visite
@@ -69,38 +70,20 @@ export default async function DepartementPage({ params }) {
   const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
+  // FAQ contextuelle (mêmes questions que la FAQ visible de la page)
+  const deptFaq = deptData ? buildDeptFaq(deptData, currentYear) : [];
+
   // JSON-LD pour la FAQ et la page
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `Peut-on boire l'eau du robinet sans risque en ${deptName} ?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Avec un taux de conformité de ${deptData?.deptInfo?.conformRate}%, l'eau en ${deptName} est officiellement potable selon les normes de l'ARS. Le Crystal Score moyen de ${deptData?.deptInfo?.avgScore}/10 permet d'évaluer la pureté réelle au-delà de la simple conformité.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Quels sont les polluants recherchés en ${deptName} ?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Les analyses couvrent la microbiologie, les nitrates, les pesticides et, depuis 2026, la recherche systématique des polluants éternels (PFAS) dans l'ensemble du département ${deptName}.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Où trouver le rapport officiel de l'ARS pour ${deptName} ?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Les données brutes sont disponibles sur le portail SISE-Eaux du Ministère de la Santé. EauPotable.net synthétise ces informations pour chaque commune de ${deptName}.`
-            }
-          }
-        ]
+        "mainEntity": deptFaq.map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a }
+        }))
       },
       {
         "@type": "Dataset",

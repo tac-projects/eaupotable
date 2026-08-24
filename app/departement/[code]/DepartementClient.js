@@ -1,6 +1,7 @@
 "use client";
 import Navbar from '../../components/Navbar';
 import Image from 'next/image';
+import { computeDeptEditorial, buildDeptEditorialText, buildDeptFaq } from '../../../lib/dept-editorial';
 import '../../styles/seo.css';
 import '../../styles/components.css';
 
@@ -17,6 +18,12 @@ export default function DepartementClient({ code, deptData }) {
   const deptName = deptInfo.name || `Département ${code}`;
   const deptScore = deptInfo.avgScore || 'N/A';
   const topCities = deptInfo.topCities || [];
+
+  // Éditorial data-driven (unique par département)
+  const currentYear = new Date().getFullYear();
+  const editorial = computeDeptEditorial(deptData);
+  const editorialParagraphs = buildDeptEditorialText(deptData, currentYear);
+  const deptFaq = buildDeptFaq(deptData, currentYear);
 
   return (
     <div className="dept-page">
@@ -124,14 +131,9 @@ export default function DepartementClient({ code, deptData }) {
                     <span className="score-label">Score Moyen</span>
                   </div>
                   <div className="dept-verdict">
-                    <p>
-                      L'analyse approfondie des données sanitaires SISE-Eaux pour le département de <strong>{deptName} ({code})</strong> révèle un score moyen de <strong>{deptInfo.avgScore}/10</strong>. 
-                      Ce verdict, calculé sur la base de {citiesList.length} communes, classe le territoire parmi les zones {parseFloat(deptInfo.avgScore) > 7.5 ? "d'excellence sanitaire" : "nécessitant une vigilance constante"}.
-                    </p>
-                    <p className="verdict-detail">
-                      Avec un taux de conformité de <strong>{deptInfo.conformRate}%</strong>, le réseau {deptName && /^[aeiouyh]/i.test(deptName) ? "de l'" : "du "}{deptName} assure une distribution sécurisée. 
-                      Toutefois, la présence de calcaire ({deptInfo.averages?.hardness?.val || '--'}°f) et les traces de polluants persistants comme les <strong>PFAS</strong> ou les <strong>Nitrates</strong> varient fortement d'une commune à l'autre.
-                    </p>
+                    {editorialParagraphs.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
                   </div>
                 </div>
 
@@ -201,6 +203,55 @@ export default function DepartementClient({ code, deptData }) {
             </section>
           )}
 
+          {/* SECTION 2 TER : FOURNISSEURS & PRIX (GRIS) */}
+          {(editorial.distributors.length > 0 || editorial.priceStats) && (
+            <section className="zebra-section gray">
+              <div className="dept-container">
+                <div className="section-header">
+                  <h2 className="seo-main-title">Fournisseurs d'eau & prix dans le {deptName}</h2>
+                  <p className="seo-main-subtitle">Qui distribue l'eau dans le département et à quel tarif selon les communes ?</p>
+                </div>
+                <div className="dept-suppliers-grid">
+                  {editorial.distributors.length > 0 && (
+                    <div className="suppliers-block">
+                      <h3 className="suppliers-title">Principaux opérateurs</h3>
+                      <ul className="suppliers-list">
+                        {editorial.distributors.map((d, i) => (
+                          <li key={i} className="supplier-item">
+                            <span className="supplier-rank">{i === 0 ? 'Principal' : `#${i + 1}`}</span>
+                            <span className="supplier-name">{d.name}</span>
+                            <span className="supplier-count">{d.count} communes</span>
+                            <span className="supplier-pct">{d.pct}%</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {editorial.priceStats && (
+                    <div className="price-block">
+                      <h3 className="suppliers-title">Prix de l'eau</h3>
+                      <div className="price-cards">
+                        <div className="price-card">
+                          <span className="price-label">Moyenne</span>
+                          <span className="price-value">{editorial.priceStats.avg.toFixed(2).replace('.', ',')} €/m³</span>
+                        </div>
+                        <div className="price-card">
+                          <span className="price-label">Minimum</span>
+                          <span className="price-value">{editorial.priceStats.min.toFixed(2).replace('.', ',')} €/m³</span>
+                        </div>
+                        <div className="price-card">
+                          <span className="price-label">Maximum</span>
+                          <span className="price-value">{editorial.priceStats.max.toFixed(2).replace('.', ',')} €/m³</span>
+                        </div>
+                      </div>
+                      <p className="price-note">Tarifs relevés dans {editorial.priceStats.count} communes du département, hors abonnement.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* SECTION 3 : REPERTOIRE (GRIS) */}
           <section className="zebra-section gray">
             <div className="dept-container">
@@ -239,44 +290,7 @@ export default function DepartementClient({ code, deptData }) {
                 <p className="seo-main-subtitle">Réponses aux interrogations les plus fréquentes des habitants de {deptName}.</p>
               </div>
               <div className="seo-faq-accordion">
-                {[
-                  {
-                    q: `Quel est le taux de calcaire moyen en ${deptName} ?`,
-                    a: `La dureté (TH) est de ${deptInfo.averages?.hardness?.val || '--'}°f en moyenne. ${parseFloat(deptInfo.averages?.hardness?.val) > 25 ? "Il est fortement conseillé de protéger vos appareils électroménagers." : "Un adoucisseur n'est pas jugé indispensable."}`
-                  },
-                  {
-                    q: `Peut-on boire l'eau du robinet sans risque en ${deptName} ?`,
-                    a: `Avec ${deptInfo.conformRate}% de conformité, l'eau est officiellement potable. Cependant, le Crystal Score de ${deptScore}/10 invite à vérifier les polluants spécifiques (PFAS, Pesticides) ville par ville.`
-                  },
-                  {
-                    q: `Comment est calculé le Crystal Score™ départemental ?`,
-                    a: `Il s'agit d'une moyenne pondérée des scores de pureté de l'ensemble des communes du département. Ce score agrège plus de 50 paramètres sanitaires, incluant les nitrates, les pesticides et la qualité microbiologique.`
-                  },
-                  {
-                    q: `Quels sont les polluants les plus surveillés en ${deptName} ?`,
-                    a: `Les services de l'ARS surveillent prioritairement les traces de pesticides d'origine agricole, les nitrates, ainsi que les polluants émergents comme les PFAS et les métabolites de chloridazone.`
-                  },
-                  {
-                    q: `Y a-t-il des PFAS dans l'eau des communes de ${deptName} ?`,
-                    a: <>La recherche des PFAS (polluants éternels) est obligatoire depuis le 1er janvier 2026. Consultez la <a href="/pfas-eau-potable">carte de France des PFAS</a> puis la fiche de votre commune pour connaître la valeur exacte mesurée par l'ARS.</>
-                  },
-                  {
-                    q: `Est-il nécessaire d'utiliser une carafe filtrante en ${deptName} ?`,
-                    a: `L'usage d'une carafe peut être utile pour supprimer le goût de chlore, mais elle ne remplace pas une vérification du Crystal Score pour les polluants chimiques lourds. Attention à changer les filtres régulièrement pour éviter la prolifération bactérienne.`
-                  },
-                  {
-                    q: `Comment signaler un problème de goût ou d'odeur en ${deptName} ?`,
-                    a: `Vous devez contacter votre fournisseur d'eau (Régie municipale, Veolia, Saur ou Suez selon votre commune) ou directement la mairie. En cas de doute persistant, l'ARS peut être saisie pour un contrôle exceptionnel.`
-                  },
-                  {
-                    q: `L'eau est-elle plus calcaire dans certaines zones du département ${code} ?`,
-                    a: `Oui, la dureté de l'eau dépend de la géologie des sols du département. Les zones de plaines calcaires sont souvent plus touchées que les zones de relief ou de socle granitique. Consultez les fiches villes pour le détail local.`
-                  },
-                  {
-                    q: `Où trouver les rapports officiels d'analyse pour ma ville en ${deptName} ?`,
-                    a: `Les rapports complets sont disponibles sur le site du Ministère de la Santé (SISE-Eaux) et sont affichés en synthèse simplifiée sur chaque page ville de notre observatoire EauPotable.net.`
-                  }
-                ].map((item, i) => (
+                {deptFaq.map((item, i) => (
                   <details key={i} className="seo-faq-item">
                     <summary className="seo-faq-question"><h3>{item.q}</h3><span className="faq-icon"></span></summary>
                     <div className="seo-faq-answer"><p>{item.a}</p></div>
@@ -471,10 +485,104 @@ export default function DepartementClient({ code, deptData }) {
         .city-status.conform { color: #22C55E; }
         .city-status.non-conform { color: #EF4444; }
 
+        /* FOURNISSEURS & PRIX */
+        .dept-suppliers-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .suppliers-title {
+          color: #1E293B;
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+          font-weight: 800;
+        }
+
+        .suppliers-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .supplier-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          background: white;
+          border: 1px solid rgba(0,0,0,0.05);
+          border-radius: 16px;
+          padding: 15px 20px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .supplier-rank {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          color: #0052FF;
+          background: rgba(0,82,255,0.08);
+          padding: 4px 10px;
+          border-radius: 99px;
+          white-space: nowrap;
+        }
+
+        .supplier-name {
+          flex: 1;
+          font-weight: 700;
+          color: #1E293B;
+          font-size: 0.95rem;
+        }
+
+        .supplier-count { color: #64748B; font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
+        .supplier-pct {
+          font-weight: 800;
+          background: #DCFCE7;
+          color: #166534;
+          padding: 4px 10px;
+          border-radius: 10px;
+          font-size: 0.85rem;
+          white-space: nowrap;
+        }
+
+        .price-cards {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .price-card {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: white;
+          border: 1px solid rgba(0,0,0,0.05);
+          border-radius: 16px;
+          padding: 15px 20px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .price-label { color: #64748B; font-weight: 600; font-size: 0.9rem; }
+        .price-value { font-weight: 800; color: #0052FF; font-size: 1.05rem; }
+
+        .price-note {
+          margin-top: 15px;
+          font-size: 0.85rem;
+          color: #94A3B8;
+          line-height: 1.5;
+        }
+
         @media (max-width: 1100px) {
           .dept-stats-grid { grid-template-columns: repeat(3, 1fr); }
           .dept-stat-main { flex-direction: column; text-align: center; }
           .faq-grid, .top-ten-grid { grid-template-columns: 1fr; }
+          .dept-suppliers-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
