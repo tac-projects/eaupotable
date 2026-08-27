@@ -523,7 +523,7 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 7 : TRUST CARD (CARTE DE TRANSPARENCE) */}
+      {/* SECTION 7 : TRANSPARENCE & MÉTHODOLOGIE (GRIS) */}
       <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
@@ -543,17 +543,9 @@ export default function CitySEOContent({ cityName, data }) {
                   </svg>
                   <span>Observatoire Citoyen & Indépendant</span>
                 </div>
-                <h3>Comment est calculé le Crystal Score™ ?</h3>
                 <p>
-                  Le Crystal Score™ est un indice de pureté de 0 à 10. Il agrège les données de conformité microbiologique et physico-chimique de la base <strong>SISE-Eaux</strong>, 
-                  pondérées par les seuils de vigilance européens sur les polluants émergents (<strong>PFAS</strong>, métabolites de pesticides). 
-                  Contrairement aux rapports officiels qui se limitent à "Conforme/Non Conforme", notre algorithme évalue la qualité réelle pour une consommation à long terme.
+                  Le <strong>Crystal Score™</strong> (0-10) est notre indice de pureté, calculé à partir des données officielles <strong>ARS</strong> de la base SISE-Eaux. La méthode complète, les sources et la pondération des paramètres (PFAS, nitrates, pesticides) sont détaillées sur la page dédiée.
                 </p>
-                <div className="trust-external-links">
-                  <a href="https://hubeau.eaufrance.fr/page/api-qualite-eau-potable" target="_blank" rel="nofollow noreferrer">Accéder aux données brutes (Hub'Eau)</a>
-                  <span className="sep">•</span>
-                  <a href="https://www.ecologie.gouv.fr/politiques-publiques/pfas-surveillance-letat-eaux-france" target="_blank" rel="nofollow noreferrer">Réglementation PFAS (Gouvernement)</a>
-                </div>
               </div>
               <div className="trust-card-actions">
                 <div className="trust-card-info-group">
