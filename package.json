@@ -7,7 +7,7 @@
     "build": "next build",
     "build:full": "npm run sitemap && next build",
     "start": "next start -H 127.0.0.1",
-    "sitemap": "node scripts/build-dept-generic.js --all && node scripts/sync-home-scores.js && node scripts/build-pfas-nation.js && node scripts/generate-sitemap.js",
+    "sitemap": "node scripts/build-dept-generic.js --all && node scripts/fix-dept-attribution.js && node scripts/pure-price-injector.js && node scripts/sync-home-scores.js && node scripts/build-pfas-nation.js && node scripts/generate-sitemap.js",
     "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {
