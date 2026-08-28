@@ -332,15 +332,11 @@ export async function generateMetadata({ params }) {
   const ogImageUrl = `/api/og?city=${encodeURIComponent(officialName)}&score=${score}&label=${encodeURIComponent(label)}&status=${statusClass}`;
 
   const currentYear = new Date().getFullYear();
-  const currentMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(new Date());
-  const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   const deptCode = summary.meta?.code_departement || '';
-  const scoreString = typeof score === 'number' ? score.toFixed(1).replace('.', ',') : score;
-  const priceString = summary.prix?.total ? `${summary.prix.total.toFixed(2).replace('.', ',')}€/m³` : null;
 
-  const title = `Qualité de l'eau à ${officialName} (${deptCode}) : Calcaire & PFAS - ${currentMonthYear}`;
-  const description = `Votre eau du robinet est-elle saine ? 💧 Score : ${scoreString}/10${priceString ? ` - Prix : ${priceString}` : ''}. Découvrez le bilan complet (Calcaire, Nitrates & PFAS) selon les données de l'ARS.`;
+  const title = `Qualité de l'eau à ${officialName} (${deptCode}) : PFAS, Calcaire & Analyse ${currentYear}`;
+  const description = `Peut-on boire l'eau du robinet à ${officialName} sans risque ? Découvrez les derniers prélèvements ARS : PFAS, nitrates, dureté et le Crystal Score ${currentYear}.`;
 
   return {
     title,
