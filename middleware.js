@@ -10,7 +10,8 @@ const rateLimitMap = new Map();
 function isDynamicPage(pathname) {
   return (
     pathname.startsWith('/ville/') ||
-    pathname.startsWith('/departement/')
+    pathname.startsWith('/departement/') ||
+    pathname.startsWith('/api/og')
   );
 }
 
@@ -23,6 +24,8 @@ function checkRateLimit(request) {
   // Exemption des crawlers légitimes pour ne pas brider l'indexation.
   // Inclut l'UA de l'outil "Inspection d'URL" de Google (google-inspectiontool)
   // pour éviter de faux 429 lors de vérifications dans Search Console.
+  // Inclut aussi les scrapers sociaux (Facebook, Twitter, WhatsApp…) afin que
+  // les aperçus de partage sur /api/og continuent de fonctionner.
   const ua = request.headers.get('user-agent')?.toLowerCase() || '';
   const isSearchEngine =
     ua.includes('googlebot') ||
@@ -42,7 +45,15 @@ function checkRateLimit(request) {
     ua.includes('ahrefs') ||
     ua.includes('semrush') ||
     ua.includes('mj12') ||
-    ua.includes('dotbot');
+    ua.includes('dotbot') ||
+    ua.includes('facebookexternalhit') ||
+    ua.includes('twitterbot') ||
+    ua.includes('linkedinbot') ||
+    ua.includes('whatsapp') ||
+    ua.includes('discordbot') ||
+    ua.includes('slackbot') ||
+    ua.includes('telegrambot') ||
+    ua.includes('pinterest');
   if (isSearchEngine) return { allowed: true };
 
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()

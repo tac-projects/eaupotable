@@ -1,15 +1,27 @@
 import fs from 'fs';
 import path from 'path';
+import { notFound } from 'next/navigation';
 import { buildDeptFaq } from '../../../lib/dept-editorial';
 import DepartementClient from './DepartementClient';
 
 export const revalidate = 86400; // Cache ISR de 24h après la première visite
+
+// Sécurité : un code département valide est composé de 2 ou 3 chiffres, ou de 2A / 2B.
+// On refuse tout autre format avant d'utiliser le paramètre dans un chemin de fichier.
+const DEPT_CODE_RE = /^(?:2[AB]|\d{2,3})$/;
 
 export async function generateMetadata({ params }) {
   const { code } = await params;
   let deptName = `Département ${code}`;
   let avgScore = "";
   let cityCount = 0;
+
+  if (!DEPT_CODE_RE.test(code)) {
+    return {
+      title: `Qualité de l'eau - EauPotable.net`,
+      description: `Vérifiez la qualité de l'eau potable de votre commune : score, analyses ARS, PFAS, nitrates et calcaire.`,
+    };
+  }
 
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${code}.json`);
@@ -54,6 +66,11 @@ export async function generateMetadata({ params }) {
 export default async function DepartementPage({ params }) {
   const { code } = await params;
   let deptData = null;
+
+  // Sécurité : on refuse les codes invalides avant tout accès au système de fichiers.
+  if (!DEPT_CODE_RE.test(code)) {
+    notFound();
+  }
 
   try {
     const filePath = path.join(process.cwd(), 'public', 'data', 'departments', `${code}.json`);
