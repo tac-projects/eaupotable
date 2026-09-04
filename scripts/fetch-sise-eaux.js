@@ -162,7 +162,7 @@ async function main() {
     console.log('⚠️  Aucune donnée locale détectée. Une régénération complète est à prévoir.');
   } else if (maxDate > repo.maxDate) {
     console.log(`✅ NOUVELLE DONNÉE DISPONIBLE : prélèvements jusqu'au ${maxDate} (repo : ${repo.maxDate}).`);
-    console.log('   Procédure : voir CLAUDE.md → « Rafraîchir les données ARS (SISE-Eaux) ».');
+    console.log('   Procédure : voir AGENTS.md → « Rafraîchir les données ARS (SISE-Eaux) ».');
     console.log('   Résumé : remplacer source-data/archives puis lancer npm run sitemap → build → deploy.');
   } else {
     console.log(`ℹ️  Aucune donnée plus récente : le dernier prélèvement publié (${maxDate}) ne dépasse pas les archives locales (${repo.maxDate}).`);
