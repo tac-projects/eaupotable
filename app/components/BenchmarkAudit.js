@@ -61,7 +61,7 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
                 className={`benchmark-item ${city.isCurrent ? 'current-city' : ''} ${analysisPhase === 'loading' ? 'loading' : ''}`}
                 onClick={(e) => city.isCurrent && e.preventDefault()}
               >
-                <span className="benchmark-rank">#{index + 1}</span>
+                <span className="benchmark-rank">N°{index + 1}</span>{' '}
                 <span className="benchmark-city">{city.nom}</span>
                 <div className="benchmark-bar-bg">
                   <div 
@@ -71,8 +71,9 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
                       opacity: city.isCurrent ? 1 : 0.6
                     }}
                   ></div>
-                </div>
-                <span className="benchmark-score">{(city.score || 0).toFixed(1)}</span>
+                </div>{' '}
+                <span className="benchmark-score">{(city.score || 0).toFixed(1).replace('.', ',')}/10</span>
+                {index < analyzedCities.length - 1 && <span className="sr-only"> - </span>}
               </a>
             );
           })

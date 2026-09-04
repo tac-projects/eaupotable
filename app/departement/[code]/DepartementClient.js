@@ -173,9 +173,10 @@ export default function DepartementClient({ code, deptData }) {
               <div className="top-ten-grid">
                 {citiesList.slice(0, 10).map((city, idx) => (
                   <a key={city.slug} href={`/ville/${city.slug}`} className="top-ten-item" aria-label={`Qualité de l'eau à ${city.cityName} - Voir l'analyse`}>
-                    <span className="ten-rank">#{idx + 1}</span>
-                    <span className="ten-name">{city.cityName}</span>
-                    <span className="ten-score">{city.crystal?.final?.toFixed(1)}/10</span>
+                    <span className="ten-rank">N°{idx + 1}</span>{' '}
+                    <span className="ten-name">{city.cityName}</span>{' '}
+                    <span className="ten-score">{city.crystal?.final?.toFixed(1).replace('.', ',')}/10</span>
+                    {idx < Math.min(citiesList.length, 10) - 1 && <span className="sr-only"> - </span>}
                   </a>
                 ))}
               </div>
@@ -193,9 +194,10 @@ export default function DepartementClient({ code, deptData }) {
                 <div className="top-ten-grid">
                   {topCities.map((city, idx) => (
                     <a key={city.slug} href={`/ville/${city.slug}`} className="top-ten-item" aria-label={`Qualité de l'eau à ${city.name} - Voir l'analyse`}>
-                      <span className="ten-rank">#{idx + 1}</span>
-                      <span className="ten-name">{city.name}</span>
-                      <span className="ten-score">{city.score !== null && city.score !== undefined ? city.score.toFixed(1) : 'N/A'}/10</span>
+                      <span className="ten-rank">N°{idx + 1}</span>{' '}
+                      <span className="ten-name">{city.name}</span>{' '}
+                      <span className="ten-score">{city.score !== null && city.score !== undefined ? city.score.toFixed(1).replace('.', ',') : 'N/A'}/10</span>
+                      {idx < topCities.length - 1 && <span className="sr-only"> - </span>}
                     </a>
                   ))}
                 </div>
@@ -218,10 +220,11 @@ export default function DepartementClient({ code, deptData }) {
                       <ul className="suppliers-list">
                         {editorial.distributors.map((d, i) => (
                           <li key={i} className="supplier-item">
-                            <span className="supplier-rank">{i === 0 ? 'Principal' : `#${i + 1}`}</span>
-                            <span className="supplier-name">{d.name}</span>
-                            <span className="supplier-count">{d.count} communes</span>
+                            <span className="supplier-rank">{i === 0 ? 'Principal' : `N°${i + 1}`}</span>{' '}
+                            <span className="supplier-name">{d.name}</span>{' '}
+                            <span className="supplier-count">{d.count} communes</span>{' '}
                             <span className="supplier-pct">{d.pct}%</span>
+                            {i < editorial.distributors.length - 1 && <span className="sr-only"> - </span>}
                           </li>
                         ))}
                       </ul>
@@ -439,6 +442,7 @@ export default function DepartementClient({ code, deptData }) {
           padding: 18px 25px; background: white; border-radius: 20px;
           border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+          position: relative;
         }
 
         .top-ten-item:hover {
@@ -447,7 +451,7 @@ export default function DepartementClient({ code, deptData }) {
           box-shadow: 0 15px 35px rgba(0,82,255,0.1);
         }
 
-        .ten-rank { font-weight: 900; color: #0052FF; font-size: 1.2rem; width: 35px; }
+        .ten-rank { font-weight: 900; color: #0052FF; font-size: 1.2rem; width: 45px; }
         .ten-name { flex: 1; font-weight: 700; color: #1E293B; font-size: 1.1rem; }
         .ten-score { font-weight: 800; background: #DCFCE7; color: #166534; padding: 5px 12px; border-radius: 10px; font-size: 0.95rem; }
 
@@ -519,6 +523,7 @@ export default function DepartementClient({ code, deptData }) {
           border-radius: 16px;
           padding: 15px 20px;
           box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+          position: relative;
         }
 
         .supplier-rank {
