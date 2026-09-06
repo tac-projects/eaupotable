@@ -92,6 +92,10 @@
         transform: scale(1.2);
     }
 
+    .mbn-search:active svg {
+        transform: translateX(-50%) scale(1.2);
+    }
+
     .mbn-item.active {
         color: var(--primary-solid);
     }
