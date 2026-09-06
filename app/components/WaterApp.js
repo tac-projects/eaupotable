@@ -22,6 +22,12 @@ const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 // WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
+function track(eventName, params = {}) {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...params });
+}
+
 
 export default function WaterApp({ initialCity = null, initialData = null }) {
   const router = useRouter();
@@ -93,6 +99,14 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     };
   }, [selectedCity]);
 
+  useEffect(() => {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator && window.navigator.standalone);
+    if (isStandalone) track('standalone_view');
+    const onInstalled = () => track('pwa_installed');
+    window.addEventListener('appinstalled', onInstalled);
+    return () => window.removeEventListener('appinstalled', onInstalled);
+  }, []);
+
   // 3. Logique de Partage & FAB
   const buildShareData = () => {
     // Page d'accueil (aucune ville) ou erreur fetch : partage générique du site
@@ -113,14 +127,18 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
 
   const handleShare = async () => {
     const shareData = buildShareData();
+    const shareContext = selectedCity ? 'city_report' : 'home';
+    const shareParams = { context: shareContext, city: selectedCity || null };
     try {
       if (navigator.share) {
         await navigator.share(shareData);
+        track('share', { ...shareParams, method: 'web_share' });
       } else {
         await navigator.clipboard.writeText(shareData.url);
+        track('share', { ...shareParams, method: 'clipboard' });
         alert("Lien copié dans le presse-papier !");
       }
-    } catch (err) { console.log("Partage annulé ou erreur:", err); }
+    } catch (err) { console.log("Partage annulé ou erreur:", err); track('share_cancelled', shareParams); }
   };
 
   useEffect(() => {
@@ -136,6 +154,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
+    track('pwa_install_prompt', { outcome });
     if (outcome === 'accepted') {
       setShowPWABanner(false);
       const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;
