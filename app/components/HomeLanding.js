@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { POPULAR_CITIES, METROPOLIS_SCORES } from '@/lib/water-utils';
+import { track } from '@/lib/analytics';
 
 const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, className, ariaLabel }) => {
   const [placeholder, setPlaceholder] = useState("Votre ville...");
@@ -224,6 +225,7 @@ export default function HomeLanding({ onCitySelect, searchProps }) {
 
       if (response.ok) {
         setStatus('SUCCESS');
+        track('vigilance_subscribe', { ville: cityName });
         setEmail('');
         setCityName('');
         // Reset turnstile for next time

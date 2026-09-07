@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@/lib/analytics';
 
 export default function ContactForm() {
   const [status, setStatus] = useState('');
@@ -23,6 +24,7 @@ export default function ContactForm() {
       
       if (response.ok) {
         setStatus('SUCCESS');
+        track('contact_submit');
         form.reset();
       } else {
         setStatus('ERROR');

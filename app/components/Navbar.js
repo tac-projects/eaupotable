@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import MobileSearchSheet from './MobileSearchSheet';
 import { POPULAR_CITIES } from '@/lib/water-utils';
+import { track } from '@/lib/analytics';
 
 export default function Navbar() {
   const router = useRouter();
@@ -50,6 +51,9 @@ export default function Navbar() {
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data || []);
+          if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
+            track('search_no_result', { q: searchQuery.trim() });
+          }
         }
       } catch (err) {
         console.error("Sidebar Search error:", err);

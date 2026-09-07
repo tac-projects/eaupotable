@@ -13,6 +13,7 @@ import {
   parseValue,
   POPULAR_CITIES
 } from '@/lib/water-utils';
+import { track } from '@/lib/analytics';
 
 // Imports normaux pour SSR et LCP optimal
 // Imports dynamiques pour réduire le bundle initial et le TBT
@@ -21,12 +22,6 @@ const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 
 // WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
-
-function track(eventName, params = {}) {
-  if (typeof window === 'undefined') return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: eventName, ...params });
-}
 
 
 export default function WaterApp({ initialCity = null, initialData = null }) {
@@ -228,6 +223,9 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data || []);
+          if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
+            track('search_no_result', { q: searchQuery.trim() });
+          }
         }
       } catch (err) {
         console.error("Search error:", err);

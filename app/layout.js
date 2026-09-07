@@ -7,6 +7,7 @@ import './styles/seo.css';
 import { Inter, Manrope, Grand_Hotel } from 'next/font/google';
 import Script from 'next/script';
 import Footer from './components/Footer';
+import Analytics from './components/Analytics';
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-inter', display: 'swap', preload: true });
 const manrope = Manrope({ subsets: ["latin"], weight: ["400", "700", "800"], variable: '--font-manrope', display: 'swap', preload: true });
@@ -92,6 +93,7 @@ export default function RootLayout({ children }) {
       <body className="full-height-body" suppressHydrationWarning>
         {children}
         <Footer />
+        <Analytics />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
           strategy="lazyOnload"

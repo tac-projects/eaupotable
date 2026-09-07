@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { POPULAR_CITIES } from '@/lib/water-utils';
+import { track } from '@/lib/analytics';
 
 export default function MobileSearchSheet({ open, onClose }) {
   const router = useRouter();
@@ -30,6 +31,9 @@ export default function MobileSearchSheet({ open, onClose }) {
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data || []);
+          if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
+            track('search_no_result', { q: searchQuery.trim() });
+          }
         }
       } catch (err) {
         console.error("MobileSearchSheet error:", err);
