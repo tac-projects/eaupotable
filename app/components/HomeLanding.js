@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { POPULAR_CITIES, METROPOLIS_SCORES } from '@/lib/water-utils';
+import { POPULAR_CITIES } from '@/lib/water-utils';
 import { track } from '@/lib/analytics';
 
 const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, className, ariaLabel }) => {
@@ -64,14 +64,13 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
   );
 };
 
-export default function HomeLanding({ onCitySelect, searchProps }) {
+export default function HomeLanding({ onCitySelect, searchProps, metropolisScores = [] }) {
   const [email, setEmail] = useState('');
   const [cityName, setCityName] = useState('');
   const [status, setStatus] = useState('IDLE'); // IDLE, SENDING, SUCCESS, ERROR
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [vigilanceSuggestions, setVigilanceSuggestions] = useState([]);
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
-  const metropolisScores = METROPOLIS_SCORES;
   const pendingSubmitRef = useRef(false);
   const turnstileLoadRef = useRef(null);
 

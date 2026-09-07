@@ -1,5 +1,7 @@
 import WaterApp from './components/WaterApp';
 import Navbar from './components/Navbar';
+import fs from 'fs';
+import path from 'path';
 
 export const metadata = {
   title: "Eau potable en France : Qualité, PFAS & Prix | EauPotable.net",
@@ -9,11 +11,23 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+async function loadMetropolisData() {
+  try {
+    const metroPath = path.join(process.cwd(), 'public', 'data', 'metropolis.json');
+    if (!fs.existsSync(metroPath)) return null;
+    return JSON.parse(fs.readFileSync(metroPath, 'utf8'));
+  } catch (e) {
+    console.error('Error loading metropolis data:', e);
+    return null;
+  }
+}
+
+export default async function Home() {
+  const metropolisData = await loadMetropolisData();
   return (
     <>
       <Navbar />
-      <WaterApp />
+      <WaterApp metropolisData={metropolisData} />
     </>
   );
 }

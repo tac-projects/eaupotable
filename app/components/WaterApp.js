@@ -24,7 +24,7 @@ const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
 
 
-export default function WaterApp({ initialCity = null, initialData = null }) {
+export default function WaterApp({ initialCity = null, initialData = null, metropolisData = null }) {
   const router = useRouter();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -279,6 +279,7 @@ export default function WaterApp({ initialCity = null, initialData = null }) {
       ) : (
         <HomeLanding 
           onCitySelect={(city) => handleSearchSelection({ text: city.name, slug: city.slug })}
+          metropolisScores={metropolisData}
           searchProps={{
             searchQuery,
             suggestions,
