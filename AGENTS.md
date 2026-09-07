@@ -44,7 +44,7 @@ Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (
 
 Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de l'eau du robinet » (Ministère des Solidarités et de la Santé), URL des ressources `static.data.gouv.fr/resources/.../eaurob-YYYYMM.zip`.
 
-# Chantier « uniformisation des indicateurs » (en cours)
+# Chantier « uniformisation des indicateurs »
 
 **Source de vérité des paramètres = `lib/params-registry.js`** (créé au Jalon A). Toute liste de paramètres affichée ou transmise doit être dérivée d'ici, jamais réécrite en dur. Exports : `PARAMS`, `ANALYSIS_CARDS` (9 cartes), `SEO_DOSSIERS` (14 en 3 dossiers), `CITY_STATS_KEYS` (payload ville, 14 clés), `SCORED_COUNT`.
 
@@ -53,6 +53,11 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, `SeoDataTable.js` (composant **orphelin**, jamais importé — ne pas le réutiliser sans vérif), payload de `app/ville/[slug]/page.js`, table « Duel » de `CitySEOContent.js` (ordre/libellés harmonisés sur les cartes), `CityJsonLd.js` (unités du registre, ordre stable `SCHEMA_MEASURES`).
 - **Décisions validées par Thomas (Jalon C)** : philosophie « afficher ≠ noter » ; moteur **V3** = sanitaires (microbio -5, pesticides/PFAS tolérance zéro -1,5/-4, nitrates paliers 15/25/40) + **extrêmes de confort seulement** (chlore >0,4 -0,5, calcaire >35 °f -0,5) ; conformité ARS = badge binaire distinct, plus de 2,1 forfaitaire → plafond 2,0 si cause sanitaire avérée, 6,0 si cause technique (voir `crystal-engine.js`). pH/turbidité/conductivité/fer/manganèse/cuivre/ammonium = affichés, **non notés**.
 - Chantier « uniformisation des indicateurs » **clôturé** (socle registre + moteur unique + régénération des données + éditorial méthodo/sous-titre + Duel/JSON-LD branchés). En cas de nouveau paramètre : l'ajouter à `PARAMS` (registre) puis régénérer (`npm run sitemap`), tout le reste suit automatiquement.
+
+# Méthodologie & scores home (mémoire)
+
+- **`/methodologie`** : FAQ centralisées dans la constante `FAQ_DATA` (15 questions) — le rendu visible (`<details>`) ET le JSON-LD `FAQPage` en dérivent automatiquement (texte pur obtenu en retirant les tags HTML). Ajouter une question = éditer `FAQ_DATA`, rien d'autre. La section « Seuils & repères » est dérivée de `SEO_DOSSIERS` (registre). Constantes `CURRENT_YEAR` (année dynamique) et `METHOD_UPDATE` (à mettre à jour à chaque évolution réelle du moteur). Sources réglementaires citées : arrêté 11/01/2007 (Légifrance), directive UE 2020/2184 (EUR-Lex), ANSES, SISE-Eaux, Hub'Eau.
+- **Scores métropoles de la home** : lus depuis `public/data/metropolis.json` (régénéré par `sync-home-scores` au `npm run sitemap`) puis injectés via `app/page.js` (lecture fs) → `WaterApp` → `HomeLanding`. L'ancienne liste en dur `METROPOLIS_SCORES` a été supprimée — ne pas la recréer.
 
 # Page PFAS (/pfas-eau-potable)
 
