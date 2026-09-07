@@ -4,7 +4,21 @@ import { useMemo, Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
+import { ANALYSIS_CARDS } from '@/lib/params-registry';
 import { generateExpertVerdict, FOCUS_VARIANTS, FAQ_VARIANTS, hashCity } from '@/lib/content-variants';
+
+// Correspondance locale paramètre -> accès aux valeurs comparées (métriques ville + agrégats).
+const DUEL_METRIC = {
+  microbiology: { city: 'microVal', agg: 'micro' },
+  nitrates: { city: 'nitratesVal', agg: 'nitrates' },
+  pesticides: { city: 'pestVal', agg: 'pest' },
+  pfas: { city: 'pfasVal', agg: 'pfas' },
+  chlorine: { city: 'chloreVal', agg: 'chlorine' },
+  hardness: { city: 'dureteVal', agg: 'hardness' },
+  ph: { city: 'phVal', agg: 'ph' },
+  turbidity: { city: 'turbVal', agg: 'turbidity' },
+  conductivity: { city: 'condVal', agg: 'conductivity' }
+};
 import dynamic from 'next/dynamic';
 const CityAnalysisSection = dynamic(() => import('./CityAnalysisSection'), { ssr: true });
 const BenchmarkAudit = dynamic(() => import('./BenchmarkAudit'), { ssr: true });
@@ -276,15 +290,18 @@ export default function CitySEOContent({ cityName, data }) {
                 {(() => {
                   const rows = [
                     { key: "conformity", label: "Conformité", city: isConform ? "100%" : "Alerte", dept: metrics.dept.conform, region: metrics.region.conform, france: NATIONAL_STATS.conform, higherIsBetter: true },
-                    { key: "microbiology", label: "Microbiologie", city: metrics.microVal, dept: metrics.dept.micro, region: metrics.region.micro, france: NATIONAL_STATS.micro },
-                    { key: "pfas", label: "PFAS (Polluants)", city: metrics.pfasVal, dept: metrics.dept.pfas, region: metrics.region.pfas, france: NATIONAL_STATS.pfas },
-                    { key: "pesticides", label: "Pesticides", city: metrics.pestVal, dept: metrics.dept.pest, region: metrics.region.pest, france: NATIONAL_STATS.pest },
-                    { key: "chlorine", label: "Chlore libre", city: metrics.chloreVal, dept: metrics.dept.chlorine, region: metrics.region.chlorine, france: NATIONAL_STATS.chlorine },
-                    { key: "nitrates", label: "Nitrates", city: metrics.nitratesVal, dept: metrics.dept.nitrates, region: metrics.region.nitrates, france: NATIONAL_STATS.nitrates },
-                    { key: "hardness", label: "Calcaire", city: metrics.dureteVal, dept: metrics.dept.hardness, region: metrics.region.hardness, france: NATIONAL_STATS.hardness },
-                    { key: "ph", label: "Acidité (pH)", city: metrics.phVal, dept: metrics.dept.ph, region: metrics.region.ph, france: NATIONAL_STATS.ph, centered: 7.5 },
-                    { key: "turbidity", label: "Turbidité", city: metrics.turbVal, dept: metrics.dept.turbidity, region: metrics.region.turbidity, france: NATIONAL_STATS.turbidity },
-                    { key: "conductivity", label: "Conductivité", city: metrics.condVal, dept: metrics.dept.conductivity, region: metrics.region.conductivity, france: NATIONAL_STATS.conductivity }
+                    ...ANALYSIS_CARDS.map((p) => {
+                      const m = DUEL_METRIC[p.dataKey];
+                      return {
+                        key: p.dataKey,
+                        label: p.name,
+                        city: metrics[m.city],
+                        dept: metrics.dept[m.agg],
+                        region: metrics.region[m.agg],
+                        france: NATIONAL_STATS[m.agg],
+                        ...(p.dataKey === 'ph' ? { centered: 7.5 } : {})
+                      };
+                    })
                   ];
 
                   const getWinner = (row) => {

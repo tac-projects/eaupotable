@@ -6,6 +6,15 @@
  */
 import { parseValue } from '@/lib/water-utils';
 import { hashCity, FAQ_VARIANTS } from '@/lib/content-variants';
+import { PARAMS } from '@/lib/params-registry';
+
+// Paramètres exposés en données structurées (ordre stable) — unités issues du registre.
+const SCHEMA_MEASURES = [
+  { dataKey: 'pfas', name: 'PFAS' },
+  { dataKey: 'pesticides', name: 'Pesticides' },
+  { dataKey: 'nitrates', name: 'Nitrates' },
+  { dataKey: 'hardness', name: 'Dureté' }
+];
 
 export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crystal, stats }) {
   const currentYear = new Date().getFullYear();
@@ -115,10 +124,15 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
         url: `https://www.eaupotable.net/ville/${cleanSlug}`,
         variableMeasured: [
           { '@type': 'PropertyValue', name: 'Conformité bactériologique', value: isConform ? 'Conforme' : 'Non conforme' },
-          { '@type': 'PropertyValue', name: 'PFAS', unitText: 'µg/L', value: parseValue(stats.pfas?.val) || 0 },
-          { '@type': 'PropertyValue', name: 'Pesticides', unitText: 'µg/L', value: parseValue(stats.pesticides?.val) || 0 },
-          { '@type': 'PropertyValue', name: 'Nitrates', unitText: 'mg/L', value: parseValue(stats.nitrates?.val) || 0 },
-          { '@type': 'PropertyValue', name: 'Dureté', unitText: '°f', value: parseValue(stats.hardness?.val) || 0 },
+          ...SCHEMA_MEASURES.map((m) => {
+            const p = PARAMS.find((x) => x.dataKey === m.dataKey);
+            return {
+              '@type': 'PropertyValue',
+              name: m.name,
+              unitText: p ? p.unit : undefined,
+              value: parseValue(stats[m.dataKey]?.val) || 0
+            };
+          }),
         ],
         creator: {
           '@type': 'Person',
