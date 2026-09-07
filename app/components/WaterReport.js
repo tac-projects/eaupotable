@@ -10,23 +10,20 @@ import {
   CENTERED_PARAMS,
   parseValue
 } from '@/lib/water-utils';
+import { ANALYSIS_CARDS } from '@/lib/params-registry';
 
 export default function WaterReport({ data, onShare }) {
   const { cityName, crystal, stats, isConform, meta } = data;
   const nomReseau = meta.nom_distributeur || meta.nom_reseau || "Réseau Municipal";
   let scoreClass = (crystal.final < 5) ? "status-critical" : (crystal.final < 8) ? "status-warning" : (crystal.final < 8.5) ? "status-good" : "status-excellent";
 
-  const paramsList = [
-    { name: "Microbiologie", key: "microbiology", data: stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
-    { name: "Nitrates", key: "nitrates", data: stats.nitrates },
-    { name: "Pesticides", key: "pesticides", data: stats.pesticides },
-    { name: "PFAS (Polluants éternels)", key: "pfas", data: stats.pfas },
-    { name: "Chlore Libre", key: "chlorine", data: stats.chlorine },
-    { name: "Calcaire", key: "hardness", data: stats.hardness },
-    { name: "Acidité (pH)", key: "ph", data: stats.ph },
-    { name: "Turbidité", key: "turb", data: stats.turbidity },
-    { name: "Conductivité", key: "cond", data: stats.conductivity },
-  ];
+  const paramsList = ANALYSIS_CARDS.map((card) => ({
+    name: card.name,
+    key: card.key,
+    data: card.dataKey === 'microbiology'
+      ? (stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') })
+      : stats[card.dataKey]
+  }));
 
   return (
     <>

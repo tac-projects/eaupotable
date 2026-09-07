@@ -26,6 +26,12 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 - Playwright dispo via `/home/admin/.npm/_npx/9833c18b2d85bc59/node_modules/playwright` avec `executablePath: '/usr/bin/google-chrome'` + `--no-sandbox` (pas de chromium téléchargé).
 - **Snippets Google / listes de classement** : Google extrait souvent le passage « Benchmark »/« Top 10 » des pages ville/département comme meta description (ces pages rankent pour les villes classées). Ne jamais juxtaposer des `<span>` de rang/score sans séparateur texte (flex `gap` seul → snippet `#1Adamswiller. 10.0#2Albe…`). Format en vigueur : rang `N°N`, score `10,0/10`, espaces textuels entre spans, et séparateur ` - ` en `<span class="sr-only">` (sr-only défini dans `styles/base.css`) entre items — lisible par Google, invisible à l'écran (listes verticales).
 
+# Analytics (GA4)
+
+- Tag : `G-L7BMHXS6DJ`, chargé en lazyOnload dans `app/layout.js`. Tous les events passent par `track()` de `lib/analytics.js` (push `window.dataLayer`), jamais d'appel gtag direct.
+- **Piège SPA** : GA4 ne tracke pas les navigations client-side. Le composant `app/components/Analytics.js` (monté dans `layout.js`) envoie un `page_view` à chaque changement de route via `usePathname`, **sauf le premier rendu** (couvert par la config gtag → ne pas envoyer page_view au premier rendu sous peine de double comptage). Il gère aussi `outbound_click` (listener délégué, ne pas dupliquer dans les pages).
+- Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}. Les events customs ne sont visibles que dans « Événements récents » (24-48h) ; pour un compteur direct, les marquer comme conversion dans GA4.
+
 # Rafraîchir les données ARS (SISE-Eaux)
 
 Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (prélèvements ARS). **Aucune automatisation** : la mise à jour est manuelle et la source est publiée mensuellement avec ~1 mois de délai (ex. prélèvements de juin publiés début août).
@@ -37,6 +43,14 @@ Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (
 5. **Déployer** : `git commit` + `git push` + `npm run build` + `sudo pm2 restart eaupotable` (accords explicites requis).
 
 Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de l'eau du robinet » (Ministère des Solidarités et de la Santé), URL des ressources `static.data.gouv.fr/resources/.../eaurob-YYYYMM.zip`.
+
+# Chantier « uniformisation des indicateurs » (en cours)
+
+**Source de vérité des paramètres = `lib/params-registry.js`** (créé au Jalon A). Toute liste de paramètres affichée ou transmise doit être dérivée d'ici, jamais réécrite en dur. Exports : `PARAMS`, `ANALYSIS_CARDS` (9 cartes), `SEO_DOSSIERS` (14 en 3 dossiers), `CITY_STATS_KEYS` (payload ville, 14 clés), `SCORED_COUNT`.
+
+- Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, `SeoDataTable.js` (composant **orphelin**, jamais importé — ne pas le réutiliser sans vérif), payload de `app/ville/[slug]/page.js`.
+- **Moteur de score** (`calculateCrystalScore` dans `lib/water-utils.js`) : ne pénalise que 6 paramètres (microbio, pesticides, PFAS, nitrates, chlore, dureté — + le bloc `conformity` jamais alimenté). Les 9 cartes affichées incluent pH/turbidité/conductivité qui sont **non notés** (choix assumé « afficher ≠ noter »).
+- Restes à traiter (Jalons B/C, pas encore faits) : `build-dept-generic.js` explication codée « basé sur 12 paramètres sanitaires » ; page `/methodologie` « 6 piliers » ; table « Duel » dans `CitySEOContent.js` (liste labels/keys dupliquée, accès `metrics.*` + drapeaux) ; `CityJsonLd.js` libellés/unités en dur ; re-définition du périmètre score sur base normative (arrêté 2007, directive 2020/2184).
 
 # Page PFAS (/pfas-eau-potable)
 

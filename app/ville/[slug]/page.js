@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar';
 import WaterApp from '../../components/WaterApp';
 import { calculateCrystalScore } from '../../../lib/water-utils';
 import { hashCity } from '../../../lib/content-variants';
+import { CITY_STATS_KEYS } from '../../../lib/params-registry';
 import { cache } from 'react';
 import fs from 'fs';
 import path from 'path';
@@ -176,21 +177,9 @@ async function getLocalData(slug) {
     const cityData = {
       cityName: rawCityData.cityName,
       crystal: rawCityData.crystal,
-      stats: {
-        microbiology: rawCityData.stats?.microbiology,
-        nitrates: rawCityData.stats?.nitrates,
-        pesticides: rawCityData.stats?.pesticides,
-        pfas: rawCityData.stats?.pfas,
-        chlorine: rawCityData.stats?.chlorine,
-        hardness: rawCityData.stats?.hardness,
-        ph: rawCityData.stats?.ph,
-        turbidity: rawCityData.stats?.turbidity,
-        conductivity: rawCityData.stats?.conductivity,
-        iron: rawCityData.stats?.iron,
-        manganese: rawCityData.stats?.manganese,
-        copper: rawCityData.stats?.copper,
-        organic_carbon: rawCityData.stats?.organic_carbon,
-      },
+      stats: Object.fromEntries(
+        CITY_STATS_KEYS.map((k) => [k, rawCityData.stats?.[k]])
+      ),
       prix: rawCityData.prix || null,
       meta: {
         code_departement: rawCityData.meta?.code_departement,

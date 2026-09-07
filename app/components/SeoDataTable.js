@@ -1,42 +1,10 @@
 'use client';
 import { Fragment } from 'react';
 import { getParameterStatus } from '@/lib/water-utils';
+import { SEO_DOSSIERS } from '@/lib/params-registry';
 
 export default function SeoDataTable({ cityName, stats, nomReseau, isConform }) {
-  const dossiers = [
-    { 
-      name: "Santé & Vigilance", 
-      icon: "🔬",
-      keys: [
-        { key: "microbiology", label: "Microbiologie", limit: "0 n/mL" },
-        { key: "nitrates", label: "Nitrates", limit: "50 mg/L" },
-        { key: "pesticides", label: "Pesticides totaux", limit: "0.1 µg/L" },
-        { key: "pfas", label: "PFAS (Polluants éternels)", limit: "0.1 µg/L" },
-        { key: "ammonium", label: "Ammonium", limit: "0.1 mg/L" }
-      ]
-    },
-    { 
-      name: "Confort & Usage", 
-      icon: "🛁",
-      keys: [
-        { key: "hardness", label: "Calcaire (Dureté TH)", limit: "Indicateur" },
-        { key: "chlorine", label: "Chlore Libre", limit: "< 0.1 recommandé" },
-        { key: "ph", label: "Potentiel Hydrogène (pH)", limit: "6.5 - 9.0" },
-        { key: "conductivity", label: "Conductivité", limit: "1100 µS/cm" },
-        { key: "turbidity", label: "Turbidité", limit: "< 2 NFU" }
-      ]
-    },
-    { 
-      name: "Traces & Minéraux", 
-      icon: "🏗️",
-      keys: [
-        { key: "iron", label: "Fer total", limit: "200 µg/L" },
-        { key: "manganese", label: "Manganèse", limit: "50 µg/L" },
-        { key: "copper", label: "Cuivre", limit: "2.0 mg/L" },
-        { key: "organic_carbon", label: "Carbone Org. Total", limit: "Inconnu" }
-      ]
-    }
-  ];
+  const dossiers = SEO_DOSSIERS;
 
   return (
     <div className="seo-audit-registry">

@@ -9,6 +9,7 @@ import {
   CENTERED_PARAMS,
   parseValue
 } from '@/lib/water-utils';
+import { ANALYSIS_CARDS } from '@/lib/params-registry';
 
 const DEFINITION_ANCHORS = {
   microbiology: 'microbiologie',
@@ -23,23 +24,21 @@ const DEFINITION_ANCHORS = {
 };
 
 export default function CityAnalysisSection({ stats, isConform, meta }) {
-  const paramsList = useMemo(() => [
-    { name: "Microbiologie", key: "microbiology", data: stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') } },
-    { name: "Nitrates", key: "nitrates", data: stats.nitrates },
-    { name: "Pesticides", key: "pesticides", data: stats.pesticides },
-    { name: "PFAS (Polluants éternels)", key: "pfas", data: stats.pfas },
-    { name: "Chlore Libre", key: "chlorine", data: stats.chlorine },
-    { name: "Calcaire", key: "hardness", data: stats.hardness },
-    { name: "Acidité (pH)", key: "ph", data: stats.ph },
-    { name: "Turbidité", key: "turb", data: stats.turbidity },
-    { name: "Conductivité", key: "cond", data: stats.conductivity },
-  ].filter(p => p.data && p.data.val !== undefined), [stats, meta.date_prelevement]);
+  const paramsList = useMemo(() => ANALYSIS_CARDS
+    .map((card) => ({
+      name: card.name,
+      key: card.key,
+      data: card.dataKey === 'microbiology'
+        ? (stats.microbiology || { val: "--", unit: "", date: new Date(meta.date_prelevement).toLocaleDateString('fr-FR') })
+        : stats[card.dataKey]
+    }))
+    .filter(p => p.data && p.data.val !== undefined), [stats, meta.date_prelevement]);
 
   return (
     <Fragment>
       <div className="seo-section-header">
         <h2 className="seo-main-title">Analyses Techniques</h2>
-        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels selon 9 indicateurs clés.</p>
+        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels selon {ANALYSIS_CARDS.length} indicateurs clés.</p>
       </div>
       <div className="analysis-grid-container">
         <div className="analysis-grid">
