@@ -50,9 +50,9 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 
 **Moteur de score = `lib/crystal-engine.js`** (créé au Jalon C, CJS pur pour être `require`-able par les scripts node) : `water-utils.js` le ré-exporte pour le runtime Next, `scripts/build-dept-generic.js` le `require` — **ne jamais ré-implémenter le calcul ailleurs**.
 
-- Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, `SeoDataTable.js` (composant **orphelin**, jamais importé — ne pas le réutiliser sans vérif), payload de `app/ville/[slug]/page.js`.
+- Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, `SeoDataTable.js` (composant **orphelin**, jamais importé — ne pas le réutiliser sans vérif), payload de `app/ville/[slug]/page.js`, table « Duel » de `CitySEOContent.js` (ordre/libellés harmonisés sur les cartes), `CityJsonLd.js` (unités du registre, ordre stable `SCHEMA_MEASURES`).
 - **Décisions validées par Thomas (Jalon C)** : philosophie « afficher ≠ noter » ; moteur **V3** = sanitaires (microbio -5, pesticides/PFAS tolérance zéro -1,5/-4, nitrates paliers 15/25/40) + **extrêmes de confort seulement** (chlore >0,4 -0,5, calcaire >35 °f -0,5) ; conformité ARS = badge binaire distinct, plus de 2,1 forfaitaire → plafond 2,0 si cause sanitaire avérée, 6,0 si cause technique (voir `crystal-engine.js`). pH/turbidité/conductivité/fer/manganèse/cuivre/ammonium = affichés, **non notés**.
-- Restes à traiter (pas encore faits) : page `/methodologie` (cartes « 6 piliers » + « Régularité ARS -2,5 » désormais obsolètes — la Régularité n'existe plus, mise à jour éditoriale à faire) ; sous-titre `CityAnalysisSection.js` « selon 9 indicateurs clés » (préciser quels paramètres impactent le score) ; table « Duel » dans `CitySEOContent.js` (liste labels/keys dupliquée, accès `metrics.*` + drapeaux) ; `CityJsonLd.js` libellés/unités en dur. **Régénérer les données (`npm run sitemap`) pour propager le nouveau moteur** : diff attendu ~24 000 communes dont la note remonte.
+- Chantier « uniformisation des indicateurs » **clôturé** (socle registre + moteur unique + régénération des données + éditorial méthodo/sous-titre + Duel/JSON-LD branchés). En cas de nouveau paramètre : l'ajouter à `PARAMS` (registre) puis régénérer (`npm run sitemap`), tout le reste suit automatiquement.
 
 # Page PFAS (/pfas-eau-potable)
 
