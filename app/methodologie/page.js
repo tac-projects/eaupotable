@@ -96,7 +96,7 @@ const MethodologyPage = () => {
           <div className="sectionContainer">
             <div className="seo-section-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 className="seo-main-title">Le Calcul du Crystal Score™</h2>
-              <p className="seo-main-subtitle">Une analyse rigoureuse basée sur 6 piliers de pureté</p>
+              <p className="seo-main-subtitle">Un score par déduction, fondé sur 5 critères sanitaires — la conformité ARS s'affiche séparément</p>
             </div>
             <div className="introText">
               <p>
@@ -107,6 +107,12 @@ const MethodologyPage = () => {
               <p style={{ marginTop: '1rem' }}>
                 Chaque trace de polluant, chaque traitement chimique et chaque risque sanitaire retire 
                 des points à ce capital de pureté originelle.
+              </p>
+              <p style={{ marginTop: '1rem' }}>
+                La conformité réglementaire (ARS) est un statut à part, affiché comme un badge : elle ne se
+                mélange pas au score. Une eau déclarée non conforme est plafonnée à 6/10 si la cause est
+                technique (calcaire, fer, goût) ou à 2/10 si un dépassement sanitaire est avéré (bactérie,
+                pesticide, PFAS, nitrates).
               </p>
             </div>
 
@@ -188,37 +194,17 @@ const MethodologyPage = () => {
                 <p className="expertQuote">"Le reflet de nos écosystèmes."</p>
               </div>
 
-              {/* 5. Historique ARS */}
-              <div className="penaltyCard">
-                <div className="cardIcon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20v-6"/><path d="M6 20V10"/><path d="M18 20V4"/><path d="M3 20h18"/></svg>
-                </div>
-                <h3>Régularité (ARS)</h3>
-                <span className="penaltyBadge">-2.5 POINTS</span>
-                <p className="cardExplanation">
-                  Analyse de l'historique annuel. Si des prélèvements ont été non conformes 
-                  durant l'année, le score de confiance est dégradé.
-                </p>
-                <p className="expertQuote">"La stabilité est un gage de qualité."</p>
-              </div>
-
-              {/* 6. Confort & Goût */}
+              {/* 5. Extrêmes de confort */}
               <div className="penaltyCard">
                 <div className="cardIcon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
                 </div>
-                <h3>Confort & Goût</h3>
-                <span className="penaltyBadge warning">
-                  <span className="responsive-range">
-                    <span>-0.5</span>
-                    <span>à</span>
-                    <span>-2.0</span>
-                  </span>
-                  <span style={{ marginLeft: '4px' }}>POINTS</span>
-                </span>
+                <h3>Extrêmes de confort</h3>
+                <span className="penaltyBadge">-0.5 POINTS</span>
                 <p className="cardExplanation">
-                  Impact du Chlore (goût) et du Calcaire (dureté). Des bémols mineurs qui 
-                  différencient une eau potable d'une eau agréable.
+                  Seuls les extrêmes sont pénalisés : chlore marqué (&gt; 0,4 mg/L) ou calcaire très fort
+                  (&gt; 35 °f). Le chlore et le calcaire courants sont affichés mais ne retirent plus de
+                  points — une eau dure reste une bonne eau.
                 </p>
                 <p className="expertQuote">"Le plaisir au quotidien."</p>
               </div>

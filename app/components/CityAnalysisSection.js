@@ -9,7 +9,9 @@ import {
   CENTERED_PARAMS,
   parseValue
 } from '@/lib/water-utils';
-import { ANALYSIS_CARDS } from '@/lib/params-registry';
+import { ANALYSIS_CARDS, PARAMS } from '@/lib/params-registry';
+
+const ANALYSIS_SCORED_COUNT = PARAMS.filter((p) => p.cardOrder && p.scored).length;
 
 const DEFINITION_ANCHORS = {
   microbiology: 'microbiologie',
@@ -38,7 +40,7 @@ export default function CityAnalysisSection({ stats, isConform, meta }) {
     <Fragment>
       <div className="seo-section-header">
         <h2 className="seo-main-title">Analyses Techniques</h2>
-        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels selon {ANALYSIS_CARDS.length} indicateurs clés.</p>
+        <p className="seo-main-subtitle">Résultats détaillés des derniers prélèvements sanitaires officiels : {ANALYSIS_CARDS.length} paramètres analysés, dont {ANALYSIS_SCORED_COUNT} entrent dans le score Crystal.</p>
       </div>
       <div className="analysis-grid-container">
         <div className="analysis-grid">

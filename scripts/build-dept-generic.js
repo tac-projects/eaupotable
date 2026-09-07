@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const { calculateCrystalScore } = require('../lib/crystal-engine');
 
 /**
  * SISE-EAUX UNIVERSAL ARCHIVIST
@@ -214,54 +215,9 @@ function parseValue(val) {
     return isNaN(parsed) ? NaN : parsed;
 }
 
-function calculateCrystalScore(s, isConform, cityName) {
-    let score = 10.0;
-    if (!isConform) return { final: 3.5, label: "NON CONFORME", statusClass: "status-critical", explanation: "L'eau ne respecte pas les limites de qualité ARS." };
-    
-    const nv = (k) => s[k] ? parseValue(s[k].val) : NaN;
-    
-    const microRaw = s.microbiology ? s.microbiology.val.toLowerCase() : "";
-    const isMicroAbsence = microRaw.includes("absence") || microRaw.includes("<") || microRaw === "0" || microRaw === "--";
-    if (microRaw && !isMicroAbsence) {
-        score -= 5.0;
-    }
-
-    // 2. Polluants (PFAS / Pesticides)
-    const pfas = nv('pfas');
-    if (!isNaN(pfas) && pfas > 0) score -= (pfas > 0.1 ? 4 : 1.5);
-    
-    const pest = nv('pesticides');
-    if (!isNaN(pest) && pest > 0) score -= (pest > 0.1 ? 4 : 1.5);
-
-    // 3. Nitrates (Pureté)
-    const nit = nv('nitrates');
-    if (!isNaN(nit)) {
-        if (nit > 15) score -= 1.0;
-        if (nit > 25) score -= 1.0;
-        if (nit > 40) score -= 2.0;
-    }
-
-    // 4. Chlore (Additifs chimiques)
-    const chlo = nv('chlorine');
-    if (!isNaN(chlo)) {
-        if (chlo > 0.1) score -= 0.5;
-        if (chlo > 0.4) score -= 0.5;
-    }
-
-    // 5. Calcaire
-    const dur = nv('hardness');
-    if (!isNaN(dur) && dur > 25) score -= 0.5;
-
-    score = Math.max(1, Math.min(10, score));
-    score = Math.round(score * 10) / 10;
-    
-    return { 
-        final: score, 
-        label: score >= 9.0 ? "EXCELLENTE" : (score >= 7.5 ? "SATISFAISANTE" : "MÉDIOCRE"), 
-        explanation: "Indice de Pureté EauPotable.net basé sur 12 paramètres sanitaires.", 
-        statusClass: score >= 9.0 ? "status-excellent" : (score >= 7.5 ? "status-good" : "status-warning") 
-    };
-}
+// NOTE : le moteur de score vit dans lib/crystal-engine.js (source de vérité
+// unique, partagée avec le runtime Next via lib/water-utils.js). Ne jamais
+// ré-implémenter le calcul ici.
 
 // 4. MAIN PROCESSOR
 async function buildDepartment(deptCode) {
@@ -448,7 +404,7 @@ async function buildDepartment(deptCode) {
         };
 
         findParamInHierarchy(udis);
-        const crystal = calculateCrystalScore(stats, isConform, cityName);
+        const crystal = calculateCrystalScore(stats, isConform);
         const slug = makeSlug(cityName);
         
         // Restauration intelligente du nom (Accents et formatage)
