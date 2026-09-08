@@ -13,8 +13,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 # Déploiement
 
 - Serveur : ce dossier EST la prod (`/var/www/eaupotable`), servi par `next start` sous **PM2 root** (app `eaupotable`, `npm start` = `next start -H 127.0.0.1`).
-- Cycle : `git commit` + `git push` (accords explicites requis) → `npm run build` → `sudo pm2 restart eaupotable`.
-- **Jamais** de commit/push/restart PM2 sans l'accord explicite de Thomas à chaque fois.
+- Cycle : `git commit` + `git push` (accords explicites requis, cf. règles globales) → `npm run build` → `sudo pm2 restart eaupotable`.
 - `npm run sitemap` régénère toutes les données (`build-dept-generic`, `sync-home-scores`, `build-pfas-nation`, `generate-sitemap`) — le commit des sitemaps régénérés est normal.
 - `npm run build:full` = sitemap + build.
 
@@ -31,7 +30,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 - Tag : `G-L7BMHXS6DJ`, chargé en lazyOnload dans `app/layout.js`. Tous les events passent par `track()` de `lib/analytics.js` qui appelle **`window.gtag('event', eventName, params)`** (jamais de push objet direct).
 - **Piège majeur (corrigé 09/2026)** : avec gtag.js nu (sans GTM), `dataLayer.push({event: …})` **n'est jamais transmis** — seul `gtag('event', …)` l'est. Et depuis l'application EU de Google, sans commande consent mode, gtag retient tous les events en attente de consentement → les events customs n'apparaissaient plus (0 sur 28 j). Correctif dans `layout.js` : `gtag('consent', 'default'/'update', { …_storage: 'granted' })` avant la config. **⚠️ Contournement assumé par Thomas (pas de bandeau RGPD)** : on force en dur un consentement `granted` sans jamais recueillir le choix réel de l'utilisateur → le site fausse le signal consent vis-à-vis de Google et contrevient à l'obligation CNIL/RGPD pour GA4 (données personnelles). Risques acceptés : sanction CNIL, et Google peut neutraliser la mesure s'il détecte l'abus. Ne pas « corriger » ce choix ni ajouter de bandeau sans décision explicite de Thomas. Piège Playwright : events auto (`click`, `scroll`) passent même sans consent ; ne pas les prendre pour preuve que les customs marchent.
 - **Piège SPA** : GA4 ne tracke pas les navigations client-side. Le composant `app/components/Analytics.js` (monté dans `layout.js`) envoie un `page_view` à chaque changement de route via `usePathname`, **sauf le premier rendu** (couvert par la config gtag → ne pas envoyer page_view au premier rendu sous peine de double comptage). Il gère aussi `outbound_click` (listener délégué, ne pas dupliquer dans les pages).
-- Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}. Les events customs ne sont visibles que dans « Événements récents » (24-48h) ; pour un compteur direct, les marquer comme conversion dans GA4.
+- Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}. Depuis le correctif 09/2026 ils remontent normalement dans les rapports GA4 ; les marquer comme conversion pour un compteur direct/stable.
 
 # Rafraîchir les données ARS (SISE-Eaux)
 
@@ -45,15 +44,15 @@ Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (
 
 Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de l'eau du robinet » (Ministère des Solidarités et de la Santé), URL des ressources `static.data.gouv.fr/resources/.../eaurob-YYYYMM.zip`.
 
-# Chantier « uniformisation des indicateurs »
+# Indicateurs & moteur de score
 
 **Source de vérité des paramètres = `lib/params-registry.js`** (créé au Jalon A). Toute liste de paramètres affichée ou transmise doit être dérivée d'ici, jamais réécrite en dur. Exports : `PARAMS`, `ANALYSIS_CARDS` (9 cartes), `SEO_DOSSIERS` (14 en 3 dossiers), `CITY_STATS_KEYS` (payload ville, 14 clés), `SCORED_COUNT`.
 
 **Moteur de score = `lib/crystal-engine.js`** (créé au Jalon C, CJS pur pour être `require`-able par les scripts node) : `water-utils.js` le ré-exporte pour le runtime Next, `scripts/build-dept-generic.js` le `require` — **ne jamais ré-implémenter le calcul ailleurs**.
 
-- Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, `SeoDataTable.js` (composant **orphelin**, jamais importé — ne pas le réutiliser sans vérif), payload de `app/ville/[slug]/page.js`, table « Duel » de `CitySEOContent.js` (ordre/libellés harmonisés sur les cartes), `CityJsonLd.js` (unités du registre, ordre stable `SCHEMA_MEASURES`).
-- **Décisions validées par Thomas (Jalon C)** : philosophie « afficher ≠ noter » ; moteur **V3** = sanitaires (microbio -5, pesticides/PFAS tolérance zéro -1,5/-4, nitrates paliers 15/25/40) + **extrêmes de confort seulement** (chlore >0,4 -0,5, calcaire >35 °f -0,5) ; conformité ARS = badge binaire distinct, plus de 2,1 forfaitaire → plafond 2,0 si cause sanitaire avérée, 6,0 si cause technique (voir `crystal-engine.js`). pH/turbidité/conductivité/fer/manganèse/cuivre/ammonium = affichés, **non notés**.
-- Chantier « uniformisation des indicateurs » **clôturé** (socle registre + moteur unique + régénération des données + éditorial méthodo/sous-titre + Duel/JSON-LD branchés). En cas de nouveau paramètre : l'ajouter à `PARAMS` (registre) puis régénérer (`npm run sitemap`), tout le reste suit automatiquement.
+- Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, payload de `app/ville/[slug]/page.js`, table « Duel » de `CitySEOContent.js` (ordre/libellés harmonisés sur les cartes), `CityJsonLd.js` (unités du registre, ordre stable `SCHEMA_MEASURES`).
+- **Décisions validées par Thomas (Jalon C)** : philosophie « afficher ≠ noter » ; moteur **V3** = malus sanitaires (microbio, pesticides/PFAS tolérance zéro, nitrates par paliers) + **extrêmes de confort seulement** (chlore, calcaire) ; conformité ARS = badge binaire distinct (plus de 2,1 forfaitaire → plafond 2,0 si cause sanitaire, 6,0 si cause technique) ; pH/turbidité/conductivité/fer/manganèse/cuivre/ammonium = affichés, **non notés**. Valeurs exactes dans `crystal-engine.js` (source unique, ne pas les dupliquer).
+- En cas de nouveau paramètre : l'ajouter à `PARAMS` (registre) puis régénérer (`npm run sitemap`), tout le reste suit automatiquement.
 
 # Méthodologie & scores home (mémoire)
 
