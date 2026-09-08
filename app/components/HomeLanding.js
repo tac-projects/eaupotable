@@ -71,6 +71,8 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
   const [turnstileToken, setTurnstileToken] = useState(null);
   const [vigilanceSuggestions, setVigilanceSuggestions] = useState([]);
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
+  const [geoState, setGeoState] = useState('idle'); // idle | loading | error
+  const [geoMessage, setGeoMessage] = useState(null);
   const pendingSubmitRef = useRef(false);
   const turnstileLoadRef = useRef(null);
 
@@ -120,8 +122,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
     handleSearchSelection,
     setIsSearchFocused,
     setSearchQuery,
-    setSuggestions,
-    geolocate
+    setSuggestions
   } = searchProps;
 
   useEffect(() => {
@@ -242,6 +243,68 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
     }
   };
 
+  const handleGeolocate = () => {
+    if (geoState === 'loading') return;
+
+    if (!('geolocation' in navigator)) {
+      setGeoState('error');
+      setGeoMessage("La géolocalisation n'est pas disponible sur ce navigateur. Saisissez votre ville dans la recherche.");
+      track('geolocate', { outcome: 'error', reason: 'unsupported' });
+      return;
+    }
+    if (!window.isSecureContext) {
+      setGeoState('error');
+      setGeoMessage("La géolocalisation nécessite une connexion sécurisée. Saisissez votre ville dans la recherche.");
+      track('geolocate', { outcome: 'error', reason: 'insecure' });
+      return;
+    }
+
+    setGeoState('loading');
+    setGeoMessage(null);
+
+    const onSuccess = async (pos) => {
+      const { latitude, longitude } = pos.coords;
+      try {
+        // Reverse geocoding gratuit (geo.api.gouv.fr) : lat/lon -> commune
+        const res = await fetch(`https://geo.api.gouv.fr/communes?lon=${longitude}&lat=${latitude}&fields=nom`);
+        if (!res.ok) throw new Error('reverse');
+        const communes = await res.json();
+        const nom = communes && communes[0] && communes[0].nom;
+        if (!nom) throw new Error('reverse-empty');
+
+        // Résolution vers notre propre slug via l'API de recherche interne
+        const sres = await fetch(`/api/search?q=${encodeURIComponent(nom)}`);
+        const matches = sres.ok ? await sres.json() : [];
+        if (!matches || matches.length === 0) {
+          setGeoState('error');
+          setGeoMessage(`Aucune donnée de qualité de l'eau disponible pour ${nom}. Saisissez une ville proche.`);
+          track('geolocate', { outcome: 'error', reason: 'no_match' });
+          return;
+        }
+        track('geolocate', { outcome: 'success', city: matches[0].slug });
+        onCitySelect(matches[0]);
+      } catch (err) {
+        setGeoState('error');
+        setGeoMessage("Impossible de déterminer votre commune. Saisissez votre ville dans la recherche.");
+        track('geolocate', { outcome: 'error', reason: 'reverse_failed' });
+      }
+    };
+
+    const onError = (err) => {
+      const messages = {
+        1: "Vous avez refusé la localisation. Saisissez votre ville dans la recherche ou réessayez.",
+        2: "Votre position est introuvable. Saisissez votre ville dans la recherche.",
+        3: "La localisation prend trop de temps. Réessayez."
+      };
+      const reasons = { 1: 'denied', 2: 'unavailable', 3: 'timeout' };
+      setGeoState('error');
+      setGeoMessage(messages[err.code] || "Impossible de vous localiser. Saisissez votre ville dans la recherche.");
+      track('geolocate', { outcome: 'error', reason: reasons[err.code] || 'unknown' });
+    };
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, maximumAge: 300000 });
+  };
+
   return (
     <div className="home-landing-page">
       <div className="hero-section">
@@ -290,7 +353,12 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                       </svg>
                     </button>
                   )}
-                  <button className="geolocate-btn" onClick={geolocate} aria-label="Me géolocaliser">
+                  <button
+                    className={`geolocate-btn ${geoState === 'loading' ? 'loading' : ''}`}
+                    onClick={handleGeolocate}
+                    aria-label={geoState === 'loading' ? "Localisation en cours" : "Me géolocaliser"}
+                    disabled={geoState === 'loading'}
+                  >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                       <circle cx="12" cy="10" r="3"></circle>
@@ -315,6 +383,13 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                     </div>
                   ))}
                 </div>
+
+                {geoState !== 'idle' && (
+                  <div className={`geo-status ${geoState === 'error' ? 'error' : ''}`} role="status" aria-live="polite">
+                    {geoState === 'loading' && <span className="geo-spinner" aria-hidden="true"></span>}
+                    <span>{geoState === 'loading' ? 'Recherche de votre commune...' : geoMessage}</span>
+                  </div>
+                )}
               </div>
 
               <div className="seo-source-line">

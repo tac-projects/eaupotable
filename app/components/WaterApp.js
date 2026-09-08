@@ -240,11 +240,6 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
     setSearchQuery(e.target.value);
   };
 
-  const geolocate = () => {
-    // Géolocalisation désactivée car elle dépendait de Mapbox.
-    alert("La géolocalisation est temporairement indisponible.");
-  };
-
   return (
     <main>
       {/* 2. PWA Install Banner - Toujours disponible si activée */}
@@ -288,8 +283,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
             handleSearchSelection,
             setIsSearchFocused,
             setSearchQuery,
-            setSuggestions,
-            geolocate
+            setSuggestions
           }}
         />
       )}

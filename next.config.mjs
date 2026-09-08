@@ -44,7 +44,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data:",
               "font-src 'self'",
-              "connect-src 'self' https://hubeau.eaufrance.fr https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com",
+              "connect-src 'self' https://hubeau.eaufrance.fr https://geo.api.gouv.fr https://formspree.io https://www.google-analytics.com https://region1.google-analytics.com",
               "frame-src 'self' https://challenges.cloudflare.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",

@@ -398,6 +398,44 @@ main {
     overflow: hidden;
 }
 
+.home-search-container .geo-status {
+    margin-top: 12px;
+    padding: 10px 18px;
+    border-radius: 14px;
+    background: rgba(var(--primary-rgb), 0.07);
+    border: 1px solid rgba(var(--primary-rgb), 0.12);
+    color: var(--text-main);
+    font-size: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideUpFade 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.home-search-container .geo-status.error {
+    background: rgba(220, 53, 69, 0.06);
+    border-color: rgba(220, 53, 69, 0.18);
+    color: #b02a37;
+}
+
+.geo-spinner {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--primary-rgb), 0.25);
+    border-top-color: var(--primary-solid);
+    animation: geoSpin 0.7s linear infinite;
+}
+
+@keyframes geoSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .city-page-content {
     background: white;
 }
