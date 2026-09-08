@@ -28,7 +28,8 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 
 # Analytics (GA4)
 
-- Tag : `G-L7BMHXS6DJ`, chargé en lazyOnload dans `app/layout.js`. Tous les events passent par `track()` de `lib/analytics.js` (push `window.dataLayer`), jamais d'appel gtag direct.
+- Tag : `G-L7BMHXS6DJ`, chargé en lazyOnload dans `app/layout.js`. Tous les events passent par `track()` de `lib/analytics.js` qui appelle **`window.gtag('event', eventName, params)`** (jamais de push objet direct).
+- **Piège majeur (corrigé 09/2026)** : avec gtag.js nu (sans GTM), `dataLayer.push({event: …})` **n'est jamais transmis** — seul `gtag('event', …)` l'est. Et depuis l'application EU de Google, sans commande consent mode, gtag retient tous les events en attente de consentement → les events customs n'apparaissaient plus (0 sur 28 j). Correctif dans `layout.js` : `gtag('consent', 'default'/'update', { …_storage: 'granted' })` avant la config (choix assumé par Thomas, pas de bandeau RGPD). Piège Playwright : events auto (`click`, `scroll`) passent même sans consent ; ne pas les prendre pour preuve que les customs marchent.
 - **Piège SPA** : GA4 ne tracke pas les navigations client-side. Le composant `app/components/Analytics.js` (monté dans `layout.js`) envoie un `page_view` à chaque changement de route via `usePathname`, **sauf le premier rendu** (couvert par la config gtag → ne pas envoyer page_view au premier rendu sous peine de double comptage). Il gère aussi `outbound_click` (listener délégué, ne pas dupliquer dans les pages).
 - Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}. Les events customs ne sont visibles que dans « Événements récents » (24-48h) ; pour un compteur direct, les marquer comme conversion dans GA4.
 
