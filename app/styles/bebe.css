@@ -525,10 +525,11 @@
 
 /* ---- TABLEAUX ---- */
 .bebe-table-note {
-  margin-top: 20px;
+  margin: 20px auto 0;
+  max-width: 860px;
+  text-align: center;
   font-size: 0.85rem;
   color: var(--text-light);
-  max-width: 860px;
 }
 
 .bebe-table-note p {
