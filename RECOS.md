@@ -1,4 +1,4 @@
-# Recommandations — Analyse concurrentielle (14/08/2026)
+# Recommandations — Analyse concurrentielle (14/08/2026, mis à jour 08/09/2026)
 
 Concurrents analysés : infoeau.fr, moneau.app, cieau.com (EauChezMoi), leaupotable.fr, qualite-eau-france.fr (non analysable : site 100% JS, seul le titre est indexable).
 
@@ -44,7 +44,7 @@ Calculateur de consommation annuelle, espace enfants/enseignants, brochures PDF,
 Lead-gen commercial : demande de devis pour analyse privée de l'eau à domicile.
 
 ### 14. Géolocalisation active (InfoEau)
-Bouton « Ma position » fonctionnel sur le diagnostic (le nôtre est désactivé dans le code).
+Bouton « Ma position » fonctionnel sur le diagnostic (le nôtre, désactivé à l'époque de l'analyse, est recâblé sans Mapbox depuis le 08/09/2026 : géoloc navigateur + reverse `geo.api.gouv.fr`).
 
 ### 15. API publique de données (InfoEau)
 Expose une API publique de ses données (nous n'exposons que `/api/search` et `/api/og`).
@@ -57,7 +57,6 @@ Expose une API publique de ses données (nous n'exposons que `/api/search` et `/
 | 9 | Pages hub par polluant (nitrates, pesticides) | **Oui.** Réplique notre succès PFAS sur des requêtes massives (« nitrates eau », « pesticides eau potable »). | ⭐⭐⭐ |
 | 8 | Classement pires/meilleures villes | **Oui.** Aimant à liens + presse, easy win à partir de nos données existantes. | ⭐⭐⭐ |
 | 7 | Page Eau pour bébé | **Oui.** Demande très forte et personne non couverte chez nous ; en plus de nos cartes Focus bébé. | ⭐⭐ |
-| 14 | Géolocalisation active | **Oui, quasi gratuit.** Le bouton existe déjà (désactivé) — il suffit de le câbler. | ⭐⭐ |
 | 6 | Plus de paramètres + barre % limite | **Oui.** Les données sont déjà dans nos JSON, c'est du réaffichage ; gain de crédibilité (InfoEau le fait). | ⭐⭐ |
 | 10 | Étiquette eau type bouteille + historique | **Oui.** Fort UX, différenciant, peu coûteux (données déjà présentes). | ⭐⭐ |
 | 5 | Alertes en temps réel | **À peser.** Notre newsletter Vigilance couvre déjà l'abonnement ; un dashboard temps réel demande un pipeline Hub'Eau dédié. | ⭐ |
@@ -71,4 +70,4 @@ Expose une API publique de ses données (nous n'exposons que `/api/search` et `/
 | 12b | Contenu éducatif CIEau, baromètres, aides | **Non.** Audience institutionnelle, hors positionnement. | ❌ |
 
 ## Déjà couvert par nous
-Alerte email par commune (Vigilance), liste des villes par région/département (pages `/departement` + `/villes`), score par commune.
+Alerte email par commune (Vigilance), liste des villes par région/département (pages `/departement` + `/villes`), score par commune, **géolocalisation active** (bouton « Ma position » sur la home, 09/2026).
