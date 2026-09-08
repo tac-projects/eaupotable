@@ -1981,3 +1981,79 @@ body:has(.seo-content-wrapper) {
     font-size: 1.25rem !important;
   }
 }
+/* ---- ENCART « EAU POUR BÉBÉ » (pages ville) ---- */
+.city-baby-banner {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-top: 28px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #f8fafc;
+}
+
+.city-baby-banner.ok {
+  border-left: 5px solid var(--status-excellent);
+}
+
+.city-baby-banner.warning {
+  border-left: 5px solid var(--status-warning);
+}
+
+.city-baby-banner.critical {
+  border-left: 5px solid var(--status-critical);
+}
+
+.city-baby-banner-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 85, 255, 0.08);
+  color: var(--primary-solid);
+}
+
+.city-baby-banner.ok .city-baby-banner-icon {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--status-excellent);
+}
+
+.city-baby-banner.warning .city-baby-banner-icon {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.city-baby-banner.critical .city-baby-banner-icon {
+  background: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+}
+
+.city-baby-banner-body {
+  flex: 1;
+}
+
+.city-baby-banner-body h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+}
+
+.city-baby-banner-body p {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .city-baby-banner {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

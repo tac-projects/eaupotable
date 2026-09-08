@@ -181,6 +181,7 @@ export default function CitySEOContent({ cityName, data }) {
 
   const faqItems = useMemo(() => {
     const durete = parseValue(stats.hardness?.val);
+    const nit = stats.nitrates ? parseValue(stats.nitrates.val) : NaN;
     const pfasVal = stats.pfas?.val || "--";
     const score = crystal?.final ?? "--";
     const h = hashCity(cityName, dpt);
@@ -236,6 +237,9 @@ export default function CitySEOContent({ cityName, data }) {
       {
         q: `Y a-t-il des nitrates dans l'eau de ${cityName} ?`,
         a: `Le taux de nitrates relevé est de ${stats.nitrates?.val || "--"} mg/L. La limite de qualité sanitaire est fixée à 50 mg/L par les autorités.`,
+        aHtml: nit > 15
+          ? `Le taux de nitrates relevé est de <strong>${stats.nitrates?.val || "--"} mg/L</strong> à ${cityName}. La limite de qualité sanitaire est fixée à 50 mg/L : l'eau reste conforme pour les adultes, mais la préparation des biberons appelle à la vigilance au-delà de 15 mg/L. Retrouvez les seuils nourrissons et la méthode de vérification sur notre page <a href="/eau-bebe">eau du robinet pour bébé</a>.`
+          : null,
       },
       {
         q: `L'eau de ${cityName} contient-elle des PFAS (polluants éternels) ?`,
@@ -251,6 +255,37 @@ export default function CitySEOContent({ cityName, data }) {
       }
     ];
   }, [cityName, isConform, crystal, stats, metrics, currentYear, dpt]);
+
+  // 5. Encart SEO « eau pour bébé » — maillage contextuel vers /eau-bebe depuis toutes les fiches ville
+  const babyCta = useMemo(() => {
+    const nit = stats.nitrates ? parseValue(stats.nitrates.val) : NaN;
+    const nitVal = (() => {
+      const v = stats.nitrates?.val;
+      return v && v !== '--' ? `${v} mg/L` : null;
+    })();
+
+    if (isConform === false || (!isNaN(nit) && nit >= 50)) {
+      return {
+        tone: 'critical',
+        title: 'Biberons : eau non recommandée',
+        text: `Ne préparez pas les biberons avec l'eau de ${cityName} tant que la levée de restriction n'a pas été annoncée par l'ARS${nitVal ? ` (nitrates à ${nitVal})` : ''}. Suivez les consignes officielles et utilisez une eau en bouteille adaptée.`,
+      };
+    }
+    if (!isNaN(nit) && nit >= 15) {
+      return {
+        tone: 'warning',
+        title: 'Préparation des biberons : vigilance recommandée',
+        text: `Avec ${nitVal || 'un taux de nitrates mesuré'} à ${cityName}, l'eau reste conforme pour les adultes mais la prudence s'impose pour les biberons d'un nourrisson de moins de 6 mois. Préférez une eau pauvre en nitrates ou demandez conseil à votre médecin.`,
+      };
+    }
+    return {
+      tone: 'ok',
+      title: 'Une eau adaptée pour les biberons',
+      text: nitVal
+        ? `Faible en nitrates (${nitVal}) et conforme aux contrôles ARS, l'eau de ${cityName} convient à la préparation des biberons : laissez couler l'eau froide quelques secondes avant de remplir le biberon.`
+        : `Conforme aux contrôles ARS, l'eau de ${cityName} peut être utilisée pour la préparation des biberons en respectant les précautions d'usage : eau froide et purge des canalisations.`,
+    };
+  }, [cityName, isConform, stats]);
 
   return (
     <div className="city-seo-master">
@@ -433,11 +468,19 @@ export default function CitySEOContent({ cityName, data }) {
                 })()}
               </p>
             </div>
+            <div className={`city-baby-banner ${babyCta.tone}`}>
+              <div className="city-baby-banner-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+              </div>
+              <div className="city-baby-banner-body">
+                <h3>{babyCta.title} à {cityName}</h3>
+                <p>{babyCta.text}</p>
+                <Link href="/eau-bebe" className="seo-card-link">Guide eau du robinet pour bébé : nitrates, PFAS et biberons</Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* SECTION : FOCUS (BLANC) */}
       <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-header">
@@ -530,7 +573,7 @@ export default function CitySEOContent({ cityName, data }) {
             {faqItems.map((item, i) => (
               <details key={i} className="seo-faq-item">
                 <summary className="seo-faq-question"><h3>{item.q}</h3><span className="faq-icon"></span></summary>
-                <div className="seo-faq-answer"><p>{item.a}</p></div>
+                <div className="seo-faq-answer">{item.aHtml ? <p dangerouslySetInnerHTML={{ __html: item.aHtml }} /> : <p>{item.a}</p>}</div>
               </details>
             ))}
           </div>

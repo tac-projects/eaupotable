@@ -374,6 +374,74 @@ export default function EauBebePage() {
           </div>
         </section>
 
+        {/* EAU BOUILLIE */}
+        <section className="bebe-content-section alt">
+          <div className="seo-container">
+            <div className="seo-section-header">
+              <h2 className="seo-main-title">Faut-il faire bouillir l&rsquo;eau des biberons&nbsp;?</h2>
+              <p className="seo-main-subtitle">L&rsquo;ébullition n&rsquo;est ni un filtre à nitrates, ni un filtre à PFAS.</p>
+            </div>
+            <div className="bebe-prose">
+              <p>
+                C&rsquo;est l&rsquo;une des idées reçues les plus répandues chez les jeunes parents&nbsp;: faire bouillir
+                l&rsquo;eau du robinet pour «&nbsp;la purifier&nbsp;» avant un biberon. Or <strong>l&rsquo;ébullition ne retire ni les
+                nitrates, ni les PFAS, ni les pesticides</strong>&nbsp;: elle élimine seulement les micro-organismes. Pire,
+                en évaporant une partie de l&rsquo;eau, elle <strong>concentre</strong> les substances chimiques qui y sont
+                présentes.
+              </p>
+              <p>
+                Pour une eau du robinet conforme et pauvre en nitrates, la simple utilisation de l&rsquo;eau
+                <strong> froide</strong> au moment de la préparation suffit donc. Une ébullition préalable ne se justifie
+                que sur <strong>consigne officielle de l&rsquo;ARS</strong> ou avis médical (par exemple après une alerte
+                bactériologique)&nbsp;: dans ce cas, portez l&rsquo;eau à gros bouillon, laissez-la refroidir dans un
+                récipient propre et couvert, puis utilisez-la dans les 24 heures.
+              </p>
+              <div className="bebe-tip-box">
+                <p>
+                  <strong>À retenir&nbsp;:</strong> bouillir n&rsquo;améliore pas une eau déjà conforme pour les biberons. Le
+                  vrai critère, c&rsquo;est la teneur en nitrates de votre commune&nbsp;: vérifiez-la avec l&rsquo;outil ci-dessus
+                  avant de décider quoi que ce soit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* EAU EN BOUTEILLE : LIRE UNE ÉTIQUETTE */}
+        <section className="bebe-content-section">
+          <div className="seo-container">
+            <div className="seo-section-header">
+              <h2 className="seo-main-title">Quelle eau en bouteille pour les biberons&nbsp;? Les critères de l&rsquo;étiquette</h2>
+              <p className="seo-main-subtitle">«&nbsp;Naturelle&nbsp;», «&nbsp;douce&nbsp;» ou «&nbsp;minérale&nbsp;» ne veut rien dire pour un biberon.</p>
+            </div>
+            <div className="bebe-prose">
+              <p>
+                Si vous devez passer à la bouteille (commune en vigilance nitrates, ou choix personnel), tous les
+                rayons ne se valent pas. Le seul repère fiable est la mention réglementée
+                <strong> «&nbsp;convient à la préparation des aliments des nourrissons&nbsp;»</strong>, qui n&rsquo;apparaît que sur
+                des eaux contrôlées comme adaptées aux biberons. Les arguments marketing («&nbsp;eau douce&nbsp;»,
+                «&nbsp;naturelle&nbsp;», «&nbsp;légère&nbsp;») ne garantissent rien.
+              </p>
+              <p>
+                Concrètement, pour reconstituer du lait en poudre, vérifiez quatre critères sur la composition
+                indiquée en bouteille&nbsp;:
+              </p>
+              <ul>
+                <li><strong>La mention nourrissons</strong>&nbsp;: «&nbsp;convient à la préparation des aliments des nourrissons&nbsp;»&nbsp;— c&rsquo;est le prérequis.</li>
+                <li><strong>Les nitrates</strong>&nbsp;: la plus faible teneur possible, idéalement bien sous la limite générale de {NITRATES_LIMIT}.</li>
+                <li><strong>La minéralisation</strong>&nbsp;: une eau faiblement minéralisée (résidu sec à sec peu élevé), adaptée à l&rsquo;immaturité rénale du nourrisson.</li>
+                <li><strong>Le sodium, les sulfates et les fluorures</strong>&nbsp;: les teneurs doivent rester basses&nbsp;; un excès de fluor avant l&rsquo;âge de 6 mois est déconseillé par les autorités sanitaires.</li>
+              </ul>
+              <p>
+                Une eau «&nbsp;minérale&nbsp;» très riche en minéraux (souvent conseillée aux adultes pour le magnésium ou
+                le transit) n&rsquo;est <strong>pas</strong> un bon choix pour reconstituer un biberon. Et rappelez-vous&nbsp;: dans la
+                grande majorité des communes, l&rsquo;eau du robinet vérifiée ci-dessus reste la solution la plus simple
+                et la plus économique.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="bebe-content-section alt">
           <div className="seo-container">
@@ -406,6 +474,18 @@ export default function EauBebePage() {
             <div className="seo-section-header">
               <h2 className="seo-main-title">Sources officielles</h2>
               <p className="seo-main-subtitle">Les références sur lesquelles s&rsquo;appuie cette page.</p>
+            </div>
+            <div className="bebe-tip-box">
+              <p>
+                <strong>Pourquoi cette page est fiable&nbsp;:</strong> toutes les données communales proviennent des
+                prélèvements officiels des <strong>ARS</strong>, publiés en open data par le Ministère de la Santé
+                (base SISE-Eaux) et exploités sans interprétation par l&rsquo;observatoire citoyen
+                EauPotable.net. Les scores affichés suivent la méthode documentée du <Link href="/methodologie" className="seo-card-link">Crystal Score</Link>.
+                Les seuils de vigilance biberon (15 mg/L) sont une recommandation maison&nbsp;; seules les limites
+                réglementaires citées (50 mg/L, 0,1 µg/L) font foi au regard de la loi. Cette page est
+                d&rsquo;information&nbsp;: elle ne remplace ni l&rsquo;avis de votre médecin ou de la PMI, ni les consignes de
+                votre ARS. Dernière mise à jour des données&nbsp;: {n.generatedAt}.
+              </p>
             </div>
             <ul className="bebe-sources-list">
               <li><a href="https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/chemical-hazards-in-drinking-water/nitrate-nitrite" target="_blank" rel="noopener noreferrer">OMS — Nitrate et nitrite dans l&rsquo;eau de boisson (Guidelines for Drinking-water Quality)</a></li>

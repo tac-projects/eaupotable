@@ -697,7 +697,9 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                 },
                 {
                   q: "Peut-on utiliser l'eau du robinet pour la préparation des biberons\u00A0?",
-                  a: "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier ces critères critiques d'un coup d'œil pour garantir la sécurité de votre nourrisson."
+                  a: "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier ces critères critiques d'un coup d'œil pour garantir la sécurité de votre nourrisson.",
+                  link: "/eau-bebe",
+                  linkLabel: "Guide complet : l'eau du robinet pour bébé"
                 },
                 {
                   q: "Est-il plus sain de boire l'eau du robinet ou de l'eau en bouteille\u00A0?",
@@ -731,7 +733,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                     <p>{item.a}</p>
                     {item.link && (
                       <Link href={item.link} className="faq-more-btn">
-                        Le bilan PFAS 2026 par commune
+                        {item.linkLabel || "Le bilan PFAS 2026 par commune"}
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                       </Link>
                     )}
