@@ -57,7 +57,6 @@ Expose une API publique de ses données (nous n'exposons que `/api/search` et `/
 | 9 | Pages hub par polluant (nitrates, pesticides) | **Oui.** Réplique notre succès PFAS sur des requêtes massives (« nitrates eau », « pesticides eau potable »). | ⭐⭐⭐ |
 | 8 | Classement pires/meilleures villes | **Oui.** Aimant à liens + presse, easy win à partir de nos données existantes. | ⭐⭐⭐ |
 | 7 | Page Eau pour bébé | **Oui.** Demande très forte et personne non couverte chez nous ; en plus de nos cartes Focus bébé. | ⭐⭐ |
-| 6 | Plus de paramètres + barre % limite | **Oui.** Les données sont déjà dans nos JSON, c'est du réaffichage ; gain de crédibilité (InfoEau le fait). | ⭐⭐ |
 | 10 | Étiquette eau type bouteille + historique | **Oui.** Fort UX, différenciant, peu coûteux (données déjà présentes). | ⭐⭐ |
 | 5 | Alertes en temps réel | **À peser.** Notre newsletter Vigilance couvre déjà l'abonnement ; un dashboard temps réel demande un pipeline Hub'Eau dédié. | ⭐ |
 | 2 | Diagnostic « quelle eau boire » | **À peser.** Bon engagement mais dimension santé/affiliation bouteilles ; à faire seulement si on fait le #1. | ⭐ |

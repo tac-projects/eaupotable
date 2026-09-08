@@ -20,7 +20,7 @@ const faqData = [
     questions: [
       {
         q: "Peut-on utiliser l'eau du robinet pour la préparation des biberons ?",
-        a: "<strong>Oui, l'eau du robinet est utilisable pour les biberons</strong> à condition que son <strong>Crystal Score soit élevé</strong> et sa teneur en <strong>nitrates inférieure à 50mg/L</strong>. Conseil d'expert : laissez toujours couler l'eau 30 secondes avant de remplir le biberon pour évacuer l'eau stagnante des canalisations."
+        a: "<strong>Oui, l'eau du robinet est utilisable pour les biberons</strong> à condition que son <strong>Crystal Score soit élevé</strong> et sa teneur en <strong>nitrates inférieure à 50mg/L</strong>. Conseil d'expert : laissez toujours couler l'eau 30 secondes avant de remplir le biberon pour évacuer l'eau stagnante des canalisations. Retrouvez la méthode complète, les seuils nitrates et la vérification par commune sur notre page <a href=\"/eau-bebe\">dédiée à l'eau pour bébé</a>."
       },
       {
         q: "L'eau calcaire est-elle dangereuse pour la santé ?",

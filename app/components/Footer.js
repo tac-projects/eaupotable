@@ -31,6 +31,7 @@ export default function Footer() {
           <Link href="/methodologie">Méthodologie</Link>
           <Link href="/definitions">Définitions</Link>
           <Link href="/pfas-eau-potable">PFAS</Link>
+          <Link href="/eau-bebe">Eau pour bébé</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/mentions-legales">Mentions Légales</Link>

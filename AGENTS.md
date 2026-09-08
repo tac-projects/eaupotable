@@ -14,7 +14,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 
 - Serveur : ce dossier EST la prod (`/var/www/eaupotable`), servi par `next start` sous **PM2 root** (app `eaupotable`, `npm start` = `next start -H 127.0.0.1`).
 - Cycle : `git commit` + `git push` (accords explicites requis, cf. règles globales) → `npm run build` → `sudo pm2 restart eaupotable`.
-- `npm run sitemap` régénère toutes les données (`build-dept-generic`, `sync-home-scores`, `build-pfas-nation`, `generate-sitemap`) — le commit des sitemaps régénérés est normal.
+- `npm run sitemap` régénère toutes les données (`build-dept-generic`, `sync-home-scores`, `build-pfas-nation`, `build-bebe-nation`, `generate-sitemap`) — le commit des sitemaps régénérés est normal.
 - `npm run build:full` = sitemap + build.
 
 # Pièges connus
@@ -31,7 +31,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 - Tag : `G-L7BMHXS6DJ`, chargé en lazyOnload dans `app/layout.js`. Tous les events passent par `track()` de `lib/analytics.js` qui appelle **`window.gtag('event', eventName, params)`** (jamais de push objet direct).
 - **Piège majeur (corrigé 09/2026)** : avec gtag.js nu (sans GTM), `dataLayer.push({event: …})` **n'est jamais transmis** — seul `gtag('event', …)` l'est. Et depuis l'application EU de Google, sans commande consent mode, gtag retient tous les events en attente de consentement → les events customs n'apparaissaient plus (0 sur 28 j). Correctif dans `layout.js` : `gtag('consent', 'default'/'update', { …_storage: 'granted' })` avant la config. **⚠️ Contournement assumé par Thomas (pas de bandeau RGPD)** : on force en dur un consentement `granted` sans jamais recueillir le choix réel de l'utilisateur → le site fausse le signal consent vis-à-vis de Google et contrevient à l'obligation CNIL/RGPD pour GA4 (données personnelles). Risques acceptés : sanction CNIL, et Google peut neutraliser la mesure s'il détecte l'abus. Ne pas « corriger » ce choix ni ajouter de bandeau sans décision explicite de Thomas. Piège Playwright : events auto (`click`, `scroll`) passent même sans consent ; ne pas les prendre pour preuve que les customs marchent.
 - **Piège SPA** : GA4 ne tracke pas les navigations client-side. Le composant `app/components/Analytics.js` (monté dans `layout.js`) envoie un `page_view` à chaque changement de route via `usePathname`, **sauf le premier rendu** (couvert par la config gtag → ne pas envoyer page_view au premier rendu sous peine de double comptage). Il gère aussi `outbound_click` (listener délégué, ne pas dupliquer dans les pages).
-- Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}, `geolocate` (outcome success/error + reason + city). Depuis le correctif 09/2026 ils remontent normalement dans les rapports GA4 ; les marquer comme conversion pour un compteur direct/stable.
+- Events en place : `share` (params method/context/city), `share_cancelled`, `pwa_installed`, `standalone_view`, `pwa_install_prompt` (outcome), `page_view` (SPA), `outbound_click`, `search_no_result` {q}, `contact_submit`, `vigilance_subscribe` {ville}, `geolocate` (outcome success/error + reason + city), `bebe_check` {ville, outcome: ok|warning|critical|unknown}. Depuis le correctif 09/2026 ils remontent normalement dans les rapports GA4 ; les marquer comme conversion pour un compteur direct/stable.
 
 # Rafraîchir les données ARS (SISE-Eaux)
 
@@ -39,7 +39,7 @@ Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (
 
 1. **Tester la fraîcheur** : `node scripts/fetch-sise-eaux.js` — interroge data.gouv.fr, télécharge le dernier `eaurob-YYYYMM.zip`, compare le dernier `dateprel` avec les archives locales et affiche un verdict clair. Ne pas lancer la pipeline tant que le verdict n'est pas « NOUVELLE DONNÉE DISPONIBLE ».
 2. **Remplacer les archives** (uniquement si nouvelle donnée) : mettre à jour `source-data/archives/<année>/` (format `DIS_PLV_*`, `DIS_RESULT_*`, `DIS_COM_UDI_*` par département ; la transformation depuis `eaurob-YYYYMM.zip` — colonnes décalées — est faite manuellement, non scriptée).
-3. **Régénérer** : `npm run sitemap` (pipeline complète : build-dept-generic + fix-dept-attribution + pure-price-injector + sync-home-scores + build-pfas-nation + generate-sitemap — ces correctifs protègent la donnée, ne pas les retirer).
+3. **Régénérer** : `npm run sitemap` (pipeline complète : build-dept-generic + fix-dept-attribution + pure-price-injector + sync-home-scores + build-pfas-nation + build-bebe-nation + generate-sitemap — ces correctifs protègent la donnée, ne pas les retirer).
 4. **Vérifier le diff** : seuls les scores/date liés à la nouvelle donnée doivent changer (un diff inattendu sur INSEE/prix = bug d'attribution à signaler).
 5. **Déployer** : `git commit` + `git push` + `npm run build` + `sudo pm2 restart eaupotable` (accords explicites requis).
 
@@ -66,3 +66,12 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - Carte : `app/components/PfasMap.js` + contours `public/data/france-dept-paths.json` (générés par `scratch/build-france-dept-paths.js` depuis le GeoJSON `/tmp/fr-depts.geojson` — re-générer si source mise à jour ; métropole uniquement, DOM absents de la source).
 - Og:image dynamique : `/api/og?pfas=1&tested=...&alerts=...&over=...`.
 - Objectif SEO : capter « carte pfas france », « norme pfas », « filtre pfas », « pfas eau en bouteille » — sections long-tail sourcées (ANSES, CIRC, directive UE 2020/2184).
+
+# Page Eau pour bébé (/eau-bebe)
+
+- Créée le 08/09/2026 (reco #7 RECOS.md, validée Thomas). Cible : « eau bébé biberon », « nitrates eau nourrisson », « eau robinet bébé », « méthémoglobinémie ».
+- **Structure** : `app/eau-bebe/page.js` (SSG `revalidate = 86400`, modèle pfas-eau-potable) + `app/styles/bebe.css` + composant client `app/components/BabyChecker.js` (vérification par commune inline) + endpoint `app/api/bebe-check/route.js` (GET `?slug=`, résolution city-index → JSON dept avec cache, rate-limité 20/min comme `/api/search`, CORS domaine ; renvoie crystal/isConform/stats nitrates+PFAS+microbio/meta — aucun recalcul de score, le `crystal.final` stocké fait foi).
+- **Stats du hero + og:image** : lues depuis `public/data/bebe-nation.json`, généré par `scripts/build-bebe-nation.js` (intégré à la pipeline `npm run sitemap`, après build-pfas-nation). **Jamais coder ces chiffres en dur** (piège identique pfas-nation.json). `generatedAt` en français. Og : `/api/og?bebe=1&communes=...&ok=...&vigilance=...&alerte=...` (mode ajouté dans route.js, runtime edge → valeurs passées en query).
+- **Seuil vigilance biberon 15 mg/L** : recommandation maison EauPotable.net (alignée FAQ + palier 1 du moteur 15/25/40), PAS une norme OMS/réglementaire — ne jamais la présenter comme telle. Grille de lecture : <15 = adaptée biberon, 15–50 = vigilance nourrisson, ≥50 = dépassement limite. Normes affichées dérivées du registre (`PARAMS`, helper local `paramLimit`).
+- Vérification par commune → event GA4 `bebe_check` {ville, outcome: ok|warning|critical|unknown}.
+- Maillage : lien dans Footer (nav) et dans la réponse FAQ biberons (`app/faq/page.js`) ; `/eau-bebe` ajouté aux `staticUrls` de `generate-sitemap.js`.

@@ -85,6 +85,87 @@ export async function GET(request) {
       );
     }
 
+    if (searchParams.get('bebe') === '1') {
+      const communes = searchParams.get('communes') || '34 999';
+      const ok = searchParams.get('ok') || '21 447';
+      const vigilance = searchParams.get('vigilance') || '13 232';
+      const alerte = searchParams.get('alerte') || '301';
+
+      const stats = [
+        { val: communes, label: 'COMMUNES ANALYSÉES', color: '#1e40af' },
+        { val: ok, label: 'EAU ADAPTÉE BIBERON', color: '#059669' },
+        { val: vigilance, label: 'EN VIGILANCE', color: '#d97706' },
+        { val: alerte, label: 'DÉPASSEMENT', color: '#dc2626' }
+      ];
+
+      return new ImageResponse(
+        (
+          <div
+            style={{
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#fff',
+              backgroundImage: 'linear-gradient(to bottom right, #eff6ff 0%, #dbeafe 100%)',
+              padding: '50px',
+              fontFamily: 'system-ui',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', fontSize: '26px', fontWeight: 'bold', color: '#1e40af', letterSpacing: '-0.02em', marginBottom: '30px' }}>
+              EauPotable.net
+            </div>
+            <h1
+              style={{
+                fontSize: '52px',
+                fontWeight: 900,
+                color: '#111827',
+                margin: '0 0 8px 0',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              L&apos;eau du robinet pour bébé
+            </h1>
+            <p style={{ fontSize: '26px', color: '#6b7280', margin: '0 0 36px 0', fontWeight: 600 }}>
+              Nitrates, méthémoglobinémie et biberons
+            </p>
+            <div style={{ display: 'flex', gap: '16px' }}>
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    borderRadius: '20px',
+                    padding: '20px 20px',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                  }}
+                >
+                  <div style={{ display: 'flex', fontSize: '36px', fontWeight: 900, color: s.color }}>{s.val}</div>
+                  <div style={{ display: 'flex', fontSize: '13px', fontWeight: 800, color: '#6b7280', letterSpacing: '0.04em', marginTop: '4px', textAlign: 'center' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: '32px', fontSize: '20px', color: '#6b7280' }}>
+              Données officielles ARS — vérifiez votre commune
+            </p>
+          </div>
+        ),
+        {
+          width: 1200,
+          height: 630,
+          headers: {
+            'Cache-Control': 'public, s-maxage=31536000, immutable',
+          },
+        }
+      );
+    }
+
     const city = searchParams.get('city') || 'Ma Ville';
     const score = searchParams.get('score') || '9.2';
     const label = searchParams.get('label') || 'EXCELLENTE';
