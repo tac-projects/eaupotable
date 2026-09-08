@@ -102,8 +102,18 @@ export default function RootLayout({ children }) {
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
+              analytics_storage: 'granted',
+              functionality_storage: 'granted',
+              personalization_storage: 'granted',
+              security_storage: 'granted'
+            });
             gtag('js', new Date());
             gtag('config', 'G-L7BMHXS6DJ');
+            gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted' });
           `}
         </Script>
         <Script id="register-sw" strategy="lazyOnload">
