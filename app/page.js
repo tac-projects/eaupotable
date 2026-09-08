@@ -22,12 +22,24 @@ async function loadMetropolisData() {
   }
 }
 
+async function loadBebeNationData() {
+  try {
+    const bebePath = path.join(process.cwd(), 'public', 'data', 'bebe-nation.json');
+    if (!fs.existsSync(bebePath)) return null;
+    return JSON.parse(fs.readFileSync(bebePath, 'utf8'));
+  } catch (e) {
+    console.error('Error loading bebe-nation data:', e);
+    return null;
+  }
+}
+
 export default async function Home() {
   const metropolisData = await loadMetropolisData();
+  const bebeNation = await loadBebeNationData();
   return (
     <>
       <Navbar />
-      <WaterApp metropolisData={metropolisData} />
+      <WaterApp metropolisData={metropolisData} bebeNation={bebeNation} />
     </>
   );
 }

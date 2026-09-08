@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 import { track } from '@/lib/analytics';
 
+const fmtBebe = (n) => Number(n).toLocaleString('fr-FR');
+
 const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, className, ariaLabel }) => {
   const [placeholder, setPlaceholder] = useState("Votre ville...");
 
@@ -64,7 +66,7 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
   );
 };
 
-export default function HomeLanding({ onCitySelect, searchProps, metropolisScores = [] }) {
+export default function HomeLanding({ onCitySelect, searchProps, metropolisScores = [], bebeNation = null }) {
   const [email, setEmail] = useState('');
   const [cityName, setCityName] = useState('');
   const [status, setStatus] = useState('IDLE'); // IDLE, SENDING, SUCCESS, ERROR
@@ -587,8 +589,45 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
         </div>
       </section>
 
-      {/* 4. NOTRE ENGAGEMENT & EXPERTISE */}
+      {/* 3bis. EAU POUR BÉBÉ */}
       <section className="home-content-section white">
+        <div className="seo-container">
+          <div className="seo-section-block">
+            <div className="bebe-home-band">
+              <div className="bebe-home-copy">
+                <div className="bebe-home-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                </div>
+                <div>
+                  <h2>L&rsquo;eau du robinet est-elle adaptée aux biberons&nbsp;?</h2>
+                  <p>
+                    Nitrates, méthémoglobinémie, PFAS&nbsp;: vérifiez en quelques secondes si l&rsquo;eau de votre
+                    commune convient à la préparation des biberons, sur la base des derniers contrôles ARS.
+                  </p>
+                </div>
+              </div>
+              {(bebeNation && bebeNation.national) ? (
+                <div className="bebe-home-stats">
+                  <div className="bebe-home-stat">
+                    <span className="bebe-home-stat-val ok">{fmtBebe(bebeNation.national.biberonOk)}</span>
+                    <span className="bebe-home-stat-label">Communes à l&rsquo;eau adaptée biberon</span>
+                  </div>
+                  <div className="bebe-home-stat">
+                    <span className="bebe-home-stat-val alert">{fmtBebe(bebeNation.national.vigilance)}</span>
+                    <span className="bebe-home-stat-label">Communes en vigilance nitrates</span>
+                  </div>
+                </div>
+              ) : null}
+              <Link href="/eau-bebe" className="cta-btn-premium">
+                Vérifier mon eau pour les biberons
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. NOTRE ENGAGEMENT & EXPERTISE */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-block">
             <div className="seo-section-header">
@@ -678,7 +717,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
       `}</style>
 
       {/* 5. FAQ GENERALE */}
-      <section className="home-content-section gray">
+      <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-block">
             <div className="seo-section-header">
@@ -697,9 +736,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                 },
                 {
                   q: "Peut-on utiliser l'eau du robinet pour la préparation des biberons\u00A0?",
-                  a: "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier ces critères critiques d'un coup d'œil pour garantir la sécurité de votre nourrisson.",
-                  link: "/eau-bebe",
-                  linkLabel: "Guide complet : l'eau du robinet pour bébé"
+                  a: "Oui, si l'eau affiche un Crystal Score élevé et une teneur en nitrates inférieure à 50mg/L. Notre outil vous permet de vérifier ces critères critiques d'un coup d'œil pour garantir la sécurité de votre nourrisson."
                 },
                 {
                   q: "Est-il plus sain de boire l'eau du robinet ou de l'eau en bouteille\u00A0?",
@@ -753,7 +790,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
       </section>
 
       {/* 6. CTA ALERTE VIGILANCE PREMIUM */}
-      <section className="home-content-section white">
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-block">
             <div className="cta-alert-card">
