@@ -2061,22 +2061,23 @@ body:has(.seo-content-wrapper) {
 /* ---- BANDEAU « EAU POUR BÉBÉ » (home) ---- */
 .bebe-home-band {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 36px;
-  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  gap: 26px;
   background: linear-gradient(135deg, rgba(0, 85, 255, 0.05) 0%, rgba(0, 85, 255, 0.02) 100%);
   border: 1px solid rgba(0, 85, 255, 0.15);
   border-radius: 28px;
-  padding: 36px 44px;
-  justify-content: space-between;
+  padding: 40px 44px;
 }
 
 .bebe-home-copy {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 22px;
-  flex: 1 1 380px;
-  min-width: 280px;
+  gap: 16px;
+  max-width: 780px;
 }
 
 .bebe-home-icon {
@@ -2096,7 +2097,7 @@ body:has(.seo-content-wrapper) {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-main);
-  margin: 0 0 8px;
+  margin: 0;
   letter-spacing: -0.01em;
   line-height: 1.25;
 }
@@ -2106,11 +2107,12 @@ body:has(.seo-content-wrapper) {
   color: var(--text-muted);
   font-size: 0.98rem;
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 640px;
 }
 
 .bebe-home-stats {
   display: flex;
+  justify-content: center;
   gap: 26px;
   flex-wrap: wrap;
 }
@@ -2150,14 +2152,5 @@ body:has(.seo-content-wrapper) {
 @media (max-width: 860px) {
   .bebe-home-band {
     padding: 28px 22px;
-    justify-content: center;
-    text-align: center;
-  }
-  .bebe-home-copy {
-    flex-direction: column;
-    text-align: center;
-  }
-  .bebe-home-stats {
-    justify-content: center;
   }
 }
