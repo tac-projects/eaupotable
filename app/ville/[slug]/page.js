@@ -34,6 +34,17 @@ const normalizeSlug = (s) => {
 let cityIndexCache = null;
 let deptDataCache = new Map();
 
+// Résout le slug canonique d'une commune pour le maillage interne.
+// Les fichiers départementaux sont indexés par slug de base ; les homonymes portent un slug
+// canonique suffixé "base-dept" dans city-index. Sans résolution, tous les liens internes
+// pointaient vers la commune du premier département alphabétique (ex: sainte-croix → 01).
+function canonicalSlugFor(baseSlug, deptCode) {
+  if (!cityIndexCache) return baseSlug;
+  if (cityIndexCache[baseSlug] === deptCode) return baseSlug;
+  const suffixed = `${baseSlug}-${deptCode}`;
+  return cityIndexCache[suffixed] ? suffixed : baseSlug;
+}
+
 async function getLocalData(slug) {
   try {
     // 1. On cherche le département de la ville dans l'index (avec cache mémoire)
@@ -181,6 +192,8 @@ async function getLocalData(slug) {
         CITY_STATS_KEYS.map((k) => [k, rawCityData.stats?.[k]])
       ),
       prix: rawCityData.prix || null,
+      geo: rawCityData.geo || null,
+      reseauInfo: rawCityData.reseauInfo || null,
       meta: {
         code_departement: rawCityData.meta?.code_departement,
         date_prelevement: rawCityData.meta?.date_prelevement,
@@ -207,12 +220,15 @@ async function getLocalData(slug) {
         const metroPath = path.join(process.cwd(), 'public', 'data', 'metropolis.json');
         if (fs.existsSync(metroPath)) {
           const metroData = JSON.parse(fs.readFileSync(metroPath, 'utf8'));
-          benchmarkCities = metroData.map(c => ({
-            nom: c.name,
-            score: parseFloat(c.score),
-            code: c.slug,
-            isCurrent: c.slug === cleanSlug || c.slug === slug
-          }));
+          benchmarkCities = metroData.map(c => {
+            const code = canonicalSlugFor(c.slug, deptCode);
+            return {
+              nom: c.name,
+              score: parseFloat(c.score),
+              code,
+              isCurrent: code === cleanSlug
+            };
+          });
           isMetropolis = true;
         }
       } catch (e) {
@@ -222,29 +238,48 @@ async function getLocalData(slug) {
 
     if (benchmarkCities.length === 0) {
       benchmarkCities = (fullData.deptInfo.topCities || [])
-        .map(c => ({
-          nom: c.name,
-          score: c.score,
-          code: c.slug,
-          isCurrent: c.slug === cleanSlug || c.slug === slug
-        }));
+        .map(c => {
+          const code = canonicalSlugFor(c.slug, deptCode);
+          return {
+            nom: c.name,
+            score: c.score,
+            code,
+            isCurrent: code === cleanSlug
+          };
+        });
     }
 
     benchmarkCities.sort((a, b) => b.score - a.score); // Tri par score pour le classement
 
     // 2. Liste pour le maillage SEO (Top 10 + 20 au hasard = 30 villes)
     const otherCities = Object.entries(fullData.cities)
-      .filter(([cSlug]) => !benchmarkCities.some(bc => bc.code === cSlug))
-      .map(([cSlug, cData]) => ({
-        nom: cData.cityName,
-        score: cData.crystal?.final || 0,
-        code: cSlug,
-        isCurrent: cSlug === cleanSlug || cSlug === slug
-      }));
+      .map(([cSlug, cData]) => {
+        const code = canonicalSlugFor(cSlug, deptCode);
+        return {
+          nom: cData.cityName,
+          score: cData.crystal?.final || 0,
+          code,
+          isCurrent: code === cleanSlug
+        };
+      })
+      .filter(c => !benchmarkCities.some(bc => bc.code === c.code));
 
     const random20 = otherCities
       .sort((a, b) => (hashCity(a.code, slug) % 1000) - (hashCity(b.code, slug) % 1000))
       .slice(0, 20);
+
+    // 3. Communes partageant le même réseau de distribution (maillage interne).
+    // Limité au département courant (les réseaux inter-départements sont rares) et plafonné
+    // pour ne pas alourdir le payload des très grands réseaux.
+    const currentReseau = rawCityData.reseau;
+    const reseauCommunes = currentReseau
+      ? Object.entries(fullData.cities)
+          .map(([cSlug, cData]) => ({ nom: cData.cityName, code: canonicalSlugFor(cSlug, deptCode), reseau: cData.reseau }))
+          .filter((c) => c.reseau === currentReseau && c.code !== cleanSlug)
+          .sort((a, b) => a.nom.localeCompare(b.nom, 'fr'))
+          .slice(0, 30)
+          .map(({ nom, code }) => ({ nom, code }))
+      : [];
 
     const neighborList = isMetropolis ? [
       { name: "Marseille", slug: "marseille" },
@@ -290,6 +325,7 @@ async function getLocalData(slug) {
       },
       initialNeighborCities: neighborList,
       benchmarkCities,
+      reseauCommunes,
       regionalInfo: fullData.regionalInfo
     };
 
@@ -324,8 +360,18 @@ export async function generateMetadata({ params }) {
 
   const deptCode = summary.meta?.code_departement || '';
 
+  // Description data-driven : score, prix et date de prélèvement rendent chaque snippet unique
+  // (la description purement templatée avait supprimé toute différenciation entre communes).
+  const scoreString = typeof score === 'number' ? score.toFixed(1).replace('.', ',') : score;
+  const priceString = summary.prix?.total ? `${summary.prix.total.toFixed(2).replace('.', ',')} €/m³` : null;
+  const datePrelevement = summary.meta?.date_prelevement
+    ? new Date(summary.meta.date_prelevement).toLocaleDateString('fr-FR')
+    : null;
+
   const title = `Qualité de l'eau à ${officialName} (${deptCode}) : PFAS, Calcaire & Analyse ${currentYear}`;
-  const description = `Peut-on boire l'eau du robinet à ${officialName} sans risque ? Découvrez les derniers prélèvements ARS : PFAS, nitrates, dureté et le Crystal Score ${currentYear}.`;
+  const description = `Eau du robinet à ${officialName} : Crystal Score ${scoreString}/10`
+    + `${priceString ? `, prix ${priceString}` : ''}`
+    + `${datePrelevement ? `, prélèvement ARS du ${datePrelevement}` : ''}. PFAS, nitrates, calcaire et conformité sanitaire.`;
 
   return {
     title,

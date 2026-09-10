@@ -20,6 +20,7 @@ const DUEL_METRIC = {
   conductivity: { city: 'condVal', agg: 'conductivity' }
 };
 import dynamic from 'next/dynamic';
+import CityLocalContext from './CityLocalContext';
 const CityAnalysisSection = dynamic(() => import('./CityAnalysisSection'), { ssr: true });
 const BenchmarkAudit = dynamic(() => import('./BenchmarkAudit'), { ssr: true });
 const NearbyCities = dynamic(() => import('./NearbyCities'), { ssr: true });
@@ -393,12 +394,19 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION : BENCHMARK (BLANC) */}
+      {/* SECTION : CONTEXTE LOCAL & RÉSEAU (BLANC) */}
       <section className="home-content-section white">
+        <div className="seo-container">
+          <CityLocalContext cityName={cityName} data={data} />
+        </div>
+      </section>
+
+      {/* SECTION : BENCHMARK (GRIS) */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">
-              {data.isMetropolis ? "Benchmark des Métropoles" : "Benchmark Départemental"}
+              {data.isMetropolis ? "Top 10 des métropoles" : `Benchmark : Top 10 du département ${dpt}`}
             </h2>
             <p className="seo-main-subtitle">
               {data.isMetropolis 
@@ -416,8 +424,8 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION : L'ANALYSE DE L'EXPERT (GRIS) */}
-      <section className="home-content-section gray">
+      {/* SECTION : L'ANALYSE DE L'EXPERT (BLANC) */}
+      <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Verdict de l'Expert : L'eau est-elle saine ?</h2>
@@ -481,7 +489,7 @@ export default function CitySEOContent({ cityName, data }) {
           </div>
         </div>
       </section>
-      <section className="home-content-section white">
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Focus & Santé</h2>
@@ -495,9 +503,9 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION PRIX DE L'EAU (GRIS) */}
+      {/* SECTION PRIX DE L'EAU (BLANC) */}
       {prix && (prix.aep || prix.ac) && (
-        <section className="home-content-section gray">
+        <section className="home-content-section white">
           <div className="seo-container">
             <div className="seo-section-header">
               <h2 className="seo-main-title">Quel est le prix de l'eau à {cityName} ?</h2>
@@ -562,8 +570,8 @@ export default function CitySEOContent({ cityName, data }) {
         </section>
       )}
 
-      {/* SECTION 6 : FAQ (BLANC) */}
-      <section className="home-content-section white">
+      {/* SECTION 6 : FAQ (GRIS) */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Foire Aux Questions</h2>
@@ -583,8 +591,8 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 7 : TRANSPARENCE & MÉTHODOLOGIE (GRIS) */}
-      <section className="home-content-section gray">
+      {/* SECTION 7 : TRANSPARENCE & MÉTHODOLOGIE (BLANC) */}
+      <section className="home-content-section white">
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Transparence & Méthodologie</h2>
@@ -625,8 +633,8 @@ export default function CitySEOContent({ cityName, data }) {
         </div>
       </section>
 
-      {/* SECTION 8 : VOISINES (BLANC) */}
-      <section className="home-content-section white">
+      {/* SECTION 8 : VOISINES (GRIS) */}
+      <section className="home-content-section gray">
         <div className="seo-container">
           <NearbyCities cities={neighborCities} dpt={dpt} isMetropolis={data.isMetropolis} />
         </div>

@@ -2,6 +2,20 @@ const fs = require('fs');
 const path = require('path');
 
 const DOMAIN = 'https://www.eaupotable.net';
+const ISO_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+// Dernière date de prélèvement ARS d'une ville (clé = slug de base dans le fichier dept).
+// Le city-index peut porter un slug suffixé "base-dept" (collision d'homonymes) : on retire
+// le suffixe uniquement si la clé de base existe bien dans le fichier du département.
+function cityLastmod(deptData, slug, deptCode) {
+  if (!deptData || !deptData.cities) return null;
+  let city = deptData.cities[slug];
+  if (!city && slug.endsWith(`-${deptCode}`)) {
+    city = deptData.cities[slug.slice(0, -(deptCode.length + 1))];
+  }
+  const date = city?.meta?.date_prelevement;
+  return ISO_RE.test(date || '') ? date : null;
+}
 
 async function generateSitemap() {
   console.log('🚀 Démarrage de la génération du sitemap basé sur l\'index local...');
@@ -41,8 +55,11 @@ async function generateSitemap() {
       console.log(`🏙️  ${metropoleSlugs.size} métropoles détectées pour priorisation`);
     }
 
+    // Le lastmod n'est PAS la date de génération : il reflète la date du dernier prélèvement
+    // ARS affiché sur la page. Une régénération de sitemap sans nouvelle donnée ne doit pas
+    // faire croire à Google que les 35 000 pages ont changé (source de recrawls massifs).
     let sitemapFiles = [];
-    const todayDate = new Date().toISOString().split('T')[0];
+    const buildDate = new Date().toISOString().split('T')[0];
 
     // --- SITEMAP PRINCIPAL (Pages Statiques) ---
     // Pages statiques indexables UNIQUEMENT — les pages noindex (contact, mentions-legales)
@@ -50,10 +67,10 @@ async function generateSitemap() {
     const staticUrls = [`${DOMAIN}/`, `${DOMAIN}/villes`, `${DOMAIN}/definitions`, `${DOMAIN}/faq`, `${DOMAIN}/methodologie`, `${DOMAIN}/pfas-eau-potable`, `${DOMAIN}/eau-bebe` ];
     const staticXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}
+${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${buildDate}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`).join('\n')}
 </urlset>`;
     fs.writeFileSync(path.join(sitemapsDir, 'sitemap-main.xml'), staticXml);
-    sitemapFiles.push('sitemap-main.xml');
+    sitemapFiles.push({ file: 'sitemap-main.xml', lastmod: buildDate });
 
     console.log(`📑 Génération des sitemaps pour ${Object.keys(departements).length} départements référencés...`);
 
@@ -65,15 +82,37 @@ ${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${todayDate}</lastmod>
       const metroChangefreq = 'daily';
       const stdChangefreq = 'weekly';
 
+      // Charger les données du département pour extraire les dates de prélèvement réelles
+      let deptData = null;
+      const deptPath = path.join(__dirname, '../public/data/departments', `${deptCode}.json`);
+      try {
+        if (fs.existsSync(deptPath)) {
+          deptData = JSON.parse(fs.readFileSync(deptPath, 'utf8'));
+        }
+      } catch (e) {
+        console.warn(`⚠️  Impossible de lire ${deptCode}.json pour le lastmod : ${e.message}`);
+      }
+
+      const cityLastmods = {};
+      let deptMax = null;
+      slugs.forEach(slug => {
+        const d = cityLastmod(deptData, slug, deptCode);
+        cityLastmods[slug] = d;
+        if (d && (!deptMax || d > deptMax)) deptMax = d;
+      });
+      // Repli : date du département (max des prélèvements) ; en dernier recours date de build.
+      const deptLastmod = deptMax || buildDate;
+
       const deptUrls = [
-        `  <url><loc>${DOMAIN}/departement/${deptCode}</loc><lastmod>${todayDate}</lastmod><changefreq>${stdChangefreq}</changefreq><priority>${deptPriority}</priority></url>`
+        `  <url><loc>${DOMAIN}/departement/${deptCode}</loc><lastmod>${deptLastmod}</lastmod><changefreq>${stdChangefreq}</changefreq><priority>${deptPriority}</priority></url>`
       ];
 
       slugs.forEach(slug => {
         const isMetropole = metropoleSlugs.has(slug);
         const priority = isMetropole ? metroPriority : stdPriority;
         const changefreq = isMetropole ? metroChangefreq : stdChangefreq;
-        deptUrls.push(`  <url><loc>${DOMAIN}/ville/${slug}</loc><lastmod>${todayDate}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
+        const lastmod = cityLastmods[slug] || deptLastmod;
+        deptUrls.push(`  <url><loc>${DOMAIN}/ville/${slug}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`);
       });
 
       const deptXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -83,16 +122,17 @@ ${deptUrls.join('\n')}
       
       const fileName = `sitemap-dept-${deptCode}.xml`;
       fs.writeFileSync(path.join(sitemapsDir, fileName), deptXml);
-      sitemapFiles.push(fileName);
+      sitemapFiles.push({ file: fileName, lastmod: deptLastmod });
       process.stdout.write('.');
     }
 
     // --- SITEMAP INDEX ---
+    // Le lastmod de chaque entrée = max des lastmod du sitemap concerné (jamais la date du jour).
     const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapFiles.map(file => `  <sitemap>
+${sitemapFiles.map(({ file, lastmod }) => `  <sitemap>
     <loc>${DOMAIN}/sitemaps/${file}</loc>
-    <lastmod>${todayDate}</lastmod>
+    <lastmod>${lastmod}</lastmod>
   </sitemap>`).join('\n')}
 </sitemapindex>`;
 

@@ -215,6 +215,37 @@ function parseValue(val) {
     return isNaN(parsed) ? NaN : parsed;
 }
 
+// --- Données communales (population, superficie, codes postaux) -------------
+// Fichier figé généré par scripts/fetch-commune-geo.js (clé = code INSEE).
+let communeGeoCache = null;
+function getCommuneGeo() {
+    if (communeGeoCache) return communeGeoCache;
+    const p = path.join(__dirname, '..', 'public', 'data', 'communes-geo.json');
+    communeGeoCache = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {};
+    return communeGeoCache;
+}
+
+// --- Nombre de communes desservies par réseau (national, tous départements) -
+// Construit depuis les fichiers nationaux DIS_COM_UDI_<année>.txt.
+let udiCommuneCountCache = null;
+function getUdiCommuneCounts() {
+    if (udiCommuneCountCache) return udiCommuneCountCache;
+    const map = {};
+    for (const year of YEARS) {
+        const f = path.join(ARCHIVE_DIR, year, `DIS_COM_UDI_${year}.txt`);
+        if (!fs.existsSync(f)) continue;
+        for (const line of fs.readFileSync(f, 'utf8').split('\n')) {
+            const p = splitCsv(line);
+            if (!p[0] || p[0] === 'inseecommune') continue;
+            const insee = p[0], cd = p[3];
+            if (!insee || !cd) continue;
+            (map[cd] = map[cd] || new Set()).add(insee);
+        }
+    }
+    udiCommuneCountCache = map;
+    return map;
+}
+
 // NOTE : le moteur de score vit dans lib/crystal-engine.js (source de vérité
 // unique, partagée avec le runtime Next via lib/water-utils.js). Ne jamais
 // ré-implémenter le calcul ici.
@@ -232,6 +263,8 @@ async function buildDepartment(deptCode) {
 
     const udiMap = {}; const udiHistory = {}; const resultsByRef = {}; 
     const parentTree = {};
+    const udiMeta = {};
+    const reseauInfoCache = {};
     
     // Chargement des prix consolidés
     const pricesPath = path.join(__dirname, '..', 'source-data', 'prices.json');
@@ -284,7 +317,16 @@ async function buildDepartment(deptCode) {
         const rl = readline.createInterface({ input: fs.createReadStream(f) });
         for await (const line of rl) {
             const p = splitCsv(line); if (p[1] === 'cdreseau' || !p[1]) continue;
-            const cd = p[1], insee = p[2], cityName = p[3], amont = p[4], ref = p[7], date = p[8], conclusion = p[10], distri = p[12];
+            const cd = p[1], insee = p[2], cityName = p[3], amont = p[4], nomAmont = p[5], ref = p[7], date = p[8], conclusion = p[10], ugelib = p[11], distri = p[12], moalib = p[13];
+
+            // Métadonnées réseau (installation, maître d'ouvrage, exploitant, réseau amont).
+            if (cd) {
+                if (!udiMeta[cd]) udiMeta[cd] = {};
+                if (ugelib && !udiMeta[cd].installation) udiMeta[cd].installation = ugelib;
+                if (moalib && !udiMeta[cd].maitreOuvrage) udiMeta[cd].maitreOuvrage = moalib;
+                if (distri && !udiMeta[cd].exploitant) udiMeta[cd].exploitant = distri;
+                if (nomAmont && !udiMeta[cd].reseauAmont) udiMeta[cd].reseauAmont = nomAmont;
+            }
             
             // Aspiration Totale : Si la ville est dans un prélèvement mais pas dans le mapping officiel, on l'ajoute.
             // ⚠️ Fix 12/08/2026 : on valide que l'INSEE appartient bien au département construit (insee.startsWith(deptCode)),
@@ -415,10 +457,40 @@ async function buildDepartment(deptCode) {
         if (knownCity) officialName = knownCity;
 
 
+        // Données réseau exposées sur la fiche (installation, maître d'ouvrage, historique).
+        // Calculées une fois par UDI (les communes d'un même réseau partagent ces informations).
+        const primaryUdi = udis[0];
+        if (!reseauInfoCache[primaryUdi]) {
+            const rMeta = udiMeta[primaryUdi] || {};
+            const history = udiHistory[primaryUdi] || [];
+            let conformCount = 0, firstHist = null, lastHist = null;
+            for (const h of history) {
+                if (h.conclusion && !h.conclusion.toLowerCase().includes('non conforme aux limites')) conformCount++;
+                if (h.date) {
+                    if (!firstHist || h.date < firstHist) firstHist = h.date;
+                    if (!lastHist || h.date > lastHist) lastHist = h.date;
+                }
+            }
+            reseauInfoCache[primaryUdi] = {
+                code: primaryUdi,
+                installation: rMeta.installation || null,
+                maitreOuvrage: rMeta.maitreOuvrage || null,
+                exploitant: rMeta.exploitant || null,
+                reseauAmont: rMeta.reseauAmont || null,
+                nbCommunes: getUdiCommuneCounts()[primaryUdi]?.size || null,
+                nbAnalyses: history.length || null,
+                premiereAnalyse: firstHist,
+                derniereAnalyse: lastHist,
+                conformRate: history.length ? Math.round((conformCount / history.length) * 100) : null
+            };
+        }
+
         output.cities[slug] = {
             cityName: officialName,
-            reseau: udis[0], isConform, crystal, stats,
+            reseau: primaryUdi, isConform, crystal, stats,
             prix: prices[insee] || null,
+            geo: getCommuneGeo()[insee] || null,
+            reseauInfo: reseauInfoCache[primaryUdi],
             meta: { nom_distributeur: nomDistributeur, code_departement: deptCode, insee: insee, date_prelevement: lastDate, conclusion: arsConclusion }
         };
 
