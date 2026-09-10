@@ -21,6 +21,29 @@ function formatDate(iso) {
   return isNaN(d.getTime()) ? null : d.toLocaleDateString('fr-FR');
 }
 
+// Code postal : on ne condense en plage "min – max" que si les codes sont consécutifs
+// ET partagent le même préfixe (sinon une plage suggérerait des codes inexistants).
+// La liste complète reste dans l'attribut title (indexable, non affichée).
+function formatPostalCodes(codes) {
+  if (!Array.isArray(codes) || codes.length === 0) return null;
+  const list = codes.map(String);
+  if (list.length === 1) return { text: list[0], title: null, count: 1 };
+  if (list.length === 2) return { text: list.join(' / '), title: null, count: 2 };
+
+  const sorted = [...list].sort((a, b) => Number(a) - Number(b));
+  const samePrefix = sorted.every((c) => c.slice(0, 3) === sorted[0].slice(0, 3));
+  const consecutive = sorted.every((c, i) => i === 0 || Number(c) === Number(sorted[i - 1]) + 1);
+
+  if (samePrefix && consecutive) {
+    return {
+      text: `${sorted[0]} – ${sorted[sorted.length - 1]}`,
+      title: `${list.length} codes postaux : ${list.join(' / ')}`,
+      count: list.length,
+    };
+  }
+  return { text: `${list.length} codes postaux`, title: list.join(' / '), count: list.length };
+}
+
 const Icon = ({ name }) => {
   const common = {
     width: 22,
@@ -64,9 +87,7 @@ export default function CityLocalContext({ cityName, data }) {
   const densite = (geo?.population && geo?.surface)
     ? Math.round(geo.population / (geo.surface / 100)).toLocaleString('fr-FR')
     : null;
-  const codePostal = Array.isArray(geo?.codesPostaux) && geo.codesPostaux.length
-    ? geo.codesPostaux.join(' / ')
-    : null;
+  const codePostal = formatPostalCodes(geo?.codesPostaux);
 
   const nbCommunes = formatInt(reseau?.nbCommunes);
   const nbAnalyses = formatInt(reseau?.nbAnalyses);
@@ -113,10 +134,10 @@ export default function CityLocalContext({ cityName, data }) {
             </div>
           ))}
           {codePostal && (
-            <div className="city-local-stat">
+            <div className="city-local-stat" title={codePostal.title || undefined}>
               <span className="city-local-stat-icon"><Icon name="region" /></span>
-              <span className="city-local-stat-label">Code postal</span>
-              <span className="city-local-stat-value">{codePostal}</span>
+              <span className="city-local-stat-label">{codePostal.count > 1 ? 'Codes postaux' : 'Code postal'}</span>
+              <span className="city-local-stat-value">{codePostal.text}</span>
             </div>
           )}
         </div>
