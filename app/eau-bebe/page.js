@@ -255,7 +255,7 @@ export default function EauBebePage() {
             </div>
             <p className="bebe-table-note">
               Pour rappel, la limite de qualité des PFAS est fixée à {PFAS_LIMIT} (somme des 20 PFAS réglementés) et
-              celle des pesticides à {paramLimit('pesticides')} par substance. Ces seuils sont dérivés du registre des
+              celle du total des pesticides analysés à {paramLimit('pesticides')}. Ces seuils sont dérivés du registre des
               paramètres d&rsquo;EauPotable.net, lui-même aligné sur la réglementation.
             </p>
           </div>

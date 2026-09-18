@@ -2,7 +2,7 @@
   "deptInfo": {
     "code": "93",
     "name": "Seine-Saint-Denis",
-    "avgScore": 8.9,
+    "avgScore": 8.8,
     "conformRate": 100,
     "averages": {
       "nitrates": {
@@ -528,10 +528,10 @@
       "reseau": "093000063",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -565,7 +565,7 @@
           "timestamp": 1781481600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,117",
           "unit": " µg/L",
           "date": "22/01/2026",
           "timestamp": 1769040000000
@@ -1734,10 +1734,10 @@
       "reseau": "093000113",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -1771,7 +1771,7 @@
           "timestamp": 1781136000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,088",
           "unit": " µg/L",
           "date": "25/03/2026",
           "timestamp": 1774396800000
@@ -5348,10 +5348,10 @@
       "reseau": "093000113",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -5385,7 +5385,7 @@
           "timestamp": 1781136000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,088",
           "unit": " µg/L",
           "date": "25/03/2026",
           "timestamp": 1774396800000
@@ -5502,7 +5502,7 @@
         "unit": "  mg/L"
       },
       "pesticides": {
-        "val": "< 0,01",
+        "val": "0,071",
         "unit": "  µg/L"
       },
       "pfas": {
@@ -5542,7 +5542,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 7.8,
+    "score": 6.8,
     "conformity": 100
   }
 }

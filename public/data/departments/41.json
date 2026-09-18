@@ -2,7 +2,7 @@
   "deptInfo": {
     "code": "41",
     "name": "Loir-et-Cher",
-    "avgScore": 9.2,
+    "avgScore": 9,
     "conformRate": 100,
     "averages": {
       "nitrates": {
@@ -26,7 +26,7 @@
         "unit": "  mg/L"
       },
       "pesticides": {
-        "val": "< 0,01",
+        "val": "0,023",
         "unit": "  µg/L"
       },
       "pfas": {
@@ -74,7 +74,7 @@
       },
       {
         "name": "Romorantin-Lanthenay",
-        "score": 8,
+        "score": 6.5,
         "slug": "romorantin-lanthenay"
       },
       {
@@ -1101,7 +1101,7 @@
           "timestamp": 1776384000000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,17",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -1332,10 +1332,10 @@
       "reseau": "041000545",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -1369,7 +1369,7 @@
           "timestamp": 1775779200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,017",
           "unit": " µg/L",
           "date": "10/01/2024",
           "timestamp": 1704844800000
@@ -2134,10 +2134,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -2171,7 +2171,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -2841,7 +2841,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0,022",
+          "val": "0,21",
           "unit": " µg/L",
           "date": "24/02/2026",
           "timestamp": 1771891200000
@@ -2975,7 +2975,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0,016",
+          "val": "0,12",
           "unit": " µg/L",
           "date": "03/04/2026",
           "timestamp": 1775174400000
@@ -3511,7 +3511,7 @@
           "timestamp": 1776124800000
         },
         "pesticides": {
-          "val": "0,014",
+          "val": "0,15",
           "unit": " µg/L",
           "date": "14/04/2026",
           "timestamp": 1776124800000
@@ -4541,10 +4541,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -4578,7 +4578,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -4675,9 +4675,9 @@
       "reseau": "041000552",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "final": 7.5,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
         "statusClass": "status-good"
       },
       "stats": {
@@ -4712,7 +4712,7 @@
           "timestamp": 1773619200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,019",
           "unit": " µg/L",
           "date": "16/03/2026",
           "timestamp": 1773619200000
@@ -5747,10 +5747,10 @@
       "reseau": "041000485",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -5784,7 +5784,7 @@
           "timestamp": 1775692800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,029",
           "unit": " µg/L",
           "date": "19/06/2025",
           "timestamp": 1750291200000
@@ -5881,10 +5881,10 @@
       "reseau": "041000488",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -5918,7 +5918,7 @@
           "timestamp": 1772668800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,018",
           "unit": " µg/L",
           "date": "26/02/2026",
           "timestamp": 1772064000000
@@ -6186,7 +6186,7 @@
           "timestamp": 1776124800000
         },
         "pesticides": {
-          "val": "0,014",
+          "val": "0,15",
           "unit": " µg/L",
           "date": "14/04/2026",
           "timestamp": 1776124800000
@@ -6685,10 +6685,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -6722,7 +6722,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -6953,7 +6953,7 @@
       "reseau": "041000487",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -6990,7 +6990,7 @@
           "timestamp": 1777334400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,23",
           "unit": " µg/L",
           "date": "28/04/2026",
           "timestamp": 1777334400000
@@ -7126,7 +7126,7 @@
           "timestamp": 1775779200000
         },
         "pesticides": {
-          "val": "0,013",
+          "val": "0,038",
           "unit": " µg/L",
           "date": "17/03/2026",
           "timestamp": 1773705600000
@@ -7260,7 +7260,7 @@
           "timestamp": 1776124800000
         },
         "pesticides": {
-          "val": "0,014",
+          "val": "0,15",
           "unit": " µg/L",
           "date": "14/04/2026",
           "timestamp": 1776124800000
@@ -7893,10 +7893,10 @@
       "reseau": "041000488",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -7930,7 +7930,7 @@
           "timestamp": 1772668800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,018",
           "unit": " µg/L",
           "date": "26/02/2026",
           "timestamp": 1772064000000
@@ -9002,7 +9002,7 @@
           "timestamp": 1776297600000
         },
         "pesticides": {
-          "val": "0,011",
+          "val": "0,042",
           "unit": " µg/L",
           "date": "18/02/2026",
           "timestamp": 1771372800000
@@ -9099,10 +9099,10 @@
       "reseau": "041000589",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -9136,7 +9136,7 @@
           "timestamp": 1734048000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,01",
           "unit": " µg/L",
           "date": "13/12/2024",
           "timestamp": 1734048000000
@@ -11109,7 +11109,7 @@
       "reseau": "041000620",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -11146,7 +11146,7 @@
           "timestamp": 1777334400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,23",
           "unit": " µg/L",
           "date": "28/04/2026",
           "timestamp": 1777334400000
@@ -12311,10 +12311,10 @@
       "reseau": "041000585",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -12348,7 +12348,7 @@
           "timestamp": 1772582400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,015",
           "unit": " µg/L",
           "date": "05/06/2025",
           "timestamp": 1749081600000
@@ -12616,7 +12616,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,1",
           "unit": " µg/L",
           "date": "01/04/2026",
           "timestamp": 1775001600000
@@ -12981,10 +12981,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -13018,7 +13018,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -13115,10 +13115,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -13152,7 +13152,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -14053,10 +14053,10 @@
       "reseau": "041000627",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -14090,7 +14090,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,12",
           "unit": " µg/L",
           "date": "22/01/2026",
           "timestamp": 1769040000000
@@ -14224,7 +14224,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0,016",
+          "val": "0,12",
           "unit": " µg/L",
           "date": "03/04/2026",
           "timestamp": 1775174400000
@@ -14492,7 +14492,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,16",
           "unit": " µg/L",
           "date": "09/02/2026",
           "timestamp": 1770595200000
@@ -14760,7 +14760,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,16",
           "unit": " µg/L",
           "date": "03/06/2025",
           "timestamp": 1748908800000
@@ -15929,10 +15929,10 @@
       "reseau": "041000485",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -15966,7 +15966,7 @@
           "timestamp": 1775692800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,029",
           "unit": " µg/L",
           "date": "19/06/2025",
           "timestamp": 1750291200000
@@ -17038,7 +17038,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0,022",
+          "val": "0,21",
           "unit": " µg/L",
           "date": "24/02/2026",
           "timestamp": 1771891200000
@@ -17135,10 +17135,10 @@
       "reseau": "041000576",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -17172,7 +17172,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,027",
           "unit": " µg/L",
           "date": "25/03/2025",
           "timestamp": 1742860800000
@@ -17306,7 +17306,7 @@
           "timestamp": 1775779200000
         },
         "pesticides": {
-          "val": "0,013",
+          "val": "0,038",
           "unit": " µg/L",
           "date": "17/03/2026",
           "timestamp": 1773705600000
@@ -17537,10 +17537,10 @@
       "reseau": "041000501",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -17574,7 +17574,7 @@
           "timestamp": 1777852800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,06",
           "unit": " µg/L",
           "date": "02/03/2026",
           "timestamp": 1772409600000
@@ -17805,10 +17805,10 @@
       "reseau": "041000502",
       "isConform": true,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4.5,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -17842,7 +17842,7 @@
           "timestamp": 1777852800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,034",
           "unit": " µg/L",
           "date": "02/03/2026",
           "timestamp": 1772409600000
@@ -18207,10 +18207,10 @@
       "reseau": "041000503",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -18244,7 +18244,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,066",
           "unit": " µg/L",
           "date": "16/10/2025",
           "timestamp": 1760572800000
@@ -19145,10 +19145,10 @@
       "reseau": "041000506",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENT",
-        "explanation": "Qualité remarquable, quasiment aucun polluant détecté.",
-        "statusClass": "status-excellent"
+        "final": 8,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -19182,7 +19182,7 @@
           "timestamp": 1776902400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,34",
           "unit": " µg/L",
           "date": "16/03/2026",
           "timestamp": 1773619200000
@@ -20485,10 +20485,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -20522,7 +20522,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -20656,7 +20656,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0,022",
+          "val": "0,21",
           "unit": " µg/L",
           "date": "24/02/2026",
           "timestamp": 1771891200000
@@ -20790,7 +20790,7 @@
           "timestamp": 1775001600000
         },
         "pesticides": {
-          "val": "0,022",
+          "val": "0,21",
           "unit": " µg/L",
           "date": "24/02/2026",
           "timestamp": 1771891200000
@@ -21461,7 +21461,7 @@
           "timestamp": 1779321600000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,16",
           "unit": " µg/L",
           "date": "09/02/2026",
           "timestamp": 1770595200000
@@ -21692,10 +21692,10 @@
       "reseau": "041000511",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -21729,7 +21729,7 @@
           "timestamp": 1777334400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,074",
           "unit": " µg/L",
           "date": "07/11/2025",
           "timestamp": 1762473600000
@@ -21960,10 +21960,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -21997,7 +21997,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -22630,10 +22630,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -22667,7 +22667,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -23434,10 +23434,10 @@
       "reseau": "041000514",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -23471,7 +23471,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,12",
           "unit": " µg/L",
           "date": "22/01/2026",
           "timestamp": 1769040000000
@@ -23568,10 +23568,10 @@
       "reseau": "041000530",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -23605,7 +23605,7 @@
           "timestamp": 1775692800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,4",
           "unit": " µg/L",
           "date": "19/02/2026",
           "timestamp": 1771459200000
@@ -23738,7 +23738,7 @@
           "timestamp": 1776902400000
         },
         "pesticides": {
-          "val": "0,013",
+          "val": "0,038",
           "unit": " µg/L",
           "date": "11/12/2025",
           "timestamp": 1765411200000
@@ -24371,10 +24371,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -24408,7 +24408,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -24809,7 +24809,7 @@
           "timestamp": 1776384000000
         },
         "pesticides": {
-          "val": "0,041",
+          "val": "0,2",
           "unit": " µg/L",
           "date": "30/01/2026",
           "timestamp": 1769731200000
@@ -25441,9 +25441,9 @@
       "reseau": "041000686",
       "isConform": true,
       "crystal": {
-        "final": 8.5,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "final": 7,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
         "statusClass": "status-good"
       },
       "stats": {
@@ -25478,7 +25478,7 @@
           "timestamp": 1776124800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,007",
           "unit": " µg/L",
           "date": "19/12/2025",
           "timestamp": 1766102400000
@@ -26680,7 +26680,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,16",
           "unit": " µg/L",
           "date": "09/02/2026",
           "timestamp": 1770595200000
@@ -26911,10 +26911,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -26948,7 +26948,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -28117,10 +28117,10 @@
       "reseau": "041000525",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -28154,7 +28154,7 @@
           "timestamp": 1775606400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,056",
           "unit": " µg/L",
           "date": "28/11/2025",
           "timestamp": 1764288000000
@@ -28251,10 +28251,10 @@
       "reseau": "041000576",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -28288,7 +28288,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,027",
           "unit": " µg/L",
           "date": "25/03/2025",
           "timestamp": 1742860800000
@@ -28787,9 +28787,9 @@
       "reseau": "041000678",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "final": 7.5,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
         "statusClass": "status-good"
       },
       "stats": {
@@ -28824,7 +28824,7 @@
           "timestamp": 1776729600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,042",
           "unit": " µg/L",
           "date": "17/03/2026",
           "timestamp": 1773705600000
@@ -29725,10 +29725,10 @@
       "reseau": "041000530",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -29762,7 +29762,7 @@
           "timestamp": 1775692800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,4",
           "unit": " µg/L",
           "date": "19/02/2026",
           "timestamp": 1771459200000
@@ -31465,10 +31465,10 @@
       "reseau": "041000567",
       "isConform": true,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 4,
+        "label": "DÉGRADÉ",
+        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -31502,7 +31502,7 @@
           "timestamp": 1775088000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,059",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -31867,10 +31867,10 @@
       "reseau": "041000501",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -31904,7 +31904,7 @@
           "timestamp": 1777852800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,06",
           "unit": " µg/L",
           "date": "02/03/2026",
           "timestamp": 1772409600000
@@ -32537,10 +32537,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -32574,7 +32574,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -33743,10 +33743,10 @@
       "reseau": "041000627",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -33780,7 +33780,7 @@
           "timestamp": 1775520000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,12",
           "unit": " µg/L",
           "date": "22/01/2026",
           "timestamp": 1769040000000
@@ -34011,10 +34011,10 @@
       "reseau": "041000577",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -34048,7 +34048,7 @@
           "timestamp": 1775174400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,028",
           "unit": " µg/L",
           "date": "09/01/2026",
           "timestamp": 1767916800000
@@ -34580,7 +34580,7 @@
           "timestamp": 1776384000000
         },
         "pesticides": {
-          "val": "0,017",
+          "val": "0,17",
           "unit": " µg/L",
           "date": "21/01/2026",
           "timestamp": 1768953600000
@@ -34677,10 +34677,10 @@
       "reseau": "041000643",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -34714,7 +34714,7 @@
           "timestamp": 1771200000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,026",
           "unit": " µg/L",
           "date": "26/08/2025",
           "timestamp": 1756166400000
@@ -35749,10 +35749,10 @@
       "reseau": "041000542",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -35786,7 +35786,7 @@
           "timestamp": 1777507200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,043",
           "unit": " µg/L",
           "date": "16/07/2025",
           "timestamp": 1752624000000
@@ -35903,7 +35903,7 @@
         "unit": "  mg/L"
       },
       "pesticides": {
-        "val": "< 0,01",
+        "val": "0,054",
         "unit": "  µg/L"
       },
       "pfas": {
@@ -35943,7 +35943,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 8.3,
+    "score": 7.7,
     "conformity": 100
   }
 }

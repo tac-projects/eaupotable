@@ -2,7 +2,7 @@
   "deptInfo": {
     "code": "974",
     "name": "La Réunion",
-    "avgScore": 9.6,
+    "avgScore": 9.5,
     "conformRate": 100,
     "averages": {
       "nitrates": {
@@ -104,12 +104,12 @@
       },
       {
         "name": "Entre-Deux",
-        "score": 9.5,
+        "score": 8,
         "slug": "entre-deux"
       },
       {
         "name": "L' Etang-Sale",
-        "score": 10,
+        "score": 8.5,
         "slug": "l-etang-sale"
       },
       {
@@ -394,10 +394,10 @@
       "reseau": "974000016",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENT",
-        "explanation": "Qualité remarquable, quasiment aucun polluant détecté.",
-        "statusClass": "status-excellent"
+        "final": 8,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -431,7 +431,7 @@
           "timestamp": 1780272000000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,005",
           "unit": " µg/L",
           "date": "20/04/2026",
           "timestamp": 1776643200000
@@ -528,10 +528,10 @@
       "reseau": "974000018",
       "isConform": true,
       "crystal": {
-        "final": 10,
-        "label": "EXCEPTIONNEL",
-        "explanation": "Une pureté totale, digne des meilleures eaux de source.",
-        "statusClass": "status-excellent"
+        "final": 8.5,
+        "label": "TRÈS BON",
+        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -565,7 +565,7 @@
           "timestamp": 1733270400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,01",
           "unit": " µg/L",
           "date": "04/12/2024",
           "timestamp": 1733270400000
@@ -2184,7 +2184,7 @@
           "timestamp": 1781481600000
         },
         "pesticides": {
-          "val": "0,012",
+          "val": "0,057",
           "unit": " µg/L",
           "date": "01/04/2026",
           "timestamp": 1775001600000
@@ -3415,7 +3415,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 9.6,
+    "score": 9.5,
     "conformity": 100
   }
 }

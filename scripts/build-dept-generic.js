@@ -142,7 +142,7 @@ const config = {
     temperature: { codes: ["1301"], unit: "°C" },
     hardness: { codes: ["1345"], unit: "°f" },
     chlorine: { codes: ["1398", "1399", "1754", "1545"], unit: "mg/L" },
-    pesticides: { codes: ["1107", "1667", "7150", "1668", "1669", "6276"], unit: "µg/L" },
+    pesticides: { codes: ["6276", "1107", "1667", "7150", "1668", "1669"], unit: "µg/L" },
     pfas: { codes: ["7149", "8847", "8194", "8195", "8848", "8849"], unit: "µg/L" },
     microbiology: { codes: ["1321", "1322", "1449", "1447", "1042", "1306"], unit: "Absence" },
     conductivity: { codes: ["1303", "1304"], unit: "µS/cm" },
