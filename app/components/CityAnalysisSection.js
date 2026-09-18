@@ -7,7 +7,7 @@ import {
   PARAM_ICONS,
   RANGES,
   CENTERED_PARAMS,
-  parseValue
+  getMarkerPosition
 } from '@/lib/water-utils';
 import { ANALYSIS_CARDS, PARAMS } from '@/lib/params-registry';
 
@@ -73,25 +73,8 @@ function AnalysisCard({ parameter }) {
   
   const status = useMemo(() => getParameterStatus(key, data?.val), [key, data?.val]);
   const range = RANGES[key];
-  const val = useMemo(() => parseValue(data?.val), [data?.val]);
   const isCentered = CENTERED_PARAMS.includes(key);
-
-  const pos = useMemo(() => {
-    let p = 50;
-    if (key === "bacteria" || key === "microbiology") { 
-        p = (status.status === "perfect") ? 10 : 90; 
-    }
-    else if (range && val && !isNaN(val)) {
-      if (isCentered) {
-        const [c1, w1, g1, g2, w2, c2] = range;
-        if (val <= g1) p = 25; else if (val >= g2) p = 75; else p = 50;
-      } else {
-        const [b1, b2, b3] = range;
-        if (val <= b1) p = 15; else if (val <= b2) p = 45; else if (val <= b3) p = 75; else p = 90;
-      }
-    }
-    return p;
-  }, [key, status.status, range, val, isCentered]);
+  const pos = useMemo(() => getMarkerPosition(key, data?.val, range, status), [key, data?.val, range, status]);
 
   const isAbsence = useMemo(() => key === 'microbiology' && (data?.val?.includes('<') || data?.val?.toLowerCase().includes('absence')), [key, data?.val]);
 

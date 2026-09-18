@@ -8,7 +8,7 @@ import {
   PARAM_ICONS,
   RANGES,
   CENTERED_PARAMS,
-  parseValue
+  getMarkerPosition
 } from '@/lib/water-utils';
 import { ANALYSIS_CARDS } from '@/lib/params-registry';
 
@@ -69,20 +69,8 @@ function ParameterRow({ parameter }) {
   const { name, key, data } = parameter;
   const status = getParameterStatus(key, data?.val);
   const range = RANGES[key];
-  const val = parseValue(data?.val);
   const isCentered = CENTERED_PARAMS.includes(key);
-
-  let pos = 50;
-  if (key === "bacteria" || key === "microbiology") { pos = (status.status === "perfect") ? 10 : 90; }
-  else if (range && val && !isNaN(val)) {
-    if (isCentered) {
-      const [c1, w1, g1, g2, w2, c2] = range;
-      if (val <= g1) pos = 25; else if (val >= g2) pos = 75; else pos = 50;
-    } else {
-      const [b1, b2, b3] = range;
-      if (val <= b1) pos = 15; else if (val <= b2) pos = 45; else if (val <= b3) pos = 75; else pos = 90;
-    }
-  }
+  const pos = getMarkerPosition(key, data?.val, range, status);
 
   return (
     <div className="yuka-row-wrapper">
