@@ -200,6 +200,8 @@ async function getLocalData(slug) {
         nom_distributeur: rawCityData.meta?.nom_distributeur,
         nom_reseau: rawCityData.meta?.nom_reseau,
         conclusion: rawCityData.meta?.conclusion,
+        conclusionNonConforme: rawCityData.meta?.conclusionNonConforme,
+        dateNonConforme: rawCityData.meta?.dateNonConforme,
         insee: rawCityData.meta?.insee
       }
     };
