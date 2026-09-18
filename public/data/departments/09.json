@@ -94,7 +94,7 @@
       },
       {
         "name": "Aigues-Juntes",
-        "score": 5,
+        "score": 2,
         "slug": "aigues-juntes"
       },
       {
@@ -124,12 +124,12 @@
     "aigues-juntes": {
       "cityName": "Aigues-Juntes",
       "reseau": "009000837",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -1187,7 +1187,9 @@
         "code_departement": "09",
         "insee": "09008",
         "date_prelevement": "2026-03-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur malgré un résiduel de traitement conforme aux exigences sanitaires. La non-conformité porte sur au moins un paramètre microbiologique et n'a pas nécessité de restriction de la consommation de l'eau. Il a été demandé à l'exploitant de prendre les mesures correctives nécessaires pour rétablir la qualité de l'eau. Un nouveau contrôle a été programmé pour suivre l'évolution du paramètre et vérifier le retour à une situation normale.",
+        "dateNonConforme": "01/09/2025"
       }
     },
     "alzen": {
@@ -2516,7 +2518,9 @@
         "code_departement": "09",
         "insee": "09019",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "artigues": {
@@ -4773,7 +4777,9 @@
         "code_departement": "09",
         "insee": "09038",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "la-bastide-de-bousignac": {
@@ -7846,7 +7852,9 @@
         "code_departement": "09",
         "insee": "09061",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "bordes-uchentein": {
@@ -9706,7 +9714,9 @@
         "code_departement": "09",
         "insee": "09075",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "cante": {
@@ -10241,7 +10251,9 @@
         "code_departement": "09",
         "insee": "09079",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "carla-de-roquefort": {
@@ -10777,7 +10789,9 @@
         "code_departement": "09",
         "insee": "09083",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "castex": {
@@ -10911,7 +10925,9 @@
         "code_departement": "09",
         "insee": "09084",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "castillon-en-couserans": {
@@ -13706,7 +13722,9 @@
         "code_departement": "09",
         "insee": "09105",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "dreuilhe": {
@@ -14238,7 +14256,9 @@
         "code_departement": "09",
         "insee": "09109",
         "date_prelevement": "2026-06-24",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "encourtiech": {
@@ -15978,7 +15998,9 @@
         "code_departement": "09",
         "insee": "09123",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "le-fossat": {
@@ -16112,7 +16134,9 @@
         "code_departement": "09",
         "insee": "09124",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "fougax-et-barrineuf": {
@@ -19444,7 +19468,9 @@
         "code_departement": "09",
         "insee": "09151",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "lapege": {
@@ -22244,7 +22270,9 @@
         "code_departement": "09",
         "insee": "09172",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "loubens": {
@@ -23449,7 +23477,9 @@
         "code_departement": "09",
         "insee": "09181",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "massat": {
@@ -24119,7 +24149,9 @@
         "code_departement": "09",
         "insee": "09186",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "mercenac": {
@@ -26525,7 +26557,9 @@
         "code_departement": "09",
         "insee": "09205",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "montferrier": {
@@ -27989,7 +28023,9 @@
         "code_departement": "09",
         "insee": "09216",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité réglementaire. La non-conformité concerne le dépassement de la turbidité mais considérant la localisation du prélèvement et le résiduel de chlore mesuré très important, cette non-conformité n’est pas représentative de la qualité de l’eau distribuée sur ce réseau qui peut-être consommée sans risque pour la santé.",
+        "dateNonConforme": "12/03/2026"
       }
     },
     "niaux": {
@@ -29056,7 +29092,9 @@
         "code_departement": "09",
         "insee": "09224",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "pamiers": {
@@ -32660,7 +32698,9 @@
         "code_departement": "09",
         "insee": "09253",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "saint-amadou": {
@@ -34799,7 +34839,9 @@
         "code_departement": "09",
         "insee": "09270",
         "date_prelevement": "2026-06-24",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "saint-michel": {
@@ -35736,7 +35778,9 @@
         "code_departement": "09",
         "insee": "09277",
         "date_prelevement": "2026-06-24",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "salsein": {
@@ -37597,7 +37641,9 @@
         "code_departement": "09",
         "insee": "09294",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "siguer": {
@@ -39602,7 +39648,9 @@
         "code_departement": "09",
         "insee": "09310",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "tignac": {
@@ -42925,7 +42973,9 @@
         "code_departement": "09",
         "insee": "09338",
         "date_prelevement": "2026-06-24",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "villeneuve-du-pareage": {
@@ -43461,7 +43511,9 @@
         "code_departement": "09",
         "insee": "09342",
         "date_prelevement": "2026-06-16",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité. Cependant , au regard du résiduel de traitement important, ce résultat n’est pas représentatif de la qualité de l’eau distribuée sur ce réseau. Par mesure de précaution, quatre recontrôles ont été réalisés le 28 avril qui ont tous permis de constater l’absence de bactéries dans tous les lieux analysés. Cette eau peut être consommée sans risque pour la santé.",
+        "dateNonConforme": "22/04/2026"
       }
     },
     "le-peyrat": {

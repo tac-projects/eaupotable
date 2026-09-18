@@ -123,7 +123,7 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
         description: `Données officielles ARS sur la potabilité, les PFAS, les pesticides et les nitrates pour le réseau de distribution de ${cityName}. Analyse mise à jour en ${currentMonthYear}.`,
         url: `https://www.eaupotable.net/ville/${cleanSlug}`,
         variableMeasured: [
-          { '@type': 'PropertyValue', name: 'Conformité bactériologique', value: isConform ? 'Conforme' : 'Non conforme' },
+          { '@type': 'PropertyValue', name: 'Conformité sanitaire', value: isConform ? 'Conforme' : 'Non conforme' },
           ...SCHEMA_MEASURES.map((m) => {
             const p = PARAMS.find((x) => x.dataKey === m.dataKey);
             return {

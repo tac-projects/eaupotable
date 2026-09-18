@@ -3,7 +3,7 @@
     "code": "25",
     "name": "Doubs",
     "avgScore": 8.9,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "7,08",
@@ -2935,11 +2935,11 @@
     "arcon": {
       "cityName": "Arcon",
       "reseau": "025001800",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -8287,12 +8287,12 @@
     "bonnal": {
       "cityName": "Bonnal",
       "reseau": "025000100",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -39010,12 +39010,12 @@
     "laval-le-prieure": {
       "cityName": "Laval-Le-Prieure",
       "reseau": "025001600",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -39128,7 +39128,9 @@
         "code_departement": "25",
         "insee": "25329",
         "date_prelevement": "2026-06-29",
-        "conclusion": "EAU NON CONFORME (code de la santé publique). L'eau prélevée contient un nombre très important de germes témoins d'une contamination fécale, susceptibles d'être accompagnés de germes pathogènes pour l'homme. Une telle contamination peut être responsable de troubles gastriques, d'hépatites, de parasitoses. Pour rappel, des restrictions d'usage de l'eau ont été prononcées de façon permanente dans l'attente de travaux de sécurisation (voir note affichée en mairie)."
+        "conclusion": "EAU NON CONFORME (code de la santé publique). L'eau prélevée contient un nombre très important de germes témoins d'une contamination fécale, susceptibles d'être accompagnés de germes pathogènes pour l'homme. Une telle contamination peut être responsable de troubles gastriques, d'hépatites, de parasitoses. Pour rappel, des restrictions d'usage de l'eau ont été prononcées de façon permanente dans l'attente de travaux de sécurisation (voir note affichée en mairie).",
+        "conclusionNonConforme": "EAU NON CONFORME (code de la santé publique) L'eau prélevée contient un nombre très important de germes témoins d'une contamination fécale, susceptibles d'être accompagnés de germes pathogènes pour l'homme. Une telle contamination peut être responsable de troubles gastriques, d'hépatites, de parasitoses. NE PAS CONSOMMER AVANT D'AVOIR FAIT BOUILLIR L'EAU PENDANT 20 MIN.  En l'absence de traitement, je vous rappelle que l'eau distribuée doit être considérée comme non conforme aux limites de qualité DE MANIERE PERMAN ENTE (voir affichage en mairie).",
+        "dateNonConforme": "04/03/2026"
       }
     },
     "lavans-quingey": {
@@ -53564,12 +53566,12 @@
     "peseux": {
       "cityName": "Peseux",
       "reseau": "025000584",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -76707,7 +76709,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 8.3,
-    "conformity": 100
+    "score": 8.2,
+    "conformity": 99
   }
 }

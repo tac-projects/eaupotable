@@ -3,7 +3,7 @@
     "code": "04",
     "name": "Alpes-de-Haute-Provence",
     "avgScore": 9,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "5,16",
@@ -3064,7 +3064,9 @@
         "code_departement": "04",
         "insee": "04028",
         "date_prelevement": "2026-04-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Taux de chlore insuffisant. Une vérification de l'appareil de désinfection est nécessaire. Le taux de chlore libre à atteindre est de 0,3 mg/l en sortie production et de 0,1 mg/l en tout point du réseau."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Taux de chlore insuffisant. Une vérification de l'appareil de désinfection est nécessaire. Le taux de chlore libre à atteindre est de 0,3 mg/l en sortie production et de 0,1 mg/l en tout point du réseau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les paramètres plomb et nickel. Résultats représentatifs uniquement du point de prélèvement. Pour les enfants et les femmes enceintes, l'eau ne doit pas être utilisée pour les usages alimentaires. Pour les autres usagers, n'utiliser l'eau du robinet pour la boisson, la préparation des aliments ou l'hygiène qu'après une période recommandée d'une ou deux minutes d'écoulement.",
+        "dateNonConforme": "06/11/2023"
       }
     },
     "blieux": {
@@ -16185,7 +16187,9 @@
         "code_departement": "04",
         "insee": "04151",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites de qualité fixées pour les eaux distribuées pour deux métabolites pertinents de pesticide (Chlorothalonil R471 811 et Chloridazone desphényl). Les valeurs sanitaires propres à ces molécules, fixées à 3µg/l, n'ont pas été dépassées. L'eau peut donc être consommée sans restriction d'usage. A signaler la présence d'un autre métabolite de pesticide (Chloridazone méthyl desphényl).",
+        "dateNonConforme": "22/03/2024"
       }
     },
     "pierrevert": {
@@ -22083,12 +22087,12 @@
     "selonnet": {
       "cityName": "Selonnet",
       "reseau": "004001114",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -22352,12 +22356,12 @@
     "seyne": {
       "cityName": "Seyne",
       "reseau": "004001104",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {

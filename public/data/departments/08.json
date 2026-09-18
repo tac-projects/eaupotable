@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "08",
     "name": "Ardennes",
-    "avgScore": 7.1,
-    "conformRate": 100,
+    "avgScore": 6.9,
+    "conformRate": 85,
     "averages": {
       "nitrates": {
         "val": "17",
@@ -109,12 +109,12 @@
       },
       {
         "name": "Alincourt",
-        "score": 4,
+        "score": 2,
         "slug": "alincourt"
       },
       {
         "name": "Alland'huy-Et-Sausseuil",
-        "score": 5,
+        "score": 2,
         "slug": "alland-huy-et-sausseuil"
       }
     ],
@@ -252,7 +252,9 @@
         "code_departement": "08",
         "insee": "08001",
         "date_prelevement": "2026-04-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires et la concentration en chlorothalonil R471811 est supérieure à la valeur indicative de 0,9 µg/L.  L’eau peut être consom mée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "dateNonConforme": "13/11/2025"
       }
     },
     "aiglemont": {
@@ -526,11 +528,11 @@
     "alincourt": {
       "cityName": "Alincourt",
       "reseau": "008001181",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -654,18 +656,20 @@
         "code_departement": "08",
         "insee": "08005",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "alland-huy-et-sausseuil": {
       "cityName": "Alland'huy-Et-Sausseuil",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -788,17 +792,19 @@
         "code_departement": "08",
         "insee": "08006",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "amagne": {
       "cityName": "Amagne",
       "reseau": "008003855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -922,7 +928,9 @@
         "code_departement": "08",
         "insee": "08008",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous . Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans le réservoir. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "08/10/2025"
       }
     },
     "ambly-fleury": {
@@ -1330,11 +1338,11 @@
     "annelles": {
       "cityName": "Annelles",
       "reseau": "008001181",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -1458,7 +1466,9 @@
         "code_departement": "08",
         "insee": "08014",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "antheny": {
@@ -2394,7 +2404,9 @@
         "code_departement": "08",
         "insee": "08021",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "arreux": {
@@ -3070,12 +3082,12 @@
     "auboncourt-vauzelles": {
       "cityName": "Auboncourt-Vauzelles",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -3198,7 +3210,9 @@
         "code_departement": "08",
         "insee": "08027",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "aubrives": {
@@ -3740,11 +3754,11 @@
     "aussonce": {
       "cityName": "Aussonce",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -3868,7 +3882,9 @@
         "code_departement": "08",
         "insee": "08032",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "authe": {
@@ -5481,11 +5497,11 @@
     "banogne-recouvrance": {
       "cityName": "Banogne-Recouvrance",
       "reseau": "008000550",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -5609,7 +5625,9 @@
         "code_departement": "08",
         "insee": "08046",
         "date_prelevement": "2026-06-15",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl et en concentrations cumulé es mais sans dépasser les valeurs dérogatoires. Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètres atrazine deséthyl mais sans dépasser la valeur sanitaire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl et en concentrations cumulé es mais sans dépasser les valeurs dérogatoires. Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètres atrazine deséthyl mais sans dépasser la valeur sanitaire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par,l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "29/10/2025"
       }
     },
     "barbaise": {
@@ -6955,11 +6973,11 @@
     "bergnicourt": {
       "cityName": "Bergnicourt",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -7083,7 +7101,9 @@
         "code_departement": "08",
         "insee": "08060",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "la-berliere": {
@@ -7223,11 +7243,11 @@
     "bertoncourt": {
       "cityName": "Bertoncourt",
       "reseau": "008003855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -7351,7 +7371,9 @@
         "code_departement": "08",
         "insee": "08062",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous . Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans le réservoir. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "08/10/2025"
       }
     },
     "la-besace": {
@@ -7491,11 +7513,11 @@
     "biermes": {
       "cityName": "Biermes",
       "reseau": "008000960",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -7619,7 +7641,9 @@
         "code_departement": "08",
         "insee": "08064",
         "date_prelevement": "2026-05-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "22/10/2025"
       }
     },
     "bievres": {
@@ -7759,11 +7783,11 @@
     "bignicourt": {
       "cityName": "Bignicourt",
       "reseau": "008001181",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -7887,17 +7911,19 @@
         "code_departement": "08",
         "insee": "08066",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "blagny": {
       "cityName": "Blagny",
       "reseau": "008000994",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -9359,7 +9385,9 @@
         "code_departement": "08",
         "insee": "08082",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "31/10/2025"
       }
     },
     "brevilly": {
@@ -9499,11 +9527,11 @@
     "brienne-sur-aisne": {
       "cityName": "Brienne-Sur-Aisne",
       "reseau": "008001121",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -9627,7 +9655,9 @@
         "code_departement": "08",
         "insee": "08084",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "20/10/2025"
       }
     },
     "brieulles-sur-bar": {
@@ -11642,11 +11672,11 @@
     "chappes": {
       "cityName": "Chappes",
       "reseau": "008001117",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -11770,7 +11800,9 @@
         "code_departement": "08",
         "insee": "08102",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "02/04/2025"
       }
     },
     "charbogne": {
@@ -11904,7 +11936,9 @@
         "code_departement": "08",
         "insee": "08103",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "03/09/2025"
       }
     },
     "chardeny": {
@@ -12172,7 +12206,9 @@
         "code_departement": "08",
         "insee": "08105",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "17/03/2026"
       }
     },
     "charnois": {
@@ -12312,11 +12348,11 @@
     "chateau-porcien": {
       "cityName": "Chateau-Porcien",
       "reseau": "008000578",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -12440,7 +12476,9 @@
         "code_departement": "08",
         "insee": "08107",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Les recherches analytiques révèlent une eau ne respectant pas la limite de qualité relative au paramètre nitrates de 50 mg/l. Dans ces conditions, vous informerez la population que l'usage de cette eau à des fins alimentaires est interdit pour les femmes enceintes et les nourrissons. La température de l'eau au moment du prélèvement est supé rieure à la référence de qualité."
+        "conclusion": "Les recherches analytiques révèlent une eau ne respectant pas la limite de qualité relative au paramètre nitrates de 50 mg/l. Dans ces conditions, vous informerez la population que l'usage de cette eau à des fins alimentaires est interdit pour les femmes enceintes et les nourrissons. La température de l'eau au moment du prélèvement est supé rieure à la référence de qualité.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "dateNonConforme": "27/05/2026"
       }
     },
     "chatel-chehery": {
@@ -12714,11 +12752,11 @@
     "le-chatelet-sur-retourne": {
       "cityName": "Le Chatelet-Sur-Retourne",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -12842,7 +12880,9 @@
         "code_departement": "08",
         "insee": "08111",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "chaumont-porcien": {
@@ -13922,11 +13962,11 @@
     "chuffilly-roche": {
       "cityName": "Chuffilly-Roche",
       "reseau": "008000597",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -14050,7 +14090,9 @@
         "code_departement": "08",
         "insee": "08123",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. La concentration en chlorothalonil R471811 e st supérieure à la valeur indicative de 0,9 µg/L. L’eau peut être consomm ée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "clavy-warby": {
@@ -14320,11 +14362,11 @@
     "conde-les-herpy": {
       "cityName": "Conde-Les-Herpy",
       "reseau": "008000996",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -14448,7 +14490,9 @@
         "code_departement": "08",
         "insee": "08126",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "30/06/2025"
       }
     },
     "conde-les-autry": {
@@ -14980,17 +15024,19 @@
         "code_departement": "08",
         "insee": "08132",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl  mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "25/03/2025"
       }
     },
     "coucy": {
       "cityName": "Coucy",
       "reseau": "008003855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -15114,7 +15160,9 @@
         "code_departement": "08",
         "insee": "08133",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous . Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans le réservoir. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "08/10/2025"
       }
     },
     "coulommes-et-marqueny": {
@@ -16454,11 +16502,11 @@
     "doux": {
       "cityName": "Doux",
       "reseau": "008003855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -16582,7 +16630,9 @@
         "code_departement": "08",
         "insee": "08144",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous . Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans le réservoir. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "08/10/2025"
       }
     },
     "douzy": {
@@ -16982,11 +17032,11 @@
     "l-ecaille": {
       "cityName": "L' Ecaille",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -17110,7 +17160,9 @@
         "code_departement": "08",
         "insee": "08148",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "l-echelle": {
@@ -17378,7 +17430,9 @@
         "code_departement": "08",
         "insee": "08150",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "ecordal": {
@@ -18590,12 +18644,12 @@
     "faissault": {
       "cityName": "Faissault",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -18718,7 +18772,9 @@
         "code_departement": "08",
         "insee": "08163",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "falaise": {
@@ -18857,12 +18913,12 @@
     "faux": {
       "cityName": "Faux",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -18985,7 +19041,9 @@
         "code_departement": "08",
         "insee": "08165",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "fepin": {
@@ -22206,11 +22264,11 @@
     "givry": {
       "cityName": "Givry",
       "reseau": "008001015",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -22334,7 +22392,9 @@
         "code_departement": "08",
         "insee": "08193",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.La tem pérature de l'eau au moment du prélèvement est supérieure à la référen ce de qualité. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.La tem pérature de l'eau au moment du prélèvement est supérieure à la référen ce de qualité. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "dateNonConforme": "11/02/2026"
       }
     },
     "glaire": {
@@ -24482,12 +24542,12 @@
     "hannogne-saint-remy": {
       "cityName": "Hannogne-Saint-Remy",
       "reseau": "008000672",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -24610,7 +24670,9 @@
         "code_departement": "08",
         "insee": "08210",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. Le paramètre chlorothalonil R471811 est supé rieur à la valeur indicative. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans les canalisations. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "27/08/2025"
       }
     },
     "haraucourt": {
@@ -24744,7 +24806,9 @@
         "code_departement": "08",
         "insee": "08211",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. La concentration en OXA metazachlore est supérieure à la valeur indicative de 0,9 µg/L et le paramètre chlorida zone desphenyl est non conforme à la limite réglementaire mais ne dépa sse pas la valeur dérogatoire. Le contrôle renforcé est poursuivi et des actions devront être engagées par l’exploitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/02/2025"
       }
     },
     "harcy": {
@@ -25552,11 +25616,11 @@
     "hauteville": {
       "cityName": "Hauteville",
       "reseau": "008000679",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -25680,17 +25744,19 @@
         "code_departement": "08",
         "insee": "08219",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires et la concentration en chlorothalonil R471811 est supérieure à la valeur indicative de 0,9 µg/L. L’eau peut être consomm ée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "23/05/2025"
       }
     },
     "hauvine": {
       "cityName": "Hauvine",
       "reseau": "008000681",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -25814,7 +25880,9 @@
         "code_departement": "08",
         "insee": "08220",
         "date_prelevement": "2026-06-12",
-        "conclusion": "La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre nitrate mais sans dépasser la valeur dérogatoire. L'usage de cette eau à des fins alimentaires est interdit pour les fem mes enceintes et les nourrissons. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "dateNonConforme": "11/05/2026"
       }
     },
     "haybes": {
@@ -26081,17 +26149,19 @@
         "code_departement": "08",
         "insee": "08223",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeura dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "09/09/2025"
       }
     },
     "herpy-l-arlesienne": {
       "cityName": "Herpy-L'arlesienne",
       "reseau": "008000996",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -26215,7 +26285,9 @@
         "code_departement": "08",
         "insee": "08225",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "30/06/2025"
       }
     },
     "hierges": {
@@ -26489,11 +26561,11 @@
     "houdilcourt": {
       "cityName": "Houdilcourt",
       "reseau": "008001121",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -26617,7 +26689,9 @@
         "code_departement": "08",
         "insee": "08229",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "20/10/2025"
       }
     },
     "houldizy": {
@@ -27153,7 +27227,9 @@
         "code_departement": "08",
         "insee": "08234",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "issancourt-et-rumel": {
@@ -27695,11 +27771,11 @@
     "juniville": {
       "cityName": "Juniville",
       "reseau": "008001181",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -27823,7 +27899,9 @@
         "code_departement": "08",
         "insee": "08239",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "justine-herbigny": {
@@ -29554,11 +29632,11 @@
     "linay": {
       "cityName": "Linay",
       "reseau": "008000994",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -30224,12 +30302,12 @@
     "lucquy": {
       "cityName": "Lucquy",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -30352,7 +30430,9 @@
         "code_departement": "08",
         "insee": "08262",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "lumes": {
@@ -30760,12 +30840,12 @@
     "malandry": {
       "cityName": "Malandry",
       "reseau": "008000714",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -31022,7 +31102,9 @@
         "code_departement": "08",
         "insee": "08271",
         "date_prelevement": "2026-04-14",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité.Les références de qualité (norme non impérative) relatives à la présence d e bactéries anaérobies sulfito-réductrices y compris les spores, à la nu mération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité.Les références de qualité (norme non impérative) relatives à la présence d e bactéries anaérobies sulfito-réductrices y compris les spores, à la nu mération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "31/10/2025"
       }
     },
     "maranwez": {
@@ -31558,7 +31640,9 @@
         "code_departement": "08",
         "insee": "08275",
         "date_prelevement": "2026-06-03",
-        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser les valeurs sanitaires. L'eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont demandées à l'exploitant pour restaurer la qualité de l'eau."
+        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser les valeurs sanitaires. L'eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont demandées à l'exploitant pour restaurer la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeura dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "09/09/2025"
       }
     },
     "margut": {
@@ -32903,11 +32987,11 @@
     "menil-lepinois": {
       "cityName": "Menil-Lepinois",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -33031,7 +33115,9 @@
         "code_departement": "08",
         "insee": "08287",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "mesmont": {
@@ -33165,7 +33251,9 @@
         "code_departement": "08",
         "insee": "08288",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl  mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "25/03/2025"
       }
     },
     "messincourt": {
@@ -33305,12 +33393,12 @@
     "mogues": {
       "cityName": "Mogues",
       "reseau": "008000730",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -35968,17 +36056,19 @@
         "code_departement": "08",
         "insee": "08313",
         "date_prelevement": "2026-04-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires et la concentration en chlorothalonil R471811 est supérieure à la valeur indicative de 0,9 µg/L.  L’eau peut être consom mée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "dateNonConforme": "13/11/2025"
       }
     },
     "neuflize": {
       "cityName": "Neuflize",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -36102,7 +36192,9 @@
         "code_departement": "08",
         "insee": "08314",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "neufmaison": {
@@ -38108,17 +38200,19 @@
         "code_departement": "08",
         "insee": "08329",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 22°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl  mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "25/03/2025"
       }
     },
     "novy-chevrieres": {
       "cityName": "Novy-Chevrieres",
       "reseau": "008003855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -38242,7 +38336,9 @@
         "code_departement": "08",
         "insee": "08330",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous . Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans le réservoir. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "08/10/2025"
       }
     },
     "noyers-pont-maugis": {
@@ -38644,7 +38740,9 @@
         "code_departement": "08",
         "insee": "08333",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "31/10/2025"
       }
     },
     "omicourt": {
@@ -39180,17 +39278,19 @@
         "code_departement": "08",
         "insee": "08338",
         "date_prelevement": "2026-05-11",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "22/10/2025"
       }
     },
     "perthes": {
       "cityName": "Perthes",
       "reseau": "008001171",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -39314,17 +39414,19 @@
         "code_departement": "08",
         "insee": "08339",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L'eau peut être consommé mais son u tilisation reste déconseillée pour la préparation des biberons des nourrissons de moins de 6 mois en raison de la présence d'ions perchlorates. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans les canalisations. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "12/08/2025"
       }
     },
     "poilcourt-sydney": {
       "cityName": "Poilcourt-Sydney",
       "reseau": "008001121",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -39448,7 +39550,9 @@
         "code_departement": "08",
         "insee": "08340",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "20/10/2025"
       }
     },
     "poix-terron": {
@@ -40258,12 +40362,12 @@
     "puiseux": {
       "cityName": "Puiseux",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -40386,7 +40490,9 @@
         "code_departement": "08",
         "insee": "08348",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "pure": {
@@ -41330,11 +41436,11 @@
     "remaucourt": {
       "cityName": "Remaucourt",
       "reseau": "008001117",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -41458,7 +41564,9 @@
         "code_departement": "08",
         "insee": "08356",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "02/04/2025"
       }
     },
     "remilly-aillicourt": {
@@ -42000,11 +42108,11 @@
     "rethel": {
       "cityName": "Rethel",
       "reseau": "008000800",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -42128,7 +42236,9 @@
         "code_departement": "08",
         "insee": "08362",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité relatives à la présence de germes aérobies revivifiables à 22 et 36°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité relatives à la présence de germes aérobies revivifiables à 22 et 36°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires et la concentration en chlorothalonil R471811 est supérieure à la valeur indicative de 0,9 µg/L.  L’eau peut être consom mée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "dateNonConforme": "13/11/2025"
       }
     },
     "revin": {
@@ -42396,7 +42506,9 @@
         "code_departement": "08",
         "insee": "08364",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "03/09/2025"
       }
     },
     "rimogne": {
@@ -42804,11 +42916,11 @@
     "roizy": {
       "cityName": "Roizy",
       "reseau": "008001121",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -42932,7 +43044,9 @@
         "code_departement": "08",
         "insee": "08368",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "20/10/2025"
       }
     },
     "la-romagne": {
@@ -44010,11 +44124,11 @@
     "saint-clement-a-arnes": {
       "cityName": "Saint-Clement-A-Arnes",
       "reseau": "008001087",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44138,17 +44252,19 @@
         "code_departement": "08",
         "insee": "08378",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "dateNonConforme": "20/04/2026"
       }
     },
     "saint-etienne-a-arnes": {
       "cityName": "Saint-Etienne-A-Arnes",
       "reseau": "008000816",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44272,17 +44388,19 @@
         "code_departement": "08",
         "insee": "08379",
         "date_prelevement": "2026-05-11",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "saint-fergeux": {
       "cityName": "Saint-Fergeux",
       "reseau": "008001117",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44406,17 +44524,19 @@
         "code_departement": "08",
         "insee": "08380",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "02/04/2025"
       }
     },
     "saint-germainmont": {
       "cityName": "Saint-Germainmont",
       "reseau": "008000817",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44942,7 +45062,9 @@
         "code_departement": "08",
         "insee": "08384",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "03/09/2025"
       }
     },
     "saint-laurent": {
@@ -46020,11 +46142,11 @@
     "saint-pierre-a-arnes": {
       "cityName": "Saint-Pierre-A-Arnes",
       "reseau": "008001087",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -46148,7 +46270,9 @@
         "code_departement": "08",
         "insee": "08393",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "dateNonConforme": "20/04/2026"
       }
     },
     "saint-pierremont": {
@@ -46418,11 +46542,11 @@
     "saint-quentin-le-petit": {
       "cityName": "Saint-Quentin-Le-Petit",
       "reseau": "008000824",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -46552,11 +46676,11 @@
     "saint-remy-le-petit": {
       "cityName": "Saint-Remy-Le-Petit",
       "reseau": "008001170",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -46680,17 +46804,19 @@
         "code_departement": "08",
         "insee": "08397",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "19/11/2025"
       }
     },
     "sainte-vaubourg": {
       "cityName": "Sainte-Vaubourg",
       "reseau": "008001053",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -47088,11 +47214,11 @@
     "saulces-champenoises": {
       "cityName": "Saulces-Champenoises",
       "reseau": "008001015",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -47216,18 +47342,20 @@
         "code_departement": "08",
         "insee": "08401",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.La tem pérature de l'eau au moment du prélèvement est supérieure à la référen ce de qualité. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.La tem pérature de l'eau au moment du prélèvement est supérieure à la référen ce de qualité. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est agressive. L'efficacité du traitement devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "dateNonConforme": "11/02/2026"
       }
     },
     "saulces-monclin": {
       "cityName": "Saulces-Monclin",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -47350,17 +47478,19 @@
         "code_departement": "08",
         "insee": "08402",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "sault-les-rethel": {
       "cityName": "Sault-Les-Rethel",
       "reseau": "008000960",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -47484,17 +47614,19 @@
         "code_departement": "08",
         "insee": "08403",
         "date_prelevement": "2026-05-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. La teneur en nitrates est conforme à la limite de qualité de 50 mg/L. Toutefois, compte tenu de la valeur importante relevée, il convient de maintenir une vigilance particulière vis-à-vis de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "22/10/2025"
       }
     },
     "sault-saint-remy": {
       "cityName": "Sault-Saint-Remy",
       "reseau": "008001121",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -47618,7 +47750,9 @@
         "code_departement": "08",
         "insee": "08404",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "20/10/2025"
       }
     },
     "sauville": {
@@ -48692,12 +48826,12 @@
     "seraincourt": {
       "cityName": "Seraincourt",
       "reseau": "008000672",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -48820,7 +48954,9 @@
         "code_departement": "08",
         "insee": "08413",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. Le paramètre chlorothalonil R471811 est supé rieur à la valeur indicative. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans les canalisations. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "27/08/2025"
       }
     },
     "sery": {
@@ -48954,17 +49090,19 @@
         "code_departement": "08",
         "insee": "08415",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl  mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "25/03/2025"
       }
     },
     "seuil": {
       "cityName": "Seuil",
       "reseau": "008001074",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -49088,7 +49226,9 @@
         "code_departement": "08",
         "insee": "08416",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl et en concentrations cumulé es mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. La référence de qualité (norme non impérative) relative à la présence de bactéries anaérobies sulfito-réductrices y compris les spores n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire.",
+        "dateNonConforme": "22/10/2025"
       }
     },
     "sevigny-la-foret": {
@@ -49227,11 +49367,11 @@
     "sevigny-waleppe": {
       "cityName": "Sevigny-Waleppe",
       "reseau": "008000830",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -49897,11 +50037,11 @@
     "sommauthe": {
       "cityName": "Sommauthe",
       "reseau": "008001083",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -50165,11 +50305,11 @@
     "son": {
       "cityName": "Son",
       "reseau": "008001117",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -50293,7 +50433,9 @@
         "code_departement": "08",
         "insee": "08426",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. La référence de qualité relative à la présence de germes aérobies revivifiables à 36°C n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "02/04/2025"
       }
     },
     "sorbon": {
@@ -50427,18 +50569,20 @@
         "code_departement": "08",
         "insee": "08427",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
+        "conclusion": "Les trois paramètres analysés sont conformes aux exigences de qualité mais ne sont représentatifs que du point d'utilisation et du moment où ils ont été mesurés. Ce résultat ne prouve pas que le réseau de distribution (réseau intérieur et/ou branchement public) ne comporte pas d'éléments (canalisations, soudures…) contenant du plomb. Ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "sorcy-bauthemont": {
       "cityName": "Sorcy-Bauthemont",
       "reseau": "008001021",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -50561,7 +50705,9 @@
         "code_departement": "08",
         "insee": "08428",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau."
+        "conclusion": "Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "sormonne": {
@@ -51227,7 +51373,9 @@
         "code_departement": "08",
         "insee": "08433",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité. Les références de qualité(norme non impérative) relative à la numération des bactéries coliformes et à la présence de germes aérobies revivifiables à 22°C ne sont pas satisfaites. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "03/09/2025"
       }
     },
     "sy": {
@@ -51367,11 +51515,11 @@
     "tagnon": {
       "cityName": "Tagnon",
       "reseau": "008001171",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -51495,7 +51643,9 @@
         "code_departement": "08",
         "insee": "08435",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl, chloridazone methyl-desphenyl, et en concentrations cumulées mais sans dépasser les valeurs dérogatoires. L'eau peut être consommé mais son u tilisation reste déconseillée pour la préparation des biberons des nourrissons de moins de 6 mois en raison de la présence d'ions perchlorates. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Les recherches analytiques révèlent la présence d'anthraquinone. Cette présence est due certainement à la dégradation de produits bitumeux dans les canalisations. Une mesure des 15 molécules d'hydrocarbures polycycliques aromatiques sera par conséquent réalisée conformément à l'instruction DGS du 27 décembre 2011.",
+        "dateNonConforme": "12/08/2025"
       }
     },
     "taillette": {
@@ -51892,7 +52042,9 @@
         "code_departement": "08",
         "insee": "08438",
         "date_prelevement": "2026-05-27",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "14/08/2025"
       }
     },
     "tannay": {
@@ -53100,11 +53252,11 @@
     "thugny-trugny": {
       "cityName": "Thugny-Trugny",
       "reseau": "008001074",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -53228,7 +53380,9 @@
         "code_departement": "08",
         "insee": "08452",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour les paramètres chloridazone desphenyl et en concentrations cumulé es mais sans dépasser les valeurs dérogatoires. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. La référence de qualité (norme non impérative) relative à la présence de bactéries anaérobies sulfito-réductrices y compris les spores n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire.",
+        "dateNonConforme": "22/10/2025"
       }
     },
     "toges": {
@@ -54435,12 +54589,12 @@
     "vaux-champagne": {
       "cityName": "Vaux-Champagne",
       "reseau": "008001054",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -54569,12 +54723,12 @@
     "vaux-en-dieulet": {
       "cityName": "Vaux-En-Dieulet",
       "reseau": "008001084",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -56705,7 +56859,9 @@
         "code_departement": "08",
         "insee": "08480",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "17/03/2026"
       }
     },
     "villers-sur-bar": {
@@ -57113,11 +57269,11 @@
     "ville-sur-retourne": {
       "cityName": "Ville-Sur-Retourne",
       "reseau": "008001181",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -57241,17 +57397,19 @@
         "code_departement": "08",
         "insee": "08484",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité  et conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl mais sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau.",
+        "dateNonConforme": "05/09/2025"
       }
     },
     "villy": {
       "cityName": "Villy",
       "reseau": "008000855",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -57375,7 +57533,9 @@
         "code_departement": "08",
         "insee": "08485",
         "date_prelevement": "2026-06-02",
-        "conclusion": "La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. Depuis le 10/07/2025, la consommation de l'eau est interdite par arrêté préfectoral à des fins de boisson en raison d e la teneur de la somme des 20 PFAS supérieure à la limite de qualité. Les autres usages restent autorisés."
+        "conclusion": "La référence de qualité(norme non impérative) relative à la numération des bactéries coliformes n'est pas satisfaite. Une vérification des installations peut s'avérer nécessaire, notamment le traitement de désinfection s'il existe. Depuis le 10/07/2025, la consommation de l'eau est interdite par arrêté préfectoral à des fins de boisson en raison d e la teneur de la somme des 20 PFAS supérieure à la limite de qualité. Les autres usages restent autorisés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre dimétachlore OXA  sans dépasser la valeur dérogatoire. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Depuis le 10/07/2025, la consommation de l'eau est interdite par arrêté préfectoral à des fins de boisson en raison d es PFAS supérieure à la limite de qualité fixée à 0,1 µg/l. Les autres usages restent autorisés. Un plan d'actions pour rétablir la qu alité de l'eau a été demandé à la PRPDE.",
+        "dateNonConforme": "17/11/2025"
       }
     },
     "vireux-molhain": {
@@ -58045,7 +58205,9 @@
         "code_departement": "08",
         "insee": "08490",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est inscrutante. L'efficacité du traitemen t devra être vérifiée ou un traitement de neutralisation devra être installé."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est inscrutante. L'efficacité du traitemen t devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité et non-conforme aux références de qualité. Eau d’alimentation non conforme à la limite de qualité réglementaire pour le paramètre chloridazone desphenyl sans dépasser la valeur dérogatoire. L’eau peut être consommée par tous. Un contrôle renforcé est en place et des actions sont engagées par l’expl oitant pour restaurer la qualité de l’eau. Sur le plan chimique, l'eau est inscrutante. L'efficacité du traitemen t devra être vérifiée ou un traitement de neutralisation devra être installé.",
+        "dateNonConforme": "22/06/2026"
       }
     },
     "vrigne-aux-bois": {
@@ -60244,7 +60406,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 7.9,
-    "conformity": 100
+    "score": 7.8,
+    "conformity": 94
   }
 }

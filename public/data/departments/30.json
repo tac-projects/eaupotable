@@ -3,7 +3,7 @@
     "code": "30",
     "name": "Gard",
     "avgScore": 8.1,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "9,18",
@@ -2665,11 +2665,11 @@
     "aubord": {
       "cityName": "Aubord",
       "reseau": "030000028",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -18974,12 +18974,12 @@
     "ledenon": {
       "cityName": "Ledenon",
       "reseau": "030000773",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {

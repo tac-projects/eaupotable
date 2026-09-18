@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "77",
     "name": "Seine-et-Marne",
-    "avgScore": 6.3,
-    "conformRate": 98,
+    "avgScore": 6.2,
+    "conformRate": 89,
     "averages": {
       "nitrates": {
         "val": "23",
@@ -1597,11 +1597,11 @@
     "augers-en-brie": {
       "cityName": "Augers-En-Brie",
       "reseau": "077000045",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -1999,11 +1999,11 @@
     "baby": {
       "cityName": "Baby",
       "reseau": "077000060",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -3337,11 +3337,11 @@
     "beauchery-saint-martin": {
       "cityName": "Beauchery-Saint-Martin",
       "reseau": "077001375",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -5213,11 +5213,11 @@
     "boissy-aux-cailles": {
       "cityName": "Boissy-Aux-Cailles",
       "reseau": "077000102",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -5341,7 +5341,9 @@
         "code_departement": "77",
         "insee": "77041",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur pour les paramètres Nitrates et la somme des nitrates/50 et nitrites/3. Des recontrôles au niveau de la sortie du réservoir et de la mairie de la commune de Boissy-aux-cailles datant du 19/09/2025 ont montré un retour à la normale pour le paramètre nitrates. Eau d'alimentation non-conforme aux limites de qualité pour les paramètres chloridazone desphényl et la somme totale des pesticides sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Eau d'alimentation ne satisfaisant pas aux références de qualité pour le paramètre équilibre calcocarbonique. L'eau du réseau est considérée comme agressive. Ce dépassement est sans effet sur la santé.",
+        "dateNonConforme": "11/09/2025"
       }
     },
     "boissy-le-chatel": {
@@ -6017,11 +6019,11 @@
     "bouleurs": {
       "cityName": "Bouleurs",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -7893,11 +7895,11 @@
     "cannes-ecluse": {
       "cityName": "Cannes-Ecluse",
       "reseau": "077000813",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -8429,11 +8431,11 @@
     "cerneux": {
       "cityName": "Cerneux",
       "reseau": "077000120",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -9233,11 +9235,11 @@
     "chalautre-la-grande": {
       "cityName": "Chalautre-La-Grande",
       "reseau": "077001383",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -10030,7 +10032,9 @@
         "code_departement": "77",
         "insee": "77078",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "champagne-sur-seine": {
@@ -10834,7 +10838,9 @@
         "code_departement": "77",
         "insee": "77084",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "chanteloup-en-brie": {
@@ -11912,11 +11918,11 @@
     "charmentray": {
       "cityName": "Charmentray",
       "reseau": "077000334",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -12046,11 +12052,11 @@
     "charny": {
       "cityName": "Charny",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -16600,11 +16606,11 @@
     "coulommes": {
       "cityName": "Coulommes",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -17002,11 +17008,11 @@
     "courcelles-en-bassee": {
       "cityName": "Courcelles-En-Bassee",
       "reseau": "077000593",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -18208,11 +18214,11 @@
     "crecy-la-chapelle": {
       "cityName": "Crecy-La-Chapelle",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -19682,11 +19688,11 @@
     "dammartin-sur-tigeaux": {
       "cityName": "Dammartin-Sur-Tigeaux",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -20752,11 +20758,11 @@
     "douy-la-ramee": {
       "cityName": "Douy-La-Ramee",
       "reseau": "077000681",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -21690,11 +21696,11 @@
     "esmans": {
       "cityName": "Esmans",
       "reseau": "077000813",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -23292,7 +23298,9 @@
         "code_departement": "77",
         "insee": "77183",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "flagy": {
@@ -24503,11 +24511,11 @@
     "forges": {
       "cityName": "Forges",
       "reseau": "077000593",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -27046,11 +27054,11 @@
     "gressy": {
       "cityName": "Gressy",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -27715,11 +27723,11 @@
     "guerard": {
       "cityName": "Guerard",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -28244,17 +28252,19 @@
         "code_departement": "77",
         "insee": "77222",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d’alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres Atrazine déséthyl déisopropyl, Chloridazone desphényl, Chloridazone méthyl desphényl, Chlorothalonil R417888 et la somme totale des pesticides analysés sans dépassement des seuils sanitaires. Eau d’alimentation non conforme aux limites de qualité pour le paramètre Atrazine déséthyl sans dépassement du seuil sanitaire. Eau d’alimentation présentant un dépassement de la valeur indicative pour le paramètre Chlorothalonil R471811(métabolite non pertinent). En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d’alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres Atrazine déséthyl déisopropyl, Chloridazone desphényl, Chloridazone méthyl desphényl, Chlorothalonil R417888 et la somme totale des pesticides analysés sans dépassement des seuils sanitaires. Eau d’alimentation non conforme aux limites de qualité pour le paramètre Atrazine déséthyl sans dépassement du seuil sanitaire. Eau d’alimentation présentant un dépassement de la valeur indicative pour le paramètre Chlorothalonil R471811(métabolite non pertinent). En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d’alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres Atrazine déséthyl déisopropyl, Chloridazone desphényl, Chloridazone méthyl desphényl, Chlorothalonil R417888 et la somme totale des pesticides analysés sans dépassement des seuils sanitaires. Eau d’alimentation non conforme aux limites de qualité pour le paramètre Atrazine déséthyl sans dépassement du seuil sanitaire. Eau d’alimentation présentant un dépassement de la valeur indicative pour le paramètre Chlorothalonil R471811(métabolite non pertinent). En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "26/06/2026"
       }
     },
     "gurcy-le-chatel": {
       "cityName": "Gurcy-Le-Chatel",
       "reseau": "077000289",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -28518,11 +28528,11 @@
     "la-haute-maison": {
       "cityName": "La Haute-Maison",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -28786,11 +28796,11 @@
     "herme": {
       "cityName": "Herme",
       "reseau": "077000284",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -29590,11 +29600,11 @@
     "iverny": {
       "cityName": "Iverny",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -30388,7 +30398,9 @@
         "code_departement": "77",
         "insee": "77238",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "jouy-le-chatel": {
@@ -31198,11 +31210,11 @@
     "laval-en-brie": {
       "cityName": "Laval-En-Brie",
       "reseau": "077000593",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -34548,11 +34560,11 @@
     "maisoncelles-en-brie": {
       "cityName": "Maisoncelles-En-Brie",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -37495,11 +37507,11 @@
     "messy": {
       "cityName": "Messy",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -39906,11 +39918,11 @@
     "montigny-lencoup": {
       "cityName": "Montigny-Lencoup",
       "reseau": "077000604",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -40174,11 +40186,11 @@
     "montmachoux": {
       "cityName": "Montmachoux",
       "reseau": "077000813",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -40978,11 +40990,11 @@
     "mortery": {
       "cityName": "Mortery",
       "reseau": "077000319",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -41106,7 +41118,9 @@
         "code_departement": "77",
         "insee": "77319",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur pour les paramètres nitrates et la somme des nitrates/50 et nitrites/3. En l'état, cette eau ne doit pas être consommée par les femmes enceintes et les nourrissons. Une information ciblée doit être faite auprès de ces populations avec proposition de mesure de substitution. L’ARS préconise la distribution d’eau embouteillée aux personnes concernées.",
+        "dateNonConforme": "12/07/2022"
       }
     },
     "mouroux": {
@@ -41380,11 +41394,11 @@
     "moussy-le-neuf": {
       "cityName": "Moussy-Le-Neuf",
       "reseau": "077001534",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -43255,11 +43269,11 @@
     "noisy-rudignon": {
       "cityName": "Noisy-Rudignon",
       "reseau": "077000813",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -46067,11 +46081,11 @@
     "pierre-levee": {
       "cityName": "Pierre-Levee",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -46335,11 +46349,11 @@
     "le-plessis-aux-bois": {
       "cityName": "Le Plessis-Aux-Bois",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -47669,7 +47683,9 @@
         "code_departement": "77",
         "insee": "77373",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d’alimentation non conforme aux limites de qualité pour le paramètre Flufenacet ESA sans dépassement du seuil sanitaire. En l’état actuel des connaissances, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Le recontrôle réalisé le 05/03/2026 a montré un retour à la normale quant à la qualité de l’eau distribuée",
+        "dateNonConforme": "17/02/2026"
       }
     },
     "pontcarre": {
@@ -47809,11 +47825,11 @@
     "precy-sur-marne": {
       "cityName": "Precy-Sur-Marne",
       "reseau": "077000334",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -48345,11 +48361,11 @@
     "puisieux": {
       "cityName": "Puisieux",
       "reseau": "077000412",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -49544,7 +49560,9 @@
         "code_departement": "77",
         "insee": "77388",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "la-rochette": {
@@ -49818,11 +49836,11 @@
     "rouilly": {
       "cityName": "Rouilly",
       "reseau": "077000346",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -50890,11 +50908,11 @@
     "saint-augustin": {
       "cityName": "Saint-Augustin",
       "reseau": "077004255",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -51152,7 +51170,9 @@
         "code_departement": "77",
         "insee": "77401",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "saint-barthelemy": {
@@ -52096,11 +52116,11 @@
     "saint-germain-laval": {
       "cityName": "Saint-Germain-Laval",
       "reseau": "077000593",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -53028,7 +53048,9 @@
         "code_departement": "77",
         "insee": "77415",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "saint-just-en-brie": {
@@ -55981,11 +56003,11 @@
     "salins": {
       "cityName": "Salins",
       "reseau": "077000593",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -56243,7 +56265,9 @@
         "code_departement": "77",
         "insee": "77440",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "samois-sur-seine": {
@@ -56517,11 +56541,11 @@
     "sancy": {
       "cityName": "Sancy",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -57315,7 +57339,9 @@
         "code_departement": "77",
         "insee": "77448",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "serris": {
@@ -59599,11 +59625,11 @@
     "tigeaux": {
       "cityName": "Tigeaux",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -61334,7 +61360,9 @@
         "code_departement": "77",
         "insee": "77478",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique."
+        "conclusion": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité mais conforme aux valeurs dérogatoires pour les paramètres chloridazone desphényl et chloridazone méthyl desphényl sans dépassement des seuils sanitaires. En l’état actuel des connaissances scientifiques, aucune restriction d’usage n’est nécessaire, l’eau peut donc être consommée. Un suivi renforcé est mis en place pour surveiller l’évolution de la situation. La personne responsable de la distribution de l’eau doit engager un programme d’actions visant à réduire les teneurs des paramètres concernés. Les autres paramètres recherchés dans le cadre du contrôle sanitaire sont conformes aux exigences du code de la santé publique.",
+        "dateNonConforme": "25/06/2026"
       }
     },
     "vaires-sur-marne": {
@@ -61742,11 +61770,11 @@
     "varennes-sur-seine": {
       "cityName": "Varennes-Sur-Seine",
       "reseau": "077000813",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -62010,11 +62038,11 @@
     "vaucourtois": {
       "cityName": "Vaucourtois",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -64821,11 +64849,11 @@
     "villeneuve-sous-dammartin": {
       "cityName": "Villeneuve-Sous-Dammartin",
       "reseau": "077001534",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -65357,11 +65385,11 @@
     "villeroy": {
       "cityName": "Villeroy",
       "reseau": "077000742",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -67232,11 +67260,11 @@
     "voulangis": {
       "cityName": "Voulangis",
       "reseau": "077001495",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -68233,6 +68261,6 @@
       }
     },
     "score": 6.8,
-    "conformity": 100
+    "conformity": 98
   }
 }

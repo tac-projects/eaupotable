@@ -3,7 +3,7 @@
     "code": "88",
     "name": "Vosges",
     "avgScore": 9.4,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "7,65",
@@ -1731,11 +1731,11 @@
     "aroffe": {
       "cityName": "Aroffe",
       "reseau": "088001601",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -1859,7 +1859,9 @@
         "code_departement": "88",
         "insee": "88013",
         "date_prelevement": "2026-04-07",
-        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre nitrates et pour la somme our la somme NO2/3 + NO3/5 0. La consommation de l'eau est déconseillée pour la population. Les m esures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renforcé est réalisé pour vérif ier l'évolution de ce paramètre."
+        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre nitrates et pour la somme our la somme NO2/3 + NO3/5 0. La consommation de l'eau est déconseillée pour la population. Les m esures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renforcé est réalisé pour vérif ier l'évolution de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaires pour les paramètres nitrates et rapport nitrites/nitrates. La consomma tion de l'eau est déconseillée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les mesures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renfo rcé est réalisé pour vérifier l'évolution de ce paramètre.",
+        "dateNonConforme": "14/04/2023"
       }
     },
     "arrentes-de-corcieux": {
@@ -6941,7 +6943,9 @@
         "code_departement": "88",
         "insee": "88053",
         "date_prelevement": "2026-04-17",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre conductivi té."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre conductivi té.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaires. Pour le(s) paramètre(s) microbiologique(s): faible contamination microbiologique. Les mesures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Une analyse de contrôle sera réalisée prochainement afin de vérifier le retour à une situation normale. Eau d'alimentation ne satisfaisant pas à la référence de qualité minimale règlementaire pour le paramètre pH (6,5 unités pH). Cette eau présente un caractère agressif, susceptible de provoquer une corrosion des conduites ce qui peut entraîner une augmentation de certaines substances (plomb, cuivre...) et présenter alors un risque pour la santé des consommateurs. Il est recommandé de consommer cette eau qu'après écoulement de quelques minutes. Les mesures correctives doivent être prises afin de rétablir la qualité de l'eau : installation d'un traitement adapté.",
+        "dateNonConforme": "21/11/2023"
       }
     },
     "bertrimoutier": {
@@ -27417,7 +27421,9 @@
         "code_departement": "88",
         "insee": "88213",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaires. Pour le(s) paramètre(s) microbiologique(s): faible contamination microbiologique. Les mesures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Une analyse de contrôle sera réalisée prochainement afin de vérifier le retour à une situation normale.",
+        "dateNonConforme": "21/11/2023"
       }
     },
     "grandrupt-de-bains": {
@@ -28093,11 +28099,11 @@
     "grignoncourt": {
       "cityName": "Grignoncourt",
       "reseau": "088001585",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -34785,11 +34791,11 @@
     "lironcourt": {
       "cityName": "Lironcourt",
       "reseau": "088001317",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44553,11 +44559,11 @@
     "pleuvezain": {
       "cityName": "Pleuvezain",
       "reseau": "088002153",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -58060,11 +58066,11 @@
     "soncourt": {
       "cityName": "Soncourt",
       "reseau": "088001601",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -58188,7 +58194,9 @@
         "code_departement": "88",
         "insee": "88459",
         "date_prelevement": "2026-04-07",
-        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre nitrates et pour la somme our la somme NO2/3 + NO3/5 0. La consommation de l'eau est déconseillée pour la population. Les m esures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renforcé est réalisé pour vérif ier l'évolution de ce paramètre."
+        "conclusion": "Eau d'alimentation non conforme à la limite de qualité réglementaire pour le paramètre nitrates et pour la somme our la somme NO2/3 + NO3/5 0. La consommation de l'eau est déconseillée pour la population. Les m esures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renforcé est réalisé pour vérif ier l'évolution de ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaires pour les paramètres nitrates et rapport nitrites/nitrates. La consomma tion de l'eau est déconseillée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les mesures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Un suivi analytique renfo rcé est réalisé pour vérifier l'évolution de ce paramètre.",
+        "dateNonConforme": "14/04/2023"
       }
     },
     "soulosse-sous-saint-elophe": {
@@ -64083,11 +64091,11 @@
     "vicherey": {
       "cityName": "Vicherey",
       "reseau": "088002153",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -68159,7 +68167,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 7.9,
-    "conformity": 100
+    "score": 7.8,
+    "conformity": 94
   }
 }

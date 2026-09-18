@@ -3,7 +3,7 @@
     "code": "29",
     "name": "Finistère",
     "avgScore": 7.9,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "20",
@@ -1056,7 +1056,9 @@
         "code_departement": "29",
         "insee": "29007",
         "date_prelevement": "2026-06-08",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Présente également un dépassement de la valeur de référence (0/100 ml) pour les bactéries coliformes et les spores de bactéries anaérobies sulfito-réductrices. Voir avis du 09/10/2023 signalant ces dépassements. A noter une conductivité inférieure à la valeur de référence minimale de 200 µS/cm. Eau agressive.",
+        "dateNonConforme": "05/10/2023"
       }
     },
     "beuzec-cap-sizun": {
@@ -1726,7 +1728,9 @@
         "code_departement": "29",
         "insee": "29013",
         "date_prelevement": "2026-05-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 22/01/2024. Cette non conformité est probablement liée à une désinfection insuffisante. Le prélèvement de contrôle du 26/01/2024 n'a pas confirmé la persistance de ce dépassement. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "19/01/2024"
       }
     },
     "botsorhel": {
@@ -2664,7 +2668,9 @@
         "code_departement": "29",
         "insee": "29020",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : présence d'Escherichia coli, indicateur de contamination d'origine fécale. Un prélèvement de contrôle sera réalisé. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "05/11/2025"
       }
     },
     "plouneour-brignogan-plages": {
@@ -3334,7 +3340,9 @@
         "code_departement": "29",
         "insee": "29025",
         "date_prelevement": "2026-05-27",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "chateaulin": {
@@ -3870,7 +3878,9 @@
         "code_departement": "29",
         "insee": "29029",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Le nouveau prélèvement de contrôle réalisé en mairie le 17 mai a donné des résultats satisfaisants.",
+        "dateNonConforme": "11/05/2022"
       }
     },
     "cleder": {
@@ -4680,12 +4690,12 @@
     "collorec": {
       "cityName": "Collorec",
       "reseau": "029000643",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -5738,7 +5748,9 @@
         "code_departement": "29",
         "insee": "29043",
         "date_prelevement": "2025-12-22",
-        "conclusion": "Turbidité conforme aux exigences de qualité."
+        "conclusion": "Turbidité conforme aux exigences de qualité.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "dineault": {
@@ -5872,7 +5884,9 @@
         "code_departement": "29",
         "insee": "29044",
         "date_prelevement": "2026-05-21",
-        "conclusion": "Eau d’alimentation conforme aux limites de qualité, mais ne satisfaisant pas totalement aux références de qualité, en raison d’un indice relatif à l’équilibre calco‑carbonique supérieur à 2. Cet indice traduit le caractère peu minéralisé de l’eau, susceptible d’interagir avec les matériaux constitutifs des canalisations, sans incidence directe sur la santé du consommateur. Une optimisation du traitement de neutralisation-minéralisation à l'unité de production est nécessaire."
+        "conclusion": "Eau d’alimentation conforme aux limites de qualité, mais ne satisfaisant pas totalement aux références de qualité, en raison d’un indice relatif à l’équilibre calco‑carbonique supérieur à 2. Cet indice traduit le caractère peu minéralisé de l’eau, susceptible d’interagir avec les matériaux constitutifs des canalisations, sans incidence directe sur la santé du consommateur. Une optimisation du traitement de neutralisation-minéralisation à l'unité de production est nécessaire.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "dirinon": {
@@ -6006,7 +6020,9 @@
         "code_departement": "29",
         "insee": "29045",
         "date_prelevement": "2025-11-12",
-        "conclusion": "Eau prélevée conforme aux exigences de qualité mais présentant un dépassement de la valeur de référence (0/100 ml) pour les spores de bactéries anaérobies sulfito-réductrices. A noter le caractère agressif de l'eau mise en distribution (indice relatif à l'équilibre calco-carbonique supérieur à 2)."
+        "conclusion": "Eau prélevée conforme aux exigences de qualité mais présentant un dépassement de la valeur de référence (0/100 ml) pour les spores de bactéries anaérobies sulfito-réductrices. A noter le caractère agressif de l'eau mise en distribution (indice relatif à l'équilibre calco-carbonique supérieur à 2).",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "douarnenez": {
@@ -6408,7 +6424,9 @@
         "code_departement": "29",
         "insee": "29048",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : présence d'Escherichia coli, indicateur de contamination d'origine fécale. Un prélèvement de contrôle sera réalisé. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "05/11/2025"
       }
     },
     "elliant": {
@@ -6676,7 +6694,9 @@
         "code_departement": "29",
         "insee": "29051",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "le-faou": {
@@ -7078,7 +7098,9 @@
         "code_departement": "29",
         "insee": "29055",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis signalant ce dépassement. Le prélèvement de contrôle du 12/09/2025 n'a pas confirmé ce dépassement.",
+        "dateNonConforme": "09/09/2025"
       }
     },
     "la-forest-landerneau": {
@@ -7610,7 +7632,9 @@
         "code_departement": "29",
         "insee": "29059",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "gouesnach": {
@@ -9486,7 +9510,9 @@
         "code_departement": "29",
         "insee": "29073",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "guimiliau": {
@@ -10424,7 +10450,9 @@
         "code_departement": "29",
         "insee": "29080",
         "date_prelevement": "2026-06-01",
-        "conclusion": "Eau d’alimentation conforme aux limites de qualité mais ne satisfaisant pas totalement aux références de qualité en raison d’un indice relatif à l’équilibre calco carbonique supérieur à 2. Cet indice traduit le caractère naturellement peu minéralisé de l’eau, susceptible d’interagir avec les matériaux constitutifs des canalisations, sans incidence directe sur la santé du consommateur."
+        "conclusion": "Eau d’alimentation conforme aux limites de qualité mais ne satisfaisant pas totalement aux références de qualité en raison d’un indice relatif à l’équilibre calco carbonique supérieur à 2. Cet indice traduit le caractère naturellement peu minéralisé de l’eau, susceptible d’interagir avec les matériaux constitutifs des canalisations, sans incidence directe sur la santé du consommateur.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "huelgoat": {
@@ -11224,7 +11252,9 @@
         "code_departement": "29",
         "insee": "29086",
         "date_prelevement": "2026-06-01",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Concentration en chlorure de vinyle monomère conforme à la limite de qualité fixée à 0,5µg/L pour les eaux destinées à la consommation humaine en distribution."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Concentration en chlorure de vinyle monomère conforme à la limite de qualité fixée à 0,5µg/L pour les eaux destinées à la consommation humaine en distribution.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 01/06/2023. Un prélèvement de contrôle a été réalisée le 05/06/2023 et a montré le retour à la conformité",
+        "dateNonConforme": "30/05/2023"
       }
     },
     "le-juch": {
@@ -12028,7 +12058,9 @@
         "code_departement": "29",
         "insee": "29094",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis signalant ce dépassement. Le prélèvement de contrôle du 12/09/2025 n'a pas confirmé ce dépassement.",
+        "dateNonConforme": "09/09/2025"
       }
     },
     "kersaint-plabennec": {
@@ -12966,7 +12998,9 @@
         "code_departement": "29",
         "insee": "29102",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Le nouveau prélèvement de contrôle réalisé en mairie le 17 mai a donné des résultats satisfaisants.",
+        "dateNonConforme": "11/05/2022"
       }
     },
     "landerneau": {
@@ -13100,7 +13134,9 @@
         "code_departement": "29",
         "insee": "29103",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "landevennec": {
@@ -14440,7 +14476,9 @@
         "code_departement": "29",
         "insee": "29113",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "lanneanou": {
@@ -15646,7 +15684,9 @@
         "code_departement": "29",
         "insee": "29124",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis signalant ce dépassement. Le prélèvement de contrôle du 12/09/2025 n'a pas confirmé ce dépassement.",
+        "dateNonConforme": "09/09/2025"
       }
     },
     "leuhan": {
@@ -15776,7 +15816,9 @@
         "code_departement": "29",
         "insee": "29125",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis signalant ce dépassement. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "11/09/2024"
       }
     },
     "loc-brevalaire": {
@@ -16580,7 +16622,9 @@
         "code_departement": "29",
         "insee": "29133",
         "date_prelevement": "2025-12-30",
-        "conclusion": "Turbidité conforme aux exigences de qualité."
+        "conclusion": "Turbidité conforme aux exigences de qualité.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "locronan": {
@@ -18988,7 +19032,9 @@
         "code_departement": "29",
         "insee": "29153",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 5 juillet 2022. L'analyse de recontrôle du 8 juillet n'a pas confirmé la persistance de ce dépassement. Eau d'alimentation non conforme à la limite de qualité de 0,1 µg/l pour le paramètre ESA métolachlore, métabolite pertinent du S-métolachlore. Cette situation ne présente pas de risque pour la santé du consommateur au regard de la valeur sanitaire maximale de consommation de 510 µg/l définie par l’ANSES (Agence nationale de sécurité sanitaire de l’alimentation, de l’environnement et du travail) pour cette molécule et n'entraine donc pas de restrictions des usages de l’eau. A noter le caractère agressif de l'eau mise en distribution (indice relatif à l'équilibre calco-carbonique supérieur à 2). Une optimisation du traitement de reminéralisation à l'usine est nécessaire.",
+        "dateNonConforme": "05/07/2022"
       }
     },
     "ouessant": {
@@ -19122,7 +19168,9 @@
         "code_departement": "29",
         "insee": "29155",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Absence de détection de toxines de cyanobactéries."
+        "conclusion": "Absence de détection de toxines de cyanobactéries.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 29/01/2024. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. A noter le dépassement de la valeur de référence de 2 mg/l pour le carbone organique total.",
+        "dateNonConforme": "25/01/2024"
       }
     },
     "pencran": {
@@ -21266,7 +21314,9 @@
         "code_departement": "29",
         "insee": "29173",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale en lien avec une désinfection insuffisante de l'eau brute à l'unité de production. Voir avis du 11/09/2023. Un prélèvement de contrôle a été réalisé le 13/09/2023.",
+        "dateNonConforme": "07/09/2023"
       }
     },
     "ploneour-lanvern": {
@@ -21406,12 +21456,12 @@
     "plonevez-du-faou": {
       "cityName": "Plonevez-Du-Faou",
       "reseau": "029000708",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -22338,7 +22388,9 @@
         "code_departement": "29",
         "insee": "29181",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "plouegat-guerand": {
@@ -22472,7 +22524,9 @@
         "code_departement": "29",
         "insee": "29182",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "plouegat-moysan": {
@@ -23008,7 +23062,9 @@
         "code_departement": "29",
         "insee": "29186",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "plougar": {
@@ -23276,7 +23332,9 @@
         "code_departement": "29",
         "insee": "29188",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "plougastel-daoulas": {
@@ -26761,7 +26819,9 @@
         "code_departement": "29",
         "insee": "29217",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 5 juillet 2022. L'analyse de recontrôle du 8 juillet n'a pas confirmé la persistance de ce dépassement. Eau d'alimentation non conforme à la limite de qualité de 0,1 µg/l pour le paramètre ESA métolachlore, métabolite pertinent du S-métolachlore. Cette situation ne présente pas de risque pour la santé du consommateur au regard de la valeur sanitaire maximale de consommation de 510 µg/l définie par l’ANSES (Agence nationale de sécurité sanitaire de l’alimentation, de l’environnement et du travail) pour cette molécule et n'entraine donc pas de restrictions des usages de l’eau. A noter le caractère agressif de l'eau mise en distribution (indice relatif à l'équilibre calco-carbonique supérieur à 2). Une optimisation du traitement de reminéralisation à l'usine est nécessaire.",
+        "dateNonConforme": "05/07/2022"
       }
     },
     "pont-croix": {
@@ -27834,7 +27894,9 @@
         "code_departement": "29",
         "insee": "29227",
         "date_prelevement": "2026-05-11",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité en raison d'une conductivité inférieure à la valeur de référence minimale de 200µS/cm. Eau agressive. Une optimisation du traitement de neutralisation-minéralisation à l'unité de production est nécessaire."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité en raison d'une conductivité inférieure à la valeur de référence minimale de 200µS/cm. Eau agressive. Une optimisation du traitement de neutralisation-minéralisation à l'unité de production est nécessaire.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Un nouveau prélèvement de contrôle sera réalisé. A noter par ailleurs une conductivité inférieure à la valeur de référence minimale de 200 µS/cm. Eau agressive. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "08/12/2022"
       }
     },
     "primelin": {
@@ -28370,7 +28432,9 @@
         "code_departement": "29",
         "insee": "29232",
         "date_prelevement": "2026-06-11",
-        "conclusion": "Turbidité conforme aux exigences de qualité."
+        "conclusion": "Turbidité conforme aux exigences de qualité.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "quimperle": {
@@ -29040,7 +29104,9 @@
         "code_departement": "29",
         "insee": "29237",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "roscanvel": {
@@ -29710,7 +29776,9 @@
         "code_departement": "29",
         "insee": "29243",
         "date_prelevement": "2026-06-11",
-        "conclusion": "Turbidité conforme aux exigences de qualité."
+        "conclusion": "Turbidité conforme aux exigences de qualité.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "saint-derrien": {
@@ -30510,7 +30578,9 @@
         "code_departement": "29",
         "insee": "29249",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 12/02/2024. A noter une concentration en résiduel de désinfection quasi-nulle ainsi qu'un développement excessif de la flore mésophile banale cultivant à 22°C. Un prélèvement de contrôle a été réalisé le 14/02/2024.",
+        "dateNonConforme": "09/02/2024"
       }
     },
     "saint-hernin": {
@@ -30778,7 +30848,9 @@
         "code_departement": "29",
         "insee": "29251",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : Eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis du 7 mai 2025 signalant ce dépassement. Un prélèvement de contrôle a été réalisé le 12 mai et n'a pas confirmé le dépasssement de la limite de qualité pour les paramètres microbiologiques.",
+        "dateNonConforme": "05/05/2025"
       }
     },
     "saint-jean-trolimon": {
@@ -31850,7 +31922,9 @@
         "code_departement": "29",
         "insee": "29261",
         "date_prelevement": "2026-06-08",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 22/01/2024. Eau prélevée présentant un développement excessif de la flore mésophile banale cultivant à 22°C probablement en lien avec une désinf ection insuffisante. En ce qui concerne les bactéries coliformes le résultat est non interprétable du fait de la présence, dans l'échantillon, d'une flore interférente abondante. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. A noter aussi une conductivité inférieure à la valeur de référence minimale de 200 µS/cm et le dépassement de la valeur de référence de 200 µg/l pour l'aluminium, probablement en relation avec un défaut d'entretien du dispositif de neutralisation-minéralisation. Une optimisation de ce traitement à l'unité de production est nécessaire.",
+        "dateNonConforme": "19/01/2024"
       }
     },
     "saint-sauveur": {
@@ -32650,7 +32724,9 @@
         "code_departement": "29",
         "insee": "29267",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence d'entérocoques. Le prélèvement ayant été réalisé dans des conditions non satisfaisantes (robinet de la cave) et l'eau prélevée présentant un résiduel de désinfection staisfaisant, les paramètres microbiologiques on été jugés non représentatifs de l'eau distribuée.",
+        "dateNonConforme": "25/11/2025"
       }
     },
     "saint-thonan": {
@@ -33320,7 +33396,9 @@
         "code_departement": "29",
         "insee": "29272",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3. Un nouveau prélèvement de contrôle sera réalisé (courriel du 14 novembre 2022).",
+        "dateNonConforme": "09/11/2022"
       }
     },
     "santec": {
@@ -35058,7 +35136,9 @@
         "code_departement": "29",
         "insee": "29286",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "treflez": {
@@ -35724,7 +35804,9 @@
         "code_departement": "29",
         "insee": "29291",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : eau de mauvaise qualité microbiologique, contamination bactérienne d'origine fécale. Voir avis signalant ce dépassement. Le prélèvement de contrôle du 16/10/2024 n'a pas confirmé la persistance de ce dépassement. A noter une conductivité inférieure à la valeur de référence minimale de 200 µS/cm. Eau agressive. Une optimisation du traitement de neutralisation-minéralisation à l'unité de production est nécessaire. Pour les paramètres microbiologiques, lorsque le résultat indiqué est PRESENCE, il convient de considérer qu'il s'agit d'une simple détection de l'organisme dans l'eau et que le nombre de colonies est estimé entre 1 et 3.",
+        "dateNonConforme": "01/10/2024"
       }
     },
     "treguennec": {
@@ -35992,7 +36074,9 @@
         "code_departement": "29",
         "insee": "29293",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité : contamination bactérienne d'origine fécale. Voir avis du 5 juillet 2022. L'analyse de recontrôle du 8 juillet n'a pas confirmé la persistance de ce dépassement. Eau d'alimentation non conforme à la limite de qualité de 0,1 µg/l pour le paramètre ESA métolachlore, métabolite pertinent du S-métolachlore. Cette situation ne présente pas de risque pour la santé du consommateur au regard de la valeur sanitaire maximale de consommation de 510 µg/l définie par l’ANSES (Agence nationale de sécurité sanitaire de l’alimentation, de l’environnement et du travail) pour cette molécule et n'entraine donc pas de restrictions des usages de l’eau. A noter le caractère agressif de l'eau mise en distribution (indice relatif à l'équilibre calco-carbonique supérieur à 2). Une optimisation du traitement de reminéralisation à l'usine est nécessaire.",
+        "dateNonConforme": "05/07/2022"
       }
     },
     "le-trehou": {
@@ -36126,7 +36210,9 @@
         "code_departement": "29",
         "insee": "29294",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "tremaouezan": {
@@ -36260,7 +36346,9 @@
         "code_departement": "29",
         "insee": "29295",
         "date_prelevement": "2026-06-10",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau prélevée non conforme aux limites de qualité en raison de la présence de bactéries entérocoques. En ce qui concerne la microbiologie, lorsque le résultat est rendu IMCOMPTABLE du fait de la présence d'un trop grand nombre de colonies dans l'échantillon,  la présence est QUALIFIEE mais non quantifiable. Le prélèvement réalisé le 5/11/2025 à Landerneau n'a pas mis en éviden ce de contamination pour ce paramètre.",
+        "dateNonConforme": "27/10/2025"
       }
     },
     "tremeoc": {

@@ -3,7 +3,7 @@
     "code": "18",
     "name": "Cher",
     "avgScore": 6.5,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "21",
@@ -5886,11 +5886,11 @@
     "cerbois": {
       "cityName": "Cerbois",
       "reseau": "018000667",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -8566,11 +8566,11 @@
     "chery": {
       "cityName": "Chery",
       "reseau": "018000667",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -15931,7 +15931,9 @@
         "code_departement": "18",
         "insee": "18118",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau non conforme aux limites et aux références de qualité pour les par amètres Entérocoques, Coliformes et Manganèse. Des prélèvements de recontrôles sont prévus prochainement.",
+        "dateNonConforme": "23/09/2025"
       }
     },
     "jussy-champagne": {
@@ -17803,11 +17805,11 @@
     "lury-sur-arnon": {
       "cityName": "Lury-Sur-Arnon",
       "reseau": "018000667",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -38638,6 +38640,6 @@
       }
     },
     "score": 7.7,
-    "conformity": 100
+    "conformity": 99
   }
 }

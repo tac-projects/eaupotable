@@ -3,7 +3,7 @@
     "code": "54",
     "name": "Meurthe-et-Moselle",
     "avgScore": 8.4,
-    "conformRate": 100,
+    "conformRate": 98,
     "averages": {
       "nitrates": {
         "val": "13",
@@ -9229,7 +9229,9 @@
         "code_departement": "54",
         "insee": "54068",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaire  pour la molécule Chlorothalonil R471811 (0,1 µg/L) et pour le total pesticides (0,5 µg/L). Des mesures correctives sont nécessaires, afin de rétablir une situation normale dans les meilleurs délais. Un suivi renforcé est mis en place pour cette molécule.",
+        "dateNonConforme": "04/04/2024"
       }
     },
     "beuvillers": {
@@ -15661,11 +15663,11 @@
     "chaouilley": {
       "cityName": "Chaouilley",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -18603,7 +18605,9 @@
         "code_departement": "54",
         "insee": "54138",
         "date_prelevement": "2026-06-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "courbesseaux": {
@@ -21148,17 +21152,19 @@
         "code_departement": "54",
         "insee": "54157",
         "date_prelevement": "2026-06-24",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaire (0,1 μg/L) pour les molécule Dimethachlore OXA et  Métazachlore. La présence de Métazachore dans l’eau à une teneur inférieure à la  valeur sanitaire maximale (Vmax) fixée à 240 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. De plus, cette eau ne satisfait pas à la valeur-guide (0,9 μg/L) pour les molécules Métazachlore acide éthanesulfonique et Métazachlore acide oxanilique. Enfin, cette eau est non conforme à la limite de qualité réglementaire pour le paramètre turbidité. La turbidité peut engendrer un risque de contamination  microbiologiq ue et perturber la désinfection. Les mesures correctives nécessaires doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "24/09/2025"
       }
     },
     "dolcourt": {
       "cityName": "Dolcourt",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -24772,11 +24778,11 @@
     "etreval": {
       "cityName": "Etreval",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -29183,7 +29189,9 @@
         "code_departement": "54",
         "insee": "54217",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation ne satisfaisant pas aux références de qualité microbiologique règlementaires en vigueur en raison de la présence de germes de type coliformes. Toutefois, la présence seule et en faible nombre de coliformes, en l'absence de tout autre germe d'origine fécale ne présente pas de risque sanitaire pour le consommateur. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de contrôle sera réalisée prochainement afin de vérifier le retour à une situation normale."
+        "conclusion": "Eau d'alimentation ne satisfaisant pas aux références de qualité microbiologique règlementaires en vigueur en raison de la présence de germes de type coliformes. Toutefois, la présence seule et en faible nombre de coliformes, en l'absence de tout autre germe d'origine fécale ne présente pas de risque sanitaire pour le consommateur. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de contrôle sera réalisée prochainement afin de vérifier le retour à une situation normale.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité réglementaire pour les paramètres turbidité et fer. La turbidité peut engendrer un r isque de contamination microbiologique et perturber la désinfection. Le fer n'entraîne pas directement un risque sanitaire mais il induit d es effets indirects gênants pour l'usager, notamment une coloration ro uille et des goûts perceptibles.Les mesures correctives nécessaires do ivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle sera prochainement réalisée afin de vérifier le retour à u ne situation normale.",
+        "dateNonConforme": "18/02/2022"
       }
     },
     "gelaucourt": {
@@ -31467,11 +31475,11 @@
     "goviller": {
       "cityName": "Goviller",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -33070,11 +33078,11 @@
     "hammeville": {
       "cityName": "Hammeville",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -34136,7 +34144,9 @@
         "code_departement": "54",
         "insee": "54254",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "haudonville": {
@@ -34946,12 +34956,12 @@
     "herserange": {
       "cityName": "Herserange",
       "reseau": "054000699",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -35074,7 +35084,9 @@
         "code_departement": "54",
         "insee": "54261",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "hoeville": {
@@ -42038,7 +42050,9 @@
         "code_departement": "54",
         "insee": "54314",
         "date_prelevement": "2026-05-22",
-        "conclusion": "Eau d'alimentation respectant les exigences de qualité réglementaires pour les paramètres analysés. Toutefois la teneur en désinfectant (chlore libre) est élevée (> 0,3 mg/l)."
+        "conclusion": "Eau d'alimentation respectant les exigences de qualité réglementaires pour les paramètres analysés. Toutefois la teneur en désinfectant (chlore libre) est élevée (> 0,3 mg/l).",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "leyr": {
@@ -42842,7 +42856,9 @@
         "code_departement": "54",
         "insee": "54321",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation ne satisfaisant pas à la référence de qualité réglementaire pour le paramètre équilibre calcocarbonique. Cette eau présente un caractère incrustant et susceptible de provoquer des dépôts dans les conduites."
+        "conclusion": "Eau d'alimentation ne satisfaisant pas à la référence de qualité réglementaire pour le paramètre équilibre calcocarbonique. Cette eau présente un caractère incrustant et susceptible de provoquer des dépôts dans les conduites.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "longuyon": {
@@ -43110,7 +43126,9 @@
         "code_departement": "54",
         "insee": "54323",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "lorey": {
@@ -50477,7 +50495,9 @@
         "code_departement": "54",
         "insee": "54382",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "mont-sur-meurthe": {
@@ -57183,11 +57203,11 @@
     "praye": {
       "cityName": "Praye",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -65354,11 +65374,11 @@
     "saxon-sion": {
       "cityName": "Saxon-Sion",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -73906,11 +73926,11 @@
     "vezelise": {
       "cityName": "Vezelise",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -75639,7 +75659,9 @@
         "code_departement": "54",
         "insee": "54575",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les molécules Métaldéhyde et Flufénacet. La présence de ces molécules à une teneur inférieure à leur valeur sanitaire maximale (Vmax) fixée respectivement à 60 et 15 μg/l, bien que constituant une non-conformité réglementaire, ne présente pas de risque sanitaire pour le consommateur. Cette eau est également non conforme à la limite de qualité pour les molécules Flufenacet ESA et OXA pour lesquelles aucune Vmax n'est fixée. De plus, cette eau est non conforme à la limite de qualité pour le total pesticides (0,5 µg/L). A noter également que cette eau ne satisfait pas aux références de qualité pour les paramètre Carbone  Organique Total et équilibre calcocarbonique. Des mesures correctives doivent être prises afin de rétablir la qualité de l'eau. Une analyse de recontrôle est en cours.",
+        "dateNonConforme": "12/11/2025"
       }
     },
     "villers-le-rond": {
@@ -77116,11 +77138,11 @@
     "vitrey": {
       "cityName": "Vitrey",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -77786,11 +77808,11 @@
     "vroncourt": {
       "cityName": "Vroncourt",
       "reseau": "054001024",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -79322,7 +79344,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 7.9,
-    "conformity": 100
+    "score": 7.8,
+    "conformity": 94
   }
 }

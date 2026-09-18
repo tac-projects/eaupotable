@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "28",
     "name": "Eure-et-Loir",
-    "avgScore": 6.2,
-    "conformRate": 100,
+    "avgScore": 6.1,
+    "conformRate": 95,
     "averages": {
       "nitrates": {
         "val": "30",
@@ -109,7 +109,7 @@
       },
       {
         "name": "Alluyes",
-        "score": 4,
+        "score": 2,
         "slug": "alluyes"
       },
       {
@@ -526,11 +526,11 @@
     "alluyes": {
       "cityName": "Alluyes",
       "reseau": "028000556",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -1324,7 +1324,9 @@
         "code_departement": "28",
         "insee": "28010",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "commune-nouvelle-d-arrou": {
@@ -1993,7 +1995,9 @@
         "code_departement": "28",
         "insee": "28016",
         "date_prelevement": "2026-05-13",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre turbidité. Il a été demandé des actions correctives."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre turbidité. Il a été demandé des actions correctives.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur raison d'un dépassement pour le paramètre chlorothalonil R471811. Un recontrôle a été programmé. Cette non-conformité n’entraine pas de restriction d’usage pour les consommateurs,au regard des connaissances scientifiques actuelles. Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour les paramètes mesurés.",
+        "dateNonConforme": "06/09/2023"
       }
     },
     "authon-du-perche": {
@@ -2663,7 +2667,9 @@
         "code_departement": "28",
         "insee": "28023",
         "date_prelevement": "2026-06-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur en raison d'un dépassement pour le paramètre chlorothalonil R471811. Le recontrôle réalisé le 30/11/2023 confirme ce dépassement. Cette non-conformité n’entraine pas de restriction d’usage pour les consommateurs, au regard des connaissances scientifiques actuelles. Un contrôle renforcé est mis en place. Des actions correctives sont demandées à la PRPDE. Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour les paramètres mesurés.",
+        "dateNonConforme": "16/11/2023"
       }
     },
     "barjouville": {
@@ -3594,7 +3600,9 @@
         "code_departement": "28",
         "insee": "28031",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "beauvilliers": {
@@ -4130,7 +4138,9 @@
         "code_departement": "28",
         "insee": "28035",
         "date_prelevement": "2026-05-11",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison du dépassement pour le paramètre atrazine déséthyl deisopropyl. La teneur mesurée en pesticide ne nécessite pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’Environnement et du Travail (ANSES). Par ailleurs, la teneur en perchlorates est supérieure au seuil de 4 µg/l. En conséquence, et conformément à l'avis de l'ANSES, il convient de recommander à la population de limiter l'usage de l'eau du robinet pour les enfants de moins de 6 mois et de privilégier l'utilisation d'eau embouteillée pour la préparation des biberons.",
+        "dateNonConforme": "25/04/2023"
       }
     },
     "bercheres-sur-vesgre": {
@@ -4270,11 +4280,11 @@
     "berou-la-mulotiere": {
       "cityName": "Berou-La-Mulotiere",
       "reseau": "028000709",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -5476,11 +5486,11 @@
     "bonce": {
       "cityName": "Bonce",
       "reseau": "028001076",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -6548,11 +6558,11 @@
     "bouville": {
       "cityName": "Bouville",
       "reseau": "028000753",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -6676,7 +6686,9 @@
         "code_departement": "28",
         "insee": "28057",
         "date_prelevement": "2026-04-02",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité en vigueur pour l'ensemble des paramètres mesurés et non conforme aux références de qualité pour le paramètre équilibre calcocarbonique."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité en vigueur pour l'ensemble des paramètres mesurés et non conforme aux références de qualité pour le paramètre équilibre calcocarbonique.",
+        "conclusionNonConforme": "Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Eau de qualité chimique non conforme aux limites de qualité en raison de dépassements des limites réglementaires pour les paramètres nitrates et atrazine déséthyl. La consommation de cette eau est à déconseiller pour le groupe sensible constitué des femmes enceintes et des enfants de moins de 6 mois. La population devra être informée de la situation. Il est indispensable de poursuivre activement les démarches engagées, dans le cadre du schéma départemental d'alimentation en eau potable, pour revenir rapidement à une situation normale. Cette unité de distribution est concernée par la mise en demeure engagée par la commission européenne sur le non respect de la qualité de l'eau distribuée vis à vis du paramètre nitrates. La mise en place d'actions correctives pérennes est indispensable dans les plus brefs délais. Le paramètre nitrates fera maintenant l'ob jet d'un suivi trimestriel.",
+        "dateNonConforme": "17/01/2022"
       }
     },
     "brechamps": {
@@ -6816,11 +6828,11 @@
     "brezolles": {
       "cityName": "Brezolles",
       "reseau": "028000709",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -8284,7 +8296,9 @@
         "code_departement": "28",
         "insee": "28072",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "champseru": {
@@ -9354,7 +9368,9 @@
         "code_departement": "28",
         "insee": "28080",
         "date_prelevement": "2026-05-13",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre turbidité. Il a été demandé des actions correctives."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et non conforme aux références de qualité pour le paramètre turbidité. Il a été demandé des actions correctives.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur raison d'un dépassement pour le paramètre chlorothalonil R471811. Un recontrôle a été programmé. Cette non-conformité n’entraine pas de restriction d’usage pour les consommateurs,au regard des connaissances scientifiques actuelles. Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour les paramètes mesurés.",
+        "dateNonConforme": "06/09/2023"
       }
     },
     "charonville": {
@@ -11638,11 +11654,11 @@
     "clevilliers": {
       "cityName": "Clevilliers",
       "reseau": "028001029",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -11900,7 +11916,9 @@
         "code_departement": "28",
         "insee": "28103",
         "date_prelevement": "2026-03-11",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur en raison d'un dépassement pour le paramètre chlorothalonil R4 71811 . Le recontrôle du 5/10/2023 confirme ce résultat. Cette non-conformité n’entraine pas de restriction d’usage pour les consomma teurs, au regard des connaissances scientifiques actuelles. La concentration totale en pesticides atteint 0,905 µg/l, valeur supérieure à la limite de qualité de 0,5 µg/l pour le total des pesticides analysés (hors métabolites non pertinents). Un contrôle renforcé est mis en place.  Des actions correctives sont demandées à la PRPDE. Eau de qualité bactériologique conforme aux exig ences de qualité en vigueur pour les paramètres mesurés.",
+        "dateNonConforme": "14/09/2023"
       }
     },
     "coltainville": {
@@ -12174,11 +12192,11 @@
     "conie-molitard": {
       "cityName": "Conie-Molitard",
       "reseau": "028000795",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -12436,7 +12454,9 @@
         "code_departement": "28",
         "insee": "28107",
         "date_prelevement": "2026-05-11",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison du dépassement pour le paramètre atrazine déséthyl deisopropyl. La teneur mesurée en pesticide ne nécessite pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’Environnement et du Travail (ANSES). Par ailleurs, la teneur en perchlorates est supérieure au seuil de 4 µg/l. En conséquence, et conformément à l'avis de l'ANSES, il convient de recommander à la population de limiter l'usage de l'eau du robinet pour les enfants de moins de 6 mois et de privilégier l'utilisation d'eau embouteillée pour la préparation des biberons.",
+        "dateNonConforme": "25/04/2023"
       }
     },
     "cormainville": {
@@ -13782,11 +13802,11 @@
     "crucey-villages": {
       "cityName": "Crucey-Villages",
       "reseau": "028000709",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -14714,7 +14734,9 @@
         "code_departement": "28",
         "insee": "28127",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Eau de qualité chimique non conforme aux limites de qualité en raison du dépassement de la limite réglementaire pour les paramètres nitrates et ESA-metolachlore. La consommation de cette eau est à décon seiller pour le groupe sensible constitué des femmes enceintes et des enfants de moins de 6 mois. La population doit être informée de cette situation. Il est indispensable de poursuivre activement les démarches engagées, dans le cadre du schéma départemental d'alimentation en eau potable, pour revenir rapidement à une situation normale. Cette unité de distribution est concernée par la mise en demeure engagée par la commission européenne sur le non respect de la qualité de l'eau distribuée vis à vis du paramètre nitrates. La mise en place d'actions correctives pérennes est indispensable dans les plus brefs délais. Le paramètre nitrates fera maintenant l'objet d'un suivi trimestriel. Les teneurs mesurées en ESA-metolachlore ne nécessitent pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sé curité Sanitaire de l’Alimentation, de l’Environnement et du Travail (ANSES). Ce paramètre fera l'objet de nouvelles analyses lors de nos prochains contrôles sanitaires.",
+        "dateNonConforme": "11/01/2022"
       }
     },
     "dangers": {
@@ -15250,7 +15272,9 @@
         "code_departement": "28",
         "insee": "28132",
         "date_prelevement": "2026-06-15",
-        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau."
+        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison des dépassements pour les paramètres atrazine déséthyl deisopropyl, Esa-metolachlore et la somme des pesticides. Les teneurs mesurées en pesticides ne nécessi tent pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’En vironnement et du Travail (ANSES). Par ailleurs, l'absence de chlore e st toujours constatée. Je vous rappelle que la teneur en chlore doit être maintenue à une valeur proc he de 0,1 mg/l sur le réseau et ce pour limiter les contaminations bactériologiques.",
+        "dateNonConforme": "01/03/2022"
       }
     },
     "dreux": {
@@ -16060,11 +16084,11 @@
     "ermenonville-la-grande": {
       "cityName": "Ermenonville-La-Grande",
       "reseau": "028001111",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -16590,7 +16614,9 @@
         "code_departement": "28",
         "insee": "28144",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison de dépassements des limites réglementaires pour le paramètre arsenic. Je vous rappelle qu'il est nécessaire de maintenir une dilution suffisante avec l'eau de Ceton afin de délivrer une eau conforme à la réglementation.",
+        "dateNonConforme": "16/02/2022"
       }
     },
     "faverolles": {
@@ -20074,17 +20100,19 @@
         "code_departement": "28",
         "insee": "28175",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "le-gault-saint-denis": {
       "cityName": "Le Gault-Saint-Denis",
       "reseau": "028000838",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 1,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -22755,7 +22783,9 @@
         "code_departement": "28",
         "insee": "28198",
         "date_prelevement": "2026-06-15",
-        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau."
+        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison des dépassements pour les paramètres atrazine déséthyl deisopropyl, Esa-metolachlore et la somme des pesticides. Les teneurs mesurées en pesticides ne nécessi tent pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’En vironnement et du Travail (ANSES). Par ailleurs, l'absence de chlore e st toujours constatée. Je vous rappelle que la teneur en chlore doit être maintenue à une valeur proc he de 0,1 mg/l sur le réseau et ce pour limiter les contaminations bactériologiques.",
+        "dateNonConforme": "01/03/2022"
       }
     },
     "janville-en-beauce": {
@@ -23291,7 +23321,9 @@
         "code_departement": "28",
         "insee": "28202",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur en raison d'un dépassement pour le paramètre chlorothalonil R471811 . Le recontrôle du 9 octobre 2023 ne confirme pas ce dépassement. Cette non-conformité n’entraine pas de restriction d’usage pour les consommateurs, au regard des connaissances scientifiques actuelles. Un recontrôle sera réalisé ultérieurement. Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour les paramètres mesurés.",
+        "dateNonConforme": "20/09/2023"
       }
     },
     "landelles": {
@@ -24229,7 +24261,9 @@
         "code_departement": "28",
         "insee": "28211",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramèt re turbidité. Il a été demandé des actions correctives.",
+        "dateNonConforme": "03/11/2025"
       }
     },
     "loigny-la-bataille": {
@@ -27311,7 +27345,9 @@
         "code_departement": "28",
         "insee": "28236",
         "date_prelevement": "2026-05-07",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison du dépassement de la limite réglementaire pour les paramètres nitrates, chlorothalonil SA et  atrazine déséthyl. La consommation de cette eau est à déconseiller pour le groupe sensible constitué des femmes enceintes et des enfants de moins de 6 mois. La population doit être informée de cette situation. Il est indispensable de poursuivre activement les démarches engagées, dans le cadre du schéma départemental d'alimentation en eau potable, pour revenir rapidement à une situation normale.",
+        "dateNonConforme": "30/01/2026"
       }
     },
     "marolles-les-buis": {
@@ -28121,11 +28157,11 @@
     "meslay-le-vidame": {
       "cityName": "Meslay-Le-Vidame",
       "reseau": "028000878",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -29455,7 +29491,9 @@
         "code_departement": "28",
         "insee": "28256",
         "date_prelevement": "2026-06-15",
-        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau."
+        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre Atrazine Déséthyl et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil R471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en raison des dépassements pour les paramètres atrazine déséthyl deisopropyl, Esa-metolachlore et la somme des pesticides. Les teneurs mesurées en pesticides ne nécessi tent pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’En vironnement et du Travail (ANSES). Par ailleurs, l'absence de chlore e st toujours constatée. Je vous rappelle que la teneur en chlore doit être maintenue à une valeur proc he de 0,1 mg/l sur le réseau et ce pour limiter les contaminations bactériologiques.",
+        "dateNonConforme": "01/03/2022"
       }
     },
     "mondonville-saint-jean": {
@@ -29595,11 +29633,11 @@
     "montboissier": {
       "cityName": "Montboissier",
       "reseau": "028000883",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 3.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -29729,11 +29767,11 @@
     "montharville": {
       "cityName": "Montharville",
       "reseau": "028000884",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -31063,7 +31101,9 @@
         "code_departement": "28",
         "insee": "28271",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur en raison d'un dépassement pour le paramètre chlorothalonil R471811 . Le recontrôle du 9 octobre 2023 ne confirme pas ce dépassement. Cette non-conformité n’entraine pas de restriction d’usage pour les consommateurs, au regard des connaissances scientifiques actuelles. Un recontrôle sera réalisé ultérieurement. Eau de qualité bactériologique conforme aux exigences de qualité en vigueur pour les paramètres mesurés.",
+        "dateNonConforme": "20/09/2023"
       }
     },
     "mottereau": {
@@ -31995,7 +32035,9 @@
         "code_departement": "28",
         "insee": "28278",
         "date_prelevement": "2026-05-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. On observe toutefois une teneur en perchlorates supérieure au seuil de 4 µg/l. Conformément à l'avis de l'ANSES, il convient de recommander à la popu lation de limiter l'usage de l'eau du robinet pour les nourrissons de moins de 6 mois et de privilégier l'utilisation d'eau embouteillée pou r la préparation des biberons."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. On observe toutefois une teneur en perchlorates supérieure au seuil de 4 µg/l. Conformément à l'avis de l'ANSES, il convient de recommander à la popu lation de limiter l'usage de l'eau du robinet pour les nourrissons de moins de 6 mois et de privilégier l'utilisation d'eau embouteillée pou r la préparation des biberons.",
+        "conclusionNonConforme": "Eau de qualité chimique non conforme aux limites de qualité en vigueur en raison du dépassement pour le paramètre atrazine déséthyl. La teneur mesurée en pesticide ne nécessite pas de restriction de consommation de l’eau, d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l’Alimentation, de l’Environnement et du Travail (ANSES).",
+        "dateNonConforme": "25/05/2023"
       }
     },
     "nogent-le-roi": {
@@ -35751,11 +35793,11 @@
     "puiseux": {
       "cityName": "Puiseux",
       "reseau": "028001208",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -36153,11 +36195,11 @@
     "revercourt": {
       "cityName": "Revercourt",
       "reseau": "028000709",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -39368,12 +39410,12 @@
     "saint-leger-des-aubees": {
       "cityName": "Saint-Leger-Des-Aubees",
       "reseau": "028001369",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -39502,11 +39544,11 @@
     "saint-lubin-de-cravant": {
       "cityName": "Saint-Lubin-De-Cravant",
       "reseau": "028000709",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44461,11 +44503,11 @@
     "thiville": {
       "cityName": "Thiville",
       "reseau": "028000962",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -44997,11 +45039,11 @@
     "tremblay-les-villages": {
       "cityName": "Tremblay-Les-Villages",
       "reseau": "028001329",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
         "final": 2,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -45393,7 +45435,9 @@
         "code_departement": "28",
         "insee": "28395",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "trizay-les-bonneval": {
@@ -46197,7 +46241,9 @@
         "code_departement": "28",
         "insee": "28403",
         "date_prelevement": "2026-04-30",
-        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre chlorothalonil SA (R417888) et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil 471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau."
+        "conclusion": "Eau de qualité chimique non conforme en raison du dépassement de la limite de qualité en vigueur pour le paramètre chlorothalonil SA (R417888) et de la valeur  indicative de 0,9 µg/L pour le chlorothalonil 471811. Ces non-conformités n’entrainent pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES).  Un suiv i renforcé est mis en place pour le Chlorothalonil SA. Cette situation nécessite de mettre en œuvre un plan d'actions afin de rétablir la qu alité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non-conforme aux limites de qualité pour le paramètre Chlorothalonil SA (R417888) Toutefois, la teneur mesurée ne nécessite pas de restriction de consommation de l’eau d’après l’expert ise de l'ANSES. Un suivi renforcé est mis en place. Eau d'alimentation non conforme aux limites de qualité pour le paramèt re turbidité. Il a été demandé des actions correctives.",
+        "dateNonConforme": "02/10/2025"
       }
     },
     "vernouillet": {
@@ -46733,7 +46779,9 @@
         "code_departement": "28",
         "insee": "28407",
         "date_prelevement": "2026-06-29",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité en vigueur en raison d'un dépassement en nitrates. Cette valeur ne correspond pas à celle habituellement observée sur ce secteur. Le recontrôle du 17/08/2023 ne confirme pas ce résultat.",
+        "dateNonConforme": "20/07/2023"
       }
     },
     "vierville": {
@@ -47811,11 +47859,11 @@
     "vitray-en-beauce": {
       "cityName": "Vitray-En-Beauce",
       "reseau": "028000977",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -49347,6 +49395,6 @@
       }
     },
     "score": 7.7,
-    "conformity": 100
+    "conformity": 99
   }
 }

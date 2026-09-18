@@ -3,7 +3,7 @@
     "code": "36",
     "name": "Indre",
     "avgScore": 7.6,
-    "conformRate": 100,
+    "conformRate": 99,
     "averages": {
       "nitrates": {
         "val": "19",
@@ -79,7 +79,7 @@
       },
       {
         "name": "Déols",
-        "score": 2.5,
+        "score": 2,
         "slug": "deols"
       },
       {
@@ -114,7 +114,7 @@
       },
       {
         "name": "Ardentes",
-        "score": 4.5,
+        "score": 2,
         "slug": "ardentes"
       }
     ],
@@ -520,7 +520,9 @@
         "code_departement": "36",
         "insee": "36003",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "anjouin": {
@@ -660,11 +662,11 @@
     "ardentes": {
       "cityName": "Ardentes",
       "reseau": "036000008",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -788,7 +790,9 @@
         "code_departement": "36",
         "insee": "36005",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour les paramètres nitrate (50 mg/l) et Nitrates/50 + Nitrites/3 (>1 mg/L). Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent ESA-Métazachlore."
+        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour les paramètres nitrate (50 mg/l) et Nitrates/50 + Nitrites/3 (>1 mg/L). Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent ESA-Métazachlore.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les paramètres nitrates (50 mg/l) et métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Eau non-recommandée aux femmes enceintes et nourrissons de moins de 6 mois. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "argenton-sur-creuse": {
@@ -1056,7 +1060,9 @@
         "code_departement": "36",
         "insee": "36007",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "10/04/2024"
       }
     },
     "arpheuilles": {
@@ -1726,7 +1732,9 @@
         "code_departement": "36",
         "insee": "36012",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "baudres": {
@@ -1994,7 +2002,9 @@
         "code_departement": "36",
         "insee": "36014",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "beaulieu": {
@@ -2664,7 +2674,9 @@
         "code_departement": "36",
         "insee": "36019",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "bonneuil": {
@@ -2932,7 +2944,9 @@
         "code_departement": "36",
         "insee": "36021",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "bouesse": {
@@ -3200,7 +3214,9 @@
         "code_departement": "36",
         "insee": "36023",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre."
+        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre Chloridazone desphényl (0,1 μg/L). Un suivi mensuel renforcé est mis en place sur ce paramètre.",
+        "dateNonConforme": "16/09/2024"
       }
     },
     "bretagne": {
@@ -3334,7 +3350,9 @@
         "code_departement": "36",
         "insee": "36024",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "briantes": {
@@ -3468,7 +3486,9 @@
         "code_departement": "36",
         "insee": "36025",
         "date_prelevement": "2026-05-05",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "brion": {
@@ -3602,7 +3622,9 @@
         "code_departement": "36",
         "insee": "36026",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "brives": {
@@ -3736,7 +3758,9 @@
         "code_departement": "36",
         "insee": "36027",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "la-buxerette": {
@@ -4272,7 +4296,9 @@
         "code_departement": "36",
         "insee": "36031",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Les autres paramètres mesurés sont conformes aux exigences de qualité. Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Les autres paramètres mesurés sont conformes aux exigences de qualité. Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de janvier 2024 sur cette installation.",
+        "dateNonConforme": "16/11/2023"
       }
     },
     "ceaulmont": {
@@ -4406,7 +4432,9 @@
         "code_departement": "36",
         "insee": "36032",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "celon": {
@@ -4540,7 +4568,9 @@
         "code_departement": "36",
         "insee": "36033",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "chabris": {
@@ -5075,7 +5105,9 @@
         "code_departement": "36",
         "insee": "36037",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "champillet": {
@@ -5343,7 +5375,9 @@
         "code_departement": "36",
         "insee": "36040",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "la-chapelle-saint-laurian": {
@@ -5477,7 +5511,9 @@
         "code_departement": "36",
         "insee": "36041",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "chasseneuil": {
@@ -5611,7 +5647,9 @@
         "code_departement": "36",
         "insee": "36042",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "au d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "chassignolles": {
@@ -5745,7 +5783,9 @@
         "code_departement": "36",
         "insee": "36043",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "chateauroux": {
@@ -5879,7 +5919,9 @@
         "code_departement": "36",
         "insee": "36044",
         "date_prelevement": "2026-06-08",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de mai 2024 sur cette installation.",
+        "dateNonConforme": "11/04/2024"
       }
     },
     "chatillon-sur-indre": {
@@ -6146,7 +6188,9 @@
         "code_departement": "36",
         "insee": "36046",
         "date_prelevement": "2026-06-30",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Présence de Perchlorates > 4 μg/l. Eau non-recommandée pour la préparation des biberons des nourrissons de moins de 6 mois."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Présence de Perchlorates > 4 μg/l. Eau non-recommandée pour la préparation des biberons des nourrissons de moins de 6 mois.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "la-chatre-langlin": {
@@ -6682,7 +6726,9 @@
         "code_departement": "36",
         "insee": "36050",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "10/04/2024"
       }
     },
     "chitray": {
@@ -7619,7 +7665,9 @@
         "code_departement": "36",
         "insee": "36057",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "19/04/2024"
       }
     },
     "concremiers": {
@@ -8021,7 +8069,9 @@
         "code_departement": "36",
         "insee": "36060",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "crozon-sur-vauvre": {
@@ -8155,7 +8205,9 @@
         "code_departement": "36",
         "insee": "36061",
         "date_prelevement": "2026-06-03",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "cuzion": {
@@ -8295,11 +8347,11 @@
     "deols": {
       "cityName": "Déols",
       "reseau": "036000194",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 2.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -8423,7 +8475,9 @@
         "code_departement": "36",
         "insee": "36063",
         "date_prelevement": "2026-06-08",
-        "conclusion": "Eau conforme par dérogation à la limite de qualité définie pour les nitrates (valeur dérogatoire maximale 60 mg/L). Un plan d’action sur 3 ans est en cours par la collectivité pour respecter à nouveau la limite de qualité de 50 mg/L. Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Eau non conforme à la limite de pour le paramètre nitrates/50+nitrites/3. Les autres paramètres sont conformes aux exigences réglementaires."
+        "conclusion": "Eau conforme par dérogation à la limite de qualité définie pour les nitrates (valeur dérogatoire maximale 60 mg/L). Un plan d’action sur 3 ans est en cours par la collectivité pour respecter à nouveau la limite de qualité de 50 mg/L. Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Eau non conforme à la limite de pour le paramètre nitrates/50+nitrites/3. Les autres paramètres sont conformes aux exigences réglementaires.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "diors": {
@@ -8557,7 +8611,9 @@
         "code_departement": "36",
         "insee": "36064",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "diou": {
@@ -9227,7 +9283,9 @@
         "code_departement": "36",
         "insee": "36069",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "eguzon-chantome": {
@@ -9367,11 +9425,11 @@
     "etrechet": {
       "cityName": "Etrechet",
       "reseau": "036000008",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 4.5,
-        "label": "DÉGRADÉ",
-        "explanation": "La qualité de l'eau est impactée par des paramètres critiques.",
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
         "statusClass": "status-critical"
       },
       "stats": {
@@ -9495,7 +9553,9 @@
         "code_departement": "36",
         "insee": "36071",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour les paramètres nitrate (50 mg/l) et Nitrates/50 + Nitrites/3 (>1 mg/L). Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent ESA-Métazachlore."
+        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour les paramètres nitrate (50 mg/l) et Nitrates/50 + Nitrites/3 (>1 mg/L). Eau non recommandée aux femmes enceintes et aux nourrissons de moins de 6 mois. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent ESA-Métazachlore.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour les paramètres nitrates (50 mg/l) et métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Eau non-recommandée aux femmes enceintes et nourrissons de moins de 6 mois. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "feusines": {
@@ -9896,7 +9956,9 @@
         "code_departement": "36",
         "insee": "36075",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "fontgombault": {
@@ -10432,7 +10494,9 @@
         "code_departement": "36",
         "insee": "36079",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "10/04/2024"
       }
     },
     "fredille": {
@@ -10566,7 +10630,9 @@
         "code_departement": "36",
         "insee": "36080",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "gargilesse-dampierre": {
@@ -10968,7 +11034,9 @@
         "code_departement": "36",
         "insee": "36083",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "gournay": {
@@ -11370,7 +11438,9 @@
         "code_departement": "36",
         "insee": "36086",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "ingrandes": {
@@ -11638,7 +11708,9 @@
         "code_departement": "36",
         "insee": "36088",
         "date_prelevement": "2026-06-23",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "jeu-les-bois": {
@@ -12040,7 +12112,9 @@
         "code_departement": "36",
         "insee": "36091",
         "date_prelevement": "2026-05-05",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de mai 2024 sur cette installation.",
+        "dateNonConforme": "26/03/2024"
       }
     },
     "lange": {
@@ -12308,7 +12382,9 @@
         "code_departement": "36",
         "insee": "36093",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre Chloridazone desphényl (0,1 μg/L). Un suivi mensuel renforcé est mis en place sur ce paramètre.",
+        "dateNonConforme": "16/09/2024"
       }
     },
     "lignac": {
@@ -12844,7 +12920,9 @@
         "code_departement": "36",
         "insee": "36097",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "lizeray": {
@@ -12978,7 +13056,9 @@
         "code_departement": "36",
         "insee": "36098",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "lourdoueix-saint-michel": {
@@ -13246,7 +13326,9 @@
         "code_departement": "36",
         "insee": "36100",
         "date_prelevement": "2026-05-05",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de mai 2024 sur cette installation.",
+        "dateNonConforme": "26/03/2024"
       }
     },
     "luant": {
@@ -14049,7 +14131,9 @@
         "code_departement": "36",
         "insee": "36106",
         "date_prelevement": "2026-06-19",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour les paramètres turbidité (2 NFU) et Fer total (200 µg/L). Présence de germes aérobies revivifiables à 36°C."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour les paramètres turbidité (2 NFU) et Fer total (200 µg/L). Présence de germes aérobies revivifiables à 36°C.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "lye": {
@@ -14451,7 +14535,9 @@
         "code_departement": "36",
         "insee": "36109",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "maillet": {
@@ -14853,7 +14939,9 @@
         "code_departement": "36",
         "insee": "36112",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "martizay": {
@@ -14987,7 +15075,9 @@
         "code_departement": "36",
         "insee": "36113",
         "date_prelevement": "2026-06-05",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "08/04/2024"
       }
     },
     "mauvieres": {
@@ -15389,7 +15479,9 @@
         "code_departement": "36",
         "insee": "36116",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "le-menoux": {
@@ -15925,7 +16017,9 @@
         "code_departement": "36",
         "insee": "36120",
         "date_prelevement": "2026-05-21",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "meunet-planches": {
@@ -16059,7 +16153,9 @@
         "code_departement": "36",
         "insee": "36121",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "meunet-sur-vatan": {
@@ -16193,7 +16289,9 @@
         "code_departement": "36",
         "insee": "36122",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "mezieres-en-brenne": {
@@ -16461,7 +16559,9 @@
         "code_departement": "36",
         "insee": "36124",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "au d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "migny": {
@@ -16863,7 +16963,9 @@
         "code_departement": "36",
         "insee": "36127",
         "date_prelevement": "2026-05-05",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "montierchaume": {
@@ -16997,7 +17099,9 @@
         "code_departement": "36",
         "insee": "36128",
         "date_prelevement": "2026-05-20",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "montipouret": {
@@ -17131,7 +17235,9 @@
         "code_departement": "36",
         "insee": "36129",
         "date_prelevement": "2026-05-21",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "montlevicq": {
@@ -17935,7 +18041,9 @@
         "code_departement": "36",
         "insee": "36135",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre."
+        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre Chloridazone desphényl (0,1 μg/L). Un suivi mensuel renforcé est mis en place sur ce paramètre.",
+        "dateNonConforme": "16/09/2024"
       }
     },
     "murs": {
@@ -18605,7 +18713,9 @@
         "code_departement": "36",
         "insee": "36140",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "neuvy-saint-sepulchre": {
@@ -18873,7 +18983,9 @@
         "code_departement": "36",
         "insee": "36142",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "nohant-vic": {
@@ -19007,7 +19119,9 @@
         "code_departement": "36",
         "insee": "36143",
         "date_prelevement": "2026-05-21",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "nuret-le-ferron": {
@@ -19141,7 +19255,9 @@
         "code_departement": "36",
         "insee": "36144",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "au d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "obterre": {
@@ -19810,7 +19926,9 @@
         "code_departement": "36",
         "insee": "36149",
         "date_prelevement": "2026-05-12",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "07/05/2024"
       }
     },
     "parnac": {
@@ -20078,7 +20196,9 @@
         "code_departement": "36",
         "insee": "36152",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "paulnay": {
@@ -20480,7 +20600,9 @@
         "code_departement": "36",
         "insee": "36155",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "perassay": {
@@ -20748,7 +20870,9 @@
         "code_departement": "36",
         "insee": "36157",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "au d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "badecon-le-pin": {
@@ -21284,7 +21408,9 @@
         "code_departement": "36",
         "insee": "36161",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "au d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de juin 2024 sur cette installation.",
+        "dateNonConforme": "03/05/2024"
       }
     },
     "poulaines": {
@@ -21552,7 +21678,9 @@
         "code_departement": "36",
         "insee": "36163",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "pouligny-saint-martin": {
@@ -21686,7 +21814,9 @@
         "code_departement": "36",
         "insee": "36164",
         "date_prelevement": "2026-06-02",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "pouligny-saint-pierre": {
@@ -21954,7 +22084,9 @@
         "code_departement": "36",
         "insee": "36166",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "preuilly-la-ville": {
@@ -22490,7 +22622,9 @@
         "code_departement": "36",
         "insee": "36170",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "reuilly": {
@@ -23294,7 +23428,9 @@
         "code_departement": "36",
         "insee": "36176",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Mise en place d'un contrôle sanitaire renforcé mensuel à compter du mois de mai 2024 sur cette installation.",
+        "dateNonConforme": "08/04/2024"
       }
     },
     "sacierges-saint-martin": {
@@ -23696,7 +23832,9 @@
         "code_departement": "36",
         "insee": "36179",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "saint-aout": {
@@ -23830,7 +23968,9 @@
         "code_departement": "36",
         "insee": "36180",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "saint-aubin": {
@@ -24232,7 +24372,9 @@
         "code_departement": "36",
         "insee": "36184",
         "date_prelevement": "2026-05-21",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "15/04/2024"
       }
     },
     "saint-christophe-en-bazelle": {
@@ -25035,7 +25177,9 @@
         "code_departement": "36",
         "insee": "36190",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "saint-florentin": {
@@ -25169,7 +25313,9 @@
         "code_departement": "36",
         "insee": "36191",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "saint-gaultier": {
@@ -26103,7 +26249,9 @@
         "code_departement": "36",
         "insee": "36198",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "10/04/2024"
       }
     },
     "sainte-lizaigne": {
@@ -26237,7 +26385,9 @@
         "code_departement": "36",
         "insee": "36199",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "saint-marcel": {
@@ -26371,7 +26521,9 @@
         "code_departement": "36",
         "insee": "36200",
         "date_prelevement": "2026-05-19",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "22/04/2024"
       }
     },
     "saint-maur": {
@@ -26505,7 +26657,9 @@
         "code_departement": "36",
         "insee": "36202",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "saint-medard": {
@@ -27309,7 +27463,9 @@
         "code_departement": "36",
         "insee": "36209",
         "date_prelevement": "2026-06-25",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité mais non satisfaction de la référence de qualité pour le paramètre bactéries et spores sulfito-réductrices. Les résultats d'analyses de ce prélèvement ont mis en évidence un dépassement de la valeur indicative de 0,9 µg/L sur un métabolite de pesticide non pertinent, ne nécessitant pas de restriction de consommation de l’eau d’après l’expertise de l’Agence Nationale de Sécurité Sanitaire de l'Alimentation, de l'Environnement et du Travail (ANSES). Cette situation nécessite de mettre en œuvre d’un plan d'actions afin de rétablir la qualité de l'eau.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "sarzay": {
@@ -27577,7 +27733,9 @@
         "code_departement": "36",
         "insee": "36211",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "saulnay": {
@@ -28247,7 +28405,9 @@
         "code_departement": "36",
         "insee": "36216",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "semblecay": {
@@ -28515,7 +28675,9 @@
         "code_departement": "36",
         "insee": "36218",
         "date_prelevement": "2026-06-18",
-        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre."
+        "conclusion": "Eau d'alimentation non-conforme à la limite de qualité pour le paramètre Chloridazone desphényl (0,1 µg/l). Contrôle mensuel renforcé maintenu pour ce paramètre.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre Chloridazone desphényl (0,1 μg/L). Un suivi mensuel renforcé est mis en place sur ce paramètre.",
+        "dateNonConforme": "16/09/2024"
       }
     },
     "tendu": {
@@ -29051,7 +29213,9 @@
         "code_departement": "36",
         "insee": "36222",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     },
     "tilly": {
@@ -30123,7 +30287,9 @@
         "code_departement": "36",
         "insee": "36230",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "25/04/2024"
       }
     },
     "velles": {
@@ -31329,7 +31495,9 @@
         "code_departement": "36",
         "insee": "36239",
         "date_prelevement": "2026-06-09",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "09/04/2024"
       }
     },
     "vijon": {
@@ -31597,7 +31765,9 @@
         "code_departement": "36",
         "insee": "36241",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "villegongis": {
@@ -31731,7 +31901,9 @@
         "code_departement": "36",
         "insee": "36242",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "10/04/2024"
       }
     },
     "villegouin": {
@@ -31865,7 +32037,9 @@
         "code_departement": "36",
         "insee": "36243",
         "date_prelevement": "2026-06-26",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Nouveau contrôle programmé.",
+        "dateNonConforme": "08/02/2024"
       }
     },
     "villentrois-faverolles-en-berry": {
@@ -32268,7 +32442,9 @@
         "code_departement": "36",
         "insee": "36247",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "18/04/2024"
       }
     },
     "vouillon": {
@@ -32402,7 +32578,9 @@
         "code_departement": "36",
         "insee": "36248",
         "date_prelevement": "2026-06-04",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité pour le paramètre métabolite R471811 du Chlorotalonil. Cette nouvelle molécule, ajoutée au contrôle sanitaire en septembre 2023, est un métabolite pertinent soumis à la limite de qualité de 0,1 μg/L. Considérant les incertitudes scientifiques et l’attente de données avérées sur les éventuels dangers et risques, l’eau délivrée est potable malgré la présence de cette molécule au-delà de la limite de qualité applicable actuellement. Maintien du contrôle sanitaire renforcé mensuel.",
+        "dateNonConforme": "23/04/2024"
       }
     }
   },
@@ -32471,6 +32649,6 @@
       }
     },
     "score": 7.7,
-    "conformity": 100
+    "conformity": 99
   }
 }

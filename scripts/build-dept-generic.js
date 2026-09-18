@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-const { calculateCrystalScore } = require('../lib/crystal-engine');
+const { calculateCrystalScore, hasLimitExceedance } = require('../lib/crystal-engine');
 
 /**
  * SISE-EAUX UNIVERSAL ARCHIVIST
@@ -446,7 +446,34 @@ async function buildDepartment(deptCode) {
         };
 
         findParamInHierarchy(udis);
-        const crystal = calculateCrystalScore(stats, isConform);
+
+        // Verdict de non-conformité le plus récent du réseau : affiché même
+        // quand le dernier contrôle global ne couvrait pas le paramètre en
+        // dépassement (ex. pesticides mesurés en mars, contrôle conforme en juin).
+        let nonConformConclusion = null, nonConformDate = null;
+        {
+            const visited = new Set();
+            const queue = [...udis];
+            while (queue.length) {
+                const currentUdi = queue.shift();
+                if (visited.has(currentUdi)) continue;
+                visited.add(currentUdi);
+                for (const entry of (udiHistory[currentUdi] || [])) {
+                    if (entry.conclusion && entry.conclusion.toLowerCase().includes('non conforme aux limites')) {
+                        if (!nonConformDate || new Date(entry.date) > new Date(nonConformDate)) {
+                            nonConformConclusion = entry.conclusion;
+                            nonConformDate = entry.date;
+                        }
+                    }
+                }
+                if (parentTree[currentUdi]) queue.push(parentTree[currentUdi]);
+            }
+        }
+
+        // Conformité sanitaire = verdict ARS le plus récent ET aucune limite de
+        // qualité dépassée sur la dernière valeur connue de chaque paramètre.
+        const finalConform = isConform && !hasLimitExceedance(stats);
+        const crystal = calculateCrystalScore(stats, finalConform);
         const slug = makeSlug(cityName);
         
         // Restauration intelligente du nom (Accents et formatage)
@@ -487,11 +514,18 @@ async function buildDepartment(deptCode) {
 
         output.cities[slug] = {
             cityName: officialName,
-            reseau: primaryUdi, isConform, crystal, stats,
+            reseau: primaryUdi, isConform: finalConform, crystal, stats,
             prix: prices[insee] || null,
             geo: getCommuneGeo()[insee] || null,
             reseauInfo: reseauInfoCache[primaryUdi],
-            meta: { nom_distributeur: nomDistributeur, code_departement: deptCode, insee: insee, date_prelevement: lastDate, conclusion: arsConclusion }
+            meta: {
+                nom_distributeur: nomDistributeur, code_departement: deptCode, insee: insee,
+                date_prelevement: lastDate, conclusion: arsConclusion,
+                ...(nonConformConclusion ? {
+                    conclusionNonConforme: nonConformConclusion,
+                    dateNonConforme: nonConformDate ? new Date(nonConformDate).toLocaleDateString('fr-FR') : null
+                } : {})
+            }
         };
 
     }

@@ -52,10 +52,15 @@ export default function WaterReport({ data, onShare }) {
           <div className={`legal-badge ${isConform ? 'legal-ok' : 'legal-ko'}`}>
             <span>Conformité : <strong>{isConform ? 'CONFORME' : 'NON CONFORME'}</strong></span>
           </div>
-          {meta.conclusion && !isConform && (
+          {!isConform && (
             <div className="ars-conclusion-minimal">
-              <p><strong>Verdict officiel :</strong> {meta.conclusion}</p>
-              <p className="ars-educational-tip">Un dépassement sur un paramètre technique (calcaire, fer, goût) peut entraîner ce statut même si les polluants majeurs sont absents.</p>
+              <p>
+                <strong>Verdict officiel :</strong>{' '}
+                {meta.conclusionNonConforme
+                  ? `${meta.conclusionNonConforme}${meta.dateNonConforme ? ` (prélèvement du ${meta.dateNonConforme})` : ''}`
+                  : 'au moins un paramètre dépasse sa limite de qualité (voir le détail ci-dessus).'}
+              </p>
+              <p className="ars-educational-tip">Une eau peut rester propre à la consommation malgré un dépassement de limite de qualité : suivez les consignes de l&rsquo;ARS.</p>
             </div>
           )}
         </div>

@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "2A",
     "name": "Corse-du-Sud",
-    "avgScore": 9.7,
-    "conformRate": 100,
+    "avgScore": 9.6,
+    "conformRate": 98,
     "averages": {
       "nitrates": {
         "val": "2,06",
@@ -2897,7 +2897,9 @@
         "code_departement": "2A",
         "insee": "2A041",
         "date_prelevement": "2026-05-22",
-        "conclusion": "Eau d'alimentation conforme aux limites de qualité et ne satisfaisant pas aux références de qualité. Il est à noter une faible minéralisatio n. La teneur en chlore libre est excessive, et l'excès de désinfectant peut générer une odeur ou une saveur désagréable."
+        "conclusion": "Eau d'alimentation conforme aux limites de qualité et ne satisfaisant pas aux références de qualité. Il est à noter une faible minéralisatio n. La teneur en chlore libre est excessive, et l'excès de désinfectant peut générer une odeur ou une saveur désagréable.",
+        "conclusionNonConforme": "Eau d'alimentation non conforme aux limites de qualité concernant le paramètre Trihalométhanes (4 substances).",
+        "dateNonConforme": "14/04/2025"
       }
     },
     "calcatoggio": {
@@ -3435,12 +3437,12 @@
     "carbuccia": {
       "cityName": "Carbuccia",
       "reseau": "02A000623",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -7148,12 +7150,12 @@
     "guarguale": {
       "cityName": "Guarguale",
       "reseau": "02A000766",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -15746,12 +15748,12 @@
     "zerubia": {
       "cityName": "Zerubia",
       "reseau": "02A000738",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -16598,7 +16600,7 @@
         "unit": "  mg/L"
       }
     },
-    "score": 9.6,
-    "conformity": 100
+    "score": 9.5,
+    "conformity": 96
   }
 }
