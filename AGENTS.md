@@ -111,3 +111,10 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - **Retrait du test = vider `CTR_TEST_SLUGS`** (aucune autre modif). Ne pas déployer site-wide : test isolé uniquement (éviter un recrawl massif type 08/2026).
 - La variante conserve les valeurs data-driven (score, prix, date) → unicité du snippet préservée.
 - **T0 = 24/09/2026** (déploiement commit `bb796b0`) → **point de mesure J+14 = 08/10/2026** sur les 30 slugs. Comparer le CTR à position donnée via la dimension `page` seule (union A∪B), jamais sur multi-dimensions.
+
+# Audits — snapshots & diff
+
+- **`npm run audit`** (`scripts/audit-snapshot.js`, requiert `GA4_PROPERTY_ID=532538500`) : écrit `audit/YYYY-MM-DD/snapshot.json` — extract **exhaustif** GSC (pages A/B jusqu'à 25 000 lignes, requêtes, query+page, device, pays, journalier, segments par type de page) + GA4 (canaux, landing organiques A/B, appareils, events) + `report.md` lisible. Fenêtres auto : A = 30 j se terminant à J-3, B = les 30 j précédents (mêmes bornes que les rapports GSC/GA4). Métadonnées de fenêtre incluses dans le JSON.
+- **`npm run audit:diff -- --from=YYYY-MM-DD [--to=YYYY-MM-DD]`** (`scripts/audit-diff.js`) : compare deux snapshots (union A∪B), Δ clics/impressions/CTR/position par page et par segment, top 15 hausses/baisses. `--to` par défaut = dernier snapshot.
+- **Snapshots versionnés** (un commit par run). Poids ~8,5 Mo/run → à surveiller, purge possible ultérieurement (Thomas a acté de tout conserver pour l'instant).
+- **Captures Playwright** mobile (390×844, above-the-fold) copiées dans `audit/<date>/screens/` (sinon éphémères dans `/tmp/opencode`).
