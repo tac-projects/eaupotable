@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau }) {
+export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau, isConform }) {
   return (
     <section className="city-hero-section city-page-hero">
       <div className="city-hero-mesh"></div>
@@ -32,7 +32,29 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
             <p className="city-hero-subtitle">
               Analyse complète du réseau de distribution <strong>{nomReseau || cityName}</strong> basée sur les dernières données du <strong>{dateAnalyse}</strong>.
             </p>
-            
+
+            {typeof isConform === 'boolean' && (
+              <div className={`hero-conformity ${isConform ? 'is-ok' : 'is-ko'}`} role="status">
+                <span className="hero-conformity-icon" aria-hidden="true">
+                  {isConform ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <path d="M22 4 12 14.01l-3-3" />
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m10.29 3.86-8.47 14.14A2 2 0 0 0 3.53 21h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                      <line x1="12" y1="9" x2="12" y2="13" />
+                      <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                  )}
+                </span>
+                <span className="hero-conformity-text">
+                  Conformité sanitaire ARS : <strong>{isConform ? 'eau conforme' : 'non conforme'}</strong>
+                </span>
+              </div>
+            )}
+
             <div className="seo-source-line">
               <div className="source-links">
                 <a 

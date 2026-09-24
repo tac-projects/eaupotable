@@ -456,6 +456,7 @@ export default async function CityPage({ params }) {
         score={summary.crystal?.final || '--'}
         label={summary.crystal?.label || 'ANALYSE'}
         nomReseau={nomReseau}
+        isConform={summary.isConform}
       />
       <WaterApp initialCity={officialName} initialData={summary} />
     </>
