@@ -13,7 +13,8 @@
     "ga4:seo": "node scripts/ga4-seo-report.js",
     "ga4:admin": "node scripts/ga4-admin.js",
     "gsc": "node scripts/gsc-report.js",
-    "audit": "node scripts/audit-snapshot.js",
+    "audit": "node scripts/audit-snapshot.js --period=month",
+    "audit:week": "node scripts/audit-snapshot.js --period=week",
     "audit:diff": "node scripts/audit-diff.js",
     "postinstall": "partytown copylib public/~partytown"
   },

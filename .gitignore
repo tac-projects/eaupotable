@@ -46,6 +46,9 @@ next-env.d.ts
 # raw data archives
 /source-data/
 
+# audits (snapshots GSC/GA4 — hors git, cf. AGENTS.md)
+/audit/
+
 # Claude Code — local overrides only
 .claude/settings.local.json
 .claude/search-console-key.json

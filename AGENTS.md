@@ -114,7 +114,10 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 
 # Audits — snapshots & diff
 
-- **`npm run audit`** (`scripts/audit-snapshot.js`, requiert `GA4_PROPERTY_ID=532538500`) : écrit `audit/YYYY-MM-DD/snapshot.json` — extract **exhaustif** GSC (pages A/B jusqu'à 25 000 lignes, requêtes, query+page, device, pays, journalier, segments par type de page) + GA4 (canaux, landing organiques A/B, appareils, events) + `report.md` lisible. Fenêtres auto : A = 30 j se terminant à J-3, B = les 30 j précédents (mêmes bornes que les rapports GSC/GA4). Métadonnées de fenêtre incluses dans le JSON.
-- **`npm run audit:diff -- --from=YYYY-MM-DD [--to=YYYY-MM-DD]`** (`scripts/audit-diff.js`) : compare deux snapshots (union A∪B), Δ clics/impressions/CTR/position par page et par segment, top 15 hausses/baisses. `--to` par défaut = dernier snapshot.
-- **Snapshots versionnés** (un commit par run). Poids ~8,5 Mo/run → à surveiller, purge possible ultérieurement (Thomas a acté de tout conserver pour l'instant).
-- **Captures Playwright** mobile (390×844, above-the-fold) copiées dans `audit/<date>/screens/` (sinon éphémères dans `/tmp/opencode`).
+- **Snapshots HORS git** : dossier `audit/` **gitignoré** (`/audit/` dans `.gitignore`). Aucun commit de données. Pas de purge (Thomas a acté de tout conserver).
+- **`npm run audit`** (mensuel) / **`npm run audit:week`** (hebdo) — `scripts/audit-snapshot.js`, requiert `GA4_PROPERTY_ID=532538500`. Écrit `audit/monthly/YYYY-MM/` ou `audit/weekly/YYYY-Www/` : `snapshot.json` (extract **exhaustif** GSC pages A/B jusqu'à 25 000 lignes + requêtes + query+page + device + pays + journalier + segments par type de page ; GA4 canaux + landing organiques A/B + appareils + events) + `report.md`. Poids ~8,5 Mo/run.
+- **Fenêtres fixes (jamais glissantes)** : mensuel → **A = mois calendaire précédent complet**, B = le mois d'avant. Hebdo → **A = dernière semaine ISO (lun-dim) finalisée**, B = la précédente. Lag GSC de 3 j respecté (`--lag=`).
+- **Cron (crontab admin)** : `0 6 * * 2` → hebdo (mardi) ; `0 6 4 * *` → mensuel (le 4). Log : `/home/admin/eaupotable-audit.log`. Le mardi / le 4 garantissent que la période précédente est finalisée (lag GSC ~3 j).
+- **`npm run audit:diff`** (`scripts/audit-diff.js`) : compare les 2 derniers snapshots de **même cadence** (`--period=week|month`, défaut `month`), ou `--from=`/`--to=` (match sur le chemin, ex. `monthly/2026-08`). Diff GSC (totaux, segments, top 15 pages) + **GA4** (canaux, appareils, events, landing organiques), union A∪B.
+- **Captures Playwright** mobile (390×844, above-the-fold) : à déposer dans le dossier du snapshot (`screens/`) — sinon éphémères dans `/tmp/opencode`.
+- **Legacy** : `audit/legacy/2026-09-24/` = baseline one-off (fenêtres glissantes 30 j), non comparable aux runs mensuels.

@@ -14,15 +14,57 @@ const keyFile = process.env.GSC_KEY_FILE
 const site = process.env.GSC_SITE || 'sc-domain:eaupotable.net';
 const propertyId = process.env.GA4_PROPERTY_ID;
 const lagDays = parseInt(getArg('lag', '3'), 10);
-const spanDays = parseInt(getArg('days', '30'), 10);
 const rowLimit = parseInt(getArg('rows', '25000'), 10);
+const period = getArg('period', 'month');
+const runDate = new Date().toISOString().slice(0, 10);
 
-const day = (offset) => new Date(Date.now() - offset * 864e5).toISOString().slice(0, 10);
-const endA = day(lagDays);
-const startA = day(lagDays + spanDays - 1);
-const endB = day(lagDays + spanDays);
-const startB = day(lagDays + 2 * spanDays - 1);
-const runDate = day(0);
+const addDays = (d, n) => new Date(d.getTime() + n * 864e5);
+const fmtDate = (d) => d.toISOString().slice(0, 10);
+const pad = (n) => String(n).padStart(2, '0');
+
+const isoWeekOf = (d) => {
+  const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const dow = (date.getUTCDay() + 6) % 7;
+  date.setUTCDate(date.getUTCDate() - dow + 3);
+  const isoYear = date.getUTCFullYear();
+  const firstThursday = new Date(Date.UTC(isoYear, 0, 4));
+  const f = (firstThursday.getUTCDay() + 6) % 7;
+  firstThursday.setUTCDate(firstThursday.getUTCDate() - f + 3);
+  return { isoYear, week: 1 + Math.round((date - firstThursday) / (7 * 864e5)) };
+};
+
+const windowsFor = (p) => {
+  if (p === 'week') {
+    const cutoff = addDays(new Date(), -lagDays);
+    const dow = (cutoff.getUTCDay() + 6) % 7;
+    const lastSunday = addDays(cutoff, -(dow + 1));
+    const prevSunday = addDays(lastSunday, -7);
+    const { isoYear, week } = isoWeekOf(addDays(lastSunday, -3));
+    return {
+      a: { start: fmtDate(addDays(lastSunday, -6)), end: fmtDate(lastSunday) },
+      b: { start: fmtDate(addDays(prevSunday, -6)), end: fmtDate(prevSunday) },
+      label: `${isoYear}-W${pad(week)}`
+    };
+  }
+  const now = new Date();
+  const y = now.getUTCFullYear();
+  const m = now.getUTCMonth();
+  const aStart = new Date(Date.UTC(y, m - 1, 1));
+  const aEnd = new Date(Date.UTC(y, m, 0));
+  const bStart = new Date(Date.UTC(y, m - 2, 1));
+  const bEnd = new Date(Date.UTC(y, m - 1, 0));
+  return {
+    a: { start: fmtDate(aStart), end: fmtDate(aEnd) },
+    b: { start: fmtDate(bStart), end: fmtDate(bEnd) },
+    label: `${aStart.getUTCFullYear()}-${pad(aStart.getUTCMonth() + 1)}`
+  };
+};
+
+const win = windowsFor(period);
+const startA = win.a.start;
+const endA = win.a.end;
+const startB = win.b.start;
+const endB = win.b.end;
 
 const BRAND = /eaupotable|eau[\s-]?potable\.?\s?net/i;
 
@@ -96,7 +138,7 @@ const segmentPages = (rowsA, rowsB) => {
 };
 
 (async () => {
-  const outDir = path.join(__dirname, '..', 'audit', runDate);
+  const outDir = path.join(__dirname, '..', 'audit', period === 'week' ? 'weekly' : 'monthly', win.label);
   fs.mkdirSync(outDir, { recursive: true });
 
   const http = await gscClient();
@@ -125,10 +167,11 @@ const segmentPages = (rowsA, rowsB) => {
   const snapshot = {
     meta: {
       runDate,
+      period,
+      label: win.label,
       site,
       propertyId: propertyId || null,
       lagDays,
-      spanDays,
       windowA: { start: startA, end: endA },
       windowB: { start: startB, end: endB }
     },
@@ -176,8 +219,9 @@ const segmentPages = (rowsA, rowsB) => {
   const fmt = (n) => Number(n).toLocaleString('fr-FR');
   const seg = snapshot.gsc.segments;
   const lines = [
-    `# Audit snapshot — ${runDate}`,
+    `# Audit ${period === 'week' ? 'hebdomadaire' : 'mensuel'} — ${win.label}`,
     '',
+    `- Run : ${runDate}`,
     `- Fenêtre A (courante) : ${startA} → ${endA}`,
     `- Fenêtre B (précédente) : ${startB} → ${endB}`,
     `- GSC : ${site} — GA4 : ${propertyId || 'n/a'}`,
@@ -199,8 +243,8 @@ const segmentPages = (rowsA, rowsB) => {
   ];
   fs.writeFileSync(path.join(outDir, 'report.md'), lines.join('\n'));
 
-  console.log(`Snapshot écrit : audit/${runDate}/snapshot.json + report.md`);
-  console.log(`Fenêtre A ${startA}→${endA} | B ${startB}→${endB}`);
+  console.log(`Snapshot écrit : ${path.relative(path.join(__dirname, '..'), outDir)}/snapshot.json + report.md`);
+  console.log(`Période ${period} — ${win.label} | Fenêtre A ${startA}→${endA} | B ${startB}→${endB}`);
   console.log(`Pages A ${gsc.pagesA.length} / B ${gsc.pagesB.length} | Requêtes A ${gsc.queriesA.length} / B ${gsc.queriesB.length}`);
   console.log(`Clics : ${fmt(gsc.totalsB.clicks)} → ${fmt(gsc.totalsA.clicks)}`);
 })();
