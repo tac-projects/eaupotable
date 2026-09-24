@@ -137,21 +137,21 @@ const getRegionForDept = (code) => Object.keys(REGION_MAP).find(r => REGION_MAP[
 
 // 2. CONFIGURATION & SANITARY PARAMETERS (National Codes)
 const config = {
-    nitrates: { codes: ["1340", "1342"], unit: "mg/L" },
+    nitrates: { codes: ["1340"], unit: "mg/L" },
     ph: { codes: ["1302"], unit: "pH" },
     temperature: { codes: ["1301"], unit: "°C" },
     hardness: { codes: ["1345"], unit: "°f" },
-    chlorine: { codes: ["1398", "1399", "1754", "1545"], unit: "mg/L" },
-    pesticides: { codes: ["6276", "1107", "1667", "7150", "1668", "1669"], unit: "µg/L" },
-    pfas: { codes: ["7149", "8847", "8194", "8195", "8848", "8849"], unit: "µg/L" },
-    microbiology: { codes: ["1321", "1322", "1449", "1447", "1042", "1306"], unit: "Absence" },
+    chlorine: { codes: ["1398", "1399", "1754"], unit: "mg/L" },
+    pesticides: { codes: ["6276"], unit: "µg/L" },
+    pfas: { codes: ["8847", "9268"], unit: "µg/L" },
+    microbiology: { codes: ["1449", "1447", "1042", "6455", "1448"], unit: "Absence" },
     conductivity: { codes: ["1303", "1304"], unit: "µS/cm" },
-    turbidity: { codes: ["1295", "1305", "1706"], unit: "NFU" },
-    iron: { codes: ["1393", "1391"], unit: "µg/L" },
-    manganese: { codes: ["1394", "1373"], unit: "µg/L" },
-    ammonium: { codes: ["1331", "1335"], unit: "mg/L" },
-    copper: { codes: ["1392", "1370"], unit: "mg/L" },
-    organic_carbon: { codes: ["1841", "1842"], unit: "mg/L" }
+    turbidity: { codes: ["1295"], unit: "NFU" },
+    iron: { codes: ["1393"], unit: "µg/L" },
+    manganese: { codes: ["1394"], unit: "µg/L" },
+    ammonium: { codes: ["1335"], unit: "mg/L" },
+    copper: { codes: ["1392"], unit: "mg/L" },
+    organic_carbon: { codes: ["1841"], unit: "mg/L" }
 };
 
 const YEARS = ["2022", "2023", "2024", "2025", "2026"];

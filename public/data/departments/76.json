@@ -2,8 +2,8 @@
   "deptInfo": {
     "code": "76",
     "name": "Seine-Maritime",
-    "avgScore": 6,
-    "conformRate": 84,
+    "avgScore": 5.7,
+    "conformRate": 80,
     "averages": {
       "nitrates": {
         "val": "28",
@@ -26,7 +26,7 @@
         "unit": "  mg/L"
       },
       "pesticides": {
-        "val": "0,24",
+        "val": "0,29",
         "unit": "  µg/L"
       },
       "pfas": {
@@ -58,7 +58,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "0,64",
+        "val": "0,096",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -99,7 +99,7 @@
       },
       {
         "name": "Alvimare",
-        "score": 8,
+        "score": 6.5,
         "slug": "alvimare"
       },
       {
@@ -109,7 +109,7 @@
       },
       {
         "name": "Amfreville-La-Mi-Voie",
-        "score": 6.5,
+        "score": 5,
         "slug": "amfreville-la-mi-voie"
       },
       {
@@ -211,10 +211,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -251,8 +251,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76001",
-        "date_prelevement": "2025-04-07",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour le paramètre R417888 chlorothalonil. La concentration mesurée  est inférieure à la valeur sanitaire transitoire de 3 µg/l définie par précaution par le ministère de la santé. Un contrôle renforcé est mis en place pour suivre l'évolution de ce paramètre. De plus, la valeur i ndicative définie pour le chlorothalonil R471811 n’est pas satisfaite. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "alvimare": {
@@ -260,10 +260,10 @@
       "reseau": "076000457",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -297,10 +297,10 @@
           "timestamp": 1730246400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,431",
           "unit": " µg/L",
-          "date": "18/12/2024",
-          "timestamp": 1734480000000
+          "date": "27/02/2024",
+          "timestamp": 1708992000000
         },
         "pfas": {
           "val": "0",
@@ -345,10 +345,10 @@
           "timestamp": 1730246400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0095",
           "unit": " mg/L",
-          "date": "27/02/2024",
-          "timestamp": 1708992000000
+          "date": "16/06/2026",
+          "timestamp": 1781568000000
         },
         "organic_carbon": {
           "val": "0",
@@ -385,8 +385,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76002",
-        "date_prelevement": "2025-12-02",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour la chloridazone desphényl. La concentration mesurée dans le cadre du contrôle renforcé est inférieure à la valeur sanitaire maximale de 11 µg/l définie par les autorités. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-16",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "ambrumesnil": {
@@ -528,7 +528,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -565,7 +565,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -1149,10 +1149,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -1283,10 +1283,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -1417,10 +1417,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -1551,10 +1551,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -1685,10 +1685,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -2404,10 +2404,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -2441,10 +2441,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -2529,8 +2529,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76019",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "anneville-ambourville": {
@@ -2757,10 +2757,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -3025,10 +3025,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -3474,12 +3474,12 @@
     "aubeguimont": {
       "cityName": "Aubeguimont",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -3513,10 +3513,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -3601,8 +3601,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76028",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "aubermesnil-aux-erables": {
@@ -4097,10 +4097,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -4366,10 +4366,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0345",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "22/09/2025",
+          "timestamp": 1758499200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -4768,10 +4768,10 @@
           "timestamp": 1779235200000
         },
         "copper": {
-          "val": "8,6",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "18/06/2025",
+          "timestamp": 1750204800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -5122,10 +5122,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -5170,10 +5170,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -5304,10 +5304,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -5344,8 +5344,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76043",
-        "date_prelevement": "2025-04-07",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour le paramètre R417888 chlorothalonil. La concentration mesurée  est inférieure à la valeur sanitaire transitoire de 3 µg/l définie par précaution par le ministère de la santé. Un contrôle renforcé est mis en place pour suivre l'évolution de ce paramètre. De plus, la valeur i ndicative définie pour le chlorothalonil R471811 n’est pas satisfaite. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "auzouville-l-esneval": {
@@ -5438,10 +5438,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -5619,12 +5619,12 @@
     "auzouville-sur-saane": {
       "cityName": "Auzouville-Sur-Saane",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -5658,10 +5658,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -5706,10 +5706,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -5840,10 +5840,10 @@
           "timestamp": 1708560000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,16",
           "unit": " mg/L",
-          "date": "22/02/2024",
-          "timestamp": 1708560000000
+          "date": "18/10/2023",
+          "timestamp": 1697587200000
         },
         "organic_carbon": {
           "val": "0,43",
@@ -6108,10 +6108,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -6328,10 +6328,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,379",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
         },
         "pfas": {
           "val": "0,001",
@@ -6510,10 +6510,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -7046,10 +7046,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -7180,10 +7180,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -7314,10 +7314,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -7582,10 +7582,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -7631,10 +7631,10 @@
       "reseau": "076000319",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -7668,10 +7668,10 @@
           "timestamp": 1780876800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,182",
           "unit": " µg/L",
-          "date": "04/05/2026",
-          "timestamp": 1777852800000
+          "date": "15/04/2026",
+          "timestamp": 1776211200000
         },
         "pfas": {
           "val": "0",
@@ -7984,10 +7984,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -8386,10 +8386,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -8435,7 +8435,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -8472,7 +8472,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -8835,12 +8835,12 @@
     "belleville-en-caux": {
       "cityName": "Belleville-En-Caux",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -8874,10 +8874,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -8922,10 +8922,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -8969,12 +8969,12 @@
     "la-belliere": {
       "cityName": "La Belliere",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -9008,10 +9008,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -9105,10 +9105,10 @@
       "reseau": "076000319",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -9142,10 +9142,10 @@
           "timestamp": 1780876800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,182",
           "unit": " µg/L",
-          "date": "04/05/2026",
-          "timestamp": 1777852800000
+          "date": "15/04/2026",
+          "timestamp": 1776211200000
         },
         "pfas": {
           "val": "0",
@@ -9324,10 +9324,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -9592,10 +9592,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -10175,12 +10175,12 @@
     "bertrimont": {
       "cityName": "Bertrimont",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -10214,10 +10214,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -10262,10 +10262,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -10798,10 +10798,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -11602,10 +11602,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -11870,10 +11870,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -12053,7 +12053,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -12090,7 +12090,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -13076,10 +13076,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -13116,8 +13116,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76110",
-        "date_prelevement": "2025-04-07",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour le paramètre R417888 chlorothalonil. La concentration mesurée  est inférieure à la valeur sanitaire transitoire de 3 µg/l définie par précaution par le ministère de la santé. Un contrôle renforcé est mis en place pour suivre l'évolution de ce paramètre. De plus, la valeur i ndicative définie pour le chlorothalonil R471811 n’est pas satisfaite. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "bois-l-eveque": {
@@ -13259,10 +13259,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -13296,10 +13296,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -13384,8 +13384,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76112",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "boissay": {
@@ -13478,10 +13478,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -13795,7 +13795,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -13832,7 +13832,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -14636,10 +14636,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -14684,10 +14684,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -15172,10 +15172,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,169",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "pfas": {
           "val": "0,0014",
@@ -15220,10 +15220,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "3,7",
+          "val": "0,02",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -15260,8 +15260,8 @@
         "nom_distributeur": "SAUR CENTRE NORMANDIE",
         "code_departement": "76",
         "insee": "76126",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "bosville": {
@@ -15354,10 +15354,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -15622,10 +15622,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -15890,10 +15890,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -16426,10 +16426,10 @@
           "timestamp": 1758758400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0025",
           "unit": " mg/L",
-          "date": "16/06/2025",
-          "timestamp": 1750032000000
+          "date": "24/07/2024",
+          "timestamp": 1721779200000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -16560,10 +16560,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -16962,10 +16962,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -17230,10 +17230,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -17316,10 +17316,10 @@
           "timestamp": 1784505600000
         },
         "pesticides": {
-          "val": "0,05",
+          "val": "0,129",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0",
@@ -17498,10 +17498,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -17681,9 +17681,9 @@
       "reseau": "076000323",
       "isConform": true,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
+        "final": 7.5,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
         "statusClass": "status-good"
       },
       "stats": {
@@ -17718,10 +17718,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,431",
           "unit": " µg/L",
-          "date": "17/07/2025",
-          "timestamp": 1752710400000
+          "date": "21/03/2024",
+          "timestamp": 1710979200000
         },
         "pfas": {
           "val": "0",
@@ -18215,12 +18215,12 @@
     "calleville-les-deux-eglises": {
       "cityName": "Calleville-Les-Deux-Eglises",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -18254,10 +18254,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -18302,10 +18302,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -18349,12 +18349,12 @@
     "campneuseville": {
       "cityName": "Campneuseville",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -18388,10 +18388,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -18476,8 +18476,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76154",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "canehan": {
@@ -18924,10 +18924,10 @@
           "timestamp": 1784505600000
         },
         "pesticides": {
-          "val": "0,05",
+          "val": "0,129",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0",
@@ -19374,10 +19374,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -19423,10 +19423,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -19460,10 +19460,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -19548,8 +19548,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76162",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "catenay": {
@@ -19642,10 +19642,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -19776,10 +19776,10 @@
           "timestamp": 1784851200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,24",
           "unit": " mg/L",
-          "date": "29/01/2026",
-          "timestamp": 1769644800000
+          "date": "02/07/2025",
+          "timestamp": 1751414400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -19910,10 +19910,10 @@
           "timestamp": 1781568000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,048",
           "unit": " mg/L",
-          "date": "16/06/2026",
-          "timestamp": 1781568000000
+          "date": "17/02/2026",
+          "timestamp": 1771286400000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -19996,10 +19996,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -20044,10 +20044,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -20178,10 +20178,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0336",
           "unit": " mg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "24/09/2025",
+          "timestamp": 1758672000000
         },
         "organic_carbon": {
           "val": "0",
@@ -20227,10 +20227,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -20264,10 +20264,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -20352,8 +20352,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76168",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "la-cerlangue": {
@@ -20495,10 +20495,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -20532,10 +20532,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -20620,8 +20620,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76170",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "la-chapelle-saint-ouen": {
@@ -20897,10 +20897,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -20934,10 +20934,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -21022,8 +21022,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76173",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "cideville": {
@@ -21116,10 +21116,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -21920,10 +21920,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -21969,10 +21969,10 @@
       "reseau": "076000457",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -22006,10 +22006,10 @@
           "timestamp": 1730246400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,431",
           "unit": " µg/L",
-          "date": "18/12/2024",
-          "timestamp": 1734480000000
+          "date": "27/02/2024",
+          "timestamp": 1708992000000
         },
         "pfas": {
           "val": "0",
@@ -22054,10 +22054,10 @@
           "timestamp": 1730246400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0095",
           "unit": " mg/L",
-          "date": "27/02/2024",
-          "timestamp": 1708992000000
+          "date": "16/06/2026",
+          "timestamp": 1781568000000
         },
         "organic_carbon": {
           "val": "0",
@@ -22094,8 +22094,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76181",
-        "date_prelevement": "2025-12-02",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour la chloridazone desphényl. La concentration mesurée dans le cadre du contrôle renforcé est inférieure à la valeur sanitaire maximale de 11 µg/l définie par les autorités. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-16",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "cliponville": {
@@ -22237,10 +22237,10 @@
       "reseau": "076000429",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -22274,10 +22274,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,307",
           "unit": " µg/L",
-          "date": "29/12/2025",
-          "timestamp": 1766966400000
+          "date": "10/03/2025",
+          "timestamp": 1741564800000
         },
         "pfas": {
           "val": "0,004",
@@ -22676,10 +22676,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,267",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "17/06/2025",
+          "timestamp": 1750118400000
         },
         "pfas": {
           "val": "0",
@@ -22992,10 +22992,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -23528,10 +23528,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -23662,10 +23662,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -24198,10 +24198,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -24466,10 +24466,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -24647,12 +24647,12 @@
     "croixdalle": {
       "cityName": "Croixdalle",
       "reseau": "076000491",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -24686,10 +24686,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,751",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "29/01/2025",
+          "timestamp": 1738108800000
         },
         "pfas": {
           "val": "0",
@@ -24917,10 +24917,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -24954,10 +24954,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -25042,8 +25042,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76204",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "crosville-sur-scie": {
@@ -26204,10 +26204,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -26741,10 +26741,10 @@
           "timestamp": 1766966400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0098",
           "unit": " mg/L",
-          "date": "13/08/2025",
-          "timestamp": 1755043200000
+          "date": "15/05/2024",
+          "timestamp": 1715731200000
         },
         "organic_carbon": {
           "val": "0,28",
@@ -26875,10 +26875,10 @@
           "timestamp": 1670457600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,21",
           "unit": " mg/L",
-          "date": "15/03/2022",
-          "timestamp": 1647302400000
+          "date": "28/07/2026",
+          "timestamp": 1785196800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -26915,8 +26915,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76219",
-        "date_prelevement": "2026-01-23",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour la chloridazone desphényl. La concentration mesurée dans le cadre du contrôle renforcé est inférieure à la valeur sanitaire maximale de 11 µg/l   définie par les autorités. La collectivité bénéficie d'une dérogation préfectorale pendant la réalisation des études et travaux nécessaires au retour à la conformité. L'eau peut être consommée sans risque pour la santé."
+        "date_prelevement": "2026-07-28",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "douvrend": {
@@ -27728,10 +27728,10 @@
       "reseau": "076000430",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -27765,10 +27765,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,307",
           "unit": " µg/L",
-          "date": "29/12/2025",
-          "timestamp": 1766966400000
+          "date": "10/03/2025",
+          "timestamp": 1741564800000
         },
         "pfas": {
           "val": "0,005",
@@ -27947,10 +27947,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -28215,10 +28215,10 @@
           "timestamp": 1708560000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,16",
           "unit": " mg/L",
-          "date": "22/02/2024",
-          "timestamp": 1708560000000
+          "date": "18/10/2023",
+          "timestamp": 1697587200000
         },
         "organic_carbon": {
           "val": "0,43",
@@ -28349,10 +28349,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -28483,10 +28483,10 @@
           "timestamp": 1702512000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,16",
           "unit": " mg/L",
-          "date": "14/12/2023",
-          "timestamp": 1702512000000
+          "date": "14/06/2023",
+          "timestamp": 1686700800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -28532,10 +28532,10 @@
       "reseau": "076000430",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -28569,10 +28569,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,307",
           "unit": " µg/L",
-          "date": "29/12/2025",
-          "timestamp": 1766966400000
+          "date": "10/03/2025",
+          "timestamp": 1741564800000
         },
         "pfas": {
           "val": "0,005",
@@ -28703,10 +28703,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,247",
           "unit": " µg/L",
-          "date": "27/05/2026",
-          "timestamp": 1779840000000
+          "date": "12/03/2025",
+          "timestamp": 1741737600000
         },
         "pfas": {
           "val": "0",
@@ -28751,10 +28751,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0186",
           "unit": " mg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "17/06/2025",
+          "timestamp": 1750118400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -28885,10 +28885,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -29019,10 +29019,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "30/09/2025",
-          "timestamp": 1759190400000
+          "date": "13/05/2025",
+          "timestamp": 1747094400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -29689,10 +29689,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -29823,10 +29823,10 @@
           "timestamp": 1730073600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,14",
           "unit": " mg/L",
-          "date": "28/10/2024",
-          "timestamp": 1730073600000
+          "date": "25/05/2023",
+          "timestamp": 1684972800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -30091,10 +30091,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -30177,10 +30177,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,169",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "pfas": {
           "val": "0,0014",
@@ -30225,10 +30225,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "3,7",
+          "val": "0,02",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -30265,8 +30265,8 @@
         "nom_distributeur": "SAUR CENTRE NORMANDIE",
         "code_departement": "76",
         "insee": "76244",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "eslettes": {
@@ -30493,10 +30493,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -31431,10 +31431,10 @@
           "timestamp": 1781740800000
         },
         "copper": {
-          "val": "2,6",
+          "val": "0,19",
           "unit": " mg/L",
-          "date": "17/06/2025",
-          "timestamp": 1750118400000
+          "date": "24/07/2024",
+          "timestamp": 1721779200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -31517,10 +31517,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -31565,10 +31565,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -31746,12 +31746,12 @@
     "fecamp": {
       "cityName": "Fecamp",
       "reseau": "076000342",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -31785,10 +31785,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,931",
           "unit": " µg/L",
-          "date": "07/05/2026",
-          "timestamp": 1778112000000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "pfas": {
           "val": "0",
@@ -32503,10 +32503,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -32637,10 +32637,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -32991,10 +32991,10 @@
           "timestamp": 1779753600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,236",
           "unit": " µg/L",
-          "date": "20/08/2025",
-          "timestamp": 1755648000000
+          "date": "23/01/2025",
+          "timestamp": 1737590400000
         },
         "pfas": {
           "val": "0",
@@ -33527,10 +33527,10 @@
           "timestamp": 1702339200000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,405",
           "unit": " µg/L",
-          "date": "12/12/2023",
-          "timestamp": 1702339200000
+          "date": "30/11/2023",
+          "timestamp": 1701302400000
         },
         "pfas": {
           "val": "0,005",
@@ -33575,10 +33575,10 @@
           "timestamp": 1702339200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0336",
           "unit": " mg/L",
-          "date": "30/11/2023",
-          "timestamp": 1701302400000
+          "date": "22/06/2026",
+          "timestamp": 1782086400000
         },
         "organic_carbon": {
           "val": "1",
@@ -33616,7 +33616,7 @@
         "code_departement": "76",
         "insee": "76273",
         "date_prelevement": "2026-06-22",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "la-fontelaye": {
@@ -33843,10 +33843,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0336",
           "unit": " mg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "24/09/2025",
+          "timestamp": 1758672000000
         },
         "organic_carbon": {
           "val": "0",
@@ -33929,10 +33929,10 @@
           "timestamp": 1784851200000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,297",
           "unit": " µg/L",
-          "date": "09/07/2026",
-          "timestamp": 1783555200000
+          "date": "04/06/2026",
+          "timestamp": 1780531200000
         },
         "pfas": {
           "val": "0",
@@ -34160,10 +34160,10 @@
       "reseau": "076000457",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -34197,10 +34197,10 @@
           "timestamp": 1730246400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,431",
           "unit": " µg/L",
-          "date": "18/12/2024",
-          "timestamp": 1734480000000
+          "date": "27/02/2024",
+          "timestamp": 1708992000000
         },
         "pfas": {
           "val": "0",
@@ -34245,10 +34245,10 @@
           "timestamp": 1730246400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0095",
           "unit": " mg/L",
-          "date": "27/02/2024",
-          "timestamp": 1708992000000
+          "date": "16/06/2026",
+          "timestamp": 1781568000000
         },
         "organic_carbon": {
           "val": "0",
@@ -34285,8 +34285,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76279",
-        "date_prelevement": "2025-12-02",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour la chloridazone desphényl. La concentration mesurée dans le cadre du contrôle renforcé est inférieure à la valeur sanitaire maximale de 11 µg/l définie par les autorités. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-16",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "freauville": {
@@ -34331,10 +34331,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,379",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "05/02/2026",
+          "timestamp": 1770249600000
         },
         "pfas": {
           "val": "0,001",
@@ -35584,10 +35584,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0091",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "18/08/2025",
+          "timestamp": 1755475200000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -35624,8 +35624,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76289",
-        "date_prelevement": "2025-03-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2025-08-18",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "frichemesnil": {
@@ -35852,10 +35852,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -36388,10 +36388,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0566",
           "unit": " mg/L",
-          "date": "20/03/2025",
-          "timestamp": 1742428800000
+          "date": "06/11/2024",
+          "timestamp": 1730851200000
         },
         "organic_carbon": {
           "val": "0",
@@ -36522,10 +36522,10 @@
           "timestamp": 1733097600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,11",
           "unit": " mg/L",
-          "date": "02/12/2024",
-          "timestamp": 1733097600000
+          "date": "01/08/2024",
+          "timestamp": 1722470400000
         },
         "organic_carbon": {
           "val": "0",
@@ -36786,10 +36786,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -36920,10 +36920,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -37054,10 +37054,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -37456,10 +37456,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -37590,10 +37590,10 @@
           "timestamp": 1782864000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0561",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "29/06/2026",
+          "timestamp": 1782691200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -37676,10 +37676,10 @@
           "timestamp": 1784505600000
         },
         "pesticides": {
-          "val": "0,05",
+          "val": "0,129",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0",
@@ -38260,10 +38260,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -38528,10 +38528,10 @@
           "timestamp": 1779235200000
         },
         "copper": {
-          "val": "8,6",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "18/06/2025",
+          "timestamp": 1750204800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -39064,10 +39064,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -39868,10 +39868,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -40270,10 +40270,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -40404,10 +40404,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -40672,10 +40672,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -40853,12 +40853,12 @@
     "grumesnil": {
       "cityName": "Grumesnil",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -40892,10 +40892,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -41074,10 +41074,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -41342,10 +41342,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -41744,10 +41744,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -41878,10 +41878,10 @@
           "timestamp": 1670457600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,21",
           "unit": " mg/L",
-          "date": "15/03/2022",
-          "timestamp": 1647302400000
+          "date": "28/07/2026",
+          "timestamp": 1785196800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -41918,8 +41918,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76340",
-        "date_prelevement": "2026-01-23",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour la chloridazone desphényl. La concentration mesurée dans le cadre du contrôle renforcé est inférieure à la valeur sanitaire maximale de 11 µg/l   définie par les autorités. La collectivité bénéficie d'une dérogation préfectorale pendant la réalisation des études et travaux nécessaires au retour à la conformité. L'eau peut être consommée sans risque pour la santé."
+        "date_prelevement": "2026-07-28",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "hattenville": {
@@ -42059,12 +42059,12 @@
     "haucourt": {
       "cityName": "Haucourt",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -42098,10 +42098,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -42280,10 +42280,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0345",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "22/09/2025",
+          "timestamp": 1758499200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -42327,12 +42327,12 @@
     "haussez": {
       "cityName": "Haussez",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -42366,10 +42366,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -43218,10 +43218,10 @@
           "timestamp": 1782864000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0561",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "29/06/2026",
+          "timestamp": 1782691200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -43354,10 +43354,10 @@
           "timestamp": 1776211200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0665",
           "unit": " mg/L",
-          "date": "24/06/2025",
-          "timestamp": 1750723200000
+          "date": "12/05/2025",
+          "timestamp": 1747008000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -43537,10 +43537,10 @@
       "reseau": "076000510",
       "isConform": true,
       "crystal": {
-        "final": 7,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 5.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -43574,10 +43574,10 @@
           "timestamp": 1781740800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,052",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0,0275",
@@ -43662,8 +43662,8 @@
         "nom_distributeur": "VEOLIA CGE",
         "code_departement": "76",
         "insee": "76354",
-        "date_prelevement": "2026-06-22",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-06-18",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "hericourt-en-caux": {
@@ -43756,10 +43756,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -44158,10 +44158,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -44286,10 +44286,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -44335,10 +44335,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -44372,10 +44372,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -44460,8 +44460,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76360",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "heuqueville": {
@@ -44735,12 +44735,12 @@
     "hodeng-au-bosc": {
       "cityName": "Hodeng-Au-Bosc",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -44774,10 +44774,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -44862,8 +44862,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76363",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "hodeng-hodenger": {
@@ -45980,10 +45980,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,247",
           "unit": " µg/L",
-          "date": "27/05/2026",
-          "timestamp": 1779840000000
+          "date": "12/03/2025",
+          "timestamp": 1741737600000
         },
         "pfas": {
           "val": "0",
@@ -46028,10 +46028,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0186",
           "unit": " mg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "17/06/2025",
+          "timestamp": 1750118400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -46296,10 +46296,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -46382,10 +46382,10 @@
           "timestamp": 1781049600000
         },
         "pesticides": {
-          "val": "0,04",
+          "val": "0,354",
           "unit": " µg/L",
-          "date": "29/04/2026",
-          "timestamp": 1777420800000
+          "date": "17/03/2025",
+          "timestamp": 1742169600000
         },
         "pfas": {
           "val": "0",
@@ -46613,10 +46613,10 @@
       "reseau": "076000467",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENT",
-        "explanation": "Qualité remarquable, quasiment aucun polluant détecté.",
-        "statusClass": "status-excellent"
+        "final": 8,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -46650,10 +46650,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,04",
           "unit": " µg/L",
-          "date": "31/07/2026",
-          "timestamp": 1785456000000
+          "date": "26/03/2024",
+          "timestamp": 1711411200000
         },
         "pfas": {
           "val": "0",
@@ -46738,8 +46738,8 @@
         "nom_distributeur": "VEOLIA CGE",
         "code_departement": "76",
         "insee": "76378",
-        "date_prelevement": "2026-07-31",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-22",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Cependant, le taux de chlore est trop élevé."
       }
     },
     "lamberville": {
@@ -47052,10 +47052,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -47100,10 +47100,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -47281,12 +47281,12 @@
     "lestanville": {
       "cityName": "Lestanville",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -47320,10 +47320,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -47368,10 +47368,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -47636,10 +47636,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -48440,10 +48440,10 @@
           "timestamp": 1780876800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,49",
           "unit": " mg/L",
-          "date": "06/10/2025",
-          "timestamp": 1759708800000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -48487,12 +48487,12 @@
     "londinieres": {
       "cityName": "Londinieres",
       "reseau": "076000370",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -48526,7 +48526,7 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,511",
           "unit": " µg/L",
           "date": "18/03/2026",
           "timestamp": 1773792000000
@@ -48621,12 +48621,12 @@
     "longmesnil": {
       "cityName": "Longmesnil",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -48660,10 +48660,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -48842,10 +48842,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -49196,10 +49196,10 @@
           "timestamp": 1780876800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,351",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "26/03/2025",
+          "timestamp": 1742947200000
         },
         "pfas": {
           "val": "0",
@@ -49220,10 +49220,10 @@
           "timestamp": 1780876800000
         },
         "turbidity": {
-          "val": "0",
+          "val": "0,12",
           "unit": " NFU",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "08/06/2026",
+          "timestamp": 1780876800000
         },
         "iron": {
           "val": "0",
@@ -49284,8 +49284,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76397",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-06-08",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "louvetot": {
@@ -49512,10 +49512,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -49646,10 +49646,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -50450,10 +50450,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -50852,10 +50852,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0336",
           "unit": " mg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "24/09/2025",
+          "timestamp": 1758672000000
         },
         "organic_carbon": {
           "val": "0",
@@ -51072,10 +51072,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -51120,10 +51120,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -51608,10 +51608,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,169",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "pfas": {
           "val": "0,0014",
@@ -51656,10 +51656,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "3,7",
+          "val": "0,02",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -51696,8 +51696,8 @@
         "nom_distributeur": "SAUR CENTRE NORMANDIE",
         "code_departement": "76",
         "insee": "76415",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "mathonville": {
@@ -51876,10 +51876,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,169",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "pfas": {
           "val": "0,0014",
@@ -51924,10 +51924,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "3,7",
+          "val": "0,02",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -51964,8 +51964,8 @@
         "nom_distributeur": "SAUR CENTRE NORMANDIE",
         "code_departement": "76",
         "insee": "76417",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "maulevrier-sainte-gertrude": {
@@ -52192,10 +52192,10 @@
           "timestamp": 1780876800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,49",
           "unit": " mg/L",
-          "date": "06/10/2025",
-          "timestamp": 1759708800000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -52594,10 +52594,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -52862,10 +52862,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -52996,10 +52996,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -53264,10 +53264,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -53447,7 +53447,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -53484,7 +53484,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -53934,10 +53934,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -54335,10 +54335,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -54384,10 +54384,10 @@
       "reseau": "076000467",
       "isConform": true,
       "crystal": {
-        "final": 9.5,
-        "label": "EXCELLENT",
-        "explanation": "Qualité remarquable, quasiment aucun polluant détecté.",
-        "statusClass": "status-excellent"
+        "final": 8,
+        "label": "SATISFAISANT",
+        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
+        "statusClass": "status-good"
       },
       "stats": {
         "nitrates": {
@@ -54421,10 +54421,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,04",
           "unit": " µg/L",
-          "date": "31/07/2026",
-          "timestamp": 1785456000000
+          "date": "26/03/2024",
+          "timestamp": 1711411200000
         },
         "pfas": {
           "val": "0",
@@ -54509,8 +54509,8 @@
         "nom_distributeur": "VEOLIA CGE",
         "code_departement": "76",
         "insee": "76436",
-        "date_prelevement": "2026-07-31",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-22",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés. Cependant, le taux de chlore est trop élevé."
       }
     },
     "meulers": {
@@ -54737,10 +54737,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -55269,10 +55269,10 @@
           "timestamp": 1781049600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0193",
           "unit": " mg/L",
-          "date": "22/05/2025",
-          "timestamp": 1747872000000
+          "date": "25/09/2024",
+          "timestamp": 1727222400000
         },
         "organic_carbon": {
           "val": "0",
@@ -55805,10 +55805,10 @@
           "timestamp": 1785283200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0561",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "29/06/2026",
+          "timestamp": 1782691200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -55938,10 +55938,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,15",
           "unit": " mg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,6",
@@ -56072,10 +56072,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -56560,10 +56560,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,453",
           "unit": " µg/L",
-          "date": "04/09/2025",
-          "timestamp": 1756944000000
+          "date": "12/05/2025",
+          "timestamp": 1747008000000
         },
         "pfas": {
           "val": "0",
@@ -56742,10 +56742,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -57010,10 +57010,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -57412,10 +57412,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -57814,10 +57814,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -58082,10 +58082,10 @@
           "timestamp": 1779235200000
         },
         "copper": {
-          "val": "8,6",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "18/06/2025",
+          "timestamp": 1750204800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -58216,10 +58216,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -58752,10 +58752,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -58838,10 +58838,10 @@
           "timestamp": 1785369600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,484",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "19/06/2025",
+          "timestamp": 1750291200000
         },
         "pfas": {
           "val": "0",
@@ -58933,12 +58933,12 @@
     "notre-dame-d-aliermont": {
       "cityName": "Notre-Dame-D'aliermont",
       "reseau": "076000491",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -58972,10 +58972,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,751",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "29/01/2025",
+          "timestamp": 1738108800000
         },
         "pfas": {
           "val": "0",
@@ -59337,7 +59337,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -59374,7 +59374,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -59740,10 +59740,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -59777,10 +59777,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -59865,8 +59865,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76478",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "nullemont": {
@@ -59911,10 +59911,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -59959,10 +59959,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -60227,10 +60227,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0336",
           "unit": " mg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "24/09/2025",
+          "timestamp": 1758672000000
         },
         "organic_carbon": {
           "val": "0",
@@ -60495,10 +60495,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -60897,10 +60897,10 @@
           "timestamp": 1703721600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0494",
           "unit": " mg/L",
-          "date": "14/12/2023",
-          "timestamp": 1702512000000
+          "date": "23/10/2023",
+          "timestamp": 1698019200000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -61433,10 +61433,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -61787,10 +61787,10 @@
           "timestamp": 1781049600000
         },
         "pesticides": {
-          "val": "0,04",
+          "val": "0,354",
           "unit": " µg/L",
-          "date": "29/04/2026",
-          "timestamp": 1777420800000
+          "date": "17/03/2025",
+          "timestamp": 1742169600000
         },
         "pfas": {
           "val": "0",
@@ -62103,10 +62103,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -62457,10 +62457,10 @@
           "timestamp": 1785369600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,484",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "19/06/2025",
+          "timestamp": 1750291200000
         },
         "pfas": {
           "val": "0",
@@ -63222,12 +63222,12 @@
     "pommereux": {
       "cityName": "Pommereux",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -63261,10 +63261,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -63797,10 +63797,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,453",
           "unit": " µg/L",
-          "date": "04/09/2025",
-          "timestamp": 1756944000000
+          "date": "12/05/2025",
+          "timestamp": 1747008000000
         },
         "pfas": {
           "val": "0",
@@ -64296,10 +64296,10 @@
       "reseau": "076000510",
       "isConform": true,
       "crystal": {
-        "final": 7,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 5.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -64333,10 +64333,10 @@
           "timestamp": 1781740800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,052",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0,0275",
@@ -64421,8 +64421,8 @@
         "nom_distributeur": "VEOLIA CGE",
         "code_departement": "76",
         "insee": "76513",
-        "date_prelevement": "2026-06-22",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-06-18",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "quevreville-la-poterie": {
@@ -64515,10 +64515,10 @@
           "timestamp": 1779235200000
         },
         "copper": {
-          "val": "8,6",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "18/06/2025",
+          "timestamp": 1750204800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -64649,10 +64649,10 @@
           "timestamp": 1782086400000
         },
         "copper": {
-          "val": "4,7",
+          "val": "0,0488",
           "unit": " mg/L",
-          "date": "27/01/2025",
-          "timestamp": 1737936000000
+          "date": "22/11/2022",
+          "timestamp": 1669075200000
         },
         "organic_carbon": {
           "val": "0,55",
@@ -64735,10 +64735,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0,01",
+          "val": "0,169",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "02/02/2026",
+          "timestamp": 1769990400000
         },
         "pfas": {
           "val": "0,0014",
@@ -64783,10 +64783,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "3,7",
+          "val": "0,02",
           "unit": " mg/L",
-          "date": "02/02/2026",
-          "timestamp": 1769990400000
+          "date": "26/08/2025",
+          "timestamp": 1756166400000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -64823,8 +64823,8 @@
         "nom_distributeur": "SAUR CENTRE NORMANDIE",
         "code_departement": "76",
         "insee": "76516",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "quincampoix": {
@@ -65185,10 +65185,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -65232,12 +65232,12 @@
     "realcamp": {
       "cityName": "Realcamp",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -65271,10 +65271,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -65359,8 +65359,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76520",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "rebets": {
@@ -65634,12 +65634,12 @@
     "retonval": {
       "cityName": "Retonval",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -65673,10 +65673,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -65761,8 +65761,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76523",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "reuville": {
@@ -66036,12 +66036,12 @@
     "richemont": {
       "cityName": "Richemont",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -66075,10 +66075,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -66163,8 +66163,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76527",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "rieux": {
@@ -66391,10 +66391,10 @@
           "timestamp": 1666656000000
         },
         "copper": {
-          "val": "25",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "13/09/2022",
-          "timestamp": 1663027200000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -66431,8 +66431,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76529",
-        "date_prelevement": "2025-04-07",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour le paramètre R417888 chlorothalonil. La concentration mesurée  est inférieure à la valeur sanitaire transitoire de 3 µg/l définie par précaution par le ministère de la santé. Un contrôle renforcé est mis en place pour suivre l'évolution de ce paramètre. De plus, la valeur i ndicative définie pour le chlorothalonil R471811 n’est pas satisfaite. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "robertot": {
@@ -66525,10 +66525,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -66927,10 +66927,10 @@
           "timestamp": 1782864000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0561",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "29/06/2026",
+          "timestamp": 1782691200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -67415,10 +67415,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,267",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "17/06/2025",
+          "timestamp": 1750118400000
         },
         "pfas": {
           "val": "0",
@@ -68000,10 +68000,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "22",
+          "val": "0,017",
           "unit": " mg/L",
-          "date": "22/11/2022",
-          "timestamp": 1669075200000
+          "date": "04/10/2022",
+          "timestamp": 1664841600000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -68536,10 +68536,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -68938,10 +68938,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -69387,12 +69387,12 @@
     "sainte-agathe-d-aliermont": {
       "cityName": "Sainte-Agathe-D'aliermont",
       "reseau": "076000491",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -69426,10 +69426,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,751",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "29/01/2025",
+          "timestamp": 1738108800000
         },
         "pfas": {
           "val": "0",
@@ -69608,10 +69608,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -70059,7 +70059,7 @@
       "reseau": "076000420",
       "isConform": true,
       "crystal": {
-        "final": 6.5,
+        "final": 5,
         "label": "MÉDIOCRE",
         "explanation": "Qualité passable présentant plusieurs points de vigilance.",
         "statusClass": "status-warning"
@@ -70096,7 +70096,7 @@
           "timestamp": 1782345600000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,096",
           "unit": " µg/L",
           "date": "28/05/2026",
           "timestamp": 1779926400000
@@ -70412,10 +70412,10 @@
           "timestamp": 1732492800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0433",
           "unit": " mg/L",
-          "date": "18/09/2024",
-          "timestamp": 1726617600000
+          "date": "16/09/2024",
+          "timestamp": 1726444800000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -71216,10 +71216,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -71350,10 +71350,10 @@
           "timestamp": 1780963200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0326",
           "unit": " mg/L",
-          "date": "04/06/2025",
-          "timestamp": 1748995200000
+          "date": "22/10/2024",
+          "timestamp": 1729555200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -71704,10 +71704,10 @@
           "timestamp": 1780876800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,351",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "26/03/2025",
+          "timestamp": 1742947200000
         },
         "pfas": {
           "val": "0",
@@ -71728,10 +71728,10 @@
           "timestamp": 1780876800000
         },
         "turbidity": {
-          "val": "0",
+          "val": "0,12",
           "unit": " NFU",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "08/06/2026",
+          "timestamp": 1780876800000
         },
         "iron": {
           "val": "0",
@@ -71792,8 +71792,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76570",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-06-08",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "sainte-croix-sur-buchy": {
@@ -71886,10 +71886,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -72020,10 +72020,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -72288,10 +72288,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0061",
           "unit": " mg/L",
-          "date": "04/04/2025",
-          "timestamp": 1743724800000
+          "date": "14/10/2024",
+          "timestamp": 1728864000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -72605,10 +72605,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -72642,10 +72642,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -72730,8 +72730,8 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76577",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "sainte-genevieve": {
@@ -72776,10 +72776,10 @@
           "timestamp": 1779753600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,236",
           "unit": " µg/L",
-          "date": "20/08/2025",
-          "timestamp": 1755648000000
+          "date": "23/01/2025",
+          "timestamp": 1737590400000
         },
         "pfas": {
           "val": "0",
@@ -73092,10 +73092,10 @@
           "timestamp": 1782691200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "03/11/2025",
-          "timestamp": 1762128000000
+          "date": "06/08/2025",
+          "timestamp": 1754438400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -73494,10 +73494,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -73811,10 +73811,10 @@
       "reseau": "076000430",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -73848,10 +73848,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,307",
           "unit": " µg/L",
-          "date": "29/12/2025",
-          "timestamp": 1766966400000
+          "date": "10/03/2025",
+          "timestamp": 1741564800000
         },
         "pfas": {
           "val": "0,005",
@@ -74079,10 +74079,10 @@
       "reseau": "076000468",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -74116,10 +74116,10 @@
           "timestamp": 1783382400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,13",
           "unit": " µg/L",
-          "date": "27/07/2026",
-          "timestamp": 1785110400000
+          "date": "16/03/2026",
+          "timestamp": 1773619200000
         },
         "pfas": {
           "val": "0",
@@ -74204,19 +74204,19 @@
         "nom_distributeur": "HYDRA",
         "code_departement": "76",
         "insee": "76589",
-        "date_prelevement": "2026-07-27",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-07",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "saint-jacques-d-aliermont": {
       "cityName": "Saint-Jacques-D'aliermont",
       "reseau": "076000491",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -74250,10 +74250,10 @@
           "timestamp": 1785283200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,751",
           "unit": " µg/L",
-          "date": "29/07/2026",
-          "timestamp": 1785283200000
+          "date": "29/01/2025",
+          "timestamp": 1738108800000
         },
         "pfas": {
           "val": "0",
@@ -75102,10 +75102,10 @@
           "timestamp": 1785369600000
         },
         "copper": {
-          "val": "0",
+          "val": "1,1",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "21/01/2026",
+          "timestamp": 1768953600000
         },
         "organic_carbon": {
           "val": "0",
@@ -75283,12 +75283,12 @@
     "saint-leger-aux-bois": {
       "cityName": "Saint-Leger-Aux-Bois",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -75322,10 +75322,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -75410,8 +75410,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76598",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "saint-leger-du-bourg-denis": {
@@ -75504,10 +75504,10 @@
           "timestamp": 1782172800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0847",
           "unit": " mg/L",
-          "date": "13/03/2025",
-          "timestamp": 1741824000000
+          "date": "30/10/2024",
+          "timestamp": 1730246400000
         },
         "organic_carbon": {
           "val": "0,5",
@@ -75551,12 +75551,12 @@
     "saint-leonard": {
       "cityName": "Saint-Leonard",
       "reseau": "076000342",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -75590,10 +75590,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,931",
           "unit": " µg/L",
-          "date": "07/05/2026",
-          "timestamp": 1778112000000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "pfas": {
           "val": "0",
@@ -75906,10 +75906,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -75955,10 +75955,10 @@
       "reseau": "076000319",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -75992,10 +75992,10 @@
           "timestamp": 1780876800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,182",
           "unit": " µg/L",
-          "date": "04/05/2026",
-          "timestamp": 1777852800000
+          "date": "15/04/2026",
+          "timestamp": 1776211200000
         },
         "pfas": {
           "val": "0",
@@ -76260,10 +76260,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,247",
           "unit": " µg/L",
-          "date": "27/05/2026",
-          "timestamp": 1779840000000
+          "date": "12/03/2025",
+          "timestamp": 1741737600000
         },
         "pfas": {
           "val": "0",
@@ -76308,10 +76308,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0186",
           "unit": " mg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "17/06/2025",
+          "timestamp": 1750118400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -76844,10 +76844,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -76891,12 +76891,12 @@
     "saint-martin-au-bosc": {
       "cityName": "Saint-Martin-Au-Bosc",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -76930,10 +76930,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -77018,8 +77018,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76612",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "saint-martin-aux-buneaux": {
@@ -77112,10 +77112,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -77162,10 +77162,10 @@
       "reseau": "076000510",
       "isConform": true,
       "crystal": {
-        "final": 7,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 5.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -77199,10 +77199,10 @@
           "timestamp": 1781740800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,052",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0,0275",
@@ -77287,8 +77287,8 @@
         "nom_distributeur": "VEOLIA CGE",
         "code_departement": "76",
         "insee": "76614",
-        "date_prelevement": "2026-06-22",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-06-18",
+        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
       }
     },
     "saint-martin-du-bec": {
@@ -77515,10 +77515,10 @@
           "timestamp": 1733097600000
         },
         "copper": {
-          "val": "0",
+          "val": "0,11",
           "unit": " mg/L",
-          "date": "02/12/2024",
-          "timestamp": 1733097600000
+          "date": "01/08/2024",
+          "timestamp": 1722470400000
         },
         "organic_carbon": {
           "val": "0",
@@ -78053,10 +78053,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0405",
           "unit": " mg/L",
-          "date": "08/10/2025",
-          "timestamp": 1759881600000
+          "date": "21/08/2024",
+          "timestamp": 1724198400000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -78273,10 +78273,10 @@
           "timestamp": 1785369600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,484",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "19/06/2025",
+          "timestamp": 1750291200000
         },
         "pfas": {
           "val": "0",
@@ -78368,12 +78368,12 @@
     "saint-michel-d-halescourt": {
       "cityName": "Saint-Michel-D'halescourt",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -78407,10 +78407,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -79038,12 +79038,12 @@
     "saint-ouen-le-mauger": {
       "cityName": "Saint-Ouen-Le-Mauger",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -79077,10 +79077,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -79125,10 +79125,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -79393,10 +79393,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -79440,12 +79440,12 @@
     "saint-pierre-benouville": {
       "cityName": "Saint-Pierre-Benouville",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -79479,10 +79479,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -79527,10 +79527,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -79747,10 +79747,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -79795,10 +79795,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -79929,10 +79929,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -80063,10 +80063,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -80197,10 +80197,10 @@
           "timestamp": 1781740800000
         },
         "copper": {
-          "val": "2,6",
+          "val": "0,19",
           "unit": " mg/L",
-          "date": "17/06/2025",
-          "timestamp": 1750118400000
+          "date": "24/07/2024",
+          "timestamp": 1721779200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -80733,10 +80733,10 @@
           "timestamp": 1781740800000
         },
         "copper": {
-          "val": "2,6",
+          "val": "0,19",
           "unit": " mg/L",
-          "date": "17/06/2025",
-          "timestamp": 1750118400000
+          "date": "24/07/2024",
+          "timestamp": 1721779200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -80953,10 +80953,10 @@
           "timestamp": 1781049600000
         },
         "pesticides": {
-          "val": "0,04",
+          "val": "0,354",
           "unit": " µg/L",
-          "date": "29/04/2026",
-          "timestamp": 1777420800000
+          "date": "17/03/2025",
+          "timestamp": 1742169600000
         },
         "pfas": {
           "val": "0",
@@ -81403,10 +81403,10 @@
           "timestamp": 1783382400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0536",
           "unit": " mg/L",
-          "date": "25/03/2025",
-          "timestamp": 1742860800000
+          "date": "04/06/2024",
+          "timestamp": 1717459200000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -81623,10 +81623,10 @@
           "timestamp": 1781049600000
         },
         "pesticides": {
-          "val": "0,04",
+          "val": "0,354",
           "unit": " µg/L",
-          "date": "29/04/2026",
-          "timestamp": 1777420800000
+          "date": "17/03/2025",
+          "timestamp": 1742169600000
         },
         "pfas": {
           "val": "0",
@@ -82695,10 +82695,10 @@
           "timestamp": 1784505600000
         },
         "pesticides": {
-          "val": "0,05",
+          "val": "0,129",
           "unit": " µg/L",
-          "date": "21/05/2026",
-          "timestamp": 1779321600000
+          "date": "22/04/2026",
+          "timestamp": 1776816000000
         },
         "pfas": {
           "val": "0",
@@ -82877,10 +82877,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -83192,12 +83192,12 @@
     "saumont-la-poterie": {
       "cityName": "Saumont-La-Poterie",
       "reseau": "076000453",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 6.5,
-        "label": "MÉDIOCRE",
-        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
-        "statusClass": "status-warning"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -83231,10 +83231,10 @@
           "timestamp": 1782950400000
         },
         "pesticides": {
-          "val": "0,08",
+          "val": "0,507",
           "unit": " µg/L",
-          "date": "30/03/2026",
-          "timestamp": 1774828800000
+          "date": "27/05/2025",
+          "timestamp": 1748304000000
         },
         "pfas": {
           "val": "0",
@@ -83547,10 +83547,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -83730,10 +83730,10 @@
       "reseau": "076000430",
       "isConform": true,
       "crystal": {
-        "final": 7.5,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -83767,10 +83767,10 @@
           "timestamp": 1784678400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,307",
           "unit": " µg/L",
-          "date": "29/12/2025",
-          "timestamp": 1766966400000
+          "date": "10/03/2025",
+          "timestamp": 1741564800000
         },
         "pfas": {
           "val": "0,005",
@@ -84571,10 +84571,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,187",
           "unit": " µg/L",
-          "date": "23/07/2026",
-          "timestamp": 1784764800000
+          "date": "16/12/2025",
+          "timestamp": 1765843200000
         },
         "pfas": {
           "val": "0",
@@ -84619,10 +84619,10 @@
           "timestamp": 1784764800000
         },
         "copper": {
-          "val": "5,5",
+          "val": "0,0585",
           "unit": " mg/L",
-          "date": "16/12/2025",
-          "timestamp": 1765843200000
+          "date": "25/08/2025",
+          "timestamp": 1756080000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -84705,10 +84705,10 @@
           "timestamp": 1779753600000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,236",
           "unit": " µg/L",
-          "date": "20/08/2025",
-          "timestamp": 1755648000000
+          "date": "23/01/2025",
+          "timestamp": 1737590400000
         },
         "pfas": {
           "val": "0",
@@ -84887,10 +84887,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -85691,10 +85691,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -85825,10 +85825,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -86495,10 +86495,10 @@
           "timestamp": 1669766400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "30/11/2022",
-          "timestamp": 1669766400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "1,45",
@@ -86763,10 +86763,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -86897,10 +86897,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "4,5",
+          "val": "0,0527",
           "unit": " mg/L",
-          "date": "25/02/2025",
-          "timestamp": 1740441600000
+          "date": "16/07/2024",
+          "timestamp": 1721088000000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -87567,10 +87567,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0091",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "18/08/2025",
+          "timestamp": 1755475200000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -87607,8 +87607,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76702",
-        "date_prelevement": "2025-03-17",
-        "conclusion": "Eau d'alimentation conforme aux exigences de qualité en vigueur pour l'ensemble des paramètres mesurés."
+        "date_prelevement": "2025-08-18",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "touffreville-sur-eu": {
@@ -87969,10 +87969,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -88956,10 +88956,10 @@
       "reseau": "076000457",
       "isConform": true,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 6.5,
+        "label": "MÉDIOCRE",
+        "explanation": "Qualité passable présentant plusieurs points de vigilance.",
+        "statusClass": "status-warning"
       },
       "stats": {
         "nitrates": {
@@ -88993,10 +88993,10 @@
           "timestamp": 1730246400000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,431",
           "unit": " µg/L",
-          "date": "18/12/2024",
-          "timestamp": 1734480000000
+          "date": "27/02/2024",
+          "timestamp": 1708992000000
         },
         "pfas": {
           "val": "0",
@@ -89041,10 +89041,10 @@
           "timestamp": 1730246400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,93",
           "unit": " mg/L",
-          "date": "27/02/2024",
-          "timestamp": 1708992000000
+          "date": "08/09/2025",
+          "timestamp": 1757289600000
         },
         "organic_carbon": {
           "val": "0",
@@ -89081,8 +89081,8 @@
         "nom_distributeur": "STGS",
         "code_departement": "76",
         "insee": "76715",
-        "date_prelevement": "2025-03-19",
-        "conclusion": "Qualité bactériologique non conforme aux exigences de qualité en vigueur sur le prélèvement réalisé, une deuxième analyse de contrôle a été effectuée. De plus, l'eau d'alimentation est non conforme aux ex igences de qualité fixées pour la chloridazone desphényl et la chlorid azone méthyl desphényl. Les concentrations mesurées dans le cadre du c ontrôle renforcé sont inférieures aux valeurs sanitaires maximales déf inies par les autorités, y compris en cas de présence simultanée. La c ollectivité bénéficie d'une dérogation préfectorale pendant la réalisa tion des études et travaux nécessaires au retour à la conformité. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2025-09-08",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "turretot": {
@@ -89443,10 +89443,10 @@
           "timestamp": 1668643200000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0072",
           "unit": " mg/L",
-          "date": "03/02/2022",
-          "timestamp": 1643846400000
+          "date": "23/06/2026",
+          "timestamp": 1782172800000
         },
         "organic_carbon": {
           "val": "0,25",
@@ -89483,8 +89483,8 @@
         "nom_distributeur": "SYN. CAUX CENTRAL",
         "code_departement": "76",
         "insee": "76718",
-        "date_prelevement": "2025-04-07",
-        "conclusion": "Eau d'alimentation non conforme aux exigences de qualité fixées pour le paramètre R417888 chlorothalonil. La concentration mesurée  est inférieure à la valeur sanitaire transitoire de 3 µg/l définie par précaution par le ministère de la santé. Un contrôle renforcé est mis en place pour suivre l'évolution de ce paramètre. De plus, la valeur i ndicative définie pour le chlorothalonil R471811 n’est pas satisfaite. L'eau peut être consommée sans restriction d'usage."
+        "date_prelevement": "2026-06-23",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "valmont": {
@@ -90381,10 +90381,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -90917,10 +90917,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,021",
           "unit": " mg/L",
-          "date": "03/02/2026",
-          "timestamp": 1770076800000
+          "date": "16/06/2025",
+          "timestamp": 1750032000000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -91902,12 +91902,12 @@
     "vieux-rouen-sur-bresle": {
       "cityName": "Vieux-Rouen-Sur-Bresle",
       "reseau": "076000509",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 8,
-        "label": "SATISFAISANT",
-        "explanation": "Une eau saine qui respecte les équilibres fondamentaux.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -91941,10 +91941,10 @@
           "timestamp": 1782259200000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,631",
           "unit": " µg/L",
-          "date": "30/07/2026",
-          "timestamp": 1785369600000
+          "date": "20/05/2025",
+          "timestamp": 1747699200000
         },
         "pfas": {
           "val": "0",
@@ -92029,8 +92029,8 @@
         "nom_distributeur": "SYN. ENTRE  BRESLE ET YERES",
         "code_departement": "76",
         "insee": "76739",
-        "date_prelevement": "2026-07-30",
-        "conclusion": "Eau conforme aux exigences de qualité pour l'ensemble des paramètres mesurés. Cette analyse fait partie d'un suivi renforcé."
+        "date_prelevement": "2026-07-21",
+        "conclusion": "Eau d'alimentation conforme, le jour du prélèvement, aux exigences de qualité pour l'ensemble des paramètres mesurés. Nota Bene : Les teneurs ne valent que pour le point d'utilisation où elles ont été mesurées. Compte tenu de l'influence du réseau de distribution d'eau (réseau intérieur et éventuellement branchement public) sur la dissolution des métaux, ces valeurs ne sont pas représentatives de la qualité de l'eau pour l'ensemble des consommateurs du réseau de distribution."
       }
     },
     "la-vieux-rue": {
@@ -92075,10 +92075,10 @@
           "timestamp": 1784764800000
         },
         "pesticides": {
-          "val": "0,02",
+          "val": "0,453",
           "unit": " µg/L",
-          "date": "04/09/2025",
-          "timestamp": 1756944000000
+          "date": "12/05/2025",
+          "timestamp": 1747008000000
         },
         "pfas": {
           "val": "0",
@@ -92391,10 +92391,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0299",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "26/02/2026",
+          "timestamp": 1772064000000
         },
         "organic_carbon": {
           "val": "0",
@@ -92793,10 +92793,10 @@
           "timestamp": 1781654400000
         },
         "copper": {
-          "val": "6,2",
+          "val": "0,0205",
           "unit": " mg/L",
-          "date": "18/02/2026",
-          "timestamp": 1771372800000
+          "date": "13/08/2025",
+          "timestamp": 1755043200000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -93597,10 +93597,10 @@
           "timestamp": 1784678400000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0414",
           "unit": " mg/L",
-          "date": "22/07/2026",
-          "timestamp": 1784678400000
+          "date": "15/07/2025",
+          "timestamp": 1752537600000
         },
         "organic_carbon": {
           "val": "0",
@@ -93731,10 +93731,10 @@
           "timestamp": 1779235200000
         },
         "copper": {
-          "val": "8,6",
+          "val": "0,27",
           "unit": " mg/L",
-          "date": "10/12/2025",
-          "timestamp": 1765324800000
+          "date": "18/06/2025",
+          "timestamp": 1750204800000
         },
         "organic_carbon": {
           "val": "0,35",
@@ -93865,10 +93865,10 @@
           "timestamp": 1785196800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,023",
           "unit": " mg/L",
-          "date": "28/07/2026",
-          "timestamp": 1785196800000
+          "date": "09/04/2026",
+          "timestamp": 1775692800000
         },
         "organic_carbon": {
           "val": "0",
@@ -94582,12 +94582,12 @@
     "saint-vaast-du-val": {
       "cityName": "Saint-Vaast-Du-Val",
       "reseau": "076001582",
-      "isConform": true,
+      "isConform": false,
       "crystal": {
-        "final": 9,
-        "label": "TRÈS BON",
-        "explanation": "Très bonne qualité globale, malgré quelques paramètres mineurs.",
-        "statusClass": "status-good"
+        "final": 2,
+        "label": "NON CONFORME",
+        "explanation": "L'eau est déclarée non conforme avec un dépassement sanitaire avéré (bactérie ou substance au-dessus du seuil réglementaire).",
+        "statusClass": "status-critical"
       },
       "stats": {
         "nitrates": {
@@ -94621,10 +94621,10 @@
           "timestamp": 1783468800000
         },
         "pesticides": {
-          "val": "0",
+          "val": "0,831",
           "unit": " µg/L",
-          "date": "22/06/2026",
-          "timestamp": 1782086400000
+          "date": "10/11/2025",
+          "timestamp": 1762732800000
         },
         "pfas": {
           "val": "0",
@@ -94669,10 +94669,10 @@
           "timestamp": 1783468800000
         },
         "copper": {
-          "val": "0",
+          "val": "0,1",
           "unit": " mg/L",
-          "date": "10/11/2025",
-          "timestamp": 1762732800000
+          "date": "04/08/2025",
+          "timestamp": 1754265600000
         },
         "organic_carbon": {
           "val": "0,4",
@@ -94803,10 +94803,10 @@
           "timestamp": 1782864000000
         },
         "copper": {
-          "val": "0",
+          "val": "0,0561",
           "unit": " mg/L",
-          "date": "01/07/2026",
-          "timestamp": 1782864000000
+          "date": "29/06/2026",
+          "timestamp": 1782691200000
         },
         "organic_carbon": {
           "val": "0,3",
@@ -94872,7 +94872,7 @@
         "unit": "  mg/L"
       },
       "pesticides": {
-        "val": "0,16",
+        "val": "0,18",
         "unit": "  µg/L"
       },
       "pfas": {
@@ -94904,7 +94904,7 @@
         "unit": "  mg/L"
       },
       "copper": {
-        "val": "3,63",
+        "val": "0,087",
         "unit": "  mg/L"
       },
       "organic_carbon": {
@@ -94913,6 +94913,6 @@
       }
     },
     "score": 6.7,
-    "conformity": 91
+    "conformity": 90
   }
 }
