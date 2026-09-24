@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { logSearchMiss } from '../../../lib/search-miss-log';
 
 let searchIndexCache = null;
 
@@ -134,6 +135,8 @@ export async function GET(request) {
         slug: match.key,
         dpt: cityIndex[match.key],
       }));
+
+    if (matches.length === 0) logSearchMiss(q);
 
     return NextResponse.json(matches, {
       headers: {

@@ -187,7 +187,22 @@ const sitemapHealth = () => {
     const k = d.slice(0, 7);
     byMonth[k] = (byMonth[k] || 0) + 1;
   }
-  return { files: files.length, urls: urls.length, duplicates: urls.length - new Set(urls).size, lastmodByMonth: byMonth };
+  return { files: files.length, urls: urls.length, duplicates: urls.length - new Set(urls).size, lastmodByMonth: byMonth, paths: urls.map(strip) };
+};
+
+const readSearchMisses = () => {
+  const p = path.join(__dirname, '..', 'logs', 'search-misses.jsonl');
+  if (!fs.existsSync(p)) return [];
+  const counts = {};
+  for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
+    if (!line.trim()) continue;
+    try {
+      const o = JSON.parse(line);
+      const k = String(o.q || '').toLowerCase().trim();
+      if (k) counts[k] = (counts[k] || 0) + 1;
+    } catch { /* ligne corrompue ignorée */ }
+  }
+  return Object.entries(counts).map(([q, count]) => ({ q, count })).sort((a, b) => b.count - a.count).slice(0, 50);
 };
 
 const expectedCtrByPos = (pagesA) => {
@@ -248,7 +263,7 @@ const cannibalization = (queryPageA) => {
 };
 
 const priorityRank = { P0: 0, P1: 1, P2: 2 };
-const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sitemap, ga4, byType }) => {
+const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sitemap, ga4, byType, indexationProxy, searchMisses }) => {
   const actions = [];
   const pc = (x) => `${(x * 100).toFixed(0)} %`;
 
@@ -279,7 +294,9 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
     const desk = ga4.devices.find((d) => d.device === 'desktop');
     if (mob && desk && desk.engagementRate - mob.engagementRate > 0.1) actions.push({ priority: 'P2', theme: 'UX mobile', action: `Engagement mobile ${pc(mob.engagementRate)} vs desktop ${pc(desk.engagementRate)} — auditer l'above-the-fold`, impact: 'moyen', effort: 'moyen' });
   }
-  if (ga4 && ga4.searchNoResult && ga4.searchNoResult.length) actions.push({ priority: 'P2', theme: 'Contenu', action: `${ga4.searchNoResult.length} requêtes sans résultat (search_no_result) — créer pages/FAQ`, impact: 'moyen', effort: 'moyen' });
+  if (searchMisses && searchMisses.length) actions.push({ priority: 'P2', theme: 'Contenu', action: `${searchMisses.length} requêtes sans résultat (log serveur) — créer pages/FAQ ciblées`, impact: 'moyen', effort: 'moyen' });
+  else if (ga4 && ga4.searchNoResult && ga4.searchNoResult.length) actions.push({ priority: 'P2', theme: 'Contenu', action: `${ga4.searchNoResult.length} requêtes sans résultat (search_no_result) — créer pages/FAQ`, impact: 'moyen', effort: 'moyen' });
+  if (indexationProxy && indexationProxy.coverageRate > 0 && indexationProxy.coverageRate < 0.6) actions.push({ priority: 'P2', theme: 'Indexation', action: `Seulement ${pc(indexationProxy.coverageRate)} des URLs du sitemap reçoivent des impressions — proxy d'indexation faible`, impact: 'élevé', effort: 'élevé' });
   for (const [k, v] of Object.entries(segments)) {
     if (v.clicksB >= 50 && (v.clicksA - v.clicksB) / v.clicksB > 0.5) actions.push({ priority: 'P2', theme: 'Capitaliser', action: `Segment « ${k} » en forte hausse (${(((v.clicksA - v.clicksB) / v.clicksB) * 100).toFixed(0)} %) — renforcer maillage/contenu`, impact: 'moyen', effort: 'faible' });
   }
@@ -323,8 +340,21 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
   gsc.decliners = decliners(gsc.pagesA, gsc.pagesB);
   gsc.cannibalization = cannibalization(gsc.queryPageA);
 
-  const sitemap = sitemapHealth();
+  const sitemapFull = sitemapHealth();
+  const sitemap = { files: sitemapFull.files, urls: sitemapFull.urls, duplicates: sitemapFull.duplicates, lastmodByMonth: sitemapFull.lastmodByMonth };
+  const sitemapPathSet = new Set(sitemapFull.paths);
   const sitemapsApi = await safe(() => gscSitemaps(http));
+
+  const gscPathSet = new Set(gsc.pagesA.map((r) => strip(r.keys[0])));
+  let coveredInSitemap = 0;
+  for (const p of sitemapPathSet) if (gscPathSet.has(p)) coveredInSitemap++;
+  const indexationProxy = {
+    sitemapUrls: sitemapPathSet.size,
+    pagesWithImpressions: gscPathSet.size,
+    coveredInSitemap,
+    coverageRate: sitemapPathSet.size ? coveredInSitemap / sitemapPathSet.size : 0
+  };
+  const searchMisses = readSearchMisses();
 
   const snapshot = {
     meta: {
@@ -339,7 +369,9 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
     },
     gsc,
     sitemap,
-    sitemapsApi
+    sitemapsApi,
+    indexationProxy,
+    searchMisses
   };
 
   if (propertyId) {
@@ -432,7 +464,9 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
     sitemapsApi,
     sitemap,
     ga4: snapshot.ga4,
-    byType: gsc.byTypeA
+    byType: gsc.byTypeA,
+    indexationProxy,
+    searchMisses
   });
 
   fs.writeFileSync(path.join(outDir, 'snapshot.json'), JSON.stringify(snapshot, null, 2));
@@ -504,6 +538,12 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
     lines.push('- Verdicts : ' + Object.entries(snapshot.indexation.byVerdict).map(([k, v]) => `${k} ${v}`).join(' · '));
     lines.push('- Couverture : ' + Object.entries(snapshot.indexation.byCoverage).map(([k, v]) => `${k} ${v}`).join(' · '));
   } else lines.push('_Non mesurée (mensuel uniquement, ou échec)._');
+  lines.push(`- Proxy (toutes les URLs sitemap) : ${pct(indexationProxy.coverageRate)} des ${fmt(indexationProxy.sitemapUrls)} URLs reçoivent ≥ 1 impression (${fmt(indexationProxy.coveredInSitemap)} couvertes / ${fmt(indexationProxy.pagesWithImpressions)} pages vues).`);
+
+  H('Recherches sans résultat (log serveur)');
+  if (searchMisses.length) {
+    for (const s of searchMisses.slice(0, 20)) lines.push(`- ${s.q} : ${fmt(s.count)}`);
+  } else lines.push('_Aucune recherche manquée enregistrée (le log se remplit côté serveur à partir du déploiement)._');
 
   H('Technique — sitemap');
   lines.push(`- Local : ${sitemap.files} fichiers, ${fmt(sitemap.urls)} URLs, ${sitemap.duplicates} doublon(s)`);

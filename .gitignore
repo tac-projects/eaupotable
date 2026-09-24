@@ -49,6 +49,9 @@ next-env.d.ts
 # audits (snapshots GSC/GA4 — hors git, cf. AGENTS.md)
 /audit/
 
+# logs applicatifs (recherches sans résultat — rotation, RGPD borné)
+/logs/
+
 # Claude Code — local overrides only
 .claude/settings.local.json
 .claude/search-console-key.json
