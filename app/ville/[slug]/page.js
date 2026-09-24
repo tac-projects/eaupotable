@@ -339,6 +339,7 @@ async function getLocalData(slug) {
 
 
 import { POPULAR_CITIES } from '../../../lib/water-utils';
+import { CTR_TEST_SLUGS, ctrTestCityDescription } from '../../../lib/ctr-test';
 
 export const revalidate = 86400; // Cache de 24h après la première visite
 
@@ -371,9 +372,13 @@ export async function generateMetadata({ params }) {
     : null;
 
   const title = `Qualité de l'eau à ${officialName} (${deptCode}) : PFAS, Calcaire & Analyse ${currentYear}`;
-  const description = `Eau du robinet à ${officialName} : Crystal Score ${scoreString}/10`
+  const baseDescription = `Eau du robinet à ${officialName} : Crystal Score ${scoreString}/10`
     + `${priceString ? `, prix ${priceString}` : ''}`
     + `${datePrelevement ? `, prélèvement ARS du ${datePrelevement}` : ''}. PFAS, nitrates, calcaire et conformité sanitaire.`;
+  // Test CTR P2 : variante description sur le lot figé (title inchangé).
+  const description = CTR_TEST_SLUGS.has(`/ville/${cleanSlug}`)
+    ? ctrTestCityDescription({ officialName, deptCode, scoreString, priceString, datePrelevement })
+    : baseDescription;
 
   return {
     title,

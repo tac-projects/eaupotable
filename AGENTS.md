@@ -95,3 +95,17 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - **Seuil vigilance biberon 15 mg/L** : recommandation maison EauPotable.net (alignée FAQ + palier 1 du moteur 15/25/40), PAS une norme OMS/réglementaire — ne jamais la présenter comme telle. Grille de lecture : <15 = adaptée biberon, 15–50 = vigilance nourrisson, ≥50 = dépassement limite. Normes affichées dérivées du registre (`PARAMS`, helper local `paramLimit`).
 - Vérification par commune → event GA4 `bebe_check` {ville, outcome: ok|warning|critical|unknown}.
 - Maillage : lien dans Footer (nav) et dans la réponse FAQ biberons (`app/faq/page.js`) ; `/eau-bebe` ajouté aux `staticUrls` de `generate-sitemap.js`.
+
+# Pièges GSC API (09/2026)
+
+- **Anonymisation multi-dimensions** : le trafic est 100 % long-tail (~1 clic/requête sur 35 000 villes). La dimension `query` seule ne restitue que ~112 clics sur ~4 500 visibles (97,5 % anonymisés), et **tout croisement `country`+`page`/`query`+`page` s'effondre à ~2,5 %** (ex. `country`+`page` = 115 clics vs `page` seul = 4 496). Ne jamais conclure une tendance sur un rapport GSC multi-dimensions : **utiliser la dimension `page` seule (fiable), ou `date` pour les totaux**.
+- **Biais de survie** : comparer deux périodes au niveau page exige l'**union des pages A∪B** — sinon les pages disparues en A sont exclues du total B et faussent le Δ.
+- Le site est à **96 % FRA** : le filtre pays ne change quasi rien (inutile de l'appliquer).
+- **Tendance réelle 08→09/2026** : total −12,1 % (5 112→4 496 clics), **non-marque −11,6 %**, concentré sur `/ville/*` (−13,3 % clics, −4,0 % imp) ; `/departement/*` stable (+0,9 %) ; `/pfas-eau-potable` en forte hausse (3→36 clics, 223→727 imp). Home = marque/nav négligeable (1,1 % des clics). → déclin SEO non-brandé réel, cohérent avec l'incident d'indexation 08/2026.
+
+# Test CTR méta-description (P2, 09/2026)
+
+- **`lib/ctr-test.js`** : lot figé de 30 slugs (`CTR_TEST_SLUGS`) + builders `ctrTestCityDescription` / `ctrTestDeptDescription`. Lot = pos 5–15, imp ≥ 200, CTR < 3,5 % (base 16 571 imp / 350 clics / CTR 2,11 %). Objectif : mesurer l'effet **description seule** sur le CTR à position donnée (14–21 j).
+- Branché dans `generateMetadata` de `app/ville/[slug]/page.js` et `app/departement/[code]/page.js` : variante si slug ∈ lot, sinon description historique (`baseDescription`). **Le `<title>` reste inchangé** (format verrouillé).
+- **Retrait du test = vider `CTR_TEST_SLUGS`** (aucune autre modif). Ne pas déployer site-wide : test isolé uniquement (éviter un recrawl massif type 08/2026).
+- La variante conserve les valeurs data-driven (score, prix, date) → unicité du snippet préservée.
