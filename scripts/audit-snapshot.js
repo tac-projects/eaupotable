@@ -389,7 +389,9 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
       metrics: [{ name: 'eventCount' }],
       dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { value: 'search_no_result' } } },
       limit: 50
-    }).then((rows) => rows.map((r) => ({ q: r.dimensionValues[1].value, count: +r.metricValues[0].value }))), []);
+    }).then((rows) => rows
+      .map((r) => ({ q: r.dimensionValues[1].value, count: +r.metricValues[0].value }))
+      .filter((x) => x.q && x.q !== '(not set)')), []);
   } else {
     console.warn('GA4_PROPERTY_ID absent — snapshot GA4 ignoré.');
   }
@@ -548,6 +550,9 @@ const buildActions = ({ segments, opp, dec, cannib, indexation, sitemapsApi, sit
     if (snapshot.ga4.searchNoResult && snapshot.ga4.searchNoResult.length) {
       H('GA4 — requêtes sans résultat (search_no_result)');
       for (const s of snapshot.ga4.searchNoResult.slice(0, 20)) lines.push(`- ${s.q} : ${fmt(s.count)}`);
+    } else {
+      H('GA4 — requêtes sans résultat (search_no_result)');
+      lines.push('_Non exploitable : paramètre `q` non renseigné (dimension personnalisée créée récemment → seuls les events postérieurs sont captés)._');
     }
   }
 
