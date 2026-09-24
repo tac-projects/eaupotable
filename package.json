@@ -15,6 +15,7 @@
     "gsc": "node scripts/gsc-report.js",
     "audit": "node scripts/audit-snapshot.js --period=month",
     "audit:week": "node scripts/audit-snapshot.js --period=week",
+    "audit:index": "node scripts/audit-indexation.js",
     "audit:diff": "node scripts/audit-diff.js",
     "postinstall": "partytown copylib public/~partytown"
   },
