@@ -72,6 +72,30 @@ for (const k of segKeys) {
   console.log(`${k.padEnd(16)}: ${fmt(f.clicksA)} → ${fmt(t.clicksA)} (${dstr(t.clicksA, f.clicksA)})`);
 }
 
+if (from.gsc.byTypeA && to.gsc.byTypeA) {
+  console.log('\n## GSC — Par type');
+  const ft = new Map(from.gsc.byTypeA.map((r) => [r.type, r]));
+  const tt = new Map(to.gsc.byTypeA.map((r) => [r.type, r]));
+  for (const k of new Set([...ft.keys(), ...tt.keys()])) {
+    const f = ft.get(k) || { clicks: 0, impressions: 0 };
+    const t = tt.get(k) || { clicks: 0, impressions: 0 };
+    console.log(`${k.padEnd(16)}: clics ${fmt(f.clicks)} → ${fmt(t.clicks)} | imp ${fmt(f.impressions)} → ${fmt(t.impressions)}`);
+  }
+}
+
+if (from.indexation && to.indexation) {
+  console.log('\n## Indexation');
+  console.log(`Taux PASS : ${pct(from.indexation.indexationRate)} → ${pct(to.indexation.indexationRate)}`);
+}
+
+if (from.sitemapsApi && to.sitemapsApi) {
+  const sub = (arr) => arr.reduce((a, s) => a + (s.contents[0]?.submitted || 0), 0);
+  const idx = (arr) => arr.reduce((a, s) => a + (s.contents[0]?.indexed || 0), 0);
+  const err = (arr) => arr.reduce((a, s) => a + s.errors, 0);
+  console.log('\n## GSC Sitemaps API');
+  console.log(`Soumis : ${fmt(sub(from.sitemapsApi))} → ${fmt(sub(to.sitemapsApi))} | Indexés : ${fmt(idx(from.sitemapsApi))} → ${fmt(idx(to.sitemapsApi))} | Erreurs : ${err(from.sitemapsApi)} → ${err(to.sitemapsApi)}`);
+}
+
 const unionPages = (snap) => {
   const map = new Map();
   for (const r of snap.gsc.pagesA) map.set(r.keys[0], { a: r, b: null });
@@ -120,6 +144,9 @@ if (from.ga4 && to.ga4) {
   diffSimple('Appareils (sessions)', from.ga4.devices, to.ga4.devices, 'device', 'sessions');
   diffSimple('Events (occurrences)', from.ga4.events, to.ga4.events, 'event', 'count');
   diffSimple('Landing organiques (sessions)', from.ga4.landingA, to.ga4.landingA, 'page', 'sessions');
+  if (from.ga4.keyEvents && to.ga4.keyEvents) {
+    diffSimple('Événements clés (keyEvents)', from.ga4.keyEvents, to.ga4.keyEvents, 'event', 'keyEvents');
+  }
 } else {
   console.log('\n(GA4 absent d\'un des snapshots — diff GA4 ignoré.)');
 }
