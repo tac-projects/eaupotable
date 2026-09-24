@@ -109,3 +109,4 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - Branché dans `generateMetadata` de `app/ville/[slug]/page.js` et `app/departement/[code]/page.js` : variante si slug ∈ lot, sinon description historique (`baseDescription`). **Le `<title>` reste inchangé** (format verrouillé).
 - **Retrait du test = vider `CTR_TEST_SLUGS`** (aucune autre modif). Ne pas déployer site-wide : test isolé uniquement (éviter un recrawl massif type 08/2026).
 - La variante conserve les valeurs data-driven (score, prix, date) → unicité du snippet préservée.
+- **T0 = 24/09/2026** (déploiement commit `bb796b0`) → **point de mesure J+14 = 08/10/2026** sur les 30 slugs. Comparer le CTR à position donnée via la dimension `page` seule (union A∪B), jamais sur multi-dimensions.
