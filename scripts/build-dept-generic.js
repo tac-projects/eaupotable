@@ -135,24 +135,12 @@ const REGION_MAP = {
 const getRegionForDept = (code) => Object.keys(REGION_MAP).find(r => REGION_MAP[r].includes(code)) || "France";
 
 
-// 2. CONFIGURATION & SANITARY PARAMETERS (National Codes)
-const config = {
-    nitrates: { codes: ["1340"], unit: "mg/L" },
-    ph: { codes: ["1302"], unit: "pH" },
-    temperature: { codes: ["1301"], unit: "°C" },
-    hardness: { codes: ["1345"], unit: "°f" },
-    chlorine: { codes: ["1398", "1399", "1754"], unit: "mg/L" },
-    pesticides: { codes: ["6276"], unit: "µg/L" },
-    pfas: { codes: ["8847", "9268"], unit: "µg/L" },
-    microbiology: { codes: ["1449", "1447", "1042", "6455", "1448"], unit: "Absence" },
-    conductivity: { codes: ["1303", "1304"], unit: "µS/cm" },
-    turbidity: { codes: ["1295"], unit: "NFU" },
-    iron: { codes: ["1393"], unit: "µg/L" },
-    manganese: { codes: ["1394"], unit: "µg/L" },
-    ammonium: { codes: ["1335"], unit: "mg/L" },
-    copper: { codes: ["1392"], unit: "mg/L" },
-    organic_carbon: { codes: ["1841"], unit: "mg/L" }
-};
+// 2. CONFIGURATION & SANITARY PARAMETERS (codes SISE — source unique : lib/sise-param-codes.js)
+const { SISE_CODES, SISE_UNITS } = require('../lib/sise-param-codes');
+const config = {};
+for (const key of Object.keys(SISE_CODES)) {
+    config[key] = { codes: SISE_CODES[key], unit: SISE_UNITS[key] };
+}
 
 const YEARS = ["2022", "2023", "2024", "2025", "2026"];
 const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');

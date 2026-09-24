@@ -71,6 +71,8 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 
 **Source de vérité des paramètres = `lib/params-registry.js`** (créé au Jalon A). Toute liste de paramètres affichée ou transmise doit être dérivée d'ici, jamais réécrite en dur. Exports : `PARAMS`, `ANALYSIS_CARDS` (9 cartes), `SEO_DOSSIERS` (14 en 3 dossiers), `CITY_STATS_KEYS` (payload ville, 14 clés), `SCORED_COUNT`.
 
+**Codes SISE = `lib/sise-param-codes.js`** (source unique, ne jamais dupliquer). Mappage des `cdparametre` de chaque indicateur (`SISE_CODES`), unités (`SISE_UNITS`) et libellés attendus (`SISE_LABEL_HINTS`). Consommé par `scripts/build-dept-generic.js` et `lib/water-utils.js` (`harvestWaterData`). ⚠️ Un code erroné produit des valeurs fausses **silencieuses** (incident 09/2026 : `copper` pointait 1370 = aluminium → 17 750 fiches « Cuivre 49 mg/L »). Garde-fou : `npm run check:codes` (intégré à `npm run sise`) valide chaque code contre le référentiel officiel `eaurob-ref/PAR` — à lancer avant toute régénération de données.
+
 **Moteur de score = `lib/crystal-engine.js`** (créé au Jalon C, CJS pur pour être `require`-able par les scripts node) : `water-utils.js` le ré-exporte pour le runtime Next, `scripts/build-dept-generic.js` le `require` — **ne jamais ré-implémenter le calcul ailleurs**.
 
 - Branchés sur le registre : `CityAnalysisSection.js`, `WaterReport.js`, payload de `app/ville/[slug]/page.js`, table « Duel » de `CitySEOContent.js` (ordre/libellés harmonisés sur les cartes), `CityJsonLd.js` (unités du registre, ordre stable `SCHEMA_MEASURES`).
