@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server';
+// Redirections 301 des anciens slugs ville (renommages de communes nouvelles,
+// communes retirées par la source ARS). Généré par scripts/build-city-redirects.js,
+// intégré à `npm run sitemap`. Ne pas éditer à la main.
+import cityRedirects from './lib/city-redirects.json';
 
 // ---------------------------------------------------------------------------
 // Rate limiter global (mémoire edge) pour protéger les pages dynamiques.
@@ -103,6 +107,7 @@ export function middleware(request) {
   // 1. REDIRECTIONS SEO
   // -----------------------------------------------------------------------
   const redirects = {
+    ...cityRedirects,
     '/rgpd': '/mentions-legales',
     '/ville/waldighoffen': '/ville/waldighofen',
     '/ville/les-goulles': '/ville/goulles',

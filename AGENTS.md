@@ -35,7 +35,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 - **`lastmod` du sitemap** (`scripts/generate-sitemap.js`) = **date du dernier prélèvement ARS** (`meta.date_prelevement`) par ville, jamais la date de génération. Ne jamais réintroduire `todayDate` sur les pages ville/département (provoque des recrawls massifs et la dé-indexation).
 - **Maillage interne** (`app/ville/[slug]/page.js`) : les fichiers départementaux sont indexés par slug de base ; les homonymes portent un slug canonique suffixé `base-dept` dans `city-index.json`. Toujours passer les slugs de liens par `canonicalSlugFor(baseSlug, deptCode)` (helper dans le fichier), sinon les liens pointent vers la commune du premier département alphabétique.
 - **Meta ville** : description data-driven (Crystal Score + prix + date de prélèvement) pour rester unique par commune — ne pas la retemplater en texte fixe. Le title garde le format `Qualité de l'eau à {ville} ({dept}) : PFAS, Calcaire & Analyse {année}`.
-- **Phase 2 (Option A, 09/2026)** : enrichissement des 34 999 fiches pour casser la duplication de contenu.
+- **Phase 2 (Option A, 09/2026)** : enrichissement des 34 930 fiches pour casser la duplication de contenu.
   - **Contexte communal** : `public/data/communes-geo.json` (clé INSEE → `{population, surface, codesPostaux}`), généré par `scripts/fetch-commune-geo.js` (`npm run geo`, 101 appels geo.api.gouv.fr). **Fichier figé commité, PAS dans la pipeline `npm run sitemap`** (rafraîchir manuellement, données annuelles). `surface` est en **hectares** (÷100 pour km²).
   - **Données réseau** : `scripts/build-dept-generic.js` parse `ugelib` (installation, col. 11) et `moalib` (maître d'ouvrage, col. 13) de `DIS_PLV`, agrège par UDI (nb communes via `DIS_COM_UDI` national, nb analyses / période / conformité via `udiHistory`) et écrit `geo` + `reseauInfo` dans chaque fiche.
   - **Rendu** : composant `app/components/CityLocalContext.js` (4 blocs : contexte local, réseau, historique, communes sœurs) monté dans `CitySEOContent.js` (section « Contexte local & réseau »). `reseauCommunes` est calculé dans `app/ville/[slug]/page.js` (même réseau, même département, plafonné à 30) et passe par `canonicalSlugFor`.
@@ -43,6 +43,7 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
   - **Risque assumé** : les ~24 000 communes partageant un réseau gardent des mesures identiques ; l'unicité repose sur le contexte communal + l'éditorial. Mesure GSC à 2–4 semaines ; si insuffisant → basculer ces communes vers consolidation/noindex (option C).
   - **Mesure (09/2026, 11 j avant/après)** : effet non mesurable — `/ville/*` clics −6 %, impressions −10 %, taux d'indexation 58,8 % ≈ baseline 57 % (recrawl non provoqué, `lastmod` inchangé, incident 08/2026 en fond). **Mesure non concluante (confondue)** → à re-mesurer via le diff mensuel (fenêtres calendaires), pas figée comme verdict.
 - **Bug corrigé au passage** : `CitySEOContent.js` utilisait `isMetropolis` non défini (→ 500 au rendu) ; remplacé par `data.isMetropolis`.
+- **Redirections 301 des slugs ville (09/2026)** : quand une commune est renommée (commune nouvelle) ou retirée par la source ARS, son ancienne URL ville renvoie un **301** au lieu d'un 404. Mécanisme : `scripts/build-city-redirects.js` (appelé en fin de `npm run sitemap`) reconstitue les **slugs globaux** (homonymes suffixés `-dept` via `public/city-index.json`) depuis `public/data/departments/*.json`, les compare à l'historique `source-data/city-slugs.json` (gitignoré, persistant sur le serveur) et écrit `lib/city-redirects.json` — **accumulatif, ne jamais éditer à la main**. `middleware.js` le charge et applique le 301 : renommage → nouveau `/ville/<slug>` ; commune retirée → `/departement/<dept>`. Sans historique (nouveau serveur), les redirections déjà commitées restent actives.
 
 # Analytics (GA4)
 
@@ -56,15 +57,15 @@ Site Next.js de qualité de l'eau potable par commune : scores, analyses, carte 
 
 # Rafraîchir les données ARS (SISE-Eaux)
 
-Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (prélèvements ARS). **Aucune automatisation** : la mise à jour est manuelle et la source est publiée mensuellement avec ~1 mois de délai (ex. prélèvements de juin publiés début août).
+Les Crystal Scores/pages ville dépendent des archives `source-data/archives/` (prélèvements ARS). La source est publiée **mensuellement** avec ~1 mois de délai (ex. prélèvements de juillet publiés début septembre). La synchro est **scriptée** (`scripts/fetch-sise-eaux.js`).
 
-1. **Tester la fraîcheur** : `node scripts/fetch-sise-eaux.js` — interroge data.gouv.fr, télécharge le dernier `eaurob-YYYYMM.zip`, compare le dernier `dateprel` avec les archives locales et affiche un verdict clair. Ne pas lancer la pipeline tant que le verdict n'est pas « NOUVELLE DONNÉE DISPONIBLE ».
-2. **Remplacer les archives** (uniquement si nouvelle donnée) : mettre à jour `source-data/archives/<année>/` (format `DIS_PLV_*`, `DIS_RESULT_*`, `DIS_COM_UDI_*` par département ; la transformation depuis `eaurob-YYYYMM.zip` — colonnes décalées — est faite manuellement, non scriptée).
+1. **Tester la fraîcheur** : `npm run sise` — interroge data.gouv.fr (dataset « commune par commune », ressources `dis-YYYY-dept.zip`), compare la date `last_modified` de chaque ressource avec la dernière synchro et affiche le verdict année par année. Ne pas lancer la pipeline sans « NOUVELLE DONNÉE DISPONIBLE ».
+2. **Synchroniser** (uniquement si nouvelle donnée) : `npm run sise:apply` — télécharge les `dis-YYYY-dept.zip` et extrait les 203 fichiers `DIS_PLV_*`, `DIS_RESULT_*`, `DIS_COM_UDI_*` dans `source-data/archives/<année>/`. **Aucune transformation manuelle** : le zip contient déjà le format attendu (cf. piège ci-dessous). Cible par défaut 2022→2026 ; options `--years=2026` et `--force`. Trace dans `source-data/.sise-sync.json`.
 3. **Régénérer** : `npm run sitemap` (pipeline complète : build-dept-generic + fix-dept-attribution + pure-price-injector + sync-home-scores + build-pfas-nation + build-bebe-nation + generate-sitemap — ces correctifs protègent la donnée, ne pas les retirer).
 4. **Vérifier le diff** : seuls les scores/date liés à la nouvelle donnée doivent changer (un diff inattendu sur INSEE/prix = bug d'attribution à signaler).
 5. **Déployer** : `git commit` + `git push` + `npm run build` + `sudo pm2 restart eaupotable` (accords explicites requis).
 
-Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de l'eau du robinet » (Ministère des Solidarités et de la Santé), URL des ressources `static.data.gouv.fr/resources/.../eaurob-YYYYMM.zip`.
+Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de l'eau distribuée commune par commune » (Ministère de la Santé, id `5cf8d9ed8b4c4110294c841d`), ressources `dis-YYYY-dept.zip`. ⚠️ **Ne pas confondre** avec le dataset `eaurob-YYYYMM.zip` (format aplati `UDI_/CAP_/TTP_`, 41 colonnes, sans `ugelib`/`moalib`/`amont` — inutilisable par la pipeline). Le nommage du fichier `dis-...-dept.zip` correspond exactement aux `DIS_*` attendus par `build-dept-generic.js`.
 
 # Indicateurs & moteur de score
 

@@ -3,13 +3,37 @@ const path = require('path');
 const zlib = require('zlib');
 const https = require('https');
 
-const DATASET_API = 'https://www.data.gouv.fr/api/1/datasets/resultats-du-controle-sanitaire-de-leau-du-robinet/';
+// Source officielle des archives : dataset data.gouv.fr
+// « Résultats du contrôle sanitaire de l'eau distribuée commune par commune »
+// (id 5cf8d9ed8b4c4110294c841d). Les ressources `dis-YYYY-dept.zip` contiennent
+// DIRECTEMENT les fichiers DIS_PLV_*, DIS_RESULT_*, DIS_COM_UDI_* par département,
+// au format attendu par scripts/build-dept-generic.js. Aucune transformation.
+const DATASET_ID = '5cf8d9ed8b4c4110294c841d';
+const DATASET_API = `https://www.data.gouv.fr/api/1/datasets/${DATASET_ID}/`;
 const ARCHIVE_DIR = path.join(__dirname, '..', 'source-data', 'archives');
+const SYNC_FILE = path.join(__dirname, '..', 'source-data', '.sise-sync.json');
 const TMP_DIR = '/tmp/eaupotable-sise';
+const DEFAULT_YEARS = ['2022', '2023', '2024', '2025', '2026'];
 
-function getJson(url) {
+function parseArgs(argv) {
+  const args = { apply: false, force: false, years: DEFAULT_YEARS.slice() };
+  for (const a of argv) {
+    if (a === '--apply') args.apply = true;
+    else if (a === '--force') args.force = true;
+    else if (a.startsWith('--years=')) {
+      args.years = a.slice('--years='.length).split(',').map((s) => s.trim()).filter(Boolean);
+    }
+  }
+  return args;
+}
+
+function getJson(url, redirects = 0) {
   return new Promise((resolve, reject) => {
     https.get(url, { headers: { 'User-Agent': 'EauPotable.net-data-refresh' } }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && redirects < 5) {
+        res.resume();
+        return resolve(getJson(new URL(res.headers.location, url).toString(), redirects + 1));
+      }
       let body = '';
       res.on('data', (c) => (body += c));
       res.on('end', () => {
@@ -20,9 +44,13 @@ function getJson(url) {
   });
 }
 
-function download(url, filePath) {
+function download(url, filePath, redirects = 0) {
   return new Promise((resolve, reject) => {
     https.get(url, { headers: { 'User-Agent': 'EauPotable.net-data-refresh' } }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && redirects < 5) {
+        res.resume();
+        return resolve(download(new URL(res.headers.location, url).toString(), filePath, redirects + 1));
+      }
       if (res.statusCode >= 400) { reject(new Error(`HTTP ${res.statusCode} pour ${url}`)); res.resume(); return; }
       const out = fs.createWriteStream(filePath);
       res.pipe(out);
@@ -32,6 +60,7 @@ function download(url, filePath) {
   });
 }
 
+// --- Lecture ZIP (EOCD + central directory) — pas de dépendance externe ---
 function listZip(buf) {
   const eocd = buf.lastIndexOf(Buffer.from('PK\x05\x06'));
   if (eocd < 0) throw new Error('Archive ZIP invalide');
@@ -59,45 +88,117 @@ function zipExtract(buf, entry) {
   return entry.method === 0 ? data : zlib.inflateRawSync(data);
 }
 
-function csvHeaderIndex(header, name) {
-  const idx = header.split(',').map((h) => h.replace(/"/g, '').trim()).indexOf(name);
-  if (idx < 0) throw new Error(`Colonne "${name}" absente du fichier`);
+// --- CSV ---
+function splitCsv(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (const char of line) {
+    if (char === '"') inQuotes = !inQuotes;
+    else if (char === ',' && !inQuotes) { result.push(current.trim()); current = ''; }
+    else current += char;
+  }
+  result.push(current.trim());
+  return result;
+}
+
+function headerIndex(header, name) {
+  const idx = splitCsv(header).indexOf(name);
+  if (idx < 0) throw new Error(`Colonne "${name}" absente`);
   return idx;
 }
 
-function csvDate(line, idx) {
-  const cols = line.split(',');
-  const m = (cols[idx] || '').replace(/"/g, '').match(/(20\d{2}-\d{2}-\d{2})/);
-  return m ? m[1] : null;
+// --- Fichiers locaux ---
+function localSync() {
+  if (!fs.existsSync(SYNC_FILE)) return {};
+  try { return JSON.parse(fs.readFileSync(SYNC_FILE, 'utf8')); } catch { return {}; }
 }
 
-function scanRepo() {
-  if (!fs.existsSync(ARCHIVE_DIR)) return { maxDate: null, files: 0 };
-  const years = fs.readdirSync(ARCHIVE_DIR)
-    .filter((d) => /^\d{4}$/.test(d))
-    .sort();
+function localMaxDate(year) {
+  const dir = path.join(ARCHIVE_DIR, year);
+  if (!fs.existsSync(dir)) return null;
   let maxDate = null;
-  let files = 0;
-  for (const year of years) {
-    const dir = path.join(ARCHIVE_DIR, year);
-    for (const f of fs.readdirSync(dir)) {
-      if (!/^DIS_PLV_/.test(f) || !f.endsWith('.txt')) continue;
-      files++;
-      const lines = fs.readFileSync(path.join(dir, f), 'utf8').split('\n');
-      const dateIdx = csvHeaderIndex(lines[0], 'dateprel');
-      for (let i = 1; i < lines.length; i++) {
-        const d = csvDate(lines[i], dateIdx);
-        if (d && (!maxDate || d > maxDate)) maxDate = d;
-      }
+  for (const f of fs.readdirSync(dir)) {
+    if (!/^DIS_PLV_/.test(f) || !f.endsWith('.txt')) continue;
+    const lines = fs.readFileSync(path.join(dir, f), 'utf8').split('\n');
+    if (!lines[0]) continue;
+    const idx = headerIndex(lines[0], 'dateprel');
+    for (let i = 1; i < lines.length; i++) {
+      const cols = splitCsv(lines[i]);
+      const d = (cols[idx] || '').match(/(20\d{2}-\d{2}-\d{2})/);
+      if (d && (!maxDate || d[1] > maxDate)) maxDate = d[1];
     }
   }
-  return { maxDate, files };
+  return maxDate;
+}
+
+// --- Ressources distantes ---
+function resourcesByYear(dataset) {
+  const map = {};
+  for (const r of dataset.resources || []) {
+    const m = (r.title || '').match(/^dis-(\d{4})-dept\.zip$/);
+    if (!m) continue;
+    const year = m[1];
+    const stamp = (r.last_modified || r.created_at || '').slice(0, 10);
+    if (!map[year] || stamp > map[year].stamp) {
+      map[year] = { year, url: r.url, stamp, title: r.title };
+    }
+  }
+  return map;
+}
+
+function maxDateInZip(buf, entries) {
+  let maxDate = null;
+  const plv = entries.filter((e) => /^DIS_PLV_/.test(e.name) && e.name.endsWith('.txt'));
+  for (const e of plv) {
+    const lines = zipExtract(buf, e).toString('utf8').split('\n');
+    if (!lines[0]) continue;
+    const idx = headerIndex(lines[0], 'dateprel');
+    for (let i = 1; i < lines.length; i++) {
+      const cols = splitCsv(lines[i]);
+      const d = (cols[idx] || '').match(/(20\d{2}-\d{2}-\d{2})/);
+      if (d && (!maxDate || d[1] > maxDate)) maxDate = d[1];
+    }
+  }
+  return maxDate;
+}
+
+function extractYear(year, ressource, sync) {
+  const zipPath = path.join(TMP_DIR, `dis-${year}-dept.zip`);
+  console.log(`   ⬇️  ${ressource.title} (${ressource.stamp})…`);
+  return download(ressource.url, zipPath).then(() => {
+    const size = fs.statSync(zipPath).size;
+    const buf = fs.readFileSync(zipPath);
+    const entries = listZip(buf);
+    const dir = path.join(ARCHIVE_DIR, year);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
+    // Purge des anciens fichiers DIS_* pour éviter tout résidu d'une version antérieure.
+    let removed = 0;
+    for (const f of fs.readdirSync(dir)) {
+      if (/^DIS_(PLV|RESULT|COM_UDI)_/.test(f)) {
+        fs.unlinkSync(path.join(dir, f));
+        removed++;
+      }
+    }
+
+    let written = 0;
+    for (const e of entries) {
+      if (!/^DIS_(PLV|RESULT|COM_UDI)_/.test(e.name)) continue;
+      fs.writeFileSync(path.join(dir, e.name), zipExtract(buf, e));
+      written++;
+    }
+    fs.unlinkSync(zipPath);
+    const maxDate = maxDateInZip(buf, entries);
+    console.log(`      → ${written} fichiers extraits (${removed} remplacés), ${(size / 1048576).toFixed(0)} Mo, dernier prélèvement : ${maxDate}`);
+    sync[year] = { resource: ressource.title, stamp: ressource.stamp, maxDate, syncedAt: new Date().toISOString().slice(0, 10) };
+    return { year, maxDate, written };
+  });
 }
 
 async function main() {
-  console.log('🔎 Contrôle de la fraîcheur des données SISE-Eaux…');
-  const repo = scanRepo();
-  console.log(`   Repo (archives locales)  : ${repo.files} fichiers DIS_PLV, dernier prélèvement : ${repo.maxDate || 'N/A'}`);
+  const args = parseArgs(process.argv.slice(2));
+  console.log('🔎 Données ARS SISE-Eaux — source : data.gouv.fr (commune par commune)');
 
   let dataset;
   try {
@@ -107,66 +208,52 @@ async function main() {
     process.exit(1);
   }
 
-  const eaurob = dataset.resources
-    .map((r) => {
-      const m = (r.title || '').match(/^eaurob-(\d{6})\.zip$/);
-      return m ? { month: m[1], url: r.url, created: r.created_at } : null;
-    })
-    .filter(Boolean)
-    .sort((a, b) => b.month.localeCompare(a.month));
-
-  if (eaurob.length === 0) {
-    console.error('❌ Aucune ressource eaurob-YYYYMM.zip trouvée sur data.gouv.fr.');
+  const remote = resourcesByYear(dataset);
+  const sync = localSync();
+  const years = args.years.filter((y) => remote[y]);
+  if (years.length === 0) {
+    console.error(`❌ Aucune ressource dis-YYYY-dept.zip pour les années demandées (${args.years.join(', ')}).`);
     process.exit(1);
   }
 
-  const latest = eaurob[0];
-  const year = latest.month.slice(0, 4);
-  const month = latest.month.slice(4, 6);
-  console.log(`   Dernier fichier publié    : eaurob-${latest.month}.zip (prélèvements ${month}/${year}, publication ${latest.created.slice(0, 10)})`);
+  if (!args.apply) {
+    console.log('');
+    let outdated = 0;
+    for (const y of years) {
+      const local = sync[y] ? `${sync[y].maxDate || '?'} (synchro ${sync[y].syncedAt})` : `${localMaxDate(y) || 'absente'} (non scriptée)`;
+      const isNew = !sync[y] || sync[y].stamp !== remote[y].stamp;
+      if (isNew) outdated++;
+      console.log(`   ${y} : distance ${remote[y].stamp}  |  local ${local}  ${isNew ? '⚠️  à rafraîchir' : '✅ à jour'}`);
+    }
+    console.log('');
+    if (outdated > 0) {
+      console.log(`✅ NOUVELLE DONNÉE DISPONIBLE (${outdated} année(s) à rafraîchir sur ${years.length}).`);
+      console.log('   Pour mettre à jour : npm run sise:apply  → puis npm run sitemap, npm run build.');
+    } else {
+      console.log('ℹ️  Archives locales à jour. La publication est mensuelle (~1 mois de délai) : re-tester le mois suivant.');
+    }
+    return;
+  }
 
   if (!fs.existsSync(TMP_DIR)) fs.mkdirSync(TMP_DIR, { recursive: true });
-  const zipPath = path.join(TMP_DIR, `eaurob-${latest.month}.zip`);
-
-  console.log('   Téléchargement…');
-  try {
-    await download(latest.url, zipPath);
-  } catch (e) {
-    console.error(`❌ Échec du téléchargement : ${e.message}`);
-    process.exit(1);
-  }
-  const zipSize = fs.statSync(zipPath).size;
-  console.log(`   → ${zipPath} (${(zipSize / 1048576).toFixed(1)} Mo)`);
-
-  const buf = fs.readFileSync(zipPath);
-  const entries = listZip(buf);
-  const plv = entries.find((e) => e.name === `UDI_PLV_${latest.month}.txt`);
-  if (!plv) {
-    console.error(`❌ UDI_PLV_${latest.month}.txt introuvable dans le zip.`);
-    process.exit(1);
-  }
-
-  const plvTxt = zipExtract(buf, plv).toString('utf8');
-  const lines = plvTxt.split('\n').filter((l) => l.trim());
-  const dateIdx = csvHeaderIndex(lines[0], 'dateprel');
-  let maxDate = null;
-  for (let i = 1; i < lines.length; i++) {
-    const d = csvDate(lines[i], dateIdx);
-    if (d && (!maxDate || d > maxDate)) maxDate = d;
-  }
-
-  console.log(`   Nouveau fichier (UDI_PLV)  : ${lines.length - 1} lignes, dernier prélèvement : ${maxDate}`);
   console.log('');
+  const results = [];
+  for (const y of years) {
+    const isNew = !sync[y] || sync[y].stamp !== remote[y].stamp;
+    if (!isNew && !args.force) {
+      console.log(`   ${y} : déjà à jour (${sync[y].stamp}) — ignorée (--force pour re-télécharger).`);
+      continue;
+    }
+    results.push(await extractYear(y, remote[y], sync));
+  }
 
-  if (!repo.maxDate) {
-    console.log('⚠️  Aucune donnée locale détectée. Une régénération complète est à prévoir.');
-  } else if (maxDate > repo.maxDate) {
-    console.log(`✅ NOUVELLE DONNÉE DISPONIBLE : prélèvements jusqu'au ${maxDate} (repo : ${repo.maxDate}).`);
-    console.log('   Procédure : voir AGENTS.md → « Rafraîchir les données ARS (SISE-Eaux) ».');
-    console.log('   Résumé : remplacer source-data/archives puis lancer npm run sitemap → build → deploy.');
+  fs.writeFileSync(SYNC_FILE, JSON.stringify(sync, null, 2) + '\n');
+  console.log('');
+  if (results.length === 0) {
+    console.log('ℹ️  Aucune année à télécharger. Utiliser --force pour tout refaire.');
   } else {
-    console.log(`ℹ️  Aucune donnée plus récente : le dernier prélèvement publié (${maxDate}) ne dépasse pas les archives locales (${repo.maxDate}).`);
-    console.log('   La publication est mensuelle avec ~1 mois de délai : re-tester début du mois suivant.');
+    console.log(`✅ ${results.length} année(s) mise(s) à jour : ${results.map((r) => `${r.year} → ${r.maxDate}`).join(', ')}.`);
+    console.log('   Étape suivante : npm run sitemap  puis  npm run build  puis déploiement.');
   }
 }
 
