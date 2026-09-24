@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# secrets (clé de service GA4 Data API)
+/.secrets/
+
 # vercel
 .vercel
 

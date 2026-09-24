@@ -146,6 +146,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   }, []);
 
   const handleInstallClick = async () => {
+    track('pwa_install_click', { hasPrompt: !!deferredPrompt });
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
@@ -160,6 +161,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   };
 
   const dismissPWABanner = () => {
+    track('pwa_install_dismiss');
     setShowPWABanner(false);
     setDeferredPrompt(null);
     const threeDaysInMs = 3 * 24 * 60 * 60 * 1000;

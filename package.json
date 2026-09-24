@@ -9,10 +9,12 @@
     "start": "next start -H 127.0.0.1",
     "sitemap": "node scripts/build-dept-generic.js --all && node scripts/fix-dept-attribution.js && node scripts/pure-price-injector.js && node scripts/sync-home-scores.js && node scripts/build-pfas-nation.js && node scripts/build-bebe-nation.js && node scripts/generate-sitemap.js",
     "geo": "node scripts/fetch-commune-geo.js",
+    "ga4": "node scripts/ga4-report.js",
     "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
+    "google-auth-library": "^11.1.0",
     "next": "16.3.3",
     "react": "19.2.4",
     "react-dom": "19.2.4"
