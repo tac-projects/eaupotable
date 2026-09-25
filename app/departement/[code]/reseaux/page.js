@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
 import Navbar from '../../../components/Navbar';
+import '../../../styles/reseau.css';
 
 export const revalidate = 86400;
 
