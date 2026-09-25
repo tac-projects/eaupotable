@@ -126,7 +126,7 @@ ${deptUrls.join('\n')}
       process.stdout.write('.');
     }
 
-    // --- SITEMAP RESEAUX (/reseau/<udi>) ---
+    // --- SITEMAP RESEAUX (/reseau/<slug>) ---
     // Une page par UDI (agrégation nationale, cf. build-reseaux-index.js).
     // lastmod = date du dernier prélèvement du réseau, jamais la date de génération.
     const reseauxPath = path.join(__dirname, '../public/data/reseaux-index.json');
@@ -137,7 +137,8 @@ ${deptUrls.join('\n')}
       const reseauUrls = reseaux.map(r => {
         const lastmod = ISO_RE.test(r.derniereAnalyse || '') ? r.derniereAnalyse : buildDate;
         if (lastmod && (!maxReseauLastmod || lastmod > maxReseauLastmod)) maxReseauLastmod = lastmod;
-        return `  <url><loc>${DOMAIN}/reseau/${r.udi}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`;
+        const slug = r.slug || r.udi;
+        return `  <url><loc>${DOMAIN}/reseau/${slug}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`;
       });
       const reseauXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

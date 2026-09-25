@@ -25,6 +25,25 @@ function maxDate(a, b) {
   return a > b ? a : b;
 }
 
+// Slug d'URL : nom d'installation normalisé + UDI. L'UDI (9 caractères) garantit
+// l'unicité (15 290 réseaux mais seulement ~7 600 noms distincts). Si le nom est
+// absent, le slug se réduit à l'UDI.
+function slugify(str) {
+  return String(str || '')
+    .toLowerCase()
+    .replace(/œ/g, 'oe')
+    .replace(/æ/g, 'ae')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function reseauSlug(installation, udi) {
+  const base = slugify(installation).slice(0, 70).replace(/-+$/g, '');
+  return base ? `${base}-${udi}` : udi;
+}
+
 async function buildReseauxIndex() {
   console.log('🚀 Agrégation nationale des réseaux (UDI)...');
 
@@ -107,6 +126,7 @@ async function buildReseauxIndex() {
   for (const [udi, r] of reseaux) {
     r.departements = [...r.departements].sort();
     r.communes.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+    r.slug = reseauSlug(r.installation, udi);
     output.reseaux[udi] = r;
   }
 

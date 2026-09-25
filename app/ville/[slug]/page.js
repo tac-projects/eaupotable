@@ -34,6 +34,21 @@ const normalizeSlug = (s) => {
 let cityIndexCache = null;
 let deptDataCache = new Map();
 let communesGeoCache = null;
+let reseauxIndexCache = null;
+
+// Slug d'URL de la page réseau (/reseau/<nom>-<udi>) pour le maillage ville → réseau.
+function getReseauSlug(udi) {
+  if (!udi) return null;
+  if (!reseauxIndexCache) {
+    const p = path.join(process.cwd(), 'public', 'data', 'reseaux-index.json');
+    try {
+      reseauxIndexCache = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : { reseaux: {} };
+    } catch {
+      reseauxIndexCache = { reseaux: {} };
+    }
+  }
+  return reseauxIndexCache.reseaux?.[udi]?.slug || null;
+}
 
 // Données factuelles communales (INSEE → EPCI, région, coordonnées, proximité),
 // figées par `npm run geo`. Chargées une fois par instance puis fusionnées au runtime,
@@ -350,6 +365,7 @@ async function getLocalData(slug) {
       initialNeighborCities: neighborList,
       benchmarkCities,
       reseauCommunes,
+      reseauSlug: getReseauSlug(rawCityData.reseau),
       regionalInfo: fullData.regionalInfo
     };
 

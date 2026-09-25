@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Navbar from '../../components/Navbar';
 import Link from 'next/link';
 import fs from 'fs';
@@ -9,6 +9,14 @@ export const revalidate = 86400;
 
 const DOMAIN = 'https://www.eaupotable.net';
 const UDI_RE = /^[0-9A-Z]{6,12}$/;
+
+// L'UDI fait 9 caractères (clé ARS). Le slug d'URL est `nom-normalise-<udi>`,
+// mais l'ancienne forme `/reseau/<udi>` reste acceptée puis redirigée en 301.
+function extractUdi(param) {
+  let raw = String(param || '');
+  try { raw = decodeURIComponent(raw); } catch { /* déjà décodé */ }
+  return raw.slice(-9);
+}
 
 let reseauxCache = null;
 
@@ -37,7 +45,8 @@ function fmtDate(iso) {
 }
 
 export async function generateMetadata({ params }) {
-  const { udi } = await params;
+  const { slug } = await params;
+  const udi = extractUdi(slug);
   const r = getReseau(udi);
   if (!r) return { title: "Réseau d'eau potable - EauPotable.net" };
 
@@ -53,18 +62,26 @@ export async function generateMetadata({ params }) {
   return {
     title,
     description,
-    alternates: { canonical: `${DOMAIN}/reseau/${udi}` },
-    openGraph: { title, description, url: `${DOMAIN}/reseau/${udi}`, images: [ogImage] },
+    alternates: { canonical: `${DOMAIN}/reseau/${r.slug}` },
+    openGraph: { title, description, url: `${DOMAIN}/reseau/${r.slug}`, images: [ogImage] },
     twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
   };
 }
 
 export default async function ReseauPage({ params }) {
-  const { udi } = await params;
+  const { slug } = await params;
+  let raw = String(slug || '');
+  try { raw = decodeURIComponent(raw); } catch { /* déjà décodé */ }
+  const udi = extractUdi(slug);
   const r = getReseau(udi);
 
   if (!r) {
     notFound();
+  }
+
+  // URL non canonique (ancienne forme `/reseau/<udi>` ou slug obsolète) → 301.
+  if (raw !== r.slug) {
+    permanentRedirect(`/reseau/${r.slug}`);
   }
 
   const name = r.installation || `Réseau ${udi}`;
