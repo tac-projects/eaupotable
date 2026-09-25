@@ -160,6 +160,13 @@ export default function CityLocalContext({ cityName, data }) {
               </div>
             ))}
           </dl>
+          {reseau.code && (
+            <div className="city-network-actions">
+              <Link href={`/reseau/${reseau.code}`} className="city-network-link">
+                Voir la fiche complète du réseau ({reseau.code}) &rsaquo;
+              </Link>
+            </div>
+          )}
         </div>
       )}
 

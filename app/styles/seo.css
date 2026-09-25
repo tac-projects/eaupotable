@@ -2322,6 +2322,26 @@ body:has(.seo-content-wrapper) {
   color: var(--primary-solid);
 }
 
+.city-network-actions {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.city-network-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-solid);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.city-network-link:hover {
+  opacity: 0.75;
+}
+
 @media (max-width: 640px) {
   .city-network-card { padding: 22px 20px; }
   .city-network-row { flex-direction: column; gap: 2px; }
