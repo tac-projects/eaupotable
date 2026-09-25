@@ -221,17 +221,17 @@ export default function DepartementClient({ code, deptData, udiToSlug = {} }) {
                         {editorial.distributors.map((d, i) => (
                           <li key={i} className="supplier-item">
                             <span className="supplier-rank">{i === 0 ? 'Principal' : `N°${i + 1}`}</span>{' '}
-                            {d.slug ? (
-                              <a href={`/reseau/${d.slug}`} className="supplier-name supplier-link" title={`Voir les caractéristiques du réseau ${d.name}`}>{d.name}</a>
-                            ) : (
-                              <span className="supplier-name">{d.name}</span>
-                            )}{' '}
+                            <span className="supplier-name">{d.name}</span>{' '}
                             <span className="supplier-count">{d.count} communes</span>{' '}
                             <span className="supplier-pct">{d.pct}%</span>
                             {i < editorial.distributors.length - 1 && <span className="sr-only"> - </span>}
                           </li>
                         ))}
                       </ul>
+                      <p className="suppliers-footnote">
+                        Un opérateur peut exploiter plusieurs réseaux distincts.{' '}
+                        <a href={`/departement/${code}/reseaux`}>Voir les réseaux du département</a>
+                      </p>
                     </div>
                   )}
                   {editorial.priceStats && (
@@ -568,6 +568,19 @@ export default function DepartementClient({ code, deptData, udiToSlug = {} }) {
 
         .supplier-link:hover {
           opacity: 0.75;
+        }
+
+        .suppliers-footnote {
+          margin-top: 14px;
+          font-size: 0.85rem;
+          color: #64748B;
+        }
+
+        .suppliers-footnote a {
+          color: var(--primary-solid);
+          font-weight: 700;
+          text-decoration: underline;
+          text-underline-offset: 3px;
         }
 
         .supplier-count { color: #64748B; font-weight: 600; font-size: 0.9rem; white-space: nowrap; }

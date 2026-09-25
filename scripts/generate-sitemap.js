@@ -104,7 +104,8 @@ ${staticUrls.map(url => `  <url><loc>${url}</loc><lastmod>${buildDate}</lastmod>
       const deptLastmod = deptMax || buildDate;
 
       const deptUrls = [
-        `  <url><loc>${DOMAIN}/departement/${deptCode}</loc><lastmod>${deptLastmod}</lastmod><changefreq>${stdChangefreq}</changefreq><priority>${deptPriority}</priority></url>`
+        `  <url><loc>${DOMAIN}/departement/${deptCode}</loc><lastmod>${deptLastmod}</lastmod><changefreq>${stdChangefreq}</changefreq><priority>${deptPriority}</priority></url>`,
+        `  <url><loc>${DOMAIN}/departement/${deptCode}/reseaux</loc><lastmod>${deptLastmod}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`
       ];
 
       slugs.forEach(slug => {

@@ -137,6 +137,8 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - **Architecture 3 niveaux** : `/departement` (classement) / `/reseau/<udi>` (infrastructure + communes desservies) / `/ville` (mesures + contexte). Maillage : chaque fiche ville pointe vers `/reseau/<udi>` (`CityLocalContext`) ; la page réseau liste les communes desservies.
 - **Garde-fou anti-duplication** : la page réseau ne recopie **jamais** les 14 mesures (réservées aux fiches ville) ; inversement, les phrases factuelles de la page ville viennent de `communes-geo.json`.
 - **Décision Thomas** : aucune page ville en **noindex** — l'objectif est de maximiser l'indexation (voir « Contenu varié » ci-dessous). Point de retour : tag git `pre-reseau-architecture`.
+- **Format d'URL** : `/reseau/<nom-normalise>-<udi>` (l'UDI est **indispensable** : 15 290 réseaux mais ~7 600 noms distincts ; ex. « S.M.D.E.A » désigne 118 réseaux). L'ancienne forme `/reseau/<udi>` est redirigée en **308** par la route (`app/reseau/[slug]/page.js`, résolution via `extractUdi` = 9 derniers caractères). `reseauSlug` est injecté dans le payload ville pour le maillage.
+- **Annuaire départemental** : `/departement/<code>/reseaux` (route `app/departement/[code]/reseaux/page.js`) liste les réseaux du département, triés par nombre de communes. C'est la cible des liens « Principaux opérateurs » (un opérateur ≠ un réseau : 94 % des noms d'opérateurs correspondent à plusieurs UDI, donc **ne jamais lier un opérateur à une seule page réseau**). Ajouté au sitemap département.
 
 # Contenu varié & contexte factuel (fiches ville)
 
