@@ -126,6 +126,30 @@ ${deptUrls.join('\n')}
       process.stdout.write('.');
     }
 
+    // --- SITEMAP RESEAUX (/reseau/<udi>) ---
+    // Une page par UDI (agrégation nationale, cf. build-reseaux-index.js).
+    // lastmod = date du dernier prélèvement du réseau, jamais la date de génération.
+    const reseauxPath = path.join(__dirname, '../public/data/reseaux-index.json');
+    if (fs.existsSync(reseauxPath)) {
+      const reseauxData = JSON.parse(fs.readFileSync(reseauxPath, 'utf8'));
+      const reseaux = Object.values(reseauxData.reseaux || {});
+      let maxReseauLastmod = null;
+      const reseauUrls = reseaux.map(r => {
+        const lastmod = ISO_RE.test(r.derniereAnalyse || '') ? r.derniereAnalyse : buildDate;
+        if (lastmod && (!maxReseauLastmod || lastmod > maxReseauLastmod)) maxReseauLastmod = lastmod;
+        return `  <url><loc>${DOMAIN}/reseau/${r.udi}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`;
+      });
+      const reseauXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${reseauUrls.join('\n')}
+</urlset>`;
+      fs.writeFileSync(path.join(sitemapsDir, 'sitemap-reseaux.xml'), reseauXml);
+      sitemapFiles.push({ file: 'sitemap-reseaux.xml', lastmod: maxReseauLastmod || buildDate });
+      console.log(`\n🕸️  ${reseaux.length} réseaux ajoutés au sitemap.`);
+    } else {
+      console.warn('⚠️  reseaux-index.json introuvable : sitemap-réseaux non généré (lancez build-reseaux-index.js).');
+    }
+
     // --- SITEMAP INDEX ---
     // Le lastmod de chaque entrée = max des lastmod du sitemap concerné (jamais la date du jour).
     const indexXml = `<?xml version="1.0" encoding="UTF-8"?>

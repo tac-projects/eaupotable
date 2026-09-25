@@ -1,0 +1,235 @@
+/* Page réseau /reseau/<udi> — architecture 3 niveaux (département / réseau / ville) */
+
+.reseau-page {
+    background: #ffffff;
+}
+
+.reseau-hero {
+    padding: 120px 0 70px;
+    background: linear-gradient(160deg, #eff6ff 0%, #ffffff 70%);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.06);
+}
+
+.reseau-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--primary-solid);
+    margin: 0 0 14px;
+}
+
+.reseau-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 18px;
+    overflow-wrap: anywhere;
+}
+
+.reseau-subtitle {
+    font-size: var(--fs-lead);
+    color: var(--text-muted);
+    max-width: 780px;
+    margin: 0 0 36px;
+    line-height: 1.6;
+}
+
+.reseau-subtitle strong {
+    color: var(--primary-solid);
+}
+
+.reseau-stats-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 10px;
+}
+
+.reseau-stat {
+    background: #ffffff;
+    border: 1px solid rgba(var(--primary-rgb), 0.12);
+    border-radius: 18px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+}
+
+.reseau-stat-val {
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: var(--primary-solid);
+    line-height: 1;
+}
+
+.reseau-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.reseau-section {
+    padding: 80px 0;
+}
+
+.reseau-section.alt {
+    background: #F4F6F8;
+}
+
+.reseau-table-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid rgba(var(--primary-rgb), 0.12);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.reseau-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reseau-table th,
+.reseau-table td {
+    padding: 16px 22px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.98rem;
+    vertical-align: top;
+}
+
+.reseau-table tr:last-child th,
+.reseau-table tr:last-child td {
+    border-bottom: none;
+}
+
+.reseau-table th {
+    width: 42%;
+    color: var(--text-light);
+    font-weight: 700;
+    background: #f8fafc;
+}
+
+.reseau-table td {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.reseau-communes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.reseau-commune-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: #ffffff;
+    border: 1px solid rgba(var(--primary-rgb), 0.14);
+    border-radius: 16px;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.reseau-commune-card:hover {
+    border-color: var(--primary-solid);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.08);
+}
+
+.reseau-commune-name {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 1.05rem;
+}
+
+.reseau-commune-dept {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.reseau-commune-link {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-solid);
+}
+
+.reseau-note {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.reseau-note-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0 0 18px;
+}
+
+.reseau-note p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-size: 1.03rem;
+    margin: 0 0 16px;
+}
+
+.reseau-note a {
+    color: var(--primary-solid);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.reseau-cta {
+    display: inline-block;
+    margin-top: 18px;
+    background: var(--primary-solid);
+    color: #ffffff;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .reseau-stats-band {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .reseau-hero {
+        padding: 90px 0 50px;
+    }
+
+    .reseau-section {
+        padding: 56px 0;
+    }
+
+    .reseau-table th,
+    .reseau-table td {
+        padding: 12px 16px;
+        font-size: 0.92rem;
+    }
+
+    .reseau-table th {
+        width: 48%;
+    }
+
+    .reseau-stat-val {
+        font-size: 1.5rem;
+    }
+}

@@ -166,6 +166,88 @@ export async function GET(request) {
       );
     }
 
+    if (searchParams.get('reseau') === '1') {
+      const name = searchParams.get('name') || 'Réseau de distribution';
+      const communes = searchParams.get('communes') || '1';
+      const depts = searchParams.get('depts') || '--';
+      const conf = searchParams.get('conf') || '--';
+
+      const stats = [
+        { val: communes, label: 'COMMUNES DESSERVIES', color: '#1e40af' },
+        { val: depts, label: 'DÉPARTEMENT(S)', color: '#334155' },
+        { val: conf, label: 'CONFORMITÉ AUX LIMITES', color: '#059669' }
+      ];
+
+      return new ImageResponse(
+        (
+          <div
+            style={{
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#fff',
+              backgroundImage: 'linear-gradient(to bottom right, #eff6ff 0%, #dbeafe 100%)',
+              padding: '50px',
+              fontFamily: 'system-ui',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', fontSize: '26px', fontWeight: 'bold', color: '#1e40af', letterSpacing: '-0.02em', marginBottom: '30px' }}>
+              EauPotable.net
+            </div>
+            <h1
+              style={{
+                fontSize: '48px',
+                fontWeight: 900,
+                color: '#111827',
+                margin: '0 0 8px 0',
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                maxWidth: '1000px',
+              }}
+            >
+              {name}
+            </h1>
+            <p style={{ fontSize: '26px', color: '#6b7280', margin: '0 0 36px 0', fontWeight: 600 }}>
+              Réseau de distribution d&apos;eau potable
+            </p>
+            <div style={{ display: 'flex', gap: '16px' }}>
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    borderRadius: '20px',
+                    padding: '20px 24px',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                    minWidth: '200px',
+                  }}
+                >
+                  <div style={{ display: 'flex', fontSize: '34px', fontWeight: 900, color: s.color, textAlign: 'center' }}>{s.val}</div>
+                  <div style={{ display: 'flex', fontSize: '13px', fontWeight: 800, color: '#6b7280', letterSpacing: '0.04em', marginTop: '4px', textAlign: 'center' }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ marginTop: '32px', fontSize: '20px', color: '#6b7280' }}>
+              Données officielles ARS / SISE-Eaux
+            </p>
+          </div>
+        ),
+        {
+          width: 1200,
+          height: 630,
+          headers: {
+            'Cache-Control': 'public, s-maxage=31536000, immutable',
+          },
+        }
+      );
+    }
+
     const city = searchParams.get('city') || 'Ma Ville';
     const score = searchParams.get('score') || '9.2';
     const label = searchParams.get('label') || 'EXCELLENTE';
