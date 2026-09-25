@@ -38,7 +38,9 @@ export default function ContactForm() {
   if (status === 'SUCCESS') {
     return (
       <div className="form-success-message">
-        <div className="success-icon">✅</div>
+        <div className="success-icon" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        </div>
         <h3>Message envoyé !</h3>
         <p>Merci de nous avoir contactés. Notre équipe vous répondra sous 24 à 48 heures.</p>
         <button onClick={() => setStatus('')} className="reset-btn">Envoyer un autre message</button>

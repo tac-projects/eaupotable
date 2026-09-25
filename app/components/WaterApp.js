@@ -260,7 +260,9 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
             </div>
             <div className="install-actions">
               <button className="btn-install-primary" onClick={handleInstallClick}>Installer</button>
-              <button className="btn-install-close" onClick={dismissPWABanner}>✕</button>
+              <button className="btn-install-close" onClick={dismissPWABanner} aria-label="Fermer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              </button>
             </div>
           </div>
         </div>

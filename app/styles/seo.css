@@ -630,6 +630,22 @@
     height: 32px;
 }
 
+/* Icône inline dans un titre de carte (remplace les emojis retirés) */
+.seo-card h3 .seo-card-icon {
+    width: 1.35em;
+    height: 1.35em;
+    margin: 0 0.5em 0 0;
+    border-radius: 0.4em;
+    background: rgba(var(--primary-rgb), 0.08);
+    vertical-align: middle;
+    transform: none;
+}
+
+.seo-card h3 .seo-card-icon svg {
+    width: 0.85em;
+    height: 0.85em;
+}
+
 .seo-card h3 {
     font-family: var(--font-heading);
     font-size: var(--fs-h3);

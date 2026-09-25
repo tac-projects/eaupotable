@@ -7,6 +7,13 @@ import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/l
 import { ANALYSIS_CARDS } from '@/lib/params-registry';
 import { generateExpertVerdict, generateExpertPosition, FOCUS_VARIANTS, pickFrom, METHODOLOGY_INTROS, HOT_WATER_TIPS, FAQ_NITRATES, BABY_CTA, FAQ_QUALITE, FAQ_CALCAIRE_INTRO, FAQ_CALCAIRE_CONCLUSION, FAQ_PFAS, FAQ_CARAFE, BEBE_NOTES, SECTION_SUBTITLES } from '@/lib/content-variants';
 
+// Icônes SVG des cartes « Focus & Santé » (remplacent les emojis retirés des titres).
+const FOCUS_ICONS = {
+  calcaire: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6 6.3 6 10.3a6 6 0 0 1-12 0c0-4 6-10.3 6-10.3z"/><path d="M9 13.5a3 3 0 0 0 3 3"/></svg>',
+  chlore: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6.5L5.5 17a3 3 0 0 0 2.6 4.5h7.8A3 3 0 0 0 18.5 17L14 9.5V3"/><path d="M7.5 14h9"/></svg>',
+  sante: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.3-8.6A5.2 5.2 0 0 1 12 6.6a5.2 5.2 0 0 1 9.3 5.8C19 16.6 12 21 12 21z"/><path d="M3.5 12h4l1.5-2.5 2 5 1.5-2.5h4"/></svg>',
+};
+
 // Correspondance locale paramètre -> accès aux valeurs comparées (métriques ville + agrégats).
 const DUEL_METRIC = {
   microbiology: { city: 'microVal', agg: 'micro' },
@@ -486,9 +493,9 @@ export default function CitySEOContent({ cityName, data }) {
             <p className="seo-main-subtitle">{sub.focus}</p>
           </div>
           <div className="seo-grid">
-            <div className="seo-card"><h3>{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p><Link href="/definitions#calcaire" className="seo-card-link">{sub.linkCalcaire}</Link></div>
-            <div className="seo-card"><h3>{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p><Link href="/definitions#chlore" className="seo-card-link">{sub.linkChlore}</Link></div>
-            <div className="seo-card"><h3>{focusContent.sante.titre}</h3><p>{focusContent.sante.texte}</p><Link href="/pfas-eau-potable" className="seo-card-link">Tout savoir sur les PFAS</Link></div>
+            <div className="seo-card"><h3><span className="seo-card-icon" dangerouslySetInnerHTML={{ __html: FOCUS_ICONS.calcaire }} />{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p><Link href="/definitions#calcaire" className="seo-card-link">{sub.linkCalcaire}</Link></div>
+            <div className="seo-card"><h3><span className="seo-card-icon" dangerouslySetInnerHTML={{ __html: FOCUS_ICONS.chlore }} />{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p><Link href="/definitions#chlore" className="seo-card-link">{sub.linkChlore}</Link></div>
+            <div className="seo-card"><h3><span className="seo-card-icon" dangerouslySetInnerHTML={{ __html: FOCUS_ICONS.sante }} />{focusContent.sante.titre}</h3><p>{focusContent.sante.texte}</p><Link href="/pfas-eau-potable" className="seo-card-link">Tout savoir sur les PFAS</Link></div>
           </div>
         </div>
       </section>
@@ -576,7 +583,10 @@ export default function CitySEOContent({ cityName, data }) {
             ))}
           </div>
           <div className="faq-more-cta">
-            <Link href="/definitions" className="faq-more-btn">📖 Comprendre tous les paramètres (PFAS, nitrates, calcaire…)</Link>
+            <Link href="/definitions" className="faq-more-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+              Comprendre tous les paramètres (PFAS, nitrates, calcaire…)
+            </Link>
           </div>
         </div>
       </section>

@@ -46,7 +46,13 @@ export default function BenchmarkAudit({ cityName, neighborCities, dpt, initialA
         {analysisPhase === 'idle' ? (
           <div className="benchmark-cta-container">
             <button className="benchmark-start-btn" onClick={startAnalysis} disabled={isAnalyzing}>
-              <span className="btn-icon">{isAnalyzing ? '⏳' : '⚡'}</span>
+              <span className="btn-icon" aria-hidden="true">
+                {isAnalyzing ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13z" /></svg>
+                )}
+              </span>
               {isAnalyzing ? 'Analyse en cours...' : "Lancer l'audit comparatif"}
             </button>
             <p className="benchmark-cta-hint">Analyse en temps réel de {neighborCities.length} réseaux via Hub'Eau (3-5 sec)</p>
