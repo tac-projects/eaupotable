@@ -5,7 +5,7 @@
  * sans dépendre de l'exécution JavaScript côté client.
  */
 import { parseValue } from '@/lib/water-utils';
-import { hashCity, FAQ_VARIANTS } from '@/lib/content-variants';
+import { pickFrom, FAQ_QUALITE, FAQ_CALCAIRE_INTRO, FAQ_CALCAIRE_CONCLUSION, FAQ_PFAS, FAQ_CARAFE, FAQ_NITRATES, HOT_WATER_TIPS, BEBE_NOTES } from '@/lib/content-variants';
 import { PARAMS } from '@/lib/params-registry';
 
 // Paramètres exposés en données structurées (ordre stable) — unités issues du registre.
@@ -22,21 +22,17 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
   const currentMonthYear = `${currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1)} ${currentYear}`;
 
   const score = crystal?.final ?? '--';
-  const h = hashCity(cityName, dpt);
 
-  // --- FAQ items (même logique que CitySEOContent, exécutée côté serveur) ---
+  // --- FAQ items (mêmes sélecteurs que CitySEOContent pour rester synchronisé) ---
 
   // Qualité
   let qualiteAnswer;
   if (score >= 7) {
-    const pool = FAQ_VARIANTS.qualite.bonne;
-    qualiteAnswer = pool[h % pool.length];
+    qualiteAnswer = pickFrom(FAQ_QUALITE.bonne, cityName, dpt, 40);
   } else if (score >= 4) {
-    const pool = FAQ_VARIANTS.qualite.moyenne;
-    qualiteAnswer = pool[h % pool.length];
+    qualiteAnswer = pickFrom(FAQ_QUALITE.moyenne, cityName, dpt, 40);
   } else {
-    const pool = FAQ_VARIANTS.qualite.mauvaise;
-    qualiteAnswer = pool[h % pool.length];
+    qualiteAnswer = pickFrom(FAQ_QUALITE.mauvaise, cityName, dpt, 40);
   }
   qualiteAnswer = qualiteAnswer
     .replace(/\{score\}/g, String(score))
@@ -46,10 +42,10 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
   // Calcaire
   const durete = parseValue(stats.hardness?.val);
   let dureteConclusion;
-  if (durete > 25) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.dur;
-  else if (durete > 10) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.moyen;
-  else dureteConclusion = FAQ_VARIANTS.calcaireConclusion.doux;
-  const calcaireAnswer = FAQ_VARIANTS.calcaire[0]
+  if (durete > 25) dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.dur, cityName, dpt, 43);
+  else if (durete > 10) dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.moyen, cityName, dpt, 43);
+  else dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.doux, cityName, dpt, 43);
+  const calcaireAnswer = pickFrom(FAQ_CALCAIRE_INTRO, cityName, dpt, 44)
     .replace(/\{durete\}/g, String(stats.hardness?.val || '--'))
     .replace(/\{cityName\}/g, cityName)
     .replace(/\{conclusion\}/g, dureteConclusion);
@@ -58,7 +54,7 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
   const pfasVal = stats.pfas?.val || '--';
   const pfasValNum = parseFloat(String(pfasVal).replace('<', '').replace(',', '.'));
   const pfasKey = (pfasValNum > 0.08) ? 'present' : 'absent';
-  const pfasAnswer = FAQ_VARIANTS.pfas[pfasKey]
+  const pfasAnswer = pickFrom(FAQ_PFAS[pfasKey], cityName, dpt, 45)
     .replace(/\{cityName\}/g, cityName)
     .replace(/\{pfas\}/g, String(pfasVal));
 
@@ -66,9 +62,21 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
   let carafeKey = 'moyenne';
   if (durete > 25) carafeKey = 'calcaire';
   else if (durete < 10) carafeKey = 'douce';
-  const carafeAnswer = FAQ_VARIANTS.carafe[carafeKey]
+  const carafeAnswer = pickFrom(FAQ_CARAFE[carafeKey], cityName, dpt, 46)
     .replace(/\{cityName\}/g, cityName)
     .replace(/\{dureteVal\}/g, String(stats.hardness?.val ? `${stats.hardness.val} °f` : '--'));
+
+  // Nitrates (wording varié, version texte pur = celle du rendu visible)
+  const nit = stats.nitrates ? parseValue(stats.nitrates.val) : NaN;
+  const nitTxt = `${stats.nitrates?.val || '--'} mg/L`;
+  const bebeNote = pickFrom(BEBE_NOTES, cityName, dpt, 47);
+  const nitratesAnswer = pickFrom(FAQ_NITRATES, cityName, dpt, 41)
+    .replace(/\{cityName\}/g, cityName)
+    .replace(/\{nitVal\}/g, nitTxt)
+    .replace(/\{bebeNote\}/g, nit > 15 ? ` ${bebeNote}` : "");
+
+  // Eau chaude (wording varié)
+  const hotWaterAnswer = pickFrom(HOT_WATER_TIPS, cityName, dpt, 42);
 
   const faqItems = [
     {
@@ -81,7 +89,7 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
     },
     {
       q: `Y a-t-il des nitrates dans l'eau de ${cityName} ?`,
-      a: `Le taux de nitrates relevé est de ${stats.nitrates?.val || '--'} mg/L. La limite de qualité sanitaire est fixée à 50 mg/L par les autorités.`,
+      a: nitratesAnswer,
     },
     {
       q: `L'eau de ${cityName} contient-elle des PFAS (polluants éternels) ?`,
@@ -93,7 +101,7 @@ export default function CityJsonLd({ cityName, cleanSlug, dpt, isConform, crysta
     },
     {
       q: `Peut-on boire l'eau chaude du robinet à ${cityName} ?`,
-      a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude. La chaleur favorise le développement bactérien et la dissolution de métaux lourds issus de votre installation intérieure. Utilisez toujours l'eau froide.",
+      a: hotWaterAnswer,
     },
   ];
 

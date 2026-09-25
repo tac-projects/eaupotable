@@ -20,6 +20,7 @@
     "audit:week": "node scripts/audit-snapshot.js --period=week",
     "audit:index": "node scripts/audit-indexation.js",
     "audit:diff": "node scripts/audit-diff.js",
+    "measure:similarity": "node scratch/measure-city-similarity.js",
     "postinstall": "partytown copylib public/~partytown"
   },
   "dependencies": {

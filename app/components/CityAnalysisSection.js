@@ -10,6 +10,7 @@ import {
   getMarkerPosition
 } from '@/lib/water-utils';
 import { ANALYSIS_CARDS, PARAMS } from '@/lib/params-registry';
+import { NON_COMPLIANT_TIPS, pickFrom } from '@/lib/content-variants';
 
 const ANALYSIS_SCORED_COUNT = PARAMS.filter((p) => p.cardOrder && p.scored).length;
 
@@ -35,6 +36,11 @@ export default function CityAnalysisSection({ stats, isConform, meta }) {
         : stats[card.dataKey]
     }))
     .filter(p => p.data && p.data.val !== undefined), [stats, meta.date_prelevement]);
+
+  const nonCompliantTip = useMemo(
+    () => pickFrom(NON_COMPLIANT_TIPS, meta?.insee || 'commune', meta?.code_departement || '', 70),
+    [meta]
+  );
 
   return (
     <Fragment>
@@ -63,7 +69,7 @@ export default function CityAnalysisSection({ stats, isConform, meta }) {
                   ? `${meta.conclusionNonConforme}${meta.dateNonConforme ? ` (prélèvement du ${meta.dateNonConforme})` : ''}`
                   : 'au moins un paramètre dépasse sa limite de qualité (voir le détail des cartes ci-dessus).'}
               </p>
-              <p className="ars-educational-tip">Une eau peut rester propre à la consommation malgré un dépassement de limite de qualité : suivez les consignes de l&rsquo;ARS.</p>
+              <p className="ars-educational-tip">{nonCompliantTip}</p>
             </div>
            )}
         </div>

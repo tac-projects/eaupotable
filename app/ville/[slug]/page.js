@@ -33,6 +33,23 @@ const normalizeSlug = (s) => {
 
 let cityIndexCache = null;
 let deptDataCache = new Map();
+let communesGeoCache = null;
+
+// Données factuelles communales (INSEE → EPCI, région, coordonnées, proximité),
+// figées par `npm run geo`. Chargées une fois par instance puis fusionnées au runtime,
+// ce qui évite de régénérer les 101 fichiers départementaux (125 Mo).
+function getCommuneGeo(insee) {
+  if (!insee) return null;
+  if (!communesGeoCache) {
+    const p = path.join(process.cwd(), 'public', 'data', 'communes-geo.json');
+    try {
+      communesGeoCache = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : {};
+    } catch {
+      communesGeoCache = {};
+    }
+  }
+  return communesGeoCache[insee] || null;
+}
 
 // Résout le slug canonique d'une commune pour le maillage interne.
 // Les fichiers départementaux sont indexés par slug de base ; les homonymes portent un slug
@@ -192,7 +209,12 @@ async function getLocalData(slug) {
         CITY_STATS_KEYS.map((k) => [k, rawCityData.stats?.[k]])
       ),
       prix: rawCityData.prix || null,
-      geo: rawCityData.geo || null,
+      geo: (() => {
+        const communeGeo = getCommuneGeo(rawCityData.meta?.insee);
+        return rawCityData.geo || communeGeo
+          ? { ...(rawCityData.geo || {}), ...(communeGeo || {}) }
+          : null;
+      })(),
       reseauInfo: rawCityData.reseauInfo || null,
       meta: {
         code_departement: rawCityData.meta?.code_departement,

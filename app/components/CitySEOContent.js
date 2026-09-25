@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
 import { ANALYSIS_CARDS } from '@/lib/params-registry';
-import { generateExpertVerdict, FOCUS_VARIANTS, FAQ_VARIANTS, hashCity } from '@/lib/content-variants';
+import { generateExpertVerdict, generateExpertPosition, FOCUS_VARIANTS, pickFrom, METHODOLOGY_INTROS, HOT_WATER_TIPS, FAQ_NITRATES, BABY_CTA, FAQ_QUALITE, FAQ_CALCAIRE_INTRO, FAQ_CALCAIRE_CONCLUSION, FAQ_PFAS, FAQ_CARAFE, BEBE_NOTES, SECTION_SUBTITLES } from '@/lib/content-variants';
 
 // Correspondance locale paramètre -> accès aux valeurs comparées (métriques ville + agrégats).
 const DUEL_METRIC = {
@@ -116,6 +116,37 @@ export default function CitySEOContent({ cityName, data }) {
     });
   }, [cityName, nomReseau, isConform, crystal, deptAvg, dpt, regionalInfo, currentYear, metrics]);
 
+  // 3bis. Position de l'expert (score commune vs département vs région) — variantes
+  const expertPosition = useMemo(() => {
+    const cityScore = crystal?.final ?? 0;
+    const deptScore = deptAvg?.score || 7.4;
+    const regionScore = regionalInfo?.score || 7.4;
+    const deptLabel = deptAvg?.name ? `la ${deptAvg.name}` : `le département ${dpt}`;
+    const regionName = regionalInfo?.name || 'la région';
+    return generateExpertPosition({ cityName, dpt, cityScore, deptScore, regionScore, deptLabel, regionName });
+  }, [cityName, crystal, deptAvg, regionalInfo, dpt]);
+
+  // 3ter. Texte de méthodologie (variantes — ex-100 % identique)
+  const methodologyText = useMemo(
+    () => pickFrom(METHODOLOGY_INTROS, cityName, dpt, 60),
+    [cityName, dpt]
+  );
+
+  // Sous-titres de sections (variés, ex-100 % identiques)
+  const sub = {
+    verdict: pickFrom(SECTION_SUBTITLES.verdict, cityName, dpt, 61),
+    focus: pickFrom(SECTION_SUBTITLES.focus, cityName, dpt, 62),
+    price: pickFrom(SECTION_SUBTITLES.price, cityName, dpt, 63),
+    priceAep: pickFrom(SECTION_SUBTITLES.priceAep, cityName, dpt, 64),
+    priceAc: pickFrom(SECTION_SUBTITLES.priceAc, cityName, dpt, 65),
+    priceTotal: pickFrom(SECTION_SUBTITLES.priceTotal, cityName, dpt, 66),
+    faq: pickFrom(SECTION_SUBTITLES.faq, cityName, dpt, 67).replace(/\{cityName\}/g, cityName),
+    methodology: pickFrom(SECTION_SUBTITLES.methodology, cityName, dpt, 68).replace(/\{cityName\}/g, cityName),
+    priceNotes: pickFrom(SECTION_SUBTITLES.priceNotes, cityName, dpt, 69).replace(/\{currentYear\}/g, String(currentYear)),
+    linkCalcaire: pickFrom(SECTION_SUBTITLES.linkCalcaire, cityName, dpt, 80),
+    linkChlore: pickFrom(SECTION_SUBTITLES.linkChlore, cityName, dpt, 81),
+  };
+
   // 4. Focus & Santé (variantes enrichies)
   const focusContent = useMemo(() => {
     const durete = parseValue(stats.hardness?.val);
@@ -123,43 +154,33 @@ export default function CitySEOContent({ cityName, data }) {
     const nitrates = parseValue(stats.nitrates?.val);
     const pfas = parseValue(stats.pfas?.val);
 
-    const h = hashCity(cityName, dpt);
-
     // Calcaire
     let calcaire;
     if (durete > 25) {
-      const pool = FOCUS_VARIANTS.calcaire.eleve;
-      calcaire = pool[h % pool.length];
+      calcaire = pickFrom(FOCUS_VARIANTS.calcaire.eleve, cityName, dpt, 30);
     } else if (durete > 0 && durete < 10) {
-      const pool = FOCUS_VARIANTS.calcaire.douce;
-      calcaire = pool[h % pool.length];
+      calcaire = pickFrom(FOCUS_VARIANTS.calcaire.douce, cityName, dpt, 30);
     } else {
-      const pool = FOCUS_VARIANTS.calcaire.moyenne;
-      calcaire = pool[h % pool.length];
+      calcaire = pickFrom(FOCUS_VARIANTS.calcaire.moyenne, cityName, dpt, 30);
     }
 
     // Chlore
     let chloreObj;
     if (chlore > 0.1) {
-      const pool = FOCUS_VARIANTS.chlore.present;
-      chloreObj = pool[(h + 1) % pool.length];
+      chloreObj = pickFrom(FOCUS_VARIANTS.chlore.present, cityName, dpt, 31);
     } else {
-      const pool = FOCUS_VARIANTS.chlore.absent;
-      chloreObj = pool[(h + 1) % pool.length];
+      chloreObj = pickFrom(FOCUS_VARIANTS.chlore.absent, cityName, dpt, 31);
     }
 
     // Santé
     const pfasValNum = parseFloat(String(metrics.pfasVal).replace("<", "").replace(",", "."));
     let sante;
     if (!isConform || (pfasValNum > 0.08) || (nitrates > 30)) {
-      const pool = FOCUS_VARIANTS.sante.vigilance;
-      sante = pool[(h + 2) % pool.length];
+      sante = pickFrom(FOCUS_VARIANTS.sante.vigilance, cityName, dpt, 32);
     } else if (pfasValNum > 0.04 || nitrates > 20) {
-      const pool = FOCUS_VARIANTS.sante.bonne;
-      sante = pool[(h + 2) % pool.length];
+      sante = pickFrom(FOCUS_VARIANTS.sante.bonne, cityName, dpt, 32);
     } else {
-      const pool = FOCUS_VARIANTS.sante.excellent;
-      sante = pool[(h + 2) % pool.length];
+      sante = pickFrom(FOCUS_VARIANTS.sante.excellent, cityName, dpt, 32);
     }
 
     const vars = { cityName, dureteVal: metrics.dureteVal, chloreVal: metrics.chloreVal, nitratesVal: metrics.nitratesVal, pfasVal: metrics.pfasVal };
@@ -185,28 +206,24 @@ export default function CitySEOContent({ cityName, data }) {
     const nit = stats.nitrates ? parseValue(stats.nitrates.val) : NaN;
     const pfasVal = stats.pfas?.val || "--";
     const score = crystal?.final ?? "--";
-    const h = hashCity(cityName, dpt);
 
     // Qualité
     let qualiteAnswer;
     if (score >= 7) {
-      const pool = FAQ_VARIANTS.qualite.bonne;
-      qualiteAnswer = pool[h % pool.length];
+      qualiteAnswer = pickFrom(FAQ_QUALITE.bonne, cityName, dpt, 40);
     } else if (score >= 4) {
-      const pool = FAQ_VARIANTS.qualite.moyenne;
-      qualiteAnswer = pool[h % pool.length];
+      qualiteAnswer = pickFrom(FAQ_QUALITE.moyenne, cityName, dpt, 40);
     } else {
-      const pool = FAQ_VARIANTS.qualite.mauvaise;
-      qualiteAnswer = pool[h % pool.length];
+      qualiteAnswer = pickFrom(FAQ_QUALITE.mauvaise, cityName, dpt, 40);
     }
     qualiteAnswer = qualiteAnswer.replace(/\{score\}/g, String(score)).replace(/\{cityName\}/g, cityName).replace(/\{currentYear\}/g, String(currentYear));
 
     // Calcaire
     let dureteConclusion;
-    if (durete > 25) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.dur;
-    else if (durete > 10) dureteConclusion = FAQ_VARIANTS.calcaireConclusion.moyen;
-    else dureteConclusion = FAQ_VARIANTS.calcaireConclusion.doux;
-    const calcaireAnswer = FAQ_VARIANTS.calcaire[0]
+    if (durete > 25) dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.dur, cityName, dpt, 43);
+    else if (durete > 10) dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.moyen, cityName, dpt, 43);
+    else dureteConclusion = pickFrom(FAQ_CALCAIRE_CONCLUSION.doux, cityName, dpt, 43);
+    const calcaireAnswer = pickFrom(FAQ_CALCAIRE_INTRO, cityName, dpt, 44)
       .replace(/\{durete\}/g, String(stats.hardness?.val || "--"))
       .replace(/\{cityName\}/g, cityName)
       .replace(/\{conclusion\}/g, dureteConclusion);
@@ -214,7 +231,7 @@ export default function CitySEOContent({ cityName, data }) {
     // PFAS
     const pfasValNum = parseFloat(String(pfasVal).replace("<", "").replace(",", "."));
     const pfasKey = (pfasValNum > 0.08) ? "present" : "absent";
-    const pfasAnswer = FAQ_VARIANTS.pfas[pfasKey]
+    const pfasAnswer = pickFrom(FAQ_PFAS[pfasKey], cityName, dpt, 45)
       .replace(/\{cityName\}/g, cityName)
       .replace(/\{pfas\}/g, String(pfasVal));
 
@@ -222,9 +239,25 @@ export default function CitySEOContent({ cityName, data }) {
     let carafeKey = "moyenne";
     if (durete > 25) carafeKey = "calcaire";
     else if (durete < 10) carafeKey = "douce";
-    const carafeAnswer = FAQ_VARIANTS.carafe[carafeKey]
+    const carafeAnswer = pickFrom(FAQ_CARAFE[carafeKey], cityName, dpt, 46)
       .replace(/\{cityName\}/g, cityName)
       .replace(/\{dureteVal\}/g, metrics.dureteVal);
+
+    // Nitrates (wording varié) + note biberons conditionnelle
+    const nitTxt = `${stats.nitrates?.val || "--"} mg/L`;
+    const nitTemplate = pickFrom(FAQ_NITRATES, cityName, dpt, 41);
+    const bebeNote = pickFrom(BEBE_NOTES, cityName, dpt, 47);
+    const nitratesPlain = nitTemplate
+      .replace(/\{cityName\}/g, cityName)
+      .replace(/\{nitVal\}/g, nitTxt)
+      .replace(/\{bebeNote\}/g, nit > 15 ? ` ${bebeNote}` : "");
+    const nitratesHtml = nitTemplate
+      .replace(/\{cityName\}/g, cityName)
+      .replace(/\{nitVal\}/g, `<strong>${nitTxt}</strong>`)
+      .replace(/\{bebeNote\}/g, nit > 15 ? ` L'eau reste conforme pour les adultes, mais la préparation des biberons appelle à la vigilance au-delà de 15 mg/L. ${bebeNote.replace('notre page eau du robinet pour bébé', '<a href="/eau-bebe">notre page eau du robinet pour bébé</a>')}` : "");
+
+    // Eau chaude (wording varié)
+    const hotWaterAnswer = pickFrom(HOT_WATER_TIPS, cityName, dpt, 42);
 
     return [
       {
@@ -237,10 +270,8 @@ export default function CitySEOContent({ cityName, data }) {
       },
       {
         q: `Y a-t-il des nitrates dans l'eau de ${cityName} ?`,
-        a: `Le taux de nitrates relevé est de ${stats.nitrates?.val || "--"} mg/L. La limite de qualité sanitaire est fixée à 50 mg/L par les autorités.`,
-        aHtml: nit > 15
-          ? `Le taux de nitrates relevé est de <strong>${stats.nitrates?.val || "--"} mg/L</strong> à ${cityName}. La limite de qualité sanitaire est fixée à 50 mg/L : l'eau reste conforme pour les adultes, mais la préparation des biberons appelle à la vigilance au-delà de 15 mg/L. Retrouvez les seuils nourrissons et la méthode de vérification sur notre page <a href="/eau-bebe">eau du robinet pour bébé</a>.`
-          : null,
+        a: nitratesPlain,
+        aHtml: nitratesHtml,
       },
       {
         q: `L'eau de ${cityName} contient-elle des PFAS (polluants éternels) ?`,
@@ -252,7 +283,7 @@ export default function CitySEOContent({ cityName, data }) {
       },
       {
         q: `Peut-on boire l'eau chaude du robinet à ${cityName} ?`,
-        a: "Non, il est fortement déconseillé de boire ou de cuisiner avec l'eau chaude. La chaleur favorise le développement bactérien et la dissolution de métaux lourds issus de votre installation intérieure. Utilisez toujours l'eau froide.",
+        a: hotWaterAnswer,
       }
     ];
   }, [cityName, isConform, crystal, stats, metrics, currentYear, dpt]);
@@ -265,28 +296,23 @@ export default function CitySEOContent({ cityName, data }) {
       return v && v !== '--' ? `${v} mg/L` : null;
     })();
 
-    if (isConform === false || (!isNaN(nit) && nit >= 50)) {
-      return {
-        tone: 'critical',
-        title: 'Biberons : eau non recommandée',
-        text: `Ne préparez pas les biberons avec l'eau de ${cityName} tant que la levée de restriction n'a pas été annoncée par l'ARS${nitVal ? ` (nitrates à ${nitVal})` : ''}. Suivez les consignes officielles et utilisez une eau en bouteille adaptée.`,
-      };
-    }
-    if (!isNaN(nit) && nit >= 15) {
-      return {
-        tone: 'warning',
-        title: 'Préparation des biberons : vigilance recommandée',
-        text: `Avec ${nitVal || 'un taux de nitrates mesuré'} à ${cityName}, l'eau reste conforme pour les adultes mais la prudence s'impose pour les biberons d'un nourrisson de moins de 6 mois. Préférez une eau pauvre en nitrates ou demandez conseil à votre médecin.`,
-      };
-    }
+    const tone = (isConform === false || (!isNaN(nit) && nit >= 50))
+      ? 'critical'
+      : (!isNaN(nit) && nit >= 15) ? 'warning' : 'ok';
+
+    const picked = pickFrom(BABY_CTA[tone], cityName, dpt, 50);
+    const nitSubst = tone === 'critical'
+      ? (nitVal ? ` (nitrates à ${nitVal})` : '')
+      : (nitVal || 'un taux de nitrates mesuré');
+
     return {
-      tone: 'ok',
-      title: 'Une eau adaptée pour les biberons',
-      text: nitVal
-        ? `Faible en nitrates (${nitVal}) et conforme aux contrôles ARS, l'eau de ${cityName} convient à la préparation des biberons : laissez couler l'eau froide quelques secondes avant de remplir le biberon.`
-        : `Conforme aux contrôles ARS, l'eau de ${cityName} peut être utilisée pour la préparation des biberons en respectant les précautions d'usage : eau froide et purge des canalisations.`,
+      tone,
+      title: picked.title,
+      text: picked.text
+        .replace(/\{cityName\}/g, cityName)
+        .replace(/\{nitVal\}/g, nitSubst),
     };
-  }, [cityName, isConform, stats]);
+  }, [cityName, isConform, stats, dpt]);
 
   return (
     <div className="city-seo-master">
@@ -429,7 +455,7 @@ export default function CitySEOContent({ cityName, data }) {
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Verdict de l'Expert : L'eau est-elle saine ?</h2>
-            <p className="seo-main-subtitle">Interprétation détaillée des analyses ARS et conclusion de nos spécialistes en santé environnementale.</p>
+            <p className="seo-main-subtitle">{sub.verdict}</p>
           </div>
           <div className="seo-card expert-analysis-card">
             <div className="expert-synthesis-body">
@@ -437,43 +463,7 @@ export default function CitySEOContent({ cityName, data }) {
                 <span dangerouslySetInnerHTML={{ __html: syntheseTexte.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}></span>
               </p>
               <p>
-                <strong>Verdict de l'expert :</strong> en {currentYear}, l'analyse de l'eau potable à <strong>{cityName}</strong> {(() => {
-                  const cityScore = crystal?.final ?? 0;
-                  const deptScore = deptAvg?.score || 7.4;
-                  const regionScore = regionalInfo?.score || 7.4;
-                  const deptLabel = deptAvg?.name ? `la ${deptAvg.name}` : `le département ${dpt}`;
-                  const regionName = regionalInfo?.name || "la région";
-                  const h = hashCity(cityName, dpt);
-
-                  if (cityScore >= deptScore && cityScore >= regionScore) {
-                    const best = [
-                      `affiche un bilan remarquable. Avec un Indice de Pureté de ${cityScore}/10, la commune se positionne au-dessus des moyennes de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Cette performance témoigne d'une gestion rigoureuse et place le réseau local parmi les plus sûrs de la zone.`,
-                      `est une excellente élève. Son score de ${cityScore}/10 dépasse à la fois ${deptLabel} (${deptScore}/10) et ${regionName} (${regionScore}/10). Un résultat qui reflète un investissement sérieux dans la qualité de l'eau.`,
-                      `confirme son excellence. Avec ${cityScore}/10, la commune fait mieux que ${deptLabel} (${deptScore}/10) et que la moyenne régionale (${regionScore}/10). Les habitants peuvent être fiers de leur eau.`,
-                      `se distingue nettement. Le score de ${cityScore}/10 surpasse les références départementales (${deptScore}/10) et régionales (${regionScore}/10). Une eau parmi les plus fiables du secteur.`,
-                      `brille par ses résultats. Avec ${cityScore}/10, elle dépasse ${deptLabel} (${deptScore}/10) et se hisse au-dessus de ${regionName} (${regionScore}/10). Une performance solide et durable.`,
-                    ];
-                    return best[h % best.length];
-                  } else if (cityScore >= deptScore) {
-                    const good = [
-                      `se situe dans une dynamique positive. Son score de ${cityScore}/10 surclasse la moyenne de ${deptLabel} (${deptScore}/10) et s'aligne sur les performances de ${regionName} (${regionScore}/10). Le réseau garantit une sécurité sanitaire solide.`,
-                      `fait mieux que son département. Avec ${cityScore}/10, elle dépasse ${deptLabel} (${deptScore}/10) et se rapproche de la moyenne de ${regionName} (${regionScore}/10). Une tendance encourageante.`,
-                      `affiche des résultats encourageants. Le score de ${cityScore}/10 est supérieur à ${deptLabel} (${deptScore}/10), même s'il reste en deçà de ${regionName} (${regionScore}/10). La direction est bonne.`,
-                      `montre une progression notable face à ${deptLabel} (${deptScore}/10) avec un score de ${cityScore}/10. La commune s'aligne progressivement sur les standards régionaux (${regionScore}/10).`,
-                      `témoigne d'une amélioration continue. Avec ${cityScore}/10, la commune devance ${deptLabel} (${deptScore}/10) et converge vers le niveau de ${regionName} (${regionScore}/10).`,
-                    ];
-                    return good[h % good.length];
-                  } else {
-                    const attention = [
-                      `présente des indicateurs à surveiller. Avec un score de ${cityScore}/10, la qualité de l'eau est en retrait par rapport à ${deptLabel} (${deptScore}/10) et à ${regionName} (${regionScore}/10). Ce décalage mérite une attention particulière sur les paramètres techniques locaux.`,
-                      `nécessite une vigilance accrue. Le score de ${cityScore}/10 est inférieur à ${deptLabel} (${deptScore}/10) et à ${regionName} (${regionScore}/10). Des améliorations sont nécessaires pour rejoindre les standards du territoire.`,
-                      `accuse un retard par rapport à son territoire. Avec ${cityScore}/10, la commune est en dessous de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Un plan d'action serait bénéfique.`,
-                      `doit poursuivre ses efforts. Le score de ${cityScore}/10 reste inférieur aux références de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). La situation n'est pas critique mais mérite un suivi.`,
-                      `a une marge de progression. Avec ${cityScore}/10, la qualité de l'eau est moins bonne qu'à l'échelle de ${deptLabel} (${deptScore}/10) et de ${regionName} (${regionScore}/10). Une surveillance renforcée est conseillée.`,
-                    ];
-                    return attention[h % attention.length];
-                  }
-                })()}
+                <strong>Verdict de l'expert :</strong> en {currentYear}, l'analyse de l'eau potable à <strong>{cityName}</strong> {expertPosition}
               </p>
             </div>
             <div className={`city-baby-banner ${babyCta.tone}`}>
@@ -493,11 +483,11 @@ export default function CitySEOContent({ cityName, data }) {
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Focus & Santé</h2>
-            <p className="seo-main-subtitle">Conseils personnalisés pour optimiser l'usage de votre eau au quotidien.</p>
+            <p className="seo-main-subtitle">{sub.focus}</p>
           </div>
           <div className="seo-grid">
-            <div className="seo-card"><h3>{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p><Link href="/definitions#calcaire" className="seo-card-link">Qu'est-ce que le calcaire ?</Link></div>
-            <div className="seo-card"><h3>{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p><Link href="/definitions#chlore" className="seo-card-link">Qu'est-ce que le chlore libre ?</Link></div>
+            <div className="seo-card"><h3>{focusContent.calcaire.titre}</h3><p>{focusContent.calcaire.texte}</p><Link href="/definitions#calcaire" className="seo-card-link">{sub.linkCalcaire}</Link></div>
+            <div className="seo-card"><h3>{focusContent.chlore.titre}</h3><p>{focusContent.chlore.texte}</p><Link href="/definitions#chlore" className="seo-card-link">{sub.linkChlore}</Link></div>
             <div className="seo-card"><h3>{focusContent.sante.titre}</h3><p>{focusContent.sante.texte}</p><Link href="/pfas-eau-potable" className="seo-card-link">Tout savoir sur les PFAS</Link></div>
           </div>
         </div>
@@ -509,7 +499,7 @@ export default function CitySEOContent({ cityName, data }) {
           <div className="seo-container">
             <div className="seo-section-header">
               <h2 className="seo-main-title">Quel est le prix de l'eau à {cityName} ?</h2>
-              <p className="seo-main-subtitle">Détail des tarifs officiels (TTC) pour la part Eau Potable et la part Assainissement.</p>
+              <p className="seo-main-subtitle">{sub.price}</p>
             </div>
 
             <div className="price-grid-premium">
@@ -522,7 +512,7 @@ export default function CitySEOContent({ cityName, data }) {
                   {prix.aep ? `${prix.aep.toFixed(2).replace('.', ',')} €` : '--'}
                   <span className="price-unit">/ m³ TTC</span>
                 </div>
-                <p className="price-card-desc">Production, pompage et distribution jusqu'à votre robinet.</p>
+                <p className="price-card-desc">{sub.priceAep}</p>
               </div>
 
               <div className="price-card-item">
@@ -540,7 +530,7 @@ export default function CitySEOContent({ cityName, data }) {
                   {prix.ac ? `${prix.ac.toFixed(2).replace('.', ',')} €` : '--'}
                   <span className="price-unit">/ m³ TTC</span>
                 </div>
-                <p className="price-card-desc">Collecte et traitement des eaux usées en station d'épuration.</p>
+                <p className="price-card-desc">{sub.priceAc}</p>
               </div>
 
               <div className="price-card-item highlight">
@@ -558,13 +548,13 @@ export default function CitySEOContent({ cityName, data }) {
                   {prix.total ? `${prix.total.toFixed(2).replace('.', ',')} €` : '--'}
                   <span className="price-unit">/ m³ moyen</span>
                 </div>
-                <p className="price-card-desc">Coût global au mètre cube basé sur une consommation de 120 m³.</p>
+                <p className="price-card-desc">{sub.priceTotal}</p>
               </div>
             </div>
 
             <div className="price-footer-notice">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              <span>Source : Observatoire National SISPEA ({currentYear}). Les tarifs incluent les taxes et redevances.</span>
+              <span>{sub.priceNotes}</span>
             </div>
           </div>
         </section>
@@ -575,7 +565,7 @@ export default function CitySEOContent({ cityName, data }) {
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Foire Aux Questions</h2>
-            <p className="seo-main-subtitle">Réponses aux interrogations les plus fréquentes des habitants de {cityName}.</p>
+            <p className="seo-main-subtitle">{sub.faq}</p>
           </div>
           <div className="seo-faq-accordion">
             {faqItems.map((item, i) => (
@@ -596,9 +586,7 @@ export default function CitySEOContent({ cityName, data }) {
         <div className="seo-container">
           <div className="seo-section-header">
             <h2 className="seo-main-title">Transparence & Méthodologie</h2>
-            <p className="seo-main-subtitle">
-              Les analyses de l'eau à <strong>{cityName}</strong> sont extraites en temps réel des bases de données <strong>SISE-Eaux</strong> du Ministère de la Santé (données Hub'Eau).
-            </p>
+            <p className="seo-main-subtitle">{sub.methodology}</p>
           </div>
 
           <div className="trust-card-premium">
@@ -611,9 +599,7 @@ export default function CitySEOContent({ cityName, data }) {
                   </svg>
                   <span>Observatoire Citoyen & Indépendant</span>
                 </div>
-                <p>
-                  Le <strong>Crystal Score™</strong> (0-10) est notre indice de pureté, calculé à partir des données officielles <strong>ARS</strong> de la base SISE-Eaux. La méthode complète, les sources et la pondération des paramètres (PFAS, nitrates, pesticides) sont détaillées sur la page dédiée.
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: methodologyText }} />
               </div>
               <div className="trust-card-actions">
                 <div className="trust-card-info-group">
@@ -636,7 +622,7 @@ export default function CitySEOContent({ cityName, data }) {
       {/* SECTION 8 : VOISINES (GRIS) */}
       <section className="home-content-section gray">
         <div className="seo-container">
-          <NearbyCities cities={neighborCities} dpt={dpt} isMetropolis={data.isMetropolis} />
+          <NearbyCities cities={neighborCities} dpt={dpt} isMetropolis={data.isMetropolis} cityName={cityName} />
         </div>
       </section>
 

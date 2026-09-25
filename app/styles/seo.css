@@ -2342,6 +2342,25 @@ body:has(.seo-content-wrapper) {
   opacity: 0.75;
 }
 
+.city-factual {
+  margin: 28px 0 0;
+  padding: 20px 24px;
+  background: var(--surface);
+  border-left: 4px solid var(--primary-solid);
+  border-radius: 12px;
+}
+
+.city-factual p {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.city-factual p:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 640px) {
   .city-network-card { padding: 22px 20px; }
   .city-network-row { flex-direction: column; gap: 2px; }

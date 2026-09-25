@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nomReseau, isConform }) {
+  const year = new Date().getFullYear();
   return (
     <section className="city-hero-section city-page-hero">
       <div className="city-hero-mesh"></div>
@@ -24,7 +25,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
           <div className="hero-left">
             <div className="city-hero-badge">
               <span className="badge-pulse"></span>
-              RELEVÉ OFFICIEL ARS 2026
+              RELEVÉ OFFICIEL ARS {year}
             </div>
             <h1 className="city-hero-title">
               Qualité de l'eau potable à <span className="highlight">{cityName}</span>
@@ -66,7 +67,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="trust-icon">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                   </svg>
-                  Données ARS 2026
+                  Données ARS {year}
                 </a>
                 <a 
                   href="https://www.data.gouv.fr/fr/reuses/eaupotable-net-observatoire-citoyen-de-la-qualite-de-leau-et-des-pfas/" 
@@ -100,7 +101,7 @@ export default function CityHero({ cityName, dpt, dateAnalyse, score, label, nom
             <div className="hero-water-image-container city-variant">
               <Image 
                 src="/images/hero-water-glass.webp"
-                alt={`Qualité de l'eau potable à ${cityName} - Rapport 2026`}
+                alt={`Qualité de l'eau potable à ${cityName} - Rapport ${year}`}
                 className="hero-water-image no-anim"
                 width={600}
                 height={600}

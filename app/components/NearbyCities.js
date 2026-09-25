@@ -1,8 +1,10 @@
 'use client';
 import { Fragment } from 'react';
+import { NEARBY_INTROS, pickFrom } from '@/lib/content-variants';
 
-export default function NearbyCities({ cities, dpt, isMetropolis = false }) {
+export default function NearbyCities({ cities, dpt, isMetropolis = false, cityName = '' }) {
   if (!cities || cities.length === 0) return null;
+  const intro = pickFrom(NEARBY_INTROS, cityName, dpt, 71).replace(/\{dpt\}/g, dpt);
   return (
     <Fragment>
       <div className="seo-section-header">
@@ -12,7 +14,7 @@ export default function NearbyCities({ cities, dpt, isMetropolis = false }) {
         <p className="seo-main-subtitle">
           {isMetropolis 
             ? "Découvrez la qualité de l'eau dans les autres grandes métropoles nationales."
-            : `Explorez les rapports de pureté des autres territoires du département ${dpt}.`}
+            : intro}
         </p>
       </div>
       <div className="seo-tags-grid">
