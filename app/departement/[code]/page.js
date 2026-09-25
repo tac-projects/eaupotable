@@ -11,6 +11,23 @@ export const revalidate = 86400; // Cache ISR de 24h après la première visite
 // On refuse tout autre format avant d'utiliser le paramètre dans un chemin de fichier.
 const DEPT_CODE_RE = /^(?:2[AB]|\d{2,3})$/;
 
+// Map UDI → slug de page réseau, pour les liens « Principaux opérateurs ».
+let udiToSlugCache = null;
+function getUdiToSlug() {
+  if (udiToSlugCache) return udiToSlugCache;
+  const p = path.join(process.cwd(), 'public', 'data', 'reseaux-index.json');
+  try {
+    const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : { reseaux: {} };
+    udiToSlugCache = {};
+    for (const [udi, r] of Object.entries(data.reseaux || {})) {
+      if (r.slug) udiToSlugCache[udi] = r.slug;
+    }
+  } catch {
+    udiToSlugCache = {};
+  }
+  return udiToSlugCache;
+}
+
 export async function generateMetadata({ params }) {
   const { code } = await params;
   let deptName = `Département ${code}`;
@@ -146,6 +163,7 @@ export default async function DepartementPage({ params }) {
       <DepartementClient 
         code={code} 
         deptData={deptData}
+        udiToSlug={getUdiToSlug()}
       />
     </>
   );

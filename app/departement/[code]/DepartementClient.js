@@ -5,7 +5,7 @@ import { computeDeptEditorial, buildDeptEditorialText, buildDeptFaq } from '../.
 import '../../styles/seo.css';
 import '../../styles/components.css';
 
-export default function DepartementClient({ code, deptData }) {
+export default function DepartementClient({ code, deptData, udiToSlug = {} }) {
   const deptInfo = deptData?.deptInfo || {};
   const citiesObj = deptData?.cities || {};
   
@@ -21,7 +21,7 @@ export default function DepartementClient({ code, deptData }) {
 
   // Éditorial data-driven (unique par département)
   const currentYear = new Date().getFullYear();
-  const editorial = computeDeptEditorial(deptData);
+  const editorial = computeDeptEditorial(deptData, udiToSlug);
   const editorialParagraphs = buildDeptEditorialText(deptData, currentYear);
   const deptFaq = buildDeptFaq(deptData, currentYear);
 
@@ -221,7 +221,11 @@ export default function DepartementClient({ code, deptData }) {
                         {editorial.distributors.map((d, i) => (
                           <li key={i} className="supplier-item">
                             <span className="supplier-rank">{i === 0 ? 'Principal' : `N°${i + 1}`}</span>{' '}
-                            <span className="supplier-name">{d.name}</span>{' '}
+                            {d.slug ? (
+                              <a href={`/reseau/${d.slug}`} className="supplier-name supplier-link" title={`Voir les caractéristiques du réseau ${d.name}`}>{d.name}</a>
+                            ) : (
+                              <span className="supplier-name">{d.name}</span>
+                            )}{' '}
                             <span className="supplier-count">{d.count} communes</span>{' '}
                             <span className="supplier-pct">{d.pct}%</span>
                             {i < editorial.distributors.length - 1 && <span className="sr-only"> - </span>}
@@ -241,10 +245,20 @@ export default function DepartementClient({ code, deptData }) {
                         <div className="price-card">
                           <span className="price-label">Minimum</span>
                           <span className="price-value">{editorial.priceStats.min.toFixed(2).replace('.', ',')} €/m³</span>
+                          {editorial.priceStats.minCity && (
+                            <a href={`/ville/${editorial.priceStats.minCity.slug}`} className="price-city">
+                              {editorial.priceStats.minCity.name}
+                            </a>
+                          )}
                         </div>
                         <div className="price-card">
                           <span className="price-label">Maximum</span>
                           <span className="price-value">{editorial.priceStats.max.toFixed(2).replace('.', ',')} €/m³</span>
+                          {editorial.priceStats.maxCity && (
+                            <a href={`/ville/${editorial.priceStats.maxCity.slug}`} className="price-city">
+                              {editorial.priceStats.maxCity.name}
+                            </a>
+                          )}
                         </div>
                       </div>
                       <p className="price-note">Tarifs relevés dans {editorial.priceStats.count} communes du département, hors abonnement.</p>
@@ -545,6 +559,17 @@ export default function DepartementClient({ code, deptData }) {
           font-size: 0.95rem;
         }
 
+        .supplier-link {
+          color: var(--primary-solid);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          transition: opacity 0.2s ease;
+        }
+
+        .supplier-link:hover {
+          opacity: 0.75;
+        }
+
         .supplier-count { color: #64748B; font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
         .supplier-pct {
           font-weight: 800;
@@ -566,6 +591,8 @@ export default function DepartementClient({ code, deptData }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
+          gap: 4px 10px;
           background: white;
           border: 1px solid rgba(0,0,0,0.05);
           border-radius: 16px;
@@ -575,6 +602,15 @@ export default function DepartementClient({ code, deptData }) {
 
         .price-label { color: #64748B; font-weight: 600; font-size: 0.9rem; }
         .price-value { font-weight: 800; color: #0052FF; font-size: 1.05rem; }
+        .price-city {
+          flex-basis: 100%;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #0052FF;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .price-city:hover { opacity: 0.75; }
 
         .price-note {
           margin-top: 15px;
