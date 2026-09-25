@@ -129,3 +129,22 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - **`npm run audit:diff`** (`scripts/audit-diff.js`) : compare les 2 derniers snapshots de **même cadence** (`--period=week|month`, défaut `month`), ou `--from=`/`--to=` (match sur le chemin, ex. `monthly/2026-08`). Diff GSC (totaux, segments, top 15 pages) + **GA4** (canaux, appareils, events, landing organiques), union A∪B.
 - **Captures Playwright** mobile (390×844, above-the-fold) : à déposer dans le dossier du snapshot (`screens/`) — sinon éphémères dans `/tmp/opencode`.
 - **Legacy** : `audit/legacy/2026-09-24/` = baseline one-off (fenêtres glissantes 30 j), non comparable aux runs mensuels.
+
+# Pages réseau (/reseau/<udi>)
+
+- **Corpus 09/2026** : `app/reseau/[udi]/page.js` + agrégation nationale `scripts/build-reseaux-index.js` → `public/data/reseaux-index.json` (clé UDI, ~15 290 réseaux, infra + communes desservies avec slug canonique + historique + conformité). Script intégré à `npm run sitemap` (avant `generate-sitemap`).
+- **Sitemap** : `sitemap-reseaux.xml` généré par `scripts/generate-sitemap.js` ; `lastmod` = date du dernier prélèvement du réseau (`derniereAnalyse`), **jamais la date de génération**.
+- **Architecture 3 niveaux** : `/departement` (classement) / `/reseau/<udi>` (infrastructure + communes desservies) / `/ville` (mesures + contexte). Maillage : chaque fiche ville pointe vers `/reseau/<udi>` (`CityLocalContext`) ; la page réseau liste les communes desservies.
+- **Garde-fou anti-duplication** : la page réseau ne recopie **jamais** les 14 mesures (réservées aux fiches ville) ; inversement, les phrases factuelles de la page ville viennent de `communes-geo.json`.
+- **Décision Thomas** : aucune page ville en **noindex** — l'objectif est de maximiser l'indexation (voir « Contenu varié » ci-dessous). Point de retour : tag git `pre-reseau-architecture`.
+
+# Contenu varié & contexte factuel (fiches ville)
+
+- **`lib/content-variants.js` = source unique des variantes éditoriales** (verdict expert, FAQ, focus, sous-titres de sections, encart bébé). Sélection exclusivement via `pickFrom(pool, cityName, dpt, slot)` — **ne jamais** faire `hash % pool.length` directement.
+- **Piège `slotHash`** : FNV-1a a un biais sur les bits de poids faible (les derniers caractères, dont le slot, dominent). La **finalisation avalanche (murmur3)** est indispensable : sans elle, toutes les villes retombent sur la même variante pour un slot donné → duplication massive. Ne pas la retirer.
+- **Contexte factuel** : `public/data/communes-geo.json` (clé INSEE) contient `population`, `surface` (hectares), `codesPostaux`, `codeEpci`/`epciNom`/`epciPopulation`/`epciSurface`, `regionNom`, `centre` [lon, lat] et `distGrandeVille`/`grandeVilleNom`. Régénéré **manuellement** par `npm run geo` (fichier figé, **pas** dans la pipeline `npm run sitemap`). Fusion au **runtime** dans `app/ville/[slug]/page.js` via `meta.insee` — ne pas régénérer les 101 fichiers départementaux pour ces champs.
+- **Mesure de duplication** : `npm run measure:similarity` (`scratch/measure-city-similarity.js`) — similarité de phrases entre communes d'un même réseau, sur un échantillon fixe de 12 réseaux. Cible **< 20 %** (atteint 15,5 % en 09/2026 ; baseline 45,5 %). ⚠️ Passer par le hostname `localhost` (Node n'envoie pas le header `Host` → le middleware redirigerait vers la prod).
+- **JSON-LD FAQ** : `CityJsonLd.js` doit rester **aligné sur les mêmes sélecteurs** (`slot` identiques) que `CitySEOContent.js`, sinon incohérence entre données structurées et contenu visible.
+- **Ne pas varier** les titres H1/H2/H3 ni les questions FAQ (SEO) : varier uniquement les corps de paragraphe, sous-titres descriptifs, réponses FAQ et encarts.
+- **Dette connue** : les titres de `FOCUS_VARIANTS` contiennent encore des emojis (contraire à la règle « pas d'emoji »). À remplacer par du SVG inline lors d'une prochaine passe.
+
