@@ -1113,7 +1113,7 @@
     right: 1px;
     width: 46px;
     border-radius: 0 20px 20px 0;
-    background: linear-gradient(to left, #fff 45%, rgba(255, 255, 255, 0));
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.35) 55%, rgba(255, 255, 255, 0) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;

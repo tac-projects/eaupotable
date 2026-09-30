@@ -148,7 +148,7 @@ export default function CitySEOContent({ cityName, data }) {
         if (cancelled) return;
         wrap.scrollTo({ left: 0, behavior: 'smooth' });
       }, 650);
-    }, { threshold: 0.6 });
+    }, { threshold: 0, rootMargin: '0px 0px -25% 0px' });
     io.observe(wrap);
 
     wrap.addEventListener('touchstart', cancelBounce, { passive: true });
