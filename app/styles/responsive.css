@@ -112,10 +112,10 @@
         width: 35px;
         height: 35px;
         padding: 9px;
-        background: var(--surface-sunken);
-        color: var(--text-light);
+        background: var(--primary-solid);
+        color: #fff;
         border-radius: 50%;
-        box-shadow: none;
+        box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.35);
         box-sizing: content-box;
     }
 

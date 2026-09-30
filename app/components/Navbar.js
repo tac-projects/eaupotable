@@ -245,13 +245,6 @@ export default function Navbar() {
           </svg>
           <span>Accueil</span>
         </Link>
-        <Link href="/villes" className={`mbn-item ${pathname === '/villes' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          <span>Villes</span>
-        </Link>
         <button className={`mbn-item mbn-search ${isSearchOpen ? 'active' : ''}`} onClick={openSearch} aria-label="Rechercher une ville">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -264,14 +257,6 @@ export default function Navbar() {
             <path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
           </svg>
           <span>PFAS</span>
-        </Link>
-        <Link href="/faq" className={`mbn-item ${pathname === '/faq' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-            <line x1="12" y1="17" x2="12.01" y2="17" />
-          </svg>
-          <span>FAQ</span>
         </Link>
       </nav>
 
