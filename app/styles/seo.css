@@ -630,20 +630,19 @@
     height: 32px;
 }
 
-/* Icône inline dans un titre de carte (remplace les emojis retirés) */
+/* Icône de carte : centrée au-dessus du titre, taille unifiée avec l'encart bébé */
 .seo-card h3 .seo-card-icon {
-    width: 1.35em;
-    height: 1.35em;
-    margin: 0 0.5em 0 0;
-    border-radius: 0.4em;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 14px;
+    border-radius: 14px;
     background: rgba(var(--primary-rgb), 0.08);
-    vertical-align: middle;
     transform: none;
 }
 
 .seo-card h3 .seo-card-icon svg {
-    width: 0.85em;
-    height: 0.85em;
+    width: 24px;
+    height: 24px;
 }
 
 .seo-card h3 {
@@ -2056,8 +2055,12 @@ body:has(.seo-content-wrapper) {
 /* ---- ENCART « EAU POUR BÉBÉ » (pages ville) ---- */
 .city-baby-banner {
   display: flex;
-  gap: 18px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
   margin-top: 28px;
   padding: 22px 24px;
   border-radius: 18px;
