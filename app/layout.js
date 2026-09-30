@@ -94,6 +94,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <Analytics />
+        <Script src="/track.js" strategy="beforeInteractive" />
         <Script 
           src="https://www.googletagmanager.com/gtag/js?id=G-L7BMHXS6DJ"
           strategy="lazyOnload"

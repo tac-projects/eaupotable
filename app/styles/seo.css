@@ -1094,6 +1094,62 @@
     margin-top: 25px;
 }
 
+/* Conteneur positionné : rebond auto + indice de colonnes cachées (mobile) */
+.summary-table-outer {
+    position: relative;
+    margin-top: 25px;
+}
+
+.summary-table-outer .summary-table-wrapper {
+    margin-top: 0;
+}
+
+/* Dégradé de bord droit, visible uniquement s'il reste des colonnes à droite */
+.summary-table-outer::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    width: 46px;
+    border-radius: 0 20px 20px 0;
+    background: linear-gradient(to left, #fff 45%, rgba(255, 255, 255, 0));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.summary-table-outer.has-overflow::after {
+    opacity: 1;
+}
+
+/* Chevron d'indice de scroll */
+.table-scroll-hint {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary-solid);
+    border: 1px solid rgba(var(--primary-rgb), 0.25);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.summary-table-outer.has-overflow .table-scroll-hint {
+    opacity: 1;
+}
+
 .comparison-table {
     width: 100%;
     min-width: 500px;

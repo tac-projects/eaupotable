@@ -37,6 +37,11 @@ self.addEventListener('activate', (event) => {
 
 // Stratégie de cache : Cache First, then Network
 self.addEventListener('fetch', (event) => {
+  // Mesure d'audience first-party : ne jamais intercepter (/__t, /track.js).
+  if (event.request.url.includes('/__t') || event.request.url.includes('/track.js')) {
+    return;
+  }
+
   // On ne cache pas les appels API Mapbox ou Hub'Eau pour garder les données fraîches
   if (event.request.url.includes('api.mapbox.com') || event.request.url.includes('hubeau.eaufrance.fr')) {
     return;

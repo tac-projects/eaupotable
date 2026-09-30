@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, Fragment } from 'react';
+import { useMemo, useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { parseValue, getParameterStatus, PARAM_ICONS, NATIONAL_STATS } from '@/lib/water-utils';
@@ -106,6 +106,63 @@ export default function CitySEOContent({ cityName, data }) {
       }
     };
   }, [stats, deptAvg, regionalInfo]);
+
+  // 2bis. Amorçage de scroll du « Duel de Pureté » (mobile) : un léger rebond vers
+  // la droite dévoile la 3e colonne ; un dégradé + chevron signale les colonnes cachées.
+  const duelScrollRef = useRef(null);
+  const duelBounceTimer = useRef(null);
+
+  useEffect(() => {
+    const outer = duelScrollRef.current;
+    const wrap = outer?.querySelector('.summary-table-wrapper');
+    if (!wrap) return;
+
+    let cancelled = false;
+
+    const updateHint = () => {
+      const hasOverflow = wrap.scrollWidth > wrap.clientWidth + 4;
+      const atEnd = wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 8;
+      outer.classList.toggle('has-overflow', hasOverflow && !atEnd);
+    };
+
+    const cancelBounce = () => {
+      cancelled = true;
+      if (duelBounceTimer.current) {
+        clearTimeout(duelBounceTimer.current);
+        duelBounceTimer.current = null;
+      }
+    };
+
+    updateHint();
+    wrap.addEventListener('scroll', updateHint, { passive: true });
+    window.addEventListener('resize', updateHint, { passive: true });
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      if (reduced || wrap.scrollWidth <= wrap.clientWidth + 4 || wrap.scrollLeft > 4) return;
+      const dist = Math.min(110, wrap.scrollWidth - wrap.clientWidth);
+      wrap.scrollTo({ left: dist, behavior: 'smooth' });
+      duelBounceTimer.current = setTimeout(() => {
+        if (cancelled) return;
+        wrap.scrollTo({ left: 0, behavior: 'smooth' });
+      }, 650);
+    }, { threshold: 0.6 });
+    io.observe(wrap);
+
+    wrap.addEventListener('touchstart', cancelBounce, { passive: true });
+    wrap.addEventListener('wheel', cancelBounce, { passive: true });
+
+    return () => {
+      cancelBounce();
+      io.disconnect();
+      wrap.removeEventListener('scroll', updateHint);
+      wrap.removeEventListener('touchstart', cancelBounce);
+      wrap.removeEventListener('wheel', cancelBounce);
+      window.removeEventListener('resize', updateHint);
+    };
+  }, []);
 
   // 3. Synthèse de l'Expert (nouveau système à 4 profils + 15 variantes par slot)
   const syntheseTexte = useMemo(() => {
@@ -338,8 +395,9 @@ export default function CitySEOContent({ cityName, data }) {
             <p className="seo-main-subtitle">Comparez les analyses de <strong>{cityName}</strong> avec le département <strong>{deptAvg?.name || `Département ${dpt}`} ({dpt})</strong> et la région <strong>{regionalInfo?.name || 'la région'}</strong>.</p>
           </div>
 
-          <div className="summary-table-wrapper">
-            <table className="comparison-table">
+          <div className="summary-table-outer" ref={duelScrollRef}>
+            <div className="summary-table-wrapper">
+              <table className="comparison-table">
               <thead>
                 <tr>
                   <th>Indicateur</th>
@@ -422,7 +480,11 @@ export default function CitySEOContent({ cityName, data }) {
                   });
                 })()}
               </tbody>
-            </table>
+              </table>
+            </div>
+            <span className="table-scroll-hint" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+            </span>
           </div>
         </div>
       </section>

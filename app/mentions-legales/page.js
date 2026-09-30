@@ -44,6 +44,7 @@ export default function LegalPage() {
             <ul style={{marginLeft: '20px', marginBottom: '1rem', color: 'var(--text-muted)'}}>
               <li>Votre adresse email via le formulaire de contact ou d'inscription aux alertes.</li>
               <li>Vos données de navigation anonymisées via Google Analytics.</li>
+              <li>Une mesure d'audience first-party, hébergée sur notre serveur et fonctionnant <strong>sans cookie</strong> ni identifiant persistant (pages vues et durée de visite). L'adresse IP sert uniquement, de façon technique, à distinguer les visiteurs d'une même journée via une empreinte non réversible, puis n'est pas conservée. Aucune donnée n'est transmise à un tiers.</li>
             </ul>
             <p>
               Ces données ne sont jamais revendues à des tiers et sont uniquement utilisées pour vous répondre ou vous envoyer les alertes de qualité de l'eau demandées. 
@@ -57,6 +58,9 @@ export default function LegalPage() {
               Le site <strong>EauPotable.net</strong> utilise des cookies pour analyser son audience via Google Analytics. 
               Cela nous permet d'améliorer l'expérience utilisateur et de comprendre quelles villes sont les plus recherchées. 
               Vous pouvez configurer votre navigateur pour refuser ces cookies lors de votre première visite.
+            </p>
+            <p>
+              En complément, une mesure d'audience interne first-party fonctionne <strong>sans aucun cookie</strong> ni identifiant persistant.
             </p>
           </div>
 
