@@ -45,6 +45,7 @@ export default function MobileSearchSheet({ open, onClose }) {
   }, [searchQuery]);
 
   const handleSelect = (slug) => {
+    if (searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug });
     onClose();
     router.push(`/ville/${slug}`);
     window.scrollTo(0, 0);

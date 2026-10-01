@@ -70,6 +70,7 @@ export default function Navbar() {
 
   const handleSelect = (city) => {
     const slug = city.slug;
+    if (searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug });
     setIsOpen(false);
     setSearchQuery('');
     setSuggestions([]);
