@@ -72,7 +72,9 @@ function getCommuneGeo(insee) {
 // pointaient vers la commune du premier département alphabétique (ex: sainte-croix → 01).
 function canonicalSlugFor(baseSlug, deptCode) {
   if (!cityIndexCache) return baseSlug;
-  if (cityIndexCache[baseSlug] === deptCode) return baseSlug;
+  const entry = cityIndexCache[baseSlug];
+  const baseDept = typeof entry === 'string' ? entry : entry && entry.d;
+  if (baseDept === deptCode) return baseSlug;
   const suffixed = `${baseSlug}-${deptCode}`;
   return cityIndexCache[suffixed] ? suffixed : baseSlug;
 }
@@ -92,7 +94,8 @@ async function getLocalData(slug) {
     
     // Normalisation de sécurité du slug entrant (même normalisation que makeSlug du build)
     const cleanSlug = normalizeSlug(slug);
-    let deptCode = cityIndex[cleanSlug];
+    const slugEntry = cityIndex[cleanSlug];
+    let deptCode = typeof slugEntry === 'string' ? slugEntry : slugEntry && slugEntry.d;
 
     // LOGIQUE DE RÉCUPÉRATION (RECOVERY) :
     // Uniquement des transformations EXACTES qui préservent l'identité de la commune.

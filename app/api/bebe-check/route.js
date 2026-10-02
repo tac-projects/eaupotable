@@ -66,7 +66,8 @@ export async function GET(request) {
       if (!fs.existsSync(indexPath)) throw new Error('city-index introuvable');
       searchIndexCache = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
     }
-    const deptCode = searchIndexCache[slug];
+    const slugEntry = searchIndexCache[slug];
+    const deptCode = typeof slugEntry === 'string' ? slugEntry : slugEntry && slugEntry.d;
     if (!deptCode) {
       return NextResponse.json({ error: 'Commune introuvable.' }, { status: 404, headers: CORS_HEADERS });
     }
