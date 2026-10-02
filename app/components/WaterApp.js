@@ -41,6 +41,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   const [showInstallBanner, setShowInstallBanner] = useState(false);
   const [showPWABanner, setShowPWABanner] = useState(false);
   const [isPWAExcluded, setIsPWAExcluded] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
 
   // Sharing States
   const [showShareFab, setShowShareFab] = useState(false);
@@ -59,13 +60,23 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   }, []);
 
   useEffect(() => {
+    const markInstalled = () => {
+      localStorage.setItem('pwa-installed', '1');
+      setShowPWABanner(false);
+    };
+
     const checkPWAStatus = () => {
+      if (localStorage.getItem('pwa-installed')) return false;
+
       const isExcluded = localStorage.getItem('pwa-banner-excluded');
       const now = new Date().getTime();
       if (isExcluded && now < parseInt(isExcluded)) return false;
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator && window.navigator.standalone);
-      if (isStandalone) return false;
+      if (isStandalone) {
+        markInstalled();
+        return false;
+      }
 
       return true;
     };
@@ -75,8 +86,10 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
       setDeferredPrompt(e);
       if (checkPWAStatus()) {
         setTimeout(() => {
-          setShowPWABanner(true);
-        }, 5000);
+          if (!localStorage.getItem('pwa-installed')) {
+            setShowPWABanner(true);
+          }
+        }, 20000);
       }
     };
 
@@ -86,8 +99,10 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
     let smartTimer;
     if (!selectedCity && checkPWAStatus()) {
       smartTimer = setTimeout(() => {
-        setShowPWABanner(true);
-      }, 5000); // Un peu plus de délai pour ne pas agresser au chargement
+        if (!localStorage.getItem('pwa-installed')) {
+          setShowPWABanner(true);
+        }
+      }, 20000); // Délai pour ne pas agresser au chargement
     }
 
     return () => {
@@ -96,10 +111,41 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
     };
   }, [selectedCity]);
 
+  // Détection "app déjà installée" en onglet web (API Chromium/Android)
+  useEffect(() => {
+    let cancelled = false;
+
+    const detectInstalled = async () => {
+      if (localStorage.getItem('pwa-installed')) {
+        setIsInstalled(true);
+        return;
+      }
+      if (typeof navigator === 'undefined' || !navigator.getInstalledRelatedApps) return;
+      try {
+        const apps = await navigator.getInstalledRelatedApps();
+        if (!cancelled && apps && apps.length > 0) {
+          localStorage.setItem('pwa-installed', '1');
+          setIsInstalled(true);
+          setShowPWABanner(false);
+        }
+      } catch (e) { /* API indisponible ou bloquée */ }
+    };
+
+    detectInstalled();
+    return () => { cancelled = true; };
+  }, []);
+
   useEffect(() => {
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator && window.navigator.standalone);
-    if (isStandalone) track('standalone_view');
-    const onInstalled = () => track('pwa_installed');
+    if (isStandalone) {
+      localStorage.setItem('pwa-installed', '1');
+      track('standalone_view');
+    }
+    const onInstalled = () => {
+      localStorage.setItem('pwa-installed', '1');
+      setShowPWABanner(false);
+      track('pwa_installed');
+    };
     window.addEventListener('appinstalled', onInstalled);
     return () => window.removeEventListener('appinstalled', onInstalled);
   }, []);
@@ -258,7 +304,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   return (
     <main>
       {/* 2. PWA Install Banner - Toujours disponible si activée */}
-      {showPWABanner && (
+      {showPWABanner && !isInstalled && (
         <div id="install-banner" className={`install-banner visible ${isScrolled ? 'scrolled' : ''}`}>
           <div className="install-content">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="install-icon-svg">

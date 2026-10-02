@@ -10,10 +10,10 @@ import { track } from '@/lib/analytics';
 const fmtBebe = (n) => Number(n).toLocaleString('fr-FR');
 
 const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, className, ariaLabel }) => {
-  const [placeholder, setPlaceholder] = useState("Votre ville...");
+  const [placeholder, setPlaceholder] = useState("");
 
   useEffect(() => {
-    const texts = ["Paris", "Lyon", "Marseille", "Toulouse", "Nantes"];
+    const texts = ["Paris, 75001", "Marseille, 13001", "Lyon, 69001", "Toulouse, 31000", "Nantes, 44000"];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -43,7 +43,7 @@ const TypewriterInput = ({ value, onChange, onFocus, onBlur, onKeyDown, classNam
       timeout = setTimeout(type, speed);
     };
 
-    const startTimeout = setTimeout(type, 2500); // Délai beaucoup plus long pour laisser le thread principal libre
+    const startTimeout = setTimeout(type, 600); // Court délai pour laisser le thread principal démarrer
     return () => {
       clearTimeout(timeout);
       clearTimeout(startTimeout);
@@ -331,7 +331,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
         handleSearchSelection(data[0]);
       } else {
         setGeoState('error');
-        setGeoMessage("Aucune commune trouvée. Essayez un autre nom ou un code postal.");
+        setGeoMessage("Aucune commune trouvée. Essayez un autre nom ou code postal.");
       }
     } catch {
       setGeoState('error');
