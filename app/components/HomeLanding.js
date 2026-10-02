@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { POPULAR_CITIES } from '@/lib/water-utils';
+import SearchSuggestionContent from './SearchSuggestionContent';
 import { track } from '@/lib/analytics';
 
 const fmtBebe = (n) => Number(n).toLocaleString('fr-FR');
@@ -75,6 +76,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
   const [isVigilanceFocused, setIsVigilanceFocused] = useState(false);
   const [geoState, setGeoState] = useState('idle'); // idle | loading | error
   const [geoMessage, setGeoMessage] = useState(null);
+  const [ctaLoading, setCtaLoading] = useState(false);
   const pendingSubmitRef = useRef(false);
   const turnstileLoadRef = useRef(null);
 
@@ -307,6 +309,38 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
     navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000, maximumAge: 300000 });
   };
 
+  // Bouton « Analyser mon eau » : lance l'analyse de la première commune
+  // trouvée. Si les suggestions sont déjà là on les utilise, sinon on
+  // interroge /api/search immédiatement (le clic peut précéder le debounce).
+  const handleAnalyseClick = async () => {
+    const q = searchQuery.trim();
+    if (!q) return;
+    track('search_cta_click', { q });
+
+    if (suggestions.length > 0) {
+      handleSearchSelection(suggestions[0]);
+      return;
+    }
+
+    setCtaLoading(true);
+    setGeoState('idle');
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+      const data = res.ok ? await res.json() : [];
+      if (Array.isArray(data) && data.length > 0) {
+        handleSearchSelection(data[0]);
+      } else {
+        setGeoState('error');
+        setGeoMessage("Aucune commune trouvée. Essayez un autre nom ou un code postal.");
+      }
+    } catch {
+      setGeoState('error');
+      setGeoMessage("Erreur de recherche. Réessayez.");
+    } finally {
+      setCtaLoading(false);
+    }
+  };
+
   return (
     <div className="home-landing-page">
       <div className="hero-section">
@@ -366,6 +400,15 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                   </button>
+                  <button
+                    className="search-cta-btn"
+                    onClick={handleAnalyseClick}
+                    disabled={ctaLoading}
+                    aria-label="Analyser mon eau"
+                  >
+                    <span className="cta-label-full">Analyser mon eau</span>
+                    <span className="cta-label-short">Analyser</span>
+                  </button>
                 </div>
 
                 <div className={`search-results ${isSearchFocused && (suggestions.length > 0 || !searchQuery) ? 'active' : ''}`}>
@@ -381,7 +424,7 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                   )}
                   {suggestions.map((city, i) => (
                     <div key={i} className="suggestion-item" onClick={() => handleSearchSelection(city)}>
-                      <strong>{city.text}</strong> <span className="suggestion-context-text">({city.dpt})</span>
+                      <SearchSuggestionContent item={city} contextClassName="suggestion-context-text" />
                     </div>
                   ))}
                 </div>
@@ -816,15 +859,15 @@ export default function HomeLanding({ onCitySelect, searchProps, metropolisScore
                       required
                       disabled={status === 'SENDING' || status === 'SUCCESS'}
                     />
-                    {isVigilanceFocused && vigilanceSuggestions.length > 0 && (
+                    {isVigilanceFocused && vigilanceSuggestions.some(s => s.kind !== 'dept') && (
                       <div className="vigilance-suggestions-dropdown">
-                        {vigilanceSuggestions.map((city, i) => (
+                        {vigilanceSuggestions.filter(s => s.kind !== 'dept').map((city, i) => (
                           <div
                             key={i}
                             className="vigilance-suggestion-item"
                             onClick={() => handleVigilanceCitySelect(city)}
                           >
-                            <strong>{city.text}</strong> <span className="suggestion-context">({city.dpt})</span>
+                            <SearchSuggestionContent item={city} contextClassName="suggestion-context" />
                           </div>
                         ))}
                       </div>

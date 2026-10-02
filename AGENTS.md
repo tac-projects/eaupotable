@@ -160,3 +160,11 @@ Source officielle : dataset data.gouv.fr « Résultats du contrôle sanitaire de
 - **Déport des blocs partagés (benchmark Top 10, bloc réseau) : écarté** — gain mesuré marginal (~3 pts shingles) contre une perte d'UX. Ne pas le reproposer sans donnée nouvelle.
 - **Point de retour global** : tag git `pre-reseau-architecture` (avant tout le chantier).
 
+# Recherche (ville & code postal)
+
+- **API unique** `app/api/search/route.js`, deux modes exclusifs : par nom (clés de `public/city-index.json`) et par code postal (regex `/^\d{4,5}$/`, index `public/data/postal-index.json`, préfixe + variante zéro-paddée `1330`→`01330`, repli `{kind:'dept'}` si aucune commune). Réponse uniforme `{kind, text, slug, dpt, deptName, region, pc[]}`.
+- **`public/city-index.json` = objet** `{ d: dept, n: nomDept, r: région }` (ex-format plat `slug→dept`), généré par `enrichIndex()` (`scripts/build-dept-generic.js`, région via `REGION_MAP`). Les 4 consommateurs (`generate-sitemap`, `audit-indexation`, `build-reseaux-index`, `build-city-redirects`) lisent l'objet avec fallback chaîne — ne pas repasser au format plat.
+- **`public/data/postal-index.json`** : `scripts/build-postal-index.js` (`npm run postal`, étape de `npm run sitemap`). Codes postaux par nom résolus à la volée par `getCitiesInfo()` (pas stockés dans `city-index.json`, volumétrie).
+- **Rendu** : composant partagé `app/components/SearchSuggestionContent.js` (département · région + codes postaux) — ne pas ré-écrire inline. Bouton **« Analyser mon eau »** dans `HomeLanding.js` (`handleAnalyseClick`, event `search_cta_click`), libellé court « Analyser » en mobile.
+
+

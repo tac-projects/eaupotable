@@ -27,7 +27,7 @@ function shuffle(arr, seed) {
 function sampleUrls({ nCities = 150, nDepts = 20, allDepts = false } = {}) {
   const cityIndex = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'public', 'city-index.json'), 'utf8'));
   const slugs = Object.keys(cityIndex).filter((s) => !/^\d{5}$/.test(s));
-  const depts = [...new Set(Object.values(cityIndex).filter((d) => /^(\d{2,3}|2[AB])$/.test(d)))];
+  const depts = [...new Set(Object.values(cityIndex).map(v => (typeof v === 'string' ? v : v && v.d)).filter((d) => /^(\d{2,3}|2[AB])$/.test(d)))];
   const sampleCities = shuffle(slugs, 42).slice(0, nCities);
   const sampleDepts = allDepts ? depts : shuffle(depts, 7).slice(0, nDepts);
   const urls = [

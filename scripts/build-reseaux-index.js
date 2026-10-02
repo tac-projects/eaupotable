@@ -8,7 +8,8 @@ const path = require('path');
 
 function canonicalSlugFor(cityIndex, baseSlug, deptCode) {
   if (!cityIndex) return baseSlug;
-  if (cityIndex[baseSlug] === deptCode) return baseSlug;
+  const deptOf = (val) => (typeof val === 'string' ? val : val && val.d);
+  if (deptOf(cityIndex[baseSlug]) === deptCode) return baseSlug;
   const suffixed = `${baseSlug}-${deptCode}`;
   return cityIndex[suffixed] ? suffixed : baseSlug;
 }

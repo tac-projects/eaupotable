@@ -185,6 +185,12 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   };
 
   const handleSearchSelection = async (feature) => {
+    if (feature.kind === 'dept') {
+      setSearchQuery("");
+      setSuggestions([]);
+      router.push(`/departement/${feature.dept}`);
+      return;
+    }
     if (searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug: feature.slug });
     setSearchQuery(""); // On vide la barre pour laisser le placeholder animé
     setSuggestions([]);

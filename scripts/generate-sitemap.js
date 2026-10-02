@@ -38,9 +38,14 @@ async function generateSitemap() {
     const departements = {};
 
     // 2. Grouper les slugs par département
-    Object.entries(cityIndex).forEach(([slug, deptCode]) => {
+    // city-index.json porte { d: dept, n: nom, r: région } ; on tolère l'ancien
+    // format plat (slug -> dept) pour ne pas casser un index non régénéré.
+    Object.entries(cityIndex).forEach(([slug, val]) => {
       // On ignore les entrées qui sont des codes INSEE numériques (5 chiffres)
       if (/^\d{5}$/.test(slug)) return;
+
+      const deptCode = typeof val === 'string' ? val : val && val.d;
+      if (!deptCode) return;
 
       if (!departements[deptCode]) departements[deptCode] = [];
       departements[deptCode].push(slug);

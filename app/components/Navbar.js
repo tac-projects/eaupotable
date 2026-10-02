@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import MobileSearchSheet from './MobileSearchSheet';
+import SearchSuggestionContent from './SearchSuggestionContent';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 import { track } from '@/lib/analytics';
 
@@ -76,12 +77,12 @@ export default function Navbar() {
   };
 
   const handleSelect = (city) => {
-    const slug = city.slug;
-    if (searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug });
+    if (city.kind === 'city' && searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug: city.slug });
     setIsOpen(false);
     setSearchQuery('');
     setSuggestions([]);
-    router.push(`/ville/${slug}`);
+    if (city.kind === 'dept') router.push(`/departement/${city.dept}`);
+    else if (city.slug) router.push(`/ville/${city.slug}`);
     if (typeof window !== 'undefined') {
       window.scrollTo(0, 0);
     }
@@ -158,7 +159,7 @@ export default function Navbar() {
               )}
               {suggestions.map((city, i) => (
                 <div key={i} className="menu-suggestion-item" onClick={() => handleSelect(city)}>
-                  <strong>{city.text}</strong> <span className="menu-suggestion-context">({city.dpt})</span>
+                  <SearchSuggestionContent item={city} contextClassName="menu-suggestion-context" />
                 </div>
               ))}
             </div>

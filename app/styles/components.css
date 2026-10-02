@@ -84,6 +84,42 @@
     opacity: 0.6;
 }
 
+/* Bouton d'action « Analyser mon eau » (barre de recherche d'accueil) */
+.search-cta-btn {
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    align-self: stretch;
+    margin: 6px;
+    padding: 0 22px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, var(--primary-solid), #00a3ff);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: var(--transition-premium);
+    box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.32);
+}
+
+.search-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.42);
+    filter: brightness(1.04);
+}
+
+.search-cta-btn:disabled {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+}
+
+.search-cta-btn .cta-label-short {
+    display: none;
+}
+
 
 .search-results {
     position: absolute;
@@ -131,6 +167,18 @@
     background: rgba(var(--primary-rgb), 0.05);
     padding-left: 2.5rem;
     color: var(--primary-solid);
+}
+
+/* Suggestion enrichie : codes postaux et repli département */
+.suggestion-postal {
+    color: var(--text-light);
+    font-size: 0.78rem;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.suggestion-fallback {
+    color: var(--text-main);
 }
 
 /* Hamburger Menu Drawer */

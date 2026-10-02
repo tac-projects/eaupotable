@@ -599,6 +599,8 @@ async function updateIndex() {
     const dir = path.join(__dirname, '..', 'public', 'data', 'departments');
 
     if (!fs.existsSync(dir)) return;
+    // Index plat temporaire (slug -> dept), converti en (slug -> {d,n,r})
+    // par enrichIndex() avant écriture finale.
     const index = {};
     const collisions = [];
     // Tri alphabétique des fichiers pour garantir un index stable (01 avant 85)
@@ -640,6 +642,40 @@ async function updateIndex() {
             console.log("Exemples de résolutions :", collisions.slice(0, 5));
         }
     }
+
+    enrichIndex();
+}
+
+// Enrichit l'index plat (slug -> dept) en (slug -> {d, n, r}) en résolvant le
+// nom du département depuis deptInfo et la région depuis REGION_MAP. Les codes
+// postaux ne sont pas stockés ici (évite un index volumineux) : l'API les résout
+// via communes-geo.json uniquement quand un résultat par nom est renvoyé.
+function enrichIndex() {
+    const indexPath = path.join(__dirname, '..', 'public', 'city-index.json');
+    if (!fs.existsSync(indexPath)) return;
+
+    const flat = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
+    const dir = path.join(__dirname, '..', 'public', 'data', 'departments');
+    const deptNames = {};
+    if (fs.existsSync(dir)) {
+        for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.json'))) {
+            const code = f.replace('.json', '');
+            try {
+                const info = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).deptInfo || {};
+                deptNames[code] = info.name || (DEPT_REF[code] && DEPT_REF[code].name) || code;
+            } catch { deptNames[code] = code; }
+        }
+    }
+
+    const rich = {};
+    for (const slug of Object.keys(flat).sort()) {
+        if (/^\d{5}$/.test(slug)) continue;
+        const d = flat[slug];
+        const n = deptNames[d] || (DEPT_REF[d] && DEPT_REF[d].name) || d;
+        rich[slug] = { d, n, r: getRegionForDept(d) };
+    }
+    fs.writeFileSync(indexPath, JSON.stringify(rich, null, 2));
+    console.log(`🎨 Index enrichi (département + région) : ${Object.keys(rich).length} entrées.`);
 }
 
 function calculateRegionalAverages(allDeptData) {

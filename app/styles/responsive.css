@@ -301,6 +301,20 @@
         border-left: 1px solid rgba(0, 0, 0, 0.05);
     }
 
+    .home-search-container .search-cta-btn {
+        padding: 0 14px !important;
+        margin: 6px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .home-search-container .search-cta-btn .cta-label-full {
+        display: none;
+    }
+
+    .home-search-container .search-cta-btn .cta-label-short {
+        display: inline;
+    }
+
     .home-search-container .search-divider {
         display: none !important;
     }

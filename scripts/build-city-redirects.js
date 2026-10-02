@@ -32,9 +32,10 @@ function buildIndex() {
     const data = JSON.parse(fs.readFileSync(path.join(DEPTS_DIR, f), 'utf8'));
     for (const [local, city] of Object.entries(data.cities || {})) {
       const insee = (city.meta || {}).insee || null;
+      const deptOf = (val) => (typeof val === 'string' ? val : val && val.d);
       let global = null;
-      if (cityIndex[local] === dept) global = local;
-      else if (cityIndex[`${local}-${dept}`] === dept) global = `${local}-${dept}`;
+      if (deptOf(cityIndex[local]) === dept) global = local;
+      else if (deptOf(cityIndex[`${local}-${dept}`]) === dept) global = `${local}-${dept}`;
       if (!global) continue;
       bySlug[global] = { insee, dept };
       if (insee) byInsee[insee] = global;

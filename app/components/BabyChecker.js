@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import SearchSuggestionContent from './SearchSuggestionContent';
 import { track } from '@/lib/analytics';
 
 const SEARCH_MISS_SETTLE_MS = 1500;
@@ -61,6 +63,7 @@ const OUTCOME_TEXT = {
 };
 
 export default function BabyChecker() {
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -101,6 +104,13 @@ export default function BabyChecker() {
   }, [query]);
 
   const handleSelect = async (feature) => {
+    if (feature.kind === 'dept') {
+      setQuery('');
+      setSuggestions([]);
+      setIsFocused(false);
+      router.push(`/departement/${feature.dept}`);
+      return;
+    }
     setQuery('');
     setSuggestions([]);
     setIsFocused(false);
@@ -157,8 +167,7 @@ export default function BabyChecker() {
                     handleSelect(s);
                   }}
                 >
-                  <span className="bebe-checker-suggestion-name">{s.text}</span>
-                  <span className="bebe-checker-suggestion-dept">({s.dpt})</span>
+                  <SearchSuggestionContent item={s} contextClassName="bebe-checker-suggestion-dept" />
                 </button>
               </li>
             ))}

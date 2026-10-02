@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { POPULAR_CITIES } from '@/lib/water-utils';
+import SearchSuggestionContent from './SearchSuggestionContent';
 import { track } from '@/lib/analytics';
 
 const SEARCH_MISS_SETTLE_MS = 1500;
@@ -51,10 +52,11 @@ export default function MobileSearchSheet({ open, onClose }) {
     };
   }, [searchQuery]);
 
-  const handleSelect = (slug) => {
-    if (searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug });
+  const handleSelect = (city) => {
+    if (city.kind === 'city' && searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug: city.slug });
     onClose();
-    router.push(`/ville/${slug}`);
+    if (city.kind === 'dept') router.push(`/departement/${city.dept}`);
+    else if (city.slug) router.push(`/ville/${city.slug}`);
     window.scrollTo(0, 0);
   };
 
@@ -78,7 +80,7 @@ export default function MobileSearchSheet({ open, onClose }) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setTimeout(() => setIsFocused(false), 200)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && suggestions.length > 0) { handleSelect(suggestions[0].slug); }
+              if (e.key === 'Enter' && suggestions.length > 0) { handleSelect(suggestions[0]); }
             }}
             className="mss-input"
             ref={inputRef}
@@ -101,7 +103,7 @@ export default function MobileSearchSheet({ open, onClose }) {
                 <div
                   key={city.slug}
                   className="mss-suggestion-item"
-                  onClick={() => handleSelect(city.slug)}
+                  onClick={() => handleSelect(city)}
                 >
                   {city.name}
                 </div>
@@ -109,8 +111,8 @@ export default function MobileSearchSheet({ open, onClose }) {
             </div>
           )}
           {suggestions.map((city, i) => (
-            <div key={i} className="mss-suggestion-item" onClick={() => handleSelect(city.slug)}>
-              <strong>{city.text}</strong> <span className="mss-suggestion-context">({city.dpt})</span>
+            <div key={i} className="mss-suggestion-item" onClick={() => handleSelect(city)}>
+              <SearchSuggestionContent item={city} contextClassName="mss-suggestion-context" />
             </div>
           ))}
         </div>
