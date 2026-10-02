@@ -1,11 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import MobileSearchSheet from './MobileSearchSheet';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 import { track } from '@/lib/analytics';
+
+const SEARCH_MISS_SETTLE_MS = 1500;
 
 export default function Navbar() {
   const router = useRouter();
@@ -15,6 +17,7 @@ export default function Navbar() {
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const searchMissTimerRef = useRef(null);
 
   const openSearch = () => {
     setIsSearchOpen(true);
@@ -52,7 +55,8 @@ export default function Navbar() {
           const data = await res.json();
           setSuggestions(data || []);
           if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
-            track('search_no_result', { q: searchQuery.trim() });
+            const q = searchQuery.trim();
+            searchMissTimerRef.current = setTimeout(() => track('search_no_result', { q }), SEARCH_MISS_SETTLE_MS);
           }
         }
       } catch (err) {
@@ -61,7 +65,10 @@ export default function Navbar() {
     };
 
     const handler = setTimeout(fetchSuggestions, 300);
-    return () => clearTimeout(handler);
+    return () => {
+      clearTimeout(handler);
+      clearTimeout(searchMissTimerRef.current);
+    };
   }, [searchQuery]);
 
   const handleSearchChange = (e) => {

@@ -136,7 +136,7 @@ export async function GET(request) {
         dpt: cityIndex[match.key],
       }));
 
-    if (matches.length === 0) logSearchMiss(q);
+    if (matches.length === 0) logSearchMiss(q, 'api', ip);
 
     return NextResponse.json(matches, {
       headers: {
