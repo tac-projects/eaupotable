@@ -20,6 +20,7 @@
     "gsc": "node scripts/gsc-report.js",
     "gsc:submit": "node scripts/gsc-submit.js",
     "gsc:inspect": "node scripts/gsc-inspect.js",
+    "indexnow": "node scripts/indexnow-submit.js",
     "audit": "node scripts/audit-snapshot.js --period=month",
     "audit:week": "node scripts/audit-snapshot.js --period=week",
     "audit:index": "node scripts/audit-indexation.js",
