@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import SearchSuggestionContent from './SearchSuggestionContent';
 import { track } from '@/lib/analytics';
+import { reportSearchNoResult, cancelSearchNoResult } from '@/lib/search-no-result';
 
-const SEARCH_MISS_SETTLE_MS = 1500;
 const VIGILANCE_NIT = 15;
 const LIMIT_NIT = 50;
 const LIMIT_PFAS = 0.1;
@@ -71,10 +71,10 @@ export default function BabyChecker() {
   const [error, setError] = useState(null);
   const [result, setResult] = useState(null);
   const abortRef = useRef(null);
-  const searchMissTimerRef = useRef(null);
 
   useEffect(() => {
     if (query.length < 2) {
+      cancelSearchNoResult();
       setSuggestions([]);
       return;
     }
@@ -88,8 +88,7 @@ export default function BabyChecker() {
           const data = await res.json();
           setSuggestions(data || []);
           if ((!data || data.length === 0) && query.trim().length >= 3) {
-            const q = query.trim();
-            searchMissTimerRef.current = setTimeout(() => track('search_no_result', { q }), SEARCH_MISS_SETTLE_MS);
+            reportSearchNoResult(query.trim());
           }
         }
       } catch (err) {
@@ -98,12 +97,12 @@ export default function BabyChecker() {
     }, 300);
     return () => {
       clearTimeout(handler);
-      clearTimeout(searchMissTimerRef.current);
       abortRef.current = null;
     };
   }, [query]);
 
   const handleSelect = async (feature) => {
+    cancelSearchNoResult();
     if (feature.kind === 'dept') {
       setQuery('');
       setSuggestions([]);
@@ -134,6 +133,7 @@ export default function BabyChecker() {
   };
 
   const resetChecker = () => {
+    cancelSearchNoResult();
     setResult(null);
     setError(null);
     setQuery('');

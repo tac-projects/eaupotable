@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "node --test",
     "build": "next build",
     "build:full": "npm run sitemap && next build",
     "start": "next start -H 127.0.0.1",

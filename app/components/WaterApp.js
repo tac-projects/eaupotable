@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   calculateCrystalScore,
@@ -14,6 +14,7 @@ import {
   POPULAR_CITIES
 } from '@/lib/water-utils';
 import { track } from '@/lib/analytics';
+import { reportSearchNoResult, cancelSearchNoResult } from '@/lib/search-no-result';
 
 // Imports normaux pour SSR et LCP optimal
 // Imports dynamiques pour réduire le bundle initial et le TBT
@@ -22,8 +23,6 @@ const HomeLanding = dynamic(() => import('./HomeLanding'), { ssr: true });
 
 // WaterReport dynamique (lourd, non critique au LCP)
 const WaterReport = dynamic(() => import('./WaterReport'), { ssr: false });
-
-const SEARCH_MISS_SETTLE_MS = 1500;
 
 export default function WaterApp({ initialCity = null, initialData = null, metropolisData = null, bebeNation = null }) {
   const router = useRouter();
@@ -34,7 +33,6 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   const [waterData, setWaterData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(!initialData && !!initialCity);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const searchMissTimerRef = useRef(null);
 
   // PWA States
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -231,6 +229,7 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   };
 
   const handleSearchSelection = async (feature) => {
+    cancelSearchNoResult();
     if (feature.kind === 'dept') {
       setSearchQuery("");
       setSuggestions([]);
@@ -270,19 +269,19 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
   };
 
   useEffect(() => {
+    if (searchQuery.length < 2) {
+      cancelSearchNoResult();
+      setSuggestions([]);
+      return;
+    }
     const fetchSuggestions = async () => {
-      if (searchQuery.length < 2) {
-        setSuggestions([]);
-        return;
-      }
       try {
         const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data || []);
           if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
-            const q = searchQuery.trim();
-            searchMissTimerRef.current = setTimeout(() => track('search_no_result', { q }), SEARCH_MISS_SETTLE_MS);
+            reportSearchNoResult(searchQuery.trim());
           }
         }
       } catch (err) {
@@ -293,7 +292,6 @@ export default function WaterApp({ initialCity = null, initialData = null, metro
     const handler = setTimeout(fetchSuggestions, 300);
     return () => {
       clearTimeout(handler);
-      clearTimeout(searchMissTimerRef.current);
     };
   }, [searchQuery]);
 

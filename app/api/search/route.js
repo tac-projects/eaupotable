@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { logSearchMiss } from '../../../lib/search-miss-log';
+import searchMatch from '../../../lib/search-match';
 
 let searchIndexCache = null;
+let cityKeysCache = null;
 let postalIndexCache = null;
 let cityInfoCache = null;
 let inseeGeoCache = null;
@@ -228,46 +230,27 @@ export async function GET(request) {
     }
     const cityIndex = searchIndexCache;
 
-    // Normalise la requ\u00eate pour qu'elle corresponde au format des slugs du city-index
-    // (espaces et apostrophes deviennent des tirets, les accents sont retir\u00e9s)
-    const query = q.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .trim()
-      .replace(/[\s'\u2019]+/g, '-')
-      .replace(/-{2,}/g, '-');
-
-    const matches = Object.keys(cityIndex)
-      .filter(key => key.includes(query) && isNaN(key))
-      .map(key => {
-        let score = 3; // Par défaut : contient
-        if (key === query) score = 1; // Correspondance exacte
-        else if (key.startsWith(query)) score = 2; // Commence par
-
-        return { key, score, length: key.length };
-      })
-      .sort((a, b) => {
-        if (a.score !== b.score) return a.score - b.score;
-        if (a.length !== b.length) return a.length - b.length;
-        return a.key.localeCompare(b.key);
-      })
-      .slice(0, 10)
-      .map(match => {
-        const val = cityIndex[match.key];
-        const dpt = typeof val === 'string' ? val : val && val.d;
-        const info = getCitiesInfo().get(match.key);
-        return {
-          kind: 'city',
-          text: match.key
-            .split('-')
-            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-            .join(' '),
-          slug: match.key,
-          dpt,
-          deptName: (typeof val === 'object' && val && val.n) || (info && info.n) || null,
-          region: (typeof val === 'object' && val && val.r) || (info && info.r) || null,
-          pc: (info && info.pc) || [],
-        };
-      });
+    // Correspondances par nom (exact → préfixe → contenu → repli tolérant aux
+    // fautes de frappe, cf. lib/search-match.js). Les clés numériques ne sont
+    // pas des communes : exclues une seule fois, puis réutilisées.
+    if (!cityKeysCache) cityKeysCache = Object.keys(cityIndex).filter(key => isNaN(key));
+    const matches = searchMatch.matchByName(q, cityKeysCache, 10).map(match => {
+      const val = cityIndex[match.key];
+      const dpt = typeof val === 'string' ? val : val && val.d;
+      const info = getCitiesInfo().get(match.key);
+      return {
+        kind: 'city',
+        text: match.key
+          .split('-')
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(' '),
+        slug: match.key,
+        dpt,
+        deptName: (typeof val === 'object' && val && val.n) || (info && info.n) || null,
+        region: (typeof val === 'object' && val && val.r) || (info && info.r) || null,
+        pc: (info && info.pc) || [],
+      };
+    });
 
     if (matches.length === 0) logSearchMiss(q, 'api', ip);
 

@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 import { POPULAR_CITIES } from '@/lib/water-utils';
 import SearchSuggestionContent from './SearchSuggestionContent';
 import { track } from '@/lib/analytics';
-
-const SEARCH_MISS_SETTLE_MS = 1500;
+import { reportSearchNoResult, cancelSearchNoResult } from '@/lib/search-no-result';
 
 export default function MobileSearchSheet({ open, onClose }) {
   const router = useRouter();
@@ -14,7 +13,6 @@ export default function MobileSearchSheet({ open, onClose }) {
   const [suggestions, setSuggestions] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef(null);
-  const searchMissTimerRef = useRef(null);
 
   useEffect(() => {
     if (open) {
@@ -25,19 +23,19 @@ export default function MobileSearchSheet({ open, onClose }) {
   }, [open]);
 
   useEffect(() => {
+    if (searchQuery.length < 2) {
+      cancelSearchNoResult();
+      setSuggestions([]);
+      return;
+    }
     const fetchSuggestions = async () => {
-      if (searchQuery.length < 2) {
-        setSuggestions([]);
-        return;
-      }
       try {
         const res = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data || []);
           if ((!data || data.length === 0) && searchQuery.trim().length >= 3) {
-            const q = searchQuery.trim();
-            searchMissTimerRef.current = setTimeout(() => track('search_no_result', { q }), SEARCH_MISS_SETTLE_MS);
+            reportSearchNoResult(searchQuery.trim());
           }
         }
       } catch (err) {
@@ -48,11 +46,11 @@ export default function MobileSearchSheet({ open, onClose }) {
     const handler = setTimeout(fetchSuggestions, 300);
     return () => {
       clearTimeout(handler);
-      clearTimeout(searchMissTimerRef.current);
     };
   }, [searchQuery]);
 
   const handleSelect = (city) => {
+    cancelSearchNoResult();
     if (city.kind === 'city' && searchQuery.trim()) track('search_result_click', { q: searchQuery.trim(), slug: city.slug });
     onClose();
     if (city.kind === 'dept') router.push(`/departement/${city.dept}`);
