@@ -12,6 +12,12 @@ const KEYS = [
   'sathonay-village',
   'juan-les-pins',
   'l-isle-adam',
+  'l-isle-sur-la-sorgue',
+  'saint-gatien-des-bois',
+  'vannes',
+  'marcq-en-baroeul',
+  'la-trimouille',
+  'le-mans',
   'pacy-sur-armancon',
   'izeste',
   'aubord',
@@ -68,6 +74,33 @@ test('apostrophe omise : lisle adam → l-isle-adam', () => {
 
 test('« juans les pins » → juan-les-pins', () => {
   assert.ok(keysOf('juans les pins').includes('juan-les-pins'));
+});
+
+// --- Termes réels du log de manques (renforcement 10/2026) -----------------
+
+test('article de tête : « isle sur la sorge » → l-isle-sur-la-sorgue', () => {
+  assert.ok(keysOf('isle sur la sorge').includes('l-isle-sur-la-sorgue'));
+});
+
+test('abréviation : « st gatien des bois » → saint-gatien-des-bois', () => {
+  assert.ok(keysOf('st gatien des bois').includes('saint-gatien-des-bois'));
+});
+
+test('2 éditions refusées (précision > rappel) : « sataunay » sans résultat', () => {
+  assert.equal(keysOf('sataunay').length, 0);
+});
+
+test('mot isolé : l\'article ne fabrique pas de correspondance sur du bruit', () => {
+  // « trifouill » ne doit pas atteindre la-trimouille via sa forme sans article.
+  assert.equal(keysOf('trifouill').length, 0);
+});
+
+test('article omis sur un mot unique : « mans » → le-mans (exact/préfixe)', () => {
+  assert.ok(keysOf('mans').includes('le-mans'));
+});
+
+test('au-delà de la tolérance : « marc en bareuil » reste sans résultat', () => {
+  assert.equal(keysOf('marc en bareuil').length, 0);
 });
 
 test('pas de faux positif hors du corpus', () => {
